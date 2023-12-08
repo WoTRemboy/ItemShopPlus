@@ -1,5 +1,5 @@
 //
-//  UIFont + Extensions.swift
+//  FontExtensions.swift
 //  ItemShopPlus
 //
 //  Created by Roman Tverdokhleb on 08.12.2023.

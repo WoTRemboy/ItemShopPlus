@@ -1,5 +1,5 @@
 //
-//  UIColor + Extensions.swift
+//  ColorExtensions.swift
 //  ItemShopPlus
 //
 //  Created by Roman Tverdokhleb on 08.12.2023.

@@ -18,6 +18,10 @@
 		63C898E92B233DDA00FABD69 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898E82B233DDA00FABD69 /* ImageExtensions.swift */; };
 		63C898EB2B233E9900FABD69 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898EA2B233E9900FABD69 /* Labels.swift */; };
 		63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898F52B237B7D00FABD69 /* MPButtonViewController.swift */; };
+		63C899092B25088000FABD69 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C899082B25088000FABD69 /* MockData.swift */; };
+		63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C8990C2B2508B200FABD69 /* QuestsPageModel.swift */; };
+		63C8990F2B2508CA00FABD69 /* QPGlobalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C8990E2B2508CA00FABD69 /* QPGlobalView.swift */; };
+		63C899112B2508DB00FABD69 /* QuestsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C899102B2508DB00FABD69 /* QuestsPageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		63C898E82B233DDA00FABD69 /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		63C898EA2B233E9900FABD69 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		63C898F52B237B7D00FABD69 /* MPButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPButtonViewController.swift; sourceTree = "<group>"; };
+		63C899082B25088000FABD69 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		63C8990C2B2508B200FABD69 /* QuestsPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsPageModel.swift; sourceTree = "<group>"; };
+		63C8990E2B2508CA00FABD69 /* QPGlobalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QPGlobalView.swift; sourceTree = "<group>"; };
+		63C899102B2508DB00FABD69 /* QuestsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsPageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,7 @@
 			children = (
 				63C898CF2B232FF600FABD69 /* Application */,
 				63C898D22B23310D00FABD69 /* MainModule */,
+				63C899042B25084800FABD69 /* QuestsModule */,
 				63C898D12B2330EA00FABD69 /* SupportingFiles */,
 				63C898D02B2330B000FABD69 /* Extensions */,
 				63C898C92B232F4100FABD69 /* Info.plist */,
@@ -134,6 +143,41 @@
 			isa = PBXGroup;
 			children = (
 				63C898E62B233D9000FABD69 /* MainPageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		63C899042B25084800FABD69 /* QuestsModule */ = {
+			isa = PBXGroup;
+			children = (
+				63C899072B25086A00FABD69 /* Model */,
+				63C899062B25086300FABD69 /* Views */,
+				63C899052B25085C00FABD69 /* Controllers */,
+				63C899082B25088000FABD69 /* MockData.swift */,
+			);
+			path = QuestsModule;
+			sourceTree = "<group>";
+		};
+		63C899052B25085C00FABD69 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63C899102B2508DB00FABD69 /* QuestsPageController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		63C899062B25086300FABD69 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63C8990E2B2508CA00FABD69 /* QPGlobalView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		63C899072B25086A00FABD69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63C8990C2B2508B200FABD69 /* QuestsPageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,12 +254,16 @@
 				63C898E92B233DDA00FABD69 /* ImageExtensions.swift in Sources */,
 				63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */,
 				63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */,
+				63C899112B2508DB00FABD69 /* QuestsPageController.swift in Sources */,
+				63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */,
+				63C8990F2B2508CA00FABD69 /* QPGlobalView.swift in Sources */,
 				63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */,
 				63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */,
 				63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */,
 				63C898EB2B233E9900FABD69 /* Labels.swift in Sources */,
 				63C898E02B2339F900FABD69 /* MPButtonView.swift in Sources */,
 				63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */,
+				63C899092B25088000FABD69 /* MockData.swift in Sources */,
 				63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

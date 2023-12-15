@@ -26,7 +26,7 @@ class Texts {
     }
     
     enum MainPage {
-        static let title = "FortniteAPI"
+        static let title = "Item Shop Plus"
     }
 }
 

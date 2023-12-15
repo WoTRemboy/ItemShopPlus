@@ -36,8 +36,8 @@ class MPButtonView: UIView {
         button.backgroundColor = .clear
         button.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         button.addTarget(nil, action: #selector(buttonTouchDown), for: .touchDown)
-            button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpOutside)
-            button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpInside)
+        button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpOutside)
+        button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -54,18 +54,6 @@ class MPButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func buttonTouchDown() {
-        UIView.animate(withDuration: 0.1) {
-            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        }
-    }
-
-    @objc private func buttonTouchUp() {
-        UIView.animate(withDuration: 0.1) {
-            self.transform = CGAffineTransform.identity
-        }
-    }
-    
     private func setupLayout() {
         backgroundColor = .BackColors.backElevated
         layer.cornerRadius = 12
@@ -76,6 +64,18 @@ class MPButtonView: UIView {
         addSubview(buttonImageView)
         addSubview(buttonLabel)
         addSubview(selectButton)
+    }
+    
+    @objc private func buttonTouchDown() {
+        UIView.animate(withDuration: 0.1) {
+            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+
+    @objc private func buttonTouchUp() {
+        UIView.animate(withDuration: 0.1) {
+            self.transform = CGAffineTransform.identity
+        }
     }
     
     private func buttonContentSetup(buttonType: ButtonType) {

@@ -7,6 +7,6 @@
 
 import UIKit
 
-class QPGlobalView: UIView {
+class QPGlobalView: UITableView {
     
 }

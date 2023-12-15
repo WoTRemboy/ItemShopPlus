@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct QuestBundle {
+    let tag: String
+    let name: String
+    let image: String
+    let startDate: Date?
+    let endDate: Date?
+}
+
 struct Quest: Identifiable {
     let id: String
     let taskText: String

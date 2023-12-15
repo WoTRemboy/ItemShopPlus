@@ -24,7 +24,7 @@ class MainPageViewController: UIViewController {
     }
     
     @objc func sayHi() {
-        print("Hi")
+        navigationController?.pushViewController(QuestsPageController(items: BundleMockData().createMock()), animated: true)
     }
 
 }

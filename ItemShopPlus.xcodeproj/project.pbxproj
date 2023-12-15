@@ -22,6 +22,8 @@
 		63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C8990C2B2508B200FABD69 /* QuestsPageModel.swift */; };
 		63C8990F2B2508CA00FABD69 /* QPGlobalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C8990E2B2508CA00FABD69 /* QPGlobalView.swift */; };
 		63C899112B2508DB00FABD69 /* QuestsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C899102B2508DB00FABD69 /* QuestsPageController.swift */; };
+		63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C899122B2616C500FABD69 /* BundleTableViewCell.swift */; };
+		63C899172B26220D00FABD69 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C899162B26220D00FABD69 /* ImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		63C8990C2B2508B200FABD69 /* QuestsPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsPageModel.swift; sourceTree = "<group>"; };
 		63C8990E2B2508CA00FABD69 /* QPGlobalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QPGlobalView.swift; sourceTree = "<group>"; };
 		63C899102B2508DB00FABD69 /* QuestsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsPageController.swift; sourceTree = "<group>"; };
+		63C899122B2616C500FABD69 /* BundleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTableViewCell.swift; sourceTree = "<group>"; };
+		63C899162B26220D00FABD69 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 				63C898CF2B232FF600FABD69 /* Application */,
 				63C898D22B23310D00FABD69 /* MainModule */,
 				63C899042B25084800FABD69 /* QuestsModule */,
+				63C899152B2621EB00FABD69 /* Networking */,
 				63C898D12B2330EA00FABD69 /* SupportingFiles */,
 				63C898D02B2330B000FABD69 /* Extensions */,
 				63C898C92B232F4100FABD69 /* Info.plist */,
@@ -170,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				63C8990E2B2508CA00FABD69 /* QPGlobalView.swift */,
+				63C899122B2616C500FABD69 /* BundleTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +186,14 @@
 				63C8990C2B2508B200FABD69 /* QuestsPageModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		63C899152B2621EB00FABD69 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				63C899162B26220D00FABD69 /* ImageLoader.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,11 +265,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */,
 				63C898E92B233DDA00FABD69 /* ImageExtensions.swift in Sources */,
 				63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */,
 				63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */,
 				63C899112B2508DB00FABD69 /* QuestsPageController.swift in Sources */,
 				63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */,
+				63C899172B26220D00FABD69 /* ImageLoader.swift in Sources */,
 				63C8990F2B2508CA00FABD69 /* QPGlobalView.swift in Sources */,
 				63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */,
 				63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */,

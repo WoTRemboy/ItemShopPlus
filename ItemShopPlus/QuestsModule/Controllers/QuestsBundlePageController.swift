@@ -19,7 +19,7 @@ class QuestsBundlePageController: UIViewController {
     
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
-        button.title = Texts.Pages.backToMain
+        button.title = Texts.Navigation.backToMain
         return button
     }()
     
@@ -78,12 +78,8 @@ extension QuestsBundlePageController: UITableViewDataSource, UITableViewDelegate
             cell.bundleTimeLabel.text = differenceBetweenDates(date1: .now, date2: end)
         }
         
-        let imageUrlString = items[indexPath.row].image
-        ImageLoader.loadImage(from: imageUrlString) { image in
-            if let image = image {
-                cell.bundleImageView.image = image
-            }
-        }
+        ImageLoader.loadAndShowImage(from: items[indexPath.row].image, to: cell.bundleImageView)
+
         return cell
     }
     

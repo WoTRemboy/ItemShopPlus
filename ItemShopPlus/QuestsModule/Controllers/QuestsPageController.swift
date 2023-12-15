@@ -10,7 +10,6 @@ import UIKit
 class QuestsPageController: UIViewController {
     
     private let items: [Quest]
-//    private let navTitle: String
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -20,7 +19,6 @@ class QuestsPageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        title = navTitle
         
         navigationItem.largeTitleDisplayMode = .never
         
@@ -74,11 +72,7 @@ extension QuestsPageController: UITableViewDataSource, UITableViewDelegate {
         cell.questProgressLabel.text = "Requirement: " + items[indexPath.row].progress
         
         if let imageUrlString = items[indexPath.row].image {
-            ImageLoader.loadImage(from: imageUrlString) { image in
-                if let image = image {
-                    cell.questImageView.image = image
-                }
-            }
+            ImageLoader.loadAndShowImage(from: imageUrlString, to: cell.questImageView)
         } else {
             cell.questImageView.image = .Quests.experience
         }
@@ -87,6 +81,8 @@ extension QuestsPageController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let navVC = UINavigationController(rootViewController: QuestsDetailsViewController(item: items[indexPath.row]))
+        present(navVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

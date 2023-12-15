@@ -9,7 +9,7 @@ import UIKit
 
 class Texts {
     enum Placeholder {
-        static let button = "Something wrong..."
+        static let noText = "Something wrong..."
     }
     
     enum ButtonLabels {
@@ -28,6 +28,11 @@ class Texts {
     enum Pages {
         static let main = "Item Shop Plus"
         static let quests = "Quests"
+        static let quest = "Quest"
+    }
+    
+    enum Navigation {
+        static let cancel = "Cancel"
         static let backToMain = "Main"
     }
 }

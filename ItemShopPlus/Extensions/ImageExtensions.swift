@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImage {
     enum Placeholder {
-        static let button = UIImage(named: "ImagePlaceholder")
+        static let noImage = UIImage(named: "ImagePlaceholder")
     }
     
     enum MainButtons {

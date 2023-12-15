@@ -13,7 +13,7 @@ class MPButtonView: UIView {
     
     private let buttonImageView: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage.Placeholder.button
+        let image = UIImage.Placeholder.noImage
         imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -21,12 +21,11 @@ class MPButtonView: UIView {
     
     private let buttonLabel: UILabel = {
         let label = UILabel()
-        label.text = Texts.Placeholder.button
+        label.text = Texts.Placeholder.noText
         label.font = .body()
         label.textColor = .labelPrimary
         label.numberOfLines = 1
         label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

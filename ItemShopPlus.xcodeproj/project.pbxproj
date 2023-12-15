@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		638594B22B2CF80F009FEED6 /* QuestsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638594B12B2CF80F009FEED6 /* QuestsDetailsViewController.swift */; };
+		638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638594B32B2CFD7C009FEED6 /* QuestDetailsView.swift */; };
 		63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BB2B232F4000FABD69 /* AppDelegate.swift */; };
 		63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BD2B232F4000FABD69 /* SceneDelegate.swift */; };
 		63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BF2B232F4000FABD69 /* MainPageController.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		638594B12B2CF80F009FEED6 /* QuestsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsDetailsViewController.swift; sourceTree = "<group>"; };
+		638594B32B2CFD7C009FEED6 /* QuestDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailsView.swift; sourceTree = "<group>"; };
 		63C898B82B232F4000FABD69 /* ItemShopPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemShopPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C898BB2B232F4000FABD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C898BD2B232F4000FABD69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			children = (
 				63C899102B2508DB00FABD69 /* QuestsBundlePageController.swift */,
 				63F8B9D42B2CD75D006E2430 /* QuestsPageController.swift */,
+				638594B12B2CF80F009FEED6 /* QuestsDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,6 +184,7 @@
 			children = (
 				63C899122B2616C500FABD69 /* BundleTableViewCell.swift */,
 				63F8B9D62B2CD84E006E2430 /* QuestTableViewCell.swift */,
+				638594B32B2CFD7C009FEED6 /* QuestDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */,
 				63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */,
 				63C898E92B233DDA00FABD69 /* ImageExtensions.swift in Sources */,
 				63F8B9D72B2CD84E006E2430 /* QuestTableViewCell.swift in Sources */,
@@ -276,6 +283,7 @@
 				63C899112B2508DB00FABD69 /* QuestsBundlePageController.swift in Sources */,
 				63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */,
 				63C899172B26220D00FABD69 /* ImageLoader.swift in Sources */,
+				638594B22B2CF80F009FEED6 /* QuestsDetailsViewController.swift in Sources */,
 				63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */,
 				63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */,
 				63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */,

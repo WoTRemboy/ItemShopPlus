@@ -32,4 +32,12 @@ class ImageLoader {
         
         task.resume()
     }
+    
+    static func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) {
+        loadImage(from: imageUrlString) { image in
+            if let image = image {
+                imageView.image = image
+            }
+        }
+    }
 }

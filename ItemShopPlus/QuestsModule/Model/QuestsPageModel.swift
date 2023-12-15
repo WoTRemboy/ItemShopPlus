@@ -30,15 +30,19 @@ struct Quest: Identifiable {
     let enabledDate: Date?
     let parentQuest: String?
     let progress: String
+    let xpReward: String?
+    let itemReward: String?
     let image: String?
     
-    init(id: String, name: String, enabled: Bool, enabledDate: Date?, parentQuest: String?, progress: String, image: String?) {
+    init(id: String, name: String, enabled: Bool, enabledDate: Date?, parentQuest: String?, xpReward: String?, itemReward: String?, progress: String, image: String?) {
         self.id = id
         self.name = name
         self.enabled = enabled
         self.enabledDate = enabledDate
         self.parentQuest = parentQuest
         self.progress = progress
+        self.xpReward = xpReward
+        self.itemReward = itemReward
         self.image = image
     }
 }

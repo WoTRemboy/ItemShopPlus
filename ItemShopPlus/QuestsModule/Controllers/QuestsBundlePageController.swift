@@ -7,20 +7,29 @@
 
 import UIKit
 
-class QuestsPageController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class QuestsBundlePageController: UIViewController {
     
     private let items: [QuestBundle]
     
     private let tableView: UITableView = {
         let table = UITableView()
-        table.register(BundleTableViewCell.self, forCellReuseIdentifier: "BundleCell")
+        table.register(BundleTableViewCell.self, forCellReuseIdentifier: BundleTableViewCell.identifier)
         return table
+    }()
+    
+    private let backButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.title = Texts.Pages.backToMain
+        return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Quests"
-                
+        title = Texts.Pages.quests
+        
+        navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -50,6 +59,11 @@ class QuestsPageController: UIViewController, UITableViewDataSource, UITableView
         ])
         tableView.translatesAutoresizingMaskIntoConstraints = false
     }
+}
+
+
+
+extension QuestsBundlePageController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -73,5 +87,7 @@ class QuestsPageController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

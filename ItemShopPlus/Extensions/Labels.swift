@@ -18,15 +18,17 @@ class Texts {
             static let quests = "Quests"
             static let news = "News"
             static let tournaments = "Tournaments"
-            static let crew = "Fortnite Crew"
+            static let crew = "Crew"
             static let map = "Map"
-            static let vehicles = "Vehicles Stats"
+            static let vehicles = "Vehicles"
             static let augments = "Augments"
         }
     }
     
-    enum MainPage {
-        static let title = "Item Shop Plus"
+    enum Pages {
+        static let main = "Item Shop Plus"
+        static let quests = "Quests"
+        static let backToMain = "Main"
     }
 }
 

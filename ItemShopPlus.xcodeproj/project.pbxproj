@@ -11,8 +11,13 @@
 		63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BD2B232F4000FABD69 /* SceneDelegate.swift */; };
 		63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BF2B232F4000FABD69 /* MainPageController.swift */; };
 		63C898C52B232F4100FABD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C898C42B232F4100FABD69 /* Assets.xcassets */; };
-		63C898D72B2334AA00FABD69 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898D62B2334AA00FABD69 /* UIFont + Extensions.swift */; };
-		63C898D92B2334BA00FABD69 /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898D82B2334BA00FABD69 /* UIColor + Extensions.swift */; };
+		63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898D62B2334AA00FABD69 /* FontExtensions.swift */; };
+		63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898D82B2334BA00FABD69 /* ColorExtensions.swift */; };
+		63C898E02B2339F900FABD69 /* MPButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898DF2B2339F900FABD69 /* MPButtonView.swift */; };
+		63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898E62B233D9000FABD69 /* MainPageModel.swift */; };
+		63C898E92B233DDA00FABD69 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898E82B233DDA00FABD69 /* ImageExtensions.swift */; };
+		63C898EB2B233E9900FABD69 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898EA2B233E9900FABD69 /* Labels.swift */; };
+		63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898F52B237B7D00FABD69 /* MPButtonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +27,13 @@
 		63C898BF2B232F4000FABD69 /* MainPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageController.swift; sourceTree = "<group>"; };
 		63C898C42B232F4100FABD69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63C898C92B232F4100FABD69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63C898D62B2334AA00FABD69 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
-		63C898D82B2334BA00FABD69 /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
+		63C898D62B2334AA00FABD69 /* FontExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtensions.swift; sourceTree = "<group>"; };
+		63C898D82B2334BA00FABD69 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		63C898DF2B2339F900FABD69 /* MPButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPButtonView.swift; sourceTree = "<group>"; };
+		63C898E62B233D9000FABD69 /* MainPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageModel.swift; sourceTree = "<group>"; };
+		63C898E82B233DDA00FABD69 /* ImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
+		63C898EA2B233E9900FABD69 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		63C898F52B237B7D00FABD69 /* MPButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPButtonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				63C898CF2B232FF600FABD69 /* Application */,
-				63C898D22B23310D00FABD69 /* MainModel */,
+				63C898D22B23310D00FABD69 /* MainModule */,
 				63C898D12B2330EA00FABD69 /* SupportingFiles */,
 				63C898D02B2330B000FABD69 /* Extensions */,
 				63C898C92B232F4100FABD69 /* Info.plist */,
@@ -77,8 +87,10 @@
 		63C898D02B2330B000FABD69 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				63C898D62B2334AA00FABD69 /* UIFont + Extensions.swift */,
-				63C898D82B2334BA00FABD69 /* UIColor + Extensions.swift */,
+				63C898D62B2334AA00FABD69 /* FontExtensions.swift */,
+				63C898D82B2334BA00FABD69 /* ColorExtensions.swift */,
+				63C898E82B233DDA00FABD69 /* ImageExtensions.swift */,
+				63C898EA2B233E9900FABD69 /* Labels.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -91,36 +103,39 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		63C898D22B23310D00FABD69 /* MainModel */ = {
+		63C898D22B23310D00FABD69 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
-				63C898D32B23343300FABD69 /* Model */,
-				63C898D52B23344600FABD69 /* Views */,
+				63C898E52B233D3900FABD69 /* Model */,
+				63C898DC2B23399C00FABD69 /* Views */,
 				63C898D42B23343800FABD69 /* Controllers */,
 			);
-			path = MainModel;
-			sourceTree = "<group>";
-		};
-		63C898D32B23343300FABD69 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = MainModule;
 			sourceTree = "<group>";
 		};
 		63C898D42B23343800FABD69 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				63C898BF2B232F4000FABD69 /* MainPageController.swift */,
+				63C898F52B237B7D00FABD69 /* MPButtonViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		63C898D52B23344600FABD69 /* Views */ = {
+		63C898DC2B23399C00FABD69 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				63C898DF2B2339F900FABD69 /* MPButtonView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		63C898E52B233D3900FABD69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63C898E62B233D9000FABD69 /* MainPageModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,9 +207,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63C898D72B2334AA00FABD69 /* UIFont + Extensions.swift in Sources */,
-				63C898D92B2334BA00FABD69 /* UIColor + Extensions.swift in Sources */,
+				63C898E92B233DDA00FABD69 /* ImageExtensions.swift in Sources */,
+				63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */,
+				63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */,
+				63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */,
+				63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */,
 				63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */,
+				63C898EB2B233E9900FABD69 /* Labels.swift in Sources */,
+				63C898E02B2339F900FABD69 /* MPButtonView.swift in Sources */,
 				63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */,
 				63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */,
 			);

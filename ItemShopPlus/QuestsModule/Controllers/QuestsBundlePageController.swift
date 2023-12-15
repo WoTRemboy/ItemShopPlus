@@ -73,9 +73,9 @@ extension QuestsBundlePageController: UITableViewDataSource, UITableViewDelegate
         
         let cell = tableView.dequeueReusableCell(withIdentifier: BundleTableViewCell.identifier, for: indexPath) as! BundleTableViewCell
         cell.contentView.heightAnchor.constraint(equalToConstant: (100 / 812 * view.frame.height)).isActive = true // constraints problem
-        cell.bundleName.text = items[indexPath.row].name
+        cell.bundleNameLabel.text = items[indexPath.row].name
         if let end = items[indexPath.row].endDate {
-            cell.bundleTime.text = differenceBetweenDates(date1: .now, date2: end)
+            cell.bundleTimeLabel.text = differenceBetweenDates(date1: .now, date2: end)
         }
         
         let imageUrlString = items[indexPath.row].image
@@ -88,6 +88,7 @@ extension QuestsBundlePageController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(QuestsPageController(items: QuestsMockData().createMock(), title: items[indexPath.row].name), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

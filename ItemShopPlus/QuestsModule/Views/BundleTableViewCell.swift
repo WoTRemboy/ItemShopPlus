@@ -18,7 +18,7 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
         return view
     }()
     
-    let bundleName: UILabel = {
+    let bundleNameLabel: UILabel = {
         let text = UILabel()
         text.font = .title()
         text.text = "Bundle name..."
@@ -27,7 +27,7 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
         return text
     }()
     
-    let bundleTime: UILabel = {
+    let bundleTimeLabel: UILabel = {
         let text = UILabel()
         text.font = .subhead()
         text.text = "Until the end of this season"
@@ -48,8 +48,8 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor(named: "BackSecondary")
         
-        contentView.addSubview(bundleName)
-        contentView.addSubview(bundleTime)
+        contentView.addSubview(bundleNameLabel)
+        contentView.addSubview(bundleTimeLabel)
         contentView.addSubview(bundleImageView)
                         
         bundleNameSetup()
@@ -59,20 +59,20 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     
     func bundleNameSetup() {
         NSLayoutConstraint.activate([
-            bundleName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
-            bundleName.trailingAnchor.constraint(equalTo: bundleImageView.leadingAnchor, constant: -16),
-            bundleName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -13)
+            bundleNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
+            bundleNameLabel.trailingAnchor.constraint(equalTo: bundleImageView.leadingAnchor, constant: -16),
+            bundleNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: -13)
         ])
-        bundleName.translatesAutoresizingMaskIntoConstraints = false
+        bundleNameLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func bundleTimeSetup() {
         NSLayoutConstraint.activate([
-            bundleTime.leadingAnchor.constraint(equalTo: bundleName.leadingAnchor),
-            bundleTime.trailingAnchor.constraint(equalTo: bundleName.trailingAnchor),
-            bundleTime.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 13)
+            bundleTimeLabel.leadingAnchor.constraint(equalTo: bundleNameLabel.leadingAnchor),
+            bundleTimeLabel.trailingAnchor.constraint(equalTo: bundleNameLabel.trailingAnchor),
+            bundleTimeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 13)
         ])
-        bundleTime.translatesAutoresizingMaskIntoConstraints = false
+        bundleTimeLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func bundleImageViewSetup() {

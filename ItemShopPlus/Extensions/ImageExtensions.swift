@@ -18,4 +18,8 @@ extension UIImage {
         static let tournaments = UIImage(named: "Tournaments")
         static let quests = UIImage(named: "Quests")
     }
+    
+    enum Quests {
+        static let experience = UIImage(named: "QuestXP")
+    }
 }

@@ -13,6 +13,14 @@ struct QuestBundle {
     let image: String
     let startDate: Date?
     let endDate: Date?
+    
+    init(tag: String, name: String, image: String, startDate: Date?, endDate: Date?) {
+        self.tag = tag
+        self.name = name
+        self.image = image
+        self.startDate = startDate
+        self.endDate = endDate
+    }
 }
 
 struct Quest: Identifiable {
@@ -21,10 +29,10 @@ struct Quest: Identifiable {
     let enabled: Bool
     let enabledDate: Date?
     let parentQuest: String?
-    let progress: Int
+    let progress: String
     let image: String?
     
-    init(id: String, name: String, enabled: Bool, enabledDate: Date?, parentQuest: String?, progress: Int, image: String?) {
+    init(id: String, name: String, enabled: Bool, enabledDate: Date?, parentQuest: String?, progress: String, image: String?) {
         self.id = id
         self.name = name
         self.enabled = enabled

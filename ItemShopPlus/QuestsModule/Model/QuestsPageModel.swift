@@ -17,16 +17,20 @@ struct QuestBundle {
 
 struct Quest: Identifiable {
     let id: String
-    let taskText: String
-    let importance: String
-    let deadline: Date
-    let pictureURL: String
+    let name: String
+    let enabled: Bool
+    let enabledDate: Date?
+    let parentQuest: String?
+    let progress: Int
+    let image: String?
     
-    init(id: String, taskText: String, importance: String, deadline: Date, pictureURL: String) {
+    init(id: String, name: String, enabled: Bool, enabledDate: Date?, parentQuest: String?, progress: Int, image: String?) {
         self.id = id
-        self.taskText = taskText
-        self.importance = importance
-        self.deadline = deadline
-        self.pictureURL = pictureURL
+        self.name = name
+        self.enabled = enabled
+        self.enabledDate = enabledDate
+        self.parentQuest = parentQuest
+        self.progress = progress
+        self.image = image
     }
 }

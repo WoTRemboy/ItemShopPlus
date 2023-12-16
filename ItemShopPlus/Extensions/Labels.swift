@@ -29,6 +29,7 @@ class Texts {
         static let main = "Item Shop Plus"
         static let quests = "Quests"
         static let quest = "Quest"
+        static let details = "Details"
     }
     
     enum Navigation {

@@ -82,6 +82,7 @@ extension QuestsPageController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let navVC = UINavigationController(rootViewController: QuestsDetailsViewController(item: items[indexPath.row]))
+        navVC.sheetPresentationController?.detents = [.medium()]
         present(navVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

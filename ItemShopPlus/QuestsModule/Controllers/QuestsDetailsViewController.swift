@@ -26,10 +26,12 @@ class QuestsDetailsViewController: UIViewController {
         view.backgroundColor = .BackColors.backElevated
         
         view.addSubview(preview)
-        
-        setupContent()
-        
+                
         setConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupContent()
     }
     
     init(item: Quest) {
@@ -42,7 +44,7 @@ class QuestsDetailsViewController: UIViewController {
     }
     
     private func navigationBarSetup() {
-        navigationItem.title = Texts.Pages.quest
+        navigationItem.title = Texts.Pages.details
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: Texts.Navigation.cancel,
             style: .plain,
@@ -70,7 +72,8 @@ class QuestsDetailsViewController: UIViewController {
             preview.rewardLabel.text = "Reward: \(itemReward)"
         }  /* Some dirt :( */
         
-        
+        preview.taskLabel.text = item.name
+        preview.requirementLabel.text = "Requirement: \(item.progress)"
     }
     
     private func setConstraints() {
@@ -78,7 +81,9 @@ class QuestsDetailsViewController: UIViewController {
             preview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             preview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             preview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            preview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            preview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            preview.rewardImageView.heightAnchor.constraint(lessThanOrEqualToConstant: (100 / 812 * view.frame.height))
         ])
         preview.translatesAutoresizingMaskIntoConstraints = false
     }

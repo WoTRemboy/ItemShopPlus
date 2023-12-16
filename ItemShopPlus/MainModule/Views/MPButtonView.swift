@@ -93,16 +93,16 @@ class MPButtonView: UIView {
             buttonImageView.image = .MainButtons.quests
         case .crew:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.crew
-            buttonImageView.image = .imagePlaceholder
+            buttonImageView.image = .MainButtons.crew
         case .map:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
-            buttonImageView.image = .imagePlaceholder
+            buttonImageView.image = .MainButtons.map
         case .vehicles:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.vehicles
-            buttonImageView.image = .imagePlaceholder
+            buttonImageView.image = .MainButtons.vehicles
         case .augments:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.augments
-            buttonImageView.image = .imagePlaceholder
+            buttonImageView.image = .MainButtons.augments
         }
     }
     

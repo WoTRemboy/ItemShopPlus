@@ -28,4 +28,8 @@ extension UIColor {
         static let supportSegmented = UIColor(named: "SupportSegmented")
         static let supportSeparator = UIColor(named: "SupportSeparator")
     }
+    
+    enum QuestsBundleColors {
+        static let bundleBackground = UIColor(named: "BundleImageBackground")
+    }
 }

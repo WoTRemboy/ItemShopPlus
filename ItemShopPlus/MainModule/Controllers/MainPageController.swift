@@ -13,9 +13,11 @@ class MainPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = Texts.MainPage.title
-        navigationController?.navigationBar.prefersLargeTitles = true
+        title = Texts.Pages.main
         view.backgroundColor = .backPrimary
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         
         view.addSubview(buttonController.view)
         
@@ -24,7 +26,7 @@ class MainPageViewController: UIViewController {
     }
     
     @objc func sayHi() {
-        print("Hi")
+        navigationController?.pushViewController(QuestsBundlePageController(items: BundleMockData().createMock()), animated: true)
     }
 
 }

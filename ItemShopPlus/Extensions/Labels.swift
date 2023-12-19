@@ -9,7 +9,7 @@ import UIKit
 
 class Texts {
     enum Placeholder {
-        static let button = "Something wrong..."
+        static let noText = "Something wrong..."
     }
     
     enum ButtonLabels {
@@ -18,15 +18,23 @@ class Texts {
             static let quests = "Quests"
             static let news = "News"
             static let tournaments = "Tournaments"
-            static let crew = "Fortnite Crew"
+            static let crew = "Crew"
             static let map = "Map"
-            static let vehicles = "Vehicles Stats"
+            static let vehicles = "Vehicles"
             static let augments = "Augments"
         }
     }
     
-    enum MainPage {
-        static let title = "FortniteAPI"
+    enum Pages {
+        static let main = "Item Shop Plus"
+        static let quests = "Quests"
+        static let quest = "Quest"
+        static let details = "Details"
+    }
+    
+    enum Navigation {
+        static let cancel = "Cancel"
+        static let backToMain = "Main"
     }
 }
 

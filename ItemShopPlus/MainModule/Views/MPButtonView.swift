@@ -13,7 +13,7 @@ class MPButtonView: UIView {
     
     private let buttonImageView: UIImageView = {
         let imageView = UIImageView()
-        let image = UIImage.Placeholder.button
+        let image = UIImage.Placeholder.noImage
         imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -21,12 +21,11 @@ class MPButtonView: UIView {
     
     private let buttonLabel: UILabel = {
         let label = UILabel()
-        label.text = Texts.Placeholder.button
-        label.font = UIFont.T1Regular()
+        label.text = Texts.Placeholder.noText
+        label.font = .body()
         label.textColor = .labelPrimary
         label.numberOfLines = 1
         label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -35,6 +34,9 @@ class MPButtonView: UIView {
         let button = UIButton()
         button.backgroundColor = .clear
         button.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
+        button.addTarget(nil, action: #selector(buttonTouchDown), for: .touchDown)
+        button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpOutside)
+        button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -63,6 +65,18 @@ class MPButtonView: UIView {
         addSubview(selectButton)
     }
     
+    @objc private func buttonTouchDown() {
+        UIView.animate(withDuration: 0.1) {
+            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+
+    @objc private func buttonTouchUp() {
+        UIView.animate(withDuration: 0.1) {
+            self.transform = CGAffineTransform.identity
+        }
+    }
+    
     private func buttonContentSetup(buttonType: ButtonType) {
         switch buttonType {
         case .shop:
@@ -79,16 +93,16 @@ class MPButtonView: UIView {
             buttonImageView.image = .MainButtons.quests
         case .crew:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.crew
-            buttonImageView.image = .imagePlaceholder
+            buttonImageView.image = .MainButtons.crew
         case .map:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
-            buttonImageView.image = .imagePlaceholder
+            buttonImageView.image = .MainButtons.map
         case .vehicles:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.vehicles
-            buttonImageView.image = .imagePlaceholder
+            buttonImageView.image = .MainButtons.vehicles
         case .augments:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.augments
-            buttonImageView.image = .imagePlaceholder
+            buttonImageView.image = .MainButtons.augments
         }
     }
     

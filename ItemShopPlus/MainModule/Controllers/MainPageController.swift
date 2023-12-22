@@ -26,7 +26,7 @@ class MainPageViewController: UIViewController {
     }
     
     @objc func questsTransfer() {
-        navigationController?.pushViewController(QuestsBundlePageController(items: BundleMockData().createMock()), animated: true)
+        navigationController?.pushViewController(QuestsBundlePageController(), animated: true)
     }
     
     @objc func sayHi() {

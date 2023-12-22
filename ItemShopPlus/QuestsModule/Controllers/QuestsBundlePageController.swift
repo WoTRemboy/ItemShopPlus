@@ -9,7 +9,8 @@ import UIKit
 
 class QuestsBundlePageController: UIViewController {
     
-    private let items: [QuestBundle]
+    private let networkService = DefaultNetworkService()
+    private var items: [QuestBundle] = []
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -36,13 +37,16 @@ class QuestsBundlePageController: UIViewController {
         view.addSubview(tableView)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getBundles()
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
     
-    init(items: [QuestBundle]) {
-        self.items = items
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,7 +54,38 @@ class QuestsBundlePageController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func tableViewSetup() {
+    private func getBundles() {
+        self.networkService.getQuestBundles { [weak self] result in
+            switch result {
+            case .success(let newItems):
+                guard self?.areBundlesEquat(from: self?.items ?? [], to: newItems) != true else { return }
+                
+                DispatchQueue.main.async {
+                    self?.items = newItems
+                    self?.tableView.beginUpdates()
+                    
+                    for row in 0..<(self?.items.count ?? 1) {
+                        self?.tableView.insertRows(at: [IndexPath(row: row, section: 0)], with: .fade)
+                    }
+                    
+                    self?.tableView.endUpdates()
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func areBundlesEquat(from: [QuestBundle], to: [QuestBundle]) -> Bool {
+        guard from.count == to.count else { return false }
+        for row in 0..<from.count {
+            guard from[row] == to[row] else { return false }
+        }
+        return true
+    }
+    
+    private func tableViewSetup() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -75,7 +110,7 @@ extension QuestsBundlePageController: UITableViewDataSource, UITableViewDelegate
         cell.contentView.heightAnchor.constraint(equalToConstant: (100 / 812 * view.frame.height)).isActive = true // constraints problem
         cell.bundleNameLabel.text = items[indexPath.row].name
         if let end = items[indexPath.row].endDate {
-            cell.bundleTimeLabel.text = differenceBetweenDates(date1: .now, date2: end)
+            cell.bundleTimeLabel.text = DateFormating.differenceBetweenDates(date1: .now, date2: end)
         }
         
         ImageLoader.loadAndShowImage(from: items[indexPath.row].image, to: cell.bundleImageView)

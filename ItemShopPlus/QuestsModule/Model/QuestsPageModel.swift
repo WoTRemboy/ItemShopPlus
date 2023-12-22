@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct QuestBundle {
+struct QuestBundle: Equatable {
     let tag: String
     let name: String
     let image: String
@@ -21,6 +21,14 @@ struct QuestBundle {
         self.startDate = startDate
         self.endDate = endDate
     }
+    
+    static func == (lhs: QuestBundle, rhs: QuestBundle) -> Bool {
+            return lhs.tag == rhs.tag &&
+                   lhs.name == rhs.name &&
+                   lhs.image == rhs.image &&
+                   lhs.startDate == rhs.startDate &&
+                   lhs.endDate == rhs.endDate
+        }
 }
 
 struct Quest: Identifiable {

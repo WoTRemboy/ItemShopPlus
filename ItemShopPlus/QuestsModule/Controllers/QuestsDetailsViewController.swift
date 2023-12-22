@@ -64,9 +64,9 @@ class QuestsDetailsViewController: UIViewController {
             preview.rewardImageView.image = .Quests.experience
         }
         
-        if let xpReward = item.xpReward, let itemReward = item.itemReward {
+        if let xpReward = item.xpReward, let itemReward = item.itemReward, xpReward != 0 {
             preview.rewardLabel.text = "Rewards: \(itemReward) + \(xpReward) XP"
-        } else if let xpReward = item.xpReward {
+        } else if let xpReward = item.xpReward, xpReward != 0 {
             preview.rewardLabel.text = "Reward: \(xpReward) XP"
         } else if let itemReward = item.itemReward {
             preview.rewardLabel.text = "Reward: \(itemReward)"

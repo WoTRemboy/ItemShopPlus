@@ -31,7 +31,6 @@ extension QuestBundle {
         let end = DateFormating.dateFormatter.date(from: endDate ?? Texts.Season.endDate)
         
         let questsList = questsData.compactMap { Quest.sharingParse(sharingJSON: $0) }
-        print(questsList)
         
         return QuestBundle(tag: tag, name: name, image: image, startDate: start, endDate: end, quests: questsList)
     }
@@ -49,7 +48,7 @@ extension Quest {
             return nil
         }
         
-        let xpReward = rewards["xp"] as? String
+        let xpReward = rewards["xp"] as? Int
         
         var itemReward: String?, image: String?
         if let itemRewardData = rewards["items"] as? [[String: Any]] {

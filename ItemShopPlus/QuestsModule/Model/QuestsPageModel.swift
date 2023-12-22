@@ -13,13 +13,15 @@ struct QuestBundle: Equatable {
     let image: String
     let startDate: Date?
     let endDate: Date?
+    let quests: [Quest]
     
-    init(tag: String, name: String, image: String, startDate: Date?, endDate: Date?) {
+    init(tag: String, name: String, image: String, startDate: Date?, endDate: Date?, quests: [Quest]) {
         self.tag = tag
         self.name = name
         self.image = image
         self.startDate = startDate
         self.endDate = endDate
+        self.quests = quests
     }
     
     static func == (lhs: QuestBundle, rhs: QuestBundle) -> Bool {

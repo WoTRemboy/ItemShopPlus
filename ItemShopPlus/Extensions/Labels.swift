@@ -36,5 +36,10 @@ class Texts {
         static let cancel = "Cancel"
         static let backToMain = "Main"
     }
+    
+    enum Season {
+        static let beginDate = "2023-12-03T08:00:00.000Z"
+        static let endDate = "2024-03-08T02:00:00.000Z"
+    }
 }
 

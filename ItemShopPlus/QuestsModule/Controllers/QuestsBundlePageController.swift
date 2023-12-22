@@ -119,7 +119,7 @@ extension QuestsBundlePageController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(QuestsPageController(items: QuestsMockData().createMock(), title: items[indexPath.row].name), animated: true)
+        navigationController?.pushViewController(QuestsPageController(items: items[indexPath.row].quests, title: items[indexPath.row].name), animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

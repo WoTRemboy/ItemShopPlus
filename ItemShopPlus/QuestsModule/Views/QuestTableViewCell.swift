@@ -13,8 +13,8 @@ class QuestTableViewCell: UITableViewCell {
 
     let questImageView: UIImageView = {
         let view = UIImageView()
-        view.image = .imagePlaceholder
-        view.backgroundColor = .bundleImageBackground
+        view.image = .Placeholder.noImage
+        view.backgroundColor = .QuestsBundleColors.bundleBackground
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         return view
@@ -44,7 +44,7 @@ class QuestTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        questImageView.image = nil
+        questImageView.image = .Quests.bundleBackground
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -35,9 +35,13 @@ class ImageLoader {
     
     static func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) {
         loadImage(from: imageUrlString) { image in
+            imageView.alpha = 0.5
             if let image = image {
                 imageView.image = image
             }
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                imageView.alpha = 1.0
+                }, completion: nil)
         }
     }
 }

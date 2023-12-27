@@ -12,7 +12,7 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     
     let bundleImageView: UIImageView = {
         let view = UIImageView()
-        view.image = .imagePlaceholder
+        view.image = .Placeholder.noImage
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         return view

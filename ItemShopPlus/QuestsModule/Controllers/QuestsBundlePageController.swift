@@ -58,7 +58,7 @@ class QuestsBundlePageController: UIViewController {
         self.networkService.getQuestBundles { [weak self] result in
             switch result {
             case .success(let newItems):
-                guard self?.areBundlesEquat(from: self?.items ?? [], to: newItems) != true else { return }
+                guard self?.areBundlesEqual(from: self?.items ?? [], to: newItems) != true else { return }
                 
                 DispatchQueue.main.async {
                     self?.items = newItems
@@ -77,7 +77,7 @@ class QuestsBundlePageController: UIViewController {
         }
     }
     
-    private func areBundlesEquat(from: [QuestBundle], to: [QuestBundle]) -> Bool {
+    private func areBundlesEqual(from: [QuestBundle], to: [QuestBundle]) -> Bool {
         guard from.count == to.count else { return false }
         for row in 0..<from.count {
             guard from[row] == to[row] else { return false }

@@ -13,8 +13,16 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     let bundleImageView: UIImageView = {
         let view = UIImageView()
         view.image = .imagePlaceholder
-        view.backgroundColor = .bundleImageBackground
         view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let bundleBackgroundImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = .Quests.bundleBackground
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
         return view
     }()
     
@@ -42,19 +50,21 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        bundleImageView.image = nil
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor(named: "BackSecondary")
         
         contentView.addSubview(bundleNameLabel)
         contentView.addSubview(bundleTimeLabel)
+        contentView.addSubview(bundleBackgroundImageView)
         contentView.addSubview(bundleImageView)
                         
         bundleNameSetup()
         bundleTimeSetup()
         bundleImageViewSetup()
+        bundleBackgroundImageViewSetup()
     }
     
     func bundleNameSetup() {
@@ -83,6 +93,16 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
             bundleImageView.widthAnchor.constraint(equalTo: bundleImageView.heightAnchor)
         ])
         bundleImageView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func bundleBackgroundImageViewSetup() {
+        NSLayoutConstraint.activate([
+            bundleBackgroundImageView.trailingAnchor.constraint(equalTo: bundleImageView.trailingAnchor),
+            bundleBackgroundImageView.topAnchor.constraint(equalTo: bundleImageView.topAnchor),
+            bundleBackgroundImageView.bottomAnchor.constraint(equalTo: bundleImageView.bottomAnchor),
+            bundleBackgroundImageView.widthAnchor.constraint(equalTo: bundleImageView.heightAnchor)
+        ])
+        bundleBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
     }
     
 }

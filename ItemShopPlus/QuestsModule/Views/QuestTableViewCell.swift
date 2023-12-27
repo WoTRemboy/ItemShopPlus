@@ -44,11 +44,11 @@ class QuestTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        questImageView.image = nil
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor(named: "BackSecondary")
         
         contentView.addSubview(questTaskLabel)
         contentView.addSubview(questProgressLabel)

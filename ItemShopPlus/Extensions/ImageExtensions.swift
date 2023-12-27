@@ -30,6 +30,7 @@ extension UIImage {
     
     enum Quests {
         static let experience = UIImage(named: "QuestXP")
+        static let bundleBackground = UIImage(named: "BundleBackground")
     }
 }
 

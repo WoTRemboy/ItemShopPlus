@@ -83,8 +83,8 @@ class MPButtonView: UIView {
             buttonImageView.image = .MainButtons.shop
             selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         case .news:
-            buttonLabel.text = Texts.ButtonLabels.MainButtons.news
-            buttonImageView.image = .MainButtons.news
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.battlePass
+            buttonImageView.image = .MainButtons.battlePass
             selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         case .tournaments:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.tournaments

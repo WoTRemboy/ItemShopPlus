@@ -13,6 +13,7 @@ extension UIColor {
         static let backiOSPrimary = UIColor(named: "BackiOSPrimary")
         static let backPrimary = UIColor(named: "BackPrimary")
         static let backSecondary = UIColor(named: "BackSecondary")
+        static let backSplash = UIColor(named: "BackSplash")
     }
     
     enum LabelColors {

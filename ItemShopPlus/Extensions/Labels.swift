@@ -16,7 +16,7 @@ class Texts {
         enum MainButtons {
             static let shop = "Daily Shop"
             static let quests = "Quests"
-            static let news = "News"
+            static let battlePass = "Battle Pass"
             static let tournaments = "Tournaments"
             static let crew = "Crew"
             static let map = "Map"

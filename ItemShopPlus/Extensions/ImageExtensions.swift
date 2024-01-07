@@ -14,7 +14,7 @@ extension UIImage {
     
     enum MainButtons {
         static let shop = createImage(name: "basket")
-        static let news = createImage(name: "newspaper")
+        static let battlePass = createImage(name: "star")
         static let tournaments = createImage(name: "medal")
         static let quests = createImage(name: "list.bullet.clipboard")
         static let crew = createImage(name: "waveform")
@@ -31,6 +31,10 @@ extension UIImage {
     enum Quests {
         static let experience = UIImage(named: "QuestXP")
         static let bundleBackground = UIImage(named: "BundleBackground")
+    }
+    
+    enum SplashScreen {
+        static let splashScreen = UIImage(named: "SplashScreen")
     }
 }
 

@@ -42,5 +42,10 @@ class Texts {
         static let beginDate = "2023-12-03T08:00:00.000Z"
         static let endDate = "2024-03-08T02:00:00.000Z"
     }
+    
+    enum ShopPage {
+        static let itemName = "Item name..."
+        static let itemPrice = "Item price..."
+    }
 }
 

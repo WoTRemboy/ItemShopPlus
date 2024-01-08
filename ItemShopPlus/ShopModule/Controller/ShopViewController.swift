@@ -9,7 +9,7 @@ import UIKit
 
 class ShopViewController: UIViewController {
     
-    private var images = MockData.images
+    private var items = [ShopModel]()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -25,6 +25,11 @@ class ShopViewController: UIViewController {
         button.title = Texts.Navigation.backToMain
         return button
     }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let mock = MockData()
+        items = mock.configMock()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +62,7 @@ class ShopViewController: UIViewController {
 
 extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,8 +70,8 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
             fatalError("Failed to dequeue ShopCollectionViewCell in ShopViewController")
         }
         
-        let image = images[indexPath.row]
-        cell.configurate(with: image)
+        let item = items[indexPath.row]
+        cell.configurate(with: item.image, item.name, item.price)
         
         return cell
     }
@@ -75,8 +80,9 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension ShopViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = view.frame.width / 2 - 25
-        return CGSize(width: size, height: size)
+        let widthSize = view.frame.width / 2 - 25
+        let heightSize = widthSize + (5 + 17 + 5 + 17 + 5) /* topAnchor + fontSize */
+        return CGSize(width: widthSize, height: heightSize)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

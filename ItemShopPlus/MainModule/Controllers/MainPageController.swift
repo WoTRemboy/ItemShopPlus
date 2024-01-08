@@ -29,6 +29,10 @@ class MainPageViewController: UIViewController {
         navigationController?.pushViewController(QuestsBundlePageController(), animated: true)
     }
     
+    @objc func shopTransfer() {
+        navigationController?.pushViewController(ShopViewController(), animated: true)
+    }
+    
     @objc func sayHi() {
         
     }

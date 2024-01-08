@@ -106,8 +106,11 @@ extension QuestsBundlePageController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: BundleTableViewCell.identifier, for: indexPath) as! BundleTableViewCell
-        cell.contentView.heightAnchor.constraint(equalToConstant: (100 / 812 * view.frame.height)).isActive = true // constraints problem
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BundleTableViewCell.identifier, for: indexPath) as? BundleTableViewCell else {
+            fatalError("Failed to dequeue BundleTableViewCell in QuestsBundlePageController")
+        }
+        
+        cell.contentView.heightAnchor.constraint(equalToConstant: (100 / 812 * view.frame.height)).isActive = true /* constraints problem */
         cell.bundleNameLabel.text = items[indexPath.row].name
         if let end = items[indexPath.row].endDate {
             cell.bundleTimeLabel.text = DateFormating.differenceBetweenDates(date1: .now, date2: end)

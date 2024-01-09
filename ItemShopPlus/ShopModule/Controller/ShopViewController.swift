@@ -10,6 +10,7 @@ import UIKit
 class ShopViewController: UIViewController {
     
     private var items = [ShopItem]()
+    private var sectionedItems = [String: [ShopItem]]()
     private let networkService = DefaultNetworkService()
     
     private let collectionView: UICollectionView = {
@@ -18,6 +19,7 @@ class ShopViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: ShopCollectionViewCell.identifier)
+        collectionView.register(ShopCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ShopCollectionReusableView.identifier)
         return collectionView
     }()
     
@@ -55,13 +57,24 @@ class ShopViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self?.items = newItems
+                    self?.sortingSections(items: newItems)
                     self?.collectionView.reloadData()
                 }
-                
                 print(newItems.count)
                 
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    private func sortingSections(items: [ShopItem]) {
+        for item in items {
+            if var sectionItems = self.sectionedItems[item.section] {
+                sectionItems.append(item)
+                self.sectionedItems[item.section] = sectionItems
+            } else {
+                self.sectionedItems[item.section] = [item]
             }
         }
     }
@@ -79,8 +92,14 @@ class ShopViewController: UIViewController {
 
 
 extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sectionedItems.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        let sectionKey = Array(sectionedItems.keys)[section]
+        return sectionedItems[sectionKey]?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -88,8 +107,11 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
             fatalError("Failed to dequeue ShopCollectionViewCell in ShopViewController")
         }
         
-        let item = items[indexPath.row]
-        cell.configurate(with: item.image, item.name, item.price)
+        let sectionKey = Array(sectionedItems.keys)[indexPath.section]
+        if let itemsInSection = sectionedItems[sectionKey] {
+            let item = itemsInSection[indexPath.item]
+            cell.configurate(with: item.image, item.name, item.price)
+        }
         
         return cell
     }
@@ -115,7 +137,19 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return 0
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let size = CGSize(width: view.frame.width, height: 40)
+        return size
+    }
+
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ShopCollectionReusableView.identifier, for: indexPath) as? ShopCollectionReusableView else {
+            fatalError("Failed to dequeue ShopCollectionReusableView in ShopViewController")
+        }
+        
+        let sectionKey = Array(sectionedItems.keys)[indexPath.section]
+        headerView.configurate(with: sectionKey)
+        return headerView
+    }
 }

@@ -13,6 +13,7 @@
 		637B268B2B4B3A5D0075B871 /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B268A2B4B3A5D0075B871 /* ShopCollectionViewCell.swift */; };
 		637B268F2B4B3A820075B871 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B268E2B4B3A820075B871 /* ShopViewController.swift */; };
 		637B26932B4D7FF60075B871 /* JSONShopParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26922B4D7FF60075B871 /* JSONShopParce.swift */; };
+		637B26952B4DACCA0075B871 /* ShopCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */; };
 		638594B22B2CF80F009FEED6 /* QuestsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638594B12B2CF80F009FEED6 /* QuestsDetailsViewController.swift */; };
 		638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638594B32B2CFD7C009FEED6 /* QuestDetailsView.swift */; };
 		63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BB2B232F4000FABD69 /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 		637B268A2B4B3A5D0075B871 /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		637B268E2B4B3A820075B871 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		637B26922B4D7FF60075B871 /* JSONShopParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONShopParce.swift; sourceTree = "<group>"; };
+		637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionReusableView.swift; sourceTree = "<group>"; };
 		638594B12B2CF80F009FEED6 /* QuestsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsDetailsViewController.swift; sourceTree = "<group>"; };
 		638594B32B2CFD7C009FEED6 /* QuestDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailsView.swift; sourceTree = "<group>"; };
 		63C898B82B232F4000FABD69 /* ItemShopPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemShopPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				637B268A2B4B3A5D0075B871 /* ShopCollectionViewCell.swift */,
+				637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			files = (
 				638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */,
 				63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */,
+				637B26952B4DACCA0075B871 /* ShopCollectionReusableView.swift in Sources */,
 				637B268B2B4B3A5D0075B871 /* ShopCollectionViewCell.swift in Sources */,
 				63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */,
 				637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */,

@@ -46,6 +46,7 @@ class Texts {
     enum ShopPage {
         static let itemName = "Item name..."
         static let itemPrice = "Item price..."
+        static let segmentName = "Segment name..."
     }
     
     enum BundleQuestsCell {
@@ -71,6 +72,7 @@ class Texts {
     enum ShopMainCell {
         static let identifier = "ShopCollectionViewCell"
         static let vBucks = " VBucks"
+        static let headerIdentifier = "ShopHeader"
     }
 }
 

@@ -9,7 +9,8 @@ import UIKit
 
 class ShopViewController: UIViewController {
     
-    private var items = [ShopModel]()
+    private var items = [ShopItem]()
+    private let networkService = DefaultNetworkService()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -27,8 +28,7 @@ class ShopViewController: UIViewController {
     }()
     
     override func viewWillAppear(_ animated: Bool) {
-        let mock = MockData()
-        items = mock.configMock()
+        getShop()
     }
 
     override func viewDidLoad() {
@@ -46,6 +46,24 @@ class ShopViewController: UIViewController {
         view.addSubview(collectionView)
         
         setupUI()
+    }
+    
+    private func getShop() {
+        self.networkService.getShopItems { [weak self] result in
+            switch result {
+            case .success(let newItems):
+                
+                DispatchQueue.main.async {
+                    self?.items = newItems
+                    self?.collectionView.reloadData()
+                }
+                
+                print(newItems.count)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func setupUI() {

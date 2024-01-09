@@ -9,7 +9,7 @@ import UIKit
 
 class QuestTableViewCell: UITableViewCell {
 
-    static let identifier = "QuestCell"
+    static let identifier = Texts.QuestCell.identifier
 
     private let questImageView: UIImageView = {
         let view = UIImageView()
@@ -23,7 +23,7 @@ class QuestTableViewCell: UITableViewCell {
     private let questTaskLabel: UILabel = {
         let text = UILabel()
         text.font = .body()
-        text.text = "Task name..."
+        text.text = Texts.QuestCell.questName
         text.textColor = .labelPrimary
         text.numberOfLines = 2
         return text
@@ -32,7 +32,7 @@ class QuestTableViewCell: UITableViewCell {
     private let questProgressLabel: UILabel = {
         let text = UILabel()
         text.font = .subhead()
-        text.text = "Quest progress..."
+        text.text = Texts.QuestCell.questProgress
         text.textColor = .labelTertiary
         text.numberOfLines = 1
         return text
@@ -40,7 +40,7 @@ class QuestTableViewCell: UITableViewCell {
     
     public func configurate(with name: String, _ progress: String, _ image: String?) {
         questTaskLabel.text = name
-        questProgressLabel.text = "Requirement: " + progress
+        questProgressLabel.text = Texts.QuestCell.requirement + progress
         
         if let imageUrlString = image {
             ImageLoader.loadAndShowImage(from: imageUrlString, to: questImageView)

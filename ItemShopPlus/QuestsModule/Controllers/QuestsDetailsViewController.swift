@@ -65,15 +65,15 @@ class QuestsDetailsViewController: UIViewController {
         }
         
         if let xpReward = item.xpReward, let itemReward = item.itemReward, xpReward != 0 {
-            preview.rewardLabel.text = "Rewards: \(itemReward) + \(xpReward) XP"
+            preview.rewardLabel.text = Texts.QuestDetails.rewards + "\(itemReward) + \(xpReward)" + Texts.QuestDetails.xp
         } else if let xpReward = item.xpReward, xpReward != 0 {
-            preview.rewardLabel.text = "Reward: \(xpReward) XP"
+            preview.rewardLabel.text = Texts.QuestDetails.reward + String(xpReward) + Texts.QuestDetails.xp
         } else if let itemReward = item.itemReward {
-            preview.rewardLabel.text = "Reward: \(itemReward)"
+            preview.rewardLabel.text = Texts.QuestDetails.reward + itemReward
         }  /* Some dirt :( */
         
         preview.taskLabel.text = item.name
-        preview.requirementLabel.text = "Requirement: \(item.progress)"
+        preview.requirementLabel.text = Texts.QuestDetails.requirement + item.progress
     }
     
     private func setConstraints() {

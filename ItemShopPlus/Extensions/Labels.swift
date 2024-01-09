@@ -47,5 +47,30 @@ class Texts {
         static let itemName = "Item name..."
         static let itemPrice = "Item price..."
     }
+    
+    enum BundleQuestsCell {
+        static let identifier = "BundleCell"
+        static let bundleName = "Bundle name..."
+        static let bundleDate = "Until the end of this season"
+    }
+    
+    enum QuestCell {
+        static let identifier = "QuestCell"
+        static let questName = "Task name..."
+        static let questProgress = "Quest progress..."
+        static let requirement = "Requirement: "
+    }
+    
+    enum QuestDetails {
+        static let rewards = "Rewards: "
+        static let reward = "Reward: "
+        static let xp = " XP"
+        static let requirement = "Requirement: "
+    }
+    
+    enum ShopMainCell {
+        static let identifier = "ShopCollectionViewCell"
+        static let vBucks = " VBucks"
+    }
 }
 

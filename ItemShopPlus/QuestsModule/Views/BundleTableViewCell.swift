@@ -8,7 +8,7 @@
 import UIKit
 
 class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
-    static let identifier = "BundleCell"
+    static let identifier = Texts.BundleQuestsCell.identifier
     
     private let bundleImageView: UIImageView = {
         let view = UIImageView()
@@ -29,7 +29,7 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     private let bundleNameLabel: UILabel = {
         let label = UILabel()
         label.font = .title()
-        label.text = "Bundle name..."
+        label.text = Texts.BundleQuestsCell.bundleName
         label.textColor = .labelPrimary
         label.numberOfLines = 2
         return label
@@ -38,7 +38,7 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     private let bundleTimeLabel: UILabel = {
         let label = UILabel()
         label.font = .subhead()
-        label.text = "Until the end of this season"
+        label.text = Texts.BundleQuestsCell.bundleDate
         label.textColor = .labelTertiary
         label.numberOfLines = 1
         return label

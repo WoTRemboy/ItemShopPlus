@@ -9,7 +9,7 @@ import UIKit
 
 class ShopCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "ShopCollectionViewCell"
+    static let identifier = Texts.ShopMainCell.identifier
     
     private let itemImageView: UIImageView = {
         let view = UIImageView()
@@ -40,7 +40,7 @@ class ShopCollectionViewCell: UICollectionViewCell {
     public func configurate(with image: String, _ name: String, _ price: Int) {
         ImageLoader.loadAndShowImage(from: image, to: itemImageView)
         itemNameLabel.text = name
-        itemPriceLabel.text = "\(price) VBucks"
+        itemPriceLabel.text = String(price) + Texts.ShopMainCell.vBucks
         setupUI()
     }
     

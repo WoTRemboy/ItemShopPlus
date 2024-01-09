@@ -105,20 +105,19 @@ extension QuestsBundlePageController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BundleTableViewCell.identifier, for: indexPath) as? BundleTableViewCell else {
             fatalError("Failed to dequeue BundleTableViewCell in QuestsBundlePageController")
         }
         
-        cell.contentView.heightAnchor.constraint(equalToConstant: (100 / 812 * view.frame.height)).isActive = true /* constraints problem */
-        cell.bundleNameLabel.text = items[indexPath.row].name
-        if let end = items[indexPath.row].endDate {
-            cell.bundleTimeLabel.text = DateFormating.differenceBetweenDates(date1: .now, date2: end)
-        }
-        
-        ImageLoader.loadAndShowImage(from: items[indexPath.row].image, to: cell.bundleImageView)
+        let item = items[indexPath.row]
+        cell.configurate(with: item.name, item.image, item.endDate)
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = 100 / 812 * view.frame.height
+        return height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

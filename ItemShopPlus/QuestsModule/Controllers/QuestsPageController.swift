@@ -64,20 +64,18 @@ extension QuestsPageController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: QuestTableViewCell.identifier, for: indexPath) as! QuestTableViewCell
-        cell.contentView.heightAnchor.constraint(equalToConstant: (100 / 812 * view.frame.height)).isActive = true // constraints problem
-        cell.questTaskLabel.text = items[indexPath.row].name
-        
-        cell.questProgressLabel.text = "Requirement: " + items[indexPath.row].progress
-        
-        if let imageUrlString = items[indexPath.row].image {
-            ImageLoader.loadAndShowImage(from: imageUrlString, to: cell.questImageView)
-        } else {
-            cell.questImageView.image = .Quests.experience
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestTableViewCell.identifier, for: indexPath) as? QuestTableViewCell else {
+            fatalError("Failed to dequeue QuestTableViewCell in QuestsPageController")
         }
+        let item = items[indexPath.row]
+        cell.configurate(with: item.name, item.progress, item.image)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = 100 / 812 * view.frame.height
+        return height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

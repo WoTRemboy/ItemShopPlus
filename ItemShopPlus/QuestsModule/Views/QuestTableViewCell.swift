@@ -11,7 +11,7 @@ class QuestTableViewCell: UITableViewCell {
 
     static let identifier = "QuestCell"
 
-    let questImageView: UIImageView = {
+    private let questImageView: UIImageView = {
         let view = UIImageView()
         view.image = .Placeholder.noImage
         view.backgroundColor = .QuestsBundleColors.bundleBackground
@@ -20,7 +20,7 @@ class QuestTableViewCell: UITableViewCell {
         return view
     }()
     
-    let questTaskLabel: UILabel = {
+    private let questTaskLabel: UILabel = {
         let text = UILabel()
         text.font = .body()
         text.text = "Task name..."
@@ -29,7 +29,7 @@ class QuestTableViewCell: UITableViewCell {
         return text
     }()
     
-    let questProgressLabel: UILabel = {
+    private let questProgressLabel: UILabel = {
         let text = UILabel()
         text.font = .subhead()
         text.text = "Quest progress..."
@@ -37,6 +37,17 @@ class QuestTableViewCell: UITableViewCell {
         text.numberOfLines = 1
         return text
     }()
+    
+    public func configurate(with name: String, _ progress: String, _ image: String?) {
+        questTaskLabel.text = name
+        questProgressLabel.text = "Requirement: " + progress
+        
+        if let imageUrlString = image {
+            ImageLoader.loadAndShowImage(from: imageUrlString, to: questImageView)
+        } else {
+            questImageView.image = .Quests.experience
+        }
+    }
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -59,7 +70,7 @@ class QuestTableViewCell: UITableViewCell {
         bundleImageViewSetup()
     }
     
-    func bundleNameSetup() {
+    private func bundleNameSetup() {
         NSLayoutConstraint.activate([
             questTaskLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
             questTaskLabel.trailingAnchor.constraint(equalTo: questImageView.leadingAnchor, constant: -16),
@@ -68,7 +79,7 @@ class QuestTableViewCell: UITableViewCell {
         questTaskLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func bundleTimeSetup() {
+    private func bundleTimeSetup() {
         NSLayoutConstraint.activate([
             questProgressLabel.leadingAnchor.constraint(equalTo: questTaskLabel.leadingAnchor),
             questProgressLabel.trailingAnchor.constraint(equalTo: questTaskLabel.trailingAnchor),
@@ -77,7 +88,7 @@ class QuestTableViewCell: UITableViewCell {
         questProgressLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func bundleImageViewSetup() {
+    private func bundleImageViewSetup() {
         NSLayoutConstraint.activate([
             questImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             questImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

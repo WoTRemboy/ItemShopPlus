@@ -36,6 +36,10 @@ extension UIImage {
     enum SplashScreen {
         static let splashScreen = UIImage(named: "SplashScreen")
     }
+    
+    enum ShopMain {
+        static let price = UIImage(named: "VBucks")
+    }
 }
 
 private func createImage(name: String) -> UIImage? {

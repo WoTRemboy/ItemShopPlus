@@ -14,7 +14,7 @@ class Texts {
     
     enum ButtonLabels {
         enum MainButtons {
-            static let shop = "Daily Shop"
+            static let shop = "Item Shop"
             static let quests = "Quests"
             static let battlePass = "Battle Pass"
             static let tournaments = "Tournaments"

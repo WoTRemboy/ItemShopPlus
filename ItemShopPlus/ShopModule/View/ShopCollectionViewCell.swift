@@ -37,20 +37,28 @@ class ShopCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private let itemPriceImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = .ShopMain.price
+        return view
+    }()
+    
     public func configurate(with image: String, _ name: String, _ price: Int) {
         ImageLoader.loadAndShowImage(from: image, to: itemImageView)
         itemNameLabel.text = name
-        itemPriceLabel.text = String(price) + Texts.ShopMainCell.vBucks
+        itemPriceLabel.text = String(price)
         setupUI()
     }
     
     private func setupUI() {
         addSubview(itemImageView)
         addSubview(itemNameLabel)
+        addSubview(itemPriceImageView)
         addSubview(itemPriceLabel)
         
         itemImageView.translatesAutoresizingMaskIntoConstraints = false
         itemNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        itemPriceImageView.translatesAutoresizingMaskIntoConstraints = false
         itemPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -63,8 +71,13 @@ class ShopCollectionViewCell: UICollectionViewCell {
             itemNameLabel.leadingAnchor.constraint(equalTo: itemImageView.leadingAnchor),
             itemNameLabel.trailingAnchor.constraint(equalTo: itemImageView.trailingAnchor),
             
-            itemPriceLabel.topAnchor.constraint(equalTo: itemNameLabel.bottomAnchor, constant: 5),
-            itemPriceLabel.leadingAnchor.constraint(equalTo: itemNameLabel.leadingAnchor),
+            itemPriceImageView.topAnchor.constraint(equalTo: itemNameLabel.bottomAnchor, constant: 5),
+            itemPriceImageView.leadingAnchor.constraint(equalTo: itemNameLabel.leadingAnchor),
+            itemPriceImageView.heightAnchor.constraint(equalToConstant: 17),
+            itemPriceImageView.widthAnchor.constraint(equalTo: itemPriceImageView.heightAnchor),
+            
+            itemPriceLabel.centerYAnchor.constraint(equalTo: itemPriceImageView.centerYAnchor),
+            itemPriceLabel.leadingAnchor.constraint(equalTo: itemPriceImageView.trailingAnchor, constant: 5),
             itemPriceLabel.trailingAnchor.constraint(equalTo: itemNameLabel.trailingAnchor)
         ])
     }

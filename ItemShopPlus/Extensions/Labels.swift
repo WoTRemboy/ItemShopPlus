@@ -47,6 +47,9 @@ class Texts {
         static let itemName = "Item name..."
         static let itemPrice = "Item price..."
         static let segmentName = "Segment name..."
+        static let rotaionTitle = "Rotation Info"
+        static let rotationInfo = "The shop refreshes every day. Check back to see what's new!"
+        static let reloadShop = "It's time to update!"
     }
     
     enum BundleQuestsCell {

@@ -21,11 +21,6 @@ extension UIImage {
         static let map = createImage(name: "map")
         static let vehicles = createImage(name: "car")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")
-        
-//        static let shop = UIImage(named: "Shop")
-//        static let news = UIImage(named: "News")
-//        static let tournaments = UIImage(named: "Tournaments")
-//        static let quests = UIImage(named: "Quests")
     }
     
     enum Quests {
@@ -39,6 +34,8 @@ extension UIImage {
     
     enum ShopMain {
         static let price = UIImage(named: "VBucks")
+        static let info = UIImage(systemName: "info.circle")
+        static let infoFish = UIImage(named: "InfoFish")
     }
 }
 

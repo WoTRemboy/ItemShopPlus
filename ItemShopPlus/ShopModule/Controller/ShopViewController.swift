@@ -29,6 +29,13 @@ class ShopViewController: UIViewController {
         return button
     }()
     
+    private let infoButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .ShopMain.info
+        button.action = #selector(infoButtonTapped)
+        return button
+    }()
+        
     override func viewWillAppear(_ animated: Bool) {
         if items.isEmpty {
             getShop()
@@ -42,14 +49,26 @@ class ShopViewController: UIViewController {
         view.backgroundColor = .BackColors.backSplash
         
         navigationItem.largeTitleDisplayMode = .never
-        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationItem.rightBarButtonItem = infoButton
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        infoButton.target = self
         
         view.addSubview(collectionView)
         
         setupUI()
+    }
+    
+    @objc private func infoButtonTapped() {
+        let vc = ShopTimerInfoViewController()
+        let navVC = UINavigationController(rootViewController: vc)
+        let fraction = UISheetPresentationController.Detent.custom { context in
+            (self.view.frame.height * 0.45 - self.view.safeAreaInsets.bottom)
+        }
+        navVC.sheetPresentationController?.detents = [fraction]
+        present(navVC, animated: true)
     }
     
     private func getShop() {

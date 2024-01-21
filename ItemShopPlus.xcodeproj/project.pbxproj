@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63290CD62B5D7B70008F45F8 /* ShopTimerInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CD52B5D7B70008F45F8 /* ShopTimerInfoViewController.swift */; };
+		63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */; };
 		637B26812B4AB4050075B871 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26802B4AB4050075B871 /* SplashScreenView.swift */; };
 		637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */; };
 		637B26892B4B3A2E0075B871 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26882B4B3A2E0075B871 /* ShopModel.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63290CD52B5D7B70008F45F8 /* ShopTimerInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTimerInfoViewController.swift; sourceTree = "<group>"; };
+		63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTimerInfoView.swift; sourceTree = "<group>"; };
 		637B26802B4AB4050075B871 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		637B26882B4B3A2E0075B871 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				637B268E2B4B3A820075B871 /* ShopViewController.swift */,
+				63290CD52B5D7B70008F45F8 /* ShopTimerInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 			children = (
 				637B268A2B4B3A5D0075B871 /* ShopCollectionViewCell.swift */,
 				637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */,
+				63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,8 +375,10 @@
 				637B26932B4D7FF60075B871 /* JSONShopParce.swift in Sources */,
 				63F547872B34A8D500B3F941 /* DefaultNetworkService.swift in Sources */,
 				63F8B9D72B2CD84E006E2430 /* QuestTableViewCell.swift in Sources */,
+				63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */,
 				63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */,
 				63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */,
+				63290CD62B5D7B70008F45F8 /* ShopTimerInfoViewController.swift in Sources */,
 				63C899112B2508DB00FABD69 /* QuestsBundlePageController.swift in Sources */,
 				63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */,
 				63C899172B26220D00FABD69 /* ImageLoader.swift in Sources */,

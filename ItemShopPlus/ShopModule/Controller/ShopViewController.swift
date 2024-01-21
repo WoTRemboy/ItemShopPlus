@@ -30,7 +30,9 @@ class ShopViewController: UIViewController {
     }()
     
     override func viewWillAppear(_ animated: Bool) {
-        getShop()
+        if items.isEmpty {
+            getShop()
+        }
     }
 
     override func viewDidLoad() {
@@ -60,8 +62,6 @@ class ShopViewController: UIViewController {
                     self?.sortingSections(items: newItems)
                     self?.collectionView.reloadData()
                 }
-                print(newItems.count)
-                
             case .failure(let error):
                 print(error)
             }
@@ -107,10 +107,11 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
             fatalError("Failed to dequeue ShopCollectionViewCell in ShopViewController")
         }
         
+        let width = view.frame.width / 2 - 25
         let sectionKey = Array(sectionedItems.keys)[indexPath.section]
         if let itemsInSection = sectionedItems[sectionKey] {
             let item = itemsInSection[indexPath.item]
-            cell.configurate(with: item.image, item.name, item.price)
+            cell.configurate(with: item.images, item.name, item.price, width)
         }
         
         return cell

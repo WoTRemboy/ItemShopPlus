@@ -54,6 +54,6 @@ extension ShopItem {
             previousDate = date2
         }
         
-        return ShopItem(id: id, name: name, description: description, type: type, image: images[0], firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: [], section: section)
+        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: [], section: section)
     }
 }

@@ -7,15 +7,18 @@
 
 import UIKit
 
-class ShopCollectionViewCell: UICollectionViewCell {
+class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     
     static let identifier = Texts.ShopMainCell.identifier
+    private var imageViews = [UIImageView]()
     
-    private let itemImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = .Placeholder.noImage
+    private let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.isPagingEnabled = true
+        view.bounces = false
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
+        view.indicatorStyle = .white
         return view
     }()
     
@@ -43,33 +46,60 @@ class ShopCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    public func configurate(with image: String, _ name: String, _ price: Int) {
-        ImageLoader.loadAndShowImage(from: image, to: itemImageView)
+    public func configurate(with images: [String], _ name: String, _ price: Int, _ width: CGFloat) {
+        setupImageCarousel(with: images, cellWidth: width)
         itemNameLabel.text = name
         itemPriceLabel.text = String(price)
         setupUI()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollView.contentSize = CGSize(width: CGFloat(imageViews.count) * scrollView.bounds.width, height: scrollView.bounds.height)
+        let indentSize = scrollView.frame.height / 5
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: indentSize, bottom: 0, right: indentSize)
+    }
+    
+    private func setupImageCarousel(with images: [String], cellWidth: CGFloat) {
+        scrollView.delegate = self
+        
+        for (index, imageURL) in images.enumerated() {
+            let imageView = UIImageView()
+            imageView.image = .Placeholder.noImage
+            imageViews.append(imageView)
+            scrollView.addSubview(imageView)
+            ImageLoader.loadAndShowImage(from: imageURL, to: imageView)
+
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                imageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+                imageView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+                imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+                imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: CGFloat(index) * cellWidth),
+            ])
+        }
+    }
+    
     private func setupUI() {
-        addSubview(itemImageView)
+        addSubview(scrollView)
         addSubview(itemNameLabel)
         addSubview(itemPriceImageView)
         addSubview(itemPriceLabel)
         
-        itemImageView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         itemNameLabel.translatesAutoresizingMaskIntoConstraints = false
         itemPriceImageView.translatesAutoresizingMaskIntoConstraints = false
         itemPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            itemImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            itemImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            itemImageView.topAnchor.constraint(equalTo: topAnchor),
-            itemImageView.heightAnchor.constraint(equalTo: itemImageView.widthAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.heightAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            itemNameLabel.topAnchor.constraint(equalTo: itemImageView.bottomAnchor, constant: 5),
-            itemNameLabel.leadingAnchor.constraint(equalTo: itemImageView.leadingAnchor),
-            itemNameLabel.trailingAnchor.constraint(equalTo: itemImageView.trailingAnchor),
+            itemNameLabel.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 5),
+            itemNameLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            itemNameLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             
             itemPriceImageView.topAnchor.constraint(equalTo: itemNameLabel.bottomAnchor, constant: 5),
             itemPriceImageView.leadingAnchor.constraint(equalTo: itemNameLabel.leadingAnchor),
@@ -84,7 +114,9 @@ class ShopCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        itemImageView.image = .Placeholder.noImage
+        for imageView in imageViews {
+            imageView.removeFromSuperview()
+        }
+        imageViews.removeAll()
     }
-    
 }

@@ -12,7 +12,7 @@ struct ShopItem {
     let name: String
     let description: String
     let type: String
-    let image: String
+    let images: [String]
     let firstReleaseDate: Date?
     let previousReleaseDate: Date?
     let buyAllowed: Bool
@@ -23,12 +23,12 @@ struct ShopItem {
     let granted: [GrantedItem?]
     let section: String
     
-    init(id: String, name: String, description: String, type: String, image: String, firstReleaseDate: Date?, previousReleaseDate: Date?, buyAllowed: Bool, price: Int, regularPrice: Int, series: String?, rarity: String, granted: [GrantedItem?], section: String) {
+    init(id: String, name: String, description: String, type: String, images: [String], firstReleaseDate: Date?, previousReleaseDate: Date?, buyAllowed: Bool, price: Int, regularPrice: Int, series: String?, rarity: String, granted: [GrantedItem?], section: String) {
         self.id = id
         self.name = name
         self.description = description
         self.type = type
-        self.image = image
+        self.images = images
         self.firstReleaseDate = firstReleaseDate
         self.previousReleaseDate = previousReleaseDate
         self.buyAllowed = buyAllowed

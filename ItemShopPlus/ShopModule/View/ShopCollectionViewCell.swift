@@ -56,7 +56,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         scrollView.contentSize = CGSize(width: CGFloat(imageViews.count) * scrollView.bounds.width, height: scrollView.bounds.height)
-        let indentSize = scrollView.frame.height / 5
+        let indentSize = scrollView.frame.height / 9
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: indentSize, bottom: 0, right: indentSize)
     }
     

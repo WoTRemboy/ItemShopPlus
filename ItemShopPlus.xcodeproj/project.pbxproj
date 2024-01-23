@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		63290CD62B5D7B70008F45F8 /* ShopTimerInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CD52B5D7B70008F45F8 /* ShopTimerInfoViewController.swift */; };
 		63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */; };
+		63290CDA2B5EA399008F45F8 /* ShopGrantedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CD92B5EA399008F45F8 /* ShopGrantedViewController.swift */; };
+		63290CDC2B5ED498008F45F8 /* ShopGrantedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CDB2B5ED498008F45F8 /* ShopGrantedCollectionViewCell.swift */; };
 		637B26812B4AB4050075B871 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26802B4AB4050075B871 /* SplashScreenView.swift */; };
 		637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */; };
 		637B26892B4B3A2E0075B871 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26882B4B3A2E0075B871 /* ShopModel.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		63290CD52B5D7B70008F45F8 /* ShopTimerInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTimerInfoViewController.swift; sourceTree = "<group>"; };
 		63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTimerInfoView.swift; sourceTree = "<group>"; };
+		63290CD92B5EA399008F45F8 /* ShopGrantedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedViewController.swift; sourceTree = "<group>"; };
+		63290CDB2B5ED498008F45F8 /* ShopGrantedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedCollectionViewCell.swift; sourceTree = "<group>"; };
 		637B26802B4AB4050075B871 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		637B26882B4B3A2E0075B871 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				637B268E2B4B3A820075B871 /* ShopViewController.swift */,
+				63290CD92B5EA399008F45F8 /* ShopGrantedViewController.swift */,
 				63290CD52B5D7B70008F45F8 /* ShopTimerInfoViewController.swift */,
 			);
 			path = Controller;
@@ -136,6 +141,7 @@
 			children = (
 				637B268A2B4B3A5D0075B871 /* ShopCollectionViewCell.swift */,
 				637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */,
+				63290CDB2B5ED498008F45F8 /* ShopGrantedCollectionViewCell.swift */,
 				63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */,
 			);
 			path = View;
@@ -363,9 +369,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63290CDA2B5EA399008F45F8 /* ShopGrantedViewController.swift in Sources */,
 				638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */,
 				63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */,
 				637B26952B4DACCA0075B871 /* ShopCollectionReusableView.swift in Sources */,
+				63290CDC2B5ED498008F45F8 /* ShopGrantedCollectionViewCell.swift in Sources */,
 				637B268B2B4B3A5D0075B871 /* ShopCollectionViewCell.swift in Sources */,
 				63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */,
 				637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */,

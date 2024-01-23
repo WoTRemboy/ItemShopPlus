@@ -35,16 +35,16 @@ class ShopViewController: UIViewController {
         button.action = #selector(infoButtonTapped)
         return button
     }()
-        
+    
     override func viewWillAppear(_ animated: Bool) {
         if items.isEmpty {
             getShop()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = Texts.Pages.shop
         view.backgroundColor = .BackColors.backSplash
         
@@ -126,6 +126,9 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
             fatalError("Failed to dequeue ShopCollectionViewCell in ShopViewController")
         }
         
+        let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
+        cell.addGestureRecognizer(pressGesture)
+        
         let width = view.frame.width / 2 - 25
         let sectionKey = Array(sectionedItems.keys)[indexPath.section]
         if let itemsInSection = sectionedItems[sectionKey] {
@@ -134,6 +137,31 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         return cell
+    }
+    
+    @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
+        let location = gestureRecognizer.location(in: collectionView)
+        if let indexPath = collectionView.indexPathForItem(at: location) {
+            animateCellSelection(at: indexPath)
+        }
+    }
+    
+    private func animateCellSelection(at indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }) { (_) in
+            let sectionKey = Array(self.sectionedItems.keys)[indexPath.section]
+            if let itemsInSection = self.sectionedItems[sectionKey] {
+                let item = itemsInSection[indexPath.item]
+                self.navigationController?.pushViewController(ShopGrantedViewController(items: item.granted, bundleName: item.name), animated: true)
+            }
+            
+            UIView.animate(withDuration: 0.1, animations: {
+                cell?.transform = CGAffineTransform.identity
+            })
+        }
     }
 }
 
@@ -161,7 +189,7 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
         let size = CGSize(width: view.frame.width, height: 40)
         return size
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ShopCollectionReusableView.identifier, for: indexPath) as? ShopCollectionReusableView else {

@@ -45,14 +45,16 @@ struct GrantedItem {
     let id: String
     let type: String
     let name: String
-    let rarity: String
+    let description: String
+    let rarity: String?
     let series: String?
     let image: String
     
-    init(id: String, type: String, name: String, rarity: String, series: String?, image: String) {
+    init(id: String, type: String, name: String, description: String, rarity: String?, series: String?, image: String) {
         self.id = id
         self.type = type
         self.name = name
+        self.description = description
         self.rarity = rarity
         self.series = series
         self.image = image

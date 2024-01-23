@@ -37,6 +37,14 @@ extension UIImage {
         static let info = UIImage(systemName: "info.circle")
         static let infoFish = UIImage(named: "InfoFish")
     }
+    
+    enum ShopGranted {
+        static let common = UIImage(named: "GrantedCommon")
+        static let uncommon = UIImage(named: "GrantedUncommon")
+        static let rare = UIImage(named: "GrantedRare")
+        static let epic = UIImage(named: "GrantedEpic")
+        static let legendary = UIImage(named: "GrantedLegendary")
+    }
 }
 
 private func createImage(name: String) -> UIImage? {

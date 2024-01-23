@@ -36,6 +36,7 @@ class Texts {
     enum Navigation {
         static let cancel = "Cancel"
         static let backToMain = "Main"
+        static let backToShop = "Shop"
     }
     
     enum Season {
@@ -46,6 +47,7 @@ class Texts {
     enum ShopPage {
         static let itemName = "Item name..."
         static let itemPrice = "Item price..."
+        static let bundleName = "Bundle name..."
         static let segmentName = "Segment name..."
         static let rotaionTitle = "Rotation Info"
         static let rotationInfo = "The shop refreshes every day. Check back to see what's new!"
@@ -76,6 +78,10 @@ class Texts {
         static let identifier = "ShopCollectionViewCell"
         static let vBucks = " VBucks"
         static let headerIdentifier = "ShopHeader"
+    }
+    
+    enum ShopGrantedCell {
+        static let identifier = "ShopGrantedCollectionViewCell"
     }
 }
 

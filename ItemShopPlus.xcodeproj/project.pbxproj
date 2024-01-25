@@ -145,13 +145,8 @@
 		637B26862B4B3A030075B871 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				637B268A2B4B3A5D0075B871 /* ShopCollectionViewCell.swift */,
-				637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */,
-				63290CDB2B5ED498008F45F8 /* ShopGrantedCollectionViewCell.swift */,
-				63290CE22B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift */,
-				63290CE42B615CFF008F45F8 /* ShopGrantedParametersRowView.swift */,
-				63290CE62B6180A6008F45F8 /* ShopGrantedTotalPriceView.swift */,
-				63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */,
+				63F94E652B62D59300F5E4B9 /* ShopMain */,
+				63F94E662B62D5C200F5E4B9 /* ShopGranted */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,6 +302,27 @@
 				63C899162B26220D00FABD69 /* ImageLoader.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		63F94E652B62D59300F5E4B9 /* ShopMain */ = {
+			isa = PBXGroup;
+			children = (
+				637B268A2B4B3A5D0075B871 /* ShopCollectionViewCell.swift */,
+				637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */,
+				63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */,
+			);
+			path = ShopMain;
+			sourceTree = "<group>";
+		};
+		63F94E662B62D5C200F5E4B9 /* ShopGranted */ = {
+			isa = PBXGroup;
+			children = (
+				63290CDB2B5ED498008F45F8 /* ShopGrantedCollectionViewCell.swift */,
+				63290CE22B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift */,
+				63290CE42B615CFF008F45F8 /* ShopGrantedParametersRowView.swift */,
+				63290CE62B6180A6008F45F8 /* ShopGrantedTotalPriceView.swift */,
+			);
+			path = ShopGranted;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

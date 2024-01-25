@@ -82,6 +82,24 @@ class Texts {
     
     enum ShopGrantedCell {
         static let identifier = "ShopGrantedCollectionViewCell"
+        static let footerIdentifier = "ShopGrantedCollectionReusableView"
+        static let firstTime = "First time..."
+        static let lastTime = "Last time..."
+        static let total = "Total"
+        static let price = "Bundle price..."
+        static let title = "Title..."
+        static let content = "Content..."
+    }
+    
+    enum ShopGrantedParameters {
+        static let descriprion = "Descriprion"
+        static let series = "Series"
+        static let firstTime = "First release"
+        static let lastTime = "Previous release"
+        static let descriptionData = "Descriprion..."
+        static let seriesData = "Series..."
+        static let firstTimeData = "First release..."
+        static let lastTimeData = "Previous release..."
     }
 }
 

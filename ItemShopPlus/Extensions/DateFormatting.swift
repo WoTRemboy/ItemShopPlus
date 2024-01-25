@@ -9,7 +9,7 @@ import UIKit
 
 class DateFormating {
     
-    static let dateFormatter: DateFormatter = {
+    static let dateFormatterQuests: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         return formatter
@@ -25,6 +25,12 @@ class DateFormating {
         }
         return "Time diff error..."
     }
+    
+    static let dateFormatterShopGranted: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        return formatter
+    }()
 }
 
 

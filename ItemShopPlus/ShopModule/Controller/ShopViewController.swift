@@ -155,7 +155,7 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let sectionKey = Array(self.sectionedItems.keys)[indexPath.section]
             if let itemsInSection = self.sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
-                self.navigationController?.pushViewController(ShopGrantedViewController(items: item.granted, bundleName: item.name), animated: true)
+                self.navigationController?.pushViewController(ShopGrantedViewController(bundle: item), animated: true)
             }
             
             UIView.animate(withDuration: 0.1, animations: {

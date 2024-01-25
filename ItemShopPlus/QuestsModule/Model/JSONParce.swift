@@ -27,8 +27,8 @@ extension QuestBundle {
             }
             questsData = questsDatum["quests"] as? [[String: Any]] ?? [[:]]
         }
-        let start: Date? = DateFormating.dateFormatter.date(from: startDate ?? Texts.Season.beginDate)
-        let end = DateFormating.dateFormatter.date(from: endDate ?? Texts.Season.endDate)
+        let start: Date? = DateFormating.dateFormatterQuests.date(from: startDate ?? Texts.Season.beginDate)
+        let end = DateFormating.dateFormatterQuests.date(from: endDate ?? Texts.Season.endDate)
         
         let questsList = questsData.compactMap { Quest.sharingParse(sharingJSON: $0) }
         

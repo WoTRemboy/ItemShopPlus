@@ -12,6 +12,8 @@ class ShopGrantedViewController: UIViewController {
     private var items = [GrantedItem?]()
     private let bundle: ShopItem
     private var original: [NSAttributedString.Key : Any]?
+    
+    private var isPresentedFullScreen = false
         
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -70,11 +72,14 @@ class ShopGrantedViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        isPresentedFullScreen = false
         navigationController?.navigationBar.largeTitleTextAttributes = [.font: UIFont.segmentTitle() ?? UIFont.systemFont(ofSize: 25)]
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.navigationBar.largeTitleTextAttributes = original
+        if !isPresentedFullScreen {
+            navigationController?.navigationBar.largeTitleTextAttributes = original
+        }
     }
     
     private func countRows() -> Int {
@@ -83,6 +88,37 @@ class ShopGrantedViewController: UIViewController {
         if bundle.series != nil { count += 1 }
         
         return count
+    }
+    
+    @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
+        let location = gestureRecognizer.location(in: collectionView)
+        if let indexPath = collectionView.indexPathForItem(at: location) {
+            animateCellSelection(at: indexPath)
+        }
+    }
+    
+    private func animateCellSelection(at indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }) { (_) in
+            
+            let item = self.items[indexPath.item]
+            let itemImage = item?.image ?? ""
+            let itemName = item?.name ?? ""
+            self.isPresentedFullScreen = true
+            
+            let vc = ShopGrantedPreviewViewController(image: itemImage, name: itemName)
+            let navVC = UINavigationController(rootViewController: vc)
+            navVC.modalPresentationStyle = .fullScreen
+            navVC.modalTransitionStyle = .crossDissolve
+            self.present(navVC, animated: true)
+            
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.transform = CGAffineTransform.identity
+            })
+        }
     }
 }
 
@@ -103,6 +139,9 @@ extension ShopGrantedViewController: UICollectionViewDelegate, UICollectionViewD
         if let item = items[indexPath.item] {
             cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? "", image: item.image)
         }
+        
+        let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
+        cell.addGestureRecognizer(pressGesture)
         
         return cell
     }

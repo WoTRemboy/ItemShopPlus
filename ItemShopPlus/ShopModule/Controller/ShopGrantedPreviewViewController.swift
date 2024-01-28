@@ -9,8 +9,8 @@ import UIKit
 
 class ShopGrantedPreviewViewController: UIViewController {
     
-    private let image: String
-    private let name: String
+    private var image: String
+    private var name: String
     
     init(image: String, name: String) {
         self.image = image
@@ -24,10 +24,10 @@ class ShopGrantedPreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .BackColors.backDefault
         navigationBarSetup()
-        imageViewSetup()
+        scrollViewSetup()
     }
     
     @objc private func cancelButtonTapped() {
@@ -44,17 +44,24 @@ class ShopGrantedPreviewViewController: UIViewController {
         )
     }
     
-    private func imageViewSetup() {
-        let imageView = ShopGrantedView(frame: .null, image: image)
-        view.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+    private func scrollViewSetup() {
+        let scrollView = ShopGrantedPanZoomView(image: image, presentingViewController: self)
+        
+        scrollView.panZoomDelegate = self
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
+}
 
+extension ShopGrantedPreviewViewController: ShopGrantedPanZoomViewDelegate {
+    func didDismiss() {
+        dismiss(animated: true)
+    }
 }

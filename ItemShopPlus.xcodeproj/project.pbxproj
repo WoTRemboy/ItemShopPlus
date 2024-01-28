@@ -43,7 +43,7 @@
 		63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F5478A2B35E40500B3F941 /* DateFormatting.swift */; };
 		63F8B9D52B2CD75D006E2430 /* QuestsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8B9D42B2CD75D006E2430 /* QuestsPageController.swift */; };
 		63F8B9D72B2CD84E006E2430 /* QuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8B9D62B2CD84E006E2430 /* QuestTableViewCell.swift */; };
-		63F94E772B6521DD00F5E4B9 /* ShopGrantedPanZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F94E762B6521DD00F5E4B9 /* ShopGrantedPanZoomView.swift */; };
+		63F94E772B6521DD00F5E4B9 /* ShopPanZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F94E762B6521DD00F5E4B9 /* ShopPanZoomView.swift */; };
 		63F94E792B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F94E782B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +86,7 @@
 		63F5478A2B35E40500B3F941 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
 		63F8B9D42B2CD75D006E2430 /* QuestsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsPageController.swift; sourceTree = "<group>"; };
 		63F8B9D62B2CD84E006E2430 /* QuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTableViewCell.swift; sourceTree = "<group>"; };
-		63F94E762B6521DD00F5E4B9 /* ShopGrantedPanZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedPanZoomView.swift; sourceTree = "<group>"; };
+		63F94E762B6521DD00F5E4B9 /* ShopPanZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopPanZoomView.swift; sourceTree = "<group>"; };
 		63F94E782B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedPreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +152,7 @@
 			children = (
 				63F94E652B62D59300F5E4B9 /* ShopMain */,
 				63F94E662B62D5C200F5E4B9 /* ShopGranted */,
-				63F94E762B6521DD00F5E4B9 /* ShopGrantedPanZoomView.swift */,
+				63F94E762B6521DD00F5E4B9 /* ShopPanZoomView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -432,7 +432,7 @@
 				63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */,
 				63C898EB2B233E9900FABD69 /* Labels.swift in Sources */,
 				63C898E02B2339F900FABD69 /* MPButtonView.swift in Sources */,
-				63F94E772B6521DD00F5E4B9 /* ShopGrantedPanZoomView.swift in Sources */,
+				63F94E772B6521DD00F5E4B9 /* ShopPanZoomView.swift in Sources */,
 				63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */,
 				63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */,
 				63F8B9D52B2CD75D006E2430 /* QuestsPageController.swift in Sources */,

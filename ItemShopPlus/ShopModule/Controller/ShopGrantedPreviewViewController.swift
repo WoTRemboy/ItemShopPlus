@@ -45,7 +45,7 @@ class ShopGrantedPreviewViewController: UIViewController {
     }
     
     private func scrollViewSetup() {
-        let scrollView = ShopGrantedPanZoomView(image: image, presentingViewController: self)
+        let scrollView = ShopPanZoomView(image: image, presentingViewController: self)
         
         scrollView.panZoomDelegate = self
         view.addSubview(scrollView)

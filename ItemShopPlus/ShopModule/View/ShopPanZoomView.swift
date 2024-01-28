@@ -1,5 +1,5 @@
 //
-//  ShopGrantedPanZoomView.swift
+//  ShopPanZoomView.swift
 //  ItemShopPlus
 //
 //  Created by Roman Tverdokhleb on 27.01.2024.
@@ -11,7 +11,7 @@ protocol ShopGrantedPanZoomViewDelegate: AnyObject {
     func didDismiss()
 }
 
-class ShopGrantedPanZoomView: UIScrollView {
+class ShopPanZoomView: UIScrollView {
     
     weak var panZoomDelegate: ShopGrantedPanZoomViewDelegate?
     
@@ -128,7 +128,7 @@ class ShopGrantedPanZoomView: UIScrollView {
     }
 }
 
-extension ShopGrantedPanZoomView: UIScrollViewDelegate {
+extension ShopPanZoomView: UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView

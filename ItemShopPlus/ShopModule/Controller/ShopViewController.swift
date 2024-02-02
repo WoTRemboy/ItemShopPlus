@@ -9,9 +9,22 @@ import UIKit
 
 class ShopViewController: UIViewController {
     
+    private var previousCount = 0
+    
     private var items = [ShopItem]()
+    private var filteredItems = [ShopItem]()
     private var sectionedItems = [String: [ShopItem]]()
+    
     private let networkService = DefaultNetworkService()
+    private let noInternetView = NoInternetView()
+    
+    private let searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.placeholder = Texts.ShopMainCell.search
+        return searchController
+    }()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -47,6 +60,7 @@ class ShopViewController: UIViewController {
         
         title = Texts.Pages.shop
         view.backgroundColor = .BackColors.backSplash
+        noInternetView.isHidden = true
         
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
@@ -57,8 +71,15 @@ class ShopViewController: UIViewController {
         infoButton.target = self
         
         view.addSubview(collectionView)
+        view.addSubview(noInternetView)
         
+        noInternetView.configurate()
+        setupSearchController()
         setupUI()
+    }
+    
+    @objc private func handleTapOutsideKeyboard() {
+        searchController.dismiss(animated: true)
     }
     
     @objc private func infoButtonTapped() {
@@ -77,11 +98,17 @@ class ShopViewController: UIViewController {
             case .success(let newItems):
                 
                 DispatchQueue.main.async {
+                    self?.noInternetView.isHidden = true
+                    self?.searchController.searchBar.isHidden = false
                     self?.items = newItems
                     self?.sortingSections(items: newItems)
                     self?.collectionView.reloadData()
                 }
             case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.noInternetView.isHidden = false
+                    self?.searchController.searchBar.isHidden = true
+                }
                 print(error)
             }
         }
@@ -98,27 +125,65 @@ class ShopViewController: UIViewController {
         }
     }
     
+    private func setupSearchController() {
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+        navigationItem.hidesSearchBarWhenScrolling = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
     private func setupUI() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        noInternetView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            noInternetView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            noInternetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            noInternetView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noInternetView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
+extension ShopViewController: UISearchResultsUpdating, UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredItems = items
+        
+        if let searchText = searchController.searchBar.text {
+            filteredItems = items.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            if filteredItems.count != previousCount || (searchText.isEmpty && collectionView.visibleCells.count == 0) {
+                UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    self.collectionView.reloadData()
+                }, completion: nil)
+                previousCount = filteredItems.count
+            }
+        }
+    }
+}
 
 extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sectionedItems.count
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
+        return inSearchMode ? 1 : sectionedItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
         let sectionKey = Array(sectionedItems.keys)[section]
-        return sectionedItems[sectionKey]?.count ?? 0
+        return inSearchMode ? filteredItems.count : sectionedItems[sectionKey]?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -126,15 +191,24 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
             fatalError("Failed to dequeue ShopCollectionViewCell in ShopViewController")
         }
         
-        let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
-        cell.addGestureRecognizer(pressGesture)
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
         
         let width = view.frame.width / 2 - 25
-        let sectionKey = Array(sectionedItems.keys)[indexPath.section]
-        if let itemsInSection = sectionedItems[sectionKey] {
-            let item = itemsInSection[indexPath.item]
+        
+        if inSearchMode {
+            let item = filteredItems[indexPath.item]
             cell.configurate(with: item.images, item.name, item.price, width)
+        } else {
+            let sectionKey = Array(sectionedItems.keys)[indexPath.section]
+            if let itemsInSection = sectionedItems[sectionKey] {
+                let item = itemsInSection[indexPath.item]
+                cell.configurate(with: item.images, item.name, item.price, width)
+            }
         }
+        
+        let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
+        cell.addGestureRecognizer(pressGesture)
         
         return cell
     }
@@ -152,9 +226,12 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         UIView.animate(withDuration: 0.1, animations: {
             cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
+            let item: ShopItem
+            
             let sectionKey = Array(self.sectionedItems.keys)[indexPath.section]
             if let itemsInSection = self.sectionedItems[sectionKey] {
-                let item = itemsInSection[indexPath.item]
+                (self.filteredItems.count != 0 && self.filteredItems.count != self.items.count) ? (item = self.filteredItems[indexPath.item]) : (item = itemsInSection[indexPath.item])
+                
                 self.navigationController?.pushViewController(ShopGrantedViewController(bundle: item), animated: true)
             }
             
@@ -195,9 +272,11 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ShopCollectionReusableView.identifier, for: indexPath) as? ShopCollectionReusableView else {
             fatalError("Failed to dequeue ShopCollectionReusableView in ShopViewController")
         }
-        
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
         let sectionKey = Array(sectionedItems.keys)[indexPath.section]
-        headerView.configurate(with: sectionKey)
+        let count = filteredItems.count
+        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.ShopSearchController.result : Texts.ShopSearchController.noResult) : headerView.configurate(with: sectionKey)
         return headerView
     }
 }

@@ -78,6 +78,7 @@ class Texts {
         static let identifier = "ShopCollectionViewCell"
         static let vBucks = " VBucks"
         static let headerIdentifier = "ShopHeader"
+        static let search = "Search items"
     }
     
     enum ShopGrantedCell {
@@ -100,6 +101,16 @@ class Texts {
         static let seriesData = "Series..."
         static let firstTimeData = "First release..."
         static let lastTimeData = "Previous release..."
+    }
+    
+    enum ShopSearchController {
+        static let result = "Result"
+        static let noResult = "No result"
+    }
+    
+    enum noConnection {
+        static let noInternet = "No internet"
+        static let retry = "Please, retry later"
     }
 }
 

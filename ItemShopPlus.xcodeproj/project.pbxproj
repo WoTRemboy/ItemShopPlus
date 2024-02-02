@@ -14,6 +14,7 @@
 		63290CE32B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CE22B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift */; };
 		63290CE52B615CFF008F45F8 /* ShopGrantedParametersRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CE42B615CFF008F45F8 /* ShopGrantedParametersRowView.swift */; };
 		63290CE72B6180A6008F45F8 /* ShopGrantedTotalPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CE62B6180A6008F45F8 /* ShopGrantedTotalPriceView.swift */; };
+		634F3F8B2B67CC8800C01426 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F3F8A2B67CC8800C01426 /* NoInternetView.swift */; };
 		637B26812B4AB4050075B871 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26802B4AB4050075B871 /* SplashScreenView.swift */; };
 		637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */; };
 		637B26892B4B3A2E0075B871 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26882B4B3A2E0075B871 /* ShopModel.swift */; };
@@ -55,6 +56,7 @@
 		63290CE22B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedCollectionReusableView.swift; sourceTree = "<group>"; };
 		63290CE42B615CFF008F45F8 /* ShopGrantedParametersRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedParametersRowView.swift; sourceTree = "<group>"; };
 		63290CE62B6180A6008F45F8 /* ShopGrantedTotalPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedTotalPriceView.swift; sourceTree = "<group>"; };
+		634F3F8A2B67CC8800C01426 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
 		637B26802B4AB4050075B871 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		637B26882B4B3A2E0075B871 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				637B268A2B4B3A5D0075B871 /* ShopCollectionViewCell.swift */,
 				637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */,
 				63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */,
+				634F3F8A2B67CC8800C01426 /* NoInternetView.swift */,
 			);
 			path = ShopMain;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				63C899112B2508DB00FABD69 /* QuestsBundlePageController.swift in Sources */,
 				63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */,
 				63C899172B26220D00FABD69 /* ImageLoader.swift in Sources */,
+				634F3F8B2B67CC8800C01426 /* NoInternetView.swift in Sources */,
 				638594B22B2CF80F009FEED6 /* QuestsDetailsViewController.swift in Sources */,
 				63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */,
 				63F94E792B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift in Sources */,

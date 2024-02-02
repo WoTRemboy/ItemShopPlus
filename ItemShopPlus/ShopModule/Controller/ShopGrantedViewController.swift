@@ -14,7 +14,7 @@ class ShopGrantedViewController: UIViewController {
     private var original: [NSAttributedString.Key : Any]?
     
     private var isPresentedFullScreen = false
-        
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -56,19 +56,7 @@ class ShopGrantedViewController: UIViewController {
         collectionView.dataSource = self
                 
         view.addSubview(collectionView)
-
         setupUI()
-    }
-    
-    private func setupUI() {
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,6 +107,17 @@ class ShopGrantedViewController: UIViewController {
                 cell.transform = CGAffineTransform.identity
             })
         }
+    }
+    
+    private func setupUI() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 }
 

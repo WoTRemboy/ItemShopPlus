@@ -79,7 +79,7 @@ class ShopViewController: UIViewController {
     }
     
     @objc private func handleTapOutsideKeyboard() {
-        searchController.dismiss(animated: true)
+        searchController.searchBar.resignFirstResponder()
     }
     
     @objc private func infoButtonTapped() {
@@ -239,6 +239,10 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 cell?.transform = CGAffineTransform.identity
             })
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchController.searchBar.resignFirstResponder()
     }
 }
 

@@ -26,7 +26,7 @@ class Texts {
     }
     
     enum Pages {
-        static let main = "Item Shop Plus"
+        static let main = "Fort Satellite"
         static let quests = "Quests"
         static let quest = "Quest"
         static let details = "Details"

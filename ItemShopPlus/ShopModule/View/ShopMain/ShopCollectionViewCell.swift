@@ -12,6 +12,8 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     static let identifier = Texts.ShopMainCell.identifier
     private var imageViews = [UIImageView]()
     
+    private let bannerImageView = UIImageView()
+    
     private let scrollView: UIScrollView = {
         let view = UIScrollView()
         view.isPagingEnabled = true
@@ -45,9 +47,9 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         view.image = .ShopMain.price
         return view
     }()
-    
-    public func configurate(with images: [String], _ name: String, _ price: Int, _ width: CGFloat) {
-        setupImageCarousel(with: images, cellWidth: width)
+        
+    public func configurate(with images: [String], _ name: String, _ price: Int, _ banner: Banner, _ width: CGFloat) {
+        setupImageCarousel(with: images, banner: banner, cellWidth: width)
         itemNameLabel.text = name
         itemPriceLabel.text = String(price)
         setupUI()
@@ -60,7 +62,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: indentSize, bottom: 0, right: indentSize)
     }
     
-    private func setupImageCarousel(with images: [String], cellWidth: CGFloat) {
+    private func setupImageCarousel(with images: [String], banner: Banner, cellWidth: CGFloat) {
         scrollView.delegate = self
         
         for (index, imageURL) in images.enumerated() {
@@ -78,6 +80,35 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
                 imageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: CGFloat(index) * cellWidth),
             ])
         }
+        
+        if banner == .new {
+            newImageViewSetup(banner: banner, cellWidth: cellWidth)
+        }
+    }
+    
+    private func newImageViewSetup(banner: Banner, cellWidth: CGFloat) {
+        scrollView.addSubview(bannerImageView)
+        bannerImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        switch banner {
+        case .new:
+            bannerImageView.image = .ShopMain.new
+        case .sale:
+            bannerImageView.image = .ShopMain.info
+        case .emote:
+            bannerImageView.image = .ShopMain.infoFish
+        case .pickaxe:
+            bannerImageView.image = .ShopMain.price
+        default:
+            bannerImageView.image = .ShopMain.new
+        }
+        
+        NSLayoutConstraint.activate([
+            bannerImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 8),
+            bannerImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 8),
+            bannerImageView.heightAnchor.constraint(equalToConstant: cellWidth / 5),
+            bannerImageView.widthAnchor.constraint(equalTo: bannerImageView.heightAnchor, multiplier: 1.5)
+        ])
     }
     
     private func setupUI() {

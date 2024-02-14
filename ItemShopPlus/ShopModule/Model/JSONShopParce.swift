@@ -54,9 +54,26 @@ extension ShopItem {
             previousDate = date2
         }
         
+        let bannerData = data["banner"] as? [String: Any]
+        let bannerName = bannerData?["id"] as? String
+        
+        let banner: Banner
+        switch bannerName {
+        case "New":
+            banner = .new
+        case "vbucksoff":
+            banner = .sale
+        case "emotebuiltin":
+            banner = .emote
+        case "PickaxeIncluded":
+            banner = .pickaxe
+        default:
+            banner = .null
+        }
+        
         let granted: [GrantedItem] = grantedData.compactMap { GrantedItem.sharingParce(sharingJSON: $0) }
         
-        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section)
+        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner)
     }
 }
 

@@ -22,8 +22,9 @@ struct ShopItem {
     let rarity: String
     let granted: [GrantedItem?]
     let section: String
+    let banner: Banner
     
-    init(id: String, name: String, description: String, type: String, images: [String], firstReleaseDate: Date?, previousReleaseDate: Date?, buyAllowed: Bool, price: Int, regularPrice: Int, series: String?, rarity: String, granted: [GrantedItem?], section: String) {
+    init(id: String, name: String, description: String, type: String, images: [String], firstReleaseDate: Date?, previousReleaseDate: Date?, buyAllowed: Bool, price: Int, regularPrice: Int, series: String?, rarity: String, granted: [GrantedItem?], section: String, banner: Banner) {
         self.id = id
         self.name = name
         self.description = description
@@ -38,6 +39,7 @@ struct ShopItem {
         self.rarity = rarity
         self.granted = granted
         self.section = section
+        self.banner = banner
     }
 }
 
@@ -59,4 +61,12 @@ struct GrantedItem {
         self.series = series
         self.image = image
     }
+}
+
+enum Banner {
+    case null
+    case new
+    case sale
+    case emote
+    case pickaxe
 }

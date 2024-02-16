@@ -47,6 +47,12 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         view.image = .ShopMain.price
         return view
     }()
+    
+    private let itemPagesImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = .ShopMain.pages
+        return view
+    }()
         
     public func configurate(with images: [String], _ name: String, _ price: Int, _ banner: Banner, _ width: CGFloat) {
         setupImageCarousel(with: images, banner: banner, cellWidth: width)
@@ -81,9 +87,25 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             ])
         }
         
+        if images.count > 1 {
+            itemPagesImageViewSetup(cellWidth: cellWidth)
+        }
+        
         if banner == .new {
             newImageViewSetup(banner: banner, cellWidth: cellWidth)
         }
+    }
+    
+    private func itemPagesImageViewSetup(cellWidth: CGFloat) {
+        scrollView.addSubview(itemPagesImageView)
+        itemPagesImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            itemPagesImageView.bottomAnchor.constraint(equalTo: scrollView.topAnchor, constant: cellWidth - 12),
+            itemPagesImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 12),
+            itemPagesImageView.widthAnchor.constraint(equalToConstant: cellWidth / 7),
+            itemPagesImageView.heightAnchor.constraint(equalTo: itemPagesImageView.widthAnchor)
+        ])
     }
     
     private func newImageViewSetup(banner: Banner, cellWidth: CGFloat) {

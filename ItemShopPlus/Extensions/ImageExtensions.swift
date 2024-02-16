@@ -37,6 +37,7 @@ extension UIImage {
         static let info = UIImage(systemName: "info.circle")
         static let infoFish = UIImage(named: "InfoFish")
         static let new = UIImage(named: "NewLogo")
+        static let pages = UIImage(named: "ItemPages")
     }
     
     enum ShopGranted {

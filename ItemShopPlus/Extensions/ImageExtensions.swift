@@ -36,7 +36,10 @@ extension UIImage {
         static let price = UIImage(named: "VBucks")
         static let info = UIImage(systemName: "info.circle")
         static let infoFish = UIImage(named: "InfoFish")
-        static let new = UIImage(named: "NewLogo")
+        static let new = UIImage(named: "NewBanner")
+        static let sale = UIImage(named: "SaleBanner")
+        static let pickaxe = UIImage(named: "PickaxeBanner")
+        static let emote = UIImage(named: "EmoteBanner")
         static let pages = UIImage(named: "ItemPages")
     }
     

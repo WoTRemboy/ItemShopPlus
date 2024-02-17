@@ -34,4 +34,9 @@ extension UIColor {
     enum QuestsBundleColors {
         static let bundleBackground = UIColor(named: "BundleImageBackground")
     }
+    
+    enum IconColors {
+        static let foregroundPages = UIColor(named: "ForegroundPages")
+        static let backgroundPages = UIColor(named: "BackgroundPages")
+    }
 }

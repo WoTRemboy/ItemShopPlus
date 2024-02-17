@@ -253,12 +253,12 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if inSearchMode {
             let item = filteredItems[indexPath.item]
-            cell.configurate(with: item.images, item.name, item.price, item.banner, width)
+            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, width)
         } else {
             let sectionKey = Array(sectionedItems.keys)[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
-                cell.configurate(with: item.images, item.name, item.price, item.banner, width)
+                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, width)
             }
         }
         

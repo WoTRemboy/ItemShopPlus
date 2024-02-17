@@ -42,6 +42,19 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         return label
     }()
     
+    private let itemOldPriceLabel: UILabel = {
+        let label = UILabel()
+        label.text = Texts.ShopPage.itemPrice
+        label.textColor = .LabelColors.labelTertiary
+        label.font = .footnote()
+        label.numberOfLines = 1
+        
+        let attributes: [NSAttributedString.Key: Any] = [          .strikethroughStyle: NSUnderlineStyle.single.rawValue]
+        let attributedText = NSAttributedString(string: label.text ?? "", attributes: attributes)
+        label.attributedText = attributedText
+        return label
+    }()
+    
     private let itemPriceImageView: UIImageView = {
         let view = UIImageView()
         view.image = .ShopMain.price
@@ -54,11 +67,14 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         return view
     }()
         
-    public func configurate(with images: [String], _ name: String, _ price: Int, _ banner: Banner, _ width: CGFloat) {
+    public func configurate(with images: [String], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, _ width: CGFloat) {
         setupImageCarousel(with: images, banner: banner, cellWidth: width)
-        itemNameLabel.text = name
-        itemPriceLabel.text = String(price)
+        contentSetup(name: name, price: price, oldPrice: oldPrice, count: images.count)
         setupUI()
+        
+        if banner == .sale {
+            itemOldPriceSetup()
+        }
     }
     
     override func layoutSubviews() {
@@ -66,6 +82,14 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: CGFloat(imageViews.count) * scrollView.bounds.width, height: scrollView.bounds.height)
         let indentSize = scrollView.frame.height / 9
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: indentSize, bottom: 0, right: indentSize)
+    }
+    
+    private func contentSetup(name: String, price: Int, oldPrice: Int, count: Int) {
+        itemNameLabel.text = name
+        itemPriceLabel.text = String(price)
+        itemOldPriceLabel.text = String(oldPrice)
+        itemPagesImageView.image = UIImage(systemName: "\(count).circle.fill", withConfiguration: UIImage.SymbolConfiguration(
+            paletteColors: [.white, .IconColors.backgroundPages ?? .orange]))
     }
     
     private func setupImageCarousel(with images: [String], banner: Banner, cellWidth: CGFloat) {
@@ -91,8 +115,8 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             itemPagesImageViewSetup(cellWidth: cellWidth)
         }
         
-        if banner == .new {
-            newImageViewSetup(banner: banner, cellWidth: cellWidth)
+        if banner != .null, banner != .sale {
+            bannerImageViewSetup(banner: banner, cellWidth: cellWidth)
         }
     }
     
@@ -108,7 +132,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         ])
     }
     
-    private func newImageViewSetup(banner: Banner, cellWidth: CGFloat) {
+    private func bannerImageViewSetup(banner: Banner, cellWidth: CGFloat) {
         scrollView.addSubview(bannerImageView)
         bannerImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -116,11 +140,11 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         case .new:
             bannerImageView.image = .ShopMain.new
         case .sale:
-            bannerImageView.image = .ShopMain.info
+            bannerImageView.image = .ShopMain.sale
         case .emote:
-            bannerImageView.image = .ShopMain.infoFish
+            bannerImageView.image = .ShopMain.emote
         case .pickaxe:
-            bannerImageView.image = .ShopMain.price
+            bannerImageView.image = .ShopMain.pickaxe
         default:
             bannerImageView.image = .ShopMain.new
         }
@@ -130,6 +154,16 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             bannerImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 8),
             bannerImageView.heightAnchor.constraint(equalToConstant: cellWidth / 5),
             bannerImageView.widthAnchor.constraint(equalTo: bannerImageView.heightAnchor, multiplier: 1.5)
+        ])
+    }
+    
+    private func itemOldPriceSetup() {
+        addSubview(itemOldPriceLabel)
+        itemOldPriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            itemOldPriceLabel.leadingAnchor.constraint(equalTo: itemPriceLabel.trailingAnchor, constant: 5),
+            itemOldPriceLabel.bottomAnchor.constraint(equalTo: itemPriceLabel.bottomAnchor)
         ])
     }
     
@@ -161,7 +195,6 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             
             itemPriceLabel.centerYAnchor.constraint(equalTo: itemPriceImageView.centerYAnchor),
             itemPriceLabel.leadingAnchor.constraint(equalTo: itemPriceImageView.trailingAnchor, constant: 5),
-            itemPriceLabel.trailingAnchor.constraint(equalTo: itemNameLabel.trailingAnchor)
         ])
     }
     
@@ -171,6 +204,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             imageView.removeFromSuperview()
         }
         imageViews.removeAll()
+        itemOldPriceLabel.removeFromSuperview()
         bannerImageView.removeFromSuperview()
         itemPagesImageView.removeFromSuperview()
     }

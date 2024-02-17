@@ -19,6 +19,7 @@ class ShopViewController: UIViewController {
     private let noInternetView = NoInternetView()
     
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    private let refreshControl = UIRefreshControl()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -49,12 +50,6 @@ class ShopViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.placeholder = Texts.ShopMainCell.search
         return searchController
-    }()
-    
-    private let refreshControl: UIRefreshControl = {
-        let control = UIRefreshControl()
-        control.addTarget(nil, action: #selector(refresh), for: .valueChanged)
-        return control
     }()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -175,6 +170,8 @@ class ShopViewController: UIViewController {
         collectionView.refreshControl = refreshControl
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
     private func searchControllerSetup() {

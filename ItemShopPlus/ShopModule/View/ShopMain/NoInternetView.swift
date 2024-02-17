@@ -29,14 +29,29 @@ class NoInternetView: UIView {
         return label
     }()
     
-    private let reloadButton: UIButton = {
+    internal let reloadButton: UIButton = {
         let button = UIButton()
         button.setTitle("Reload", for: .normal)
         button.backgroundColor = .red
         button.layer.cornerRadius = 12
         button.titleLabel?.font = .title()
+        button.addTarget(nil, action: #selector(buttonTouchDown), for: .touchDown)
+        button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpOutside)
+        button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpInside)
         return button
     }()
+    
+    @objc private func buttonTouchDown() {
+        UIView.animate(withDuration: 0.1) {
+            self.reloadButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+
+    @objc private func buttonTouchUp() {
+        UIView.animate(withDuration: 0.1) {
+            self.reloadButton.transform = CGAffineTransform.identity
+        }
+    }
     
     public func configurate() {
         setupUI()

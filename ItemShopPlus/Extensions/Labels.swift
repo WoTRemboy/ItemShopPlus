@@ -109,7 +109,7 @@ class Texts {
     }
     
     enum noConnection {
-        static let noInternet = "No internet"
+        static let noInternet = "No connection"
         static let retry = "Please, retry later"
     }
 }

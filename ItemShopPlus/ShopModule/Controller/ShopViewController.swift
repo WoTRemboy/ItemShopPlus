@@ -18,13 +18,7 @@ class ShopViewController: UIViewController {
     private let networkService = DefaultNetworkService()
     private let noInternetView = NoInternetView()
     
-    private let searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.placeholder = Texts.ShopMainCell.search
-        return searchController
-    }()
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -49,9 +43,23 @@ class ShopViewController: UIViewController {
         return button
     }()
     
+    private let searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.placeholder = Texts.ShopMainCell.search
+        return searchController
+    }()
+    
+    private let refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.addTarget(nil, action: #selector(refresh), for: .valueChanged)
+        return control
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         if items.isEmpty {
-            getShop()
+            getShop(isRefreshControl: false)
         }
     }
     
@@ -60,26 +68,35 @@ class ShopViewController: UIViewController {
         
         title = Texts.Pages.shop
         view.backgroundColor = .BackColors.backSplash
-        noInternetView.isHidden = true
         
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = infoButton
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        navigationItem.rightBarButtonItem = infoButton
         infoButton.target = self
         
         view.addSubview(collectionView)
         view.addSubview(noInternetView)
         
-        noInternetView.configurate()
-        setupSearchController()
+        noInternetSetup()
+        collectionViewSetup()
+        searchControllerSetup()
+        
         setupUI()
     }
     
+    @objc private func refresh() {
+        if !searchController.isActive {
+            getShop(isRefreshControl: true)
+        }
+    }
+    
     @objc private func handleTapOutsideKeyboard() {
-        searchController.searchBar.resignFirstResponder()
+        if searchController.searchBar.text?.isEmpty == true {
+            searchController.dismiss(animated: true)
+        } else {
+            searchController.searchBar.resignFirstResponder()
+        }
     }
     
     @objc private func infoButtonTapped() {
@@ -92,26 +109,55 @@ class ShopViewController: UIViewController {
         present(navVC, animated: true)
     }
     
-    private func getShop() {
+    private func getShop(isRefreshControl: Bool) {
+        if isRefreshControl {
+            self.refreshControl.beginRefreshing()
+        } else {
+            self.activityIndicator.center = self.view.center
+            self.view.addSubview(self.activityIndicator)
+            self.activityIndicator.startAnimating()
+            self.searchController.searchBar.isHidden = true
+        }
+        
         self.networkService.getShopItems { [weak self] result in
+            DispatchQueue.main.async {
+                if isRefreshControl {
+                    self?.refreshControl.endRefreshing()
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.removeFromSuperview()
+                }
+            }
+            
             switch result {
             case .success(let newItems):
-                
                 DispatchQueue.main.async {
+                    self?.clearItems()
+                    
                     self?.noInternetView.isHidden = true
                     self?.searchController.searchBar.isHidden = false
+
                     self?.items = newItems
                     self?.sortingSections(items: newItems)
+                    
                     self?.collectionView.reloadData()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
+                    self?.clearItems()
+                    self?.collectionView.reloadData()
                     self?.noInternetView.isHidden = false
                     self?.searchController.searchBar.isHidden = true
                 }
                 print(error)
             }
         }
+    }
+    
+    private func clearItems() {
+        items.removeAll()
+        filteredItems.removeAll()
+        sectionedItems.removeAll()
     }
     
     private func sortingSections(items: [ShopItem]) {
@@ -125,7 +171,13 @@ class ShopViewController: UIViewController {
         }
     }
     
-    private func setupSearchController() {
+    private func collectionViewSetup() {
+        collectionView.refreshControl = refreshControl
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
+    
+    private func searchControllerSetup() {
         searchController.delegate = self
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
@@ -135,6 +187,12 @@ class ShopViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+    }
+    
+    private func noInternetSetup() {
+        noInternetView.isHidden = true
+        noInternetView.reloadButton.addTarget(self, action: #selector(refresh), for: .touchUpInside)
+        noInternetView.configurate()
     }
     
     private func setupUI() {
@@ -242,7 +300,11 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchController.searchBar.resignFirstResponder()
+        if searchController.searchBar.text?.isEmpty == true {
+            searchController.dismiss(animated: false)
+        } else {
+            searchController.searchBar.resignFirstResponder()
+        }
     }
 }
 

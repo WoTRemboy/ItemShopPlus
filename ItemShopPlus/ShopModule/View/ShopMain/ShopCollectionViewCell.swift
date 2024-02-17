@@ -171,5 +171,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             imageView.removeFromSuperview()
         }
         imageViews.removeAll()
+        bannerImageView.removeFromSuperview()
+        itemPagesImageView.removeFromSuperview()
     }
 }

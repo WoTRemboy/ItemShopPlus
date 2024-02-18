@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Иллюстрация_без_названия-1.png",
+      "filename" : "decrease.quotelevel.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "decrease.quotelevel 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "decrease.quotelevel 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -61,15 +61,21 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         return view
     }()
     
+    private let grantedItemsImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = .ShopMain.granted
+        return view
+    }()
+    
     private let itemPagesImageView: UIImageView = {
         let view = UIImageView()
         view.image = .ShopMain.pages
         return view
     }()
         
-    public func configurate(with images: [String], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, _ width: CGFloat) {
-        setupImageCarousel(with: images, banner: banner, cellWidth: width)
-        contentSetup(name: name, price: price, oldPrice: oldPrice, count: images.count)
+    public func configurate(with images: [String], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, grantedCount: Int, _ width: CGFloat) {
+        setupImageCarousel(images: images, banner: banner, grantedCount: grantedCount, cellWidth: width)
+        contentSetup(name: name, price: price, oldPrice: oldPrice, count: grantedCount)
         setupUI()
         
         if banner == .sale {
@@ -88,11 +94,11 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         itemNameLabel.text = name
         itemPriceLabel.text = String(price)
         itemOldPriceLabel.text = String(oldPrice)
-        itemPagesImageView.image = UIImage(systemName: "\(count).circle.fill", withConfiguration: UIImage.SymbolConfiguration(
+        grantedItemsImageView.image = UIImage(systemName: "\(count).circle.fill", withConfiguration: UIImage.SymbolConfiguration(
             paletteColors: [.white, .IconColors.backgroundPages ?? .orange]))
     }
     
-    private func setupImageCarousel(with images: [String], banner: Banner, cellWidth: CGFloat) {
+    private func setupImageCarousel(images: [String], banner: Banner, grantedCount: Int, cellWidth: CGFloat) {
         scrollView.delegate = self
         
         for (index, imageURL) in images.enumerated() {
@@ -111,6 +117,10 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             ])
         }
         
+        if grantedCount > 1 {
+            grantedItemsImageViewSetup(cellWidth: cellWidth)
+        }
+        
         if images.count > 1 {
             itemPagesImageViewSetup(cellWidth: cellWidth)
         }
@@ -120,13 +130,25 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         }
     }
     
+    private func grantedItemsImageViewSetup(cellWidth: CGFloat) {
+        scrollView.addSubview(grantedItemsImageView)
+        grantedItemsImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            grantedItemsImageView.bottomAnchor.constraint(equalTo: scrollView.topAnchor, constant: cellWidth - 12),
+            grantedItemsImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 12),
+            grantedItemsImageView.widthAnchor.constraint(equalToConstant: cellWidth / 7),
+            grantedItemsImageView.heightAnchor.constraint(equalTo: grantedItemsImageView.widthAnchor)
+        ])
+    }
+    
     private func itemPagesImageViewSetup(cellWidth: CGFloat) {
         scrollView.addSubview(itemPagesImageView)
         itemPagesImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             itemPagesImageView.bottomAnchor.constraint(equalTo: scrollView.topAnchor, constant: cellWidth - 12),
-            itemPagesImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 12),
+            itemPagesImageView.trailingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: cellWidth - 12),
             itemPagesImageView.widthAnchor.constraint(equalToConstant: cellWidth / 7),
             itemPagesImageView.heightAnchor.constraint(equalTo: itemPagesImageView.widthAnchor)
         ])
@@ -206,6 +228,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         imageViews.removeAll()
         itemOldPriceLabel.removeFromSuperview()
         bannerImageView.removeFromSuperview()
+        grantedItemsImageView.removeFromSuperview()
         itemPagesImageView.removeFromSuperview()
     }
 }

@@ -40,7 +40,8 @@ extension UIImage {
         static let sale = UIImage(named: "SaleBanner")
         static let pickaxe = UIImage(named: "PickaxeBanner")
         static let emote = UIImage(named: "EmoteBanner")
-        static let pages = UIImage(named: "ItemPages")
+        static let granted = createImage(name: "1.circle.fill")
+        static let pages = UIImage(systemName: "decrease.quotelevel", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.IconColors.backgroundPages ?? .orange, .white]))
     }
     
     enum ShopGranted {

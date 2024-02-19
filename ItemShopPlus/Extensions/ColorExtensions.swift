@@ -13,6 +13,8 @@ extension UIColor {
         static let backiOSPrimary = UIColor(named: "BackiOSPrimary")
         static let backPrimary = UIColor(named: "BackPrimary")
         static let backSecondary = UIColor(named: "BackSecondary")
+        static let backSplash = UIColor(named: "BackSplash")
+        static let backDefault = UIColor(named: "BackDefault")
     }
     
     enum LabelColors {
@@ -31,5 +33,10 @@ extension UIColor {
     
     enum QuestsBundleColors {
         static let bundleBackground = UIColor(named: "BundleImageBackground")
+    }
+    
+    enum IconColors {
+        static let foregroundPages = UIColor(named: "ForegroundPages")
+        static let backgroundPages = UIColor(named: "BackgroundPages")
     }
 }

@@ -33,7 +33,6 @@ class MPButtonView: UIView {
     private let selectButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         button.addTarget(nil, action: #selector(buttonTouchDown), for: .touchDown)
         button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpOutside)
         button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpInside)
@@ -82,27 +81,35 @@ class MPButtonView: UIView {
         case .shop:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.shop
             buttonImageView.image = .MainButtons.shop
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.shopTransfer), for: .touchUpInside)
         case .news:
-            buttonLabel.text = Texts.ButtonLabels.MainButtons.news
-            buttonImageView.image = .MainButtons.news
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.battlePass
+            buttonImageView.image = .MainButtons.battlePass
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         case .tournaments:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.tournaments
             buttonImageView.image = .MainButtons.tournaments
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         case .quests:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.quests
             buttonImageView.image = .MainButtons.quests
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.questsTransfer), for: .touchUpInside)
         case .crew:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.crew
             buttonImageView.image = .MainButtons.crew
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         case .map:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
             buttonImageView.image = .MainButtons.map
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         case .vehicles:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.vehicles
             buttonImageView.image = .MainButtons.vehicles
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         case .augments:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.augments
             buttonImageView.image = .MainButtons.augments
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
         }
     }
     

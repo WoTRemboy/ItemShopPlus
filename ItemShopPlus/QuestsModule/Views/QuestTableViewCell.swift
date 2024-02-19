@@ -9,34 +9,46 @@ import UIKit
 
 class QuestTableViewCell: UITableViewCell {
 
-    static let identifier = "QuestCell"
+    static let identifier = Texts.QuestCell.identifier
+    private var imageLoadTask: URLSessionDataTask?
 
-    let questImageView: UIImageView = {
+    private let questImageView: UIImageView = {
         let view = UIImageView()
-        view.image = .imagePlaceholder
-        view.backgroundColor = .bundleImageBackground
+        view.image = .Placeholder.noImage
+        view.backgroundColor = .QuestsBundleColors.bundleBackground
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         return view
     }()
     
-    let questTaskLabel: UILabel = {
+    private let questTaskLabel: UILabel = {
         let text = UILabel()
         text.font = .body()
-        text.text = "Task name..."
+        text.text = Texts.QuestCell.questName
         text.textColor = .labelPrimary
         text.numberOfLines = 2
         return text
     }()
     
-    let questProgressLabel: UILabel = {
+    private let questProgressLabel: UILabel = {
         let text = UILabel()
         text.font = .subhead()
-        text.text = "Quest progress..."
+        text.text = Texts.QuestCell.questProgress
         text.textColor = .labelTertiary
         text.numberOfLines = 1
         return text
     }()
+    
+    public func configurate(with name: String, _ progress: String, _ image: String?) {
+        questTaskLabel.text = name
+        questProgressLabel.text = Texts.QuestCell.requirement + progress
+        
+        if let imageUrlString = image {
+            imageLoadTask = ImageLoader.loadAndShowImage(from: imageUrlString, to: questImageView)
+        } else {
+            questImageView.image = .Quests.experience
+        }
+    }
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -44,11 +56,12 @@ class QuestTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        ImageLoader.cancelImageLoad(task: imageLoadTask)
+        questImageView.image = .Quests.bundleBackground
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor(named: "BackSecondary")
         
         contentView.addSubview(questTaskLabel)
         contentView.addSubview(questProgressLabel)
@@ -59,7 +72,7 @@ class QuestTableViewCell: UITableViewCell {
         bundleImageViewSetup()
     }
     
-    func bundleNameSetup() {
+    private func bundleNameSetup() {
         NSLayoutConstraint.activate([
             questTaskLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
             questTaskLabel.trailingAnchor.constraint(equalTo: questImageView.leadingAnchor, constant: -16),
@@ -68,7 +81,7 @@ class QuestTableViewCell: UITableViewCell {
         questTaskLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func bundleTimeSetup() {
+    private func bundleTimeSetup() {
         NSLayoutConstraint.activate([
             questProgressLabel.leadingAnchor.constraint(equalTo: questTaskLabel.leadingAnchor),
             questProgressLabel.trailingAnchor.constraint(equalTo: questTaskLabel.trailingAnchor),
@@ -77,7 +90,7 @@ class QuestTableViewCell: UITableViewCell {
         questProgressLabel.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func bundleImageViewSetup() {
+    private func bundleImageViewSetup() {
         NSLayoutConstraint.activate([
             questImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             questImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

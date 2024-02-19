@@ -25,8 +25,16 @@ class MainPageViewController: UIViewController {
         buttonController.didMove(toParent: self)
     }
     
+    @objc func questsTransfer() {
+        navigationController?.pushViewController(QuestsBundlePageController(), animated: true)
+    }
+    
+    @objc func shopTransfer() {
+        navigationController?.pushViewController(ShopViewController(), animated: true)
+    }
+    
     @objc func sayHi() {
-        navigationController?.pushViewController(QuestsBundlePageController(items: BundleMockData().createMock()), animated: true)
+        
     }
 
 }

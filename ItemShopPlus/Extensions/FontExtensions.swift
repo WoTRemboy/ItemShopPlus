@@ -13,6 +13,14 @@ extension UIFont {
         UIFont.systemFont(ofSize: 38, weight: .bold)
     }
     
+    static func totalPrice() -> UIFont? {
+        UIFont.systemFont(ofSize: 30, weight: .medium)
+    }
+    
+    static func segmentTitle() -> UIFont? {
+        UIFont.systemFont(ofSize: 25, weight: .medium)
+    }
+    
     static func title() -> UIFont? {
         UIFont.systemFont(ofSize: 20, weight: .medium)
     }

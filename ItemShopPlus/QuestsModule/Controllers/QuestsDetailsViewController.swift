@@ -11,6 +11,7 @@ class QuestsDetailsViewController: UIViewController {
     
     private let item: Quest
     private let preview = QuestDetailsView()
+    private var imageLoadTask: URLSessionDataTask?
     
     private let cancelButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -32,6 +33,10 @@ class QuestsDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupContent()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ImageLoader.cancelImageLoad(task: imageLoadTask)
     }
     
     init(item: Quest) {
@@ -59,7 +64,7 @@ class QuestsDetailsViewController: UIViewController {
     
     private func setupContent() {
         if let image = item.image {
-            ImageLoader.loadAndShowImage(from: image, to: preview.rewardImageView)
+            imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: preview.rewardImageView)
         } else {
             preview.rewardImageView.image = .Quests.experience
         }

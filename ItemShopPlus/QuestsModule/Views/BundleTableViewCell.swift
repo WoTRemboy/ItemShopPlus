@@ -9,6 +9,7 @@ import UIKit
 
 class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     static let identifier = Texts.BundleQuestsCell.identifier
+    private var imageLoadTask: URLSessionDataTask?
     
     private let bundleImageView: UIImageView = {
         let view = UIImageView()
@@ -46,7 +47,7 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     
     public func configurate(with name: String, _ image: String, _ date: Date?) {
         bundleNameLabel.text = name
-        ImageLoader.loadAndShowImage(from: image, to: bundleImageView)
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: bundleImageView)
         
         if let end = date {
             let diff = DateFormating.differenceBetweenDates(date1: .now, date2: end)
@@ -60,6 +61,7 @@ class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        ImageLoader.cancelImageLoad(task: imageLoadTask)
         bundleImageView.image = .Placeholder.noImage
     }
     

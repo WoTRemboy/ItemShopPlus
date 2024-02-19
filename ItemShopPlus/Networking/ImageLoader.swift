@@ -22,23 +22,23 @@ class ImageLoader {
         return URL(fileURLWithPath: "")
     }()
     
-    static func loadImage(urlString: String?, completion: @escaping (UIImage?) -> Void) {
+    static func loadImage(urlString: String?, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask? {
         guard let urlString = urlString else {
             completion(nil)
-            return
+            return nil
         }
         
         if let imageFromCache = getImageFromCache(from: urlString) {
             completion(imageFromCache)
-            return
+            return nil
         }
         
         guard let url = URL(string: urlString) else {
             completion(nil)
-            return
+            return nil
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else {
                 print(error ?? "URLSession unknown error")
                 completion(nil)
@@ -61,11 +61,14 @@ class ImageLoader {
                 }
                 completion(loadedImage)
             }
-        }.resume()
+        }
+        
+        task.resume()
+        return task
     }
     
-    static func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) {
-        loadImage(urlString: imageUrlString) { image in
+    static func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) -> URLSessionDataTask? {
+        return loadImage(urlString: imageUrlString) { image in
             DispatchQueue.main.async {
                 imageView.alpha = 0.5
                 if let image = image {
@@ -76,6 +79,10 @@ class ImageLoader {
                 }, completion: nil)
             }
         }
+    }
+    
+    static func cancelImageLoad(task: URLSessionDataTask?) {
+        task?.cancel()
     }
     
     private static func createCacheDirectoryIfNeeded() throws {
@@ -117,7 +124,7 @@ class ImageLoader {
     static func cleanCache() {
         do {
             let cacheExpirationInterval: TimeInterval = 24 * 60 * 60 // 24 hours
-
+            
             let contents = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             
             for fileURL in contents {

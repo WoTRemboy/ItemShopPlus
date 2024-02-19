@@ -10,8 +10,9 @@ import UIKit
 class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     
     static let identifier = Texts.ShopMainCell.identifier
-    private var imageViews = [UIImageView]()
+    private var imageLoadTask: URLSessionDataTask?
     
+    private var imageViews = [UIImageView]()
     private let bannerImageView = UIImageView()
     
     private let scrollView: UIScrollView = {
@@ -106,7 +107,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             imageView.image = .Placeholder.noImage
             imageViews.append(imageView)
             scrollView.addSubview(imageView)
-            ImageLoader.loadAndShowImage(from: imageURL, to: imageView)
+            imageLoadTask = ImageLoader.loadAndShowImage(from: imageURL, to: imageView)
 
             imageView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
@@ -222,6 +223,8 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        ImageLoader.cancelImageLoad(task: imageLoadTask)
+        
         for imageView in imageViews {
             imageView.removeFromSuperview()
         }

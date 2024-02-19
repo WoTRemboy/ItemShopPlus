@@ -10,6 +10,7 @@ import UIKit
 class QuestTableViewCell: UITableViewCell {
 
     static let identifier = Texts.QuestCell.identifier
+    private var imageLoadTask: URLSessionDataTask?
 
     private let questImageView: UIImageView = {
         let view = UIImageView()
@@ -43,7 +44,7 @@ class QuestTableViewCell: UITableViewCell {
         questProgressLabel.text = Texts.QuestCell.requirement + progress
         
         if let imageUrlString = image {
-            ImageLoader.loadAndShowImage(from: imageUrlString, to: questImageView)
+            imageLoadTask = ImageLoader.loadAndShowImage(from: imageUrlString, to: questImageView)
         } else {
             questImageView.image = .Quests.experience
         }
@@ -55,6 +56,7 @@ class QuestTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        ImageLoader.cancelImageLoad(task: imageLoadTask)
         questImageView.image = .Quests.bundleBackground
     }
     

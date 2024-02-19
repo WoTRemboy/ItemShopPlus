@@ -10,7 +10,7 @@ import UIKit
 class ShopGrantedCollectionViewCell: UICollectionViewCell {
     
     static let identifier = Texts.ShopGrantedCell.identifier
-    private var rarity = "Common"
+    private var imageLoadTask: URLSessionDataTask?
     
     private let itemNameLabel: UILabel = {
         let label = UILabel()
@@ -44,7 +44,7 @@ class ShopGrantedCollectionViewCell: UICollectionViewCell {
     }()
     
     public func configurate(name: String, type: String, rarity: String, image: String) {
-        ImageLoader.loadAndShowImage(from: image, to: grantedImageView)
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: grantedImageView)
         itemNameLabel.text = name
         itemTypeLabel.text = type
         rarityImageView.image = selectRarity(rarity: rarity)
@@ -85,6 +85,7 @@ class ShopGrantedCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        ImageLoader.cancelImageLoad(task: imageLoadTask)
         grantedImageView.removeFromSuperview()
         rarityImageView.removeFromSuperview()
     }

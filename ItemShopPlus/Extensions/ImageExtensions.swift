@@ -35,6 +35,7 @@ extension UIImage {
     enum ShopMain {
         static let price = UIImage(named: "VBucks")
         static let info = UIImage(systemName: "info.circle")
+        static let filter = UIImage(systemName: "line.3.horizontal.decrease.circle")
         static let infoFish = UIImage(named: "InfoFish")
         static let new = UIImage(named: "NewBanner")
         static let sale = UIImage(named: "SaleBanner")

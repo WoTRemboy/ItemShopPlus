@@ -10,6 +10,7 @@ import UIKit
 class ShopViewController: UIViewController {
     
     private var previousCount = 0
+    private var selectedSectionTitle = Texts.ShopPage.allMenu
     
     private var items = [ShopItem]()
     private var filteredItems = [ShopItem]()
@@ -41,6 +42,14 @@ class ShopViewController: UIViewController {
         let button = UIBarButtonItem()
         button.image = .ShopMain.info
         button.action = #selector(infoButtonTapped)
+        button.isEnabled = false
+        return button
+    }()
+    
+    private let filterButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .ShopMain.filter
+        button.isEnabled = false
         return button
     }()
     
@@ -64,11 +73,7 @@ class ShopViewController: UIViewController {
         title = Texts.Pages.shop
         view.backgroundColor = .BackColors.backSplash
         
-        navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        
-        navigationItem.rightBarButtonItem = infoButton
-        infoButton.target = self
+        navigationBarSetup()
         
         view.addSubview(collectionView)
         view.addSubview(noInternetView)
@@ -122,6 +127,7 @@ class ShopViewController: UIViewController {
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.removeFromSuperview()
                 }
+                self?.selectedSectionTitle = Texts.ShopPage.allMenu
             }
             
             switch result {
@@ -135,24 +141,26 @@ class ShopViewController: UIViewController {
                     self?.items = newItems
                     self?.sortingSections(items: newItems)
                     
+                    self?.infoButton.isEnabled = true
+                    self?.filterButton.isEnabled = true
+                    
                     self?.collectionView.reloadData()
+                    self?.menuSetup()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.clearItems()
                     self?.collectionView.reloadData()
+                    
                     self?.noInternetView.isHidden = false
                     self?.searchController.searchBar.isHidden = true
+                    
+                    self?.infoButton.isEnabled = false
+                    self?.filterButton.isEnabled = false
                 }
                 print(error)
             }
         }
-    }
-    
-    private func clearItems() {
-        items.removeAll()
-        filteredItems.removeAll()
-        sectionedItems.removeAll()
     }
     
     private func sortingSections(items: [ShopItem]) {
@@ -164,6 +172,66 @@ class ShopViewController: UIViewController {
                 self.sectionedItems[item.section] = [item]
             }
         }
+    }
+    
+    private func filterItemsBySection(sectionTitle: String, forAll: Bool) {
+        guard sectionTitle != selectedSectionTitle else { return }
+        
+        sectionedItems.removeAll()
+        sortingSections(items: items)
+        if !forAll {
+            sectionedItems = sectionedItems.filter { $0.key == sectionTitle }
+        }
+        updateMenuState(for: sectionTitle)
+        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            self.collectionView.reloadData()
+        }, completion: nil)
+    }
+    
+    private func clearItems() {
+        items.removeAll()
+        filteredItems.removeAll()
+        sectionedItems.removeAll()
+    }
+    
+    private func navigationBarSetup() {
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        infoButton.target = self
+        filterButton.target = self
+        
+        navigationItem.rightBarButtonItems = [
+            infoButton,
+            filterButton
+        ]
+    }
+    
+    private func menuSetup() {
+        let allAction = UIAction(title: Texts.ShopPage.allMenu, image: nil) { [weak self] action in
+            self?.filterItemsBySection(sectionTitle: Texts.ShopPage.allMenu, forAll: true)
+            self?.menuSetup()
+        }
+        allAction.state = .on
+        var children = [allAction]
+        for section in sectionedItems {
+            let sectionAction = UIAction(title: section.key, image: nil) { [weak self] action in
+                self?.filterItemsBySection(sectionTitle: section.key, forAll: false)
+            }
+            
+            children.append(sectionAction)
+        }
+        filterButton.menu = UIMenu(title: "", children: children)
+    }
+    
+    private func updateMenuState(for sectionTitle: String) {
+        if let currentAction = filterButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
+            currentAction.state = .on
+        }
+        if let previousAction = filterButton.menu?.children.first(where: { $0.title == selectedSectionTitle }) as? UIAction {
+            previousAction.state = .off
+        }
+        selectedSectionTitle = sectionTitle
     }
     
     private func collectionViewSetup() {

@@ -32,7 +32,7 @@ class NoInternetView: UIView {
     internal let reloadButton: UIButton = {
         let button = UIButton()
         button.setTitle("Reload", for: .normal)
-        button.backgroundColor = .red
+        button.backgroundColor = .IconColors.backgroundPages
         button.layer.cornerRadius = 12
         button.titleLabel?.font = .title()
         button.addTarget(nil, action: #selector(buttonTouchDown), for: .touchDown)

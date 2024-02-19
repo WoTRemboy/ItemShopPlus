@@ -14,6 +14,7 @@ protocol ShopGrantedPanZoomViewDelegate: AnyObject {
 class ShopPanZoomView: UIScrollView {
     
     weak var panZoomDelegate: ShopGrantedPanZoomViewDelegate?
+    private var imageLoadTask: URLSessionDataTask?
     
     private var initialTouchPoint: CGPoint = CGPoint.zero
     private var centerSuperView: CGPoint = .zero
@@ -37,7 +38,7 @@ class ShopPanZoomView: UIScrollView {
     
     convenience init(image: String, presentingViewController: UIViewController) {
         self.init(frame: .zero)
-        ImageLoader.loadAndShowImage(from: image, to: imageView)
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: imageView)
     }
     
     @objc private func handleDoubleTap(gesture: UITapGestureRecognizer) {

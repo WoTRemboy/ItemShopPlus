@@ -56,6 +56,7 @@ class MapPreviewViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         ImageLoader.cancelImageLoad(task: imageLoadTask)
+        ImageLoader.removeAllCache()
     }
     
     override func viewDidLoad() {

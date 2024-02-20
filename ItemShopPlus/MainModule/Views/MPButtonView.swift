@@ -101,7 +101,7 @@ class MPButtonView: UIView {
         case .map:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
             buttonImageView.image = .MainButtons.map
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.mapTransfer), for: .touchUpInside)
         case .vehicles:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.vehicles
             buttonImageView.image = .MainButtons.vehicles

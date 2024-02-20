@@ -109,6 +109,10 @@ class Texts {
         static let noResult = "No result"
     }
     
+    enum MapPage {
+        static let title = "Map"
+    }
+    
     enum noConnection {
         static let noInternet = "No connection"
         static let retry = "Please, retry later"

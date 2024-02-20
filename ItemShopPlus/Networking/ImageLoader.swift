@@ -81,6 +81,43 @@ class ImageLoader {
         }
     }
     
+    static func mapLoadImage(urlString: String?, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask? {
+        guard let urlString = urlString else {
+            completion(nil)
+            return nil
+        }
+        
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return nil
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil else {
+                print(error ?? "URLSession unknown error")
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                print("No data found")
+                completion(nil)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                guard let loadedImage = UIImage(data: data) else {
+                    completion(nil)
+                    return
+                }
+                completion(loadedImage)
+            }
+        }
+        
+        task.resume()
+        return task
+    }
+    
     static func cancelImageLoad(task: URLSessionDataTask?) {
         task?.cancel()
     }

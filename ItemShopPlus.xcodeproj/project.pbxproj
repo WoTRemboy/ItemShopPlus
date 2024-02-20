@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		632533AF2B83D3F300DA3F05 /* MapZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632533AE2B83D3F300DA3F05 /* MapZoomView.swift */; };
+		632533B12B83D45700DA3F05 /* MapPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632533B02B83D45700DA3F05 /* MapPreviewViewController.swift */; };
 		63290CD62B5D7B70008F45F8 /* ShopTimerInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CD52B5D7B70008F45F8 /* ShopTimerInfoViewController.swift */; };
 		63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */; };
 		63290CDA2B5EA399008F45F8 /* ShopGrantedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CD92B5EA399008F45F8 /* ShopGrantedViewController.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		632533AE2B83D3F300DA3F05 /* MapZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapZoomView.swift; sourceTree = "<group>"; };
+		632533B02B83D45700DA3F05 /* MapPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPreviewViewController.swift; sourceTree = "<group>"; };
 		63290CD52B5D7B70008F45F8 /* ShopTimerInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTimerInfoViewController.swift; sourceTree = "<group>"; };
 		63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTimerInfoView.swift; sourceTree = "<group>"; };
 		63290CD92B5EA399008F45F8 /* ShopGrantedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		632533AB2B83D3A500DA3F05 /* MapModule */ = {
+			isa = PBXGroup;
+			children = (
+				632533AD2B83D3C400DA3F05 /* View */,
+				632533AC2B83D3B500DA3F05 /* Controller */,
+			);
+			path = MapModule;
+			sourceTree = "<group>";
+		};
+		632533AC2B83D3B500DA3F05 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				632533B02B83D45700DA3F05 /* MapPreviewViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		632533AD2B83D3C400DA3F05 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				632533AE2B83D3F300DA3F05 /* MapZoomView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		637B267D2B4AB3CD0075B871 /* SplashScreenModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +221,7 @@
 				63C898D22B23310D00FABD69 /* MainModule */,
 				637B26842B4B39C70075B871 /* ShopModule */,
 				63C899042B25084800FABD69 /* QuestsModule */,
+				632533AB2B83D3A500DA3F05 /* MapModule */,
 				63C899152B2621EB00FABD69 /* Networking */,
 				63C898D12B2330EA00FABD69 /* SupportingFiles */,
 				63C898D02B2330B000FABD69 /* Extensions */,
@@ -419,6 +449,7 @@
 				63F8B9D72B2CD84E006E2430 /* QuestTableViewCell.swift in Sources */,
 				63290CE32B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift in Sources */,
 				63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */,
+				632533B12B83D45700DA3F05 /* MapPreviewViewController.swift in Sources */,
 				63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */,
 				63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */,
 				63290CD62B5D7B70008F45F8 /* ShopTimerInfoViewController.swift in Sources */,
@@ -431,6 +462,7 @@
 				63F94E792B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift in Sources */,
 				63290CE52B615CFF008F45F8 /* ShopGrantedParametersRowView.swift in Sources */,
 				63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */,
+				632533AF2B83D3F300DA3F05 /* MapZoomView.swift in Sources */,
 				637B26812B4AB4050075B871 /* SplashScreenView.swift in Sources */,
 				637B268F2B4B3A820075B871 /* ShopViewController.swift in Sources */,
 				63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */,

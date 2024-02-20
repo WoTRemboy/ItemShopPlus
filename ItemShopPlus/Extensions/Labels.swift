@@ -111,6 +111,8 @@ class Texts {
     
     enum MapPage {
         static let title = "Map"
+        static let poi = "POI"
+        static let clear = "Clear"
     }
     
     enum noConnection {

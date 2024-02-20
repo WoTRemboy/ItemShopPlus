@@ -52,6 +52,11 @@ extension UIImage {
         static let epic = UIImage(named: "GrantedEpic")
         static let legendary = UIImage(named: "GrantedLegendary")
     }
+    
+    enum MapPage {
+        static let poi = UIImage(systemName: "slider.horizontal.3")
+        static let archive = UIImage(systemName: "clock.arrow.circlepath")
+    }
 }
 
 private func createImage(name: String) -> UIImage? {

@@ -11,13 +11,15 @@ class MapPreviewViewController: UIViewController {
     
     private var image: String
     private var imageLoadTask: URLSessionDataTask?
-    private var selectedSectionTitle = Texts.MapPage.poi
+    private var selectedPOI = Texts.MapPage.poi
+    private var selectedMapVersion = ""
     
-    private let clearMap = "https://media.fortniteapi.io/images/map.png"
-    private let poiMap = "https://media.fortniteapi.io/images/map.png?showPOI=true"
+    private var maps = [Map]()
+    private var actualMap = Map(patchVersion: "", realeseDate: .now, clearImage: "", poiImage: "")
     
     private let scrollView = MapZoomView()
     private let noInternetView = NoInternetView()
+    private let networkService = DefaultNetworkService()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let backButton: UIBarButtonItem = {
@@ -28,14 +30,14 @@ class MapPreviewViewController: UIViewController {
     
     private let poiChangeButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
-        button.image = .MapPage.poi
+        button.image = .MapPage.poiMenu
         button.isEnabled = false
         return button
     }()
     
     private let archiveButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
-        button.image = .MapPage.archive
+        button.image = .MapPage.archiveMenu
         button.isEnabled = false
         return button
     }()
@@ -51,12 +53,11 @@ class MapPreviewViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         guard scrollView.imageView.image == nil else { return }
-        imageLoadTask = loadAndShowImage(from: image, to: scrollView.imageView)
+        getMaps()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         ImageLoader.cancelImageLoad(task: imageLoadTask)
-        ImageLoader.removeAllCache()
     }
     
     override func viewDidLoad() {
@@ -66,64 +67,118 @@ class MapPreviewViewController: UIViewController {
         view.addSubview(noInternetView)
         
         navigationBarSetup()
-        menuSetup()
+        poiMenuSetup()
         scrollViewSetup()
         noInternetSetup()
     }
     
     @objc private func refresh() {
-        imageLoadTask = loadAndShowImage(from: image, to: scrollView.imageView)
+        imageLoadTask = self.loadAndShowImage(from: image, to: scrollView.imageView)
+    }
+    
+    private func showActualMap() {
+        imageLoadTask = self.loadAndShowImage(from: actualMap.poiImage, to: scrollView.imageView)
+    }
+    
+    private func getMaps() {
+        activityIndicatorSetup()
+        
+        self.networkService.getMapItems { [weak self] result in
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.removeFromSuperview()
+            }
+            
+            switch result {
+            case .success(let newItems):
+                DispatchQueue.main.async {
+                    self?.maps = newItems
+                    if let actual = newItems.last {
+                        self?.actualMap = actual
+                        self?.selectedMapVersion = self?.createTitle(version: actual.patchVersion, date: actual.realeseDate) ?? ""
+                    }
+                    self?.archiveMenuSetup()
+                    self?.showActualMap()
+                    self?.loadSuccess(success: true)
+                }
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.loadSuccess(success: false)
+                }
+                print(error)
+            }
+        }
+    }
+    
+    private func changeImageInPreview(newImage: String, sectionTitle: String, type: NavigationMapButtonType) {
+        guard sectionTitle != selectedPOI else { return }
+        guard sectionTitle != selectedMapVersion else { return }
+        
+        ImageLoader.cancelImageLoad(task: imageLoadTask)
+        image = newImage
+        
+        DispatchQueue.main.async {
+            self.poiChangeButton.isEnabled = false
+            self.archiveButton.isEnabled = false
+            
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                self.scrollView.imageView.alpha = 0.0
+            }, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.imageLoadTask = self.loadAndShowImage(from: newImage, to: self.scrollView.imageView)
+                
+                self.scrollView.isHidden = true
+                self.scrollView.zoomScale = 1
+                
+                if type == .location {
+                    self.updateMenuState(for: sectionTitle, button: self.poiChangeButton, type: .location, reload: true)
+                } else {
+                    self.updateMenuState(for: sectionTitle, button: self.archiveButton, type: .version, reload: true)
+                    self.updateMenuState(for: Texts.MapPage.poi, button: self.poiChangeButton, type: .location, reload: false)
+                }
+            }
+        }
     }
     
     private func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) -> URLSessionDataTask? {
+        activityIndicatorSetup()
         
-        activityIndicator.center = self.view.center
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        noInternetView.isHidden = true
-        
-        return ImageLoader.mapLoadImage(urlString: imageUrlString) { image in
-            DispatchQueue.main.async {
+        return ImageLoader.loadImage(urlString: imageUrlString) { image in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.removeFromSuperview()
+                
                 imageView.alpha = 0.5
                 
                 if let image = image {
                     imageView.image = image
-                    self.noInternetView.isHidden = true
-                    self.poiChangeButton.isEnabled = true
-                    self.scrollView.isHidden = false
+                    self.loadSuccess(success: true)
                     
                     UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
                         imageView.alpha = 1.0
                     }, completion: nil)
                 } else {
-                    self.noInternetView.isHidden = false
-                    self.poiChangeButton.isEnabled = false
-                    self.scrollView.isHidden = true
+                    self.loadSuccess(success: false)
                 }
                 
             }
         }
     }
     
-    private func changeImageInPreview(newImage: String, sectionTitle: String) {
-        guard sectionTitle != selectedSectionTitle else { return }
-        ImageLoader.cancelImageLoad(task: imageLoadTask)
-        image = newImage
-        
-        DispatchQueue.main.async {
-            self.poiChangeButton.isEnabled = false
-            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
-                self.scrollView.imageView.alpha = 0
-            }, completion: nil)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self.scrollView.isHidden = true
-                self.imageLoadTask = self.loadAndShowImage(from: newImage, to: self.scrollView.imageView)
-                self.scrollView.zoomScale = 1
-                self.updateMenuState(for: sectionTitle)
-            }
+    private func loadSuccess(success: Bool) {
+        if success {
+            noInternetView.isHidden = true
+            poiChangeButton.isEnabled = true
+            archiveButton.isEnabled = true
+            scrollView.isHidden = false
+        } else {
+            noInternetView.isHidden = false
+            poiChangeButton.isEnabled = false
+            archiveButton.isEnabled = false
+            scrollView.isHidden = true
+            scrollView.imageView.image = nil
         }
     }
     
@@ -139,26 +194,67 @@ class MapPreviewViewController: UIViewController {
         ]
     }
     
-    private func menuSetup() {
-        let poiAction = UIAction(title: Texts.MapPage.poi, image: UIImage(systemName: "mappin")) { [weak self] action in
-            self?.changeImageInPreview(newImage: "https://media.fortniteapi.io/images/map.png?showPOI=true", sectionTitle: Texts.MapPage.poi)
+    private func createTitle(version: String, date: Date) -> String {
+        let stringDate = DateFormating.dateFormatterShopGranted.string(from: date)
+        return "v\(version) – \(stringDate)"
+    }
+    
+    private func activityIndicatorSetup() {
+        activityIndicator.center = self.view.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        noInternetView.isHidden = true
+    }
+    
+    private func poiMenuSetup() {
+        let poiAction = UIAction(title: Texts.MapPage.poi, image: .MapPage.poiAction) { [weak self] action in
+            self?.changeImageInPreview(newImage: self?.actualMap.poiImage ?? Texts.MapPage.poi, sectionTitle: Texts.MapPage.poi, type: .location)
         }
         poiAction.state = .on
         
-        let clearAction = UIAction(title: Texts.MapPage.clear, image: UIImage(systemName: "mappin.slash")) { [weak self] action in
-            self?.changeImageInPreview(newImage: "https://media.fortniteapi.io/images/map.png", sectionTitle: Texts.MapPage.clear)
+        let clearAction = UIAction(title: Texts.MapPage.clear, image: .MapPage.clearAction) { [weak self] action in
+            self?.changeImageInPreview(newImage: self?.actualMap.clearImage ?? Texts.MapPage.clear, sectionTitle: Texts.MapPage.clear, type: .location)
         }
         poiChangeButton.menu = UIMenu(title: "", children: [poiAction, clearAction])
     }
     
-    private func updateMenuState(for sectionTitle: String) {
-        if let currentAction = poiChangeButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
+    private func archiveMenuSetup() {
+        var children = [UIMenuElement]()
+        for map in maps {
+            let currentAction = UIAction(title: createTitle(version: map.patchVersion, date: map.realeseDate)) { [weak self] action in
+                
+                self?.changeImageInPreview(
+                    newImage: map.poiImage,
+                    sectionTitle: self?.createTitle(
+                        version: map.patchVersion,
+                        date: map.realeseDate) ?? "", type: .version)
+                
+                self?.actualMap = map
+            }
+            children.append(currentAction)
+            if map.patchVersion == actualMap.patchVersion { currentAction.state = .on }
+        }
+        children.reverse()
+        archiveButton.menu = UIMenu(title: "", children: children)
+    }
+    
+    private func updateMenuState(for sectionTitle: String, button: UIBarButtonItem, type: NavigationMapButtonType, reload: Bool) {
+        if let currentAction = button.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
             currentAction.state = .on
         }
-        if let previousAction = poiChangeButton.menu?.children.first(where: { $0.title == selectedSectionTitle }) as? UIAction {
-            previousAction.state = .off
+        
+        switch type {
+        case .location:
+            if let previousAction = button.menu?.children.first(where: { $0.title == selectedPOI }) as? UIAction {
+                if reload || selectedPOI != Texts.MapPage.poi { previousAction.state = .off }
+                selectedPOI = sectionTitle
+            }
+        case .version:
+            if let previousAction = button.menu?.children.first(where: { $0.title == selectedMapVersion }) as? UIAction {
+                previousAction.state = .off
+                selectedMapVersion = sectionTitle
+            }
         }
-        selectedSectionTitle = sectionTitle
     }
     
     private func scrollViewSetup() {
@@ -188,3 +284,7 @@ class MapPreviewViewController: UIViewController {
     }
 }
 
+enum NavigationMapButtonType {
+    case location
+    case version
+}

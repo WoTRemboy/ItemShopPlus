@@ -26,6 +26,8 @@
 		637B26952B4DACCA0075B871 /* ShopCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */; };
 		638594B22B2CF80F009FEED6 /* QuestsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638594B12B2CF80F009FEED6 /* QuestsDetailsViewController.swift */; };
 		638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638594B32B2CFD7C009FEED6 /* QuestDetailsView.swift */; };
+		638FD6D12B854D4100CE47BD /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D02B854D4100CE47BD /* MapModel.swift */; };
+		638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */; };
 		63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BB2B232F4000FABD69 /* AppDelegate.swift */; };
 		63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BD2B232F4000FABD69 /* SceneDelegate.swift */; };
 		63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BF2B232F4000FABD69 /* MainPageController.swift */; };
@@ -70,6 +72,8 @@
 		637B26942B4DACCA0075B871 /* ShopCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionReusableView.swift; sourceTree = "<group>"; };
 		638594B12B2CF80F009FEED6 /* QuestsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsDetailsViewController.swift; sourceTree = "<group>"; };
 		638594B32B2CFD7C009FEED6 /* QuestDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailsView.swift; sourceTree = "<group>"; };
+		638FD6D02B854D4100CE47BD /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapsParce.swift; sourceTree = "<group>"; };
 		63C898B82B232F4000FABD69 /* ItemShopPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemShopPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C898BB2B232F4000FABD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C898BD2B232F4000FABD69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 		632533AB2B83D3A500DA3F05 /* MapModule */ = {
 			isa = PBXGroup;
 			children = (
+				638FD6CF2B854D2B00CE47BD /* Model */,
 				632533AD2B83D3C400DA3F05 /* View */,
 				632533AC2B83D3B500DA3F05 /* Controller */,
 			);
@@ -193,6 +198,15 @@
 			children = (
 				637B26882B4B3A2E0075B871 /* ShopModel.swift */,
 				637B26922B4D7FF60075B871 /* JSONShopParce.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		638FD6CF2B854D2B00CE47BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				638FD6D02B854D4100CE47BD /* MapModel.swift */,
+				638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -439,6 +453,7 @@
 				637B26952B4DACCA0075B871 /* ShopCollectionReusableView.swift in Sources */,
 				63290CDC2B5ED498008F45F8 /* ShopGrantedCollectionViewCell.swift in Sources */,
 				637B268B2B4B3A5D0075B871 /* ShopCollectionViewCell.swift in Sources */,
+				638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */,
 				63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */,
 				637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */,
 				63F547892B34AE2200B3F941 /* JSONParce.swift in Sources */,
@@ -449,6 +464,7 @@
 				63F8B9D72B2CD84E006E2430 /* QuestTableViewCell.swift in Sources */,
 				63290CE32B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift in Sources */,
 				63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */,
+				638FD6D12B854D4100CE47BD /* MapModel.swift in Sources */,
 				632533B12B83D45700DA3F05 /* MapPreviewViewController.swift in Sources */,
 				63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */,
 				63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */,

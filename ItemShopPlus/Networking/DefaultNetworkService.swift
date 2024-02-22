@@ -10,6 +10,7 @@ import Foundation
 protocol NetworkingService {
     func getQuestBundles(completion: @escaping (Result<[QuestBundle], Error>) -> Void)
     func getShopItems(completion: @escaping (Result<[ShopItem], Error>) -> Void)
+    func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void)
 }
 
 class DefaultNetworkService: NetworkingService {
@@ -74,6 +75,33 @@ class DefaultNetworkService: NetworkingService {
                         let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                         let bundleData = response?["shop"] as? [[String: Any]]
                         let items = bundleData?.compactMap { ShopItem.sharingParse(sharingJSON: $0) } ?? []
+                        completion(.success(items))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void) {
+        guard var url = baseURL else { return }
+        url = url.appendingPathComponent("v1/maps/list")
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.sendRequest(request: request) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        let bundleData = response?["maps"] as? [[String: Any]]
+                        let items = bundleData?.compactMap { Map.sharingParse(sharingJSON: $0) } ?? []
                         completion(.success(items))
                     } catch {
                         completion(.failure(error))

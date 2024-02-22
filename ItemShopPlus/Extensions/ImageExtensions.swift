@@ -54,8 +54,10 @@ extension UIImage {
     }
     
     enum MapPage {
-        static let poi = UIImage(systemName: "slider.horizontal.3")
-        static let archive = UIImage(systemName: "clock.arrow.circlepath")
+        static let poiMenu = UIImage(systemName: "slider.horizontal.3")
+        static let archiveMenu = UIImage(systemName: "clock.arrow.circlepath")
+        static let poiAction = UIImage(systemName: "mappin")
+        static let clearAction = UIImage(systemName: "mappin.slash")
     }
 }
 

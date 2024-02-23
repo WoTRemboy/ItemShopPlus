@@ -35,6 +35,7 @@ class Texts {
     
     enum Navigation {
         static let cancel = "Cancel"
+        static let done = "Done"
         static let backToMain = "Main"
         static let backToShop = "Shop"
     }
@@ -113,6 +114,7 @@ class Texts {
         static let title = "Map"
         static let poi = "POI"
         static let clear = "Clear"
+        static let archive = "Archive"
     }
     
     enum noConnection {

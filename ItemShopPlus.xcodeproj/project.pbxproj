@@ -28,6 +28,7 @@
 		638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638594B32B2CFD7C009FEED6 /* QuestDetailsView.swift */; };
 		638FD6D12B854D4100CE47BD /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D02B854D4100CE47BD /* MapModel.swift */; };
 		638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */; };
+		638FD6D52B8900CF00CE47BD /* MapPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */; };
 		63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BB2B232F4000FABD69 /* AppDelegate.swift */; };
 		63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BD2B232F4000FABD69 /* SceneDelegate.swift */; };
 		63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BF2B232F4000FABD69 /* MainPageController.swift */; };
@@ -74,6 +75,7 @@
 		638594B32B2CFD7C009FEED6 /* QuestDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailsView.swift; sourceTree = "<group>"; };
 		638FD6D02B854D4100CE47BD /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapsParce.swift; sourceTree = "<group>"; };
+		638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerViewController.swift; sourceTree = "<group>"; };
 		63C898B82B232F4000FABD69 /* ItemShopPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemShopPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C898BB2B232F4000FABD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C898BD2B232F4000FABD69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				632533B02B83D45700DA3F05 /* MapPreviewViewController.swift */,
+				638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				634F3F8B2B67CC8800C01426 /* NoInternetView.swift in Sources */,
 				638594B22B2CF80F009FEED6 /* QuestsDetailsViewController.swift in Sources */,
 				63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */,
+				638FD6D52B8900CF00CE47BD /* MapPickerViewController.swift in Sources */,
 				63F94E792B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift in Sources */,
 				63290CE52B615CFF008F45F8 /* ShopGrantedParametersRowView.swift in Sources */,
 				63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */,

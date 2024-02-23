@@ -9,13 +9,12 @@ import UIKit
 
 class MapPreviewViewController: UIViewController {
     
+    private var maps = [Map]()
+    private var actualMap = Map(patchVersion: "", realeseDate: .now, clearImage: "", poiImage: "")
+    
     private var image: String
     private var imageLoadTask: URLSessionDataTask?
     private var selectedPOI = Texts.MapPage.poi
-    private var selectedMapVersion = ""
-    
-    private var maps = [Map]()
-    private var actualMap = Map(patchVersion: "", realeseDate: .now, clearImage: "", poiImage: "")
     
     private let scrollView = MapZoomView()
     private let noInternetView = NoInternetView()
@@ -64,8 +63,6 @@ class MapPreviewViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .BackColors.backDefault
         
-        view.addSubview(noInternetView)
-        
         navigationBarSetup()
         poiMenuSetup()
         scrollViewSetup()
@@ -95,11 +92,9 @@ class MapPreviewViewController: UIViewController {
                     self?.maps = newItems
                     if let actual = newItems.last {
                         self?.actualMap = actual
-                        self?.selectedMapVersion = self?.createTitle(version: actual.patchVersion, date: actual.realeseDate) ?? ""
                     }
                     self?.archiveMenuSetup()
                     self?.showActualMap()
-                    self?.loadSuccess(success: true)
                 }
                 
             case .failure(let error):
@@ -113,7 +108,7 @@ class MapPreviewViewController: UIViewController {
     
     private func changeImageInPreview(newImage: String, sectionTitle: String, type: NavigationMapButtonType) {
         guard sectionTitle != selectedPOI else { return }
-        guard sectionTitle != selectedMapVersion else { return }
+        guard sectionTitle != actualMap.poiImage else { return }
         
         ImageLoader.cancelImageLoad(task: imageLoadTask)
         image = newImage
@@ -133,10 +128,9 @@ class MapPreviewViewController: UIViewController {
                 self.scrollView.zoomScale = 1
                 
                 if type == .location {
-                    self.updateMenuState(for: sectionTitle, button: self.poiChangeButton, type: .location, reload: true)
+                    self.updateMenuState(for: sectionTitle, reload: true)
                 } else {
-                    self.updateMenuState(for: sectionTitle, button: self.archiveButton, type: .version, reload: true)
-                    self.updateMenuState(for: Texts.MapPage.poi, button: self.poiChangeButton, type: .location, reload: false)
+                    self.updateMenuState(for: Texts.MapPage.poi, reload: false)
                 }
             }
         }
@@ -194,11 +188,6 @@ class MapPreviewViewController: UIViewController {
         ]
     }
     
-    private func createTitle(version: String, date: Date) -> String {
-        let stringDate = DateFormating.dateFormatterShopGranted.string(from: date)
-        return "v\(version) – \(stringDate)"
-    }
-    
     private func activityIndicatorSetup() {
         activityIndicator.center = self.view.center
         view.addSubview(activityIndicator)
@@ -219,41 +208,36 @@ class MapPreviewViewController: UIViewController {
     }
     
     private func archiveMenuSetup() {
-        var children = [UIMenuElement]()
-        for map in maps {
-            let currentAction = UIAction(title: createTitle(version: map.patchVersion, date: map.realeseDate)) { [weak self] action in
-                
-                self?.changeImageInPreview(
-                    newImage: map.poiImage,
-                    sectionTitle: self?.createTitle(
-                        version: map.patchVersion,
-                        date: map.realeseDate) ?? "", type: .version)
-                
-                self?.actualMap = map
-            }
-            children.append(currentAction)
-            if map.patchVersion == actualMap.patchVersion { currentAction.state = .on }
-        }
-        children.reverse()
-        archiveButton.menu = UIMenu(title: "", children: children)
+        archiveButton.target = self
+        archiveButton.action = #selector(archiveButtonTapped)
     }
     
-    private func updateMenuState(for sectionTitle: String, button: UIBarButtonItem, type: NavigationMapButtonType, reload: Bool) {
-        if let currentAction = button.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
-            currentAction.state = .on
+    @objc private func archiveButtonTapped() {
+        let vc = MapPickerViewController(maps: maps.reversed(), currentMap: actualMap)
+        
+        vc.completionHandler = { map in
+            self.changeImageInPreview(
+                newImage: map.poiImage,
+                sectionTitle: map.poiImage, type: .version)
+            
+            self.actualMap = map
         }
         
-        switch type {
-        case .location:
-            if let previousAction = button.menu?.children.first(where: { $0.title == selectedPOI }) as? UIAction {
-                if reload || selectedPOI != Texts.MapPage.poi { previousAction.state = .off }
-                selectedPOI = sectionTitle
-            }
-        case .version:
-            if let previousAction = button.menu?.children.first(where: { $0.title == selectedMapVersion }) as? UIAction {
-                previousAction.state = .off
-                selectedMapVersion = sectionTitle
-            }
+        let navController = UINavigationController(rootViewController: vc)
+        let fraction = UISheetPresentationController.Detent.custom { context in
+            (self.view.frame.height * 0.5 - self.view.safeAreaInsets.bottom)
+        }
+        navController.sheetPresentationController?.detents = [fraction]
+        present(navController, animated: true)
+    }
+    
+    private func updateMenuState(for sectionTitle: String, reload: Bool) {
+        if let currentAction = poiChangeButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
+            currentAction.state = .on
+        }
+        if let previousAction = poiChangeButton.menu?.children.first(where: { $0.title == selectedPOI }) as? UIAction {
+            if reload || selectedPOI != Texts.MapPage.poi { previousAction.state = .off }
+            selectedPOI = sectionTitle
         }
     }
     
@@ -270,7 +254,9 @@ class MapPreviewViewController: UIViewController {
     }
     
     private func noInternetSetup() {
+        view.addSubview(noInternetView)
         noInternetView.isHidden = true
+        
         noInternetView.reloadButton.addTarget(self, action: #selector(refresh), for: .touchUpInside)
         noInternetView.configurate()
         

@@ -41,4 +41,8 @@ extension UIColor {
         static let foregroundPages = UIColor(named: "ForegroundPages")
         static let backgroundPages = UIColor(named: "BackgroundPages")
     }
+    
+    enum Shadows {
+        static let primary = UIColor.black.cgColor
+    }
 }

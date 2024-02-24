@@ -14,7 +14,7 @@ class MainPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Texts.Pages.main
-        view.backgroundColor = .backPrimary
+        view.backgroundColor = .backDefault
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always

@@ -55,6 +55,9 @@ class MPButtonView: UIView {
     private func setupLayout() {
         backgroundColor = .BackColors.backElevated
         layer.cornerRadius = 12
+        layer.shadowColor = UIColor.Shadows.primary
+        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 20
         translatesAutoresizingMaskIntoConstraints = false
         
         buttonContentSetup(buttonType: buttonType)

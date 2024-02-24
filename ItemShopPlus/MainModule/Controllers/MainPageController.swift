@@ -16,6 +16,8 @@ class MainPageViewController: UIViewController {
         title = Texts.Pages.main
         view.backgroundColor = .backDefault
         
+        UIView.appearance().isExclusiveTouch = true
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         

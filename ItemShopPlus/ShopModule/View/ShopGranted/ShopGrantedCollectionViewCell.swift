@@ -86,6 +86,7 @@ class ShopGrantedCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         ImageLoader.cancelImageLoad(task: imageLoadTask)
+        grantedImageView.image = .Placeholder.noImage
         grantedImageView.removeFromSuperview()
         rarityImageView.removeFromSuperview()
     }

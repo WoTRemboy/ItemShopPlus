@@ -41,7 +41,7 @@ extension ShopItem {
         
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
         let regularPrice = priceData["regularPrice"] as? Int ?? 0
-        let rarity = rarityData["name"] as? String ?? ""
+        let rarity = rarityData["id"] as? String ?? ""
         let section = sectionsData["name"] as? String ?? ""
         
         let seriesData = data["series"] as? [String: Any]

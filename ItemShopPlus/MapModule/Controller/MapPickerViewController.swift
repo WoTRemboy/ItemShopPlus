@@ -16,7 +16,7 @@ class MapPickerViewController: UIViewController {
     
     private let pickerView: UIPickerView = {
         let picker = UIPickerView()
-        picker.backgroundColor = .backiOSPrimary
+        picker.backgroundColor = .BackColors.backElevated
         return picker
     }()
     

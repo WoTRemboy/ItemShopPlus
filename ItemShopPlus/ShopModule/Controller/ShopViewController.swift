@@ -214,7 +214,7 @@ class ShopViewController: UIViewController {
         }
         allAction.state = .on
         var children = [allAction]
-        for section in sectionedItems {
+        for section in sectionedItems.sorted(by: { $0.key < $1.key }) {
             let sectionAction = UIAction(title: section.key, image: nil) { [weak self] action in
                 self?.filterItemsBySection(sectionTitle: section.key, forAll: false)
             }
@@ -284,7 +284,7 @@ extension ShopViewController: UISearchResultsUpdating, UISearchControllerDelegat
         
         if let searchText = searchController.searchBar.text {
             filteredItems = items.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-            if filteredItems.count != previousCount || (searchText.isEmpty && collectionView.visibleCells.count == 0) {
+            if filteredItems.count != previousCount || (searchText.isEmpty && collectionView.visibleCells.count == 0) || (!searchText.isEmpty && filteredItems.count == 0) {
                 UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
                     self.collectionView.reloadData()
                 }, completion: nil)
@@ -305,7 +305,7 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
-        let sectionKey = Array(sectionedItems.keys)[section]
+        let sectionKey = Array(sectionedItems.keys).sorted()[section]
         return inSearchMode ? filteredItems.count : sectionedItems[sectionKey]?.count ?? 0
     }
     
@@ -321,12 +321,12 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if inSearchMode {
             let item = filteredItems[indexPath.item]
-            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.count, width)
+            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
         } else {
-            let sectionKey = Array(sectionedItems.keys)[indexPath.section]
+            let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
-                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.count, width)
+                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
             }
         }
         
@@ -351,7 +351,7 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }) { (_) in
             let item: ShopItem
             
-            let sectionKey = Array(self.sectionedItems.keys)[indexPath.section]
+            let sectionKey = Array(self.sectionedItems.keys).sorted()[indexPath.section]
             if let itemsInSection = self.sectionedItems[sectionKey] {
                 (self.filteredItems.count != 0 && self.filteredItems.count != self.items.count) ? (item = self.filteredItems[indexPath.item]) : (item = itemsInSection[indexPath.item])
                 
@@ -405,7 +405,7 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
         }
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
-        let sectionKey = Array(sectionedItems.keys)[indexPath.section]
+        let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
         let count = filteredItems.count
         inSearchMode ? headerView.configurate(with: count > 0 ? Texts.ShopSearchController.result : Texts.ShopSearchController.noResult) : headerView.configurate(with: sectionKey)
         return headerView

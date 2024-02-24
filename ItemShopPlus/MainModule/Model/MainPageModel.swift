@@ -16,4 +16,5 @@ enum ButtonType {
     case map
     case vehicles
     case augments
+    case null
 }

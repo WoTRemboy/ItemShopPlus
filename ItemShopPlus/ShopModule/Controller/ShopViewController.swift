@@ -92,11 +92,13 @@ class ShopViewController: UIViewController {
     }
     
     @objc private func handleTapOutsideKeyboard() {
+        guard searchController.isActive else { return }
         if searchController.searchBar.text?.isEmpty == true {
             searchController.dismiss(animated: true)
         } else {
             searchController.searchBar.resignFirstResponder()
         }
+        UIView.appearance().isExclusiveTouch = true
     }
     
     @objc private func infoButtonTapped() {
@@ -292,6 +294,14 @@ extension ShopViewController: UISearchResultsUpdating, UISearchControllerDelegat
             }
         }
     }
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+        UIView.appearance().isExclusiveTouch = false
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        UIView.appearance().isExclusiveTouch = true
+    }
 }
 
 extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -365,11 +375,13 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard searchController.isActive else { return }
         if searchController.searchBar.text?.isEmpty == true {
             searchController.dismiss(animated: false)
         } else {
             searchController.searchBar.resignFirstResponder()
         }
+        UIView.appearance().isExclusiveTouch = true
     }
 }
 

@@ -12,6 +12,9 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     static let identifier = Texts.ShopMainCell.identifier
     private var imageLoadTask: URLSessionDataTask?
     
+    private var images = [String]()
+    private var isLoading = false
+    
     private var imageViews = [UIImageView]()
     private let bannerImageView = UIImageView()
     
@@ -22,6 +25,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         view.indicatorStyle = .white
+        view.showsHorizontalScrollIndicator = false
         return view
     }()
     
@@ -75,6 +79,8 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     }()
         
     public func configurate(with images: [String], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, grantedCount: Int, _ width: CGFloat) {
+        self.images = images
+        
         setupImageCarousel(images: images, banner: banner, grantedCount: grantedCount, cellWidth: width)
         contentSetup(name: name, price: price, oldPrice: oldPrice, count: grantedCount)
         setupUI()
@@ -107,8 +113,11 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             imageView.image = .Placeholder.noImage
             imageViews.append(imageView)
             scrollView.addSubview(imageView)
-            imageLoadTask = ImageLoader.loadAndShowImage(from: imageURL, to: imageView)
-
+            
+            if index == 0 {
+                imageLoadTask = ImageLoader.loadAndShowImage(from: imageURL, to: imageView)
+            }
+            
             imageView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 imageView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
@@ -124,6 +133,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         
         if images.count > 1 {
             itemPagesImageViewSetup(cellWidth: cellWidth)
+            scrollView.showsHorizontalScrollIndicator = true
         }
         
         if banner != .null, banner != .sale {
@@ -224,8 +234,11 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     override func prepareForReuse() {
         super.prepareForReuse()
         ImageLoader.cancelImageLoad(task: imageLoadTask)
+        scrollView.setContentOffset(.zero, animated: false)
+        scrollView.showsHorizontalScrollIndicator = false
         
         for imageView in imageViews {
+            imageView.image = .Placeholder.noImage
             imageView.removeFromSuperview()
         }
         imageViews.removeAll()
@@ -233,5 +246,37 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         bannerImageView.removeFromSuperview()
         grantedItemsImageView.removeFromSuperview()
         itemPagesImageView.removeFromSuperview()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        loadImagesForOnscreenCells()
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        loadImagesForOnscreenCells()
+    }
+    
+    private func loadImagesForOnscreenCells() {
+        let visibleRect = CGRect(origin: scrollView.contentOffset, size: scrollView.bounds.size)
+        for (index, imageView) in imageViews.enumerated() {
+            if visibleRect.intersects(imageView.frame) && imageView.image == .Placeholder.noImage, !isLoading {
+                
+                isLoading = true
+                let imageURL = images[index]
+                
+                imageLoadTask = ImageLoader.loadImage(urlString: imageURL) { image in
+                    DispatchQueue.main.async {
+                        imageView.alpha = 0.5
+                        if let image = image {
+                            imageView.image = image
+                        }
+                        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                            imageView.alpha = 1.0
+                        }, completion: nil)
+                    }
+                    self.isLoading = false
+                }
+            }
+        }
     }
 }

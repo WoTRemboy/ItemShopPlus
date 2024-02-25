@@ -17,6 +17,7 @@ class MPButtonViewController: UIViewController {
     private let mapButton = MPButtonView(frame: .null, buttonType: .map)
     private let vehiclesButton = MPButtonView(frame: .null, buttonType: .vehicles)
     private let augumentsButton = MPButtonView(frame: .null, buttonType: .augments)
+    private let cacheButton = MPButtonView(frame: .null, buttonType: .cache)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,8 @@ class MPButtonViewController: UIViewController {
         view.addSubview(crewButton)
         view.addSubview(mapButton)
         view.addSubview(vehiclesButton)
-        view.addSubview(augumentsButton)
+//        view.addSubview(augumentsButton)
+        view.addSubview(cacheButton)
         
         shopButtonSetup()
         tournamentButtonSetup()
@@ -37,7 +39,8 @@ class MPButtonViewController: UIViewController {
         crewButtonSetup()
         mapButtonSetup()
         vehiclesButtonSetup()
-        augumentsButtonSetup()
+//        augumentsButtonSetup()
+        cacheButtonSetup()
     }
     
     private func shopButtonSetup() {
@@ -103,12 +106,21 @@ class MPButtonViewController: UIViewController {
         ])
     }
     
-    private func augumentsButtonSetup() {
+//    private func augumentsButtonSetup() {
+//        NSLayoutConstraint.activate([
+//            augumentsButton.topAnchor.constraint(equalTo: mapButton.bottomAnchor, constant: 16),
+//            augumentsButton.trailingAnchor.constraint(equalTo: newsButton.trailingAnchor),
+//            augumentsButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
+//            augumentsButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+//        ])
+//    }
+    
+    private func cacheButtonSetup() {
         NSLayoutConstraint.activate([
-            augumentsButton.topAnchor.constraint(equalTo: mapButton.bottomAnchor, constant: 16),
-            augumentsButton.trailingAnchor.constraint(equalTo: newsButton.trailingAnchor),
-            augumentsButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
-            augumentsButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+            cacheButton.topAnchor.constraint(equalTo: mapButton.bottomAnchor, constant: 16),
+            cacheButton.trailingAnchor.constraint(equalTo: newsButton.trailingAnchor),
+            cacheButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
+            cacheButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
     }
 }

@@ -121,19 +121,24 @@ class ImageLoader {
         return UIImage(data: imageData)
     }
     
-    static func cleanCache() {
+    static func cleanCache(full: Bool, completion: @escaping () -> Void) {
         do {
             let cacheExpirationInterval: TimeInterval = 24 * 60 * 60 // 24 hours
             
             let contents = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             
             for fileURL in contents {
-                let accessDate = try fileManager.attributesOfItem(atPath: fileURL.path)[.modificationDate] as? Date
-                
-                if let accessDate = accessDate, Date().timeIntervalSince(accessDate) > cacheExpirationInterval {
+                if full {
                     try fileManager.removeItem(at: fileURL)
+                } else {
+                    let accessDate = try fileManager.attributesOfItem(atPath: fileURL.path)[.modificationDate] as? Date
+                    
+                    if let accessDate = accessDate, Date().timeIntervalSince(accessDate) > cacheExpirationInterval {
+                        try fileManager.removeItem(at: fileURL)
+                    }
                 }
             }
+            completion()
         } catch {
             print("Error cleaning cache: \(error)")
         }
@@ -144,6 +149,28 @@ class ImageLoader {
             try fileManager.setAttributes([.modificationDate: Date()], ofItemAtPath: cacheURL.path)
         } catch {
             print("Error marking access time for \(cacheURL): \(error)")
+        }
+    }
+    
+    static func cacheSize() -> Float {
+        do {
+            let contents = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            
+            var totalSize: Int = 0
+            let bytesInMegabyte: Float = 1024 * 1024
+            
+            for fileURL in contents {
+                let fileAttributes = try fileManager.attributesOfItem(atPath: fileURL.path)
+                if let fileSize = fileAttributes[.size] as? Int {
+                    totalSize += fileSize
+                }
+            }
+            
+            let sizeInMegabytes = Float(totalSize) / bytesInMegabyte
+            return (sizeInMegabytes * 10).rounded() / 10
+        } catch {
+            print("Error calculating cache size: \(error)")
+            return 0
         }
     }
 }

@@ -22,6 +22,7 @@ class Texts {
             static let map = "Map"
             static let vehicles = "Vehicles"
             static let augments = "Augments"
+            static let cache = "Clear Cache"
         }
     }
     
@@ -38,6 +39,19 @@ class Texts {
         static let done = "Done"
         static let backToMain = "Main"
         static let backToShop = "Shop"
+    }
+    
+    enum ClearCache {
+        static let message = "All media used in the app will remain in the cloud and will be re-downloaded when needed"
+        static let cache = "Clear Cache"
+        static let megabytes = "MB"
+        static let cancel = "Cancel"
+        
+        static let oops = "Oops!"
+        static let alreadyClean = "The cache is already clean."
+        static let success = "Success"
+        static let cleared = "The cache has been cleared."
+        static let ok = "OK"
     }
     
     enum Season {

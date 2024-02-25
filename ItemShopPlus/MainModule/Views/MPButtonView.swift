@@ -113,6 +113,10 @@ class MPButtonView: UIView {
             buttonLabel.text = Texts.ButtonLabels.MainButtons.augments
             buttonImageView.image = .MainButtons.augments
             selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
+        case .cache:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.cache
+            buttonImageView.image = .MainButtons.trash
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.clearCache), for: .touchUpInside)
         case .null:
             buttonLabel.text = "??????"
             buttonImageView.image = .MainButtons.question

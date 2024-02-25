@@ -22,6 +22,7 @@ extension UIImage {
         static let vehicles = createImage(name: "car")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")
         static let question = createImage(name: "questionmark.square.dashed")
+        static let trash = createImage(name: "trash")
     }
     
     enum Quests {

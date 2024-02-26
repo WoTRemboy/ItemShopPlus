@@ -51,10 +51,10 @@ class ShopGrantedCollectionReusableView: UICollectionReusableView {
     
     public func configurate(description: String, firstDate: Date, lastDate: Date, series: String?, price: Int) {
         descriptionContentLabel.text = description
-        seriesView.contentLabel.text = series
+        seriesView.configurate(content: series ?? "")
         
-        firstTimeView.contentLabel.text = DateFormating.dateFormatterShopGranted.string(from: firstDate)
-        lastTimeView.contentLabel.text = DateFormating.dateFormatterShopGranted.string(from: lastDate)
+        firstTimeView.configurate(content: DateFormating.dateFormatterShopGranted.string(from: firstDate))
+        lastTimeView.configurate(content: DateFormating.dateFormatterShopGranted.string(from: lastDate))
         
         priceView.priceLabel.text = String(price)
         

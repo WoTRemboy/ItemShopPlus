@@ -35,6 +35,10 @@ class MainPageViewController: UIViewController {
         navigationController?.pushViewController(ShopViewController(), animated: true)
     }
     
+    @objc func crewTransfer() {
+        navigationController?.pushViewController(CrewMainViewController(), animated: true)
+    }
+    
     @objc func mapTransfer() {
         navigationController?.pushViewController(MapPreviewViewController(image: "https://media.fortniteapi.io/images/map.png?showPOI=true"), animated: true)
     }

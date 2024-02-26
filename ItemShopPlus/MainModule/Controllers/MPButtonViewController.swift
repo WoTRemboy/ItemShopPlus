@@ -10,10 +10,10 @@ import UIKit
 class MPButtonViewController: UIViewController {
     
     private let shopButton = MPButtonView(frame: .null, buttonType: .shop)
-    private let tournamentButton = MPButtonView(frame: .null, buttonType: .tournaments)
+    private let crewButton = MPButtonView(frame: .null, buttonType: .crew)
     private let newsButton = MPButtonView(frame: .null, buttonType: .news)
     private let questsButton = MPButtonView(frame: .null, buttonType: .quests)
-    private let crewButton = MPButtonView(frame: .null, buttonType: .crew)
+    private let tournamentButton = MPButtonView(frame: .null, buttonType: .tournaments)
     private let mapButton = MPButtonView(frame: .null, buttonType: .map)
     private let vehiclesButton = MPButtonView(frame: .null, buttonType: .vehicles)
     private let augumentsButton = MPButtonView(frame: .null, buttonType: .augments)
@@ -23,20 +23,20 @@ class MPButtonViewController: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(shopButton)
-        view.addSubview(tournamentButton)
+        view.addSubview(crewButton)
         view.addSubview(newsButton)
         view.addSubview(questsButton)
-        view.addSubview(crewButton)
+        view.addSubview(tournamentButton)
         view.addSubview(mapButton)
         view.addSubview(vehiclesButton)
 //        view.addSubview(augumentsButton)
         view.addSubview(cacheButton)
         
         shopButtonSetup()
-        tournamentButtonSetup()
+        crewButtonSetup()
         newsButtonSetup()
         questsButtonSetup()
-        crewButtonSetup()
+        tournamentButtonSetup()
         mapButtonSetup()
         vehiclesButtonSetup()
 //        augumentsButtonSetup()
@@ -61,12 +61,12 @@ class MPButtonViewController: UIViewController {
         ])
     }
     
-    private func tournamentButtonSetup() {
+    private func crewButtonSetup() {
         NSLayoutConstraint.activate([
-            tournamentButton.topAnchor.constraint(equalTo: shopButton.bottomAnchor, constant: 16),
-            tournamentButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
-            tournamentButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
-            tournamentButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+            crewButton.topAnchor.constraint(equalTo: shopButton.bottomAnchor, constant: 16),
+            crewButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
+            crewButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
+            crewButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
     }
     
@@ -79,12 +79,12 @@ class MPButtonViewController: UIViewController {
         ])
     }
     
-    private func crewButtonSetup() {
+    private func tournamentButtonSetup() {
         NSLayoutConstraint.activate([
-            crewButton.topAnchor.constraint(equalTo: tournamentButton.bottomAnchor, constant: 16),
-            crewButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
-            crewButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
-            crewButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+            tournamentButton.topAnchor.constraint(equalTo: crewButton.bottomAnchor, constant: 16),
+            tournamentButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
+            tournamentButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
+            tournamentButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
     }
     
@@ -99,7 +99,7 @@ class MPButtonViewController: UIViewController {
     
     private func vehiclesButtonSetup() {
         NSLayoutConstraint.activate([
-            vehiclesButton.topAnchor.constraint(equalTo: crewButton.bottomAnchor, constant: 16),
+            vehiclesButton.topAnchor.constraint(equalTo: tournamentButton.bottomAnchor, constant: 16),
             vehiclesButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
             vehiclesButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
             vehiclesButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)

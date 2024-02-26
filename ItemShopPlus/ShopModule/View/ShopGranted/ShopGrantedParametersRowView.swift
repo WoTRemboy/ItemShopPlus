@@ -18,7 +18,7 @@ class ShopGrantedParametersRowView: UIView {
         return label
     }()
     
-    let contentLabel: UILabel = {
+    private let contentLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.content
         label.textColor = .labelSecondary
@@ -43,6 +43,10 @@ class ShopGrantedParametersRowView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func configurate(content: String) {
+        contentLabel.text = content
     }
     
     private func setupUI() {

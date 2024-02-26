@@ -17,7 +17,7 @@ extension UIImage {
         static let battlePass = createImage(name: "star")
         static let tournaments = createImage(name: "medal")
         static let quests = createImage(name: "list.bullet.clipboard")
-        static let crew = createImage(name: "waveform")
+        static let crew = createImage(name: "dollarsign.arrow.circlepath")
         static let map = createImage(name: "map")
         static let vehicles = createImage(name: "car")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")

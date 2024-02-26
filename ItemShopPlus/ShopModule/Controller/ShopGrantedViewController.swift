@@ -149,10 +149,6 @@ extension ShopGrantedViewController: UICollectionViewDelegate, UICollectionViewD
             cell.configurate(name: bundle.name, type: bundle.type, rarity: bundle.rarity, image: bundle.images.first ?? "")
         }
         
-//        if items.count == 0 {
-//            
-//        }
-        
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         

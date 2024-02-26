@@ -70,6 +70,28 @@ class Texts {
         static let reloadShop = "It's time to update!"
     }
     
+    enum CrewPage {
+        static let title = "Crew Pack"
+    }
+    
+    enum CrewPageCell {
+        static let identifier = "CrewCell"
+        static let footerIdentifier = "CrewFooterReusableView"
+        
+        static let itemName = "Item name..."
+        static let price = "Pack price..."
+        static let symbol = "$"
+        static let header = "Item Bundle"
+        static let introductionTitle = "First appearance"
+        static let introductionText = "Introduced in..."
+        static let mainBenefits = "Main benefits"
+        static let vbucks = "1,000 V-Bucks"
+        static let additionalBenefints = "Additional benefits"
+        static let yes = "Yes"
+        static let no = "No"
+        static let and = "and"
+    }
+    
     enum BundleQuestsCell {
         static let identifier = "BundleCell"
         static let bundleName = "Bundle name..."

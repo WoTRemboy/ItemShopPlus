@@ -10,6 +10,7 @@ import Foundation
 protocol NetworkingService {
     func getQuestBundles(completion: @escaping (Result<[QuestBundle], Error>) -> Void)
     func getShopItems(completion: @escaping (Result<[ShopItem], Error>) -> Void)
+    func getCrewItems(completion: @escaping (Result<CrewPack, Error>) -> Void)
     func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void)
 }
 
@@ -76,6 +77,36 @@ class DefaultNetworkService: NetworkingService {
                         let bundleData = response?["shop"] as? [[String: Any]]
                         let items = bundleData?.compactMap { ShopItem.sharingParse(sharingJSON: $0) } ?? []
                         completion(.success(items))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    func getCrewItems(completion: @escaping (Result<CrewPack, Error>) -> Void) {
+        guard var url = baseURL else { return }
+        url = url.appendingPathComponent("v2/crew")
+        
+        let queryItems = [URLQueryItem(name: "lang", value: "en")]
+        url.append(queryItems: queryItems)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.sendRequest(request: request) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        let items = CrewPack.sharingParse(sharingJSON: response as Any) ?? nil
+                        let emptyPack = CrewPack(title: "", items: [CrewItem](), battlePassTitle: nil, addPassTitle: nil, image: nil, date: "", price: ["": ("", 0.0)])
+                        completion(.success(items ?? emptyPack))
                     } catch {
                         completion(.failure(error))
                     }

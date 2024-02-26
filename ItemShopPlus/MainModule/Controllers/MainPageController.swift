@@ -47,15 +47,14 @@ class MainPageViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: Texts.ClearCache.message, preferredStyle: .actionSheet)
         
         let cacheSize = ImageLoader.cacheSize()
-        let cacheToShow = cacheSize == 0 ? "0" : String(cacheSize)
-        
-        let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache) (\(cacheToShow) \(Texts.ClearCache.megabytes))", style: .destructive) { _ in
-            if cacheSize == 0 {
-                self.alertControllerSetup(title: Texts.ClearCache.oops, message: Texts.ClearCache.alreadyClean)
-            } else {
-                ImageLoader.cleanCache(full: true) {
-                    self.alertControllerSetup(title: Texts.ClearCache.success, message: Texts.ClearCache.cleared)
-                }
+        guard cacheSize != 0 else {
+            alertControllerSetup(title: Texts.ClearCache.oops, message: Texts.ClearCache.alreadyClean)
+            return
+        }
+            
+        let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache) (\(cacheSize) \(Texts.ClearCache.megabytes))", style: .destructive) { _ in
+            ImageLoader.cleanCache(full: true) {
+                self.alertControllerSetup(title: Texts.ClearCache.success, message: Texts.ClearCache.cleared)
             }
         }
         let cancelAction = UIAlertAction(title: Texts.ClearCache.cancel, style: .cancel, handler: nil)

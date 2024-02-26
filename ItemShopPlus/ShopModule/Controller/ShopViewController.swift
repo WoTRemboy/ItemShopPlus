@@ -27,6 +27,7 @@ class ShopViewController: UIViewController {
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isHidden = true
         collectionView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: ShopCollectionViewCell.identifier)
         collectionView.register(ShopCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ShopCollectionReusableView.identifier)
         return collectionView
@@ -147,12 +148,14 @@ class ShopViewController: UIViewController {
                     self?.filterButton.isEnabled = true
                     
                     self?.collectionView.reloadData()
+                    self?.collectionView.isHidden = false
                     self?.menuSetup()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.clearItems()
                     self?.collectionView.reloadData()
+                    self?.collectionView.isHidden = false
                     
                     self?.noInternetView.isHidden = false
                     self?.searchController.searchBar.isHidden = true

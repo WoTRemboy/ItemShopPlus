@@ -33,6 +33,7 @@
 		638FD6D12B854D4100CE47BD /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D02B854D4100CE47BD /* MapModel.swift */; };
 		638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */; };
 		638FD6D52B8900CF00CE47BD /* MapPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */; };
+		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
 		63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BB2B232F4000FABD69 /* AppDelegate.swift */; };
 		63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BD2B232F4000FABD69 /* SceneDelegate.swift */; };
 		63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BF2B232F4000FABD69 /* MainPageController.swift */; };
@@ -51,6 +52,8 @@
 		63ECC1282B90A930006E0841 /* CommonLogicMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC1272B90A930006E0841 /* CommonLogicMethods.swift */; };
 		63ECC12B2B9106FE006E0841 /* CommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC12A2B9106FE006E0841 /* CommonModels.swift */; };
 		63ECC12D2B910A00006E0841 /* SelectingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC12C2B910A00006E0841 /* SelectingMethods.swift */; };
+		63ECC1352B9259A2006E0841 /* BattlePassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC1342B9259A2006E0841 /* BattlePassModel.swift */; };
+		63ECC1372B9259C6006E0841 /* JSONBattlePassParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC1362B9259C6006E0841 /* JSONBattlePassParce.swift */; };
 		63F547872B34A8D500B3F941 /* DefaultNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F547862B34A8D500B3F941 /* DefaultNetworkService.swift */; };
 		63F547892B34AE2200B3F941 /* JSONParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F547882B34AE2200B3F941 /* JSONParce.swift */; };
 		63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F5478A2B35E40500B3F941 /* DateFormatting.swift */; };
@@ -87,6 +90,7 @@
 		638FD6D02B854D4100CE47BD /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapsParce.swift; sourceTree = "<group>"; };
 		638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerViewController.swift; sourceTree = "<group>"; };
+		639E62342B92719100E17B4F /* BattlePassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainViewController.swift; sourceTree = "<group>"; };
 		63C898B82B232F4000FABD69 /* ItemShopPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemShopPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C898BB2B232F4000FABD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C898BD2B232F4000FABD69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 		63ECC1272B90A930006E0841 /* CommonLogicMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLogicMethods.swift; sourceTree = "<group>"; };
 		63ECC12A2B9106FE006E0841 /* CommonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModels.swift; sourceTree = "<group>"; };
 		63ECC12C2B910A00006E0841 /* SelectingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectingMethods.swift; sourceTree = "<group>"; };
+		63ECC1342B9259A2006E0841 /* BattlePassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassModel.swift; sourceTree = "<group>"; };
+		63ECC1362B9259C6006E0841 /* JSONBattlePassParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONBattlePassParce.swift; sourceTree = "<group>"; };
 		63F547862B34A8D500B3F941 /* DefaultNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkService.swift; sourceTree = "<group>"; };
 		63F547882B34AE2200B3F941 /* JSONParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParce.swift; sourceTree = "<group>"; };
 		63F5478A2B35E40500B3F941 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
@@ -262,6 +268,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		639E62332B92715300E17B4F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				639E62342B92719100E17B4F /* BattlePassMainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		63C898AF2B232F4000FABD69 = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +299,7 @@
 				637B267D2B4AB3CD0075B871 /* SplashScreenModule */,
 				63C898D22B23310D00FABD69 /* MainModule */,
 				637B26842B4B39C70075B871 /* ShopModule */,
+				63ECC1322B92597C006E0841 /* BattlePassModule */,
 				632067252B8B60950060AB1B /* CrewModule */,
 				63C899042B25084800FABD69 /* QuestsModule */,
 				632533AB2B83D3A500DA3F05 /* MapModule */,
@@ -457,6 +472,24 @@
 			path = CollectionCells;
 			sourceTree = "<group>";
 		};
+		63ECC1322B92597C006E0841 /* BattlePassModule */ = {
+			isa = PBXGroup;
+			children = (
+				63ECC1332B92598C006E0841 /* Model */,
+				639E62332B92715300E17B4F /* Controller */,
+			);
+			path = BattlePassModule;
+			sourceTree = "<group>";
+		};
+		63ECC1332B92598C006E0841 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63ECC1342B9259A2006E0841 /* BattlePassModel.swift */,
+				63ECC1362B9259C6006E0841 /* JSONBattlePassParce.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		63F94E652B62D59300F5E4B9 /* ShopMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +585,7 @@
 				637B268B2B4B3A5D0075B871 /* ShopCollectionViewCell.swift in Sources */,
 				638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */,
 				63ECC1282B90A930006E0841 /* CommonLogicMethods.swift in Sources */,
+				639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */,
 				63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */,
 				6320672C2B8B66130060AB1B /* CrewModel.swift in Sources */,
 				637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */,
@@ -562,6 +596,7 @@
 				63F547872B34A8D500B3F941 /* DefaultNetworkService.swift in Sources */,
 				63F8B9D72B2CD84E006E2430 /* QuestTableViewCell.swift in Sources */,
 				63290CE32B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift in Sources */,
+				63ECC1352B9259A2006E0841 /* BattlePassModel.swift in Sources */,
 				63ECC12D2B910A00006E0841 /* SelectingMethods.swift in Sources */,
 				63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */,
 				638FD6D12B854D4100CE47BD /* MapModel.swift in Sources */,
@@ -578,6 +613,7 @@
 				63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */,
 				638FD6D52B8900CF00CE47BD /* MapPickerViewController.swift in Sources */,
 				63F94E792B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift in Sources */,
+				63ECC1372B9259C6006E0841 /* JSONBattlePassParce.swift in Sources */,
 				63290CE52B615CFF008F45F8 /* CollectionParametersRowView.swift in Sources */,
 				63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */,
 				632533AF2B83D3F300DA3F05 /* MapZoomView.swift in Sources */,

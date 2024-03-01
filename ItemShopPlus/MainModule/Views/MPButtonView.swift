@@ -96,7 +96,7 @@ class MPButtonView: UIView {
         case .battlePass:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.battlePass
             buttonImageView.image = .MainButtons.battlePass
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.battlePassTransfer), for: .touchUpInside)
         case .crew:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.crew
             buttonImageView.image = .MainButtons.crew

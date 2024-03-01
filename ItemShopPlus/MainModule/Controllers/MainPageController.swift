@@ -35,6 +35,10 @@ class MainPageViewController: UIViewController {
         navigationController?.pushViewController(ShopViewController(), animated: true)
     }
     
+    @objc func battlePassTransfer() {
+        navigationController?.pushViewController(BattlePassMainViewController(), animated: true)
+    }
+    
     @objc func crewTransfer() {
         navigationController?.pushViewController(CrewMainViewController(), animated: true)
     }

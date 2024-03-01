@@ -28,27 +28,26 @@ extension ShopItem {
         }
         
         var images = [String]()
-        var firstDate: Date?
-        var previousDate: Date?
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
         for asset in assetsData {
-            let image = asset["background"] as? String ?? ""
+            let image = asset["background"] as? String ?? String()
             images.append(image)
         }
         
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
         let regularPrice = priceData["regularPrice"] as? Int ?? 0
-        let rarity = rarityData["name"] as? String ?? ""
-        let section = sectionsData["name"] as? String ?? ""
+        let rarity = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
+        let section = sectionsData["name"] as? String ?? String()
         
         let seriesData = data["series"] as? [String: Any]
         let series = seriesData?["name"] as? String
         
-        let firstDateString = data["firstReleaseDate"] as? String ?? ""
-        let previousDateString = data["previousReleaseDate"] as? String ?? ""
+        var firstDate: Date?
+        var previousDate: Date?
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let firstDateString = data["firstReleaseDate"] as? String ?? String()
+        let previousDateString = data["previousReleaseDate"] as? String ?? String()
         if let date1 = dateFormatter.date(from: firstDateString), let date2 = dateFormatter.date(from: previousDateString) {
             firstDate = date1
             previousDate = date2
@@ -56,20 +55,7 @@ extension ShopItem {
         
         let bannerData = data["banner"] as? [String: Any]
         let bannerName = bannerData?["id"] as? String
-        
-        let banner: Banner
-        switch bannerName {
-        case "New":
-            banner = .new
-        case "vbucksoff":
-            banner = .sale
-        case "emotebuiltin":
-            banner = .emote
-        case "PickaxeIncluded":
-            banner = .pickaxe
-        default:
-            banner = .null
-        }
+        let banner = SelectingMethods.selectBanner(bannerText: bannerName)
         
         let granted: [GrantedItem] = grantedData.compactMap { GrantedItem.sharingParce(sharingJSON: $0) }
         
@@ -92,34 +78,17 @@ extension GrantedItem {
             return nil
         }
         
-        var type = typeData["id"] as? String ?? ""
-        type = capitalizeFirstLetter(input: type)
+        var type = typeData["id"] as? String ?? String()
+        type = CommonLogicMethods.capitalizeFirstLetter(input: type)
         
-        let rarity = rarityData["id"] as? String
         let series = data["series"] as? String
+        let rarity: Rarity? = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         
-        var image = ""
+        var image = String()
         if let imageData = imagesData["background"] as? String {
             image = imageData
         }
-        
+
         return GrantedItem(id: id, type: type, name: name, description: description, rarity: rarity, series: series, image: image)
     }
-}
-
-private func capitalizeFirstLetter(input: String) -> String {
-    var capitalizedWords = [String]()
-
-    let dirtyWords = input.replacingOccurrences(of: "_", with: " ")
-    let words = dirtyWords.components(separatedBy: " ")
-    
-    for word in words {
-        if let firstLetter = word.first {
-            let capitalizedWord = String(firstLetter).uppercased() + String(word.dropFirst())
-            capitalizedWords.append(capitalizedWord)
-        }
-    }
-
-    let result = capitalizedWords.joined(separator: " ")
-    return result
 }

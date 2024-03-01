@@ -9,8 +9,12 @@ import UIKit
 
 class ShopGrantedPreviewViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private var image: String
     private var name: String
+    
+    // MARK: - Initialization
     
     init(image: String, name: String) {
         self.image = image
@@ -22,6 +26,8 @@ class ShopGrantedPreviewViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - ViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,9 +36,13 @@ class ShopGrantedPreviewViewController: UIViewController {
         scrollViewSetup()
     }
     
+    // MARK: - Action
+    
     @objc private func cancelButtonTapped() {
         dismiss(animated: true)
     }
+    
+    // MARK: - UI Setups
     
     private func navigationBarSetup() {
         navigationItem.title = name
@@ -45,7 +55,7 @@ class ShopGrantedPreviewViewController: UIViewController {
     }
     
     private func scrollViewSetup() {
-        let scrollView = ShopPanZoomView(image: image, presentingViewController: self)
+        let scrollView = PreviewZoomView(image: image, presentingViewController: self)
         
         scrollView.panZoomDelegate = self
         view.addSubview(scrollView)
@@ -59,6 +69,8 @@ class ShopGrantedPreviewViewController: UIViewController {
         ])
     }
 }
+
+// MARK: - ShopGrantedPanZoomViewDelegate
 
 extension ShopGrantedPreviewViewController: ShopGrantedPanZoomViewDelegate {
     func didDismiss() {

@@ -10,19 +10,27 @@ import Foundation
 protocol NetworkingService {
     func getQuestBundles(completion: @escaping (Result<[QuestBundle], Error>) -> Void)
     func getShopItems(completion: @escaping (Result<[ShopItem], Error>) -> Void)
+    func getCrewItems(completion: @escaping (Result<CrewPack, Error>) -> Void)
+    func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void)
 }
 
 class DefaultNetworkService: NetworkingService {
+    
+    // MARK: - Properties
     
     private let session: URLSession
     private let baseURL = URL(string: "https://fortniteapi.io")
     private let token = "8b1729e0-29cc1b7d-71873902-21bf48f0"
     
+    // MARK: - Initialization
+    
     init() {
         let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.timeoutIntervalForResource = 30
+        sessionConfiguration.timeoutIntervalForResource = 15
         self.session = URLSession(configuration: sessionConfiguration)
     }
+    
+    // MARK: - Quests Module Request
     
     func getQuestBundles(completion: @escaping (Result<[QuestBundle], Error>) -> Void) {
         guard var url = baseURL else { return }
@@ -52,8 +60,9 @@ class DefaultNetworkService: NetworkingService {
                 }
             }
         }
-        
     }
+    
+    // MARK: - Shop Module Request
     
     func getShopItems(completion: @escaping (Result<[ShopItem], Error>) -> Void) {
         guard var url = baseURL else { return }
@@ -85,6 +94,69 @@ class DefaultNetworkService: NetworkingService {
         }
     }
     
+    // MARK: - Crew Module Request
+    
+    func getCrewItems(completion: @escaping (Result<CrewPack, Error>) -> Void) {
+        guard var url = baseURL else { return }
+        url = url.appendingPathComponent("v2/crew")
+        
+        let queryItems = [URLQueryItem(name: "lang", value: "en")]
+        url.append(queryItems: queryItems)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.sendRequest(request: request) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        let items = CrewPack.sharingParse(sharingJSON: response as Any) ?? nil
+                        let emptyPack = CrewPack(title: "", items: [CrewItem](), battlePassTitle: nil, addPassTitle: nil, image: nil, date: "", price: [CrewPrice(type: .usd, code: "", symbol: "", price: 0)])
+                        completion(.success(items ?? emptyPack))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    // MARK: - Maps Module Request
+    
+    func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void) {
+        guard var url = baseURL else { return }
+        url = url.appendingPathComponent("v1/maps/list")
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.sendRequest(request: request) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        let bundleData = response?["maps"] as? [[String: Any]]
+                        let items = bundleData?.compactMap { Map.sharingParse(sharingJSON: $0) } ?? []
+                        completion(.success(items))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    // MARK: - Request Settings
+    
     private func sendRequest(request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
         
         let task = session.dataTask(with: request) { data, response, error in
@@ -111,6 +183,8 @@ class DefaultNetworkService: NetworkingService {
     }
     
 }
+
+// MARK: - Networking Error Types
 
 enum NetworkingError: Error {
     case invalidResponse

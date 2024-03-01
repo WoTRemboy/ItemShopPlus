@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopGrantedTotalPriceView: UIView {
+class CollectionTotalPriceView: UIView {
     
     private let priceImageView: UIImageView = {
         let view = UIImageView()
@@ -15,7 +15,7 @@ class ShopGrantedTotalPriceView: UIView {
         return view
     }()
     
-    let priceLabel: UILabel = {
+    private let priceLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.price
         label.textColor = .labelPrimary
@@ -33,6 +33,10 @@ class ShopGrantedTotalPriceView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func configurate(price: String) {
+        priceLabel.text = price
     }
     
     private func setupUI() {

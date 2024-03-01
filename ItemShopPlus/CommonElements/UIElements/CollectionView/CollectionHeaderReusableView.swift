@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ShopCollectionReusableView: UICollectionReusableView {
+class CollectionHeaderReusableView: UICollectionReusableView {
         
-    static let identifier = Texts.ShopMainCell.headerIdentifier
+    static let identifier = Texts.CommonElements.headerIdentifier
     
     private let sectionLabel: UILabel = {
         let label = UILabel()

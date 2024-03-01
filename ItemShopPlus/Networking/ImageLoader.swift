@@ -9,8 +9,9 @@ import UIKit
 
 class ImageLoader {
     
-    private static let fileManager = FileManager.default
+    // MARK: - Properties
     
+    private static let fileManager = FileManager.default
     private static let cacheDirectory: URL = {
         do {
             let cachesDirectory = try fileManager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -22,35 +23,32 @@ class ImageLoader {
         return URL(fileURLWithPath: "")
     }()
     
+    // MARK: - Loading Methods
+    
     static func loadImage(urlString: String?, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask? {
         guard let urlString = urlString else {
             completion(nil)
             return nil
         }
-        
         if let imageFromCache = getImageFromCache(from: urlString) {
             completion(imageFromCache)
             return nil
         }
-        
         guard let url = URL(string: urlString) else {
             completion(nil)
             return nil
         }
-        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else {
                 print(error ?? "URLSession unknown error")
                 completion(nil)
                 return
             }
-            
             guard let data = data else {
                 print("No data found")
                 completion(nil)
                 return
             }
-            
             DispatchQueue.main.async {
                 guard let loadedImage = UIImage(data: data) else {
                     completion(nil)
@@ -81,9 +79,13 @@ class ImageLoader {
         }
     }
     
+    // MARK: - Cancel Method
+    
     static func cancelImageLoad(task: URLSessionDataTask?) {
         task?.cancel()
     }
+    
+    // MARK: - Cache Methods
     
     private static func createCacheDirectoryIfNeeded() throws {
         if !fileManager.fileExists(atPath: cacheDirectory.path) {
@@ -121,23 +123,52 @@ class ImageLoader {
         return UIImage(data: imageData)
     }
     
-    static func cleanCache() {
+    static func cleanCache(entire: Bool, completion: @escaping () -> Void) {
         do {
             let cacheExpirationInterval: TimeInterval = 24 * 60 * 60 // 24 hours
             
             let contents = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             
             for fileURL in contents {
-                let accessDate = try fileManager.attributesOfItem(atPath: fileURL.path)[.modificationDate] as? Date
-                
-                if let accessDate = accessDate, Date().timeIntervalSince(accessDate) > cacheExpirationInterval {
+                if entire {
                     try fileManager.removeItem(at: fileURL)
+                } else {
+                    let accessDate = try fileManager.attributesOfItem(atPath: fileURL.path)[.modificationDate] as? Date
+                    
+                    if let accessDate = accessDate, Date().timeIntervalSince(accessDate) > cacheExpirationInterval {
+                        try fileManager.removeItem(at: fileURL)
+                    }
                 }
             }
+            completion()
         } catch {
             print("Error cleaning cache: \(error)")
         }
     }
+    
+    static func cacheSize() -> Float {
+        do {
+            let contents = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            
+            var totalSize: Int = 0
+            let bytesInMegabyte: Float = 1024 * 1024
+            
+            for fileURL in contents {
+                let fileAttributes = try fileManager.attributesOfItem(atPath: fileURL.path)
+                if let fileSize = fileAttributes[.size] as? Int {
+                    totalSize += fileSize
+                }
+            }
+            
+            let sizeInMegabytes = Float(totalSize) / bytesInMegabyte
+            return (sizeInMegabytes * 10).rounded() / 10
+        } catch {
+            print("Error calculating cache size: \(error)")
+            return 0
+        }
+    }
+    
+    // MARK: - Recently Used Time Marks Methods
     
     private static func markAccessTime(for cacheURL: URL) {
         do {

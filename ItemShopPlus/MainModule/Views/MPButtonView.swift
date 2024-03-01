@@ -11,6 +11,8 @@ class MPButtonView: UIView {
     
     private var buttonType: ButtonType
     
+    // MARK: - UI Elements and Views
+    
     private let buttonImageView: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage.Placeholder.noImage
@@ -40,6 +42,8 @@ class MPButtonView: UIView {
         return button
     }()
     
+    // MARK: - Initialization
+    
     init(frame: CGRect, buttonType: ButtonType) {
         self.buttonType = buttonType
         super.init(frame: frame)
@@ -52,17 +56,7 @@ class MPButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupLayout() {
-        backgroundColor = .BackColors.backElevated
-        layer.cornerRadius = 12
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        buttonContentSetup(buttonType: buttonType)
-        
-        addSubview(buttonImageView)
-        addSubview(buttonLabel)
-        addSubview(selectButton)
-    }
+    // MARK: - Actions
     
     @objc private func buttonTouchDown() {
         UIView.animate(withDuration: 0.1) {
@@ -76,40 +70,65 @@ class MPButtonView: UIView {
         }
     }
     
+    // MARK: - UI Setup
+    
+    private func setupLayout() {
+        backgroundColor = .BackColors.backElevated
+        layer.cornerRadius = 12
+        layer.shadowColor = UIColor.Shadows.primary
+        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 20
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        buttonContentSetup(buttonType: buttonType)
+        
+        addSubview(buttonImageView)
+        addSubview(buttonLabel)
+        addSubview(selectButton)
+    }
+    
     private func buttonContentSetup(buttonType: ButtonType) {
         switch buttonType {
         case .shop:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.shop
             buttonImageView.image = .MainButtons.shop
             selectButton.addTarget(nil, action: #selector(MainPageViewController.shopTransfer), for: .touchUpInside)
-        case .news:
+        case .battlePass:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.battlePass
             buttonImageView.image = .MainButtons.battlePass
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
-        case .tournaments:
-            buttonLabel.text = Texts.ButtonLabels.MainButtons.tournaments
-            buttonImageView.image = .MainButtons.tournaments
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
+        case .crew:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.crew
+            buttonImageView.image = .MainButtons.crew
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.crewTransfer), for: .touchUpInside)
         case .quests:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.quests
             buttonImageView.image = .MainButtons.quests
             selectButton.addTarget(nil, action: #selector(MainPageViewController.questsTransfer), for: .touchUpInside)
-        case .crew:
-            buttonLabel.text = Texts.ButtonLabels.MainButtons.crew
-            buttonImageView.image = .MainButtons.crew
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
+        case .tournaments:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.tournaments
+            buttonImageView.image = .MainButtons.tournaments
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
+        case .stats:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.stats
+            buttonImageView.image = .MainButtons.stats
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
         case .map:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
             buttonImageView.image = .MainButtons.map
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
-        case .vehicles:
-            buttonLabel.text = Texts.ButtonLabels.MainButtons.vehicles
-            buttonImageView.image = .MainButtons.vehicles
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.mapTransfer), for: .touchUpInside)
         case .augments:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.augments
             buttonImageView.image = .MainButtons.augments
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.sayHi), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
+        case .cache:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.cache
+            buttonImageView.image = .MainButtons.trash
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.clearCache), for: .touchUpInside)
+        case .null:
+            buttonLabel.text = "??????"
+            buttonImageView.image = .MainButtons.question
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
         }
     }
     

@@ -9,7 +9,9 @@ import UIKit
 
 class ShopViewController: UIViewController {
     
-    private var previousCount = 0
+    // MARK: - Properties
+    
+    private var previousSearchedCount = 0
     private var selectedSectionTitle = Texts.ShopPage.allMenu
     
     private var items = [ShopItem]()
@@ -17,8 +19,10 @@ class ShopViewController: UIViewController {
     private var sectionedItems = [String: [ShopItem]]()
     
     private let networkService = DefaultNetworkService()
-    private let noInternetView = NoInternetView()
     
+    // MARK: - UI Elements and Views
+    
+    private let noInternetView = NoInternetView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let refreshControl = UIRefreshControl()
     
@@ -27,8 +31,9 @@ class ShopViewController: UIViewController {
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isHidden = true
         collectionView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: ShopCollectionViewCell.identifier)
-        collectionView.register(ShopCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ShopCollectionReusableView.identifier)
+        collectionView.register(CollectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderReusableView.identifier)
         return collectionView
     }()
     
@@ -61,6 +66,8 @@ class ShopViewController: UIViewController {
         return searchController
     }()
     
+    // MARK: - ViewController Lifecycle
+    
     override func viewWillAppear(_ animated: Bool) {
         if items.isEmpty {
             getShop(isRefreshControl: false)
@@ -71,7 +78,7 @@ class ShopViewController: UIViewController {
         super.viewDidLoad()
         
         title = Texts.Pages.shop
-        view.backgroundColor = .BackColors.backSplash
+        view.backgroundColor = .BackColors.backDefault
         
         navigationBarSetup()
         
@@ -85,18 +92,29 @@ class ShopViewController: UIViewController {
         setupUI()
     }
     
+    // MARK: - Actions
+    
     @objc private func refresh() {
         if !searchController.isActive {
             getShop(isRefreshControl: true)
         }
     }
     
+    @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
+        let location = gestureRecognizer.location(in: collectionView)
+        if let indexPath = collectionView.indexPathForItem(at: location) {
+            animateCellSelection(at: indexPath)
+        }
+    }
+    
     @objc private func handleTapOutsideKeyboard() {
+        guard searchController.isActive else { return }
         if searchController.searchBar.text?.isEmpty == true {
             searchController.dismiss(animated: true)
         } else {
             searchController.searchBar.resignFirstResponder()
         }
+        UIView.appearance().isExclusiveTouch = true
     }
     
     @objc private func infoButtonTapped() {
@@ -108,6 +126,8 @@ class ShopViewController: UIViewController {
         navVC.sheetPresentationController?.detents = [fraction]
         present(navVC, animated: true)
     }
+    
+    // MARK: - Networking
     
     private func getShop(isRefreshControl: Bool) {
         if isRefreshControl {
@@ -134,7 +154,6 @@ class ShopViewController: UIViewController {
             case .success(let newItems):
                 DispatchQueue.main.async {
                     self?.clearItems()
-                    
                     self?.noInternetView.isHidden = true
                     self?.searchController.searchBar.isHidden = false
 
@@ -145,12 +164,14 @@ class ShopViewController: UIViewController {
                     self?.filterButton.isEnabled = true
                     
                     self?.collectionView.reloadData()
+                    self?.collectionView.isHidden = false
                     self?.menuSetup()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.clearItems()
                     self?.collectionView.reloadData()
+                    self?.collectionView.isHidden = false
                     
                     self?.noInternetView.isHidden = false
                     self?.searchController.searchBar.isHidden = true
@@ -162,6 +183,8 @@ class ShopViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Items Management Methods
     
     private func sortingSections(items: [ShopItem]) {
         for item in items {
@@ -194,6 +217,28 @@ class ShopViewController: UIViewController {
         sectionedItems.removeAll()
     }
     
+    // MARK: - Animating Cell Method
+    
+    private func animateCellSelection(at indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }) { (_) in
+            let item: ShopItem
+            let sectionKey = Array(self.sectionedItems.keys).sorted()[indexPath.section]
+            if let itemsInSection = self.sectionedItems[sectionKey] {
+                (self.filteredItems.count != 0 && self.filteredItems.count != self.items.count) ? (item = self.filteredItems[indexPath.item]) : (item = itemsInSection[indexPath.item])
+                self.navigationController?.pushViewController(ShopGrantedViewController(bundle: item), animated: true)
+            }
+            UIView.animate(withDuration: 0.1, animations: {
+                cell?.transform = CGAffineTransform.identity
+            })
+        }
+    }
+    
+    // MARK: - UI Setups
+    
     private func navigationBarSetup() {
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
@@ -214,7 +259,7 @@ class ShopViewController: UIViewController {
         }
         allAction.state = .on
         var children = [allAction]
-        for section in sectionedItems {
+        for section in sectionedItems.sorted(by: { $0.key < $1.key }) {
             let sectionAction = UIAction(title: section.key, image: nil) { [weak self] action in
                 self?.filterItemsBySection(sectionTitle: section.key, forAll: false)
             }
@@ -278,21 +323,33 @@ class ShopViewController: UIViewController {
     }
 }
 
+// MARK: - UISearchResultsUpdating & UISearchControllerDelegate
+
 extension ShopViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         filteredItems = items
         
         if let searchText = searchController.searchBar.text {
             filteredItems = items.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-            if filteredItems.count != previousCount || (searchText.isEmpty && collectionView.visibleCells.count == 0) {
+            if filteredItems.count != previousSearchedCount || (searchText.isEmpty && collectionView.visibleCells.count == 0) || (!searchText.isEmpty && filteredItems.count == 0) {
                 UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
                     self.collectionView.reloadData()
                 }, completion: nil)
-                previousCount = filteredItems.count
+                previousSearchedCount = filteredItems.count
             }
         }
     }
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+        UIView.appearance().isExclusiveTouch = false
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        UIView.appearance().isExclusiveTouch = true
+    }
 }
+
+// MARK: - UICollectionViewDelegate & UICollectionViewDataSource
 
 extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -305,7 +362,7 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
-        let sectionKey = Array(sectionedItems.keys)[section]
+        let sectionKey = Array(sectionedItems.keys).sorted()[section]
         return inSearchMode ? filteredItems.count : sectionedItems[sectionKey]?.count ?? 0
     }
     
@@ -313,65 +370,38 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShopCollectionViewCell.identifier, for: indexPath) as? ShopCollectionViewCell else {
             fatalError("Failed to dequeue ShopCollectionViewCell in ShopViewController")
         }
-        
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
-        
         let width = view.frame.width / 2 - 25
         
         if inSearchMode {
             let item = filteredItems[indexPath.item]
-            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.count, width)
+            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
         } else {
-            let sectionKey = Array(sectionedItems.keys)[indexPath.section]
+            let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
-                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.count, width)
+                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
             }
         }
-        
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         
         return cell
     }
-    
-    @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
-        let location = gestureRecognizer.location(in: collectionView)
-        if let indexPath = collectionView.indexPathForItem(at: location) {
-            animateCellSelection(at: indexPath)
-        }
-    }
-    
-    private func animateCellSelection(at indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
-        
-        UIView.animate(withDuration: 0.1, animations: {
-            cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
-        }) { (_) in
-            let item: ShopItem
-            
-            let sectionKey = Array(self.sectionedItems.keys)[indexPath.section]
-            if let itemsInSection = self.sectionedItems[sectionKey] {
-                (self.filteredItems.count != 0 && self.filteredItems.count != self.items.count) ? (item = self.filteredItems[indexPath.item]) : (item = itemsInSection[indexPath.item])
-                
-                self.navigationController?.pushViewController(ShopGrantedViewController(bundle: item), animated: true)
-            }
-            
-            UIView.animate(withDuration: 0.1, animations: {
-                cell?.transform = CGAffineTransform.identity
-            })
-        }
-    }
-    
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard searchController.isActive else { return }
         if searchController.searchBar.text?.isEmpty == true {
             searchController.dismiss(animated: false)
         } else {
             searchController.searchBar.resignFirstResponder()
         }
+        UIView.appearance().isExclusiveTouch = true
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension ShopViewController: UICollectionViewDelegateFlowLayout {
     
@@ -400,12 +430,12 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ShopCollectionReusableView.identifier, for: indexPath) as? ShopCollectionReusableView else {
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
             fatalError("Failed to dequeue ShopCollectionReusableView in ShopViewController")
         }
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
-        let sectionKey = Array(sectionedItems.keys)[indexPath.section]
+        let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
         let count = filteredItems.count
         inSearchMode ? headerView.configurate(with: count > 0 ? Texts.ShopSearchController.result : Texts.ShopSearchController.noResult) : headerView.configurate(with: sectionKey)
         return headerView

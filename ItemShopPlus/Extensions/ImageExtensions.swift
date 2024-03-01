@@ -8,29 +8,50 @@
 import UIKit
 
 extension UIImage {
+    
+    // MARK: - Common
+    
     enum Placeholder {
         static let noImage = UIImage(named: "ImagePlaceholder")
     }
+    
+    enum CurrencySymbol {
+        static let usd = UIImage(systemName: "dollarsign")
+        static let eur = UIImage(systemName: "eurosign")
+        static let gbp = UIImage(systemName: "sterlingsign")
+        static let rub = UIImage(systemName: "rublesign")
+        static let dkk = UIImage(systemName: "danishkronesign")
+        static let jpy = UIImage(systemName: "chineseyuanrenminbisign")
+        static let sek = UIImage(systemName: "swedishkronasign")
+        static let brl = UIImage(systemName: "brazilianrealsign")
+        static let nok = UIImage(systemName: "norwegiankronesign")
+        static let aud = UIImage(systemName: "dollarsign")
+        static let lira = UIImage(systemName: "turkishlirasign")
+        static let unknown = UIImage(systemName: "banknote")
+    }
+    
+    // MARK: - Main Module
     
     enum MainButtons {
         static let shop = createImage(name: "basket")
         static let battlePass = createImage(name: "star")
         static let tournaments = createImage(name: "medal")
         static let quests = createImage(name: "list.bullet.clipboard")
-        static let crew = createImage(name: "waveform")
+        static let crew = createImage(name: "pencil.and.outline")
         static let map = createImage(name: "map")
-        static let vehicles = createImage(name: "car")
+        static let stats = createImage(name: "person")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")
+        static let question = createImage(name: "questionmark.square.dashed")
+        static let trash = createImage(name: "trash")
     }
     
-    enum Quests {
-        static let experience = UIImage(named: "QuestXP")
-        static let bundleBackground = UIImage(named: "BundleBackground")
-    }
+    // MARK: - Splash Module
     
     enum SplashScreen {
         static let splashScreen = UIImage(named: "SplashScreen")
     }
+    
+    // MARK: - Shop Module
     
     enum ShopMain {
         static let price = UIImage(named: "VBucks")
@@ -52,7 +73,25 @@ extension UIImage {
         static let epic = UIImage(named: "GrantedEpic")
         static let legendary = UIImage(named: "GrantedLegendary")
     }
+    
+    // MARK: - Quests Module
+    
+    enum Quests {
+        static let experience = UIImage(named: "QuestXP")
+        static let bundleBackground = UIImage(named: "BundleBackground")
+    }
+    
+    // MARK: - Map Module
+
+    enum MapPage {
+        static let poiMenu = UIImage(systemName: "slider.horizontal.3")
+        static let archiveMenu = UIImage(systemName: "clock.arrow.circlepath")
+        static let poiAction = UIImage(systemName: "mappin")
+        static let clearAction = UIImage(systemName: "mappin.slash")
+    }
 }
+
+// MARK: - Main Module Button Images Color Setup
 
 private func createImage(name: String) -> UIImage? {
     let image = UIImage(

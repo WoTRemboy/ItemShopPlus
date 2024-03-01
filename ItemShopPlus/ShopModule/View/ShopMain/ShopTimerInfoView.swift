@@ -9,8 +9,7 @@ import UIKit
 
 class ShopTimerInfoView: UIView {
     
-    private var targetTime: Date? = .none
-    var timer: Timer? = .none
+    // MARK: - UI Elements and Views
     
     private let infoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,10 +36,10 @@ class ShopTimerInfoView: UIView {
         return label
     }()
     
+    // MARK: - Initialization
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setupTimer()
         setupUI()
     }
     
@@ -48,41 +47,14 @@ class ShopTimerInfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupTimer() {
-        var calendar = Calendar.current
-        if let timeZone = TimeZone(identifier: "UTC") {
-            calendar.timeZone = timeZone
-        }
-        
-        guard let targetDate = calendar.date(byAdding: .day, value: 1, to: .now) else { return }
-        
-        var components = calendar.dateComponents([.year, .month, .day], from: targetDate)
-        components.hour = 0
-        components.minute = 0
-        components.second = 0
-        targetTime = calendar.date(from: components)
-        
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        timer?.fire()
+    // MARK: - Public Configure Method
+    
+    public func setInfoLabelText(text: String) {
+        timerLabel.text = text
     }
     
-    @objc func updateTimer() {
-        let timeDifference = Calendar.current.dateComponents([.hour, .minute, .second], from: .now, to: targetTime ?? .now)
-        print(timeDifference)
-        
-        let hours = timeDifference.hour ?? 0
-        let minutes = timeDifference.minute ?? 0
-        let seconds = timeDifference.second ?? 0
-        
-        let timerString = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
-        timerLabel.text = timerString
-        
-        if seconds < 0 {
-            timerLabel.text = Texts.ShopPage.reloadShop
-            timer?.invalidate()
-        }
-    }
-    
+    // MARK: - UI Setup
+
     private func setupUI() {
         addSubview(infoImageView)
         addSubview(infoLabel)
@@ -106,5 +78,4 @@ class ShopTimerInfoView: UIView {
             infoLabel.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 10)
         ])
     }
-    
 }

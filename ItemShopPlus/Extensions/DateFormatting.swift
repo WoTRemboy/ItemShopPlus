@@ -9,6 +9,8 @@ import UIKit
 
 class DateFormating {
     
+    // MARK: - Quests Module
+    
     static let dateFormatterQuests: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -25,6 +27,8 @@ class DateFormating {
         }
         return "Time diff error..."
     }
+    
+    // MARK: - Shop Module
     
     static let dateFormatterShopGranted: DateFormatter = {
         let formatter = DateFormatter()

@@ -7,10 +7,14 @@
 
 import UIKit
 
-class ShopGrantedCollectionViewCell: UICollectionViewCell {
+class CollectionRarityCell: UICollectionViewCell {
     
-    static let identifier = Texts.ShopGrantedCell.identifier
+    // MARK: - Properties
+    
+    static let identifier = Texts.CollectionCell.identifier
     private var imageLoadTask: URLSessionDataTask?
+    
+    // MARK: - UI Elements and Views
     
     private let itemNameLabel: UILabel = {
         let label = UILabel()
@@ -43,13 +47,17 @@ class ShopGrantedCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    public func configurate(name: String, type: String, rarity: String, image: String) {
+    // MARK: - Public Configure Method
+    
+    public func configurate(name: String, type: String, rarity: Rarity, image: String) {
         imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: grantedImageView)
         itemNameLabel.text = name
         itemTypeLabel.text = type
-        rarityImageView.image = selectRarity(rarity: rarity)
+        rarityImageView.image = SelectingMethods.selectRarity(rarity: rarity)
         setupUI()
     }
+    
+    // MARK: - UI Setup
     
     private func setupUI() {
         addSubview(grantedImageView)
@@ -83,28 +91,13 @@ class ShopGrantedCollectionViewCell: UICollectionViewCell {
         ])
     }
     
+    // MARK: - Reusing Preparation
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         ImageLoader.cancelImageLoad(task: imageLoadTask)
+        grantedImageView.image = .Placeholder.noImage
         grantedImageView.removeFromSuperview()
         rarityImageView.removeFromSuperview()
     }
-    
-    private func selectRarity(rarity: String) -> UIImage {
-        switch rarity {
-        case "Common":
-            return .ShopGranted.common ?? .grantedCommon
-        case "Uncommon":
-            return .ShopGranted.uncommon ?? .grantedUncommon
-        case "Rare":
-            return .ShopGranted.rare ?? .grantedRare
-        case "Epic":
-            return .ShopGranted.epic ?? .grantedEpic
-        case "Legendary":
-            return .ShopGranted.legendary ?? .grantedLegendary
-        default:
-            return .ShopGranted.common ?? .grantedCommon
-        }
-    }
-    
 }

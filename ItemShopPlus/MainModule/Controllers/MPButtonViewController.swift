@@ -10,34 +10,34 @@ import UIKit
 class MPButtonViewController: UIViewController {
     
     private let shopButton = MPButtonView(frame: .null, buttonType: .shop)
-    private let tournamentButton = MPButtonView(frame: .null, buttonType: .tournaments)
-    private let newsButton = MPButtonView(frame: .null, buttonType: .news)
-    private let questsButton = MPButtonView(frame: .null, buttonType: .quests)
+    private let battlePassButton = MPButtonView(frame: .null, buttonType: .battlePass)
     private let crewButton = MPButtonView(frame: .null, buttonType: .crew)
+    private let questsButton = MPButtonView(frame: .null, buttonType: .quests)
+    private let tournamentButton = MPButtonView(frame: .null, buttonType: .tournaments)
+    private let statsButton = MPButtonView(frame: .null, buttonType: .stats)
     private let mapButton = MPButtonView(frame: .null, buttonType: .map)
-    private let vehiclesButton = MPButtonView(frame: .null, buttonType: .vehicles)
-    private let augumentsButton = MPButtonView(frame: .null, buttonType: .augments)
-    
+    private let cacheButton = MPButtonView(frame: .null, buttonType: .cache)
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(shopButton)
-        view.addSubview(tournamentButton)
-        view.addSubview(newsButton)
-        view.addSubview(questsButton)
+        view.addSubview(battlePassButton)
         view.addSubview(crewButton)
+        view.addSubview(questsButton)
+        view.addSubview(tournamentButton)
+        view.addSubview(statsButton)
         view.addSubview(mapButton)
-        view.addSubview(vehiclesButton)
-        view.addSubview(augumentsButton)
+        view.addSubview(cacheButton)
         
         shopButtonSetup()
-        tournamentButtonSetup()
-        newsButtonSetup()
-        questsButtonSetup()
+        battlePassButtonSetup()
         crewButtonSetup()
+        questsButtonSetup()
+        tournamentButtonSetup()
+        statsButtonSetup()
         mapButtonSetup()
-        vehiclesButtonSetup()
-        augumentsButtonSetup()
+        cacheButtonSetup()
     }
     
     private func shopButtonSetup() {
@@ -49,66 +49,66 @@ class MPButtonViewController: UIViewController {
         ])
     }
     
-    private func newsButtonSetup() {
+    private func battlePassButtonSetup() {
         NSLayoutConstraint.activate([
-            newsButton.topAnchor.constraint(equalTo: shopButton.topAnchor),
-            newsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            newsButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 8),
-            newsButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
-        ])
-    }
-    
-    private func tournamentButtonSetup() {
-        NSLayoutConstraint.activate([
-            tournamentButton.topAnchor.constraint(equalTo: shopButton.bottomAnchor, constant: 16),
-            tournamentButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
-            tournamentButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
-            tournamentButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
-        ])
-    }
-    
-    private func questsButtonSetup() {
-        NSLayoutConstraint.activate([
-            questsButton.topAnchor.constraint(equalTo: newsButton.bottomAnchor, constant: 16),
-            questsButton.trailingAnchor.constraint(equalTo: newsButton.trailingAnchor),
-            questsButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
-            questsButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+            battlePassButton.topAnchor.constraint(equalTo: shopButton.topAnchor),
+            battlePassButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            battlePassButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 8),
+            battlePassButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
     }
     
     private func crewButtonSetup() {
         NSLayoutConstraint.activate([
-            crewButton.topAnchor.constraint(equalTo: tournamentButton.bottomAnchor, constant: 16),
+            crewButton.topAnchor.constraint(equalTo: shopButton.bottomAnchor, constant: 16),
             crewButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
             crewButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
             crewButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
     }
     
+    private func questsButtonSetup() {
+        NSLayoutConstraint.activate([
+            questsButton.topAnchor.constraint(equalTo: battlePassButton.bottomAnchor, constant: 16),
+            questsButton.trailingAnchor.constraint(equalTo: battlePassButton.trailingAnchor),
+            questsButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
+            questsButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+        ])
+    }
+    
+    private func tournamentButtonSetup() {
+        NSLayoutConstraint.activate([
+            tournamentButton.topAnchor.constraint(equalTo: crewButton.bottomAnchor, constant: 16),
+            tournamentButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
+            tournamentButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
+            tournamentButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+        ])
+    }
+    
+    private func statsButtonSetup() {
+        NSLayoutConstraint.activate([
+            statsButton.topAnchor.constraint(equalTo: questsButton.bottomAnchor, constant: 16),
+            statsButton.trailingAnchor.constraint(equalTo: battlePassButton.trailingAnchor),
+            statsButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
+            statsButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+        ])
+    }
+    
     private func mapButtonSetup() {
         NSLayoutConstraint.activate([
-            mapButton.topAnchor.constraint(equalTo: questsButton.bottomAnchor, constant: 16),
-            mapButton.trailingAnchor.constraint(equalTo: newsButton.trailingAnchor),
+            mapButton.topAnchor.constraint(equalTo: tournamentButton.bottomAnchor, constant: 16),
+            mapButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
             mapButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
             mapButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
     }
     
-    private func vehiclesButtonSetup() {
+    private func cacheButtonSetup() {
         NSLayoutConstraint.activate([
-            vehiclesButton.topAnchor.constraint(equalTo: crewButton.bottomAnchor, constant: 16),
-            vehiclesButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
-            vehiclesButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
-            vehiclesButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
-        ])
-    }
-    
-    private func augumentsButtonSetup() {
-        NSLayoutConstraint.activate([
-            augumentsButton.topAnchor.constraint(equalTo: mapButton.bottomAnchor, constant: 16),
-            augumentsButton.trailingAnchor.constraint(equalTo: newsButton.trailingAnchor),
-            augumentsButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
-            augumentsButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+            cacheButton.topAnchor.constraint(equalTo: statsButton.bottomAnchor, constant: 16),
+            cacheButton.trailingAnchor.constraint(equalTo: battlePassButton.trailingAnchor),
+            cacheButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
+            cacheButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
     }
 }

@@ -45,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         DispatchQueue.global(qos: .utility).async {
-            ImageLoader.cleanCache(full: false, completion: {})
+            ImageLoader.cleanCache(entire: false, completion: {})
         }
     }
 }

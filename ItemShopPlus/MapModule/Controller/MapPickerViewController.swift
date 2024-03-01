@@ -9,6 +9,8 @@ import UIKit
 
 class MapPickerViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private var currentMap: Map
     private let maps: [Map]
     
@@ -20,6 +22,8 @@ class MapPickerViewController: UIViewController {
         return picker
     }()
     
+    // MARK: - Initialization
+    
     init(maps: [Map], currentMap: Map) {
         self.maps = maps
         self.currentMap = currentMap
@@ -30,14 +34,17 @@ class MapPickerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - ViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .BackColors.backElevated
         
         navigationBarSetup()
         pickerViewSetup()
     }
+    
+    // MARK: - Actions
     
     @objc private func cancelButtonTapped() {
         dismiss(animated: true)
@@ -52,6 +59,8 @@ class MapPickerViewController: UIViewController {
         let stringDate = DateFormating.dateFormatterShopGranted.string(from: date)
         return "v\(version) – \(stringDate)"
     }
+    
+    // MARK: - UI Setups
     
     private func navigationBarSetup() {
         navigationItem.title = Texts.MapPage.archive
@@ -87,6 +96,8 @@ class MapPickerViewController: UIViewController {
         ])
     }
 }
+
+// MARK: - UIPickerViewDelegate and UIPickerViewDataSource
 
 extension MapPickerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

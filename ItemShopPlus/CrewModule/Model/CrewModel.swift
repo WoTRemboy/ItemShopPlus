@@ -16,7 +16,9 @@ struct CrewPack {
     let vbucks: Int = 1000
     let image: String?
     let date: String
-    let price: [String: (String, Double)]?
+    let price: [CrewPrice]
+    
+    static let emptyPack = CrewPack(title: "", items: [CrewItem](), battlePassTitle: nil, addPassTitle: nil, image: nil, date: "", price: [CrewPrice.emptyPrice])
 }
 
 struct CrewItem {
@@ -24,7 +26,22 @@ struct CrewItem {
     let type: String
     let name: String
     let description: String?
-    let rarity: String?
+    let rarity: Rarity?
     let image: String
     let introduction: String?
+}
+
+struct CrewPrice {
+    let type: Currency
+    let code: String
+    let symbol: String
+    let price: Double
+    
+    static let emptyPrice = CrewPrice(type: .usd, code: Texts.Currency.Code.usd, symbol: Texts.Currency.Symbol.usd, price: -5)
+}
+
+enum CurrencyManager {
+    case get
+    case save
+    case delete
 }

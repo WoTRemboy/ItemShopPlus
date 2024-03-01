@@ -8,9 +8,73 @@
 import UIKit
 
 class Texts {
+    
+    // MARK: - Common
+    
+    enum CommonElements {
+        static let headerIdentifier = "HeaderReusableView"
+    }
+    
+    enum CollectionCell {
+        static let identifier = "CollectionRarityCell"
+    }
+    
+    enum Navigation {
+        static let cancel = "Cancel"
+        static let done = "Done"
+        static let backToMain = "Main"
+        static let backToShop = "Shop"
+    }
+    
+    enum Season {
+        static let beginDate = "2023-12-03T08:00:00.000Z"
+        static let endDate = "2024-03-08T02:00:00.000Z"
+    }
+    
     enum Placeholder {
         static let noText = "Something wrong..."
     }
+    
+    enum noConnection {
+        static let noInternet = "No connection"
+        static let retry = "Please, retry later"
+    }
+    
+    enum Currency {
+        enum Code {
+            static let usd = "USD"
+            static let eur = "EUR"
+            static let gbp = "GBP"
+            static let cad = "CAD"
+            static let rub = "RUB"
+            static let dkk = "DKK"
+            static let jpy = "JPY"
+            static let sek = "SEK"
+            static let brl = "BRL"
+            static let nok = "NOK"
+            static let aud = "AUD"
+            static let lira = "TRY"
+            static let aed = "AED"
+            static let qar = "QAR"
+            static let sar = "SAR"
+        }
+        enum Symbol {
+            static let usd = "$"
+            static let eur = "€"
+            static let gbp = "£"
+            static let cad = "$"
+            static let rub = "₽"
+            static let dkk = "kr"
+            static let jpy = "¥"
+            static let sek = "kr"
+            static let brl = "R$"
+            static let nok = "kr"
+            static let aud = "$"
+            static let lira = "₺"
+        }
+    }
+    
+    // MARK: - Main Module
     
     enum ButtonLabels {
         enum MainButtons {
@@ -20,7 +84,7 @@ class Texts {
             static let tournaments = "Tournaments"
             static let crew = "Crew"
             static let map = "Map"
-            static let vehicles = "Vehicles"
+            static let stats = "Stats"
             static let augments = "Augments"
             static let cache = "Clear Cache"
         }
@@ -34,12 +98,7 @@ class Texts {
         static let shop = "Item Shop"
     }
     
-    enum Navigation {
-        static let cancel = "Cancel"
-        static let done = "Done"
-        static let backToMain = "Main"
-        static let backToShop = "Shop"
-    }
+    // MARK: - Cache Module
     
     enum ClearCache {
         static let message = "All media used in the app will remain in the cloud and will be re-downloaded when needed"
@@ -54,10 +113,7 @@ class Texts {
         static let ok = "OK"
     }
     
-    enum Season {
-        static let beginDate = "2023-12-03T08:00:00.000Z"
-        static let endDate = "2024-03-08T02:00:00.000Z"
-    }
+    // MARK: - Shop Module
     
     enum ShopPage {
         static let itemName = "Item name..."
@@ -70,57 +126,13 @@ class Texts {
         static let reloadShop = "It's time to update!"
     }
     
-    enum CrewPage {
-        static let title = "Crew Pack"
-    }
-    
-    enum CrewPageCell {
-        static let identifier = "CrewCell"
-        static let footerIdentifier = "CrewFooterReusableView"
-        
-        static let itemName = "Item name..."
-        static let price = "Pack price..."
-        static let symbol = "$"
-        static let header = "Item Bundle"
-        static let introductionTitle = "First appearance"
-        static let introductionText = "Introduced in..."
-        static let mainBenefits = "Main benefits"
-        static let vbucks = "1,000 V-Bucks"
-        static let additionalBenefints = "Additional benefits"
-        static let yes = "Yes"
-        static let no = "No"
-        static let and = "and"
-    }
-    
-    enum BundleQuestsCell {
-        static let identifier = "BundleCell"
-        static let bundleName = "Bundle name..."
-        static let bundleDate = "Until the end of this season"
-    }
-    
-    enum QuestCell {
-        static let identifier = "QuestCell"
-        static let questName = "Task name..."
-        static let questProgress = "Quest progress..."
-        static let requirement = "Requirement: "
-    }
-    
-    enum QuestDetails {
-        static let rewards = "Rewards: "
-        static let reward = "Reward: "
-        static let xp = " XP"
-        static let requirement = "Requirement: "
-    }
-    
     enum ShopMainCell {
         static let identifier = "ShopCollectionViewCell"
         static let vBucks = " VBucks"
-        static let headerIdentifier = "ShopHeader"
         static let search = "Search items"
     }
     
     enum ShopGrantedCell {
-        static let identifier = "ShopGrantedCollectionViewCell"
         static let footerIdentifier = "ShopGrantedCollectionReusableView"
         static let firstTime = "First time..."
         static let lastTime = "Last time..."
@@ -146,16 +158,60 @@ class Texts {
         static let noResult = "No result"
     }
     
+    // MARK: - Crew Module
+    
+    enum CrewPage {
+        static let currencyKey = "CurrencyKey"
+        static let title = "Crew Pack"
+    }
+    
+    enum CrewPageCell {
+        static let identifier = "CrewCell"
+        static let footerIdentifier = "CrewFooterReusableView"
+        
+        static let itemName = "Item name..."
+        static let price = "Pack price..."
+        static let symbol = "$"
+        static let header = "Item Bundle"
+        static let introductionTitle = "First appearance"
+        static let introductionText = "Introduced in..."
+        static let mainBenefits = "Main benefits"
+        static let vbucks = "1,000 V-Bucks"
+        static let additionalBenefints = "Additional benefits"
+        static let yes = "Yes"
+        static let no = "No"
+        static let and = "and"
+    }
+    
+    // MARK: - Quests Module
+    
+    enum BundleQuestsCell {
+        static let identifier = "BundleCell"
+        static let bundleName = "Bundle name..."
+        static let bundleDate = "Until the end of this season"
+    }
+    
+    enum QuestCell {
+        static let identifier = "QuestCell"
+        static let questName = "Task name..."
+        static let questProgress = "Quest progress..."
+        static let requirement = "Requirement: "
+    }
+    
+    enum QuestDetails {
+        static let rewards = "Rewards: "
+        static let reward = "Reward: "
+        static let xp = " XP"
+        static let requirement = "Requirement: "
+    }
+    
+    // MARK: - Map Module
+    
     enum MapPage {
         static let title = "Map"
         static let poi = "POI"
         static let clear = "Clear"
         static let archive = "Archive"
-    }
-    
-    enum noConnection {
-        static let noInternet = "No connection"
-        static let retry = "Please, retry later"
     }
 }
 

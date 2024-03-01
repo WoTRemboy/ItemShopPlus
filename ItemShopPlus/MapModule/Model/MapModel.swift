@@ -13,3 +13,8 @@ struct Map {
     let clearImage: String
     let poiImage: String
 }
+
+enum NavigationMapButtonType {
+    case location
+    case version
+}

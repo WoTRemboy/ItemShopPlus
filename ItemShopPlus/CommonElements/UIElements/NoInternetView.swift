@@ -8,6 +8,8 @@
 import UIKit
 
 class NoInternetView: UIView {
+    
+    // MARK: - UI Elements and Views
 
     private let noInternetLabel: UILabel = {
         let label = UILabel()
@@ -41,6 +43,8 @@ class NoInternetView: UIView {
         return button
     }()
     
+    // MARK: - Actions
+    
     @objc private func buttonTouchDown() {
         UIView.animate(withDuration: 0.1) {
             self.reloadButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
@@ -53,9 +57,13 @@ class NoInternetView: UIView {
         }
     }
     
+    // MARK: - Public Configure Method
+    
     public func configurate() {
         setupUI()
     }
+    
+    // MARK: - UI Setup
     
     private func setupUI() {
         addSubview(noInternetLabel)

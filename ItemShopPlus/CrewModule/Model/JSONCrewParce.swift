@@ -12,6 +12,7 @@ extension CrewPack {
         guard let globalData = sharingJSON as? [String: Any],
               let pricesData = globalData["prices"] as? [[String: Any]],
               let data = globalData["currentCrew"] as? [String: Any],
+              
               let descriptions = data["descriptions"] as? [String: Any],
               let title = descriptions["title"] as? String,
               let itemsData = data["rewards"] as? [[String: Any]],
@@ -36,18 +37,19 @@ extension CrewPack {
             month = dateFormatter.string(from: currectDate)
         }
         
-        var priceDictionary = [String: (String, Double)]()
+        var priceArray = [CrewPrice]()
         for priceDatum in pricesData {
-            guard let price = priceDatum["paymentCurrencyCode"] as? String,
+            guard let code = priceDatum["paymentCurrencyCode"] as? String,
                   let symbol = priceDatum["paymentCurrencySymbol"] as? String,
-                  let amount = priceDatum["paymentCurrencyAmountNatural"] as? Double
+                  let price = priceDatum["paymentCurrencyAmountNatural"] as? Double
             else {
                 return nil
             }
-            priceDictionary[price] = (symbol, amount)
+            let type = SelectingMethods.selectCurrency(code: code)
+            priceArray.append(CrewPrice(type: type, code: code, symbol: symbol, price: price))
         }
         
-        return CrewPack(title: title, items: items, battlePassTitle: battlePassTitle, addPassTitle: addPassTitle, image: image, date: month, price: priceDictionary)
+        return CrewPack(title: title, items: items, battlePassTitle: battlePassTitle, addPassTitle: addPassTitle, image: image, date: month, price: priceArray)
     }
 }
 
@@ -73,9 +75,9 @@ extension CrewItem {
             introduction = introductionData["text"] as? String ?? String()
         }
         
-        var rarity = String()
+        var rarity: Rarity?
         if let rarityData = data["rarity"] as? [String: Any] {
-            rarity = rarityData["id"] as? String ?? String()
+            rarity = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         }
         
         return CrewItem(id: id, type: type, name: name, description: description, rarity: rarity, image: image, introduction: introduction)

@@ -11,7 +11,9 @@ protocol ShopGrantedPanZoomViewDelegate: AnyObject {
     func didDismiss()
 }
 
-class ShopPanZoomView: UIScrollView {
+class PreviewZoomView: UIScrollView {
+    
+    // MARK: - Properties
     
     weak var panZoomDelegate: ShopGrantedPanZoomViewDelegate?
     private var imageLoadTask: URLSessionDataTask?
@@ -24,6 +26,8 @@ class ShopPanZoomView: UIScrollView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    // MARK: - Initialization
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,6 +45,8 @@ class ShopPanZoomView: UIScrollView {
         imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: imageView)
     }
     
+    // MARK: - Actions
+    
     @objc private func handleDoubleTap(gesture: UITapGestureRecognizer) {
         if zoomScale == 1 {
             zoom(to: zoomForScale(scale: maximumZoomScale, center: gesture.location(in: gesture.view)), animated: true)
@@ -51,7 +57,6 @@ class ShopPanZoomView: UIScrollView {
     
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         guard let superview = superview else { return }
-        
         if centerSuperView == CGPoint(x: 0, y: 0) {
             centerSuperView = frame.origin
         }
@@ -84,6 +89,17 @@ class ShopPanZoomView: UIScrollView {
         }
     }
     
+    private func setupPanGesture() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+        addGestureRecognizer(panGesture)
+    }
+    
+    private func dismissViewController() {
+        panZoomDelegate?.didDismiss()
+    }
+    
+    // MARK: - Zoom Rules
+    
     private func zoomForScale(scale: CGFloat, center: CGPoint) -> CGRect {
         var zoomRect = CGRect.zero
         zoomRect.size.height = imageView.frame.size.height / scale
@@ -94,14 +110,7 @@ class ShopPanZoomView: UIScrollView {
         return zoomRect
     }
     
-    private func setupPanGesture() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
-        addGestureRecognizer(panGesture)
-    }
-    
-    private func dismissViewController() {
-        panZoomDelegate?.didDismiss()
-    }
+    // MARK: - UI Setups
     
     private func setupImageView() {
         addSubview(imageView)
@@ -129,7 +138,9 @@ class ShopPanZoomView: UIScrollView {
     }
 }
 
-extension ShopPanZoomView: UIScrollViewDelegate {
+// MARK: - UIScrollViewDelegate
+
+extension PreviewZoomView: UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView

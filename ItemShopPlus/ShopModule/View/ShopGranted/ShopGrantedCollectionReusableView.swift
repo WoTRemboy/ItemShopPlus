@@ -11,10 +11,19 @@ class ShopGrantedCollectionReusableView: UICollectionReusableView {
     
     static let identifier = Texts.ShopGrantedCell.footerIdentifier
     
-    private let seriesView = ShopGrantedParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.series, content: Texts.ShopGrantedParameters.seriesData)
-    private let firstTimeView = ShopGrantedParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.firstTime, content: Texts.ShopGrantedParameters.firstTimeData)
-    private let lastTimeView = ShopGrantedParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.lastTime, content: Texts.ShopGrantedParameters.lastTimeData)
-    private let priceView = ShopGrantedTotalPriceView(frame: .null, price: Texts.ShopGrantedCell.price)
+    // MARK: - UI Elements and Views
+    
+    private let seriesView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.series, content: Texts.ShopGrantedParameters.seriesData)
+    private let firstTimeView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.firstTime, content: Texts.ShopGrantedParameters.firstTimeData)
+    private let lastTimeView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.lastTime, content: Texts.ShopGrantedParameters.lastTimeData)
+    private let priceView = CollectionTotalPriceView(frame: .null, price: Texts.ShopGrantedCell.price)
+    
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 0
+        return stackView
+    }()
     
     private let descriptionTitleLable: UILabel = {
         let label = UILabel()
@@ -39,7 +48,7 @@ class ShopGrantedCollectionReusableView: UICollectionReusableView {
         line.backgroundColor = .labelDisable
         return line
     }()
-
+    
     private let totalPriceLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.total
@@ -49,56 +58,86 @@ class ShopGrantedCollectionReusableView: UICollectionReusableView {
         return label
     }()
     
+    // MARK: - Public Configure Method
+    
     public func configurate(description: String, firstDate: Date, lastDate: Date, series: String?, price: Int) {
         descriptionContentLabel.text = description
         seriesView.configurate(content: series ?? "")
+        priceView.configurate(price: String(price))
         
         firstTimeView.configurate(content: DateFormating.dateFormatterShopGranted.string(from: firstDate))
         lastTimeView.configurate(content: DateFormating.dateFormatterShopGranted.string(from: lastDate))
-        
-        priceView.priceLabel.text = String(price)
-        
+
         setupUI(isSeries: series != nil, isDescription: !description.isEmpty, price: String(price))
     }
-
+    
+    // MARK: - UI Setups
+    
     private func setupUI(isSeries: Bool, isDescription: Bool, price: String) {
-        addSubview(firstTimeView)
-        addSubview(lastTimeView)
+        isDescription ? descriptionSetup() : nil
+        
+        isSeries ? stackView.addArrangedSubview(seriesView) : nil
+        stackView.addArrangedSubview(firstTimeView)
+        stackView.addArrangedSubview(lastTimeView)
+        
+        stackViewSetup(isDescription: isDescription)
+        subStackSetup(isSeries: isSeries)
+        priceSetup(price: price)
+    }
+    
+    private func stackViewSetup(isDescription: Bool) {
+        addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: isDescription ? descriptionContentLabel.bottomAnchor : topAnchor, constant: 16),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
+    }
+    
+    private func subStackSetup(isSeries: Bool) {
+        NSLayoutConstraint.activate([
+            firstTimeView.heightAnchor.constraint(equalToConstant: 70),
+            lastTimeView.heightAnchor.constraint(equalToConstant: 70),
+        ])
+        isSeries ? seriesView.heightAnchor.constraint(equalToConstant: 70).isActive = true : nil
+    }
+    
+    private func descriptionSetup() {
+        addSubview(descriptionSeparatorLine)
+        addSubview(descriptionTitleLable)
+        addSubview(descriptionContentLabel)
+        
+        descriptionSeparatorLine.translatesAutoresizingMaskIntoConstraints = false
+        descriptionTitleLable.translatesAutoresizingMaskIntoConstraints = false
+        descriptionContentLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            descriptionSeparatorLine.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            descriptionSeparatorLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            descriptionSeparatorLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            descriptionSeparatorLine.heightAnchor.constraint(equalToConstant: 1),
+            
+            descriptionTitleLable.bottomAnchor.constraint(equalTo: descriptionSeparatorLine.topAnchor, constant: 70/2 - 2),
+            descriptionTitleLable.leadingAnchor.constraint(equalTo: descriptionSeparatorLine.leadingAnchor),
+            descriptionTitleLable.trailingAnchor.constraint(equalTo: descriptionSeparatorLine.trailingAnchor),
+            
+            descriptionContentLabel.topAnchor.constraint(equalTo: descriptionTitleLable.bottomAnchor, constant: 4),
+            descriptionContentLabel.leadingAnchor.constraint(equalTo: descriptionTitleLable.leadingAnchor),
+            descriptionContentLabel.trailingAnchor.constraint(equalTo: descriptionTitleLable.trailingAnchor)
+        ])
+    }
+    
+    private func priceSetup(price: String) {
         addSubview(totalPriceLabel)
         addSubview(priceView)
-
-        firstTimeView.translatesAutoresizingMaskIntoConstraints = false
-        lastTimeView.translatesAutoresizingMaskIntoConstraints = false
+        
         totalPriceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceView.translatesAutoresizingMaskIntoConstraints = false
         
-        if isDescription {
-            addSubview(descriptionTitleLable)
-            addSubview(descriptionContentLabel)
-            addSubview(descriptionSeparatorLine)
-            
-            descriptionTitleLable.translatesAutoresizingMaskIntoConstraints = false
-            descriptionContentLabel.translatesAutoresizingMaskIntoConstraints = false
-            descriptionSeparatorLine.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        if isSeries {
-            addSubview(seriesView)
-            seriesView.translatesAutoresizingMaskIntoConstraints = false
-        }
-       
         NSLayoutConstraint.activate([
-            firstTimeView.topAnchor.constraint(equalTo: isSeries ? seriesView.bottomAnchor : (isDescription ? descriptionContentLabel.bottomAnchor : topAnchor), constant: !isSeries && !isDescription ? 16 : (isDescription && !isSeries ? (70/2 - 2 - 15) : 0)),
-            firstTimeView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            firstTimeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            firstTimeView.heightAnchor.constraint(equalToConstant: 70),
-            
-            lastTimeView.topAnchor.constraint(equalTo: firstTimeView.bottomAnchor),
-            lastTimeView.leadingAnchor.constraint(equalTo: firstTimeView.leadingAnchor),
-            lastTimeView.trailingAnchor.constraint(equalTo: firstTimeView.trailingAnchor),
-            lastTimeView.heightAnchor.constraint(equalToConstant: 70),
-            
-            totalPriceLabel.topAnchor.constraint(equalTo: lastTimeView.bottomAnchor, constant: 30),
+            totalPriceLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
             totalPriceLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             priceView.topAnchor.constraint(equalTo: totalPriceLabel.bottomAnchor, constant: 7),
@@ -106,31 +145,5 @@ class ShopGrantedCollectionReusableView: UICollectionReusableView {
             priceView.heightAnchor.constraint(equalToConstant: 25),
             priceView.widthAnchor.constraint(equalToConstant: CGFloat(25 + 10 + (18 * price.count))) // vBucks icon + price widths
         ])
-                        
-        if isDescription {
-            NSLayoutConstraint.activate([
-                descriptionSeparatorLine.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-                descriptionSeparatorLine.leadingAnchor.constraint(equalTo: firstTimeView.leadingAnchor),
-                descriptionSeparatorLine.trailingAnchor.constraint(equalTo: firstTimeView.trailingAnchor),
-                descriptionSeparatorLine.heightAnchor.constraint(equalToConstant: 1),
-                
-                descriptionTitleLable.bottomAnchor.constraint(equalTo: descriptionSeparatorLine.topAnchor, constant: 70/2 - 2),
-                descriptionTitleLable.leadingAnchor.constraint(equalTo: descriptionSeparatorLine.leadingAnchor),
-                descriptionTitleLable.trailingAnchor.constraint(equalTo: descriptionSeparatorLine.trailingAnchor),
-                
-                descriptionContentLabel.topAnchor.constraint(equalTo: descriptionTitleLable.bottomAnchor, constant: 4),
-                descriptionContentLabel.leadingAnchor.constraint(equalTo: descriptionTitleLable.leadingAnchor),
-                descriptionContentLabel.trailingAnchor.constraint(equalTo: descriptionTitleLable.trailingAnchor)
-            ])
-        }
-        
-        if isSeries {
-            NSLayoutConstraint.activate([
-                seriesView.topAnchor.constraint(equalTo: isDescription ? descriptionContentLabel.bottomAnchor : topAnchor, constant: isDescription ? (70/2 - 2 - 15) : 16),
-                seriesView.leadingAnchor.constraint(equalTo: firstTimeView.leadingAnchor),
-                seriesView.trailingAnchor.constraint(equalTo: firstTimeView.trailingAnchor),
-                seriesView.heightAnchor.constraint(equalToConstant: 70)
-            ])
-        }
     }
 }

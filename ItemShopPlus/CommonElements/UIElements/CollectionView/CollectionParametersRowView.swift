@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ShopGrantedParametersRowView: UIView {
+class CollectionParametersRowView: UIView {
 
     private let titleLable: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.title
-        label.textColor = .labelPrimary
+        label.textColor = .LabelColors.labelPrimary
         label.font = .headline()
         label.numberOfLines = 1
         return label
@@ -21,7 +21,7 @@ class ShopGrantedParametersRowView: UIView {
     private let contentLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.content
-        label.textColor = .labelSecondary
+        label.textColor = .LabelColors.labelSecondary
         label.font = .subhead()
         label.numberOfLines = 0
         return label
@@ -29,7 +29,7 @@ class ShopGrantedParametersRowView: UIView {
     
     private let separatorLine: UIView = {
         let line = UIView()
-        line.backgroundColor = .labelDisable
+        line.backgroundColor = .LabelColors.labelDisable
         return line
     }()
     

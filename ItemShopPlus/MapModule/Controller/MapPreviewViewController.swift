@@ -9,6 +9,8 @@ import UIKit
 
 class MapPreviewViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private var maps = [Map]()
     private var actualMap = Map(patchVersion: "", realeseDate: .now, clearImage: "", poiImage: "")
     
@@ -16,9 +18,12 @@ class MapPreviewViewController: UIViewController {
     private var imageLoadTask: URLSessionDataTask?
     private var selectedPOI = Texts.MapPage.poi
     
+    private let networkService = DefaultNetworkService()
+    
+    // MARK: - UI Elements and Views
+    
     private let scrollView = MapZoomView()
     private let noInternetView = NoInternetView()
-    private let networkService = DefaultNetworkService()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let backButton: UIBarButtonItem = {
@@ -41,6 +46,8 @@ class MapPreviewViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Initialization
+    
     init(image: String) {
         self.image = image
         super.init(nibName: nil, bundle: nil)
@@ -49,6 +56,8 @@ class MapPreviewViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - ViewController Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         guard scrollView.imageView.image == nil else { return }
@@ -69,6 +78,8 @@ class MapPreviewViewController: UIViewController {
         noInternetSetup()
     }
     
+    // MARK: - Actions
+    
     @objc private func refresh() {
         imageLoadTask = self.loadAndShowImage(from: image, to: scrollView.imageView)
     }
@@ -76,6 +87,26 @@ class MapPreviewViewController: UIViewController {
     private func showActualMap() {
         imageLoadTask = self.loadAndShowImage(from: actualMap.poiImage, to: scrollView.imageView)
     }
+    
+    @objc private func archiveButtonTapped() {
+        let vc = MapPickerViewController(maps: maps.reversed(), currentMap: actualMap)
+        
+        vc.completionHandler = { map in
+            self.changeImageInPreview(
+                newImage: map.poiImage,
+                sectionTitle: map.poiImage, type: .version)
+            
+            self.actualMap = map
+        }
+        let navController = UINavigationController(rootViewController: vc)
+        let fraction = UISheetPresentationController.Detent.custom { context in
+            (self.view.frame.height * 0.5 - self.view.safeAreaInsets.bottom)
+        }
+        navController.sheetPresentationController?.detents = [fraction]
+        present(navController, animated: true)
+    }
+    
+    // MARK: - Networking
     
     private func getMaps() {
         activityIndicatorSetup()
@@ -85,7 +116,6 @@ class MapPreviewViewController: UIViewController {
                 self?.activityIndicator.stopAnimating()
                 self?.activityIndicator.removeFromSuperview()
             }
-            
             switch result {
             case .success(let newItems):
                 DispatchQueue.main.async {
@@ -96,7 +126,6 @@ class MapPreviewViewController: UIViewController {
                     self?.archiveMenuSetup()
                     self?.showActualMap()
                 }
-                
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.loadSuccess(success: false)
@@ -105,6 +134,33 @@ class MapPreviewViewController: UIViewController {
             }
         }
     }
+    
+    private func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) -> URLSessionDataTask? {
+        activityIndicatorSetup()
+        
+        return ImageLoader.loadImage(urlString: imageUrlString) { image in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.removeFromSuperview()
+                
+                imageView.alpha = 0.5
+                
+                if let image = image {
+                    imageView.image = image
+                    self.loadSuccess(success: true)
+                    
+                    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                        imageView.alpha = 1.0
+                    }, completion: nil)
+                } else {
+                    self.loadSuccess(success: false)
+                }
+                
+            }
+        }
+    }
+    
+    // MARK: - Map Change Logic
     
     private func changeImageInPreview(newImage: String, sectionTitle: String, type: NavigationMapButtonType) {
         guard sectionTitle != selectedPOI else { return }
@@ -136,30 +192,7 @@ class MapPreviewViewController: UIViewController {
         }
     }
     
-    private func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) -> URLSessionDataTask? {
-        activityIndicatorSetup()
-        
-        return ImageLoader.loadImage(urlString: imageUrlString) { image in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.removeFromSuperview()
-                
-                imageView.alpha = 0.5
-                
-                if let image = image {
-                    imageView.image = image
-                    self.loadSuccess(success: true)
-                    
-                    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
-                        imageView.alpha = 1.0
-                    }, completion: nil)
-                } else {
-                    self.loadSuccess(success: false)
-                }
-                
-            }
-        }
-    }
+    // MARK: - UI Elements Behaviour during Loading
     
     private func loadSuccess(success: Bool) {
         if success {
@@ -175,6 +208,8 @@ class MapPreviewViewController: UIViewController {
             scrollView.imageView.image = nil
         }
     }
+    
+    // MARK: - UI Setups
     
     private func navigationBarSetup() {
         title = Texts.MapPage.title
@@ -210,25 +245,6 @@ class MapPreviewViewController: UIViewController {
     private func archiveMenuSetup() {
         archiveButton.target = self
         archiveButton.action = #selector(archiveButtonTapped)
-    }
-    
-    @objc private func archiveButtonTapped() {
-        let vc = MapPickerViewController(maps: maps.reversed(), currentMap: actualMap)
-        
-        vc.completionHandler = { map in
-            self.changeImageInPreview(
-                newImage: map.poiImage,
-                sectionTitle: map.poiImage, type: .version)
-            
-            self.actualMap = map
-        }
-        
-        let navController = UINavigationController(rootViewController: vc)
-        let fraction = UISheetPresentationController.Detent.custom { context in
-            (self.view.frame.height * 0.5 - self.view.safeAreaInsets.bottom)
-        }
-        navController.sheetPresentationController?.detents = [fraction]
-        present(navController, animated: true)
     }
     
     private func updateMenuState(for sectionTitle: String, reload: Bool) {
@@ -268,9 +284,4 @@ class MapPreviewViewController: UIViewController {
             noInternetView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
     }
-}
-
-enum NavigationMapButtonType {
-    case location
-    case version
 }

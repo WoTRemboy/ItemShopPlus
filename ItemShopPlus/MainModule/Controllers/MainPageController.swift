@@ -53,11 +53,11 @@ class MainPageViewController: UIViewController {
         }
             
         let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache) (\(cacheSize) \(Texts.ClearCache.megabytes))", style: .destructive) { _ in
-            ImageLoader.cleanCache(full: true) {
+            ImageLoader.cleanCache(entire: true) {
                 self.alertControllerSetup(title: Texts.ClearCache.success, message: Texts.ClearCache.cleared)
             }
         }
-        let cancelAction = UIAlertAction(title: Texts.ClearCache.cancel, style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: Texts.ClearCache.cancel, style: .cancel)
         alertController.addAction(clearAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
@@ -65,14 +65,12 @@ class MainPageViewController: UIViewController {
     
     private func alertControllerSetup(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Texts.ClearCache.ok, style: .default, handler: nil)
+        let okAction = UIAlertAction(title: Texts.ClearCache.ok, style: .default)
         alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true)
     }
     
-    @objc func sayHi() {
-        
-    }
+    @objc func doNothing() {}
     
 }
 

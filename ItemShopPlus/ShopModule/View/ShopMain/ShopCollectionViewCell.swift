@@ -7,15 +7,19 @@
 
 import UIKit
 
-class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
+class ShopCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
     
     static let identifier = Texts.ShopMainCell.identifier
     private var imageLoadTask: URLSessionDataTask?
     
     private var images = [String]()
+    private var imageViews = [UIImageView]()
     private var isLoading = false
     
-    private var imageViews = [UIImageView]()
+    // MARK: - UI Elements and Views
+    
     private let bannerImageView = UIImageView()
     
     private let scrollView: UIScrollView = {
@@ -54,7 +58,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         label.font = .footnote()
         label.numberOfLines = 1
         
-        let attributes: [NSAttributedString.Key: Any] = [          .strikethroughStyle: NSUnderlineStyle.single.rawValue]
+        let attributes: [NSAttributedString.Key: Any] = [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
         let attributedText = NSAttributedString(string: label.text ?? "", attributes: attributes)
         label.attributedText = attributedText
         return label
@@ -77,10 +81,11 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         view.image = .ShopMain.pages
         return view
     }()
+    
+    // MARK: - Public Configure Method
         
     public func configurate(with images: [String], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, grantedCount: Int, _ width: CGFloat) {
         self.images = images
-        
         setupImageCarousel(images: images, banner: banner, grantedCount: grantedCount, cellWidth: width)
         contentSetup(name: name, price: price, oldPrice: oldPrice, count: grantedCount)
         setupUI()
@@ -90,12 +95,16 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         }
     }
     
+    // MARK: - Layout
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         scrollView.contentSize = CGSize(width: CGFloat(imageViews.count) * scrollView.bounds.width, height: scrollView.bounds.height)
         let indentSize = scrollView.frame.height / 9
         scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: indentSize, bottom: 0, right: indentSize)
     }
+    
+    // MARK: - UI Setups
     
     private func contentSetup(name: String, price: Int, oldPrice: Int, count: Int) {
         itemNameLabel.text = name
@@ -169,19 +178,8 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         scrollView.addSubview(bannerImageView)
         bannerImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        switch banner {
-        case .new:
-            bannerImageView.image = .ShopMain.new
-        case .sale:
-            bannerImageView.image = .ShopMain.sale
-        case .emote:
-            bannerImageView.image = .ShopMain.emote
-        case .pickaxe:
-            bannerImageView.image = .ShopMain.pickaxe
-        default:
-            bannerImageView.image = .ShopMain.new
-        }
-        
+        bannerImageView.image = SelectingMethods.selectBanner(banner: banner)
+
         NSLayoutConstraint.activate([
             bannerImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 8),
             bannerImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 8),
@@ -231,6 +229,8 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         ])
     }
     
+    // MARK: - Reusing Preparation
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         ImageLoader.cancelImageLoad(task: imageLoadTask)
@@ -248,13 +248,7 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         itemPagesImageView.removeFromSuperview()
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        loadImagesForOnscreenCells()
-    }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        loadImagesForOnscreenCells()
-    }
+    // MARK: - Networking?
     
     private func loadImagesForOnscreenCells() {
         let visibleRect = CGRect(origin: scrollView.contentOffset, size: scrollView.bounds.size)
@@ -278,5 +272,17 @@ class ShopCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
                 }
             }
         }
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension ShopCollectionViewCell: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        loadImagesForOnscreenCells()
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        loadImagesForOnscreenCells()
     }
 }

@@ -146,6 +146,8 @@ class SelectingMethods {
             return .ShopGranted.epic ?? .grantedEpic
         case .legendary:
             return .ShopGranted.legendary ?? .grantedLegendary
+        case .star:
+            return .BattlePass.star ?? .battlePassStar
         }
     }
 }

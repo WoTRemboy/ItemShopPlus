@@ -158,6 +158,12 @@ class Texts {
         static let noResult = "No result"
     }
     
+    // MARK: - Battle Pass Module
+    
+    enum BattlePassPage {
+        static let title = "Battle Pass"
+    }
+    
     // MARK: - Crew Module
     
     enum CrewPage {

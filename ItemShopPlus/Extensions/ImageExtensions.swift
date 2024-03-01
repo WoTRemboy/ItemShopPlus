@@ -74,6 +74,12 @@ extension UIImage {
         static let legendary = UIImage(named: "GrantedLegendary")
     }
     
+    // MARK: - Battle Pass Module
+    
+    enum BattlePass {
+        static let star = UIImage(named: "BattlePassStar")
+    }
+    
     // MARK: - Quests Module
     
     enum Quests {

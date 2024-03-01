@@ -54,7 +54,6 @@ extension BattlePassItem {
              
               let itemData = data["item"] as? [String: Any],
               let name = itemData["name"] as? String,
-              let description = itemData["description"] as? String,
               
               let typeData = itemData["type"] as? [String: Any],
               let type = typeData["name"] as? String,
@@ -65,20 +64,21 @@ extension BattlePassItem {
               let releaseDateString = dateData["date"] as? String,
               
               let imageData = itemData["images"] as? [String: Any],
-              let image = imageData["icon_background"] as? String,
-              
-              let bpData = itemData["battlepass"] as? [String: Any],
-              let displayData = bpData["displayText"] as? [String: Any],
-              let introduction = displayData["chapterSeason"] as? String,
-              
-              let setData = itemData["set"] as? [String: Any],
-              let set = setData["partOf"] as? String
+              let image = imageData["icon_background"] as? String
         else {
             return nil
         }
         
+        let description = itemData["description"] as? String ?? ""
         let rarity = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         let series = itemData["series"] as? String
+        
+        let setData = itemData["set"] as? [String: Any]
+        let set = setData?["partOf"] as? String ?? ""
+        
+        let bpData = itemData["battlepass"] as? [String: Any]
+        let displayData = bpData?["displayText"] as? [String: Any]
+        let introduction = displayData?["chapterSeason"] as? String ?? ""
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

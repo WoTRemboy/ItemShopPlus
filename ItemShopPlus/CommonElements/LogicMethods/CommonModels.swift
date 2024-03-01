@@ -38,4 +38,5 @@ enum Rarity {
     case rare
     case epic
     case legendary
+    case star
 }

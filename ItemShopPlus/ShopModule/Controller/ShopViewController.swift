@@ -53,7 +53,7 @@ class ShopViewController: UIViewController {
     
     private let filterButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
-        button.image = .ShopMain.filter
+        button.image = .FilterMenu.filter
         button.isEnabled = false
         return button
     }()
@@ -255,6 +255,7 @@ class ShopViewController: UIViewController {
     private func menuSetup() {
         let allAction = UIAction(title: Texts.ShopPage.allMenu, image: nil) { [weak self] action in
             self?.filterItemsBySection(sectionTitle: Texts.ShopPage.allMenu, forAll: true)
+            self?.filterButton.image = .FilterMenu.filter
             self?.menuSetup()
         }
         allAction.state = .on
@@ -262,11 +263,13 @@ class ShopViewController: UIViewController {
         for section in sectionedItems.sorted(by: { $0.key < $1.key }) {
             let sectionAction = UIAction(title: section.key, image: nil) { [weak self] action in
                 self?.filterItemsBySection(sectionTitle: section.key, forAll: false)
+                self?.filterButton.image = .FilterMenu.filledFilter
             }
             
             children.append(sectionAction)
         }
         filterButton.menu = UIMenu(title: "", children: children)
+        filterButton.image = .FilterMenu.filter
     }
     
     private func updateMenuState(for sectionTitle: String) {
@@ -437,7 +440,7 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
         let inSearchMode = searchController.isActive && !text.isEmpty
         let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
         let count = filteredItems.count
-        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.ShopSearchController.result : Texts.ShopSearchController.noResult) : headerView.configurate(with: sectionKey)
+        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: sectionKey)
         return headerView
     }
 }

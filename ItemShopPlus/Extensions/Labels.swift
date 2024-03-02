@@ -26,6 +26,11 @@ class Texts {
         static let backToShop = "Shop"
     }
     
+    enum SearchController {
+        static let result = "Result"
+        static let noResult = "No result"
+    }
+    
     enum Season {
         static let beginDate = "2023-12-03T08:00:00.000Z"
         static let endDate = "2024-03-08T02:00:00.000Z"
@@ -153,17 +158,15 @@ class Texts {
         static let lastTimeData = "Previous release..."
     }
     
-    enum ShopSearchController {
-        static let result = "Result"
-        static let noResult = "No result"
-    }
-    
     // MARK: - Battle Pass Module
     
     enum BattlePassPage {
         static let title = "Battle Pass"
         static let free = "Free"
         static let paid = "Paid"
+        static let allMenu = "All"
+        static let page = "Page"
+        static let search = "Search items"
     }
     
     enum BattlePassCell {

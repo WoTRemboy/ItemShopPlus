@@ -12,7 +12,11 @@ class BattlePassMainViewController: UIViewController {
     // MARK: - Properties
     
     private var battlePass = BattlePass.emptyPass
+    private var selectedSectionTitle = Texts.BattlePassPage.allMenu
+    private var previousSearchedCount = 0
+    
     private var items = [BattlePassItem]()
+    private var filteredItems = [BattlePassItem]()
     private var sectionedItems = [Int: [BattlePassItem]]()
     
     private let networkService = DefaultNetworkService()
@@ -29,6 +33,21 @@ class BattlePassMainViewController: UIViewController {
         return button
     }()
     
+    private let infoButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .ShopMain.info
+//        button.action = #selector(infoButtonTapped)
+        button.isEnabled = false
+        return button
+    }()
+    
+    private let filterButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .FilterMenu.filter
+        button.isEnabled = false
+        return button
+    }()
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -38,6 +57,14 @@ class BattlePassMainViewController: UIViewController {
         collectionView.register(BattlePassMainCollectionViewCell.self, forCellWithReuseIdentifier: BattlePassMainCollectionViewCell.identifier)
         collectionView.register(CollectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderReusableView.identifier)
         return collectionView
+    }()
+    
+    private let searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.placeholder = Texts.BattlePassPage.search
+        return searchController
     }()
     
     // MARK: - ViewController Lifecycle
@@ -56,6 +83,7 @@ class BattlePassMainViewController: UIViewController {
         
         noInternetSetup()
         navigationBarSetup()
+        searchControllerSetup()
         collectionViewSetup()
         setupUI()
     }
@@ -63,11 +91,25 @@ class BattlePassMainViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func refreshWithControl() {
-        getBattlePass(isRefreshControl: true)
+        if !searchController.isActive {
+            getBattlePass(isRefreshControl: true)
+        }
     }
     
     @objc private func refreshWithoutControl() {
-        getBattlePass(isRefreshControl: false)
+        if !searchController.isActive {
+            getBattlePass(isRefreshControl: false)
+        }
+    }
+    
+    @objc private func handleTapOutsideKeyboard() {
+        guard searchController.isActive else { return }
+        if searchController.searchBar.text?.isEmpty == true {
+            searchController.dismiss(animated: true)
+        } else {
+            searchController.searchBar.resignFirstResponder()
+        }
+        UIView.appearance().isExclusiveTouch = true
     }
     
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -83,9 +125,10 @@ class BattlePassMainViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
+            let item: BattlePassItem
             let sectionKey = Array(self.sectionedItems.keys).sorted()[indexPath.section]
             if let itemsInSection = self.sectionedItems[sectionKey] {
-                let item = itemsInSection[indexPath.item]
+                (self.filteredItems.count != 0 && self.filteredItems.count != self.items.count) ? (item = self.filteredItems[indexPath.item]) : (item = itemsInSection[indexPath.item])
                 self.navigationController?.pushViewController(BattlePassGrantedViewController(item: item), animated: true)
             }
             UIView.animate(withDuration: 0.1, animations: {
@@ -103,6 +146,7 @@ class BattlePassMainViewController: UIViewController {
             self.activityIndicator.center = self.view.center
             self.view.addSubview(self.activityIndicator)
             self.activityIndicator.startAnimating()
+            self.searchController.searchBar.isHidden = true
         }
         noInternetView.isHidden = true
         
@@ -114,6 +158,7 @@ class BattlePassMainViewController: UIViewController {
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.removeFromSuperview()
                 }
+                self?.selectedSectionTitle = Texts.BattlePassPage.allMenu
             }
             
             switch result {
@@ -125,14 +170,22 @@ class BattlePassMainViewController: UIViewController {
                     self?.sortingSections(items: newPass.items)
                     
                     self?.collectionView.reloadData()
+                    self?.menuSetup()
+                    
                     self?.collectionView.isHidden = false
                     self?.noInternetView.isHidden = true
+                    self?.searchController.searchBar.isHidden = false
+                    self?.infoButton.isEnabled = true
+                    self?.filterButton.isEnabled = true
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                     self?.collectionView.isHidden = false
                     self?.noInternetView.isHidden = false
+                    self?.searchController.searchBar.isHidden = true
+                    self?.infoButton.isEnabled = false
+                    self?.filterButton.isEnabled = false
                 }
                 print(error)
             }
@@ -152,6 +205,20 @@ class BattlePassMainViewController: UIViewController {
         }
     }
     
+    private func filterItemsBySection(sectionTitle: String, forAll: Bool) {
+        guard sectionTitle != selectedSectionTitle else { return }
+        
+        sectionedItems.removeAll()
+        sortingSections(items: items)
+        if !forAll {
+            sectionedItems = sectionedItems.filter { menuTitleSetup(page: $0.key) == sectionTitle }
+        }
+        updateMenuState(for: sectionTitle)
+        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            self.collectionView.reloadData()
+        }, completion: nil)
+    }
+    
     private func clearItems() {
         items.removeAll()
         sectionedItems.removeAll()
@@ -159,11 +226,21 @@ class BattlePassMainViewController: UIViewController {
     
     // MARK: - UI Setups
     
+    private func menuTitleSetup(page: Int) -> String {
+        return "\(Texts.BattlePassPage.page) \(page)"
+    }
+    
     private func navigationBarSetup() {
         title = Texts.BattlePassPage.title
-        
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        infoButton.target = self
+        filterButton.target = self
+        navigationItem.rightBarButtonItems = [
+            infoButton,
+            filterButton
+        ]
     }
     
     private func collectionViewSetup() {
@@ -171,6 +248,48 @@ class BattlePassMainViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshWithControl), for: .valueChanged)
+    }
+    
+    private func searchControllerSetup() {
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+        navigationItem.hidesSearchBarWhenScrolling = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    private func menuSetup() {
+        let allAction = UIAction(title: Texts.BattlePassPage.allMenu, image: nil) { [weak self] action in
+            self?.filterItemsBySection(sectionTitle: Texts.BattlePassPage.allMenu, forAll: true)
+            self?.filterButton.image = .FilterMenu.filter
+            self?.menuSetup()
+        }
+        allAction.state = .on
+        var children = [allAction]
+        for section in sectionedItems.sorted(by: { $0.key < $1.key }) {
+            let sectionAction = UIAction(title: menuTitleSetup(page: section.key), image: nil) { [weak self] action in
+                self?.filterItemsBySection(sectionTitle: self?.menuTitleSetup(page: section.key) ?? String(), forAll: false)
+                self?.filterButton.image = .FilterMenu.filledFilter
+            }
+            
+            children.append(sectionAction)
+        }
+        filterButton.menu = UIMenu(title: "", children: children)
+        filterButton.image = .FilterMenu.filter
+    }
+    
+    private func updateMenuState(for sectionTitle: String) {
+        if let currentAction = filterButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
+            currentAction.state = .on
+        }
+        if let previousAction = filterButton.menu?.children.first(where: { $0.title == selectedSectionTitle }) as? UIAction {
+            previousAction.state = .off
+        }
+        selectedSectionTitle = sectionTitle
     }
     
     private func noInternetSetup() {
@@ -197,33 +316,81 @@ class BattlePassMainViewController: UIViewController {
     }
 }
 
+// MARK: - UISearchResultsUpdating & UISearchControllerDelegate
+
+extension BattlePassMainViewController: UISearchResultsUpdating, UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredItems = items
+        
+        if let searchText = searchController.searchBar.text {
+            filteredItems = items.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            if filteredItems.count != previousSearchedCount || (searchText.isEmpty && collectionView.visibleCells.count == 0) || (!searchText.isEmpty && filteredItems.count == 0) {
+                UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    self.collectionView.reloadData()
+                }, completion: nil)
+                previousSearchedCount = filteredItems.count
+            }
+        }
+    }
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+        UIView.appearance().isExclusiveTouch = false
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        UIView.appearance().isExclusiveTouch = true
+    }
+}
+
 // MARK: - UICollectionViewDelegate & UICollectionViewDataSource
 
 extension BattlePassMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sectionedItems.count
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
+        return inSearchMode ? 1 : sectionedItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
         let sectionKey = Array(sectionedItems.keys).sorted()[section]
-        return sectionedItems[sectionKey]?.count ?? 0
+        return inSearchMode ? filteredItems.count : sectionedItems[sectionKey]?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BattlePassMainCollectionViewCell.identifier, for: indexPath) as? BattlePassMainCollectionViewCell else {
-            fatalError("Failed to dequeue ShopCollectionViewCell in ShopViewController")
+            fatalError("Failed to dequeue BattlePassMainCollectionViewCell in BattlePassMainViewController")
         }
-        let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
-        if let itemsInSection = sectionedItems[sectionKey] {
-            let item = itemsInSection[indexPath.item]
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
+        
+        if inSearchMode {
+            let item = filteredItems[indexPath.item]
             cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType)
+        } else {
+            let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
+            if let itemsInSection = sectionedItems[sectionKey] {
+                let item = itemsInSection[indexPath.item]
+                cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType)
+            }
         }
         
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         
         return cell
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard searchController.isActive else { return }
+        if searchController.searchBar.text?.isEmpty == true {
+            searchController.dismiss(animated: false)
+        } else {
+            searchController.searchBar.resignFirstResponder()
+        }
+        UIView.appearance().isExclusiveTouch = true
     }
 }
 
@@ -257,11 +424,14 @@ extension BattlePassMainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
-            fatalError("Failed to dequeue ShopCollectionReusableView in ShopViewController")
+            fatalError("Failed to dequeue CollectionHeaderReusableView in BattlePassMainViewController")
         }
-        
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
+        let count = filteredItems.count
         let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
-        headerView.configurate(with: "Page \(sectionKey)")
+        
+        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: "Page \(sectionKey)")
         return headerView
     }
 }

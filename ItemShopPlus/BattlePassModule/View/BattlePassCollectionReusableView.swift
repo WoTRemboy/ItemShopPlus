@@ -1,22 +1,26 @@
 //
-//  ShopGrantedCollectionReusableView.swift
+//  BattlePassCollectionReusableView.swift
 //  ItemShopPlus
 //
-//  Created by Roman Tverdokhleb on 24.01.2024.
+//  Created by Roman Tverdokhleb on 02.03.2024.
 //
 
 import UIKit
 
-class ShopGrantedCollectionReusableView: UICollectionReusableView {
+class BattlePassCollectionReusableView: UICollectionReusableView {
     
-    static let identifier = Texts.ShopGrantedCell.footerIdentifier
+    static let identifier = Texts.BattlePassCell.footerIdentifier
     
     // MARK: - UI Elements and Views
-    
-    private let seriesView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.series, content: Texts.ShopGrantedParameters.seriesData)
-    private let firstTimeView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.firstTime, content: Texts.ShopGrantedParameters.firstTimeData)
-    private let lastTimeView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.lastTime, content: Texts.ShopGrantedParameters.lastTimeData)
-    private let priceView = CollectionTotalPriceView(frame: .null, price: Texts.ShopGrantedCell.price)
+        
+    private let seriesView = CollectionParametersRowView(frame: .null, title: Texts.BattlePassItemsParameters.series, content: Texts.BattlePassItemsParameters.seriesData)
+    private let setView = CollectionParametersRowView(frame: .null, title: Texts.BattlePassItemsParameters.set, content: Texts.BattlePassItemsParameters.setData)
+    private let payTypeView = CollectionParametersRowView(frame: .null, title: Texts.BattlePassItemsParameters.paytype, content: Texts.BattlePassItemsParameters.paytypeDara)
+    private let introducedView = CollectionParametersRowView(frame: .null, title: Texts.BattlePassItemsParameters.introduced, content: Texts.BattlePassItemsParameters.introducedData)
+    private let addedDateView = CollectionParametersRowView(frame: .null, title: Texts.BattlePassItemsParameters.addedDate, content: Texts.BattlePassItemsParameters.addedDate)
+    private let rewardWallView = CollectionParametersRowView(frame: .null, title: Texts.BattlePassItemsParameters.rewardWall, content: Texts.BattlePassItemsParameters.rewardWallData)
+    private let levelWallView = CollectionParametersRowView(frame: .null, title: Texts.BattlePassItemsParameters.levelWall, content: Texts.BattlePassItemsParameters.levelWallData)
+    private let priceView = CollectionTotalPriceView(frame: .null, price: Texts.BattlePassCell.price)
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -60,28 +64,35 @@ class ShopGrantedCollectionReusableView: UICollectionReusableView {
     
     // MARK: - Public Configure Method
     
-    public func configurate(description: String, firstDate: Date, lastDate: Date, series: String?, price: Int) {
+    public func configurate(description: String, series: String?, set: String?, payType: PayType, introduced: String, addedDate: Date, rewardWall: Int, levelWall: Int, price: Int) {
         descriptionContentLabel.text = description
         seriesView.configurate(content: series ?? "")
-        priceView.configurate(price: String(price), currency: .vbucks)
-        
-        firstTimeView.configurate(content: DateFormating.dateFormatterShopGranted.string(from: firstDate))
-        lastTimeView.configurate(content: DateFormating.dateFormatterShopGranted.string(from: lastDate))
+        setView.configurate(content: set ?? "")
+        payTypeView.configurate(content: SelectingMethods.selectPayType(payType: payType))
+        introducedView.configurate(content: introduced)
+        addedDateView.configurate(content: DateFormating.dateFormatterShopGranted.string(from: addedDate))
+        rewardWallView.configurate(content: String(rewardWall))
+        levelWallView.configurate(content: String(levelWall))
+        priceView.configurate(price: String(price), currency: .star)
 
-        setupUI(isSeries: series != nil, isDescription: !description.isEmpty, price: String(price))
+        setupUI(isSeries: series != nil, isDescription: !description.isEmpty, isSet: set != nil, isRewardWall: rewardWall != 0, isLevelWall: levelWall != 0, isIntroduced: !introduced.isEmpty, price: String(price))
     }
     
     // MARK: - UI Setups
     
-    private func setupUI(isSeries: Bool, isDescription: Bool, price: String) {
+    private func setupUI(isSeries: Bool, isDescription: Bool, isSet: Bool, isRewardWall: Bool, isLevelWall: Bool, isIntroduced: Bool, price: String) {
         isDescription ? descriptionSetup() : nil
         
         isSeries ? stackView.addArrangedSubview(seriesView) : nil
-        stackView.addArrangedSubview(firstTimeView)
-        stackView.addArrangedSubview(lastTimeView)
+        isSet ? stackView.addArrangedSubview(setView) : nil
+        stackView.addArrangedSubview(payTypeView)
+        isIntroduced ? stackView.addArrangedSubview(introducedView) : nil
+        stackView.addArrangedSubview(addedDateView)
+        isRewardWall ? stackView.addArrangedSubview(rewardWallView) : nil
+        isLevelWall ? stackView.addArrangedSubview(levelWallView) : nil
         
         stackViewSetup(isDescription: isDescription)
-        subStackSetup(isSeries: isSeries)
+        subStackSetup(isSeries: isSeries, isSet: isSet, isRewardWall: isRewardWall, isLevelWall: isLevelWall)
         priceSetup(price: price)
     }
     
@@ -96,12 +107,16 @@ class ShopGrantedCollectionReusableView: UICollectionReusableView {
         ])
     }
     
-    private func subStackSetup(isSeries: Bool) {
+    private func subStackSetup(isSeries: Bool, isSet: Bool, isRewardWall: Bool, isLevelWall: Bool) {
         NSLayoutConstraint.activate([
-            firstTimeView.heightAnchor.constraint(equalToConstant: 70),
-            lastTimeView.heightAnchor.constraint(equalToConstant: 70),
+            payTypeView.heightAnchor.constraint(equalToConstant: 70),
+            introducedView.heightAnchor.constraint(equalToConstant: 70),
+            addedDateView.heightAnchor.constraint(equalToConstant: 70)
         ])
         isSeries ? seriesView.heightAnchor.constraint(equalToConstant: 70).isActive = true : nil
+        isSet ? setView.heightAnchor.constraint(equalToConstant: 70).isActive = true : nil
+        isRewardWall ? rewardWallView.heightAnchor.constraint(equalToConstant: 70).isActive = true : nil
+        isLevelWall ? levelWallView.heightAnchor.constraint(equalToConstant: 70).isActive = true : nil
     }
     
     private func descriptionSetup() {
@@ -147,3 +162,4 @@ class ShopGrantedCollectionReusableView: UICollectionReusableView {
         ])
     }
 }
+

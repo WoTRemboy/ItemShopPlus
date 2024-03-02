@@ -162,6 +162,35 @@ class Texts {
     
     enum BattlePassPage {
         static let title = "Battle Pass"
+        static let free = "Free"
+        static let paid = "Paid"
+    }
+    
+    enum BattlePassCell {
+        static let identifier = "BattlePassCollectionViewCell"
+        static let footerIdentifier = "BattlePassCollectionReusableView"
+        static let price = "Item price..."
+        static let loadingScreen = "Loading Screen"
+    }
+    
+    enum BattlePassItemsParameters {
+        static let descriprion = "Descriprion"
+        static let series = "Series"
+        static let addedDate = "First release"
+        static let paytype = "Tier type"
+        static let rewardWall = "Rewards needed for unlock"
+        static let levelWall = "Levels needed for unlock"
+        static let introduced = "Introduced"
+        static let set = "Set"
+        
+        static let descriptionData = "Descriprion..."
+        static let seriesData = "Series..."
+        static let firstTimeData = "First release..."
+        static let paytypeDara = "Tier type..."
+        static let rewardWallData = "Rewards needed for unlock..."
+        static let levelWallData = "Levels needed for unlock..."
+        static let introducedData = "introduced in..."
+        static let setData = "Part of..."
     }
     
     // MARK: - Crew Module

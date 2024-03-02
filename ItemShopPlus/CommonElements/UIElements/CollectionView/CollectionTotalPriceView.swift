@@ -35,8 +35,9 @@ class CollectionTotalPriceView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configurate(price: String) {
+    public func configurate(price: String, currency: CurrencyImage) {
         priceLabel.text = price
+        currency == .star ? priceImageView.image = .BattlePass.star : nil
     }
     
     private func setupUI() {
@@ -56,5 +57,4 @@ class CollectionTotalPriceView: UIView {
             priceLabel.leadingAnchor.constraint(equalTo: priceImageView.trailingAnchor, constant: 10)
         ])
     }
-
 }

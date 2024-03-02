@@ -35,7 +35,7 @@ class BattlePassMainViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true
-        collectionView.register(CollectionRarityCell.self, forCellWithReuseIdentifier: CollectionRarityCell.identifier)
+        collectionView.register(BattlePassMainCollectionViewCell.self, forCellWithReuseIdentifier: BattlePassMainCollectionViewCell.identifier)
         collectionView.register(CollectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderReusableView.identifier)
         return collectionView
     }()
@@ -62,8 +62,12 @@ class BattlePassMainViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func refresh() {
+    @objc private func refreshWithControl() {
         getBattlePass(isRefreshControl: true)
+    }
+    
+    @objc private func refreshWithoutControl() {
+        getBattlePass(isRefreshControl: false)
     }
     
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -79,17 +83,11 @@ class BattlePassMainViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            let item: BattlePassItem
             let sectionKey = Array(self.sectionedItems.keys).sorted()[indexPath.section]
             if let itemsInSection = self.sectionedItems[sectionKey] {
-                item = itemsInSection[indexPath.item]
-                let vc = ShopGrantedPreviewViewController(image: item.image, name: item.name)
-                let navVC = UINavigationController(rootViewController: vc)
-                navVC.modalPresentationStyle = .fullScreen
-                navVC.modalTransitionStyle = .crossDissolve
-                self.present(navVC, animated: true)
+                let item = itemsInSection[indexPath.item]
+                self.navigationController?.pushViewController(BattlePassGrantedViewController(item: item), animated: true)
             }
-
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = CGAffineTransform.identity
             })
@@ -106,6 +104,7 @@ class BattlePassMainViewController: UIViewController {
             self.view.addSubview(self.activityIndicator)
             self.activityIndicator.startAnimating()
         }
+        noInternetView.isHidden = true
         
         self.networkService.getBattlePassItems { [weak self] result in
             DispatchQueue.main.async {
@@ -171,12 +170,12 @@ class BattlePassMainViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshWithControl), for: .valueChanged)
     }
     
     private func noInternetSetup() {
         noInternetView.isHidden = true
-        noInternetView.reloadButton.addTarget(self, action: #selector(refresh), for: .touchUpInside)
+        noInternetView.reloadButton.addTarget(self, action: #selector(refreshWithoutControl), for: .touchUpInside)
         noInternetView.configurate()
     }
     
@@ -212,13 +211,13 @@ extension BattlePassMainViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionRarityCell.identifier, for: indexPath) as? CollectionRarityCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BattlePassMainCollectionViewCell.identifier, for: indexPath) as? BattlePassMainCollectionViewCell else {
             fatalError("Failed to dequeue ShopCollectionViewCell in ShopViewController")
         }
         let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
         if let itemsInSection = sectionedItems[sectionKey] {
             let item = itemsInSection[indexPath.item]
-            cell.configurate(name: item.name, type: String(item.price), rarity: .star, image: item.image)
+            cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType)
         }
         
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))

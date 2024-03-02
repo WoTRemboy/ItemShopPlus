@@ -45,7 +45,7 @@ extension BattlePassItem {
               let id = data["offerId"] as? String,
               let tier = data["tier"] as? Int,
               let page = data["page"] as? Int,
-              let payType = data["battlepass"] as? String,
+              let payTypeString = data["battlepass"] as? String,
               let rewardWall = data["rewardsNeededForUnlock"] as? Int,
               let levelWall = data["levelsNeededForUnlock"] as? Int,
               
@@ -71,10 +71,11 @@ extension BattlePassItem {
         
         let description = itemData["description"] as? String ?? ""
         let rarity = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
+        let payType = SelectingMethods.selectPayType(payType: payTypeString)
         let series = itemData["series"] as? String
         
         let setData = itemData["set"] as? [String: Any]
-        let set = setData?["partOf"] as? String ?? ""
+        let set = setData?["partOf"] as? String
         
         let bpData = itemData["battlepass"] as? [String: Any]
         let displayData = bpData?["displayText"] as? [String: Any]

@@ -150,4 +150,26 @@ class SelectingMethods {
             return .BattlePass.star ?? .battlePassStar
         }
     }
+    
+    // MARK: - Rarity
+    
+    static func selectPayType(payType: String) -> PayType {
+        switch payType {
+        case "free":
+            return .free
+        case "paid":
+            return .paid
+        default:
+            return .paid
+        }
+    }
+    
+    static func selectPayType(payType: PayType) -> String {
+        switch payType {
+        case .free:
+            return Texts.BattlePassPage.free
+        case .paid:
+            return Texts.BattlePassPage.paid
+        }
+    }
 }

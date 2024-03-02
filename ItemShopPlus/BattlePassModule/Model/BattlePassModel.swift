@@ -24,7 +24,7 @@ struct BattlePassItem {
     let id: String
     let tier: Int
     let page: Int
-    let payType: String
+    let payType: PayType
     let price: Int
     let rewardWall: Int
     let levelWall: Int
@@ -37,7 +37,12 @@ struct BattlePassItem {
     let releaseDate: Date
     let image: String
     let introduction: String
-    let set: String
+    let set: String?
     
-    static let emptyItem = BattlePassItem(id: "", tier: 0, page: 0, payType: "", price: 0, rewardWall: 0, levelWall: 0, type: "", name: "", description: "", rarity: .common, series: nil, releaseDate: .now, image: "", introduction: "", set: "")
+    static let emptyItem = BattlePassItem(id: "", tier: 0, page: 0, payType: .paid, price: 0, rewardWall: 0, levelWall: 0, type: "", name: "", description: "", rarity: .common, series: nil, releaseDate: .now, image: "", introduction: "", set: "")
+}
+
+enum PayType {
+    case free
+    case paid
 }

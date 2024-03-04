@@ -17,7 +17,7 @@ extension BattlePass {
                 
               let id = globalData["season"] as? Int,
               let chapter = displayData["chapter"] as? String,
-              let season = displayData["season"] as? String,
+              let season = displayData["chapterSeason"] as? String,
               let passName = displayData["battlepassName"] as? String,
               
               let beginDateString = seasonsData["begin"] as? String,
@@ -31,6 +31,8 @@ extension BattlePass {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         let beginDate = dateFormatter.date(from: beginDateString) ?? .now
         let endDate = dateFormatter.date(from: endDateString) ?? .now
         

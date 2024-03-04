@@ -174,6 +174,7 @@ class Texts {
         static let footerIdentifier = "BattlePassCollectionReusableView"
         static let price = "Item price..."
         static let loadingScreen = "Loading Screen"
+        static let remaining = "Remaining time"
     }
     
     enum BattlePassItemsParameters {
@@ -185,6 +186,9 @@ class Texts {
         static let levelWall = "Levels needed for unlock"
         static let introduced = "Introduced"
         static let set = "Set"
+        static let beginDate = "Start date"
+        static let endDate = "End date"
+        static let currentSeason = "Currently underway"
         
         static let descriptionData = "Descriprion..."
         static let seriesData = "Series..."
@@ -194,6 +198,14 @@ class Texts {
         static let levelWallData = "Levels needed for unlock..."
         static let introducedData = "introduced in..."
         static let setData = "Part of..."
+        static let beginDateData = "Begin date..."
+        static let endDateData = "End date..."
+        static let currentData = "Currently underway..."
+    }
+    
+    enum BattlePassInfo {
+        static let season = "Season"
+        static let newSeason = "New season is coming soon!"
     }
     
     // MARK: - Crew Module

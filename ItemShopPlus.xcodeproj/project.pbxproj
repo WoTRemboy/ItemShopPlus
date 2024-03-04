@@ -24,6 +24,10 @@
 		63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */; };
 		63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */; };
 		63750CAA2B934FDD00ED7E0B /* BattlePassGrantedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA92B934FDD00ED7E0B /* BattlePassGrantedViewController.swift */; };
+		63750CAC2B93851200ED7E0B /* BattlePassInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CAB2B93851200ED7E0B /* BattlePassInfoViewController.swift */; };
+		63750CB02B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CAF2B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift */; };
+		63750CB22B95F06600ED7E0B /* VideoLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CB12B95F06600ED7E0B /* VideoLoader.swift */; };
+		63750CB42B96028E00ED7E0B /* TimerRemainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CB32B96028E00ED7E0B /* TimerRemainingView.swift */; };
 		637B26812B4AB4050075B871 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26802B4AB4050075B871 /* SplashScreenView.swift */; };
 		637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */; };
 		637B26892B4B3A2E0075B871 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26882B4B3A2E0075B871 /* ShopModel.swift */; };
@@ -84,6 +88,10 @@
 		63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassCollectionReusableView.swift; sourceTree = "<group>"; };
 		63750CA92B934FDD00ED7E0B /* BattlePassGrantedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassGrantedViewController.swift; sourceTree = "<group>"; };
+		63750CAB2B93851200ED7E0B /* BattlePassInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassInfoViewController.swift; sourceTree = "<group>"; };
+		63750CAF2B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassSeasonParameterRow.swift; sourceTree = "<group>"; };
+		63750CB12B95F06600ED7E0B /* VideoLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLoader.swift; sourceTree = "<group>"; };
+		63750CB32B96028E00ED7E0B /* TimerRemainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRemainingView.swift; sourceTree = "<group>"; };
 		637B26802B4AB4050075B871 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		637B26882B4B3A2E0075B871 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
@@ -206,6 +214,7 @@
 			children = (
 				63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */,
 				63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */,
+				63750CAF2B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -288,6 +297,7 @@
 			children = (
 				639E62342B92719100E17B4F /* BattlePassMainViewController.swift */,
 				63750CA92B934FDD00ED7E0B /* BattlePassGrantedViewController.swift */,
+				63750CAB2B93851200ED7E0B /* BattlePassInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -436,6 +446,7 @@
 			children = (
 				63F547862B34A8D500B3F941 /* DefaultNetworkService.swift */,
 				63C899162B26220D00FABD69 /* ImageLoader.swift */,
+				63750CB12B95F06600ED7E0B /* VideoLoader.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -465,6 +476,7 @@
 				63ECC1312B92020D006E0841 /* CollectionCells */,
 				63ECC12E2B9134BB006E0841 /* CollectionView */,
 				63F94E762B6521DD00F5E4B9 /* PreviewZoomView.swift */,
+				63750CB32B96028E00ED7E0B /* TimerRemainingView.swift */,
 				634F3F8A2B67CC8800C01426 /* NoInternetView.swift */,
 			);
 			path = UIElements;
@@ -609,16 +621,20 @@
 				6320672C2B8B66130060AB1B /* CrewModel.swift in Sources */,
 				637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */,
 				63750CAA2B934FDD00ED7E0B /* BattlePassGrantedViewController.swift in Sources */,
+				63750CB22B95F06600ED7E0B /* VideoLoader.swift in Sources */,
+				63750CB42B96028E00ED7E0B /* TimerRemainingView.swift in Sources */,
 				63F547892B34AE2200B3F941 /* JSONParce.swift in Sources */,
 				637B26892B4B3A2E0075B871 /* ShopModel.swift in Sources */,
 				63C898E92B233DDA00FABD69 /* ImageExtensions.swift in Sources */,
 				637B26932B4D7FF60075B871 /* JSONShopParce.swift in Sources */,
+				63750CB02B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift in Sources */,
 				63F547872B34A8D500B3F941 /* DefaultNetworkService.swift in Sources */,
 				63F8B9D72B2CD84E006E2430 /* QuestTableViewCell.swift in Sources */,
 				63290CE32B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift in Sources */,
 				63ECC1352B9259A2006E0841 /* BattlePassModel.swift in Sources */,
 				63ECC12D2B910A00006E0841 /* SelectingMethods.swift in Sources */,
 				63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */,
+				63750CAC2B93851200ED7E0B /* BattlePassInfoViewController.swift in Sources */,
 				638FD6D12B854D4100CE47BD /* MapModel.swift in Sources */,
 				632533B12B83D45700DA3F05 /* MapPreviewViewController.swift in Sources */,
 				63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */,
@@ -794,7 +810,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
+				MARKETING_VERSION = 0.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -827,7 +843,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.0;
+				MARKETING_VERSION = 0.3.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -56,7 +56,7 @@ class MapPickerViewController: UIViewController {
     }
     
     private func createTitle(version: String, date: Date) -> String {
-        let stringDate = DateFormating.dateFormatterShopGranted.string(from: date)
+        let stringDate = DateFormating.dateFormatterDMY.string(from: date)
         return "v\(version) – \(stringDate)"
     }
     

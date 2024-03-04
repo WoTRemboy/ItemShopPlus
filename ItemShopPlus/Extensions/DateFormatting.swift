@@ -30,7 +30,7 @@ class DateFormating {
     
     // MARK: - Shop Module
     
-    static let dateFormatterShopGranted: DateFormatter = {
+    static let dateFormatterDMY: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         return formatter

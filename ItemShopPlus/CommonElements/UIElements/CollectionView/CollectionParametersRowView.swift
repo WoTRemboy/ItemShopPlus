@@ -33,9 +33,20 @@ class CollectionParametersRowView: UIView {
         return line
     }()
     
-    init(frame: CGRect, title: String, content: String) {
+    init(frame: CGRect, title: String, content: String, textAlignment: TextAlignment = .left) {
         titleLable.text = title
         contentLabel.text = content
+        switch textAlignment {
+        case .left:
+            titleLable.textAlignment = .left
+            contentLabel.textAlignment = .left
+        case .right:
+            titleLable.textAlignment = .right
+            contentLabel.textAlignment = .right
+        case .center:
+            titleLable.textAlignment = .center
+            contentLabel.textAlignment = .center
+        }
         super.init(frame: frame)
         
         setupUI()
@@ -73,4 +84,10 @@ class CollectionParametersRowView: UIView {
             contentLabel.trailingAnchor.constraint(equalTo: titleLable.trailingAnchor)
         ])
     }
+}
+
+enum TextAlignment {
+    case left
+    case right
+    case center
 }

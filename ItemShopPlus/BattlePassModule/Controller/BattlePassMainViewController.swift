@@ -36,7 +36,7 @@ class BattlePassMainViewController: UIViewController {
     private let infoButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .ShopMain.info
-//        button.action = #selector(infoButtonTapped)
+        button.action = #selector(infoButtonTapped)
         button.isEnabled = false
         return button
     }()
@@ -89,6 +89,16 @@ class BattlePassMainViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @objc private func infoButtonTapped() {
+        let vc = BattlePassInfoViewController(seasonId: battlePass.id, seasonName: battlePass.season, video: battlePass.video, beginDate: battlePass.beginDate, endDate: battlePass.endDate)
+        let navVC = UINavigationController(rootViewController: vc)
+        let fraction = UISheetPresentationController.Detent.custom { context in
+            (self.view.frame.height * 0.85 - self.view.safeAreaInsets.bottom * 4)
+        }
+        navVC.sheetPresentationController?.detents = [fraction]
+        present(navVC, animated: true)
+    }
     
     @objc private func refreshWithControl() {
         if !searchController.isActive {
@@ -205,15 +215,15 @@ class BattlePassMainViewController: UIViewController {
         }
     }
     
-    private func filterItemsBySection(sectionTitle: String, forAll: Bool) {
-        guard sectionTitle != selectedSectionTitle else { return }
+    private func filterItemsBySection(sectionTitle: String, displayTitle: String, forAll: Bool) {
+        guard displayTitle != selectedSectionTitle else { return }
         
         sectionedItems.removeAll()
         sortingSections(items: items)
         if !forAll {
-            sectionedItems = sectionedItems.filter { menuTitleSetup(page: $0.key) == sectionTitle }
+            sectionedItems = sectionedItems.filter { headerTitleSetup(page: $0.key) == sectionTitle }
         }
-        updateMenuState(for: sectionTitle)
+        updateMenuState(for: displayTitle)
         UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
             self.collectionView.reloadData()
         }, completion: nil)
@@ -226,8 +236,12 @@ class BattlePassMainViewController: UIViewController {
     
     // MARK: - UI Setups
     
-    private func menuTitleSetup(page: Int) -> String {
+    private func headerTitleSetup(page: Int) -> String {
         return "\(Texts.BattlePassPage.page) \(page)"
+    }
+    
+    private func menuTitleSetup(page: Int, lastItemName: String) -> String {
+        return "\(lastItemName)"
     }
     
     private func navigationBarSetup() {
@@ -264,15 +278,16 @@ class BattlePassMainViewController: UIViewController {
     
     private func menuSetup() {
         let allAction = UIAction(title: Texts.BattlePassPage.allMenu, image: nil) { [weak self] action in
-            self?.filterItemsBySection(sectionTitle: Texts.BattlePassPage.allMenu, forAll: true)
+            self?.filterItemsBySection(sectionTitle: Texts.BattlePassPage.allMenu, displayTitle: Texts.BattlePassPage.allMenu, forAll: true)
             self?.filterButton.image = .FilterMenu.filter
             self?.menuSetup()
         }
         allAction.state = .on
         var children = [allAction]
         for section in sectionedItems.sorted(by: { $0.key < $1.key }) {
-            let sectionAction = UIAction(title: menuTitleSetup(page: section.key), image: nil) { [weak self] action in
-                self?.filterItemsBySection(sectionTitle: self?.menuTitleSetup(page: section.key) ?? String(), forAll: false)
+            let sectionAction = UIAction(title: menuTitleSetup(page: section.key, lastItemName: section.value.last?.name ?? String()), image: nil) { [weak self] action in
+                
+                self?.filterItemsBySection(sectionTitle: self?.headerTitleSetup(page: section.key) ?? String(), displayTitle: self?.menuTitleSetup(page: section.key, lastItemName: section.value.last?.name ?? "") ?? "", forAll: false)
                 self?.filterButton.image = .FilterMenu.filledFilter
             }
             

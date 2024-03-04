@@ -50,13 +50,14 @@ class MainPageViewController: UIViewController {
     @objc func clearCache() {
         let alertController = UIAlertController(title: nil, message: Texts.ClearCache.message, preferredStyle: .actionSheet)
         
-        let cacheSize = ImageLoader.cacheSize()
+        let cacheSize = ImageLoader.cacheSize() + VideoLoader.cacheSize()
         guard cacheSize != 0 else {
             alertControllerSetup(title: Texts.ClearCache.oops, message: Texts.ClearCache.alreadyClean)
             return
         }
             
         let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache) (\(cacheSize) \(Texts.ClearCache.megabytes))", style: .destructive) { _ in
+            VideoLoader.cleanCache(entire: true) {}
             ImageLoader.cleanCache(entire: true) {
                 self.alertControllerSetup(title: Texts.ClearCache.success, message: Texts.ClearCache.cleared)
             }

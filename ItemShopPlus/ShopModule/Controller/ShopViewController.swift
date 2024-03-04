@@ -121,7 +121,7 @@ class ShopViewController: UIViewController {
         let vc = ShopTimerInfoViewController()
         let navVC = UINavigationController(rootViewController: vc)
         let fraction = UISheetPresentationController.Detent.custom { context in
-            (self.view.frame.height * 0.45 - self.view.safeAreaInsets.bottom)
+            (self.view.frame.height * 0.9 - self.view.safeAreaInsets.bottom * 4)
         }
         navVC.sheetPresentationController?.detents = [fraction]
         present(navVC, animated: true)

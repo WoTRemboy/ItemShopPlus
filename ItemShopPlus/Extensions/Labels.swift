@@ -126,9 +126,10 @@ class Texts {
         static let bundleName = "Bundle name..."
         static let segmentName = "Segment name..."
         static let allMenu = "All"
-        static let rotaionTitle = "Rotation Info"
+        static let rotaionTitle = "Shop Info"
         static let rotationInfo = "The shop refreshes every day. Check back to see what's new!"
         static let reloadShop = "It's time to update!"
+        static let remaining = "Remaining time"
     }
     
     enum ShopMainCell {
@@ -156,6 +157,14 @@ class Texts {
         static let seriesData = "Series..."
         static let firstTimeData = "First release..."
         static let lastTimeData = "Previous release..."
+    }
+    
+    enum ShopTimer {
+        static let whatMeans = "What means: "
+        static let swipeInfo = "Swipe over the cell image to see more variations!"
+        static let countInfo = "Number of elements in the item bundle."
+        static let aboutRotation = "About rotation"
+        static let rotationInfo = "The shop refreshes every day. Check back soon!"
     }
     
     // MARK: - Battle Pass Module

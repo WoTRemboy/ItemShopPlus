@@ -55,7 +55,7 @@ class TimerRemainingView: UIView {
             remainingTitleLabel.topAnchor.constraint(equalTo: topAnchor),
             remainingTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            remainingContentLabel.topAnchor.constraint(equalTo: remainingTitleLabel.bottomAnchor, constant: 7),
+            remainingContentLabel.topAnchor.constraint(equalTo: remainingTitleLabel.bottomAnchor, constant: 3),
             remainingContentLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             remainingContentLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])

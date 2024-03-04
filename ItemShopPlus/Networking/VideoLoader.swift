@@ -74,11 +74,17 @@ class VideoLoader {
                 UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
                     playerViewController.view.alpha = 1.0
                 }, completion: nil)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    playerViewController.view.backgroundColor = .BackColors.backElevated
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+//                    playerViewController.view.backgroundColor = .BackColors.backElevated
+//                }
             }
         }
+    }
+    
+    // MARK: - Cancel Method
+    
+    static func cancelVideoLoad(task: URLSessionDataTask?) {
+        task?.cancel()
     }
     
     // MARK: - Cache Methods
@@ -109,8 +115,63 @@ class VideoLoader {
             return nil
         }
         DispatchQueue.global(qos: .utility).async {
-//            markAccessTime(for: cacheURL)
+            markAccessTime(for: cacheURL)
         }
         return cacheURL
+    }
+    
+    static func cleanCache(entire: Bool, completion: @escaping () -> Void) {
+        do {
+            let cacheExpirationInterval: TimeInterval = 90 * 24 * 60 * 60 // 90 days
+            
+            let contents = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            
+            for fileURL in contents {
+                if entire {
+                    try fileManager.removeItem(at: fileURL)
+                } else {
+                    let accessDate = try fileManager.attributesOfItem(atPath: fileURL.path)[.modificationDate] as? Date
+                    
+                    if let accessDate = accessDate, Date().timeIntervalSince(accessDate) > cacheExpirationInterval {
+                        try fileManager.removeItem(at: fileURL)
+                    }
+                }
+            }
+            completion()
+        } catch {
+            print("Error cleaning cache: \(error)")
+        }
+    }
+    
+    static func cacheSize() -> Float {
+        do {
+            let contents = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            
+            var totalSize: Int = 0
+            let bytesInMegabyte: Float = 1024 * 1024
+            
+            for fileURL in contents {
+                let fileAttributes = try fileManager.attributesOfItem(atPath: fileURL.path)
+                if let fileSize = fileAttributes[.size] as? Int {
+                    totalSize += fileSize
+                }
+            }
+            
+            let sizeInMegabytes = Float(totalSize) / bytesInMegabyte
+            return (sizeInMegabytes * 10).rounded() / 10
+        } catch {
+            print("Error calculating cache size: \(error)")
+            return 0
+        }
+    }
+    
+    // MARK: - Recently Used Time Marks Methods
+    
+    private static func markAccessTime(for cacheURL: URL) {
+        do {
+            try fileManager.setAttributes([.modificationDate: Date()], ofItemAtPath: cacheURL.path)
+        } catch {
+            print("Error marking access time for \(cacheURL): \(error)")
+        }
     }
 }

@@ -70,6 +70,7 @@ class BattlePassInfoViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         timer?.invalidate()
+        VideoLoader.cancelVideoLoad(task: videoLoadTask)
     }
     
     override func viewDidAppear(_ animated: Bool) {

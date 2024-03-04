@@ -215,7 +215,11 @@ class CrewMainViewController: UIViewController {
         var children = [UIAction]()
         for price in prices.sorted(by: { $0.code < $1.code }) {
             let sectionAction = UIAction(title: price.code, image: SelectingMethods.selectCurrency(type: price.code)) { [weak self] action in
-                self?.navigationItem.rightBarButtonItem?.image = SelectingMethods.selectCurrency(type: price.code)
+                if #available(iOS 17.0, *) {
+                    self?.navigationItem.rightBarButtonItem?.setSymbolImage(SelectingMethods.selectCurrency(type: price.code), contentTransition: .replace)
+                } else {
+                    self?.navigationItem.rightBarButtonItem?.image = SelectingMethods.selectCurrency(type: price.code)
+                }
                 self?.updateAll(price: price)
             }
             children.append(sectionAction)

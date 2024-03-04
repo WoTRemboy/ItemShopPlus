@@ -67,7 +67,9 @@ extension UIImage {
         static let pickaxe = UIImage(named: "PickaxeBanner")
         static let emote = UIImage(named: "EmoteBanner")
         static let granted = createImage(name: "1.circle.fill")
-        static let pages = UIImage(systemName: "decrease.quotelevel", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.IconColors.backgroundPages ?? .orange, .white]))
+        static let pages = createInfoSymbol(name: "decrease.quotelevel", first: .backgroundPages, second: .white)
+        static let grantedInfo = createInfoSymbol(name: "5.circle.fill", first: .white, second: .backgroundPages)
+        static let pagesInfo = createInfoSymbol(name: "decrease.quotelevel", first: .backgroundPages, second: .systemBlue)
     }
     
     enum ShopGranted {
@@ -108,5 +110,13 @@ private func createImage(name: String) -> UIImage? {
         systemName: name,
         withConfiguration: UIImage.SymbolConfiguration(
             paletteColors: [.labelTertiary, .labelTertiary]))
+    return image
+}
+
+private func createInfoSymbol(name: String, first: UIColor, second: UIColor) -> UIImage? {
+    let image = UIImage(
+        systemName: name,
+        withConfiguration: UIImage.SymbolConfiguration(
+            paletteColors: [first, second]))
     return image
 }

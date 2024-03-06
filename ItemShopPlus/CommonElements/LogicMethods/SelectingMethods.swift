@@ -32,11 +32,13 @@ class SelectingMethods {
         case .new:
             return .ShopMain.new
         case .sale:
-            return .ShopMain.sale
+            return .ShopMain.infoFish
         case .emote:
             return .ShopMain.emote
         case .pickaxe:
             return .ShopMain.pickaxe
+        case .free:
+            return .ShopMain.free
         default:
             return .ShopMain.new
         }

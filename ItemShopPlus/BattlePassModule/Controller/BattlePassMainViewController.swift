@@ -91,10 +91,10 @@ class BattlePassMainViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func infoButtonTapped() {
-        let vc = BattlePassInfoViewController(seasonId: battlePass.id, seasonName: battlePass.season, video: battlePass.video, beginDate: battlePass.beginDate, endDate: battlePass.endDate)
+        let vc = BattlePassInfoViewController(seasonName: battlePass.season, video: battlePass.video, beginDate: battlePass.beginDate, endDate: battlePass.endDate)
         let navVC = UINavigationController(rootViewController: vc)
         let fraction = UISheetPresentationController.Detent.custom { context in
-            (self.view.frame.height * 0.85 - self.view.safeAreaInsets.bottom * 4)
+            (self.view.frame.height * 0.75 - self.view.safeAreaInsets.bottom * 4)
         }
         navVC.sheetPresentationController?.detents = [fraction]
         present(navVC, animated: true)
@@ -190,6 +190,7 @@ class BattlePassMainViewController: UIViewController {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
+                    self?.clearItems()
                     self?.collectionView.reloadData()
                     self?.collectionView.isHidden = false
                     self?.noInternetView.isHidden = false
@@ -232,6 +233,7 @@ class BattlePassMainViewController: UIViewController {
     private func clearItems() {
         items.removeAll()
         sectionedItems.removeAll()
+        filteredItems.removeAll()
     }
     
     // MARK: - UI Setups

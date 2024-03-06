@@ -44,7 +44,7 @@ class BattlePassMainCollectionViewCell: UICollectionViewCell {
     
     private let freeBannerImageView: UIImageView = {
         let view = UIImageView()
-        view.image = .ShopMain.sale
+        view.image = .ShopMain.free
         return view
     }()
     

@@ -94,9 +94,15 @@ class ShopViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func refresh() {
+    @objc private func refreshWithControl() {
         if !searchController.isActive {
             getShop(isRefreshControl: true)
+        }
+    }
+    
+    @objc private func refreshWithoutControl() {
+        if !searchController.isActive {
+            getShop(isRefreshControl: false)
         }
     }
     
@@ -138,6 +144,7 @@ class ShopViewController: UIViewController {
             self.activityIndicator.startAnimating()
             self.searchController.searchBar.isHidden = true
         }
+        self.noInternetView.isHidden = true
         
         self.networkService.getShopItems { [weak self] result in
             DispatchQueue.main.async {
@@ -287,7 +294,7 @@ class ShopViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshWithControl), for: .valueChanged)
     }
     
     private func searchControllerSetup() {
@@ -304,7 +311,7 @@ class ShopViewController: UIViewController {
     
     private func noInternetSetup() {
         noInternetView.isHidden = true
-        noInternetView.reloadButton.addTarget(self, action: #selector(refresh), for: .touchUpInside)
+        noInternetView.reloadButton.addTarget(self, action: #selector(refreshWithoutControl), for: .touchUpInside)
         noInternetView.configurate()
     }
     

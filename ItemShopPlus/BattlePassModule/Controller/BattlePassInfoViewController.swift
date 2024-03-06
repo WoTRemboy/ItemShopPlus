@@ -13,7 +13,6 @@ class BattlePassInfoViewController: UIViewController {
     // MARK: - Properties
     
     private let seasonTitle: String
-    private let seasonName: String
     private let video: String
     
     private var videoLoadTask: URLSessionDataTask?
@@ -37,13 +36,6 @@ class BattlePassInfoViewController: UIViewController {
     
     private let remainingView = TimerRemainingView()
     
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 0
-        return stackView
-    }()
-    
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.hidesWhenStopped = true
@@ -52,9 +44,8 @@ class BattlePassInfoViewController: UIViewController {
     
     // MARK: - Initialization
     
-    init(seasonId: Int, seasonName: String, video: String?, beginDate: Date, endDate: Date) {
-        self.seasonTitle = "\(Texts.BattlePassInfo.season) \(seasonId)"
-        self.seasonName = seasonName
+    init(seasonName: String, video: String?, beginDate: Date, endDate: Date) {
+        self.seasonTitle = seasonName
         self.video = video ?? String()
         self.beginDate = beginDate
         self.endDate = endDate
@@ -98,7 +89,7 @@ class BattlePassInfoViewController: UIViewController {
     
     private func contentSetup() {
         dateView.configurate(content: DateFormating.dateFormatterDMY.string(from: beginDate), DateFormating.dateFormatterDMY.string(from: endDate))
-        seasonInfo.configurate(content: seasonName)
+        seasonInfo.configurate(content: seasonTitle)
     }
     
     // MARK: - Working with Timer
@@ -183,19 +174,14 @@ class BattlePassInfoViewController: UIViewController {
     }
     
     private func stackViewSetup() {
-        stackView.addArrangedSubview(seasonInfo)
-        stackView.addArrangedSubview(dateView)
-        
-        view.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(dateView)
+        dateView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            dateView.topAnchor.constraint(equalTo: playerViewController.view.bottomAnchor, constant: 25),
+            dateView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            dateView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             dateView.heightAnchor.constraint(equalToConstant: 70),
-            seasonInfo.heightAnchor.constraint(equalToConstant: 70),
-            
-            stackView.topAnchor.constraint(equalTo: playerViewController.view.bottomAnchor, constant: 25),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         contentSetup()
     }
@@ -207,7 +193,7 @@ class BattlePassInfoViewController: UIViewController {
         remainingView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            remainingView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
+            remainingView.topAnchor.constraint(equalTo: dateView.bottomAnchor, constant: 30),
             remainingView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             remainingView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             remainingView.heightAnchor.constraint(equalToConstant: 50)

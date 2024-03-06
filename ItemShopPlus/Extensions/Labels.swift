@@ -160,7 +160,7 @@ class Texts {
     }
     
     enum ShopTimer {
-        static let whatMeans = "What means: "
+        static let whatMeans = "The meaning of: "
         static let swipeInfo = "Swipe over the cell image to see more variations!"
         static let countInfo = "Number of elements in the item bundle."
         static let aboutRotation = "About rotation"

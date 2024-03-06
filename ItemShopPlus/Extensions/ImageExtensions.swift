@@ -63,7 +63,7 @@ extension UIImage {
         static let info = UIImage(systemName: "info.circle")
         static let infoFish = UIImage(named: "InfoFish")
         static let new = UIImage(named: "NewBanner")
-        static let sale = UIImage(named: "SaleBanner")
+        static let free = UIImage(named: "FreeBanner")
         static let pickaxe = UIImage(named: "PickaxeBanner")
         static let emote = UIImage(named: "EmoteBanner")
         static let granted = createImage(name: "1.circle.fill")

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NoInternetView: UIView {
+final class NoInternetView: UIView {
     
     // MARK: - UI Elements and Views
 

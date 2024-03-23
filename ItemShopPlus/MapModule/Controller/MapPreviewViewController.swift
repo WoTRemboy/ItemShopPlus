@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapPreviewViewController: UIViewController {
+final class MapPreviewViewController: UIViewController {
     
     // MARK: - Properties
     

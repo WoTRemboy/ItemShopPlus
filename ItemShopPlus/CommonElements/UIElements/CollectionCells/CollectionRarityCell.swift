@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionRarityCell: UICollectionViewCell {
+final class CollectionRarityCell: UICollectionViewCell {
     
     // MARK: - Properties
     

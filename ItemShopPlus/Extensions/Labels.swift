@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Texts {
+final class Texts {
     
     // MARK: - Common
     

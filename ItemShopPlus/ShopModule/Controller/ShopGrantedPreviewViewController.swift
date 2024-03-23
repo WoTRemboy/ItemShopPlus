@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopGrantedPreviewViewController: UIViewController {
+final class ShopGrantedPreviewViewController: UIViewController {
     
     // MARK: - Properties
     

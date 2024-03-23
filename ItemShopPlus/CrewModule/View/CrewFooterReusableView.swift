@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CrewFooterReusableView: UICollectionReusableView {
+final class CrewFooterReusableView: UICollectionReusableView {
     
     // MARK: - Properties
     

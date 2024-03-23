@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageLoader {
+final class ImageLoader {
     
     // MARK: - Properties
     

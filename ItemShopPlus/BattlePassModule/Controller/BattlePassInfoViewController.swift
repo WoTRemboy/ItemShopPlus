@@ -8,7 +8,7 @@
 import UIKit
 import AVKit
 
-class BattlePassInfoViewController: UIViewController {
+final class BattlePassInfoViewController: UIViewController {
     
     // MARK: - Properties
     

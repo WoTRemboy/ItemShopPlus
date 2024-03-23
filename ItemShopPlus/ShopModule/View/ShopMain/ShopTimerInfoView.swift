@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopTimerInfoView: UIView {
+final class ShopTimerInfoView: UIView {
     
     // MARK: - UI Elements and Views
     

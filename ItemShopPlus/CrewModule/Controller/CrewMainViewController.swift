@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CrewMainViewController: UIViewController {
+final class CrewMainViewController: UIViewController {
     
     // MARK: - Properties
     

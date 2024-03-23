@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionHeaderReusableView: UICollectionReusableView {
+final class CollectionHeaderReusableView: UICollectionReusableView {
         
     static let identifier = Texts.CommonElements.headerIdentifier
     

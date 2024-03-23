@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapPickerViewController: UIViewController {
+final class MapPickerViewController: UIViewController {
     
     // MARK: - Properties
     

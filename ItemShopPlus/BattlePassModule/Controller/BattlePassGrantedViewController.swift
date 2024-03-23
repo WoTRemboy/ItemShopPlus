@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BattlePassGrantedViewController: UIViewController {
+final class BattlePassGrantedViewController: UIViewController {
     
     // MARK: - Properties
     

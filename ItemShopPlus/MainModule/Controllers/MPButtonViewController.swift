@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MPButtonViewController: UIViewController {
+final class MPButtonViewController: UIViewController {
     
     private let shopButton = MPButtonView(frame: .null, buttonType: .shop)
     private let battlePassButton = MPButtonView(frame: .null, buttonType: .battlePass)

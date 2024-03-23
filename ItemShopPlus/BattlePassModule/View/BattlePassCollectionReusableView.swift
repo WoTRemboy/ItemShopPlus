@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BattlePassCollectionReusableView: UICollectionReusableView {
+final class BattlePassCollectionReusableView: UICollectionReusableView {
     
     static let identifier = Texts.BattlePassCell.footerIdentifier
     

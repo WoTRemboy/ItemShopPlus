@@ -8,7 +8,7 @@
 import Foundation
 import AVKit
 
-class VideoLoader {
+final class VideoLoader {
     
     // MARK: - Properties
     

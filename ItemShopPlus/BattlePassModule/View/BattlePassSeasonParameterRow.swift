@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BattlePassSeasonParameterRow: UIView {
+final class BattlePassSeasonParameterRow: UIView {
 
     private let beginTitleLable: UILabel = {
         let label = UILabel()

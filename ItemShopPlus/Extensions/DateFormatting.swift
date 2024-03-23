@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DateFormating {
+final class DateFormating {
     
     // MARK: - Quests Module
     

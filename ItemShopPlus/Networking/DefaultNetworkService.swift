@@ -15,7 +15,7 @@ protocol NetworkingService {
     func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void)
 }
 
-class DefaultNetworkService: NetworkingService {
+final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Properties
     

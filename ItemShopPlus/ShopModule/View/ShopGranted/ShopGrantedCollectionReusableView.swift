@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopGrantedCollectionReusableView: UICollectionReusableView {
+final class ShopGrantedCollectionReusableView: UICollectionReusableView {
     
     static let identifier = Texts.ShopGrantedCell.footerIdentifier
     

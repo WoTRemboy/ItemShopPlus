@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestTestViewController: UIViewController {
+final class QuestTestViewController: UIViewController {
     
     private var questBundles = [QuestBundle]()
     

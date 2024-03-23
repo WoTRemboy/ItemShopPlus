@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionTotalPriceView: UIView {
+final class CollectionTotalPriceView: UIView {
     
     private let priceImageView: UIImageView = {
         let view = UIImageView()

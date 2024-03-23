@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BattlePassMainCollectionViewCell: UICollectionViewCell {
+final class BattlePassMainCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     

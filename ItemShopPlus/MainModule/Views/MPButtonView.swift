@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MPButtonView: UIView {
+final class MPButtonView: UIView {
     
     private var buttonType: ButtonType
     

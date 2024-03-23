@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SelectingMethods {
+final class SelectingMethods {
     
     // MARK: - Banner
     

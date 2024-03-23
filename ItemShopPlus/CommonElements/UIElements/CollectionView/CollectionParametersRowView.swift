@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionParametersRowView: UIView {
+final class CollectionParametersRowView: UIView {
     
     private let meaningImageView = UIImageView()
 

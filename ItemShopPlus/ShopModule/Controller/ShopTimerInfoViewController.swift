@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopTimerInfoViewController: UIViewController {
+final class ShopTimerInfoViewController: UIViewController {
     
     // MARK: - Properties
     

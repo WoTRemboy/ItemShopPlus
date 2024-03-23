@@ -11,7 +11,7 @@ protocol ShopGrantedPanZoomViewDelegate: AnyObject {
     func didDismiss()
 }
 
-class PreviewZoomView: UIScrollView {
+final class PreviewZoomView: UIScrollView {
     
     // MARK: - Properties
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TimerRemainingView: UIView {
+final class TimerRemainingView: UIView {
     
     // MARK: - UI Elements and Views
     

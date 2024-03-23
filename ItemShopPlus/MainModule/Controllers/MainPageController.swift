@@ -28,7 +28,7 @@ class MainPageViewController: UIViewController {
     }
     
     @objc func questsTransfer() {
-        navigationController?.pushViewController(QuestsBundlePageController(), animated: true)
+        navigationController?.pushViewController(QuestTestViewController(), animated: true)
     }
     
     @objc func shopTransfer() {

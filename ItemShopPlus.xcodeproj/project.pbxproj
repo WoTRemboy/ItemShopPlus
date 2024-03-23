@@ -41,6 +41,7 @@
 		638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */; };
 		638FD6D52B8900CF00CE47BD /* MapPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */; };
 		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
+		63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */; };
 		63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BB2B232F4000FABD69 /* AppDelegate.swift */; };
 		63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BD2B232F4000FABD69 /* SceneDelegate.swift */; };
 		63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BF2B232F4000FABD69 /* MainPageController.swift */; };
@@ -105,6 +106,7 @@
 		638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapsParce.swift; sourceTree = "<group>"; };
 		638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerViewController.swift; sourceTree = "<group>"; };
 		639E62342B92719100E17B4F /* BattlePassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainViewController.swift; sourceTree = "<group>"; };
+		63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTestViewController.swift; sourceTree = "<group>"; };
 		63C898B82B232F4000FABD69 /* ItemShopPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemShopPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C898BB2B232F4000FABD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C898BD2B232F4000FABD69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 		63C899052B25085C00FABD69 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */,
 				63C899102B2508DB00FABD69 /* QuestsBundlePageController.swift */,
 				63F8B9D42B2CD75D006E2430 /* QuestsPageController.swift */,
 				638594B12B2CF80F009FEED6 /* QuestsDetailsViewController.swift */,
@@ -609,6 +612,7 @@
 				63290CDA2B5EA399008F45F8 /* ShopGrantedViewController.swift in Sources */,
 				638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */,
 				63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */,
+				63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */,
 				63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */,
 				637B26952B4DACCA0075B871 /* CollectionHeaderReusableView.swift in Sources */,
 				63290CDC2B5ED498008F45F8 /* CollectionRarityCell.swift in Sources */,

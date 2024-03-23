@@ -12,7 +12,7 @@ class MPButtonViewController: UIViewController {
     private let shopButton = MPButtonView(frame: .null, buttonType: .shop)
     private let battlePassButton = MPButtonView(frame: .null, buttonType: .battlePass)
     private let crewButton = MPButtonView(frame: .null, buttonType: .crew)
-    private let questsButton = MPButtonView(frame: .null, buttonType: .null)
+    private let questsButton = MPButtonView(frame: .null, buttonType: .quests)
     private let tournamentButton = MPButtonView(frame: .null, buttonType: .null)
     private let statsButton = MPButtonView(frame: .null, buttonType: .null)
     private let mapButton = MPButtonView(frame: .null, buttonType: .map)

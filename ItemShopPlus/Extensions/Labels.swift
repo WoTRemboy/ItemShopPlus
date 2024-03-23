@@ -244,6 +244,10 @@ class Texts {
     
     // MARK: - Quests Module
     
+    enum Quest {
+        static let title = "Quest"
+    }
+    
     enum BundleQuestsCell {
         static let identifier = "BundleCell"
         static let bundleName = "Bundle name..."

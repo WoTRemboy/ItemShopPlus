@@ -17,9 +17,7 @@ extension ShopItem {
               
               let assetsData = data["displayAssets"] as? [[String: Any]],
               let priceData = data["price"] as? [String: Any],
-              let rarityData = data["rarity"] as? [String: Any],
               let sectionsData = data["section"] as? [String: Any],
-              let grantedData = data["granted"] as? [[String: Any]],
               
               let buyAllowed = data["buyAllowed"] as? Bool,
               buyAllowed == true
@@ -35,7 +33,9 @@ extension ShopItem {
         
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
         let regularPrice = priceData["regularPrice"] as? Int ?? 0
-        let rarity = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
+        
+        let rarityData = data["rarity"] as? [String: Any]
+        let rarity = SelectingMethods.selectRarity(rarityText: rarityData?["id"] as? String)
         let section = sectionsData["name"] as? String ?? String()
         
         let seriesData = data["series"] as? [String: Any]
@@ -57,7 +57,10 @@ extension ShopItem {
         let bannerName = bannerData?["id"] as? String
         let banner = SelectingMethods.selectBanner(bannerText: bannerName)
         
-        let granted: [GrantedItem] = grantedData.compactMap { GrantedItem.sharingParce(sharingJSON: $0) }
+        var granted = [GrantedItem]()
+        if let grantedData = data["granted"] as? [[String: Any]] {
+            granted = grantedData.compactMap { GrantedItem.sharingParce(sharingJSON: $0) }
+        }
         
         return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner)
     }

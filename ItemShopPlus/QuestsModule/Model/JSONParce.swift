@@ -11,16 +11,21 @@ extension QuestBundle {
     static func sharingParse(sharingJSON: Any) -> QuestBundle? {
         guard let data = sharingJSON as? [String: Any],
               let tag = data["tag"] as? String,
-              let name = data["name"] as? String,
-              let image = data["image"] as? String,
+              var name = data["name"] as? String,
               let subBundlesData = data["bundles"] as? [[String: Any]]
         else {
             return nil
         }
         
+        let image = data["image"] as? String
         let subBundles = subBundlesData.compactMap { QuestSubBundle.sharingParse(sharingJSON: $0) }
         
-        return QuestBundle(tag: tag, name: name, image: image, subBundles: subBundles)
+        if name.isEmpty, let header = subBundles.first?.quests.first?.categoryHeader {
+            name = header
+        }
+        guard !name.isEmpty else { return nil }
+        
+        return QuestBundle(tag: tag, name: name, image: image ?? String(), subBundles: subBundles)
     }
 }
 
@@ -62,8 +67,7 @@ extension Quest {
               let name = data["name"] as? String,
               let enabled = data["enabled"] as? Bool,
               let progress = data["progressTotal"] as? Int,
-              let rewards = data["reward"] as? [String: Any],
-              enabled == true
+              let rewards = data["reward"] as? [String: Any]
         else {
             return nil
         }

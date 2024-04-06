@@ -40,8 +40,8 @@ extension UIImage {
     enum MainButtons {
         static let shop = createImage(name: "basket")
         static let battlePass = createImage(name: "star")
-        static let tournaments = createImage(name: "medal")
-        static let quests = createImage(name: "list.bullet.clipboard")
+        static let lootDetails = createImage(name: "chart.bar")
+        static let bundles = createImage(name: "tag")
         static let crew = createImage(name: "pencil.and.outline")
         static let map = createImage(name: "map")
         static let stats = createImage(name: "person")

@@ -101,13 +101,13 @@ final class MPButtonView: UIView {
             buttonLabel.text = Texts.ButtonLabels.MainButtons.crew
             buttonImageView.image = .MainButtons.crew
             selectButton.addTarget(nil, action: #selector(MainPageViewController.crewTransfer), for: .touchUpInside)
-        case .quests:
-            buttonLabel.text = Texts.ButtonLabels.MainButtons.quests
-            buttonImageView.image = .MainButtons.quests
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.questsTransfer), for: .touchUpInside)
-        case .tournaments:
-            buttonLabel.text = Texts.ButtonLabels.MainButtons.tournaments
-            buttonImageView.image = .MainButtons.tournaments
+        case .bundles:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.bundles
+            buttonImageView.image = .MainButtons.bundles
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
+        case .lootDetails:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.lootDetails
+            buttonImageView.image = .MainButtons.lootDetails
             selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
         case .stats:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.stats

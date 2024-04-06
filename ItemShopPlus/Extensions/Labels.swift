@@ -84,9 +84,9 @@ final class Texts {
     enum ButtonLabels {
         enum MainButtons {
             static let shop = "Item Shop"
-            static let quests = "Quests"
+            static let bundles = "Bundles"
             static let battlePass = "Battle Pass"
-            static let tournaments = "Tournaments"
+            static let lootDetails = "Loot Details"
             static let crew = "Crew"
             static let map = "Map"
             static let stats = "Stats"

@@ -27,10 +27,6 @@ final class MainPageViewController: UIViewController {
         buttonController.didMove(toParent: self)
     }
     
-    @objc func questsTransfer() {
-        navigationController?.pushViewController(QuestTestViewController(), animated: true)
-    }
-    
     @objc func shopTransfer() {
         navigationController?.pushViewController(ShopViewController(), animated: true)
     }
@@ -75,7 +71,12 @@ final class MainPageViewController: UIViewController {
         self.present(alertController, animated: true)
     }
     
-    @objc func doNothing() {}
+    @objc func doNothing() {
+        let alertController = UIAlertController(title: "Coming soon!", message: "Если кто-то сделает дезигн :(", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Texts.ClearCache.ok, style: .default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true)
+    }
     
 }
 

@@ -1,8 +1,8 @@
 //
-//  ShopPanZoomView.swift
+//  NewPreviewZoomView.swift
 //  ItemShopPlus
 //
-//  Created by Roman Tverdokhleb on 27.01.2024.
+//  Created by Roman Tverdokhleb on 07.04.2024.
 //
 
 import UIKit
@@ -11,33 +11,23 @@ protocol ShopGrantedPanZoomViewDelegate: AnyObject {
     func didDismiss()
 }
 
-final class PreviewZoomView: UIScrollView {
-    
-    // MARK: - Properties
-    
-    weak var panZoomDelegate: ShopGrantedPanZoomViewDelegate?
+final class PreviewZoomView: UIView, UIScrollViewDelegate {
+    private var scrollView: UIScrollView!
+    private var imageView: UIImageView!
     private var imageLoadTask: URLSessionDataTask?
     
-    private var initialTouchPoint: CGPoint = CGPoint.zero
-    private var centerSuperView: CGPoint = .zero
-    
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    // MARK: - Initialization
+    weak var panZoomDelegate: ShopGrantedPanZoomViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupImageView()
         setupScrollView()
+        setupImageView()
+        setupDoubleTapGesture()
         setupPanGesture()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     convenience init(image: String, presentingViewController: UIViewController) {
@@ -45,104 +35,115 @@ final class PreviewZoomView: UIScrollView {
         imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: imageView)
     }
     
-    // MARK: - Actions
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        scrollView.frame = self.bounds
+        imageView.frame = self.bounds
+    }
     
-    @objc private func handleDoubleTap(gesture: UITapGestureRecognizer) {
-        if zoomScale == 1 {
-            zoom(to: zoomForScale(scale: maximumZoomScale, center: gesture.location(in: gesture.view)), animated: true)
-        } else {
-            setZoomScale(1, animated: true)
+    @objc private func handleDoubleTap(_ gesture: UITapGestureRecognizer) {
+        if scrollView.zoomScale > scrollView.minimumZoomScale {
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+        } else if scrollView.zoomScale < scrollView.maximumZoomScale {
+            let zoomRect = zoomRectForScale(scale: scrollView.maximumZoomScale, center: gesture.location(in: gesture.view))
+            scrollView.zoom(to: zoomRect, animated: true)
         }
     }
     
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        guard let superview = superview else { return }
-        if centerSuperView == CGPoint(x: 0, y: 0) {
-            centerSuperView = frame.origin
-        }
-        let touchPoint = gesture.location(in: superview)
-        
-        if gesture.state == .began {
-            initialTouchPoint = touchPoint
-        } else if gesture.state == .changed {
-            if zoomScale == 1 {
-                let yOffset = touchPoint.y - initialTouchPoint.y
-                let alpha = 1 - abs(yOffset) / superview.frame.height
+        let translation = gesture.translation(in: self)
+        if translation.y > 0 && scrollView.contentOffset.y <= 0 {
+            switch gesture.state {
+            case .changed:
+                self.transform = CGAffineTransform(translationX: 0, y: translation.y)
+                let alpha = 1 - abs(translation.y) / frame.height * 2
                 imageView.alpha = alpha
-                center.y = superview.center.y + yOffset
-            } else {
-                let xOffset = touchPoint.x - initialTouchPoint.x
-                self.contentOffset.x = max(0, min(self.contentOffset.x - xOffset, self.contentSize.width - self.bounds.width))
-                initialTouchPoint = touchPoint
-            }
-        } else if gesture.state == .ended || gesture.state == .cancelled {
-            let dismissThreshold: CGFloat = 100
-            
-            if abs(frame.origin.y) > dismissThreshold {
-                dismissViewController()
-            } else {
-                UIView.animate(withDuration: 0.3) {
-                    self.frame.origin = self.centerSuperView
-                    self.imageView.alpha = 1
+            case .ended, .cancelled:
+                if translation.y > 100 {
+                    panZoomDelegate?.didDismiss()
+                } else {
+                    UIView.animate(withDuration: 0.3) {
+                        self.transform = .identity
+                        self.imageView.alpha = 1
+                    }
                 }
+            default:
+                break
             }
         }
+    }
+    
+    private func setupDoubleTapGesture() {
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+        doubleTapGesture.numberOfTapsRequired = 2
+        imageView.addGestureRecognizer(doubleTapGesture)
     }
     
     private func setupPanGesture() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
-        addGestureRecognizer(panGesture)
-    }
-    
-    private func dismissViewController() {
-        panZoomDelegate?.didDismiss()
-    }
-    
-    // MARK: - Zoom Rules
-    
-    private func zoomForScale(scale: CGFloat, center: CGPoint) -> CGRect {
-        var zoomRect = CGRect.zero
-        zoomRect.size.height = imageView.frame.size.height / scale
-        zoomRect.size.width = imageView.frame.size.width / scale
-        let centerNew = imageView.convert(center, from: self)
-        zoomRect.origin.x = centerNew.x - (zoomRect.size.width / 2.0)
-        zoomRect.origin.y = zoomRect.size.height / 2.0
-        return zoomRect
-    }
-    
-    // MARK: - UI Setups
-    
-    private func setupImageView() {
-        addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            imageView.widthAnchor.constraint(equalTo: widthAnchor),
-            imageView.heightAnchor.constraint(equalTo: heightAnchor),
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -UIScreen.main.bounds.height / 13)
-        ])
+        panGesture.delegate = self
+        scrollView.addGestureRecognizer(panGesture)
     }
     
     private func setupScrollView() {
-        minimumZoomScale = 1
-        maximumZoomScale = 2
-        showsHorizontalScrollIndicator = false
-        showsVerticalScrollIndicator = false
-        delegate = self
-        scrollsToTop = false
-        
-        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
-        doubleTapRecognizer.numberOfTapsRequired = 2
-        addGestureRecognizer(doubleTapRecognizer)
+        scrollView = UIScrollView()
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 2.0
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        addSubview(scrollView)
     }
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension PreviewZoomView: UIScrollViewDelegate {
+    
+    private func setupImageView() {
+        imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
+        scrollView.addSubview(imageView)
+    }
+    
+    private func zoomRectForScale(scale: CGFloat, center: CGPoint) -> CGRect {
+        var zoomRect = CGRect()
+        zoomRect.size.height = imageView.frame.size.height / scale
+        zoomRect.size.width = imageView.frame.size.width / scale
+        zoomRect.origin.x = center.x - (zoomRect.size.width / 2.0)
+        zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0)
+        return zoomRect
+    }
+    
+    func setImage(_ image: UIImage) {
+        imageView.image = image
+        imageView.sizeToFit()
+        centerImageView()
+    }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        centerImageView()
+        updateContentInsets()
+    }
+    
+    private func centerImageView() {
+        let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0)
+        let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0)
+        imageView.center = CGPoint(x: scrollView.contentSize.width * 0.5 + offsetX,
+                                   y: scrollView.contentSize.height * 0.5 + offsetY)
+    }
+    
+    private func updateContentInsets() {
+        let imageViewSize = imageView.frame.size
+        let scrollViewSize = scrollView.bounds.size
+        let verticalInset = (scrollViewSize.height - imageViewSize.height) / 2
+        
+        scrollView.contentInset = UIEdgeInsets(top: verticalInset, left: 0, bottom: verticalInset, right: 0)
+    }
+}
+
+extension PreviewZoomView: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

@@ -242,6 +242,16 @@ final class Texts {
         static let and = "and"
     }
     
+    // MARK: - Stats Module
+    
+    enum StatsPage {
+        static let title = "Stats"
+    }
+    
+    enum StatsCell {
+        static let identifier = "StatsCell"
+    }
+    
     // MARK: - Quests Module
     
     enum Quest {

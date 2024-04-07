@@ -23,6 +23,7 @@
 		634208F42BC2D4C9008A9496 /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208F32BC2D4C9008A9496 /* StatsModel.swift */; };
 		634208F62BC2DC12008A9496 /* JSONStatsParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208F52BC2DC12008A9496 /* JSONStatsParce.swift */; };
 		634208FB2BC30E55008A9496 /* StatsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208FA2BC30E55008A9496 /* StatsMainViewController.swift */; };
+		634208FE2BC33889008A9496 /* StatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */; };
 		634F3F8B2B67CC8800C01426 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F3F8A2B67CC8800C01426 /* NoInternetView.swift */; };
 		63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */; };
 		63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */; };
@@ -91,6 +92,7 @@
 		634208F32BC2D4C9008A9496 /* StatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsModel.swift; sourceTree = "<group>"; };
 		634208F52BC2DC12008A9496 /* JSONStatsParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStatsParce.swift; sourceTree = "<group>"; };
 		634208FA2BC30E55008A9496 /* StatsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMainViewController.swift; sourceTree = "<group>"; };
+		634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCollectionViewCell.swift; sourceTree = "<group>"; };
 		634F3F8A2B67CC8800C01426 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
 		63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				634208F22BC2D4B2008A9496 /* Model */,
+				634208FC2BC3386E008A9496 /* View */,
 				634208F72BC2F388008A9496 /* Controller */,
 			);
 			path = StatsModule;
@@ -241,6 +244,14 @@
 				634208FA2BC30E55008A9496 /* StatsMainViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		634208FC2BC3386E008A9496 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		63750CA42B93301000ED7E0B /* View */ = {
@@ -689,6 +700,7 @@
 				638594B22B2CF80F009FEED6 /* QuestsDetailsViewController.swift in Sources */,
 				63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */,
 				638FD6D52B8900CF00CE47BD /* MapPickerViewController.swift in Sources */,
+				634208FE2BC33889008A9496 /* StatsCollectionViewCell.swift in Sources */,
 				63F94E792B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift in Sources */,
 				63ECC1372B9259C6006E0841 /* JSONBattlePassParce.swift in Sources */,
 				63290CE52B615CFF008F45F8 /* CollectionParametersRowView.swift in Sources */,

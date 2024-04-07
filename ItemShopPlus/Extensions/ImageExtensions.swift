@@ -86,6 +86,12 @@ extension UIImage {
         static let star = UIImage(named: "BattlePassStar")
     }
     
+    // MARK: - Stats Module
+    
+    enum Stats {
+        static let newNickname = UIImage(systemName: "square.and.pencil")
+    }
+    
     // MARK: - Quests Module
     
     enum Quests {

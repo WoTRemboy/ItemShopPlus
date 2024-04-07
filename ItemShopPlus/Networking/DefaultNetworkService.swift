@@ -12,6 +12,7 @@ protocol NetworkingService {
     func getShopItems(completion: @escaping (Result<[ShopItem], Error>) -> Void)
     func getBattlePassItems(completion: @escaping (Result<BattlePass, Error>) -> Void)
     func getCrewItems(completion: @escaping (Result<CrewPack, Error>) -> Void)
+    func getAccountStats(nickname: String, platform: String?, completion: @escaping (Result<Stats, Error>) -> Void)
     func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void)
 }
 
@@ -147,6 +148,40 @@ final class DefaultNetworkService: NetworkingService {
                     do {
                         let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                         let items = CrewPack.sharingParse(sharingJSON: response as Any) ?? CrewPack.emptyPack
+                        completion(.success(items))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    // MARK: - Stats Module Request
+    
+    func getAccountStats(nickname: String, platform: String?, completion: @escaping (Result<Stats, any Error>) -> Void) {
+        guard var url = baseURL else { return }
+        url = url.appendingPathComponent("v1/stats")
+        
+        var queryItems = [URLQueryItem(name: "username", value: nickname)]
+        if let platform {
+            queryItems.append(URLQueryItem(name: "platform", value: platform))
+        }
+        url.append(queryItems: queryItems)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.sendRequest(request: request) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        let items = Stats.sharingParse(sharingJSON: response as Any) ?? Stats.emptyStats
                         completion(.success(items))
                     } catch {
                         completion(.failure(error))

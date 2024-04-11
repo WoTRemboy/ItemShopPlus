@@ -246,10 +246,25 @@ final class Texts {
     
     enum StatsPage {
         static let title = "Stats"
+        static let progressTitle = "Progress"
+        static let progressFirst = "Current\nSeason"
+        static let progressSecond = "Current\nLevel"
+        static let globalTitle = "Global"
+        static let globalFirst = "Top 1\nPlaces"
+        static let globalSecond = "Kills\nDeaths"
+        static let inputTitle = "Input"
+        static let inputFirst = "K/D\nGpad"
+        static let inputSecond = "K/D\nMouse"
+        static let historyTitle = "History"
+        static let historyFirst = "Best\nSeason"
+        static let historySecond = "Max\nLevel"
     }
     
     enum StatsCell {
         static let identifier = "StatsCell"
+        static let firstStatPlaceholder = "First\nStat"
+        static let secondStatPlaceholder = "Second\nStat"
+        static let statValuePlaceholder = "0"
     }
     
     // MARK: - Quests Module

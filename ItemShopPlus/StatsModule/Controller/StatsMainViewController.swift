@@ -121,7 +121,6 @@ class StatsMainViewController: UIViewController {
                     self?.collectionView.isHidden = false
                     self?.noInternetView.isHidden = true
                     self?.symbolButton.isEnabled = true
-                    print(newStats)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -178,7 +177,6 @@ class StatsMainViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-    
 }
 
 
@@ -189,15 +187,32 @@ extension StatsMainViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatsCollectionViewCell.identifier, for: indexPath) as? StatsCollectionViewCell else {
-            fatalError("Failed to dequeue CrewCollectionViewCell in CrewMainViewController")
+            fatalError("Failed to dequeue StatsCollectionViewCell in StatsMainViewController")
         }
-        //        let item = items[indexPath.item]
-        cell.configurate()
+        switch indexPath.row {
+        case 0:
+            cell.configurate(type: .title, firstStat: Double(stats.season ?? 0), secondStat: Double(stats.level))
+        case 1:
+            cell.configurate(type: .global,
+                             firstStat: stats.sumTopOne(),
+                             secondStat: stats.averageKD(type: .global))
+        case 2:
+            cell.configurate(type: .input,
+                             firstStat: stats.averageKD(type: .controller),
+                             secondStat: stats.averageKD(type: .keyboard))
+        case 3:
+            cell.configurate(
+                type: .history,
+                firstStat: Double(stats.history.max(by: { $1.level > $0.level })?.season ?? 0),
+                secondStat: Double(stats.history.max(by: { $1.level > $0.level })?.level ?? 0))
+        default:
+            cell.configurate(type: .title, firstStat: Double(stats.season ?? -1), secondStat: Double(stats.level))
+        }
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         
@@ -234,7 +249,7 @@ extension StatsMainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
-            fatalError("Failed to dequeue CollectionHeaderReusableView in CrewMainViewController")
+            fatalError("Failed to dequeue CollectionHeaderReusableView in StatsMainViewController")
         }
         headerView.configurate(with: nickname)
         return headerView

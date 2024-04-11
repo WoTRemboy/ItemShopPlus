@@ -15,14 +15,13 @@ extension Stats {
               let historyData = globalData["accountLevelHistory"] as? [[String: Any]],
               let allStatsData = globalData["global_stats"] as? [String: Any],
               let inputData = globalData["per_input"] as? [String: Any],
-              
-              let level = accountData["level"] as? Int,
-              let process = accountData["process_pct"] as? Int
+              let level = accountData["level"] as? Int
         else {
             return nil
         }
         
         let season = accountData["season"] as? Int
+        let process = accountData["process_pct"] as? Int ?? 0
         let history = historyData.compactMap { LevelHistory.sharingParce(sharingJSON: $0) }
         
         var global = [String: SectionStats]()

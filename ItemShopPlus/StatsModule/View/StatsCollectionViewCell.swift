@@ -16,25 +16,57 @@ class StatsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Elements and Views
     
-    private let itemNameLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Texts.ShopPage.itemName
+        label.text = "Segment title"
+        label.textColor = .labelPrimary
+        label.font = .title()
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    private let firstStatTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = Texts.StatsCell.firstStatPlaceholder
         label.textColor = .labelPrimary
         label.font = .body()
-        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.numberOfLines = 2
         return label
     }()
     
-    private let itemTypeLabel: UILabel = {
+    private let firstStatValueLabel: UILabel = {
         let label = UILabel()
-        label.text = Texts.ShopPage.itemName
+        label.text = Texts.StatsCell.statValuePlaceholder
         label.textColor = .labelPrimary
-        label.font = .headline()
+        label.font = .segmentTitle()
+        label.textAlignment = .center
         label.numberOfLines = 1
         return label
     }()
     
-    private let grantedImageView: UIImageView = {
+    private let secondStatTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = Texts.StatsCell.secondStatPlaceholder
+        label.textColor = .labelPrimary
+        label.font = .body()
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        return label
+    }()
+    
+    private let secondStatValueLabel: UILabel = {
+        let label = UILabel()
+        label.text = Texts.StatsCell.statValuePlaceholder
+        label.textColor = .labelPrimary
+        label.font = .segmentTitle()
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    private let sectionImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = .Placeholder.noImage
         imageView.layer.cornerRadius = 10
@@ -42,57 +74,99 @@ class StatsCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let rarityImageView: UIImageView = {
-        let view = UIImageView()
-        return view
+    private let separatorLine: UIView = {
+        let line = UIView()
+        line.backgroundColor = .LabelColors.labelDisable
+        return line
     }()
     
     // MARK: - Public Configure Method
     
-    public func configurate() {
+    public func configurate(type: StatsSegment, firstStat: Double, secondStat: Double) {
         backgroundColor = .BackColors.backElevated
         layer.cornerRadius = 25
         layer.shadowColor = UIColor.Shadows.primary
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 20
-//        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: grantedImageView)
-//        itemNameLabel.text = name
-//        itemTypeLabel.text = type
-//        rarityImageView.image = SelectingMethods.selectRarity(rarity: rarity)
-//        setupUI()
+        
+        switch type {
+        case .title:
+            titleLabel.text = Texts.StatsPage.progressTitle
+            firstStatTitleLabel.text = Texts.StatsPage.progressFirst
+            firstStatValueLabel.text = "\(Int(firstStat))"
+            secondStatTitleLabel.text = Texts.StatsPage.progressSecond
+            secondStatValueLabel.text = "\(Int(secondStat))"
+        case .global:
+            titleLabel.text = Texts.StatsPage.globalTitle
+            firstStatTitleLabel.text = Texts.StatsPage.globalFirst
+            firstStatValueLabel.text = "\(Int(firstStat))"
+            secondStatTitleLabel.text = Texts.StatsPage.globalSecond
+            secondStatValueLabel.text = "\(String(format: "%.2f", secondStat))"
+        case .input:
+            titleLabel.text = Texts.StatsPage.inputTitle
+            firstStatTitleLabel.text = Texts.StatsPage.inputFirst
+            firstStatValueLabel.text = "\(String(format: "%.2f", firstStat))"
+            secondStatTitleLabel.text = Texts.StatsPage.inputSecond
+            secondStatValueLabel.text = "\(String(format: "%.2f", secondStat))"
+        case .history:
+            titleLabel.text = Texts.StatsPage.historyTitle
+            firstStatTitleLabel.text = Texts.StatsPage.historyFirst
+            firstStatValueLabel.text = "\(Int(firstStat))"
+            secondStatTitleLabel.text = Texts.StatsPage.historySecond
+            secondStatValueLabel.text = "\(Int(secondStat))"
+        }
+        setupUI()
     }
     
     // MARK: - UI Setup
     
     private func setupUI() {
-        addSubview(grantedImageView)
-        addSubview(itemNameLabel)
-        addSubview(itemTypeLabel)
-        addSubview(rarityImageView)
+        addSubview(sectionImageView)
+        addSubview(titleLabel)
+        addSubview(separatorLine)
+        addSubview(firstStatValueLabel)
+        addSubview(firstStatTitleLabel)
+        addSubview(secondStatValueLabel)
+        addSubview(secondStatTitleLabel)
         
-        grantedImageView.translatesAutoresizingMaskIntoConstraints = false
-        itemNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        itemTypeLabel.translatesAutoresizingMaskIntoConstraints = false
-        rarityImageView.translatesAutoresizingMaskIntoConstraints = false
+        sectionImageView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        separatorLine.translatesAutoresizingMaskIntoConstraints = false
+        firstStatValueLabel.translatesAutoresizingMaskIntoConstraints = false
+        firstStatTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        secondStatValueLabel.translatesAutoresizingMaskIntoConstraints = false
+        secondStatTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            grantedImageView.topAnchor.constraint(equalTo: topAnchor),
-            grantedImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            grantedImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            grantedImageView.heightAnchor.constraint(equalTo: grantedImageView.widthAnchor),
+            sectionImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            sectionImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            sectionImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            sectionImageView.widthAnchor.constraint(equalTo: sectionImageView.heightAnchor),
             
-            itemNameLabel.topAnchor.constraint(equalTo: grantedImageView.bottomAnchor, constant: 5),
-            itemNameLabel.leadingAnchor.constraint(equalTo: grantedImageView.leadingAnchor),
-            itemNameLabel.trailingAnchor.constraint(equalTo: grantedImageView.trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 22),
+            titleLabel.leadingAnchor.constraint(equalTo: sectionImageView.trailingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
-            itemTypeLabel.centerYAnchor.constraint(equalTo: rarityImageView.centerYAnchor),
-            itemTypeLabel.leadingAnchor.constraint(equalTo: rarityImageView.trailingAnchor, constant: 3),
-            itemTypeLabel.trailingAnchor.constraint(equalTo: itemNameLabel.trailingAnchor),
+            separatorLine.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
+            separatorLine.bottomAnchor.constraint(equalTo: firstStatTitleLabel.bottomAnchor, constant: 7),
+            separatorLine.widthAnchor.constraint(equalToConstant: 2),
+            separatorLine.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
             
-            rarityImageView.topAnchor.constraint(equalTo: itemNameLabel.bottomAnchor, constant: 2),
-            rarityImageView.leadingAnchor.constraint(equalTo: itemNameLabel.leadingAnchor),
-            rarityImageView.heightAnchor.constraint(equalToConstant: 25),
-            rarityImageView.widthAnchor.constraint(equalTo: rarityImageView.heightAnchor, multiplier: 291/253)
+            firstStatValueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            firstStatValueLabel.leadingAnchor.constraint(equalTo: sectionImageView.trailingAnchor, constant: 16),
+            firstStatValueLabel.trailingAnchor.constraint(equalTo: separatorLine.leadingAnchor, constant: -16),
+            
+            firstStatTitleLabel.topAnchor.constraint(equalTo: firstStatValueLabel.bottomAnchor, constant: 16),
+            firstStatTitleLabel.leadingAnchor.constraint(equalTo: firstStatValueLabel.leadingAnchor),
+            firstStatTitleLabel.trailingAnchor.constraint(equalTo: firstStatValueLabel.trailingAnchor),
+            
+            secondStatValueLabel.topAnchor.constraint(equalTo: firstStatValueLabel.topAnchor),
+            secondStatValueLabel.leadingAnchor.constraint(equalTo: separatorLine.trailingAnchor, constant: 16),
+            secondStatValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            secondStatTitleLabel.topAnchor.constraint(equalTo: secondStatValueLabel.bottomAnchor, constant: 16),
+            secondStatTitleLabel.leadingAnchor.constraint(equalTo: secondStatValueLabel.leadingAnchor),
+            secondStatTitleLabel.trailingAnchor.constraint(equalTo: secondStatValueLabel.trailingAnchor)
         ])
     }
     
@@ -100,9 +174,6 @@ class StatsCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        ImageLoader.cancelImageLoad(task: imageLoadTask)
-//        grantedImageView.image = .Placeholder.noImage
-//        grantedImageView.removeFromSuperview()
-//        rarityImageView.removeFromSuperview()
+        
     }
 }

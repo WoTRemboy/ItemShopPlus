@@ -95,24 +95,28 @@ final class StatsCollectionViewCell: UICollectionViewCell {
             firstStatValueLabel.text = "\(Int(firstStat))"
             secondStatTitleLabel.text = Texts.StatsPage.progressSecond
             secondStatValueLabel.text = "\(Int(secondStat))"
+            sectionImageView.image = .Stats.progress
         case .global:
             titleLabel.text = Texts.StatsPage.globalTitle
             firstStatTitleLabel.text = Texts.StatsPage.globalFirst
             firstStatValueLabel.text = "\(Int(firstStat))"
             secondStatTitleLabel.text = Texts.StatsPage.globalSecond
             secondStatValueLabel.text = "\(String(format: "%.2f", secondStat))"
+            sectionImageView.image = .Stats.global
         case .input:
             titleLabel.text = Texts.StatsPage.inputTitle
             firstStatTitleLabel.text = Texts.StatsPage.inputFirst
             firstStatValueLabel.text = "\(String(format: "%.2f", firstStat))"
             secondStatTitleLabel.text = Texts.StatsPage.inputSecond
             secondStatValueLabel.text = "\(String(format: "%.2f", secondStat))"
+            sectionImageView.image = .Stats.input
         case .history:
             titleLabel.text = Texts.StatsPage.historyTitle
             firstStatTitleLabel.text = Texts.StatsPage.historyFirst
             firstStatValueLabel.text = "\(Int(firstStat))"
             secondStatTitleLabel.text = Texts.StatsPage.historySecond
             secondStatValueLabel.text = "\(Int(secondStat))"
+            sectionImageView.image = .Stats.history
         }
         setupUI()
     }

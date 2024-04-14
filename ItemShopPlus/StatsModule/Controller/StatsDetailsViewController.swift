@@ -149,7 +149,7 @@ extension StatsDetailsViewController: UICollectionViewDelegateFlowLayout {
         case .title:
             return headerView
         case .global:
-            headerView.configurate(with: "\(Texts.StatsDetailsCell.mode) \(sortedStats[indexPath.section].0.capitalized)")
+            headerView.configurate(with: "\(sortedStats[indexPath.section].0.capitalized)")
         case .input:
             headerView.configurate(with: sortedStats[indexPath.section].0.capitalized)
         case .history:

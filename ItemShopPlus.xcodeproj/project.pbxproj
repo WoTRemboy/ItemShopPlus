@@ -24,6 +24,10 @@
 		634208F62BC2DC12008A9496 /* JSONStatsParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208F52BC2DC12008A9496 /* JSONStatsParce.swift */; };
 		634208FB2BC30E55008A9496 /* StatsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208FA2BC30E55008A9496 /* StatsMainViewController.swift */; };
 		634208FE2BC33889008A9496 /* StatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */; };
+		634209002BC874F9008A9496 /* NicknamePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208FF2BC874F9008A9496 /* NicknamePopupView.swift */; };
+		634209022BCAE455008A9496 /* NicknamePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209012BCAE455008A9496 /* NicknamePopupViewController.swift */; };
+		634209042BCB3B06008A9496 /* SimpleViewsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209032BCB3B06008A9496 /* SimpleViewsSetup.swift */; };
+		634209082BCC0DC8008A9496 /* StatsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209072BCC0DC8008A9496 /* StatsDetailsViewController.swift */; };
 		634F3F8B2B67CC8800C01426 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F3F8A2B67CC8800C01426 /* NoInternetView.swift */; };
 		63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */; };
 		63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */; };
@@ -93,6 +97,10 @@
 		634208F52BC2DC12008A9496 /* JSONStatsParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStatsParce.swift; sourceTree = "<group>"; };
 		634208FA2BC30E55008A9496 /* StatsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMainViewController.swift; sourceTree = "<group>"; };
 		634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCollectionViewCell.swift; sourceTree = "<group>"; };
+		634208FF2BC874F9008A9496 /* NicknamePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknamePopupView.swift; sourceTree = "<group>"; };
+		634209012BCAE455008A9496 /* NicknamePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknamePopupViewController.swift; sourceTree = "<group>"; };
+		634209032BCB3B06008A9496 /* SimpleViewsSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewsSetup.swift; sourceTree = "<group>"; };
+		634209072BCC0DC8008A9496 /* StatsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDetailsViewController.swift; sourceTree = "<group>"; };
 		634F3F8A2B67CC8800C01426 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
 		63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -242,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				634208FA2BC30E55008A9496 /* StatsMainViewController.swift */,
+				634209012BCAE455008A9496 /* NicknamePopupViewController.swift */,
+				634209072BCC0DC8008A9496 /* StatsDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -250,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */,
+				634208FF2BC874F9008A9496 /* NicknamePopupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -525,6 +536,7 @@
 				63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */,
 				63750CB32B96028E00ED7E0B /* TimerRemainingView.swift */,
 				634F3F8A2B67CC8800C01426 /* NoInternetView.swift */,
+				634209032BCB3B06008A9496 /* SimpleViewsSetup.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -658,6 +670,7 @@
 				634208F42BC2D4C9008A9496 /* StatsModel.swift in Sources */,
 				63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */,
 				63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */,
+				634209022BCAE455008A9496 /* NicknamePopupViewController.swift in Sources */,
 				63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */,
 				637B26952B4DACCA0075B871 /* CollectionHeaderReusableView.swift in Sources */,
 				63290CDC2B5ED498008F45F8 /* CollectionRarityCell.swift in Sources */,
@@ -667,6 +680,7 @@
 				638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */,
 				63ECC1282B90A930006E0841 /* CommonLogicMethods.swift in Sources */,
 				639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */,
+				634209082BCC0DC8008A9496 /* StatsDetailsViewController.swift in Sources */,
 				63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */,
 				6320672C2B8B66130060AB1B /* CrewModel.swift in Sources */,
 				637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */,
@@ -695,6 +709,7 @@
 				63C899112B2508DB00FABD69 /* QuestsBundlePageController.swift in Sources */,
 				634208F62BC2DC12008A9496 /* JSONStatsParce.swift in Sources */,
 				63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */,
+				634209002BC874F9008A9496 /* NicknamePopupView.swift in Sources */,
 				63C899172B26220D00FABD69 /* ImageLoader.swift in Sources */,
 				634F3F8B2B67CC8800C01426 /* NoInternetView.swift in Sources */,
 				638594B22B2CF80F009FEED6 /* QuestsDetailsViewController.swift in Sources */,
@@ -702,6 +717,7 @@
 				638FD6D52B8900CF00CE47BD /* MapPickerViewController.swift in Sources */,
 				634208FE2BC33889008A9496 /* StatsCollectionViewCell.swift in Sources */,
 				63F94E792B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift in Sources */,
+				634209042BCB3B06008A9496 /* SimpleViewsSetup.swift in Sources */,
 				63ECC1372B9259C6006E0841 /* JSONBattlePassParce.swift in Sources */,
 				63290CE52B615CFF008F45F8 /* CollectionParametersRowView.swift in Sources */,
 				63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */,

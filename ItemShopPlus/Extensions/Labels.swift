@@ -246,6 +246,7 @@ final class Texts {
     
     enum StatsPage {
         static let title = "Stats"
+        static let placeholder = "Error"
         static let progressTitle = "Progress"
         static let progressFirst = "Current\nSeason"
         static let progressSecond = "Current\nLevel"
@@ -258,6 +259,7 @@ final class Texts {
         static let historyTitle = "History"
         static let historyFirst = "Best\nSeason"
         static let historySecond = "Max\nLevel"
+        static let nicknameKey = "NicknameKey"
     }
     
     enum StatsCell {
@@ -265,6 +267,18 @@ final class Texts {
         static let firstStatPlaceholder = "First\nStat"
         static let secondStatPlaceholder = "Second\nStat"
         static let statValuePlaceholder = "0"
+    }
+    
+    enum NicknamePopup {
+        static let placeholder = "Nickname"
+        static let xbox = "Xbox"
+        static let epic = "Epic"
+        static let psn = "PSN"
+        static let accept = "Accept"
+        static let cancel = "Cancel"
+        static let noResult = "No result"
+        static let empty = "Empty text"
+        static let emptyMessage = "Please, enter any nickname"
     }
     
     // MARK: - Quests Module

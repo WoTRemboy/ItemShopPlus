@@ -7,11 +7,12 @@
 
 import UIKit
 
-class StatsMainViewController: UIViewController {
+final class StatsMainViewController: UIViewController {
     
     private let networkService = DefaultNetworkService()
     private var stats = Stats.emptyStats
-    private var nickname = "WoTRemboy"
+    private var nickname = String()
+    private var platform: String? = nil
     
     private let noInternetView = NoInternetView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -23,10 +24,9 @@ class StatsMainViewController: UIViewController {
         return button
     }()
     
-    private let symbolButton: UIBarButtonItem = {
+    private let nicknameButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .Stats.newNickname
-        button.isEnabled = false
         return button
     }()
     
@@ -42,26 +42,44 @@ class StatsMainViewController: UIViewController {
         return collectionView
     }()
     
+    private let noStatsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = .Stats.noStats
+        imageView.isHidden = true
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .BackColors.backDefault
         
+        if let retrievedString = UserDefaults.standard.string(forKey: Texts.StatsPage.nicknameKey) {
+            nickname = retrievedString
+        } else {
+            print("There is no currency data in UserDefaults")
+        }
+        
         navigationBarSetup()
         collectionViewSetup()
         noInternetSetup()
+        noStatsImageViewSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard stats.name == "Error" else { return }
-        getStats(nickname: nickname, isRefreshControl: false)
+        guard stats.name == Texts.StatsPage.placeholder else { return }
+        if nickname.isEmpty {
+            showNicknamePopup(firstAppear: true)
+        } else {
+            getStats(nickname: nickname, platform: platform, isRefreshControl: false)
+        }
     }
     
     @objc private func refreshWithControl() {
-        getStats(nickname: nickname, isRefreshControl: true)
+        getStats(nickname: nickname, platform: platform, isRefreshControl: true)
     }
     
     @objc private func refreshWithoutControl() {
-        getStats(nickname: nickname, isRefreshControl: false)
+        getStats(nickname: nickname, platform: platform, isRefreshControl: false)
     }
     
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -71,22 +89,32 @@ class StatsMainViewController: UIViewController {
         }
     }
     
+    @objc private func showNicknamePopup(firstAppear: Bool) {
+        let nicknameVC = NicknamePopupViewController()
+        nicknameVC.completionHandler = { [weak self] newNickname, platform in
+            guard let collectionView = self?.collectionView else { return }
+            UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                collectionView.isHidden = true
+            }, completion: nil)
+            self?.getStats(nickname: newNickname, platform: platform, isRefreshControl: false)
+            UIView.appearance().isExclusiveTouch = true
+        }
+        if firstAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                self.noStatsImageView.isHidden = false
+            }
+        }
+        nicknameVC.appear(sender: self, firstAppear: firstAppear)
+    }
+    
     private func animateCellSelection(at indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            
-            //            let item = self.items[indexPath.item]
-            //            let image = item.image
-            //            let name = item.name
-            //
-            //            let vc = ShopGrantedPreviewViewController(image: image, name: name)
-            //            let navVC = UINavigationController(rootViewController: vc)
-            //            navVC.modalPresentationStyle = .fullScreen
-            //            navVC.modalTransitionStyle = .crossDissolve
-            //            self.present(navVC, animated: true)
+//            let vc = StatsDetailsViewController()
+//            self.navigationController?.pushViewController(vc, animated: true)
             
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = CGAffineTransform.identity
@@ -94,7 +122,7 @@ class StatsMainViewController: UIViewController {
         }
     }
     
-    private func getStats(nickname: String, platform: String? = nil, isRefreshControl: Bool) {
+    private func getStats(nickname: String, platform: String?, isRefreshControl: Bool) {
         if isRefreshControl {
             self.refreshControl.beginRefreshing()
         } else {
@@ -103,6 +131,8 @@ class StatsMainViewController: UIViewController {
             self.activityIndicator.startAnimating()
         }
         noInternetView.isHidden = true
+        noStatsImageView.isHidden = true
+        nicknameButton.isEnabled = false
         
         self.networkService.getAccountStats(nickname: nickname, platform: platform) { [weak self] result in
             DispatchQueue.main.async {
@@ -116,21 +146,51 @@ class StatsMainViewController: UIViewController {
             switch result {
             case .success(let newStats):
                 DispatchQueue.main.async {
+                    guard newStats.result else {
+                        self?.noResultDisplay(message: newStats.resultMessage)
+                        return
+                    }
                     self?.stats = newStats
-                    self?.collectionView.reloadData()
-                    self?.collectionView.isHidden = false
+                    self?.nickname = newStats.name
+                    
+                    guard let collectionView = self?.collectionView else { return }
+                    collectionView.isHidden = false
+                    if isRefreshControl {
+                        collectionView.reloadData()
+                    } else {
+                        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                            collectionView.reloadData()
+                        }, completion: nil)
+                    }
                     self?.noInternetView.isHidden = true
-                    self?.symbolButton.isEnabled = true
+                    self?.noStatsImageView.isHidden = true
+                    self?.nicknameButton.isEnabled = true
+                    UserDefaults.standard.set(newStats.name, forKey: Texts.StatsPage.nicknameKey)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                     self?.collectionView.isHidden = true
                     self?.noInternetView.isHidden = false
-                    self?.symbolButton.isEnabled = false
+                    self?.nicknameButton.isEnabled = false
                 }
                 print(error)
             }
+        }
+    }
+    
+    private func noResultDisplay(message: String?) {
+        dismiss(animated: false) {
+            let alertController = UIAlertController(title: Texts.NicknamePopup.noResult, message: message ?? String(), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: Texts.ClearCache.ok, style: .default) { _ in
+                self.showNicknamePopup(firstAppear: false)
+                self.nicknameButton.isEnabled = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.noStatsImageView.isHidden = false
+                }
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true)
         }
     }
     
@@ -140,8 +200,9 @@ class StatsMainViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
-        symbolButton.target = self
-        navigationItem.rightBarButtonItem = symbolButton
+        nicknameButton.target = self
+        nicknameButton.action = #selector(showNicknamePopup)
+        navigationItem.rightBarButtonItem = nicknameButton
     }
     
     private func noInternetSetup() {
@@ -157,6 +218,18 @@ class StatsMainViewController: UIViewController {
             noInternetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             noInternetView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             noInternetView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+    }
+    
+    private func noStatsImageViewSetup() {
+        view.addSubview(noStatsImageView)
+        noStatsImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            noStatsImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noStatsImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noStatsImageView.heightAnchor.constraint(equalToConstant: 150),
+            noStatsImageView.widthAnchor.constraint(equalTo: noStatsImageView.heightAnchor)
         ])
     }
     

@@ -11,6 +11,7 @@ extension UIColor {
     enum BackColors {
         static let backElevated = UIColor(named: "BackElevated")
         static let backiOSPrimary = UIColor(named: "BackiOSPrimary")
+        static let backPopup = UIColor(named: "BackPopup")
         static let backPrimary = UIColor(named: "BackPrimary")
         static let backPreview = UIColor(named: "BackPreview")
         static let backSecondary = UIColor(named: "BackSecondary")
@@ -27,10 +28,12 @@ extension UIColor {
     }
     
     enum SupportColors {
+        static let supportButton = UIColor(named: "SupportButton")
         static let supportNavBar = UIColor(named: "SupportNavBar")
         static let supportOverlay = UIColor(named: "SupportOverlay")
         static let supportSegmented = UIColor(named: "SupportSegmented")
         static let supportSeparator = UIColor(named: "SupportSeparator")
+        static let supportTextView = UIColor(named: "SupportTextView")
     }
     
     enum QuestsBundleColors {

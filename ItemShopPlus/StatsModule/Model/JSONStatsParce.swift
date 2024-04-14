@@ -10,19 +10,22 @@ import Foundation
 extension Stats {
     static func sharingParse(sharingJSON: Any) -> Stats? {
         guard let globalData = sharingJSON as? [String: Any],
-              let name = globalData["name"] as? String,
-              let accountData = globalData["account"] as? [String: Any],
-              let historyData = globalData["accountLevelHistory"] as? [[String: Any]],
-              let allStatsData = globalData["global_stats"] as? [String: Any],
-              let inputData = globalData["per_input"] as? [String: Any],
-              let level = accountData["level"] as? Int
+              let result = globalData["result"] as? Bool
         else {
             return nil
         }
+        let name = globalData["name"] as? String ?? "Error"
+        let accountData = globalData["account"] as? [String: Any]
+        let historyData = globalData["accountLevelHistory"] as? [[String: Any]]
+        let allStatsData = globalData["global_stats"] as? [String: Any] ?? [:]
+        let inputData = globalData["per_input"] as? [String: Any] ?? [:]
+        let level = accountData?["level"] as? Int ?? 0
         
-        let season = accountData["season"] as? Int
-        let process = accountData["process_pct"] as? Int ?? 0
-        let history = historyData.compactMap { LevelHistory.sharingParce(sharingJSON: $0) }
+        let resultMessage = globalData["message"] as? String
+        let resultError = globalData["error"] as? String
+        let season = accountData?["season"] as? Int
+        let process = accountData?["process_pct"] as? Int ?? 0
+        let history = historyData?.compactMap { LevelHistory.sharingParce(sharingJSON: $0) } ?? []
         
         var global = [String: SectionStats]()
         for statsDatum in allStatsData {
@@ -38,7 +41,7 @@ extension Stats {
             }
         }
         
-        return Stats(name: name, season: season, level: level, process: process, history: history, global: global, input: inputs)
+        return Stats(name: name, season: season, level: level, process: process, result: result, resultMessage: resultMessage ?? resultError, history: history, global: global, input: inputs)
     }
 }
 

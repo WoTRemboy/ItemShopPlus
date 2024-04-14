@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StatsCollectionViewCell: UICollectionViewCell {
+final class StatsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
@@ -18,7 +18,7 @@ class StatsCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Segment title"
+        label.text = String()
         label.textColor = .labelPrimary
         label.font = .title()
         label.textAlignment = .center

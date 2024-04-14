@@ -90,6 +90,7 @@ extension UIImage {
     
     enum Stats {
         static let newNickname = UIImage(systemName: "square.and.pencil")
+        static let noStats = createImage(name: "person.slash")
     }
     
     // MARK: - Quests Module

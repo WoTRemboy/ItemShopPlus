@@ -12,11 +12,13 @@ struct Stats {
     let season: Int?
     let level: Int
     let process: Int
+    let result: Bool
+    let resultMessage: String?
     let history: [LevelHistory]
     let global: [String: SectionStats]
     let input: [String: InputStats]
     
-    static let emptyStats = Stats(name: "Error", season: 0, level: 0, process: 0, history: [], global: [:], input: [:])
+    static let emptyStats = Stats(name: "Error", season: 0, level: 0, process: 0, result: true, resultMessage: nil, history: [], global: [:], input: [:])
     
     internal func sumTopOne() -> Double {
         var result = 0

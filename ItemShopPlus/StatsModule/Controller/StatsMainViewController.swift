@@ -108,13 +108,21 @@ final class StatsMainViewController: UIViewController {
     }
     
     private func animateCellSelection(at indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? StatsCollectionViewCell, indexPath.row != 0 else { return }
         
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-//            let vc = StatsDetailsViewController()
-//            self.navigationController?.pushViewController(vc, animated: true)
+            var vc: UIViewController = .init()
+            switch indexPath.row {
+            case 1:
+                vc = StatsDetailsViewController(title: cell.getTitleText(), stats: self.stats, type: .global)
+            case 2:
+                vc = StatsDetailsViewController(title: cell.getTitleText(), stats: self.stats, type: .input)
+            default:
+                vc = StatsDetailsViewController(title: cell.getTitleText(), stats: self.stats, type: .history)
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
             
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = CGAffineTransform.identity

@@ -7,9 +7,13 @@
 
 import UIKit
 
-internal func alertControllerSetup(title: String?, message: String, parent: UIViewController) {
-    let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    let okAction = UIAlertAction(title: Texts.ClearCache.ok, style: .default)
-    alertController.addAction(okAction)
-    parent.present(alertController, animated: true)
+final class SimpleViewsSetup {
+    static func alertControllerSetup(title: String?, message: String, parent: UIViewController) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Texts.ClearCache.ok, style: .default)
+        alertController.addAction(okAction)
+        parent.present(alertController, animated: true)
+    }
 }
+
+

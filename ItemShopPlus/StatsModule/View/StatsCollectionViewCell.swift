@@ -12,7 +12,6 @@ final class StatsCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
     
     static let identifier = Texts.StatsCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
     
     // MARK: - UI Elements and Views
     
@@ -116,6 +115,10 @@ final class StatsCollectionViewCell: UICollectionViewCell {
             secondStatValueLabel.text = "\(Int(secondStat))"
         }
         setupUI()
+    }
+    
+    internal func getTitleText() -> String? {
+        return titleLabel.text
     }
     
     // MARK: - UI Setup

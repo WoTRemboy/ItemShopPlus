@@ -28,6 +28,8 @@
 		634209022BCAE455008A9496 /* NicknamePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209012BCAE455008A9496 /* NicknamePopupViewController.swift */; };
 		634209042BCB3B06008A9496 /* SimpleViewsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209032BCB3B06008A9496 /* SimpleViewsSetup.swift */; };
 		634209082BCC0DC8008A9496 /* StatsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209072BCC0DC8008A9496 /* StatsDetailsViewController.swift */; };
+		6342090A2BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209092BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift */; };
+		6342090C2BCC4439008A9496 /* StatsParameterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342090B2BCC4439008A9496 /* StatsParameterView.swift */; };
 		634F3F8B2B67CC8800C01426 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F3F8A2B67CC8800C01426 /* NoInternetView.swift */; };
 		63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */; };
 		63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */; };
@@ -101,6 +103,8 @@
 		634209012BCAE455008A9496 /* NicknamePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknamePopupViewController.swift; sourceTree = "<group>"; };
 		634209032BCB3B06008A9496 /* SimpleViewsSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewsSetup.swift; sourceTree = "<group>"; };
 		634209072BCC0DC8008A9496 /* StatsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDetailsViewController.swift; sourceTree = "<group>"; };
+		634209092BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		6342090B2BCC4439008A9496 /* StatsParameterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsParameterView.swift; sourceTree = "<group>"; };
 		634F3F8A2B67CC8800C01426 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
 		63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 			children = (
 				634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */,
 				634208FF2BC874F9008A9496 /* NicknamePopupView.swift */,
+				634209092BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift */,
+				6342090B2BCC4439008A9496 /* StatsParameterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -666,6 +672,7 @@
 			files = (
 				63ECC12B2B9106FE006E0841 /* CommonModels.swift in Sources */,
 				63290CDA2B5EA399008F45F8 /* ShopGrantedViewController.swift in Sources */,
+				6342090C2BCC4439008A9496 /* StatsParameterView.swift in Sources */,
 				638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */,
 				634208F42BC2D4C9008A9496 /* StatsModel.swift in Sources */,
 				63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */,
@@ -699,6 +706,7 @@
 				63ECC12D2B910A00006E0841 /* SelectingMethods.swift in Sources */,
 				63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */,
 				63750CAC2B93851200ED7E0B /* BattlePassInfoViewController.swift in Sources */,
+				6342090A2BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift in Sources */,
 				638FD6D12B854D4100CE47BD /* MapModel.swift in Sources */,
 				632533B12B83D45700DA3F05 /* MapPreviewViewController.swift in Sources */,
 				63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */,

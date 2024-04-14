@@ -281,6 +281,21 @@ final class Texts {
         static let emptyMessage = "Please, enter any nickname"
     }
     
+    enum StatsDetailsCell {
+        static let identifier = "StatsDetailsCell"
+        static let mode = "Mode:"
+        static let winrate = "Winrate"
+        static let topOne = "Top 1"
+        static let matches = "Matches"
+        static let kd = "K/D"
+        static let kills = "Kills"
+        static let outlived = "Outlived"
+        static let hours = "Hours"
+        static let score = "Score"
+        static let season = "Season"
+        static let level = "Level"
+    }
+    
     // MARK: - Quests Module
     
     enum Quest {

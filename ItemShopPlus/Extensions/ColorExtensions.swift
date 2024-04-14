@@ -16,6 +16,7 @@ extension UIColor {
         static let backPreview = UIColor(named: "BackPreview")
         static let backSecondary = UIColor(named: "BackSecondary")
         static let backSplash = UIColor(named: "BackSplash")
+        static let backStats = UIColor(named: "BackStats")
         static let backDefault = UIColor(named: "BackDefault")
     }
     

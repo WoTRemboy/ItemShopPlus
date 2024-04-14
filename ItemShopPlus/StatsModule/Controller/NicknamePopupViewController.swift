@@ -42,7 +42,7 @@ final class NicknamePopupViewController: UIViewController {
             completionHandler?(text, platform)
             hide()
         } else {
-            alertControllerSetup(title: Texts.NicknamePopup.empty, message: Texts.NicknamePopup.emptyMessage, parent: self)
+            SimpleViewsSetup.alertControllerSetup(title: Texts.NicknamePopup.empty, message: Texts.NicknamePopup.emptyMessage, parent: self)
         }
         
     }

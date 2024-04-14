@@ -18,7 +18,7 @@ struct Stats {
     let global: [String: SectionStats]
     let input: [String: InputStats]
     
-    static let emptyStats = Stats(name: "Error", season: 0, level: 0, process: 0, result: true, resultMessage: nil, history: [], global: [:], input: [:])
+    static let emptyStats = Stats(name: Texts.StatsPage.placeholder, season: 0, level: 0, process: 0, result: true, resultMessage: nil, history: [], global: [:], input: [:])
     
     internal func sumTopOne() -> Double {
         var result = 0
@@ -54,6 +54,8 @@ struct LevelHistory {
     let season: Int
     let level: Int
     let progress: Int
+    
+    static let emptyHistory = LevelHistory(season: 0, level: 0, progress: 0)
 }
 
 struct SectionStats {
@@ -72,6 +74,8 @@ struct SectionStats {
     let score: Int
     let playersOutlived: Int
     let lastModified: Int
+    
+    static let emptyStats = SectionStats(topOne: 0, kd: 0, winrate: 0, topThree: 0, topFive: 0, topSix: 0, topTen: 0, topTwelve: 0, topTwentyFive: 0, kills: 0, matchesPlayed: 0, minutesPlayed: 0, score: 0, playersOutlived: 0, lastModified: 0)
 }
 
 struct InputStats {
@@ -90,4 +94,9 @@ enum SumType {
     case global
     case keyboard
     case controller
+}
+
+enum StatsCellType {
+    case stats
+    case history
 }

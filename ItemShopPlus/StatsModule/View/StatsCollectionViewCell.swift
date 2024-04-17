@@ -85,8 +85,10 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         backgroundColor = .BackColors.backElevated
         layer.cornerRadius = 25
         layer.shadowColor = UIColor.Shadows.primary
+        layer.borderColor = UIColor.LabelColors.labelDisable?.cgColor
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 20
+        layer.borderWidth = 0
         
         switch type {
         case .title:
@@ -96,6 +98,11 @@ final class StatsCollectionViewCell: UICollectionViewCell {
             secondStatTitleLabel.text = Texts.StatsPage.progressSecond
             secondStatValueLabel.text = "\(Int(secondStat))"
             sectionImageView.image = .Stats.progress
+            backgroundColor = .BackColors.backDefault
+            layer.shadowRadius = 0
+            layer.shadowOpacity = 0
+            layer.borderWidth = 2
+
         case .global:
             titleLabel.text = Texts.StatsPage.globalTitle
             firstStatTitleLabel.text = Texts.StatsPage.globalFirst
@@ -123,6 +130,13 @@ final class StatsCollectionViewCell: UICollectionViewCell {
     
     internal func getTitleText() -> String? {
         return titleLabel.text
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            layer.borderColor = UIColor.LabelColors.labelDisable?.cgColor
+        }
     }
     
     // MARK: - UI Setup
@@ -181,6 +195,8 @@ final class StatsCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        layer.shadowRadius = 0
+        layer.shadowOpacity = 0
+        layer.borderWidth = 0
     }
 }

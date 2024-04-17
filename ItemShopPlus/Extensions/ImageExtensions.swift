@@ -97,7 +97,7 @@ extension UIImage {
         static let history = UIImage(named: "HistoryStats")
         static let touch = UIImage(systemName: "hand.tap")
         static let gamepad = UIImage(systemName: "gamecontroller")
-        static let mouse = UIImage(systemName: "computermouse")
+        static let keyboard = UIImage(systemName: "keyboard")
     }
     
     // MARK: - Quests Module

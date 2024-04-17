@@ -87,7 +87,7 @@ final class StatsDetailsCollectionViewCell: UICollectionViewCell {
             firstTitle: Texts.StatsDetailsCell.level,
             firstContent: String(history.level),
             secondTitle: Texts.StatsDetailsCell.progress,
-            secondContent: String(history.progress),
+            secondContent: "\(history.progress)%",
             separator: false)
         stackView.addArrangedSubview(historyRow)
         

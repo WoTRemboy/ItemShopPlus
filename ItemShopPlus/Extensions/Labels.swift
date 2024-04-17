@@ -283,7 +283,7 @@ final class Texts {
     
     enum StatsDetailsPage {
         static let gamepad = "Gamepad"
-        static let mouse = "Mouse"
+        static let keyboard = "Keyboard"
         static let touch = "Touch"
     }
     

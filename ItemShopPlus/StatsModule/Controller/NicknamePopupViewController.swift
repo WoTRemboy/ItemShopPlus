@@ -48,7 +48,7 @@ final class NicknamePopupViewController: UIViewController {
     }
     
     @objc private func hide() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.view.alpha = 0
             self.nicknameView.alpha = 0
         } completion: { _ in

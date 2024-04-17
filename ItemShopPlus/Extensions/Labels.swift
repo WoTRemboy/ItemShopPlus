@@ -294,6 +294,7 @@ final class Texts {
         static let score = "Score"
         static let season = "Season"
         static let level = "Level"
+        static let progress = "Progress"
     }
     
     // MARK: - Quests Module

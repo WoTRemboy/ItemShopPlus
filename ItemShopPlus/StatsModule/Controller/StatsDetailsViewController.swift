@@ -88,7 +88,7 @@ extension StatsDetailsViewController: UICollectionViewDelegate, UICollectionView
         case .input:
             return allStats.input["gamepad"]?.stats.count ?? 0
         case .history:
-            return 1
+            return allStats.history.count
         }
     }
     
@@ -108,7 +108,7 @@ extension StatsDetailsViewController: UICollectionViewDelegate, UICollectionView
         case .input:
             cell.configurate(stats: sortedStats[indexPath.row].1, history: LevelHistory.emptyHistory, type: .stats)
         case .history:
-            cell.configurate(stats: SectionStats.emptyStats, history: allStats.history[indexPath.row], type: .history)
+            cell.configurate(stats: SectionStats.emptyStats, history: allStats.history[indexPath.section], type: .history)
         }
         return cell
     }
@@ -119,8 +119,16 @@ extension StatsDetailsViewController: UICollectionViewDelegate, UICollectionView
 extension StatsDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthSize = view.frame.width - 32
-        let heightSize = CGFloat(210)
-        return CGSize(width: widthSize, height: heightSize)
+        switch type {
+        case .title:
+            return CGSize(width: 0, height: 0)
+        case .global, .input:
+            let heightSize = CGFloat(210)
+            return CGSize(width: widthSize, height: heightSize)
+        case .history:
+            let heightSize = CGFloat(70)
+            return CGSize(width: widthSize, height: heightSize)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -153,7 +161,7 @@ extension StatsDetailsViewController: UICollectionViewDelegateFlowLayout {
         case .input:
             headerView.configurate(with: sortedStats[indexPath.section].0.capitalized)
         case .history:
-            headerView.configurate(with: "Levels")
+            headerView.configurate(with: "\(Texts.StatsDetailsCell.season) \(allStats.history[indexPath.section].season)")
         }
         
         return headerView

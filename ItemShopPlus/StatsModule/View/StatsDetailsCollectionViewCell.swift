@@ -36,6 +36,7 @@ final class StatsDetailsCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 20
         
         self.stats = stats
+        self.history = history
         switch type {
         case .stats:
             statsSetup()
@@ -83,10 +84,11 @@ final class StatsDetailsCollectionViewCell: UICollectionViewCell {
     
     private func historySetup() {
         historyRow.configurate(
-            firstTitle: Texts.StatsDetailsCell.season,
-            firstContent: String(history.season),
-            secondTitle: Texts.StatsDetailsCell.level,
-            secondContent: String(history.level))
+            firstTitle: Texts.StatsDetailsCell.level,
+            firstContent: String(history.level),
+            secondTitle: Texts.StatsDetailsCell.progress,
+            secondContent: String(history.progress),
+            separator: false)
         stackView.addArrangedSubview(historyRow)
         
         NSLayoutConstraint.activate([

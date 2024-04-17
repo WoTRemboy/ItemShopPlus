@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MapZoomView: UIScrollView {
+final class MapZoomView: UIScrollView {
     
     // MARK: - Properties
         

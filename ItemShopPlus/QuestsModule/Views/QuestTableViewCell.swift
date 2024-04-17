@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestTableViewCell: UITableViewCell {
+final class QuestTableViewCell: UITableViewCell {
 
     static let identifier = Texts.QuestCell.identifier
     private var imageLoadTask: URLSessionDataTask?

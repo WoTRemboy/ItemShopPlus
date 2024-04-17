@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopCollectionViewCell: UICollectionViewCell {
+final class ShopCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     

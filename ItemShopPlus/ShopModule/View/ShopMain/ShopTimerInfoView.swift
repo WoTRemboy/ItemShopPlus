@@ -7,9 +7,14 @@
 
 import UIKit
 
-class ShopTimerInfoView: UIView {
+final class ShopTimerInfoView: UIView {
     
     // MARK: - UI Elements and Views
+    
+    private let timerView = TimerRemainingView()
+    private let swipeMeaningView = CollectionParametersRowView(frame: .null, title: Texts.ShopTimer.whatMeans, content: Texts.ShopTimer.swipeInfo, image: .ShopMain.pagesInfo)
+    private let countMeaningView = CollectionParametersRowView(frame: .null, title: Texts.ShopTimer.whatMeans, content: Texts.ShopTimer.countInfo, image: .ShopMain.grantedInfo)
+    private let aboutRotationView = CollectionParametersRowView(frame: .null, title: Texts.ShopTimer.aboutRotation, content: Texts.ShopTimer.rotationInfo)
     
     private let infoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -19,26 +24,17 @@ class ShopTimerInfoView: UIView {
         return imageView
     }()
     
-    private let infoLabel: UILabel = {
-        let label = UILabel()
-        label.font = .body()
-        label.textColor = .LabelColors.labelPrimary
-        label.text = Texts.ShopPage.rotationInfo
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    private let timerLabel: UILabel = {
-        let label = UILabel()
-        label.font = .title()
-        label.textColor = .LabelColors.labelPrimary
-        return label
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 0
+        return stackView
     }()
     
     // MARK: - Initialization
     
     override init(frame: CGRect) {
+        timerView.configurate(title: Texts.ShopPage.remaining, content: Texts.ShopPage.remaining)
         super.init(frame: frame)
         setupUI()
     }
@@ -50,32 +46,42 @@ class ShopTimerInfoView: UIView {
     // MARK: - Public Configure Method
     
     public func setInfoLabelText(text: String) {
-        timerLabel.text = text
+        timerView.updateTimer(content: text)
     }
     
     // MARK: - UI Setup
 
     private func setupUI() {
         addSubview(infoImageView)
-        addSubview(infoLabel)
-        addSubview(timerLabel)
+        addSubview(stackView)
+        addSubview(timerView)
+        
+        stackView.addArrangedSubview(swipeMeaningView)
+        stackView.addArrangedSubview(countMeaningView)
+        stackView.addArrangedSubview(aboutRotationView)
         
         infoImageView.translatesAutoresizingMaskIntoConstraints = false
-        infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        timerLabel.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        timerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             infoImageView.topAnchor.constraint(equalTo: topAnchor),
-            infoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            infoImageView.heightAnchor.constraint(equalToConstant: 150 / 812 * UIScreen.main.bounds.height),
-            infoImageView.widthAnchor.constraint(equalTo: infoImageView.heightAnchor),
+            infoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            infoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            infoImageView.heightAnchor.constraint(equalTo: infoImageView.widthAnchor, multiplier: 1080 / 1920),
             
-            timerLabel.topAnchor.constraint(equalTo: infoImageView.bottomAnchor, constant: 16),
-            timerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.topAnchor.constraint(equalTo: infoImageView.bottomAnchor, constant: 25),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
-            infoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            infoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            infoLabel.topAnchor.constraint(equalTo: timerLabel.bottomAnchor, constant: 10)
+            swipeMeaningView.heightAnchor.constraint(equalToConstant: 70),
+            countMeaningView.heightAnchor.constraint(equalToConstant: 70),
+            aboutRotationView.heightAnchor.constraint(equalToConstant: 70),
+            
+            timerView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
+            timerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            timerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            timerView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CommonLogicMethods {
+final class CommonLogicMethods {
     static func capitalizeFirstLetter(input: String) -> String {
         var capitalizedWords = [String]()
         let dirtyWords = input.replacingOccurrences(of: "_", with: " ")

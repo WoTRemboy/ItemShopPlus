@@ -11,28 +11,52 @@ extension QuestBundle {
     static func sharingParse(sharingJSON: Any) -> QuestBundle? {
         guard let data = sharingJSON as? [String: Any],
               let tag = data["tag"] as? String,
-              let name = data["name"] as? String,
-              let image = data["image"] as? String,
-              let anotherData = data["bundles"] as? [[String: Any]]
+              var name = data["name"] as? String,
+              let subBundlesData = data["bundles"] as? [[String: Any]]
         else {
             return nil
         }
         
-        var startDate: String?, endDate: String?
-        var questsData: [[String: Any]] = [[:]]
-        for questsDatum in anotherData {
-            if let activeDates = questsDatum["activeDates"] as? [String: Any] {
-                startDate = activeDates["start"] as? String
-                endDate = activeDates["end"] as? String
-            }
-            questsData = questsDatum["quests"] as? [[String: Any]] ?? [[:]]
+        let image = data["image"] as? String
+        let subBundles = subBundlesData.compactMap { QuestSubBundle.sharingParse(sharingJSON: $0) }
+        
+        if name.isEmpty, let header = subBundles.first?.quests.first?.categoryHeader {
+            name = header
         }
-        let start: Date? = DateFormating.dateFormatterQuests.date(from: startDate ?? Texts.Season.beginDate)
-        let end = DateFormating.dateFormatterQuests.date(from: endDate ?? Texts.Season.endDate)
+        guard !name.isEmpty else { return nil }
         
-        let questsList = questsData.compactMap { Quest.sharingParse(sharingJSON: $0) }
+        return QuestBundle(tag: tag, name: name, image: image ?? String(), subBundles: subBundles)
+    }
+}
+
+extension QuestSubBundle {
+    static func sharingParse(sharingJSON: Any) -> QuestSubBundle? {
+        guard let data = sharingJSON as? [String: Any],
+              let id = data["id"] as? String,
+              let name = data["name"] as? String,
+              let header = data["header"] as? String,
+              let questsData = data["quests"] as? [[String: Any]]
+        else {
+            return nil
+        }
         
-        return QuestBundle(tag: tag, name: name, image: image, startDate: start, endDate: end, quests: questsList)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        var beginDate: Date? = nil
+        var endDate: Date? = nil
+        if let dateString = data["activeDates"] as? [String: Any] {
+            let beginDateString = dateString["start"] as? String
+            let endDateString = dateString["end"] as? String
+            beginDate = dateFormatter.date(from: beginDateString ?? String())
+            endDate = dateFormatter.date(from: endDateString ?? String())
+        }
+
+        let quests = questsData.compactMap { Quest.sharingParse(sharingJSON: $0) }
+        
+        return QuestSubBundle(id: id, name: name, beginDate: beginDate, endDate: endDate, header: header, quests: quests)
     }
 }
 
@@ -48,19 +72,48 @@ extension Quest {
             return nil
         }
         
-        let xpReward = rewards["xp"] as? Int
+        let description = data["description"] as? String
+        let shortDescription = data["shortDescription"] as? String
+        let categoryHeader = data["categoryHeader"] as? String
+        let parentQuest = data["parentQuest"] as? String
         
-        var itemReward: String?, image: String?
-        if let itemRewardData = rewards["items"] as? [[String: Any]] {
-            for datum in itemRewardData {
-                itemReward = datum["name"] as? String
-                if let imageData = datum["images"] as? [String: Any] {
-                    image = imageData["background"] as? String
-                }
-                
-            }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        var enabledDate: Date? = nil
+        if let enabledDateString = data["enabledDate"] as? String {
+            enabledDate = dateFormatter.date(from: enabledDateString)
         }
         
-        return Quest(id: id, name: name, enabled: enabled, enabledDate: nil, parentQuest: nil, xpReward: xpReward, itemReward: itemReward, progress: String(progress), image: image)
+        var itemRewards = [QuestItem]()
+        let xpReward = rewards["xp"] as? Int
+        if let itemRewardData = rewards["items"] as? [[String: Any]] {
+            itemRewards = itemRewardData.compactMap { QuestItem.sharingParse(sharingJSON: $0) }
+        }
+        
+        return Quest(id: id, name: name, description: description, shortDescription: shortDescription, categoryHeader: categoryHeader, enabled: enabled, enabledDate: enabledDate, parentQuest: parentQuest, progress: progress, xpReward: xpReward, itemReward: itemRewards)
+    }
+}
+
+extension QuestItem {
+    static func sharingParse(sharingJSON: Any) -> QuestItem? {
+        guard let data = sharingJSON as? [String: Any],
+              let id = data["id"] as? String,
+              let typeData = data["type"] as? [String: Any],
+              let type = typeData["name"] as? String,
+              let name = data["name"] as? String,
+              let rariryData = data["rarity"] as? [String: Any],
+              let imagesData = data["images"] as? [String: Any],
+              let image = imagesData["icon_background"] as? String
+        else {
+            return nil
+        }
+        
+        let rarity = SelectingMethods.selectRarity(rarityText: rariryData["id"] as? String)
+        let series = data["series"] as? String
+        
+        return QuestItem(id: id, type: type, name: name, rarity: rarity, series: series, image: image)
     }
 }

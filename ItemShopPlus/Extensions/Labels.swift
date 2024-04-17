@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Texts {
+final class Texts {
     
     // MARK: - Common
     
@@ -24,6 +24,11 @@ class Texts {
         static let done = "Done"
         static let backToMain = "Main"
         static let backToShop = "Shop"
+    }
+    
+    enum SearchController {
+        static let result = "Result"
+        static let noResult = "No result"
     }
     
     enum Season {
@@ -79,9 +84,9 @@ class Texts {
     enum ButtonLabels {
         enum MainButtons {
             static let shop = "Item Shop"
-            static let quests = "Quests"
+            static let bundles = "Bundles"
             static let battlePass = "Battle Pass"
-            static let tournaments = "Tournaments"
+            static let lootDetails = "Loot Details"
             static let crew = "Crew"
             static let map = "Map"
             static let stats = "Stats"
@@ -121,9 +126,10 @@ class Texts {
         static let bundleName = "Bundle name..."
         static let segmentName = "Segment name..."
         static let allMenu = "All"
-        static let rotaionTitle = "Rotation Info"
+        static let rotaionTitle = "Shop Info"
         static let rotationInfo = "The shop refreshes every day. Check back to see what's new!"
         static let reloadShop = "It's time to update!"
+        static let remaining = "Remaining time"
     }
     
     enum ShopMainCell {
@@ -153,9 +159,62 @@ class Texts {
         static let lastTimeData = "Previous release..."
     }
     
-    enum ShopSearchController {
-        static let result = "Result"
-        static let noResult = "No result"
+    enum ShopTimer {
+        static let whatMeans = "The meaning of: "
+        static let swipeInfo = "Swipe over the cell image to see more variations!"
+        static let countInfo = "Number of elements in the item bundle."
+        static let aboutRotation = "About rotation"
+        static let rotationInfo = "The shop refreshes every day. Check back soon!"
+    }
+    
+    // MARK: - Battle Pass Module
+    
+    enum BattlePassPage {
+        static let title = "Battle Pass"
+        static let free = "Free"
+        static let paid = "Paid"
+        static let allMenu = "All"
+        static let page = "Page"
+        static let search = "Search items"
+    }
+    
+    enum BattlePassCell {
+        static let identifier = "BattlePassCollectionViewCell"
+        static let footerIdentifier = "BattlePassCollectionReusableView"
+        static let price = "Item price..."
+        static let loadingScreen = "Loading Screen"
+        static let remaining = "Remaining time"
+    }
+    
+    enum BattlePassItemsParameters {
+        static let descriprion = "Descriprion"
+        static let series = "Series"
+        static let addedDate = "First release"
+        static let paytype = "Tier type"
+        static let rewardWall = "Rewards needed for unlock"
+        static let levelWall = "Levels needed for unlock"
+        static let introduced = "Introduced"
+        static let set = "Set"
+        static let beginDate = "Start date"
+        static let endDate = "End date"
+        static let currentSeason = "Currently underway"
+        
+        static let descriptionData = "Descriprion..."
+        static let seriesData = "Series..."
+        static let firstTimeData = "First release..."
+        static let paytypeDara = "Tier type..."
+        static let rewardWallData = "Rewards needed for unlock..."
+        static let levelWallData = "Levels needed for unlock..."
+        static let introducedData = "introduced in..."
+        static let setData = "Part of..."
+        static let beginDateData = "Begin date..."
+        static let endDateData = "End date..."
+        static let currentData = "Currently underway..."
+    }
+    
+    enum BattlePassInfo {
+        static let season = "Season"
+        static let newSeason = "New season is coming soon!"
     }
     
     // MARK: - Crew Module
@@ -183,7 +242,72 @@ class Texts {
         static let and = "and"
     }
     
+    // MARK: - Stats Module
+    
+    enum StatsPage {
+        static let title = "Stats"
+        static let placeholder = "Error"
+        static let progressTitle = "Progress"
+        static let progressFirst = "Current\nSeason"
+        static let progressSecond = "Current\nLevel"
+        static let globalTitle = "Global"
+        static let globalFirst = "Top 1\nPlaces"
+        static let globalSecond = "Kills\nDeaths"
+        static let inputTitle = "Input"
+        static let inputFirst = "K/D\nGpad"
+        static let inputSecond = "K/D\nMouse"
+        static let historyTitle = "History"
+        static let historyFirst = "Best\nSeason"
+        static let historySecond = "Max\nLevel"
+        static let nicknameKey = "NicknameKey"
+    }
+    
+    enum StatsCell {
+        static let identifier = "StatsCell"
+        static let firstStatPlaceholder = "First\nStat"
+        static let secondStatPlaceholder = "Second\nStat"
+        static let statValuePlaceholder = "0"
+    }
+    
+    enum NicknamePopup {
+        static let placeholder = "Nickname"
+        static let xbox = "Xbox"
+        static let epic = "Epic"
+        static let psn = "PSN"
+        static let accept = "Accept"
+        static let cancel = "Cancel"
+        static let noResult = "No result"
+        static let empty = "Empty text"
+        static let emptyMessage = "Please, enter any nickname"
+    }
+    
+    enum StatsDetailsPage {
+        static let gamepad = "Gamepad"
+        static let mouse = "Mouse"
+        static let touch = "Touch"
+    }
+    
+    enum StatsDetailsCell {
+        static let identifier = "StatsDetailsCell"
+        static let mode = "Mode:"
+        static let winrate = "Winrate"
+        static let topOne = "Top 1"
+        static let matches = "Matches"
+        static let kd = "K/D"
+        static let kills = "Kills"
+        static let outlived = "Outlived"
+        static let hours = "Hours"
+        static let score = "Score"
+        static let season = "Season"
+        static let level = "Level"
+        static let progress = "Progress"
+    }
+    
     // MARK: - Quests Module
+    
+    enum Quest {
+        static let title = "Quest"
+    }
     
     enum BundleQuestsCell {
         static let identifier = "BundleCell"

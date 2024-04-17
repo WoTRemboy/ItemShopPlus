@@ -30,13 +30,18 @@ extension UIImage {
         static let unknown = UIImage(systemName: "banknote")
     }
     
+    enum FilterMenu {
+        static let filter = UIImage(systemName: "line.3.horizontal.decrease.circle")
+        static let filledFilter = UIImage(systemName: "line.3.horizontal.decrease.circle.fill")
+    }
+    
     // MARK: - Main Module
     
     enum MainButtons {
         static let shop = createImage(name: "basket")
         static let battlePass = createImage(name: "star")
-        static let tournaments = createImage(name: "medal")
-        static let quests = createImage(name: "list.bullet.clipboard")
+        static let lootDetails = createImage(name: "chart.bar")
+        static let bundles = createImage(name: "tag")
         static let crew = createImage(name: "pencil.and.outline")
         static let map = createImage(name: "map")
         static let stats = createImage(name: "person")
@@ -56,14 +61,15 @@ extension UIImage {
     enum ShopMain {
         static let price = UIImage(named: "VBucks")
         static let info = UIImage(systemName: "info.circle")
-        static let filter = UIImage(systemName: "line.3.horizontal.decrease.circle")
         static let infoFish = UIImage(named: "InfoFish")
         static let new = UIImage(named: "NewBanner")
-        static let sale = UIImage(named: "SaleBanner")
+        static let free = UIImage(named: "FreeBanner")
         static let pickaxe = UIImage(named: "PickaxeBanner")
         static let emote = UIImage(named: "EmoteBanner")
         static let granted = createImage(name: "1.circle.fill")
-        static let pages = UIImage(systemName: "decrease.quotelevel", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.IconColors.backgroundPages ?? .orange, .white]))
+        static let pages = createInfoSymbol(name: "decrease.quotelevel", first: .backgroundPages, second: .white)
+        static let grantedInfo = createInfoSymbol(name: "5.circle.fill", first: .white, second: .backgroundPages)
+        static let pagesInfo = createInfoSymbol(name: "decrease.quotelevel", first: .backgroundPages, second: .systemBlue)
     }
     
     enum ShopGranted {
@@ -72,6 +78,26 @@ extension UIImage {
         static let rare = UIImage(named: "GrantedRare")
         static let epic = UIImage(named: "GrantedEpic")
         static let legendary = UIImage(named: "GrantedLegendary")
+    }
+    
+    // MARK: - Battle Pass Module
+    
+    enum BattlePass {
+        static let star = UIImage(named: "BattlePassStar")
+    }
+    
+    // MARK: - Stats Module
+    
+    enum Stats {
+        static let newNickname = UIImage(systemName: "square.and.pencil")
+        static let noStats = createImage(name: "person.slash")
+        static let progress = UIImage(named: "ProgressStats")
+        static let global = UIImage(named: "GlobalStats")
+        static let input = UIImage(named: "InputStats")
+        static let history = UIImage(named: "HistoryStats")
+        static let touch = UIImage(systemName: "hand.tap")
+        static let gamepad = UIImage(systemName: "gamecontroller")
+        static let mouse = UIImage(systemName: "computermouse")
     }
     
     // MARK: - Quests Module
@@ -98,5 +124,13 @@ private func createImage(name: String) -> UIImage? {
         systemName: name,
         withConfiguration: UIImage.SymbolConfiguration(
             paletteColors: [.labelTertiary, .labelTertiary]))
+    return image
+}
+
+private func createInfoSymbol(name: String, first: UIColor, second: UIColor) -> UIImage? {
+    let image = UIImage(
+        systemName: name,
+        withConfiguration: UIImage.SymbolConfiguration(
+            paletteColors: [first, second]))
     return image
 }

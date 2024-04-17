@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SelectingMethods {
+final class SelectingMethods {
     
     // MARK: - Banner
     
@@ -32,11 +32,13 @@ class SelectingMethods {
         case .new:
             return .ShopMain.new
         case .sale:
-            return .ShopMain.sale
+            return .ShopMain.infoFish
         case .emote:
             return .ShopMain.emote
         case .pickaxe:
             return .ShopMain.pickaxe
+        case .free:
+            return .ShopMain.free
         default:
             return .ShopMain.new
         }
@@ -146,6 +148,58 @@ class SelectingMethods {
             return .ShopGranted.epic ?? .grantedEpic
         case .legendary:
             return .ShopGranted.legendary ?? .grantedLegendary
+        case .star:
+            return .BattlePass.star ?? .battlePassStar
+        }
+    }
+    
+    // MARK: - Rarity
+    
+    static func selectPayType(payType: String) -> PayType {
+        switch payType {
+        case "free":
+            return .free
+        case "paid":
+            return .paid
+        default:
+            return .paid
+        }
+    }
+    
+    static func selectPayType(payType: PayType) -> String {
+        switch payType {
+        case .free:
+            return Texts.BattlePassPage.free
+        case .paid:
+            return Texts.BattlePassPage.paid
+        }
+    }
+    
+    // MARK: - Input
+    
+    static func selectInput(type: String?) -> UIImage {
+        switch type {
+        case "touch":
+            return .Stats.touch ?? UIImage()
+        case "keyboardmouse":
+            return .Stats.mouse ?? UIImage()
+        case "gamepad":
+            return .Stats.gamepad ?? UIImage()
+        default:
+            return UIImage()
+        }
+    }
+    
+    static func selectInput(type: String?) -> String {
+        switch type {
+        case "touch":
+            return Texts.StatsDetailsPage.touch
+        case "keyboardmouse":
+            return Texts.StatsDetailsPage.mouse
+        case "gamepad":
+            return Texts.StatsDetailsPage.gamepad
+        default:
+            return String()
         }
     }
 }

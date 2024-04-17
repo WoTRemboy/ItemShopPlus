@@ -7,7 +7,9 @@
 
 import UIKit
 
-class CollectionParametersRowView: UIView {
+final class CollectionParametersRowView: UIView {
+    
+    private let meaningImageView = UIImageView()
 
     private let titleLable: UILabel = {
         let label = UILabel()
@@ -33,12 +35,19 @@ class CollectionParametersRowView: UIView {
         return line
     }()
     
-    init(frame: CGRect, title: String, content: String) {
+    init(frame: CGRect, title: String, content: String, textAlignment: TextAlignment = .left, image: UIImage? = nil) {
         titleLable.text = title
         contentLabel.text = content
         super.init(frame: frame)
         
+        selectAlignment(aligment: textAlignment)
         setupUI()
+        
+        if let image = image {
+            setupMeaningImageView(image: image)
+        } else {
+            titleLable.trailingAnchor.constraint(equalTo: separatorLine.trailingAnchor).isActive = true
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -47,6 +56,20 @@ class CollectionParametersRowView: UIView {
     
     public func configurate(content: String) {
         contentLabel.text = content
+    }
+    
+    private func selectAlignment(aligment: TextAlignment) {
+        switch aligment {
+        case .left:
+            titleLable.textAlignment = .left
+            contentLabel.textAlignment = .left
+        case .right:
+            titleLable.textAlignment = .right
+            contentLabel.textAlignment = .right
+        case .center:
+            titleLable.textAlignment = .center
+            contentLabel.textAlignment = .center
+        }
     }
     
     private func setupUI() {
@@ -66,11 +89,30 @@ class CollectionParametersRowView: UIView {
             
             titleLable.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -2),
             titleLable.leadingAnchor.constraint(equalTo: separatorLine.leadingAnchor),
-            titleLable.trailingAnchor.constraint(equalTo: separatorLine.trailingAnchor),
             
             contentLabel.topAnchor.constraint(equalTo: centerYAnchor, constant: 2),
             contentLabel.leadingAnchor.constraint(equalTo: titleLable.leadingAnchor),
-            contentLabel.trailingAnchor.constraint(equalTo: titleLable.trailingAnchor)
+            contentLabel.trailingAnchor.constraint(equalTo: separatorLine.trailingAnchor)
         ])
     }
+    
+    private func setupMeaningImageView(image: UIImage) {
+        meaningImageView.image = image
+        
+        addSubview(meaningImageView)
+        meaningImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            meaningImageView.topAnchor.constraint(equalTo: titleLable.topAnchor),
+            meaningImageView.leadingAnchor.constraint(equalTo: titleLable.trailingAnchor),
+            meaningImageView.heightAnchor.constraint(equalToConstant: 20),
+            meaningImageView.widthAnchor.constraint(equalTo: meaningImageView.heightAnchor)
+        ])
+    }
+}
+
+enum TextAlignment {
+    case left
+    case right
+    case center
 }

@@ -11,8 +11,8 @@ enum ButtonType {
     case shop
     case battlePass
     case crew
-    case quests
-    case tournaments
+    case bundles
+    case lootDetails
     case stats
     case map
     case augments

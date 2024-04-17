@@ -68,7 +68,7 @@ extension QuestsPageController: UITableViewDataSource, UITableViewDelegate {
             fatalError("Failed to dequeue QuestTableViewCell in QuestsPageController")
         }
         let item = items[indexPath.row]
-        cell.configurate(with: item.name, item.progress, item.image)
+        cell.configurate(with: item.name, item.id, "")
         
         return cell
     }
@@ -79,9 +79,9 @@ extension QuestsPageController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let navVC = UINavigationController(rootViewController: QuestsDetailsViewController(item: items[indexPath.row]))
-        navVC.sheetPresentationController?.detents = [.medium()]
-        present(navVC, animated: true)
+//        let navVC = UINavigationController(rootViewController: QuestsDetailsViewController(item: items[indexPath.row]))
+//        navVC.sheetPresentationController?.detents = [.medium()]
+//        present(navVC, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

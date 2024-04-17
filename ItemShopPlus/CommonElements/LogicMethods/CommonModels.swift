@@ -38,4 +38,12 @@ enum Rarity {
     case rare
     case epic
     case legendary
+    case star
+}
+
+// MARK: - Internal Currency Image
+
+enum CurrencyImage {
+    case vbucks
+    case star
 }

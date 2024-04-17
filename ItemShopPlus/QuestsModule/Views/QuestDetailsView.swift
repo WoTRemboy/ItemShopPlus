@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestDetailsView: UIView {
+final class QuestDetailsView: UIView {
     
     let rewardImageView: UIImageView = {
         let imageView = UIImageView()

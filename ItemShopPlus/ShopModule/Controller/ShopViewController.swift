@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopViewController: UIViewController {
+final class ShopViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -53,7 +53,7 @@ class ShopViewController: UIViewController {
     
     private let filterButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
-        button.image = .ShopMain.filter
+        button.image = .FilterMenu.filter
         button.isEnabled = false
         return button
     }()
@@ -94,9 +94,15 @@ class ShopViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func refresh() {
+    @objc private func refreshWithControl() {
         if !searchController.isActive {
             getShop(isRefreshControl: true)
+        }
+    }
+    
+    @objc private func refreshWithoutControl() {
+        if !searchController.isActive {
+            getShop(isRefreshControl: false)
         }
     }
     
@@ -121,7 +127,7 @@ class ShopViewController: UIViewController {
         let vc = ShopTimerInfoViewController()
         let navVC = UINavigationController(rootViewController: vc)
         let fraction = UISheetPresentationController.Detent.custom { context in
-            (self.view.frame.height * 0.45 - self.view.safeAreaInsets.bottom)
+            (self.view.frame.height * 0.9 - self.view.safeAreaInsets.bottom * 4)
         }
         navVC.sheetPresentationController?.detents = [fraction]
         present(navVC, animated: true)
@@ -138,6 +144,7 @@ class ShopViewController: UIViewController {
             self.activityIndicator.startAnimating()
             self.searchController.searchBar.isHidden = true
         }
+        self.noInternetView.isHidden = true
         
         self.networkService.getShopItems { [weak self] result in
             DispatchQueue.main.async {
@@ -255,6 +262,7 @@ class ShopViewController: UIViewController {
     private func menuSetup() {
         let allAction = UIAction(title: Texts.ShopPage.allMenu, image: nil) { [weak self] action in
             self?.filterItemsBySection(sectionTitle: Texts.ShopPage.allMenu, forAll: true)
+            self?.filterButton.image = .FilterMenu.filter
             self?.menuSetup()
         }
         allAction.state = .on
@@ -262,11 +270,13 @@ class ShopViewController: UIViewController {
         for section in sectionedItems.sorted(by: { $0.key < $1.key }) {
             let sectionAction = UIAction(title: section.key, image: nil) { [weak self] action in
                 self?.filterItemsBySection(sectionTitle: section.key, forAll: false)
+                self?.filterButton.image = .FilterMenu.filledFilter
             }
             
             children.append(sectionAction)
         }
         filterButton.menu = UIMenu(title: "", children: children)
+        filterButton.image = .FilterMenu.filter
     }
     
     private func updateMenuState(for sectionTitle: String) {
@@ -284,7 +294,7 @@ class ShopViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshWithControl), for: .valueChanged)
     }
     
     private func searchControllerSetup() {
@@ -301,7 +311,7 @@ class ShopViewController: UIViewController {
     
     private func noInternetSetup() {
         noInternetView.isHidden = true
-        noInternetView.reloadButton.addTarget(self, action: #selector(refresh), for: .touchUpInside)
+        noInternetView.reloadButton.addTarget(self, action: #selector(refreshWithoutControl), for: .touchUpInside)
         noInternetView.configurate()
     }
     
@@ -437,7 +447,7 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
         let inSearchMode = searchController.isActive && !text.isEmpty
         let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
         let count = filteredItems.count
-        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.ShopSearchController.result : Texts.ShopSearchController.noResult) : headerView.configurate(with: sectionKey)
+        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: sectionKey)
         return headerView
     }
 }

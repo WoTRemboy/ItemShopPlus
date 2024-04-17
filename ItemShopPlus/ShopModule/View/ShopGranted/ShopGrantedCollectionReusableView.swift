@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShopGrantedCollectionReusableView: UICollectionReusableView {
+final class ShopGrantedCollectionReusableView: UICollectionReusableView {
     
     static let identifier = Texts.ShopGrantedCell.footerIdentifier
     
@@ -63,10 +63,10 @@ class ShopGrantedCollectionReusableView: UICollectionReusableView {
     public func configurate(description: String, firstDate: Date, lastDate: Date, series: String?, price: Int) {
         descriptionContentLabel.text = description
         seriesView.configurate(content: series ?? "")
-        priceView.configurate(price: String(price))
+        priceView.configurate(price: String(price), currency: .vbucks)
         
-        firstTimeView.configurate(content: DateFormating.dateFormatterShopGranted.string(from: firstDate))
-        lastTimeView.configurate(content: DateFormating.dateFormatterShopGranted.string(from: lastDate))
+        firstTimeView.configurate(content: DateFormating.dateFormatterDMY.string(from: firstDate))
+        lastTimeView.configurate(content: DateFormating.dateFormatterDMY.string(from: lastDate))
 
         setupUI(isSeries: series != nil, isDescription: !description.isEmpty, price: String(price))
     }

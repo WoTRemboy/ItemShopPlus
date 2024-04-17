@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
+final class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     static let identifier = Texts.BundleQuestsCell.identifier
     private var imageLoadTask: URLSessionDataTask?
     

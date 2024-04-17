@@ -20,7 +20,24 @@
 		63290CE32B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CE22B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift */; };
 		63290CE52B615CFF008F45F8 /* CollectionParametersRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CE42B615CFF008F45F8 /* CollectionParametersRowView.swift */; };
 		63290CE72B6180A6008F45F8 /* CollectionTotalPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290CE62B6180A6008F45F8 /* CollectionTotalPriceView.swift */; };
+		634208F42BC2D4C9008A9496 /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208F32BC2D4C9008A9496 /* StatsModel.swift */; };
+		634208F62BC2DC12008A9496 /* JSONStatsParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208F52BC2DC12008A9496 /* JSONStatsParce.swift */; };
+		634208FB2BC30E55008A9496 /* StatsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208FA2BC30E55008A9496 /* StatsMainViewController.swift */; };
+		634208FE2BC33889008A9496 /* StatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */; };
+		634209002BC874F9008A9496 /* NicknamePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634208FF2BC874F9008A9496 /* NicknamePopupView.swift */; };
+		634209022BCAE455008A9496 /* NicknamePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209012BCAE455008A9496 /* NicknamePopupViewController.swift */; };
+		634209042BCB3B06008A9496 /* SimpleViewsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209032BCB3B06008A9496 /* SimpleViewsSetup.swift */; };
+		634209082BCC0DC8008A9496 /* StatsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209072BCC0DC8008A9496 /* StatsDetailsViewController.swift */; };
+		6342090A2BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209092BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift */; };
+		6342090C2BCC4439008A9496 /* StatsParameterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342090B2BCC4439008A9496 /* StatsParameterView.swift */; };
 		634F3F8B2B67CC8800C01426 /* NoInternetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F3F8A2B67CC8800C01426 /* NoInternetView.swift */; };
+		63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */; };
+		63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */; };
+		63750CAA2B934FDD00ED7E0B /* BattlePassGrantedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA92B934FDD00ED7E0B /* BattlePassGrantedViewController.swift */; };
+		63750CAC2B93851200ED7E0B /* BattlePassInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CAB2B93851200ED7E0B /* BattlePassInfoViewController.swift */; };
+		63750CB02B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CAF2B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift */; };
+		63750CB22B95F06600ED7E0B /* VideoLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CB12B95F06600ED7E0B /* VideoLoader.swift */; };
+		63750CB42B96028E00ED7E0B /* TimerRemainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CB32B96028E00ED7E0B /* TimerRemainingView.swift */; };
 		637B26812B4AB4050075B871 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26802B4AB4050075B871 /* SplashScreenView.swift */; };
 		637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */; };
 		637B26892B4B3A2E0075B871 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637B26882B4B3A2E0075B871 /* ShopModel.swift */; };
@@ -33,6 +50,9 @@
 		638FD6D12B854D4100CE47BD /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D02B854D4100CE47BD /* MapModel.swift */; };
 		638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */; };
 		638FD6D52B8900CF00CE47BD /* MapPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */; };
+		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
+		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
+		63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */; };
 		63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BB2B232F4000FABD69 /* AppDelegate.swift */; };
 		63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BD2B232F4000FABD69 /* SceneDelegate.swift */; };
 		63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BF2B232F4000FABD69 /* MainPageController.swift */; };
@@ -51,12 +71,13 @@
 		63ECC1282B90A930006E0841 /* CommonLogicMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC1272B90A930006E0841 /* CommonLogicMethods.swift */; };
 		63ECC12B2B9106FE006E0841 /* CommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC12A2B9106FE006E0841 /* CommonModels.swift */; };
 		63ECC12D2B910A00006E0841 /* SelectingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC12C2B910A00006E0841 /* SelectingMethods.swift */; };
+		63ECC1352B9259A2006E0841 /* BattlePassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC1342B9259A2006E0841 /* BattlePassModel.swift */; };
+		63ECC1372B9259C6006E0841 /* JSONBattlePassParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC1362B9259C6006E0841 /* JSONBattlePassParce.swift */; };
 		63F547872B34A8D500B3F941 /* DefaultNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F547862B34A8D500B3F941 /* DefaultNetworkService.swift */; };
 		63F547892B34AE2200B3F941 /* JSONParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F547882B34AE2200B3F941 /* JSONParce.swift */; };
 		63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F5478A2B35E40500B3F941 /* DateFormatting.swift */; };
 		63F8B9D52B2CD75D006E2430 /* QuestsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8B9D42B2CD75D006E2430 /* QuestsPageController.swift */; };
 		63F8B9D72B2CD84E006E2430 /* QuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F8B9D62B2CD84E006E2430 /* QuestTableViewCell.swift */; };
-		63F94E772B6521DD00F5E4B9 /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F94E762B6521DD00F5E4B9 /* PreviewZoomView.swift */; };
 		63F94E792B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F94E782B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +95,24 @@
 		63290CE22B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedCollectionReusableView.swift; sourceTree = "<group>"; };
 		63290CE42B615CFF008F45F8 /* CollectionParametersRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionParametersRowView.swift; sourceTree = "<group>"; };
 		63290CE62B6180A6008F45F8 /* CollectionTotalPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTotalPriceView.swift; sourceTree = "<group>"; };
+		634208F32BC2D4C9008A9496 /* StatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsModel.swift; sourceTree = "<group>"; };
+		634208F52BC2DC12008A9496 /* JSONStatsParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStatsParce.swift; sourceTree = "<group>"; };
+		634208FA2BC30E55008A9496 /* StatsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMainViewController.swift; sourceTree = "<group>"; };
+		634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCollectionViewCell.swift; sourceTree = "<group>"; };
+		634208FF2BC874F9008A9496 /* NicknamePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknamePopupView.swift; sourceTree = "<group>"; };
+		634209012BCAE455008A9496 /* NicknamePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknamePopupViewController.swift; sourceTree = "<group>"; };
+		634209032BCB3B06008A9496 /* SimpleViewsSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewsSetup.swift; sourceTree = "<group>"; };
+		634209072BCC0DC8008A9496 /* StatsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDetailsViewController.swift; sourceTree = "<group>"; };
+		634209092BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		6342090B2BCC4439008A9496 /* StatsParameterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsParameterView.swift; sourceTree = "<group>"; };
 		634F3F8A2B67CC8800C01426 /* NoInternetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetView.swift; sourceTree = "<group>"; };
+		63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainCollectionViewCell.swift; sourceTree = "<group>"; };
+		63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassCollectionReusableView.swift; sourceTree = "<group>"; };
+		63750CA92B934FDD00ED7E0B /* BattlePassGrantedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassGrantedViewController.swift; sourceTree = "<group>"; };
+		63750CAB2B93851200ED7E0B /* BattlePassInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassInfoViewController.swift; sourceTree = "<group>"; };
+		63750CAF2B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassSeasonParameterRow.swift; sourceTree = "<group>"; };
+		63750CB12B95F06600ED7E0B /* VideoLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoLoader.swift; sourceTree = "<group>"; };
+		63750CB32B96028E00ED7E0B /* TimerRemainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRemainingView.swift; sourceTree = "<group>"; };
 		637B26802B4AB4050075B871 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		637B26822B4AB41C0075B871 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		637B26882B4B3A2E0075B871 /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
@@ -87,6 +125,9 @@
 		638FD6D02B854D4100CE47BD /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapsParce.swift; sourceTree = "<group>"; };
 		638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerViewController.swift; sourceTree = "<group>"; };
+		639E62342B92719100E17B4F /* BattlePassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainViewController.swift; sourceTree = "<group>"; };
+		63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewZoomView.swift; sourceTree = "<group>"; };
+		63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTestViewController.swift; sourceTree = "<group>"; };
 		63C898B82B232F4000FABD69 /* ItemShopPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemShopPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C898BB2B232F4000FABD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C898BD2B232F4000FABD69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,12 +148,13 @@
 		63ECC1272B90A930006E0841 /* CommonLogicMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLogicMethods.swift; sourceTree = "<group>"; };
 		63ECC12A2B9106FE006E0841 /* CommonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonModels.swift; sourceTree = "<group>"; };
 		63ECC12C2B910A00006E0841 /* SelectingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectingMethods.swift; sourceTree = "<group>"; };
+		63ECC1342B9259A2006E0841 /* BattlePassModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassModel.swift; sourceTree = "<group>"; };
+		63ECC1362B9259C6006E0841 /* JSONBattlePassParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONBattlePassParce.swift; sourceTree = "<group>"; };
 		63F547862B34A8D500B3F941 /* DefaultNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkService.swift; sourceTree = "<group>"; };
 		63F547882B34AE2200B3F941 /* JSONParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParce.swift; sourceTree = "<group>"; };
 		63F5478A2B35E40500B3F941 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
 		63F8B9D42B2CD75D006E2430 /* QuestsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsPageController.swift; sourceTree = "<group>"; };
 		63F8B9D62B2CD84E006E2430 /* QuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTableViewCell.swift; sourceTree = "<group>"; };
-		63F94E762B6521DD00F5E4B9 /* PreviewZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewZoomView.swift; sourceTree = "<group>"; };
 		63F94E782B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopGrantedPreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,6 +227,56 @@
 			isa = PBXGroup;
 			children = (
 				632533AE2B83D3F300DA3F05 /* MapZoomView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		634208F12BC2D49C008A9496 /* StatsModule */ = {
+			isa = PBXGroup;
+			children = (
+				634208F22BC2D4B2008A9496 /* Model */,
+				634208FC2BC3386E008A9496 /* View */,
+				634208F72BC2F388008A9496 /* Controller */,
+			);
+			path = StatsModule;
+			sourceTree = "<group>";
+		};
+		634208F22BC2D4B2008A9496 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				634208F32BC2D4C9008A9496 /* StatsModel.swift */,
+				634208F52BC2DC12008A9496 /* JSONStatsParce.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		634208F72BC2F388008A9496 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				634208FA2BC30E55008A9496 /* StatsMainViewController.swift */,
+				634209012BCAE455008A9496 /* NicknamePopupViewController.swift */,
+				634209072BCC0DC8008A9496 /* StatsDetailsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		634208FC2BC3386E008A9496 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				634208FD2BC33889008A9496 /* StatsCollectionViewCell.swift */,
+				634208FF2BC874F9008A9496 /* NicknamePopupView.swift */,
+				634209092BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift */,
+				6342090B2BCC4439008A9496 /* StatsParameterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		63750CA42B93301000ED7E0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */,
+				63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */,
+				63750CAF2B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,6 +354,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		639E62332B92715300E17B4F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				639E62342B92719100E17B4F /* BattlePassMainViewController.swift */,
+				63750CA92B934FDD00ED7E0B /* BattlePassGrantedViewController.swift */,
+				63750CAB2B93851200ED7E0B /* BattlePassInfoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		63C898AF2B232F4000FABD69 = {
 			isa = PBXGroup;
 			children = (
@@ -285,9 +387,11 @@
 				637B267D2B4AB3CD0075B871 /* SplashScreenModule */,
 				63C898D22B23310D00FABD69 /* MainModule */,
 				637B26842B4B39C70075B871 /* ShopModule */,
+				63ECC1322B92597C006E0841 /* BattlePassModule */,
 				632067252B8B60950060AB1B /* CrewModule */,
-				63C899042B25084800FABD69 /* QuestsModule */,
+				634208F12BC2D49C008A9496 /* StatsModule */,
 				632533AB2B83D3A500DA3F05 /* MapModule */,
+				63C899042B25084800FABD69 /* QuestsModule */,
 				63C899152B2621EB00FABD69 /* Networking */,
 				63ECC1252B90A901006E0841 /* CommonElements */,
 				63C898D12B2330EA00FABD69 /* SupportingFiles */,
@@ -374,6 +478,7 @@
 		63C899052B25085C00FABD69 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */,
 				63C899102B2508DB00FABD69 /* QuestsBundlePageController.swift */,
 				63F8B9D42B2CD75D006E2430 /* QuestsPageController.swift */,
 				638594B12B2CF80F009FEED6 /* QuestsDetailsViewController.swift */,
@@ -405,6 +510,7 @@
 			children = (
 				63F547862B34A8D500B3F941 /* DefaultNetworkService.swift */,
 				63C899162B26220D00FABD69 /* ImageLoader.swift */,
+				63750CB12B95F06600ED7E0B /* VideoLoader.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -433,8 +539,10 @@
 			children = (
 				63ECC1312B92020D006E0841 /* CollectionCells */,
 				63ECC12E2B9134BB006E0841 /* CollectionView */,
-				63F94E762B6521DD00F5E4B9 /* PreviewZoomView.swift */,
+				63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */,
+				63750CB32B96028E00ED7E0B /* TimerRemainingView.swift */,
 				634F3F8A2B67CC8800C01426 /* NoInternetView.swift */,
+				634209032BCB3B06008A9496 /* SimpleViewsSetup.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -455,6 +563,25 @@
 				63290CDB2B5ED498008F45F8 /* CollectionRarityCell.swift */,
 			);
 			path = CollectionCells;
+			sourceTree = "<group>";
+		};
+		63ECC1322B92597C006E0841 /* BattlePassModule */ = {
+			isa = PBXGroup;
+			children = (
+				63ECC1332B92598C006E0841 /* Model */,
+				63750CA42B93301000ED7E0B /* View */,
+				639E62332B92715300E17B4F /* Controller */,
+			);
+			path = BattlePassModule;
+			sourceTree = "<group>";
+		};
+		63ECC1332B92598C006E0841 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63ECC1342B9259A2006E0841 /* BattlePassModel.swift */,
+				63ECC1362B9259C6006E0841 /* JSONBattlePassParce.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		63F94E652B62D59300F5E4B9 /* ShopMain */ = {
@@ -545,39 +672,61 @@
 			files = (
 				63ECC12B2B9106FE006E0841 /* CommonModels.swift in Sources */,
 				63290CDA2B5EA399008F45F8 /* ShopGrantedViewController.swift in Sources */,
+				6342090C2BCC4439008A9496 /* StatsParameterView.swift in Sources */,
 				638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */,
+				634208F42BC2D4C9008A9496 /* StatsModel.swift in Sources */,
+				63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */,
+				63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */,
+				634209022BCAE455008A9496 /* NicknamePopupViewController.swift in Sources */,
 				63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */,
 				637B26952B4DACCA0075B871 /* CollectionHeaderReusableView.swift in Sources */,
 				63290CDC2B5ED498008F45F8 /* CollectionRarityCell.swift in Sources */,
+				63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */,
 				637B268B2B4B3A5D0075B871 /* ShopCollectionViewCell.swift in Sources */,
+				634208FB2BC30E55008A9496 /* StatsMainViewController.swift in Sources */,
 				638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */,
 				63ECC1282B90A930006E0841 /* CommonLogicMethods.swift in Sources */,
+				639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */,
+				634209082BCC0DC8008A9496 /* StatsDetailsViewController.swift in Sources */,
 				63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */,
 				6320672C2B8B66130060AB1B /* CrewModel.swift in Sources */,
 				637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */,
+				63750CAA2B934FDD00ED7E0B /* BattlePassGrantedViewController.swift in Sources */,
+				63750CB22B95F06600ED7E0B /* VideoLoader.swift in Sources */,
+				63750CB42B96028E00ED7E0B /* TimerRemainingView.swift in Sources */,
 				63F547892B34AE2200B3F941 /* JSONParce.swift in Sources */,
 				637B26892B4B3A2E0075B871 /* ShopModel.swift in Sources */,
 				63C898E92B233DDA00FABD69 /* ImageExtensions.swift in Sources */,
 				637B26932B4D7FF60075B871 /* JSONShopParce.swift in Sources */,
+				63750CB02B948ED100ED7E0B /* BattlePassSeasonParameterRow.swift in Sources */,
 				63F547872B34A8D500B3F941 /* DefaultNetworkService.swift in Sources */,
 				63F8B9D72B2CD84E006E2430 /* QuestTableViewCell.swift in Sources */,
 				63290CE32B611BFB008F45F8 /* ShopGrantedCollectionReusableView.swift in Sources */,
+				63ECC1352B9259A2006E0841 /* BattlePassModel.swift in Sources */,
 				63ECC12D2B910A00006E0841 /* SelectingMethods.swift in Sources */,
 				63290CD82B5D869C008F45F8 /* ShopTimerInfoView.swift in Sources */,
+				63750CAC2B93851200ED7E0B /* BattlePassInfoViewController.swift in Sources */,
+				6342090A2BCC1965008A9496 /* StatsDetailsCollectionViewCell.swift in Sources */,
 				638FD6D12B854D4100CE47BD /* MapModel.swift in Sources */,
 				632533B12B83D45700DA3F05 /* MapPreviewViewController.swift in Sources */,
+				63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */,
 				63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */,
 				6320672A2B8B64200060AB1B /* CrewMainViewController.swift in Sources */,
 				63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */,
 				63290CD62B5D7B70008F45F8 /* ShopTimerInfoViewController.swift in Sources */,
 				63C899112B2508DB00FABD69 /* QuestsBundlePageController.swift in Sources */,
+				634208F62BC2DC12008A9496 /* JSONStatsParce.swift in Sources */,
 				63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */,
+				634209002BC874F9008A9496 /* NicknamePopupView.swift in Sources */,
 				63C899172B26220D00FABD69 /* ImageLoader.swift in Sources */,
 				634F3F8B2B67CC8800C01426 /* NoInternetView.swift in Sources */,
 				638594B22B2CF80F009FEED6 /* QuestsDetailsViewController.swift in Sources */,
 				63C898F62B237B7D00FABD69 /* MPButtonViewController.swift in Sources */,
 				638FD6D52B8900CF00CE47BD /* MapPickerViewController.swift in Sources */,
+				634208FE2BC33889008A9496 /* StatsCollectionViewCell.swift in Sources */,
 				63F94E792B6524CA00F5E4B9 /* ShopGrantedPreviewViewController.swift in Sources */,
+				634209042BCB3B06008A9496 /* SimpleViewsSetup.swift in Sources */,
+				63ECC1372B9259C6006E0841 /* JSONBattlePassParce.swift in Sources */,
 				63290CE52B615CFF008F45F8 /* CollectionParametersRowView.swift in Sources */,
 				63C898D92B2334BA00FABD69 /* ColorExtensions.swift in Sources */,
 				632533AF2B83D3F300DA3F05 /* MapZoomView.swift in Sources */,
@@ -587,7 +736,6 @@
 				63C898EB2B233E9900FABD69 /* Labels.swift in Sources */,
 				63C898E02B2339F900FABD69 /* MPButtonView.swift in Sources */,
 				632067362B8BA3510060AB1B /* CrewFooterReusableView.swift in Sources */,
-				63F94E772B6521DD00F5E4B9 /* PreviewZoomView.swift in Sources */,
 				63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */,
 				6320672E2B8B66290060AB1B /* JSONCrewParce.swift in Sources */,
 				63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */,
@@ -738,7 +886,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -771,7 +919,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

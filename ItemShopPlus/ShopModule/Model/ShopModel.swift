@@ -39,6 +39,7 @@ enum Banner {
     case null
     case new
     case sale
+    case free
     case emote
     case pickaxe
 }

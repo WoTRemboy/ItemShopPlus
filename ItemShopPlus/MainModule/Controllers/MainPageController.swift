@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainPageViewController: UIViewController {
+final class MainPageViewController: UIViewController {
     
     private let buttonController = MPButtonViewController()
     
@@ -27,16 +27,20 @@ class MainPageViewController: UIViewController {
         buttonController.didMove(toParent: self)
     }
     
-    @objc func questsTransfer() {
-        navigationController?.pushViewController(QuestsBundlePageController(), animated: true)
-    }
-    
     @objc func shopTransfer() {
         navigationController?.pushViewController(ShopViewController(), animated: true)
     }
     
+    @objc func battlePassTransfer() {
+        navigationController?.pushViewController(BattlePassMainViewController(), animated: true)
+    }
+    
     @objc func crewTransfer() {
         navigationController?.pushViewController(CrewMainViewController(), animated: true)
+    }
+    
+    @objc func statsTransfer() {
+        navigationController?.pushViewController(StatsMainViewController(), animated: true)
     }
     
     @objc func mapTransfer() {
@@ -46,13 +50,14 @@ class MainPageViewController: UIViewController {
     @objc func clearCache() {
         let alertController = UIAlertController(title: nil, message: Texts.ClearCache.message, preferredStyle: .actionSheet)
         
-        let cacheSize = ImageLoader.cacheSize()
+        let cacheSize = ImageLoader.cacheSize() + VideoLoader.cacheSize()
         guard cacheSize != 0 else {
             alertControllerSetup(title: Texts.ClearCache.oops, message: Texts.ClearCache.alreadyClean)
             return
         }
             
         let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache) (\(cacheSize) \(Texts.ClearCache.megabytes))", style: .destructive) { _ in
+            VideoLoader.cleanCache(entire: true) {}
             ImageLoader.cleanCache(entire: true) {
                 self.alertControllerSetup(title: Texts.ClearCache.success, message: Texts.ClearCache.cleared)
             }
@@ -70,7 +75,12 @@ class MainPageViewController: UIViewController {
         self.present(alertController, animated: true)
     }
     
-    @objc func doNothing() {}
+    @objc func doNothing() {
+        let alertController = UIAlertController(title: "Coming soon!", message: "Если кто-то сделает дезигн :(", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Texts.ClearCache.ok, style: .default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true)
+    }
     
 }
 

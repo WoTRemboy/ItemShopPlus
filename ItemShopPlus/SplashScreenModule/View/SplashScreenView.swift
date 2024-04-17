@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SplashScreenView: UIView {
+final class SplashScreenView: UIView {
 
     let splashImageView: UIImageView = {
         let imageView = UIImageView()

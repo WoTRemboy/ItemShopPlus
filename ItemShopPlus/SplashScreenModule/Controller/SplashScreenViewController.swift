@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SplashScreenViewController: UIViewController {
+final class SplashScreenViewController: UIViewController {
     
     private let splashView = SplashScreenView()
 

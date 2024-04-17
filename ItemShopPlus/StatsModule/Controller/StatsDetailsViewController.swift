@@ -10,12 +10,16 @@ import UIKit
 class StatsDetailsViewController: UIViewController {
     
     private var allStats: Stats = Stats.emptyStats
-    private var statsSegment = [String: SectionStats]()
-    private var history = [LevelHistory]()
     private var type: StatsSegment = .global
+    private var inputKey = "keyboardmouse"
     
     private let sortOrder = ["solo", "duo", "trio", "squad"]
     private var sortedStats = [(String, SectionStats)]()
+    
+    private let inputButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        return button
+    }()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -41,23 +45,94 @@ class StatsDetailsViewController: UIViewController {
         self.title = title
         self.allStats = stats
         self.type = type
+        inputSetup()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .BackColors.backDefault
         
+        navigationBarSetup()
         sortingStats()
         collectionViewSetup()
     }
     
     private func sortingStats() {
         sortedStats = sortOrder.compactMap { key -> (String, SectionStats)? in
-            if let stats = allStats.global[key] {
+            if type == .global, let stats = allStats.global[key] {
+                return (key, stats)
+            } else if type == .input, let stats = allStats.input[inputKey]?.stats[key] {
                 return (key, stats)
             }
             return nil
         }
+    }
+    
+    private func inputMemoryManager(request: InputMemoryManager) {
+        switch request {
+        case .get:
+            if let retrievedString = UserDefaults.standard.string(forKey: "\(Texts.StatsPage.title)\(allStats.name)") {
+                inputKey = retrievedString
+            } else {
+                print("There is no currency data in UserDefaults")
+            }
+        case .save:
+            UserDefaults.standard.set(inputKey, forKey: "\(Texts.StatsPage.title)\(allStats.name)")
+        }
+    }
+    
+    private func inputSetup() {
+        if let inputKey = allStats.input.keys.first {
+            self.inputKey = inputKey
+        }
+        inputMemoryManager(request: .get)
+    }
+    
+    private func menuSetup() {
+        let inputs = allStats.input.values
+        
+        var children = [UIAction]()
+        for input in inputs.sorted(by: { $0.input < $1.input }) {
+            let sectionAction = UIAction(title: SelectingMethods.selectInput(type: input.input), image: SelectingMethods.selectInput(type: input.input)) { [weak self] action in
+                self?.navigationItem.rightBarButtonItem?.image = SelectingMethods.selectInput(type: input.input)
+                self?.updateStats(input: input.input)
+            }
+            children.append(sectionAction)
+            input.input == inputKey ? sectionAction.state = .on : nil
+        }
+        inputButton.menu = UIMenu(title: "", children: children)
+    }
+    
+    private func updateMenuState(for sectionTitle: String) {
+        guard inputKey != sectionTitle else { return }
+        if let currentAction = inputButton.menu?.children.first(where: { $0.title == SelectingMethods.selectInput(type: sectionTitle) }) as? UIAction {
+            currentAction.state = .on
+        }
+        if let previousAction = inputButton.menu?.children.first(where: { $0.title == SelectingMethods.selectInput(type: inputKey) }) as? UIAction {
+            previousAction.state = .off
+        }
+        inputKey = sectionTitle
+    }
+    
+    private func updateStats(input: String) {
+        guard inputKey != input else { return }
+        updateMenuState(for: input)
+        inputKey = input
+        sortingStats()
+        inputMemoryManager(request: .save)
+        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            self.collectionView.reloadData()
+        }, completion: nil)
+    }
+    
+    private func navigationBarSetup() {
+        navigationItem.largeTitleDisplayMode = .never
+        
+        guard type == .input else { return }
+        inputButton.target = self
+        inputButton.image = SelectingMethods.selectInput(type: inputKey)
+        navigationItem.rightBarButtonItem = inputButton
+        menuSetup()
     }
     
     private func collectionViewSetup() {
@@ -86,7 +161,7 @@ extension StatsDetailsViewController: UICollectionViewDelegate, UICollectionView
         case .global:
             return allStats.global.count
         case .input:
-            return allStats.input["gamepad"]?.stats.count ?? 0
+            return allStats.input[inputKey]?.stats.count ?? 0
         case .history:
             return allStats.history.count
         }
@@ -103,12 +178,10 @@ extension StatsDetailsViewController: UICollectionViewDelegate, UICollectionView
         switch type {
         case .title:
             return cell
-        case .global:
+        case .global, .input:
             cell.configurate(stats: sortedStats[indexPath.section].1, history: LevelHistory.emptyHistory, type: .stats)
-        case .input:
-            cell.configurate(stats: sortedStats[indexPath.row].1, history: LevelHistory.emptyHistory, type: .stats)
         case .history:
-            cell.configurate(stats: SectionStats.emptyStats, history: allStats.history[indexPath.section], type: .history)
+            cell.configurate(stats: SectionStats.emptyStats, history: allStats.history.reversed()[indexPath.section], type: .history)
         }
         return cell
     }
@@ -161,7 +234,7 @@ extension StatsDetailsViewController: UICollectionViewDelegateFlowLayout {
         case .input:
             headerView.configurate(with: sortedStats[indexPath.section].0.capitalized)
         case .history:
-            headerView.configurate(with: "\(Texts.StatsDetailsCell.season) \(allStats.history[indexPath.section].season)")
+            headerView.configurate(with: "\(Texts.StatsDetailsCell.season) \(allStats.history.reversed()[indexPath.section].season)")
         }
         
         return headerView

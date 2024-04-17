@@ -100,3 +100,8 @@ enum StatsCellType {
     case stats
     case history
 }
+
+enum InputMemoryManager {
+    case get
+    case save
+}

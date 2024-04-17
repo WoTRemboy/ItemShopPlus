@@ -174,4 +174,32 @@ final class SelectingMethods {
             return Texts.BattlePassPage.paid
         }
     }
+    
+    // MARK: - Input
+    
+    static func selectInput(type: String?) -> UIImage {
+        switch type {
+        case "touch":
+            return .Stats.touch ?? UIImage()
+        case "keyboardmouse":
+            return .Stats.mouse ?? UIImage()
+        case "gamepad":
+            return .Stats.gamepad ?? UIImage()
+        default:
+            return UIImage()
+        }
+    }
+    
+    static func selectInput(type: String?) -> String {
+        switch type {
+        case "touch":
+            return Texts.StatsDetailsPage.touch
+        case "keyboardmouse":
+            return Texts.StatsDetailsPage.mouse
+        case "gamepad":
+            return Texts.StatsDetailsPage.gamepad
+        default:
+            return String()
+        }
+    }
 }

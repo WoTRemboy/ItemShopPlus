@@ -95,6 +95,9 @@ extension UIImage {
         static let global = UIImage(named: "GlobalStats")
         static let input = UIImage(named: "InputStats")
         static let history = UIImage(named: "HistoryStats")
+        static let touch = UIImage(systemName: "hand.tap")
+        static let gamepad = UIImage(systemName: "gamecontroller")
+        static let mouse = UIImage(systemName: "computermouse")
     }
     
     // MARK: - Quests Module

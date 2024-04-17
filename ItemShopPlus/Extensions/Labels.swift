@@ -281,6 +281,12 @@ final class Texts {
         static let emptyMessage = "Please, enter any nickname"
     }
     
+    enum StatsDetailsPage {
+        static let gamepad = "Gamepad"
+        static let mouse = "Mouse"
+        static let touch = "Touch"
+    }
+    
     enum StatsDetailsCell {
         static let identifier = "StatsDetailsCell"
         static let mode = "Mode:"

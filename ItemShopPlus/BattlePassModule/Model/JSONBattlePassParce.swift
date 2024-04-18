@@ -71,6 +71,7 @@ extension BattlePassItem {
             return nil
         }
         
+        let video = itemData["video"] as? String
         let description = itemData["description"] as? String ?? ""
         let rarity = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         let payType = SelectingMethods.selectPayType(payType: payTypeString)
@@ -87,7 +88,7 @@ extension BattlePassItem {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let releaseDate = dateFormatter.date(from: releaseDateString) ?? .now
         
-        return BattlePassItem(id: id, tier: tier, page: page, payType: payType, price: price, rewardWall: rewardWall, levelWall: levelWall, type: type, name: name, description: description, rarity: rarity, series: series, releaseDate: releaseDate, image: image, introduction: introduction, set: set)
+        return BattlePassItem(id: id, tier: tier, page: page, payType: payType, price: price, rewardWall: rewardWall, levelWall: levelWall, type: type, name: name, description: description, rarity: rarity, series: series, releaseDate: releaseDate, image: image, video: video, introduction: introduction, set: set)
     }
 }
 

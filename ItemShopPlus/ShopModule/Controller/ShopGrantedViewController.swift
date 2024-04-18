@@ -20,6 +20,8 @@ final class ShopGrantedViewController: UIViewController {
     
     // MARK: - UI Elements and Views
     
+    private var playerViewController = AVPlayerViewController()
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -92,6 +94,11 @@ final class ShopGrantedViewController: UIViewController {
         }
     }
     
+    @objc private func videoDidEnd() {
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
+        self.playerViewController.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Rows and Cell Animation Methods
     
     private func countRows() -> Int {
@@ -123,12 +130,12 @@ final class ShopGrantedViewController: UIViewController {
     
     private func videoSetup(videoURL: URL) {
         let player = AVPlayer(url: videoURL)
-        let playerViewController = AVPlayerViewController()
         playerViewController.player = player
         
         self.isPresentedFullScreen = true
         self.present(playerViewController, animated: true) {
-            playerViewController.player!.play()
+            self.playerViewController.player?.play()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.videoDidEnd), name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
         }
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)

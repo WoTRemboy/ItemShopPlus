@@ -50,20 +50,20 @@ final class StatsDetailsCollectionViewCell: UICollectionViewCell {
     
     private func statsSetup() {
         topWinrateMatches.configurate(
-            firstTitle: Texts.StatsDetailsCell.winrate,
-            firstContent: String(stats.winrate),
-            secondTitle: Texts.StatsDetailsCell.topOne,
-            secondContent: String(stats.topOne),
-            thirdTitle: Texts.StatsDetailsCell.matches,
-            thirdContent: String(stats.matchesPlayed), separator: false)
+            firstTitle: Texts.StatsDetailsCell.topOne,
+            firstContent: String(stats.topOne),
+            secondTitle: Texts.StatsDetailsCell.matches,
+            secondContent: String(stats.matchesPlayed),
+            thirdTitle: Texts.StatsDetailsCell.winrate,
+            thirdContent: String(stats.winrate), separator: false)
         
         kdKillsOutlived.configurate(
-            firstTitle: Texts.StatsDetailsCell.kd,
-            firstContent: String(stats.kd),
-            secondTitle: Texts.StatsDetailsCell.kills,
-            secondContent: String(stats.kills),
-            thirdTitle: Texts.StatsDetailsCell.outlived,
-            thirdContent: String(stats.playersOutlived))
+            firstTitle: Texts.StatsDetailsCell.kills,
+            firstContent: String(stats.kills),
+            secondTitle: Texts.StatsDetailsCell.outlived,
+            secondContent: String(stats.playersOutlived),
+            thirdTitle: Texts.StatsDetailsCell.kd,
+            thirdContent: String(stats.kd))
         
         hoursScore.configurate(
             firstTitle: Texts.StatsDetailsCell.hours,

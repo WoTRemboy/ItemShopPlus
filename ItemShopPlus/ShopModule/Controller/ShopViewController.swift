@@ -17,6 +17,7 @@ final class ShopViewController: UIViewController {
     private var items = [ShopItem]()
     private var filteredItems = [ShopItem]()
     private var sectionedItems = [String: [ShopItem]]()
+    private var sortedKeys = [String]()
     
     private let networkService = DefaultNetworkService()
     
@@ -170,8 +171,15 @@ final class ShopViewController: UIViewController {
                     self?.infoButton.isEnabled = true
                     self?.filterButton.isEnabled = true
                     
-                    self?.collectionView.reloadData()
-                    self?.collectionView.isHidden = false
+                    guard let collectionView = self?.collectionView else { return }
+                    collectionView.isHidden = false
+                    if isRefreshControl {
+                        collectionView.reloadData()
+                    } else {
+                        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                            collectionView.reloadData()
+                        }, completion: nil)
+                    }
                     self?.menuSetup()
                 }
             case .failure(let error):
@@ -201,6 +209,18 @@ final class ShopViewController: UIViewController {
             } else {
                 self.sectionedItems[item.section] = [item]
             }
+        }
+        sortingKeys()
+    }
+    
+    private func sortingKeys() {
+        sortedKeys = Array(sectionedItems.keys).sorted {
+            if $0 == Texts.ShopPage.jamTracks {
+                return false
+            } else if $1 == Texts.ShopPage.jamTracks {
+                return true
+            }
+            return $0 < $1
         }
     }
     
@@ -233,7 +253,7 @@ final class ShopViewController: UIViewController {
             cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
             let item: ShopItem
-            let sectionKey = Array(self.sectionedItems.keys).sorted()[indexPath.section]
+            let sectionKey = self.sortedKeys[indexPath.section]
             if let itemsInSection = self.sectionedItems[sectionKey] {
                 (self.filteredItems.count != 0 && self.filteredItems.count != self.items.count) ? (item = self.filteredItems[indexPath.item]) : (item = itemsInSection[indexPath.item])
                 self.navigationController?.pushViewController(ShopGrantedViewController(bundle: item), animated: true)
@@ -263,13 +283,12 @@ final class ShopViewController: UIViewController {
         let allAction = UIAction(title: Texts.ShopPage.allMenu, image: nil) { [weak self] action in
             self?.filterItemsBySection(sectionTitle: Texts.ShopPage.allMenu, forAll: true)
             self?.filterButton.image = .FilterMenu.filter
-            self?.menuSetup()
         }
         allAction.state = .on
         var children = [allAction]
-        for section in sectionedItems.sorted(by: { $0.key < $1.key }) {
-            let sectionAction = UIAction(title: section.key, image: nil) { [weak self] action in
-                self?.filterItemsBySection(sectionTitle: section.key, forAll: false)
+        for section in sortedKeys {
+            let sectionAction = UIAction(title: section, image: nil) { [weak self] action in
+                self?.filterItemsBySection(sectionTitle: section, forAll: false)
                 self?.filterButton.image = .FilterMenu.filledFilter
             }
             
@@ -372,7 +391,8 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
-        let sectionKey = Array(sectionedItems.keys).sorted()[section]
+        sortingKeys()
+        let sectionKey = sortedKeys[section]
         return inSearchMode ? filteredItems.count : sectionedItems[sectionKey]?.count ?? 0
     }
     
@@ -388,7 +408,7 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let item = filteredItems[indexPath.item]
             cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
         } else {
-            let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
+            let sectionKey = sortedKeys[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
                 cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
@@ -445,7 +465,8 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
         }
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
-        let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
+        sortingKeys()
+        let sectionKey = sortedKeys[indexPath.section]
         let count = filteredItems.count
         inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: sectionKey)
         return headerView

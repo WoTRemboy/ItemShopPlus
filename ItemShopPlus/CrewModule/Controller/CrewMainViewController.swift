@@ -113,8 +113,15 @@ final class CrewMainViewController: UIViewController {
                     self?.itemPack = newPack
                     self?.items = newPack.items
                     
-                    self?.collectionView.reloadData()
-                    self?.collectionView.isHidden = false
+                    guard let collectionView = self?.collectionView else { return }
+                    collectionView.isHidden = false
+                    if isRefreshControl {
+                        collectionView.reloadData()
+                    } else {
+                        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                            collectionView.reloadData()
+                        }, completion: nil)
+                    }
                     
                     self?.noInternetView.isHidden = true
                     self?.symbolButton.isEnabled = true

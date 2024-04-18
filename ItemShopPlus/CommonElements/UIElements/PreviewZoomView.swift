@@ -92,6 +92,7 @@ final class PreviewZoomView: UIView, UIScrollViewDelegate {
         scrollView.maximumZoomScale = 2.0
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.contentInsetAdjustmentBehavior = .scrollableAxes
         addSubview(scrollView)
     }
     

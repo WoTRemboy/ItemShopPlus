@@ -31,7 +31,7 @@ final class BattlePassGrantedViewController: UIViewController {
     
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
-        button.title = Texts.Navigation.backToShop
+        button.title = Texts.Navigation.backToPass
         return button
     }()
     

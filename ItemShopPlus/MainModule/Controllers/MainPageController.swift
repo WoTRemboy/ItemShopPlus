@@ -56,7 +56,7 @@ final class MainPageViewController: UIViewController {
             return
         }
             
-        let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache) (\(cacheSize) \(Texts.ClearCache.megabytes))", style: .destructive) { _ in
+        let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache) (\(String(format: "%.1f", cacheSize)) \(Texts.ClearCache.megabytes))", style: .destructive) { _ in
             VideoLoader.cleanCache(entire: true) {}
             ImageLoader.cleanCache(entire: true) {
                 self.alertControllerSetup(title: Texts.ClearCache.success, message: Texts.ClearCache.cleared)

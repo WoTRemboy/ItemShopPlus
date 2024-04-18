@@ -158,7 +158,7 @@ final class VideoLoader {
             }
             
             let sizeInMegabytes = Float(totalSize) / bytesInMegabyte
-            return (sizeInMegabytes * 10).rounded() / 10
+            return sizeInMegabytes
         } catch {
             print("Error calculating cache size: \(error)")
             return 0

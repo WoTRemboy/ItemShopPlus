@@ -33,6 +33,7 @@ struct GrantedItem {
     let rarity: Rarity?
     let series: String?
     let image: String
+    let video: String?
 }
 
 enum Banner {

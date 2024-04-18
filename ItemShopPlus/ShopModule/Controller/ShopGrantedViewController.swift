@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 final class ShopGrantedViewController: UIViewController {
     
@@ -107,22 +108,11 @@ final class ShopGrantedViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            
-            var itemImage = self.bundle.images.first ?? ""
-            var itemName = self.bundle.name
-            if !self.items.isEmpty {
-                let item = self.items[indexPath.item]
-                itemImage = item?.image ?? ""
-                itemName = item?.name ?? ""
+            if let video = self.items[indexPath.item]?.video, let videoURL = URL(string: video) {
+                self.videoSetup(videoURL: videoURL)
+            } else {
+                self.previewSetup(index: indexPath.item)
             }
-            self.isPresentedFullScreen = true
-            
-            let vc = ShopGrantedPreviewViewController(image: itemImage, name: itemName)
-            let navVC = UINavigationController(rootViewController: vc)
-            navVC.modalPresentationStyle = .fullScreen
-            navVC.modalTransitionStyle = .crossDissolve
-            self.present(navVC, animated: true)
-            
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = CGAffineTransform.identity
             })
@@ -130,6 +120,40 @@ final class ShopGrantedViewController: UIViewController {
     }
     
     // MARK: - UI Setup
+    
+    private func videoSetup(videoURL: URL) {
+        let player = AVPlayer(url: videoURL)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        
+        self.isPresentedFullScreen = true
+        self.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error setting audio session:", error)
+        }
+    }
+    
+    private func previewSetup(index: Int) {
+        var itemImage = self.bundle.images.first ?? ""
+        var itemName = self.bundle.name
+        if !self.items.isEmpty {
+            let item = self.items[index]
+            itemImage = item?.image ?? ""
+            itemName = item?.name ?? ""
+        }
+        self.isPresentedFullScreen = true
+        
+        let vc = ShopGrantedPreviewViewController(image: itemImage, name: itemName)
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalPresentationStyle = .fullScreen
+        navVC.modalTransitionStyle = .crossDissolve
+        self.present(navVC, animated: true)
+    }
     
     private func setupUI() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false

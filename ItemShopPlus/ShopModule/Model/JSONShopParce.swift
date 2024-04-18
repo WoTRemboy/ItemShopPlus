@@ -87,11 +87,13 @@ extension GrantedItem {
         let series = data["series"] as? String
         let rarity: Rarity? = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         
+        let video = data["video"] as? String
+        
         var image = String()
         if let imageData = imagesData["background"] as? String {
             image = imageData
         }
 
-        return GrantedItem(id: id, type: type, name: name, description: description, rarity: rarity, series: series, image: image)
+        return GrantedItem(id: id, type: type, name: name, description: description, rarity: rarity, series: series, image: image, video: video)
     }
 }

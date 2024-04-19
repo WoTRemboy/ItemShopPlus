@@ -200,9 +200,9 @@ final class ShopCollectionViewCell: UICollectionViewCell {
         videoImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            videoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: -2),
-            videoImageView.trailingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: cellWidth - 8),
-            videoImageView.heightAnchor.constraint(equalToConstant: cellWidth / 3),
+            videoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
+            videoImageView.trailingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: cellWidth - 10),
+            videoImageView.heightAnchor.constraint(equalToConstant: cellWidth / 8),
             videoImageView.widthAnchor.constraint(equalTo: videoImageView.heightAnchor, multiplier: 1.06)
         ])
     }

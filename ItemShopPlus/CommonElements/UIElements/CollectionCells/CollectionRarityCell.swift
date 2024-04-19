@@ -71,9 +71,9 @@ final class CollectionRarityCell: UICollectionViewCell {
         videoImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            videoImageView.topAnchor.constraint(equalTo: grantedImageView.topAnchor, constant: -2),
-            videoImageView.trailingAnchor.constraint(equalTo: grantedImageView.trailingAnchor, constant: -8),
-            videoImageView.heightAnchor.constraint(equalTo: grantedImageView.widthAnchor, multiplier: 1/3),
+            videoImageView.topAnchor.constraint(equalTo: grantedImageView.topAnchor, constant: 10),
+            videoImageView.trailingAnchor.constraint(equalTo: grantedImageView.trailingAnchor, constant: -10),
+            videoImageView.heightAnchor.constraint(equalTo: grantedImageView.widthAnchor, multiplier: 1/8),
             videoImageView.widthAnchor.constraint(equalTo: videoImageView.heightAnchor, multiplier: 1.06)
         ])
     }

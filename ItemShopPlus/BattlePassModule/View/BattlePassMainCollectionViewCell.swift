@@ -90,9 +90,9 @@ final class BattlePassMainCollectionViewCell: UICollectionViewCell {
         videoImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            videoImageView.topAnchor.constraint(equalTo: itemImageView.topAnchor, constant: -2),
-            videoImageView.trailingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: -8),
-            videoImageView.heightAnchor.constraint(equalTo: itemImageView.widthAnchor, multiplier: 1/3),
+            videoImageView.topAnchor.constraint(equalTo: itemImageView.topAnchor, constant: 10),
+            videoImageView.trailingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: -10),
+            videoImageView.heightAnchor.constraint(equalTo: itemImageView.widthAnchor, multiplier: 1/8),
             videoImageView.widthAnchor.constraint(equalTo: videoImageView.heightAnchor, multiplier: 1.06)
         ])
     }

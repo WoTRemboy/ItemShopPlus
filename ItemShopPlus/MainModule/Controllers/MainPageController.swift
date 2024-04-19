@@ -39,6 +39,10 @@ final class MainPageViewController: UIViewController {
         navigationController?.pushViewController(CrewMainViewController(), animated: true)
     }
     
+    @objc func bundleTransfer() {
+        navigationController?.pushViewController(BundlesMainViewController(), animated: true)
+    }
+    
     @objc func statsTransfer() {
         navigationController?.pushViewController(StatsMainViewController(), animated: true)
     }

@@ -300,7 +300,7 @@ extension CrewMainViewController: UICollectionViewDelegate, UICollectionViewData
             fatalError("Failed to dequeue CrewCollectionViewCell in CrewMainViewController")
         }
         let item = items[indexPath.item]
-        cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image)
+        cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image, video: false)
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         

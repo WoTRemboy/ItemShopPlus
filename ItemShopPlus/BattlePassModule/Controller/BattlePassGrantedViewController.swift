@@ -182,7 +182,7 @@ extension BattlePassGrantedViewController: UICollectionViewDelegate, UICollectio
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionRarityCell.identifier, for: indexPath) as? CollectionRarityCell else {
             fatalError("Failed to dequeue ShopGrantedCollectionViewCell in ShopGrantedViewController")
         }
-        cell.configurate(name: item.name, type: item.type, rarity: item.rarity, image: item.image)
+        cell.configurate(name: item.name, type: item.type, rarity: item.rarity, image: item.image, video: item.video != nil)
         
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)

@@ -406,12 +406,12 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if inSearchMode {
             let item = filteredItems[indexPath.item]
-            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
+            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
         } else {
             let sectionKey = sortedKeys[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
-                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
+                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
             }
         }
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
@@ -422,11 +422,7 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         guard searchController.isActive else { return }
-        if searchController.searchBar.text?.isEmpty == true {
-            searchController.dismiss(animated: false)
-        } else {
-            searchController.searchBar.resignFirstResponder()
-        }
+        searchController.searchBar.resignFirstResponder()
         UIView.appearance().isExclusiveTouch = true
     }
 }

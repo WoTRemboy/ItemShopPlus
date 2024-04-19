@@ -191,9 +191,9 @@ extension ShopGrantedViewController: UICollectionViewDelegate, UICollectionViewD
             fatalError("Failed to dequeue ShopGrantedCollectionViewCell in ShopGrantedViewController")
         }
         if items.count > 0, let item = items[indexPath.item] {
-            cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image)
+            cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image, video: item.video != nil)
         } else {
-            cell.configurate(name: bundle.name, type: bundle.type, rarity: bundle.rarity, image: bundle.images.first ?? "")
+            cell.configurate(name: bundle.name, type: bundle.type, rarity: bundle.rarity, image: bundle.images.first ?? "", video: false)
         }
         
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))

@@ -13,6 +13,7 @@ extension UIImage {
     
     enum Placeholder {
         static let noImage = UIImage(named: "ImagePlaceholder")
+        static let video = UIImage(named: "VideoBanner")
     }
     
     enum CurrencySymbol {
@@ -89,7 +90,7 @@ extension UIImage {
     // MARK: - Stats Module
     
     enum Stats {
-        static let newNickname = UIImage(systemName: "square.and.pencil")
+        static let newNickname = UIImage(systemName: "rectangle.and.pencil.and.ellipsis")
         static let noStats = createImage(name: "person.slash")
         static let progress = UIImage(named: "ProgressStats")
         static let global = UIImage(named: "GlobalStats")

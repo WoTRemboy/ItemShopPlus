@@ -23,6 +23,7 @@ struct ShopItem {
     let granted: [GrantedItem?]
     let section: String
     let banner: Banner
+    let video: Bool
 }
 
 struct GrantedItem {

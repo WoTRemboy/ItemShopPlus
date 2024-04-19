@@ -62,7 +62,12 @@ extension ShopItem {
             granted = grantedData.compactMap { GrantedItem.sharingParce(sharingJSON: $0) }
         }
         
-        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner)
+        var video = false
+        if regularPrice == finalPrice && granted.contains(where: { ($0.video != nil) }) {
+            video = true
+        }
+        
+        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner, video: video)
     }
 }
 

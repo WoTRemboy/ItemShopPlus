@@ -390,12 +390,12 @@ extension BattlePassMainViewController: UICollectionViewDelegate, UICollectionVi
         
         if inSearchMode {
             let item = filteredItems[indexPath.item]
-            cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType)
+            cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType, video: item.video != nil)
         } else {
             let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
-                cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType)
+                cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType, video: item.video != nil)
             }
         }
         

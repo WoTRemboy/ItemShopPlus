@@ -18,6 +18,7 @@ struct BundleItem {
     let expiryDate: Date
     let prices: [BundlePrice]
     let granted: [BundleGranted]
+    var currency: Currency = .usd
     
     static let emptyBundle = BundleItem(id: "", available: false, name: "", description: "", descriptionLong: "", backgroundImage: "", wideImage: "", expiryDate: .now, prices: [], granted: [])
 }

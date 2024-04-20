@@ -166,7 +166,7 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/bundles")
         
-        let queryItems = [URLQueryItem(name: "lang", value: "en")]
+        let queryItems = [URLQueryItem(name: "lang", value: "en"), URLQueryItem(name: "available", value: "true")]
         url.append(queryItems: queryItems)
         
         var request = URLRequest(url: url)

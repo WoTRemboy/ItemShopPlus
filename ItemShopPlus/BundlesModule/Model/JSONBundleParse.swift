@@ -14,16 +14,17 @@ extension BundleItem {
               let available = globalData["available"] as? Bool,
               available == true,
               let name = globalData["name"] as? String,
-              let description = globalData["description"] as? String,
-              let descriptionLong = globalData["descriptionLong"] as? String,
               let backgroundImageData = globalData["displayAssets"] as? [[String: Any]],
               let wideImageData = globalData["keyImages"] as? [[String: Any]],
               let pricesData = globalData["prices"] as? [[String: Any]],
-              let grantedData = globalData["granted"] as? [[String: Any]],
-              let expiryDateString = globalData["expiryDate"] as? String
+              let grantedData = globalData["granted"] as? [[String: Any]]
         else {
             return nil
         }
+        
+        let description = globalData["description"] as? String ?? String()
+        let descriptionLong = globalData["descriptionLong"] as? String ?? String()
+        let expiryDateString = globalData["expiryDate"] as? String ?? String()
         
         var priceArray = [BundlePrice]()
         for priceDatum in pricesData {

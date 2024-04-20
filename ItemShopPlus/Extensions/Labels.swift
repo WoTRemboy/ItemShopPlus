@@ -244,6 +244,18 @@ final class Texts {
         static let and = "and"
     }
     
+    // MARK: - Bundles Module
+    
+    enum BundlesPage {
+        static let title = "Bundles"
+        static let header = "Special Offers"
+    }
+    
+    enum BundleCell {
+        static let identifier = "BundleCell"
+        static let free = "Free"
+    }
+    
     // MARK: - Stats Module
     
     enum StatsPage {

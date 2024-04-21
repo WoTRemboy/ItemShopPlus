@@ -56,7 +56,7 @@ final class CollectionRarityCell: UICollectionViewCell {
     // MARK: - Public Configure Method
     
     public func configurate(name: String, type: String, rarity: Rarity, image: String, video: Bool) {
-        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: grantedImageView)
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: grantedImageView, size: CGSize(width: 1024, height: 1024))
         itemNameLabel.text = name
         itemTypeLabel.text = type
         rarityImageView.image = SelectingMethods.selectRarity(rarity: rarity)

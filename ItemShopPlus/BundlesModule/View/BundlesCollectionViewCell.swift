@@ -45,10 +45,10 @@ final class BundlesCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Configure Method
     
     public func configurate(name: String, price: String, image: String) {
-        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: itemImageView)
         itemNameLabel.text = name
         itemPriceLabel.text = price
         setupUI()
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: itemImageView, size: CGSize(width: UIScreen.main.nativeBounds.width, height: UIScreen.main.nativeBounds.width / 2))
     }
     
     // MARK: - UI Setup

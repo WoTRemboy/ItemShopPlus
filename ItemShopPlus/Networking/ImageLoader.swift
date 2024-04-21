@@ -25,7 +25,7 @@ final class ImageLoader {
     
     // MARK: - Loading Methods
     
-    static func loadImage(urlString: String?, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask? {
+    static func loadImage(urlString: String?, size: CGSize, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask? {
         guard let urlString = urlString else {
             completion(nil)
             return nil
@@ -54,10 +54,14 @@ final class ImageLoader {
                     completion(nil)
                     return
                 }
-                DispatchQueue.global(qos: .utility).async {
-                    setImageCache(image: loadedImage, key: urlString)
+                if let resizedImage = loadedImage.resize(to: size) {
+                    DispatchQueue.global(qos: .utility).async {
+                        setImageCache(image: resizedImage, key: urlString)
+                    }
+                    completion(resizedImage)
+                } else {
+                    completion(nil)
                 }
-                completion(loadedImage)
             }
         }
         
@@ -65,8 +69,8 @@ final class ImageLoader {
         return task
     }
     
-    static func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) -> URLSessionDataTask? {
-        return loadImage(urlString: imageUrlString) { image in
+    static func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView, size: CGSize) -> URLSessionDataTask? {
+        return loadImage(urlString: imageUrlString, size: size) { image in
             DispatchQueue.main.async {
                 imageView.alpha = 0.5
                 if let image = image {
@@ -176,5 +180,21 @@ final class ImageLoader {
         } catch {
             print("Error marking access time for \(cacheURL): \(error)")
         }
+    }
+}
+
+
+extension UIImage {
+    func resize(to targetSize: CGSize) -> UIImage? {
+        let widthRatio = targetSize.width / size.width
+        let heightRatio = targetSize.height / size.height
+        let scaleFactor = min(widthRatio, heightRatio)
+        
+        let newSize = CGSize(width: size.width * scaleFactor, height: size.height * scaleFactor)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: newSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

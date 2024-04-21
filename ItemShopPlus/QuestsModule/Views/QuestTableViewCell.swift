@@ -44,7 +44,7 @@ final class QuestTableViewCell: UITableViewCell {
         questProgressLabel.text = Texts.QuestCell.requirement + progress
         
         if let imageUrlString = image {
-            imageLoadTask = ImageLoader.loadAndShowImage(from: imageUrlString, to: questImageView)
+            imageLoadTask = ImageLoader.loadAndShowImage(from: imageUrlString, to: questImageView, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2))
         } else {
             questImageView.image = .Quests.experience
         }

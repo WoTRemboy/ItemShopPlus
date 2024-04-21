@@ -63,12 +63,12 @@ final class BattlePassMainCollectionViewCell: UICollectionViewCell {
     // MARK: - Public Configure Method
     
     public func configurate(name: String, type: String, image: String, payType: PayType, video: Bool) {
-        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: itemImageView)
         itemNameLabel.text = name
         itemTypeLabel.text = type
         payType == .free ? freeBannerViewSetup() : nil
         video ? videoImageViewSetup() : nil
         setupUI()
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: itemImageView, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2))
     }
     
     // MARK: - UI Setup

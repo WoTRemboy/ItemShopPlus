@@ -138,7 +138,7 @@ final class MapPreviewViewController: UIViewController {
     private func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) -> URLSessionDataTask? {
         activityIndicatorSetup()
         
-        return ImageLoader.loadImage(urlString: imageUrlString) { image in
+        return ImageLoader.loadImage(urlString: imageUrlString, size: CGSize(width: 2048, height: 2048)) { image in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.removeFromSuperview()

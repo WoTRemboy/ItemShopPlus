@@ -32,7 +32,7 @@ final class PreviewZoomView: UIView, UIScrollViewDelegate {
     
     convenience init(image: String, presentingViewController: UIViewController) {
         self.init(frame: .zero)
-        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: imageView)
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: imageView, size: CGSize(width: 1024, height: 1024))
     }
     
     override func layoutSubviews() {

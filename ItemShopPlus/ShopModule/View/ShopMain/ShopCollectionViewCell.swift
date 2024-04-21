@@ -130,7 +130,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
             scrollView.addSubview(imageView)
             
             if index == 0 {
-                imageLoadTask = ImageLoader.loadAndShowImage(from: imageURL, to: imageView)
+                imageLoadTask = ImageLoader.loadAndShowImage(from: imageURL, to: imageView, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2))
             }
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -278,7 +278,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
                 isLoading = true
                 let imageURL = images[index]
                 
-                imageLoadTask = ImageLoader.loadImage(urlString: imageURL) { image in
+                imageLoadTask = ImageLoader.loadImage(urlString: imageURL, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2)) { image in
                     DispatchQueue.main.async {
                         imageView.alpha = 0.5
                         if let image = image {

@@ -12,7 +12,7 @@ struct ShopItem {
     let name: String
     let description: String
     let type: String
-    let images: [String]
+    let images: [ShopItemImage]
     let firstReleaseDate: Date?
     let previousReleaseDate: Date?
     let buyAllowed: Bool
@@ -35,6 +35,11 @@ struct GrantedItem {
     let series: String?
     let image: String
     let video: String?
+}
+
+struct ShopItemImage {
+    let mode: String
+    let image: String
 }
 
 enum Banner {

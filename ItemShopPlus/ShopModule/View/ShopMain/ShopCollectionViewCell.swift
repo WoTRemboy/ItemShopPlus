@@ -14,7 +14,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
     static let identifier = Texts.ShopMainCell.identifier
     private var imageLoadTask: URLSessionDataTask?
     
-    private var images = [String]()
+    private var images = [ShopItemImage]()
     private var imageViews = [UIImageView]()
     private var isLoading = false
     
@@ -90,7 +90,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public Configure Method
         
-    public func configurate(with images: [String], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, _ video: Bool, grantedCount: Int, _ width: CGFloat) {
+    public func configurate(with images: [ShopItemImage], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, _ video: Bool, grantedCount: Int, _ width: CGFloat) {
         self.images = images
         setupImageCarousel(images: images, banner: banner, video: video, grantedCount: grantedCount, cellWidth: width)
         contentSetup(name: name, price: price, oldPrice: oldPrice, count: grantedCount)
@@ -120,7 +120,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
             paletteColors: [.white, .IconColors.backgroundPages ?? .orange]))
     }
     
-    private func setupImageCarousel(images: [String], banner: Banner, video: Bool, grantedCount: Int, cellWidth: CGFloat) {
+    private func setupImageCarousel(images: [ShopItemImage], banner: Banner, video: Bool, grantedCount: Int, cellWidth: CGFloat) {
         scrollView.delegate = self
         
         for (index, imageURL) in images.enumerated() {
@@ -130,7 +130,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
             scrollView.addSubview(imageView)
             
             if index == 0 {
-                imageLoadTask = ImageLoader.loadAndShowImage(from: imageURL, to: imageView, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2))
+                imageLoadTask = ImageLoader.loadAndShowImage(from: imageURL.image, to: imageView, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2))
             }
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -278,7 +278,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
                 isLoading = true
                 let imageURL = images[index]
                 
-                imageLoadTask = ImageLoader.loadImage(urlString: imageURL, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2)) { image in
+                imageLoadTask = ImageLoader.loadImage(urlString: imageURL.image, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2)) { image in
                     DispatchQueue.main.async {
                         imageView.alpha = 0.5
                         if let image = image {

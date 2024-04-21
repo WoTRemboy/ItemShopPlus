@@ -25,11 +25,20 @@ extension ShopItem {
             return nil
         }
         
-        var images = [String]()
+        var images = [ShopItemImage]()
         for asset in assetsData {
+            let mode = asset["primaryMode"] as? String ?? String()
             let image = asset["background"] as? String ?? String()
-            images.append(image)
+            images.append(ShopItemImage(mode: mode, image: image))
         }
+        let sortOrder = ["BattleRoyale", "Juno", "DelMar"]
+        images.sort(by: {
+            guard let first = sortOrder.firstIndex(of: $0.mode),
+                  let second = sortOrder.firstIndex(of: $1.mode) else {
+                return false
+            }
+            return first < second
+        })
         
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
         let regularPrice = priceData["regularPrice"] as? Int ?? 0

@@ -115,7 +115,7 @@ final class ShopGrantedViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            if let video = self.items[indexPath.item]?.video, let videoURL = URL(string: video) {
+            if self.items.count > 0, let video = self.items[indexPath.item]?.video, let videoURL = URL(string: video) {
                 self.videoSetup(videoURL: videoURL)
             } else {
                 self.previewSetup(index: indexPath.item)

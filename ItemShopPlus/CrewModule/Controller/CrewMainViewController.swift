@@ -164,10 +164,10 @@ final class CrewMainViewController: UIViewController {
         currentSectionTitle = price.code
         currencyMemoryManager(request: .save)
         
-        headerUpdate(price: price)
+        footerUpdate(price: price)
     }
     
-    private func headerUpdate(price: CrewPrice) {
+    private func footerUpdate(price: CrewPrice) {
         let visibleSections = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter)
         for indexPath in visibleSections {
             if let footerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionFooter, at: indexPath) as? CrewFooterReusableView {
@@ -234,7 +234,7 @@ final class CrewMainViewController: UIViewController {
         }
         let curPrice = prices.first(where: { $0.code == currentSectionTitle }) ?? CrewPrice.emptyPrice
         symbolButton.menu = UIMenu(title: "", children: children)
-        headerUpdate(price: curPrice)
+        footerUpdate(price: curPrice)
     }
 
     private func updateMenuState(for sectionTitle: String) {

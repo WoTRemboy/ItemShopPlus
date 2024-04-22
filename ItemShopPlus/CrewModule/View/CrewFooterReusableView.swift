@@ -89,7 +89,7 @@ final class CrewFooterReusableView: UICollectionReusableView {
         
         switch symbolPosition {
         case .left:
-            UIView.transition(with: priceLabel, duration: firstTime ? 0 : 0.3, options: .transitionFlipFromBottom, animations: {
+            UIView.transition(with: priceLabel, duration: firstTime ? 0 : 0.5, options: .transitionFlipFromBottom, animations: {
                 self.priceLabel.text = "\(price.symbol) \(priceToShow)"
             }, completion: nil)
         case .right:

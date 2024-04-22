@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { success, _ in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, _ in
             guard success else { return }
             
             print("Success in APNS registry")
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         messaging.token { token, _ in
-            guard let token = token else { return }
+            guard token != nil else { return }
             print("Token received successful")
         }
     }

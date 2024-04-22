@@ -149,7 +149,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
             itemPagesImageViewSetup(cellWidth: cellWidth)
             scrollView.showsHorizontalScrollIndicator = true
         }
-        if banner != .null, banner != .sale {
+        if banner == .new {
             bannerImageViewSetup(banner: banner, cellWidth: cellWidth)
         }
         if video {

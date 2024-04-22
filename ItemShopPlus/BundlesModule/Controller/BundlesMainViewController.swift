@@ -152,11 +152,34 @@ final class BundlesMainViewController: UIViewController {
         for i in 0..<items.count {
             items[i].currency = type
         }
-        
         guard reload else { return }
-        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            self.collectionView.reloadData()
-        }, completion: nil)
+        
+        let cellsCount = collectionView.numberOfItems(inSection: 0)
+
+        for i in 0..<cellsCount {
+            let indexPath = IndexPath(item: i, section: 0)
+            if let cell = collectionView.cellForItem(at: indexPath) as? BundlesCollectionViewCell {
+                let item = items[indexPath.item]
+                if let price = item.prices.first(where: { $0.type == item.currency }) {
+                    cell.priceUpdate(price: priceDefinition(price: price))
+                }
+            }
+        }
+//        collectionView.alpha = 1
+//        UIView.animate(withDuration: 0.3) {
+//            self.collectionView.alpha = 0
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//            self.collectionView.reloadData()
+//            UIView.animate(withDuration: 0.3) {
+//                self.collectionView.alpha = 1
+//            }
+//        }
+        
+        
+//        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+//            self.collectionView.reloadData()
+//        }, completion: nil)
     }
     
     private func priceDefinition(price: BundlePrice) -> String {
@@ -200,11 +223,7 @@ final class BundlesMainViewController: UIViewController {
         var children = [UIAction]()
         for price in prices.sorted(by: { $0.code < $1.code }) {
             let sectionAction = UIAction(title: price.code, image: SelectingMethods.selectCurrency(type: price.code)) { [weak self] action in
-                if #available(iOS 17.0, *) {
-                    self?.navigationItem.rightBarButtonItem?.setSymbolImage(SelectingMethods.selectCurrency(type: price.code), contentTransition: .replace)
-                } else {
-                    self?.navigationItem.rightBarButtonItem?.image = SelectingMethods.selectCurrency(type: price.code)
-                }
+                self?.navigationItem.rightBarButtonItem?.image = SelectingMethods.selectCurrency(type: price.code)
                 self?.updateAll(price: price)
             }
             children.append(sectionAction)

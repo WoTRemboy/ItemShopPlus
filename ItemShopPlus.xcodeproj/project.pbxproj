@@ -57,6 +57,9 @@
 		639418A72BD59B7F007F02FA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 639418A62BD59B7F007F02FA /* FirebaseAnalytics */; };
 		639418A92BD59B7F007F02FA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 639418A82BD59B7F007F02FA /* FirebaseMessaging */; };
 		639418AC2BD59D3D007F02FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 639418AB2BD59D3D007F02FA /* GoogleService-Info.plist */; };
+		639418B02BD67C81007F02FA /* BundlesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639418AF2BD67C81007F02FA /* BundlesDetailsViewController.swift */; };
+		639418B22BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639418B12BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift */; };
+		639418B42BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639418B32BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift */; };
 		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
 		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
 		63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */; };
@@ -138,6 +141,9 @@
 		638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerViewController.swift; sourceTree = "<group>"; };
 		639418AA2BD59BD7007F02FA /* ItemShopPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ItemShopPlus.entitlements; sourceTree = "<group>"; };
 		639418AB2BD59D3D007F02FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		639418AF2BD67C81007F02FA /* BundlesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundlesDetailsViewController.swift; sourceTree = "<group>"; };
+		639418B12BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundlesDetailsCollectionReusableView.swift; sourceTree = "<group>"; };
+		639418B32BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundlesDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		639E62342B92719100E17B4F /* BattlePassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainViewController.swift; sourceTree = "<group>"; };
 		63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewZoomView.swift; sourceTree = "<group>"; };
 		63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTestViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				634209172BD2B0D0008A9496 /* BundlesMainViewController.swift */,
+				639418AF2BD67C81007F02FA /* BundlesDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -317,6 +324,8 @@
 			isa = PBXGroup;
 			children = (
 				6342091E2BD40F87008A9496 /* BundlesCollectionViewCell.swift */,
+				639418B32BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift */,
+				639418B12BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -738,6 +747,7 @@
 				634208F42BC2D4C9008A9496 /* StatsModel.swift in Sources */,
 				63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */,
 				63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */,
+				639418B42BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift in Sources */,
 				634209022BCAE455008A9496 /* NicknamePopupViewController.swift in Sources */,
 				63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */,
 				637B26952B4DACCA0075B871 /* CollectionHeaderReusableView.swift in Sources */,
@@ -778,6 +788,7 @@
 				63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */,
 				63290CD62B5D7B70008F45F8 /* ShopTimerInfoViewController.swift in Sources */,
 				63C899112B2508DB00FABD69 /* QuestsBundlePageController.swift in Sources */,
+				639418B02BD67C81007F02FA /* BundlesDetailsViewController.swift in Sources */,
 				634208F62BC2DC12008A9496 /* JSONStatsParce.swift in Sources */,
 				63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */,
 				634209002BC874F9008A9496 /* NicknamePopupView.swift in Sources */,
@@ -795,6 +806,7 @@
 				632533AF2B83D3F300DA3F05 /* MapZoomView.swift in Sources */,
 				637B26812B4AB4050075B871 /* SplashScreenView.swift in Sources */,
 				637B268F2B4B3A820075B871 /* ShopViewController.swift in Sources */,
+				639418B22BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift in Sources */,
 				63C898C02B232F4000FABD69 /* MainPageController.swift in Sources */,
 				63C898EB2B233E9900FABD69 /* Labels.swift in Sources */,
 				63C898E02B2339F900FABD69 /* MPButtonView.swift in Sources */,
@@ -952,7 +964,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.2;
+				MARKETING_VERSION = 0.5.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -986,7 +998,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.2;
+				MARKETING_VERSION = 0.5.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

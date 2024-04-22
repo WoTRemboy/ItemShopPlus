@@ -13,12 +13,16 @@ final class ShopGrantedPreviewViewController: UIViewController {
     
     private var image: String
     private var name: String
+    private var size: CGSize
+    private var zoom: Double
     
     // MARK: - Initialization
     
-    init(image: String, name: String) {
+    init(image: String, name: String, size: CGSize = CGSize(width: 1024, height: 1024), zoom: Double = 2) {
         self.image = image
         self.name = name
+        self.size = size
+        self.zoom = zoom
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -55,7 +59,7 @@ final class ShopGrantedPreviewViewController: UIViewController {
     }
     
     private func scrollViewSetup() {
-        let scrollView = PreviewZoomView(image: image, presentingViewController: self)
+        let scrollView = PreviewZoomView(image: image, presentingViewController: self, size: size, zoom: zoom)
         
         scrollView.panZoomDelegate = self
         view.addSubview(scrollView)

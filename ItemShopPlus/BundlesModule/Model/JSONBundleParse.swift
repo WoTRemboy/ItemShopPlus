@@ -14,8 +14,7 @@ extension BundleItem {
               let available = globalData["available"] as? Bool,
               available == true,
               let name = globalData["name"] as? String,
-              let backgroundImageData = globalData["displayAssets"] as? [[String: Any]],
-              let wideImageData = globalData["keyImages"] as? [[String: Any]],
+              let imageData = globalData["keyImages"] as? [[String: Any]],
               let pricesData = globalData["prices"] as? [[String: Any]],
               let grantedData = globalData["granted"] as? [[String: Any]]
         else {
@@ -38,10 +37,12 @@ extension BundleItem {
             priceArray.append(BundlePrice(type: type, code: code, symbol: symbol, price: price))
         }
         
-        let backgroundImage = backgroundImageData.first?["background"] as? String ?? String()
         let granted = grantedData.compactMap { BundleGranted.sharingParse(sharingJSON: $0) }
         
-        let wideImageSet = wideImageData.first(where: { $0["type"] as? String == "OfferImageWide" })
+        let detailsImageSet = imageData.first(where: { $0["type"] as? String == "OfferImageTall" })
+        let detailsImage = detailsImageSet?["url"] as? String ?? String()
+        
+        let wideImageSet = imageData.first(where: { $0["type"] as? String == "OfferImageWide" })
         let wideImage = wideImageSet?["url"] as? String ?? String()
 
         var expiryDate: Date?
@@ -52,7 +53,7 @@ extension BundleItem {
             expiryDate = date1
         }
         
-        return BundleItem(id: id, available: available, name: name, description: description, descriptionLong: descriptionLong, backgroundImage: backgroundImage, wideImage: wideImage, expiryDate: expiryDate ?? .now, prices: priceArray, granted: granted)
+        return BundleItem(id: id, available: available, name: name, description: description, descriptionLong: descriptionLong, detailsImage: detailsImage, wideImage: wideImage, expiryDate: expiryDate, prices: priceArray, granted: granted)
     }
 }
 

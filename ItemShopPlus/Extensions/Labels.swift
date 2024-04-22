@@ -25,6 +25,7 @@ final class Texts {
         static let backToMain = "Main"
         static let backToShop = "Shop"
         static let backToPass = "Pass"
+        static let backToBundles = "Bundles"
     }
     
     enum SearchController {
@@ -254,6 +255,18 @@ final class Texts {
     enum BundleCell {
         static let identifier = "BundleCell"
         static let free = "Free"
+    }
+    
+    enum BundleDetailsCell {
+        static let identifier = "BundleDetailsCell"
+        static let footerIdentifier = "BundleDetailsFooter"
+        
+        static let expiryDate = "Expiry date"
+        static let expiryDateText = "00.00.0000"
+        static let description = "Description"
+        static let descriptionText = "Descriprion is..."
+        static let about = "About"
+        static let aboutText = "About this..."
     }
     
     // MARK: - Stats Module

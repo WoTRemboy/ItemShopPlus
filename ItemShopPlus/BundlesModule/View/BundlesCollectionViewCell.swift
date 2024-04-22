@@ -51,11 +51,15 @@ final class BundlesCollectionViewCell: UICollectionViewCell {
         imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: itemImageView, size: CGSize(width: UIScreen.main.nativeBounds.width, height: UIScreen.main.nativeBounds.width / 2))
     }
     
-    public func priceUpdate(price: String) {
+    public func priceUpdate(price: String, animated: Bool = true) {
         guard price != Texts.BundleCell.free else { return }
-        UIView.transition(with: itemPriceLabel, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+        if animated {
+            UIView.transition(with: itemPriceLabel, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+                self.itemPriceLabel.text = price
+            }, completion: nil)
+        } else {
             self.itemPriceLabel.text = price
-        }, completion: nil)
+        }
     }
     
     // MARK: - UI Setup

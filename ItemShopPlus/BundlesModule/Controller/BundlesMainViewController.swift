@@ -140,15 +140,15 @@ final class BundlesMainViewController: UIViewController {
     
     // MARK: - Changing Currency Methods
     
-    private func updateAll(price: BundlePrice) {
+    private func updateAll(price: BundlePrice, animated: Bool = true) {
         guard selectedSectionTitle != price.code else { return }
         updateMenuState(for: price.code)
         currentSectionTitle = price.code
         currencyMemoryManager(request: .save)
-        priceLabelUpdate(type: price.type, reload: true)
+        priceLabelUpdate(type: price.type, reload: true, animated: animated)
     }
     
-    private func priceLabelUpdate(type: Currency, reload: Bool) {
+    private func priceLabelUpdate(type: Currency, reload: Bool, animated: Bool = true) {
         for i in 0..<items.count {
             items[i].currency = type
         }
@@ -161,25 +161,10 @@ final class BundlesMainViewController: UIViewController {
             if let cell = collectionView.cellForItem(at: indexPath) as? BundlesCollectionViewCell {
                 let item = items[indexPath.item]
                 if let price = item.prices.first(where: { $0.type == item.currency }) {
-                    cell.priceUpdate(price: priceDefinition(price: price))
+                    cell.priceUpdate(price: priceDefinition(price: price), animated: animated)
                 }
             }
         }
-//        collectionView.alpha = 1
-//        UIView.animate(withDuration: 0.3) {
-//            self.collectionView.alpha = 0
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-//            self.collectionView.reloadData()
-//            UIView.animate(withDuration: 0.3) {
-//                self.collectionView.alpha = 1
-//            }
-//        }
-        
-        
-//        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
-//            self.collectionView.reloadData()
-//        }, completion: nil)
     }
     
     private func priceDefinition(price: BundlePrice) -> String {
@@ -200,15 +185,17 @@ final class BundlesMainViewController: UIViewController {
     private func animateCellSelection(at indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         
+        let item = items[indexPath.item]
+        let vc = BundlesDetailsViewController(item: item)
+        vc.completionHandler = { [weak self] newBundlePrice in
+            self?.updateAll(price: newBundlePrice, animated: false)
+            self?.navigationItem.rightBarButtonItem?.image = SelectingMethods.selectCurrency(type: newBundlePrice.code)
+        }
+        
         UIView.animate(withDuration: 0.1, animations: {
             cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            //            let item: ShopItem
-            //            let sectionKey = self.sortedKeys[indexPath.section]
-            //            if let itemsInSection = self.sectionedItems[sectionKey] {
-            //                (self.filteredItems.count != 0 && self.filteredItems.count != self.items.count) ? (item = self.filteredItems[indexPath.item]) : (item = itemsInSection[indexPath.item])
-            //                self.navigationController?.pushViewController(ShopGrantedViewController(bundle: item), animated: true)
-            //            }
+            self.navigationController?.pushViewController(vc, animated: true)
             UIView.animate(withDuration: 0.1, animations: {
                 cell?.transform = CGAffineTransform.identity
             })

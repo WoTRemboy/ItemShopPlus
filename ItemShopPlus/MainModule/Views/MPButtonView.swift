@@ -108,7 +108,7 @@ final class MPButtonView: UIView {
         case .lootDetails:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.lootDetails
             buttonImageView.image = .MainButtons.lootDetails
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.lootDetailsTransfer), for: .touchUpInside)
         case .stats:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.stats
             buttonImageView.image = .MainButtons.stats

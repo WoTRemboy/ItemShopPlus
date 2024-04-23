@@ -39,6 +39,7 @@ enum Rarity {
     case epic
     case legendary
     case star
+    case mythic
 }
 
 // MARK: - Internal Currency Image

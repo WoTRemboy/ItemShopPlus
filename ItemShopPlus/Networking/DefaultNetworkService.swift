@@ -13,6 +13,7 @@ protocol NetworkingService {
     func getBattlePassItems(completion: @escaping (Result<BattlePass, Error>) -> Void)
     func getCrewItems(completion: @escaping (Result<CrewPack, Error>) -> Void)
     func getBundles(completion: @escaping (Result<[BundleItem], Error>) -> Void)
+    func getLootDetails(completion: @escaping (Result<[LootDetailsItem], Error>) -> Void)
     func getAccountStats(nickname: String, platform: String?, completion: @escaping (Result<Stats, Error>) -> Void)
     func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void)
 }
@@ -181,6 +182,38 @@ final class DefaultNetworkService: NetworkingService {
                         let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                         let bundleData = response?["bundles"] as? [[String: Any]]
                         let items = bundleData?.compactMap { BundleItem.sharingParse(sharingJSON: $0) } ?? []
+                        completion(.success(items))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    // MARK: - Loot Details Module Request
+    
+    func getLootDetails(completion: @escaping (Result<[LootDetailsItem], any Error>) -> Void) {
+        guard var url = baseURL else { return }
+        url = url.appendingPathComponent("v1/loot/list")
+        
+        let queryItems = [URLQueryItem(name: "lang", value: "en")]
+        url.append(queryItems: queryItems)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.sendRequest(request: request) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        let bundleData = response?["weapons"] as? [[String: Any]]
+                        let items = bundleData?.compactMap { LootDetailsItem.sharingParse(sharingJSON: $0) } ?? []
                         completion(.success(items))
                     } catch {
                         completion(.failure(error))

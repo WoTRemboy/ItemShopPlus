@@ -43,6 +43,10 @@ final class MainPageViewController: UIViewController {
         navigationController?.pushViewController(BundlesMainViewController(), animated: true)
     }
     
+    @objc func lootDetailsTransfer() {
+        navigationController?.pushViewController(LootDetailsMainViewController(), animated: true)
+    }
+    
     @objc func statsTransfer() {
         navigationController?.pushViewController(StatsMainViewController(), animated: true)
     }

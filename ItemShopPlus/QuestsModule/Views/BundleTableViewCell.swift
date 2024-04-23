@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     static let identifier = Texts.BundleQuestsCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     
     private let bundleImageView: UIImageView = {
         let view = UIImageView()

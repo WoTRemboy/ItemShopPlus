@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class QuestTableViewCell: UITableViewCell {
 
     static let identifier = Texts.QuestCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
 
     private let questImageView: UIImageView = {
         let view = UIImageView()

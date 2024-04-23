@@ -78,6 +78,7 @@
 		63C899112B2508DB00FABD69 /* QuestsBundlePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C899102B2508DB00FABD69 /* QuestsBundlePageController.swift */; };
 		63C899132B2616C500FABD69 /* BundleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C899122B2616C500FABD69 /* BundleTableViewCell.swift */; };
 		63C899172B26220D00FABD69 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C899162B26220D00FABD69 /* ImageLoader.swift */; };
+		63C9AB5B2BD7F4F30046951B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 63C9AB5A2BD7F4F30046951B /* Kingfisher */; };
 		63ECC1282B90A930006E0841 /* CommonLogicMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC1272B90A930006E0841 /* CommonLogicMethods.swift */; };
 		63ECC12B2B9106FE006E0841 /* CommonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC12A2B9106FE006E0841 /* CommonModels.swift */; };
 		63ECC12D2B910A00006E0841 /* SelectingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC12C2B910A00006E0841 /* SelectingMethods.swift */; };
@@ -182,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C9AB5B2BD7F4F30046951B /* Kingfisher in Frameworks */,
 				639418A92BD59B7F007F02FA /* FirebaseMessaging in Frameworks */,
 				639418A72BD59B7F007F02FA /* FirebaseAnalytics in Frameworks */,
 			);
@@ -682,6 +684,7 @@
 			packageProductDependencies = (
 				639418A62BD59B7F007F02FA /* FirebaseAnalytics */,
 				639418A82BD59B7F007F02FA /* FirebaseMessaging */,
+				63C9AB5A2BD7F4F30046951B /* Kingfisher */,
 			);
 			productName = ItemShopPlus;
 			productReference = 63C898B82B232F4000FABD69 /* ItemShopPlus.app */;
@@ -713,6 +716,7 @@
 			mainGroup = 63C898AF2B232F4000FABD69;
 			packageReferences = (
 				639418A52BD59B7F007F02FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				63C9AB592BD7F4F30046951B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 63C898B92B232F4000FABD69 /* Products */;
 			projectDirPath = "";
@@ -964,7 +968,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -998,7 +1002,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.3;
+				MARKETING_VERSION = 0.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1043,6 +1047,14 @@
 				minimumVersion = 10.24.0;
 			};
 		};
+		63C9AB592BD7F4F30046951B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1055,6 +1067,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 639418A52BD59B7F007F02FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		63C9AB5A2BD7F4F30046951B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63C9AB592BD7F4F30046951B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class CollectionRarityCell: UICollectionViewCell {
     
     // MARK: - Properties
     
     static let identifier = Texts.CollectionCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     
     // MARK: - UI Elements and Views
     

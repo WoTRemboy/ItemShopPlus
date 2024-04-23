@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol ShopGrantedPanZoomViewDelegate: AnyObject {
     func didDismiss()
@@ -14,7 +15,7 @@ protocol ShopGrantedPanZoomViewDelegate: AnyObject {
 final class PreviewZoomView: UIView, UIScrollViewDelegate {
     private var scrollView: UIScrollView!
     private var imageView: UIImageView!
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     private var zoom: Double = 2
     
     weak var panZoomDelegate: ShopGrantedPanZoomViewDelegate?

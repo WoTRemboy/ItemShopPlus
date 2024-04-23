@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class MapPreviewViewController: UIViewController {
     
@@ -15,7 +16,7 @@ final class MapPreviewViewController: UIViewController {
     private var actualMap = Map(patchVersion: "", realeseDate: .now, clearImage: "", poiImage: "")
     
     private var image: String
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     private var selectedPOI = Texts.MapPage.poi
     
     private let networkService = DefaultNetworkService()
@@ -135,7 +136,7 @@ final class MapPreviewViewController: UIViewController {
         }
     }
     
-    private func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) -> URLSessionDataTask? {
+    private func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) -> DownloadTask? {
         activityIndicatorSetup()
         
         return ImageLoader.loadImage(urlString: imageUrlString, size: CGSize(width: 2048, height: 2048)) { image in

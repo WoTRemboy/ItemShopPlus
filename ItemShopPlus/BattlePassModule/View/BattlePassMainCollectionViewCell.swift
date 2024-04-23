@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class BattlePassMainCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
     static let identifier = Texts.BattlePassCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     
     // MARK: - UI Elements and Views
     

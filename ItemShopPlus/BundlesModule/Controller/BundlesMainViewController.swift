@@ -52,6 +52,7 @@ final class BundlesMainViewController: UIViewController {
         
         navigationBarSetup()
         collectionViewSetup()
+        noInternetSetup()
         getShop(isRefreshControl: false)
     }
     

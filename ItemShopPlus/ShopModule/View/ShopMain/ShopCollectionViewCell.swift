@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ShopCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
     static let identifier = Texts.ShopMainCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     
     private var images = [ShopItemImage]()
     private var imageViews = [UIImageView]()

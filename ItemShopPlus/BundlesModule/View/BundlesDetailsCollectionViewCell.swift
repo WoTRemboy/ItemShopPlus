@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BundlesDetailsCollectionViewCell: UICollectionViewCell {
     
     static let identifier = Texts.BundleDetailsCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     
     private let detailsImageView: UIImageView = {
         let imageView = UIImageView()

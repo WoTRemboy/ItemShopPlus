@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ImageLoader {
     
@@ -25,7 +26,7 @@ final class ImageLoader {
     
     // MARK: - Loading Methods
     
-    static func loadImage(urlString: String?, size: CGSize, completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask? {
+    static func loadImage(urlString: String?, size: CGSize, completion: @escaping (UIImage?) -> Void) -> DownloadTask? {
         guard let urlString = urlString else {
             completion(nil)
             return nil
@@ -34,42 +35,33 @@ final class ImageLoader {
             completion(imageFromCache)
             return nil
         }
+        
         guard let url = URL(string: urlString) else {
             completion(nil)
             return nil
         }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil else {
-                print(error ?? "URLSession unknown error")
-                completion(nil)
-                return
-            }
-            guard let data = data else {
-                print("No data found")
-                completion(nil)
-                return
-            }
-            DispatchQueue.main.async {
-                guard let loadedImage = UIImage(data: data) else {
-                    completion(nil)
-                    return
+        
+        let resource = Kingfisher.KF.ImageResource(downloadURL: url, cacheKey: urlString)
+        let processor = ResizingImageProcessor(referenceSize: size, mode: .aspectFill)
+        
+        let task = KingfisherManager.shared.retrieveImage(with: resource, options: [.processor(processor), .memoryCacheExpiration(.expired), .diskCacheExpiration(.expired)]) { result in
+            switch result {
+            case .success(let value):
+                DispatchQueue.global(qos: .utility).async {
+                    setImageCache(image: value.image, key: urlString)
                 }
-                if let resizedImage = loadedImage.resize(to: size) {
-                    DispatchQueue.global(qos: .utility).async {
-                        setImageCache(image: resizedImage, key: urlString)
-                    }
-                    completion(resizedImage)
-                } else {
-                    completion(nil)
+                DispatchQueue.main.async {
+                    completion(value.image)
                 }
+            case .failure:
+                completion(nil)
             }
         }
         
-        task.resume()
         return task
     }
     
-    static func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView, size: CGSize) -> URLSessionDataTask? {
+    static func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView, size: CGSize) -> DownloadTask? {
         return loadImage(urlString: imageUrlString, size: size) { image in
             DispatchQueue.main.async {
                 imageView.alpha = 0.5
@@ -85,7 +77,7 @@ final class ImageLoader {
     
     // MARK: - Cancel Method
     
-    static func cancelImageLoad(task: URLSessionDataTask?) {
+    static func cancelImageLoad(task: DownloadTask?) {
         task?.cancel()
     }
     
@@ -180,21 +172,5 @@ final class ImageLoader {
         } catch {
             print("Error marking access time for \(cacheURL): \(error)")
         }
-    }
-}
-
-
-extension UIImage {
-    func resize(to targetSize: CGSize) -> UIImage? {
-        let widthRatio = targetSize.width / size.width
-        let heightRatio = targetSize.height / size.height
-        let scaleFactor = min(widthRatio, heightRatio)
-        
-        let newSize = CGSize(width: size.width * scaleFactor, height: size.height * scaleFactor)
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        defer { UIGraphicsEndImageContext() }
-        draw(in: CGRect(origin: .zero, size: newSize))
-        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

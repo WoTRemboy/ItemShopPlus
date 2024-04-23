@@ -25,11 +25,20 @@ extension ShopItem {
             return nil
         }
         
-        var images = [String]()
+        var images = [ShopItemImage]()
         for asset in assetsData {
+            let mode = asset["primaryMode"] as? String ?? String()
             let image = asset["background"] as? String ?? String()
-            images.append(image)
+            images.append(ShopItemImage(mode: mode, image: image))
         }
+        let sortOrder = ["BattleRoyale", "Juno", "DelMar"]
+        images.sort(by: {
+            guard let first = sortOrder.firstIndex(of: $0.mode),
+                  let second = sortOrder.firstIndex(of: $1.mode) else {
+                return false
+            }
+            return first < second
+        })
         
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
         let regularPrice = priceData["regularPrice"] as? Int ?? 0
@@ -62,7 +71,12 @@ extension ShopItem {
             granted = grantedData.compactMap { GrantedItem.sharingParce(sharingJSON: $0) }
         }
         
-        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner)
+        var video = false
+        if regularPrice == finalPrice && granted.contains(where: { ($0.video != nil) }) {
+            video = true
+        }
+        
+        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner, video: video)
     }
 }
 
@@ -87,11 +101,13 @@ extension GrantedItem {
         let series = data["series"] as? String
         let rarity: Rarity? = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         
+        let video = data["video"] as? String
+        
         var image = String()
         if let imageData = imagesData["background"] as? String {
             image = imageData
         }
 
-        return GrantedItem(id: id, type: type, name: name, description: description, rarity: rarity, series: series, image: image)
+        return GrantedItem(id: id, type: type, name: name, description: description, rarity: rarity, series: series, image: image, video: video)
     }
 }

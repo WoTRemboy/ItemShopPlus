@@ -74,9 +74,21 @@ final class VideoLoader {
                 UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
                     playerViewController.view.alpha = 1.0
                 }, completion: nil)
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//                    playerViewController.view.backgroundColor = .BackColors.backElevated
-//                }
+            }
+        }
+    }
+    
+    static func loadAndShowItemVideo(from videoUrlString: String, viewController: UIViewController) -> URLSessionDataTask? {
+        return loadVideo(urlString: videoUrlString) { video in
+            DispatchQueue.main.async {
+                let playerViewController = AVPlayerViewController()
+                if let url = video {
+                    playerViewController.player = AVPlayer(url: url)
+                    playerViewController.entersFullScreenWhenPlaybackBegins = true
+                    viewController.present(playerViewController, animated: true) {
+                        playerViewController.player!.play()
+                    }
+                }
             }
         }
     }
@@ -158,7 +170,7 @@ final class VideoLoader {
             }
             
             let sizeInMegabytes = Float(totalSize) / bytesInMegabyte
-            return (sizeInMegabytes * 10).rounded() / 10
+            return sizeInMegabytes
         } catch {
             print("Error calculating cache size: \(error)")
             return 0

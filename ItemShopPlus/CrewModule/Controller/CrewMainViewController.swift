@@ -113,8 +113,15 @@ final class CrewMainViewController: UIViewController {
                     self?.itemPack = newPack
                     self?.items = newPack.items
                     
-                    self?.collectionView.reloadData()
-                    self?.collectionView.isHidden = false
+                    guard let collectionView = self?.collectionView else { return }
+                    collectionView.isHidden = false
+                    if isRefreshControl {
+                        collectionView.reloadData()
+                    } else {
+                        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                            collectionView.reloadData()
+                        }, completion: nil)
+                    }
                     
                     self?.noInternetView.isHidden = true
                     self?.symbolButton.isEnabled = true
@@ -157,10 +164,10 @@ final class CrewMainViewController: UIViewController {
         currentSectionTitle = price.code
         currencyMemoryManager(request: .save)
         
-        headerUpdate(price: price)
+        footerUpdate(price: price)
     }
     
-    private func headerUpdate(price: CrewPrice) {
+    private func footerUpdate(price: CrewPrice) {
         let visibleSections = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter)
         for indexPath in visibleSections {
             if let footerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionFooter, at: indexPath) as? CrewFooterReusableView {
@@ -215,11 +222,7 @@ final class CrewMainViewController: UIViewController {
         var children = [UIAction]()
         for price in prices.sorted(by: { $0.code < $1.code }) {
             let sectionAction = UIAction(title: price.code, image: SelectingMethods.selectCurrency(type: price.code)) { [weak self] action in
-                if #available(iOS 17.0, *) {
-                    self?.navigationItem.rightBarButtonItem?.setSymbolImage(SelectingMethods.selectCurrency(type: price.code), contentTransition: .replace)
-                } else {
-                    self?.navigationItem.rightBarButtonItem?.image = SelectingMethods.selectCurrency(type: price.code)
-                }
+                self?.navigationItem.rightBarButtonItem?.image = SelectingMethods.selectCurrency(type: price.code)
                 self?.updateAll(price: price)
             }
             children.append(sectionAction)
@@ -227,7 +230,7 @@ final class CrewMainViewController: UIViewController {
         }
         let curPrice = prices.first(where: { $0.code == currentSectionTitle }) ?? CrewPrice.emptyPrice
         symbolButton.menu = UIMenu(title: "", children: children)
-        headerUpdate(price: curPrice)
+        footerUpdate(price: curPrice)
     }
 
     private func updateMenuState(for sectionTitle: String) {
@@ -293,7 +296,7 @@ extension CrewMainViewController: UICollectionViewDelegate, UICollectionViewData
             fatalError("Failed to dequeue CrewCollectionViewCell in CrewMainViewController")
         }
         let item = items[indexPath.item]
-        cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image)
+        cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image, video: false)
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         

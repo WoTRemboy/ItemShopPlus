@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     static let identifier = Texts.BundleQuestsCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     
     private let bundleImageView: UIImageView = {
         let view = UIImageView()
@@ -47,7 +48,7 @@ final class BundleTableViewCell: UITableViewCell, UITableViewDelegate {
     
     public func configurate(with name: String, _ image: String, _ date: Date?) {
         bundleNameLabel.text = name
-        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: bundleImageView)
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: bundleImageView, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2))
         
         if let end = date {
             let diff = DateFormating.differenceBetweenDates(date1: .now, date2: end)

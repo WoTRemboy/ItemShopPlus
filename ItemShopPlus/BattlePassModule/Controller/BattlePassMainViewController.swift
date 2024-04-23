@@ -179,10 +179,16 @@ final class BattlePassMainViewController: UIViewController {
                     self?.items = newPass.items
                     self?.sortingSections(items: newPass.items)
                     
-                    self?.collectionView.reloadData()
+                    guard let collectionView = self?.collectionView else { return }
+                    collectionView.isHidden = false
+                    if isRefreshControl {
+                        collectionView.reloadData()
+                    } else {
+                        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                            collectionView.reloadData()
+                        }, completion: nil)
+                    }
                     self?.menuSetup()
-                    
-                    self?.collectionView.isHidden = false
                     self?.noInternetView.isHidden = true
                     self?.searchController.searchBar.isHidden = false
                     self?.infoButton.isEnabled = true
@@ -282,7 +288,6 @@ final class BattlePassMainViewController: UIViewController {
         let allAction = UIAction(title: Texts.BattlePassPage.allMenu, image: nil) { [weak self] action in
             self?.filterItemsBySection(sectionTitle: Texts.BattlePassPage.allMenu, displayTitle: Texts.BattlePassPage.allMenu, forAll: true)
             self?.filterButton.image = .FilterMenu.filter
-            self?.menuSetup()
         }
         allAction.state = .on
         var children = [allAction]
@@ -385,12 +390,12 @@ extension BattlePassMainViewController: UICollectionViewDelegate, UICollectionVi
         
         if inSearchMode {
             let item = filteredItems[indexPath.item]
-            cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType)
+            cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType, video: item.video != nil)
         } else {
             let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
-                cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType)
+                cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType, video: item.video != nil)
             }
         }
         

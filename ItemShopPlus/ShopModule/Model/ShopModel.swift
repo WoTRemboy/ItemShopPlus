@@ -12,7 +12,7 @@ struct ShopItem {
     let name: String
     let description: String
     let type: String
-    let images: [String]
+    let images: [ShopItemImage]
     let firstReleaseDate: Date?
     let previousReleaseDate: Date?
     let buyAllowed: Bool
@@ -23,6 +23,7 @@ struct ShopItem {
     let granted: [GrantedItem?]
     let section: String
     let banner: Banner
+    let video: Bool
 }
 
 struct GrantedItem {
@@ -32,6 +33,12 @@ struct GrantedItem {
     let description: String
     let rarity: Rarity?
     let series: String?
+    let image: String
+    let video: String?
+}
+
+struct ShopItemImage {
+    let mode: String
     let image: String
 }
 

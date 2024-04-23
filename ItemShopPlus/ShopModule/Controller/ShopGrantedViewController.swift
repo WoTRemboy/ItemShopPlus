@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 final class ShopGrantedViewController: UIViewController {
     
@@ -18,6 +19,8 @@ final class ShopGrantedViewController: UIViewController {
     private var isPresentedFullScreen = false
     
     // MARK: - UI Elements and Views
+    
+    private var playerViewController = AVPlayerViewController()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -91,6 +94,11 @@ final class ShopGrantedViewController: UIViewController {
         }
     }
     
+    @objc private func videoDidEnd() {
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
+        self.playerViewController.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Rows and Cell Animation Methods
     
     private func countRows() -> Int {
@@ -107,22 +115,11 @@ final class ShopGrantedViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            
-            var itemImage = self.bundle.images.first ?? ""
-            var itemName = self.bundle.name
-            if !self.items.isEmpty {
-                let item = self.items[indexPath.item]
-                itemImage = item?.image ?? ""
-                itemName = item?.name ?? ""
+            if self.items.count > 0, let video = self.items[indexPath.item]?.video, let videoURL = URL(string: video) {
+                self.videoSetup(videoURL: videoURL)
+            } else {
+                self.previewSetup(index: indexPath.item)
             }
-            self.isPresentedFullScreen = true
-            
-            let vc = ShopGrantedPreviewViewController(image: itemImage, name: itemName)
-            let navVC = UINavigationController(rootViewController: vc)
-            navVC.modalPresentationStyle = .fullScreen
-            navVC.modalTransitionStyle = .crossDissolve
-            self.present(navVC, animated: true)
-            
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = CGAffineTransform.identity
             })
@@ -130,6 +127,40 @@ final class ShopGrantedViewController: UIViewController {
     }
     
     // MARK: - UI Setup
+    
+    private func videoSetup(videoURL: URL) {
+        let player = AVPlayer(url: videoURL)
+        playerViewController.player = player
+        
+        self.isPresentedFullScreen = true
+        self.present(playerViewController, animated: true) {
+            self.playerViewController.player?.play()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.videoDidEnd), name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+        }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error setting audio session:", error)
+        }
+    }
+    
+    private func previewSetup(index: Int) {
+        var itemImage = self.bundle.images.first?.image ?? ""
+        var itemName = self.bundle.name
+        if !self.items.isEmpty {
+            let item = self.items[index]
+            itemImage = item?.image ?? ""
+            itemName = item?.name ?? ""
+        }
+        self.isPresentedFullScreen = true
+        
+        let vc = ShopGrantedPreviewViewController(image: itemImage, name: itemName)
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalPresentationStyle = .fullScreen
+        navVC.modalTransitionStyle = .crossDissolve
+        self.present(navVC, animated: true)
+    }
     
     private func setupUI() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -160,9 +191,9 @@ extension ShopGrantedViewController: UICollectionViewDelegate, UICollectionViewD
             fatalError("Failed to dequeue ShopGrantedCollectionViewCell in ShopGrantedViewController")
         }
         if items.count > 0, let item = items[indexPath.item] {
-            cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image)
+            cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image, video: item.video != nil)
         } else {
-            cell.configurate(name: bundle.name, type: bundle.type, rarity: bundle.rarity, image: bundle.images.first ?? "")
+            cell.configurate(name: bundle.name, type: bundle.type, rarity: bundle.rarity, image: bundle.images.first?.image ?? "", video: false)
         }
         
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))

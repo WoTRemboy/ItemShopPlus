@@ -13,6 +13,7 @@ extension UIImage {
     
     enum Placeholder {
         static let noImage = UIImage(named: "ImagePlaceholder")
+        static let video = UIImage(named: "VideoBanner")
     }
     
     enum CurrencySymbol {
@@ -39,12 +40,12 @@ extension UIImage {
     
     enum MainButtons {
         static let shop = createImage(name: "basket")
-        static let battlePass = createImage(name: "star")
+        static let battlePass = UIImage(named: "BattlePassIcon")
         static let lootDetails = createImage(name: "chart.bar")
         static let bundles = createImage(name: "tag")
-        static let crew = createImage(name: "pencil.and.outline")
+        static let crew = UIImage(named: "CrewIcon")
         static let map = createImage(name: "map")
-        static let stats = createImage(name: "person")
+        static let stats = UIImage(named: "StatsIcon")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")
         static let question = createImage(name: "questionmark.square.dashed")
         static let trash = createImage(name: "trash")
@@ -89,7 +90,7 @@ extension UIImage {
     // MARK: - Stats Module
     
     enum Stats {
-        static let newNickname = UIImage(systemName: "square.and.pencil")
+        static let newNickname = UIImage(systemName: "rectangle.and.pencil.and.ellipsis")
         static let noStats = createImage(name: "person.slash")
         static let progress = UIImage(named: "ProgressStats")
         static let global = UIImage(named: "GlobalStats")
@@ -97,7 +98,7 @@ extension UIImage {
         static let history = UIImage(named: "HistoryStats")
         static let touch = UIImage(systemName: "hand.tap")
         static let gamepad = UIImage(systemName: "gamecontroller")
-        static let mouse = UIImage(systemName: "computermouse")
+        static let keyboard = UIImage(systemName: "keyboard")
     }
     
     // MARK: - Quests Module

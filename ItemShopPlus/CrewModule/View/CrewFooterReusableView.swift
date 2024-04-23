@@ -93,7 +93,7 @@ final class CrewFooterReusableView: UICollectionReusableView {
                 self.priceLabel.text = "\(price.symbol) \(priceToShow)"
             }, completion: nil)
         case .right:
-            UIView.transition(with: priceLabel, duration: 0.5, options: .transitionFlipFromBottom, animations: {
+            UIView.transition(with: priceLabel, duration: 0.3, options: .transitionFlipFromBottom, animations: {
                 self.priceLabel.text = "\(priceToShow) \(price.symbol)"
             }, completion: nil)
         }

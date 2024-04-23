@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class QuestTableViewCell: UITableViewCell {
 
     static let identifier = Texts.QuestCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
 
     private let questImageView: UIImageView = {
         let view = UIImageView()
@@ -44,7 +45,7 @@ final class QuestTableViewCell: UITableViewCell {
         questProgressLabel.text = Texts.QuestCell.requirement + progress
         
         if let imageUrlString = image {
-            imageLoadTask = ImageLoader.loadAndShowImage(from: imageUrlString, to: questImageView)
+            imageLoadTask = ImageLoader.loadAndShowImage(from: imageUrlString, to: questImageView, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2))
         } else {
             questImageView.image = .Quests.experience
         }

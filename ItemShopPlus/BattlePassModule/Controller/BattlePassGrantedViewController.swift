@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 final class BattlePassGrantedViewController: UIViewController {
     
@@ -17,6 +18,8 @@ final class BattlePassGrantedViewController: UIViewController {
     private var isPresentedFullScreen = false
     
     // MARK: - UI Elements and Views
+    
+    private var playerViewController = AVPlayerViewController()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,7 +34,7 @@ final class BattlePassGrantedViewController: UIViewController {
     
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
-        button.title = Texts.Navigation.backToShop
+        button.title = Texts.Navigation.backToPass
         return button
     }()
     
@@ -85,6 +88,11 @@ final class BattlePassGrantedViewController: UIViewController {
         }
     }
     
+    @objc private func videoDidEnd() {
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
+        self.playerViewController.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Rows and Cell Animation Methods
     
     private func countRows() -> Float {
@@ -106,15 +114,11 @@ final class BattlePassGrantedViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            
-            self.isPresentedFullScreen = true
-            
-            let vc = ShopGrantedPreviewViewController(image: self.item.image, name: self.item.name)
-            let navVC = UINavigationController(rootViewController: vc)
-            navVC.modalPresentationStyle = .fullScreen
-            navVC.modalTransitionStyle = .crossDissolve
-            self.present(navVC, animated: true)
-            
+            if let video = self.item.video, let videoURL = URL(string: video) {
+                self.videoSetup(videoURL: videoURL)
+            } else {
+                self.previewSetup()
+            }
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = CGAffineTransform.identity
             })
@@ -122,6 +126,33 @@ final class BattlePassGrantedViewController: UIViewController {
     }
     
     // MARK: - UI Setup
+    
+    private func videoSetup(videoURL: URL) {
+        let player = AVPlayer(url: videoURL)
+        playerViewController.player = player
+        
+        self.isPresentedFullScreen = true
+        self.present(playerViewController, animated: true) {
+            self.playerViewController.player?.play()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.videoDidEnd), name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+        }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error setting audio session:", error)
+        }
+    }
+    
+    private func previewSetup() {
+        self.isPresentedFullScreen = true
+        
+        let vc = ShopGrantedPreviewViewController(image: self.item.image, name: self.item.name)
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalPresentationStyle = .fullScreen
+        navVC.modalTransitionStyle = .crossDissolve
+        self.present(navVC, animated: true)
+    }
     
     private func setupUI() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -151,7 +182,7 @@ extension BattlePassGrantedViewController: UICollectionViewDelegate, UICollectio
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionRarityCell.identifier, for: indexPath) as? CollectionRarityCell else {
             fatalError("Failed to dequeue ShopGrantedCollectionViewCell in ShopGrantedViewController")
         }
-        cell.configurate(name: item.name, type: item.type, rarity: item.rarity, image: item.image)
+        cell.configurate(name: item.name, type: item.type, rarity: item.rarity, image: item.image, video: item.video != nil)
         
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)

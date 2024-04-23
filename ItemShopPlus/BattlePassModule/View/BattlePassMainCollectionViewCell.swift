@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class BattlePassMainCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
     static let identifier = Texts.BattlePassCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     
     // MARK: - UI Elements and Views
     
@@ -54,14 +55,21 @@ final class BattlePassMainCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    private let videoImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = .Placeholder.video
+        return view
+    }()
+    
     // MARK: - Public Configure Method
     
-    public func configurate(name: String, type: String, image: String, payType: PayType) {
-        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: itemImageView)
+    public func configurate(name: String, type: String, image: String, payType: PayType, video: Bool) {
         itemNameLabel.text = name
         itemTypeLabel.text = type
         payType == .free ? freeBannerViewSetup() : nil
+        video ? videoImageViewSetup() : nil
         setupUI()
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: itemImageView, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2))
     }
     
     // MARK: - UI Setup
@@ -71,10 +79,22 @@ final class BattlePassMainCollectionViewCell: UICollectionViewCell {
         freeBannerImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            freeBannerImageView.topAnchor.constraint(equalTo: itemImageView.topAnchor, constant: 12),
-            freeBannerImageView.leadingAnchor.constraint(equalTo: itemImageView.leadingAnchor, constant: 12),
-            freeBannerImageView.widthAnchor.constraint(equalTo: freeBannerImageView.heightAnchor, multiplier: 1.5),
-            freeBannerImageView.heightAnchor.constraint(equalToConstant: 35)
+            freeBannerImageView.topAnchor.constraint(equalTo: itemImageView.topAnchor, constant: 4),
+            freeBannerImageView.leadingAnchor.constraint(equalTo: itemImageView.leadingAnchor, constant: 8),
+            freeBannerImageView.widthAnchor.constraint(equalTo: freeBannerImageView.heightAnchor, multiplier: 0.96),
+            freeBannerImageView.heightAnchor.constraint(equalTo: itemImageView.heightAnchor, multiplier: 1/3.5)
+        ])
+    }
+    
+    private func videoImageViewSetup() {
+        itemImageView.addSubview(videoImageView)
+        videoImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            videoImageView.topAnchor.constraint(equalTo: itemImageView.topAnchor, constant: 10),
+            videoImageView.trailingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: -10),
+            videoImageView.heightAnchor.constraint(equalTo: itemImageView.widthAnchor, multiplier: 1/8),
+            videoImageView.widthAnchor.constraint(equalTo: videoImageView.heightAnchor, multiplier: 1.06)
         ])
     }
     
@@ -118,6 +138,7 @@ final class BattlePassMainCollectionViewCell: UICollectionViewCell {
         itemImageView.image = .Placeholder.noImage
         freeBannerImageView.removeFromSuperview()
         starImageView.removeFromSuperview()
+        videoImageView.removeFromSuperview()
     }
 }
 

@@ -92,7 +92,7 @@ final class StatsMainViewController: UIViewController {
     @objc private func showNicknamePopup(firstAppear: Bool) {
         let nicknameVC = NicknamePopupViewController()
         nicknameVC.completionHandler = { [weak self] newNickname, platform in
-            guard let collectionView = self?.collectionView else { return }
+            guard let collectionView = self?.collectionView, newNickname != self?.nickname else { return }
             UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
                 collectionView.isHidden = true
             }, completion: nil)

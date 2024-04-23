@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol ShopGrantedPanZoomViewDelegate: AnyObject {
     func didDismiss()
@@ -14,25 +15,28 @@ protocol ShopGrantedPanZoomViewDelegate: AnyObject {
 final class PreviewZoomView: UIView, UIScrollViewDelegate {
     private var scrollView: UIScrollView!
     private var imageView: UIImageView!
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
+    private var zoom: Double = 2
     
     weak var panZoomDelegate: ShopGrantedPanZoomViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupScrollView()
-        setupImageView()
-        setupDoubleTapGesture()
-        setupPanGesture()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    convenience init(image: String, presentingViewController: UIViewController) {
+    convenience init(image: String, presentingViewController: UIViewController, size: CGSize = CGSize(width: 1024, height: 1024), zoom: Double = 2) {
         self.init(frame: .zero)
-        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: imageView)
+        self.zoom = zoom
+        
+        setupScrollView()
+        setupImageView()
+        setupDoubleTapGesture()
+        setupPanGesture()
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: imageView, size: size)
     }
     
     override func layoutSubviews() {
@@ -89,9 +93,10 @@ final class PreviewZoomView: UIView, UIScrollViewDelegate {
         scrollView = UIScrollView()
         scrollView.delegate = self
         scrollView.minimumZoomScale = 1.0
-        scrollView.maximumZoomScale = 2.0
+        scrollView.maximumZoomScale = zoom
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.contentInsetAdjustmentBehavior = .scrollableAxes
         addSubview(scrollView)
     }
     

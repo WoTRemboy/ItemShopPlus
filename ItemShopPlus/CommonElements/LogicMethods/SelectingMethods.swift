@@ -182,7 +182,7 @@ final class SelectingMethods {
         case "touch":
             return .Stats.touch ?? UIImage()
         case "keyboardmouse":
-            return .Stats.mouse ?? UIImage()
+            return .Stats.keyboard ?? UIImage()
         case "gamepad":
             return .Stats.gamepad ?? UIImage()
         default:
@@ -195,7 +195,7 @@ final class SelectingMethods {
         case "touch":
             return Texts.StatsDetailsPage.touch
         case "keyboardmouse":
-            return Texts.StatsDetailsPage.mouse
+            return Texts.StatsDetailsPage.keyboard
         case "gamepad":
             return Texts.StatsDetailsPage.gamepad
         default:

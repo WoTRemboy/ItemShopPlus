@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ShopCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
     static let identifier = Texts.ShopMainCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     
-    private var images = [String]()
+    private var images = [ShopItemImage]()
     private var imageViews = [UIImageView]()
     private var isLoading = false
     
@@ -82,11 +83,17 @@ final class ShopCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    private let videoImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = .Placeholder.video
+        return view
+    }()
+    
     // MARK: - Public Configure Method
         
-    public func configurate(with images: [String], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, grantedCount: Int, _ width: CGFloat) {
+    public func configurate(with images: [ShopItemImage], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, _ video: Bool, grantedCount: Int, _ width: CGFloat) {
         self.images = images
-        setupImageCarousel(images: images, banner: banner, grantedCount: grantedCount, cellWidth: width)
+        setupImageCarousel(images: images, banner: banner, video: video, grantedCount: grantedCount, cellWidth: width)
         contentSetup(name: name, price: price, oldPrice: oldPrice, count: grantedCount)
         setupUI()
         
@@ -114,7 +121,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
             paletteColors: [.white, .IconColors.backgroundPages ?? .orange]))
     }
     
-    private func setupImageCarousel(images: [String], banner: Banner, grantedCount: Int, cellWidth: CGFloat) {
+    private func setupImageCarousel(images: [ShopItemImage], banner: Banner, video: Bool, grantedCount: Int, cellWidth: CGFloat) {
         scrollView.delegate = self
         
         for (index, imageURL) in images.enumerated() {
@@ -124,7 +131,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
             scrollView.addSubview(imageView)
             
             if index == 0 {
-                imageLoadTask = ImageLoader.loadAndShowImage(from: imageURL, to: imageView)
+                imageLoadTask = ImageLoader.loadAndShowImage(from: imageURL.image, to: imageView, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2))
             }
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -139,14 +146,15 @@ final class ShopCollectionViewCell: UICollectionViewCell {
         if grantedCount > 1 {
             grantedItemsImageViewSetup(cellWidth: cellWidth)
         }
-        
         if images.count > 1 {
             itemPagesImageViewSetup(cellWidth: cellWidth)
             scrollView.showsHorizontalScrollIndicator = true
         }
-        
-        if banner != .null, banner != .sale {
+        if banner == .new {
             bannerImageViewSetup(banner: banner, cellWidth: cellWidth)
+        }
+        if video {
+            videoImageViewSetup(cellWidth: cellWidth)
         }
     }
     
@@ -185,6 +193,18 @@ final class ShopCollectionViewCell: UICollectionViewCell {
             bannerImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 8),
             bannerImageView.heightAnchor.constraint(equalToConstant: cellWidth / 5),
             bannerImageView.widthAnchor.constraint(equalTo: bannerImageView.heightAnchor, multiplier: 1.5)
+        ])
+    }
+    
+    private func videoImageViewSetup(cellWidth: CGFloat) {
+        scrollView.addSubview(videoImageView)
+        videoImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            videoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
+            videoImageView.trailingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: cellWidth - 10),
+            videoImageView.heightAnchor.constraint(equalToConstant: cellWidth / 8),
+            videoImageView.widthAnchor.constraint(equalTo: videoImageView.heightAnchor, multiplier: 1.06)
         ])
     }
     
@@ -246,6 +266,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
         bannerImageView.removeFromSuperview()
         grantedItemsImageView.removeFromSuperview()
         itemPagesImageView.removeFromSuperview()
+        videoImageView.removeFromSuperview()
     }
     
     // MARK: - Networking?
@@ -258,7 +279,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
                 isLoading = true
                 let imageURL = images[index]
                 
-                imageLoadTask = ImageLoader.loadImage(urlString: imageURL) { image in
+                imageLoadTask = ImageLoader.loadImage(urlString: imageURL.image, size: CGSize(width: UIScreen.main.nativeBounds.width / 2, height: UIScreen.main.nativeBounds.width / 2)) { image in
                     DispatchQueue.main.async {
                         imageView.alpha = 0.5
                         if let image = image {

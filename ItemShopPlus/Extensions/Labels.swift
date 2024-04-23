@@ -24,6 +24,8 @@ final class Texts {
         static let done = "Done"
         static let backToMain = "Main"
         static let backToShop = "Shop"
+        static let backToPass = "Pass"
+        static let backToBundles = "Bundles"
     }
     
     enum SearchController {
@@ -130,6 +132,7 @@ final class Texts {
         static let rotationInfo = "The shop refreshes every day. Check back to see what's new!"
         static let reloadShop = "It's time to update!"
         static let remaining = "Remaining time"
+        static let jamTracks = "Jam Tracks"
     }
     
     enum ShopMainCell {
@@ -160,7 +163,7 @@ final class Texts {
     }
     
     enum ShopTimer {
-        static let whatMeans = "The meaning of: "
+        static let whatMeans = "What is: "
         static let swipeInfo = "Swipe over the cell image to see more variations!"
         static let countInfo = "Number of elements in the item bundle."
         static let aboutRotation = "About rotation"
@@ -242,6 +245,30 @@ final class Texts {
         static let and = "and"
     }
     
+    // MARK: - Bundles Module
+    
+    enum BundlesPage {
+        static let title = "Bundles"
+        static let header = "Special Offers"
+    }
+    
+    enum BundleCell {
+        static let identifier = "BundleCell"
+        static let free = "Free"
+    }
+    
+    enum BundleDetailsCell {
+        static let identifier = "BundleDetailsCell"
+        static let footerIdentifier = "BundleDetailsFooter"
+        
+        static let expiryDate = "Expiry date"
+        static let expiryDateText = "00.00.0000"
+        static let description = "Description"
+        static let descriptionText = "Descriprion is..."
+        static let about = "About"
+        static let aboutText = "About this..."
+    }
+    
     // MARK: - Stats Module
     
     enum StatsPage {
@@ -283,7 +310,7 @@ final class Texts {
     
     enum StatsDetailsPage {
         static let gamepad = "Gamepad"
-        static let mouse = "Mouse"
+        static let keyboard = "Keyboard"
         static let touch = "Touch"
     }
     

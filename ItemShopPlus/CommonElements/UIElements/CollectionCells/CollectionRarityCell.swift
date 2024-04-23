@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class CollectionRarityCell: UICollectionViewCell {
     
     // MARK: - Properties
     
     static let identifier = Texts.CollectionCell.identifier
-    private var imageLoadTask: URLSessionDataTask?
+    private var imageLoadTask: DownloadTask?
     
     // MARK: - UI Elements and Views
     
@@ -47,17 +48,36 @@ final class CollectionRarityCell: UICollectionViewCell {
         return view
     }()
     
+    private let videoImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = .Placeholder.video
+        return view
+    }()
+    
     // MARK: - Public Configure Method
     
-    public func configurate(name: String, type: String, rarity: Rarity, image: String) {
-        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: grantedImageView)
+    public func configurate(name: String, type: String, rarity: Rarity, image: String, video: Bool) {
+        imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: grantedImageView, size: CGSize(width: 1024, height: 1024))
         itemNameLabel.text = name
         itemTypeLabel.text = type
         rarityImageView.image = SelectingMethods.selectRarity(rarity: rarity)
+        video ? videoBannerImageViewSetup() : nil
         setupUI()
     }
     
     // MARK: - UI Setup
+    
+    private func videoBannerImageViewSetup() {
+        grantedImageView.addSubview(videoImageView)
+        videoImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            videoImageView.topAnchor.constraint(equalTo: grantedImageView.topAnchor, constant: 10),
+            videoImageView.trailingAnchor.constraint(equalTo: grantedImageView.trailingAnchor, constant: -10),
+            videoImageView.heightAnchor.constraint(equalTo: grantedImageView.widthAnchor, multiplier: 1/8),
+            videoImageView.widthAnchor.constraint(equalTo: videoImageView.heightAnchor, multiplier: 1.06)
+        ])
+    }
     
     private func setupUI() {
         addSubview(grantedImageView)
@@ -99,5 +119,6 @@ final class CollectionRarityCell: UICollectionViewCell {
         grantedImageView.image = .Placeholder.noImage
         grantedImageView.removeFromSuperview()
         rarityImageView.removeFromSuperview()
+        videoImageView.removeFromSuperview()
     }
 }

@@ -154,7 +154,6 @@ final class BattlePassInfoViewController: UIViewController {
     }
     
     private func playerLayout() {
-        playerViewController.view.layer.cornerRadius = 10
         playerViewController.view.layer.masksToBounds = true
         
         addChild(playerViewController)

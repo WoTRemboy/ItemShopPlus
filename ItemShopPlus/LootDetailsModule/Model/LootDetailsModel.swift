@@ -15,21 +15,25 @@ struct LootDetailsItem {
     let rarity: Rarity
     let type: LootItemType
     let searchTags: [String]
-    let image: String
+    let mainImage: String
+    let rarityImage: String
     let stats: LootItemStats
+    
+    static let emptyLootDetails = LootDetailsItem(id: "", enabled: false, name: "", description: "", rarity: .common, type: .standart, searchTags: [], mainImage: "", rarityImage: "", stats: .emptyStats)
 }
 
 struct LootItemStats {
-    let dmgBullet: Int
-    let firingRate: Int
+    let dmgBullet: Double
+    let firingRate: Double
     let clipSize: Int
     let reloadTime: Double
     let inCartridge: Int
     let spread: Double
     let downsight: Double
     let zoneCritical: Double
+    let availableStats: Int
     
-    static let emptyStats = LootItemStats(dmgBullet: 0, firingRate: 0, clipSize: 0, reloadTime: 0, inCartridge: 0, spread: 0, downsight: 0, zoneCritical: 0)
+    static let emptyStats = LootItemStats(dmgBullet: 0, firingRate: 0, clipSize: 0, reloadTime: 0, inCartridge: 0, spread: 0, downsight: 0, zoneCritical: 0, availableStats: -1)
 }
 
 enum LootItemType {
@@ -55,4 +59,10 @@ enum LootItemType {
             return .standart
         }
     }
+}
+
+enum LootItemGameType {
+    case weapon
+    case health
+    case trap
 }

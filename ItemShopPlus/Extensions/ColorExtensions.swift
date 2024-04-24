@@ -44,6 +44,7 @@ extension UIColor {
     enum IconColors {
         static let foregroundPages = UIColor(named: "ForegroundPages")
         static let backgroundPages = UIColor(named: "BackgroundPages")
+        static let LootItemColor = UIColor(named: "LootItemColor")
     }
     
     enum Shadows {

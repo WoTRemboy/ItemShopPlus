@@ -269,6 +269,19 @@ final class Texts {
         static let aboutText = "About this..."
     }
     
+    // MARK: - Loot Details Module
+    
+    enum LootDetailsMain {
+        static let title = "Loot Details"
+        static let header = "All Weapons"
+    }
+    
+    enum LootDetailsMainCell {
+        static let identifier = "LootDetailsMainCell"
+        static let rarities = "Rarities"
+        static let stats = "Stats"
+    }
+    
     // MARK: - Stats Module
     
     enum StatsPage {

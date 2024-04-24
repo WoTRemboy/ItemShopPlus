@@ -16,7 +16,9 @@ extension LootDetailsItem {
               let rarityData = data["rarity"] as? String,
               let typeData = data["type"] as? String,
               let imageData = data["images"] as? [String: Any],
-              let statsData = data["mainStats"] as? [String: Any]
+              let statsData = data["mainStats"] as? [String: Any],
+              let mainImage = imageData["icon"] as? String,
+              let rarityImage = imageData["background"] as? String
         else {
             return nil
         }
@@ -24,21 +26,22 @@ extension LootDetailsItem {
         let description = data["description"] as? String ?? String()
         let rarity = SelectingMethods.selectRarity(rarityText: rarityData)
         let type = LootItemType.selectingLootType(type: typeData)
-        let image = imageData["background"] as? String ?? String()
+        
         let stats = LootItemStats.sharingParse(sharingJSON: statsData) ?? LootItemStats.emptyStats
+        guard stats.availableStats > 4 else { return nil }
         
         let searchTagsData = data["searchTags"] as? String
         let searchTags = searchTagsData?.split(separator: " ").map({ String($0) }) ?? []
         
-        return LootDetailsItem(id: id, enabled: enabled, name: name, description: description, rarity: rarity, type: type, searchTags: searchTags, image: image, stats: stats)
+        return LootDetailsItem(id: id, enabled: enabled, name: name, description: description, rarity: rarity, type: type, searchTags: searchTags, mainImage: mainImage, rarityImage: rarityImage, stats: stats)
     }
 }
 
 extension LootItemStats {
     static func sharingParse(sharingJSON: Any) -> LootItemStats? {
         guard let data = sharingJSON as? [String: Any],
-              let dmgBullet = data["DmgPB"] as? Int,
-              let firingRate = data["FiringRate"] as? Int,
+              let dmgBullet = data["DmgPB"] as? Double,
+              let firingRate = data["FiringRate"] as? Double,
               let clipSize = data["ClipSize"] as? Int,
               let reloadTime = data["ReloadTime"] as? Double,
               let inCartridge = data["BulletsPerCartridge"] as? Int,
@@ -49,6 +52,16 @@ extension LootItemStats {
             return nil
         }
         
-        return LootItemStats(dmgBullet: dmgBullet, firingRate: firingRate, clipSize: clipSize, reloadTime: reloadTime, inCartridge: inCartridge, spread: spread, downsight: downsight, zoneCritical: zoneCritical)
+        var availableStats = 0
+        if dmgBullet != 0 { availableStats += 1 }
+        if firingRate != 0 { availableStats += 1 }
+        if clipSize != 0 { availableStats += 1 }
+        if reloadTime != 0 { availableStats += 1 }
+        if inCartridge != 0 { availableStats += 1 }
+        if spread != 0 { availableStats += 1 }
+        if downsight != 0 { availableStats += 1 }
+        if zoneCritical != 0 { availableStats += 1 }
+        
+        return LootItemStats(dmgBullet: dmgBullet, firingRate: firingRate, clipSize: clipSize, reloadTime: reloadTime, inCartridge: inCartridge, spread: spread, downsight: downsight, zoneCritical: zoneCritical, availableStats: availableStats)
     }
 }

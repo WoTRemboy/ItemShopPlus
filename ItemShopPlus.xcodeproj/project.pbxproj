@@ -63,6 +63,7 @@
 		6399EFF42BD85167008B19E8 /* LootDetailsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF32BD85167008B19E8 /* LootDetailsMainViewController.swift */; };
 		6399EFF62BD85176008B19E8 /* LootDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF52BD85176008B19E8 /* LootDetailsModel.swift */; };
 		6399EFF82BD8566B008B19E8 /* JSONLootDetailsParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF72BD8566B008B19E8 /* JSONLootDetailsParse.swift */; };
+		6399EFFB2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFFA2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift */; };
 		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
 		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
 		63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */; };
@@ -151,6 +152,7 @@
 		6399EFF32BD85167008B19E8 /* LootDetailsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsMainViewController.swift; sourceTree = "<group>"; };
 		6399EFF52BD85176008B19E8 /* LootDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsModel.swift; sourceTree = "<group>"; };
 		6399EFF72BD8566B008B19E8 /* JSONLootDetailsParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLootDetailsParse.swift; sourceTree = "<group>"; };
+		6399EFFA2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsMainCollectionViewCell.swift; sourceTree = "<group>"; };
 		639E62342B92719100E17B4F /* BattlePassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainViewController.swift; sourceTree = "<group>"; };
 		63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewZoomView.swift; sourceTree = "<group>"; };
 		63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTestViewController.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				6399EFF12BD85137008B19E8 /* Model */,
+				6399EFF92BD9333A008B19E8 /* View */,
 				6399EFF22BD8513D008B19E8 /* Controller */,
 			);
 			path = LootDetailsModule;
@@ -445,6 +448,14 @@
 				6399EFF32BD85167008B19E8 /* LootDetailsMainViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		6399EFF92BD9333A008B19E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6399EFFA2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		639E62332B92715300E17B4F /* Controller */ = {
@@ -797,6 +808,7 @@
 				639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */,
 				634209082BCC0DC8008A9496 /* StatsDetailsViewController.swift in Sources */,
 				63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */,
+				6399EFFB2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift in Sources */,
 				6320672C2B8B66130060AB1B /* CrewModel.swift in Sources */,
 				637B26832B4AB41C0075B871 /* SplashScreenViewController.swift in Sources */,
 				6399EFF62BD85176008B19E8 /* LootDetailsModel.swift in Sources */,

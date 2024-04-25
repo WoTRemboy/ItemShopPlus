@@ -44,7 +44,7 @@ extension UIImage {
         static let lootDetails = createImage(name: "chart.bar")
         static let bundles = createImage(name: "tag")
         static let crew = UIImage(named: "CrewIcon")
-        static let map = createImage(name: "map")
+        static let map = UIImage(named: "MapIcon")
         static let stats = UIImage(named: "StatsIcon")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")
         static let question = createImage(name: "questionmark.square.dashed")

@@ -16,6 +16,7 @@ protocol NetworkingService {
     func getLootDetails(completion: @escaping (Result<[LootDetailsItem], Error>) -> Void)
     func getAccountStats(nickname: String, platform: String?, completion: @escaping (Result<Stats, Error>) -> Void)
     func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void)
+    func getItemVideo(id: String, completion: @escaping (Result<ItemVideo, Error>) -> Void)
 }
 
 final class DefaultNetworkService: NetworkingService {
@@ -277,6 +278,38 @@ final class DefaultNetworkService: NetworkingService {
                         let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                         let bundleData = response?["maps"] as? [[String: Any]]
                         let items = bundleData?.compactMap { Map.sharingParse(sharingJSON: $0) } ?? []
+                        completion(.success(items))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    // MARK: - Item Video Module Request
+    
+    func getItemVideo(id: String, completion: @escaping (Result<ItemVideo, Error>) -> Void) {
+        guard var url = baseURL else { return }
+        url = url.appendingPathComponent("v2/items/get")
+        
+        let queryItems = [URLQueryItem(name: "id", value: id), URLQueryItem(name: "lang", value: "en")]
+        url.append(queryItems: queryItems)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.sendRequest(request: request) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let response = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        let bundleData = response?["item"] as? [String: Any]
+                        let items = ItemVideo.sharingParse(sharingJSON: bundleData as Any) ?? ItemVideo.emptyVideo
                         completion(.success(items))
                     } catch {
                         completion(.failure(error))

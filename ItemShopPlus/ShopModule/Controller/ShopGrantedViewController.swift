@@ -17,10 +17,12 @@ final class ShopGrantedViewController: UIViewController {
     
     private var originalTitleAttributes: [NSAttributedString.Key : Any]?
     private var isPresentedFullScreen = false
+    private let networkService = DefaultNetworkService()
     
     // MARK: - UI Elements and Views
     
     private var playerViewController = AVPlayerViewController()
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -118,11 +120,54 @@ final class ShopGrantedViewController: UIViewController {
             if self.items.count > 0, let video = self.items[indexPath.item]?.video, let videoURL = URL(string: video) {
                 self.videoSetup(videoURL: videoURL)
             } else {
-                self.previewSetup(index: indexPath.item)
+                let item = self.items[indexPath.item]
+                if item?.type == "Outfit" {
+                    self.getVideo(index: indexPath.item)
+                } else {
+                    self.previewSetup(index: indexPath.item)
+                }
             }
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = CGAffineTransform.identity
             })
+        }
+    }
+    
+    private func getVideo(index: Int) {
+        let item = items[index]
+        DispatchQueue.main.async {
+            self.collectionView.isUserInteractionEnabled = false
+            UIView.animate(withDuration: 0.2) {
+                self.collectionView.alpha = 0.5
+            }
+            self.activityIndicator.center = self.view.center
+            self.view.addSubview(self.activityIndicator)
+            self.activityIndicator.startAnimating()
+        }
+        self.networkService.getItemVideo(id: item?.id ?? "") { [weak self] result in
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.removeFromSuperview()
+                self?.collectionView.isUserInteractionEnabled = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self?.collectionView.alpha = 1
+                }
+            }
+            switch result {
+            case .success(let videoItem):
+                DispatchQueue.main.async {
+                    guard let url = URL(string: videoItem.video) else {
+                        self?.previewSetup(index: index)
+                        return
+                    }
+                    self?.videoSetup(videoURL: url)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.previewSetup(index: index)
+                }
+                print(error)
+            }
         }
     }
     

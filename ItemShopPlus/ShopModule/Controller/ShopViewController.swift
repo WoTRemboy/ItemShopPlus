@@ -239,16 +239,6 @@ final class ShopViewController: UIViewController {
         }, completion: nil)
     }
     
-//    private func sortingStats(from index: Int) {
-//        from.sort(by: {
-//            guard let first = sortOrder.firstIndex(of: $0.mode),
-//                  let second = sortOrder.firstIndex(of: $1.mode) else {
-//                return false
-//            }
-//            return first < second
-//        })
-//    }
-    
     private func clearItems() {
         items.removeAll()
         filteredItems.removeAll()

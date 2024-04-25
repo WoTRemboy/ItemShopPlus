@@ -64,6 +64,8 @@
 		6399EFF62BD85176008B19E8 /* LootDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF52BD85176008B19E8 /* LootDetailsModel.swift */; };
 		6399EFF82BD8566B008B19E8 /* JSONLootDetailsParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF72BD8566B008B19E8 /* JSONLootDetailsParse.swift */; };
 		6399EFFB2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFFA2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift */; };
+		6399EFFF2BDA5318008B19E8 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFFE2BDA5318008B19E8 /* ItemModel.swift */; };
+		6399F0012BDA5356008B19E8 /* JSONParseItemVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0002BDA5356008B19E8 /* JSONParseItemVideo.swift */; };
 		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
 		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
 		63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */; };
@@ -153,6 +155,8 @@
 		6399EFF52BD85176008B19E8 /* LootDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsModel.swift; sourceTree = "<group>"; };
 		6399EFF72BD8566B008B19E8 /* JSONLootDetailsParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLootDetailsParse.swift; sourceTree = "<group>"; };
 		6399EFFA2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsMainCollectionViewCell.swift; sourceTree = "<group>"; };
+		6399EFFE2BDA5318008B19E8 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		6399F0002BDA5356008B19E8 /* JSONParseItemVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParseItemVideo.swift; sourceTree = "<group>"; };
 		639E62342B92719100E17B4F /* BattlePassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainViewController.swift; sourceTree = "<group>"; };
 		63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewZoomView.swift; sourceTree = "<group>"; };
 		63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTestViewController.swift; sourceTree = "<group>"; };
@@ -458,6 +462,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6399EFFD2BDA5305008B19E8 /* ItemModel */ = {
+			isa = PBXGroup;
+			children = (
+				6399EFFE2BDA5318008B19E8 /* ItemModel.swift */,
+				6399F0002BDA5356008B19E8 /* JSONParseItemVideo.swift */,
+			);
+			path = ItemModel;
+			sourceTree = "<group>";
+		};
 		639E62332B92715300E17B4F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +639,7 @@
 		63ECC1252B90A901006E0841 /* CommonElements */ = {
 			isa = PBXGroup;
 			children = (
+				6399EFFD2BDA5305008B19E8 /* ItemModel */,
 				63ECC1292B90FB41006E0841 /* UIElements */,
 				63ECC1262B90A91A006E0841 /* LogicMethods */,
 			);
@@ -804,7 +818,9 @@
 				637B268B2B4B3A5D0075B871 /* ShopCollectionViewCell.swift in Sources */,
 				634208FB2BC30E55008A9496 /* StatsMainViewController.swift in Sources */,
 				638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */,
+				6399EFFF2BDA5318008B19E8 /* ItemModel.swift in Sources */,
 				63ECC1282B90A930006E0841 /* CommonLogicMethods.swift in Sources */,
+				6399F0012BDA5356008B19E8 /* JSONParseItemVideo.swift in Sources */,
 				639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */,
 				634209082BCC0DC8008A9496 /* StatsDetailsViewController.swift in Sources */,
 				63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */,

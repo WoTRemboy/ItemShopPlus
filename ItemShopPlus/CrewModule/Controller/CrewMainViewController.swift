@@ -71,6 +71,10 @@ final class CrewMainViewController: UIViewController {
         noInternetSetup()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     // MARK: - Actions
     
     @objc private func refreshWithControl() {
@@ -89,8 +93,9 @@ final class CrewMainViewController: UIViewController {
     }
     
     @objc private func videoDidEnd() {
-        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
-        self.playerViewController.dismiss(animated: true, completion: nil)
+        self.playerViewController.player?.seek(to: .zero, completionHandler: { _ in
+            self.playerViewController.player?.play()
+        })
     }
     
     // MARK: - Networking

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 final class CrewMainViewController: UIViewController {
     
@@ -21,6 +22,7 @@ final class CrewMainViewController: UIViewController {
     // MARK: - UI Elements and Views
     
     private let noInternetView = NoInternetView()
+    private var playerViewController = AVPlayerViewController()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let refreshControl = UIRefreshControl()
     
@@ -86,6 +88,11 @@ final class CrewMainViewController: UIViewController {
         }
     }
     
+    @objc private func videoDidEnd() {
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
+        self.playerViewController.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Networking
     
     private func getItems(isRefreshControl: Bool) {
@@ -139,6 +146,44 @@ final class CrewMainViewController: UIViewController {
         }
     }
     
+    private func getVideo(index: Int) {
+        let item = items[index]
+        DispatchQueue.main.async {
+            self.collectionView.isUserInteractionEnabled = false
+            UIView.animate(withDuration: 0.2) {
+                self.collectionView.alpha = 0.5
+            }
+            self.activityIndicator.center = self.view.center
+            self.view.addSubview(self.activityIndicator)
+            self.activityIndicator.startAnimating()
+        }
+        self.networkService.getItemVideo(id: item.id) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.removeFromSuperview()
+                self?.collectionView.isUserInteractionEnabled = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self?.collectionView.alpha = 1
+                }
+            }
+            switch result {
+            case .success(let videoItem):
+                DispatchQueue.main.async {
+                    guard let url = URL(string: videoItem.video) else {
+                        self?.previewSetup(index: index)
+                        return
+                    }
+                    self?.videoSetup(videoURL: url)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.previewSetup(index: index)
+                }
+                print(error)
+            }
+        }
+    }
+    
     // MARK: - UserDefaults Currency
     
     private func currencyMemoryManager(request: CurrencyManager) {
@@ -184,21 +229,16 @@ final class CrewMainViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-                        
             let item = self.items[indexPath.item]
-            let image = item.image
-            let name = item.name
-            
-            let vc = ShopGrantedPreviewViewController(image: image, name: name)
-            let navVC = UINavigationController(rootViewController: vc)
-            navVC.modalPresentationStyle = .fullScreen
-            navVC.modalTransitionStyle = .crossDissolve
-            self.present(navVC, animated: true)
-            
-            UIView.animate(withDuration: 0.1, animations: {
-                cell.transform = CGAffineTransform.identity
-            })
+            if item.type == "Outfit" {
+                self.getVideo(index: indexPath.item)
+            } else {
+                self.previewSetup(index: indexPath.item)
+            }
         }
+        UIView.animate(withDuration: 0.1, animations: {
+            cell.transform = CGAffineTransform.identity
+        })
     }
     
     // MARK: - UI Setups
@@ -242,6 +282,34 @@ final class CrewMainViewController: UIViewController {
             previousAction.state = .off
         }
         selectedSectionTitle = sectionTitle
+    }
+    
+    private func previewSetup(index: Int) {
+        let item = self.items[index]
+        let image = item.image
+        let name = item.name
+        
+        let vc = ShopGrantedPreviewViewController(image: image, name: name)
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalPresentationStyle = .fullScreen
+        navVC.modalTransitionStyle = .crossDissolve
+        self.present(navVC, animated: true)
+    }
+    
+    private func videoSetup(videoURL: URL) {
+        let player = AVPlayer(url: videoURL)
+        playerViewController.player = player
+        
+        self.present(playerViewController, animated: true) {
+            self.playerViewController.player?.play()
+            NotificationCenter.default.addObserver(self, selector: #selector(self.videoDidEnd), name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+        }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error setting audio session:", error)
+        }
     }
     
     private func collectionViewSetup() {

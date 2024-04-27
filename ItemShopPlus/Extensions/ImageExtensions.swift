@@ -13,6 +13,8 @@ extension UIImage {
     
     enum Placeholder {
         static let noImage = UIImage(named: "ImagePlaceholder")
+        static let noImage3To4 = UIImage(named: "ImagePlaceholder3To4")
+        static let noImage16To9 = UIImage(named: "ImagePlaceholder16To9")
         static let video = UIImage(named: "VideoBanner")
     }
     
@@ -39,10 +41,10 @@ extension UIImage {
     // MARK: - Main Module
     
     enum MainButtons {
-        static let shop = createImage(name: "basket")
+        static let shop = UIImage(named: "ShopIcon")
         static let battlePass = UIImage(named: "BattlePassIcon")
-        static let lootDetails = createImage(name: "chart.bar")
-        static let bundles = createImage(name: "tag")
+        static let lootDetails = UIImage(named: "LootDetailsIcon")
+        static let bundles = UIImage(named: "BundlesIcon")
         static let crew = UIImage(named: "CrewIcon")
         static let map = UIImage(named: "MapIcon")
         static let stats = UIImage(named: "StatsIcon")

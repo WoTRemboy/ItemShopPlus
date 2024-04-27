@@ -1,20 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "Screenshot 2024-01-08 at 5.44.21 PM.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "filename" : "Screenshot 2024-01-08 at 5.44.21 PM 1.png",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "filename" : "Group 46 (1).svg",
+      "idiom" : "universal"
     },
     {
       "appearances" : [
@@ -23,57 +11,8 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Screenshot 2024-01-08 at 5.43.24 PM.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "light"
-        }
-      ],
-      "idiom" : "universal",
-      "scale" : "3x"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "Group 47 (2).svg",
+      "idiom" : "universal"
     }
   ],
   "info" : {

@@ -54,6 +54,13 @@ final class LootDetailsMainViewController: UIViewController {
         getItems(isRefreshControl: false)
     }
     
+    @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
+        let location = gestureRecognizer.location(in: collectionView)
+        if let indexPath = collectionView.indexPathForItem(at: location) {
+            animateCellSelection(at: indexPath)
+        }
+    }
+    
     private func groupLootItems(items: [LootDetailsItem]) -> [Dictionary<String, [LootDetailsItem]>.Element] {
         var groupedItems = [String: [LootDetailsItem]]()
         let clearItems = uniqueItems(items: items)
@@ -80,6 +87,20 @@ final class LootDetailsMainViewController: UIViewController {
         }
 
         return Array(uniqueItems.values)
+    }
+    
+    private func animateCellSelection(at indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }) { (_) in
+            let items = self.groupedItems[indexPath.item].value
+            self.navigationController?.pushViewController(LootDetailsRarityViewController(items: items), animated: true)
+            UIView.animate(withDuration: 0.1, animations: {
+                cell?.transform = CGAffineTransform.identity
+            })
+        }
     }
     
     private func getItems(isRefreshControl: Bool) {
@@ -187,13 +208,13 @@ extension LootDetailsMainViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LootDetailsMainCollectionViewCell.identifier, for: indexPath) as? LootDetailsMainCollectionViewCell else {
-            fatalError("Failed to dequeue CrewCollectionViewCell in CrewMainViewController")
+            fatalError("Failed to dequeue LootDetailsMainCollectionViewCell in LootDetailsMainViewController")
         }
         let groupedItem = groupedItems[indexPath.item]
         let item = groupedItem.value.first ?? LootDetailsItem.emptyLootDetails
         cell.configurate(type: .weapon, name: item.name, image: item.mainImage, firstStat: Double(groupedItem.value.count), secondStat: Double(item.stats.availableStats))
-//        let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
-//        cell.addGestureRecognizer(pressGesture)
+        let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
+        cell.addGestureRecognizer(pressGesture)
         
         return cell
     }
@@ -228,7 +249,7 @@ extension LootDetailsMainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
-            fatalError("Failed to dequeue CollectionHeaderReusableView in CrewMainViewController")
+            fatalError("Failed to dequeue CollectionHeaderReusableView in LootDetailsMainViewController")
         }
         headerView.configurate(with: Texts.LootDetailsMain.header)
         return headerView

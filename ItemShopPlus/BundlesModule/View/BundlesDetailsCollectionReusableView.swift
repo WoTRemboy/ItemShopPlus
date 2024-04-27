@@ -40,7 +40,7 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
     private let aboutContentLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.BundleDetailsCell.aboutText
-        label.textColor = .labelSecondary
+        label.textColor = .labelPrimary
         label.font = .subhead()
         label.numberOfLines = 0
         return label

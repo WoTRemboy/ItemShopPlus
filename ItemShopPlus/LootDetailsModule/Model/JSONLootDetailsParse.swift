@@ -23,6 +23,40 @@ extension LootDetailsItem {
             return nil
         }
         
+        guard id != "WID_Assault_Chrono_BackPackMiniGun_Athena_R",
+              id != "WID_Pilgrim_BandQuickPlay_Bass",
+              id != "WID_WaffleTruck_Assault_BigMoney",
+              id != "WID_WaffleTruck_Assault_Brrrrst",
+              id != "WID_Pilgrim_BandQuickPlay_Drums",
+              id != "WID_FireExtinguisher_Spray",
+              id != "WID_Ranged_Flashlight",
+              id != "WID_Launcher_Petrol",
+              id != "WID_Pilgrim_BandQuickPlay_Guitar",
+              id != "WID_Pilgrim_BandQuickPlay_Keytar",
+              id != "WID_Athena_HealSpray",
+              id != "WID_HighTower_Mango_DualPistol_Auto_Heavy_Athena",
+              id != "WID_WaffleTruck_SMG_RunGun",
+              id != "WID_TinStack",
+              id != "WID_Pilgrim_BandQuickPlay_Mic",
+              id != "WID_Athena_BurstSquadHeal",
+              id != "WID_Juno_Bow_T5",
+              id != "WID_Paprika_TeamSpray_LowGrav",
+              id != "WID_Juno_Enemy_Pumpkin",
+              id != "WID_Juno_Dynamite",
+              id != "WID_Juno_Enemy_Stud_Dummy",
+              id != "WID_Juno_Enemy_Stud_Suburbian",
+              id != "WID_Juno_Enemy_Stud_Fallback",
+              id != "Athena_Spytech_R_TNT",
+              id != "WID_Juno_Enemy_Dynamite_Bandit",
+              id != "WID_Juno_Enemy_Dynamite_Pirate",
+              id != "WID_Juno_Enemy_Dynamite_Skeleton",
+              id != "WID_Juno_Enemy_Dynamite_Skeleton_Bandit",
+              id != "WID_Juno_Enemy_Dynamite_Skeleton_Miner",
+              id != "WID_Juno_Enemy_Dynamite_Skeleton_Pirate"
+        else {
+            return nil
+        }
+        
         let description = data["description"] as? String ?? String()
         let rarity = SelectingMethods.selectRarity(rarityText: rarityData)
         let type = LootItemType.selectingLootType(type: typeData)

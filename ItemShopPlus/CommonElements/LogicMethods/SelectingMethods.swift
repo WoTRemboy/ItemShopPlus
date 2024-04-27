@@ -131,8 +131,12 @@ final class SelectingMethods {
             return .epic
         case "Legendary", "legendary":
             return .legendary
-        case "mythic":
+        case "Mythic", "mythic":
             return .mythic
+        case "Transcendent", "transcendent":
+            return .transcendent
+        case "Exotic", "exotic":
+            return .exotic
         default:
             return .common
         }
@@ -153,7 +157,11 @@ final class SelectingMethods {
         case .star:
             return .BattlePass.star ?? .battlePassStar
         case .mythic:
-            return .ShopGranted.common ?? .grantedCommon
+            return .ShopGranted.legendary ?? .grantedLegendary
+        case .transcendent:
+            return .ShopGranted.legendary ?? .grantedLegendary
+        case .exotic:
+            return .ShopGranted.legendary ?? .grantedLegendary
         }
     }
     

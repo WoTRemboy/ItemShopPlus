@@ -37,7 +37,7 @@ final class BundlesCollectionViewCell: UICollectionViewCell {
     
     private let itemImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = .Placeholder.noImage
+        imageView.image = .Placeholder.noImage16To9
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         return imageView
@@ -95,6 +95,6 @@ final class BundlesCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         ImageLoader.cancelImageLoad(task: imageLoadTask)
-        itemImageView.image = .Placeholder.noImage
+        itemImageView.image = .Placeholder.noImage16To9
     }
 }

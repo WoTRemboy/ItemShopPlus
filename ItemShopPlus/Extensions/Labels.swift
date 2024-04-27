@@ -47,6 +47,18 @@ final class Texts {
         static let retry = "Please, retry later"
     }
     
+    enum Rarity {
+        static let common = "Common"
+        static let uncommon = "Uncommon"
+        static let rare = "Rare"
+        static let epic = "Epic"
+        static let legendary = "Legendary"
+        static let mythic = "Mythic"
+        static let star = "Star"
+        static let transcendent = "Transcendent"
+        static let exotic = "Exotic"
+    }
+    
     enum Currency {
         enum Code {
             static let usd = "USD"
@@ -273,13 +285,22 @@ final class Texts {
     
     enum LootDetailsMain {
         static let title = "Loot Details"
-        static let header = "All Weapons"
+        static let header = "Weapons"
     }
     
     enum LootDetailsMainCell {
         static let identifier = "LootDetailsMainCell"
         static let rarities = "Rarities"
         static let stats = "Stats"
+    }
+    
+    enum LootDetailsRarity {
+        static let title = "Rarities"
+        static let back = "Loot"
+    }
+    
+    enum LootDetailsRarityCell {
+        static let identifier = "LootDetailsRarityCell"
     }
     
     // MARK: - Stats Module

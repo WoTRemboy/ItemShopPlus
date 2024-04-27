@@ -49,12 +49,12 @@ final class MPButtonViewController: UIViewController {
         ])
     }
     
-    private func battlePassButtonSetup() {
+    private func bundleButtonSetup() {
         NSLayoutConstraint.activate([
-            battlePassButton.topAnchor.constraint(equalTo: shopButton.topAnchor),
-            battlePassButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            battlePassButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 8),
-            battlePassButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+            bundlesButton.topAnchor.constraint(equalTo: shopButton.topAnchor),
+            bundlesButton.trailingAnchor.constraint(equalTo: battlePassButton.trailingAnchor),
+            bundlesButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
+            bundlesButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
     }
     
@@ -67,12 +67,12 @@ final class MPButtonViewController: UIViewController {
         ])
     }
     
-    private func bundleButtonSetup() {
+    private func battlePassButtonSetup() {
         NSLayoutConstraint.activate([
-            bundlesButton.topAnchor.constraint(equalTo: battlePassButton.bottomAnchor, constant: 16),
-            bundlesButton.trailingAnchor.constraint(equalTo: battlePassButton.trailingAnchor),
-            bundlesButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
-            bundlesButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
+            battlePassButton.topAnchor.constraint(equalTo: crewButton.topAnchor),
+            battlePassButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            battlePassButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 8),
+            battlePassButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
     }
     
@@ -87,7 +87,7 @@ final class MPButtonViewController: UIViewController {
     
     private func statsButtonSetup() {
         NSLayoutConstraint.activate([
-            statsButton.topAnchor.constraint(equalTo: bundlesButton.bottomAnchor, constant: 16),
+            statsButton.topAnchor.constraint(equalTo: battlePassButton.bottomAnchor, constant: 16),
             statsButton.trailingAnchor.constraint(equalTo: battlePassButton.trailingAnchor),
             statsButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
             statsButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)

@@ -62,11 +62,10 @@ final class VideoLoader {
         return task
     }
     
-    static func loadAndShowVideo(from videoUrlString: String, to playerViewController: AVPlayerViewController, activityIndicator: UIActivityIndicatorView) -> URLSessionDataTask? {
-        return loadVideo(urlString: videoUrlString) { video in
+    static func loadAndShowVideo(from videoUrlString: String, to playerViewController: AVPlayerViewController, activityIndicator: UIActivityIndicatorView) {
             DispatchQueue.main.async {
                 playerViewController.view.alpha = 0.5
-                if let url = video {
+                if let url = URL(string: videoUrlString) {
                     activityIndicator.stopAnimating()
                     playerViewController.player = AVPlayer(url: url)
                     playerViewController.entersFullScreenWhenPlaybackBegins = true
@@ -75,7 +74,6 @@ final class VideoLoader {
                     playerViewController.view.alpha = 1.0
                 }, completion: nil)
             }
-        }
     }
     
     static func loadAndShowItemVideo(from videoUrlString: String, viewController: UIViewController) -> URLSessionDataTask? {

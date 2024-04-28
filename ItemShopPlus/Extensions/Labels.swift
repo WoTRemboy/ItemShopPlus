@@ -105,7 +105,7 @@ final class Texts {
             static let map = "Map"
             static let stats = "Stats"
             static let augments = "Augments"
-            static let cache = "Clear Cache"
+            static let settings = "Settings"
         }
     }
     
@@ -326,6 +326,19 @@ final class Texts {
         static let rounds = "Rounds:"
         static let seconds = "Seconds:"
         static let multiplier = "Multiplier:"
+    }
+    
+    // MARK: - Settings Module
+    
+    enum SettingsPage {
+        static let title = "Settings"
+        static let aboutTitle = "About"
+    }
+    
+    enum SettingsAboutCell {
+        static let identifier = "SettingsAboutCell"
+        static let name = "Fort Satellite"
+        static let version = "0.6.3 release 1"
     }
     
     // MARK: - Stats Module

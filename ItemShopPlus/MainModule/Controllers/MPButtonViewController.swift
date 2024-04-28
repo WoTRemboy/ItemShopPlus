@@ -16,7 +16,7 @@ final class MPButtonViewController: UIViewController {
     private let lootDetailsButton = MPButtonView(frame: .null, buttonType: .lootDetails)
     private let statsButton = MPButtonView(frame: .null, buttonType: .stats)
     private let mapButton = MPButtonView(frame: .null, buttonType: .map)
-    private let cacheButton = MPButtonView(frame: .null, buttonType: .cache)
+    private let cacheButton = MPButtonView(frame: .null, buttonType: .settings)
         
     override func viewDidLoad() {
         super.viewDidLoad()

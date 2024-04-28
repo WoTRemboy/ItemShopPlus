@@ -70,6 +70,8 @@
 		6399F0052BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0042BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift */; };
 		6399F0072BDE765D008B19E8 /* LootDetailsStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0062BDE765D008B19E8 /* LootDetailsStatsViewController.swift */; };
 		6399F0092BDE7D9C008B19E8 /* LootDetailsReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0082BDE7D9C008B19E8 /* LootDetailsReusableView.swift */; };
+		6399F00D2BDEDBE6008B19E8 /* SettingsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F00C2BDEDBE6008B19E8 /* SettingsMainViewController.swift */; };
+		6399F0102BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F00F2BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift */; };
 		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
 		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
 		63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */; };
@@ -165,6 +167,8 @@
 		6399F0042BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsRarityCollectionViewCell.swift; sourceTree = "<group>"; };
 		6399F0062BDE765D008B19E8 /* LootDetailsStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsStatsViewController.swift; sourceTree = "<group>"; };
 		6399F0082BDE7D9C008B19E8 /* LootDetailsReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsReusableView.swift; sourceTree = "<group>"; };
+		6399F00C2BDEDBE6008B19E8 /* SettingsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMainViewController.swift; sourceTree = "<group>"; };
+		6399F00F2BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutCollectionViewCell.swift; sourceTree = "<group>"; };
 		639E62342B92719100E17B4F /* BattlePassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainViewController.swift; sourceTree = "<group>"; };
 		63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewZoomView.swift; sourceTree = "<group>"; };
 		63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTestViewController.swift; sourceTree = "<group>"; };
@@ -483,6 +487,31 @@
 			path = ItemModel;
 			sourceTree = "<group>";
 		};
+		6399F00A2BDEDBBA008B19E8 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				6399F00E2BDEE6B6008B19E8 /* View */,
+				6399F00B2BDEDBCA008B19E8 /* Controller */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		6399F00B2BDEDBCA008B19E8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6399F00C2BDEDBE6008B19E8 /* SettingsMainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6399F00E2BDEE6B6008B19E8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6399F00F2BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		639E62332B92715300E17B4F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +551,7 @@
 				634208F12BC2D49C008A9496 /* StatsModule */,
 				6399EFF02BD85107008B19E8 /* LootDetailsModule */,
 				632533AB2B83D3A500DA3F05 /* MapModule */,
+				6399F00A2BDEDBBA008B19E8 /* SettingsModule */,
 				63C899042B25084800FABD69 /* QuestsModule */,
 				63C899152B2621EB00FABD69 /* Networking */,
 				63ECC1252B90A901006E0841 /* CommonElements */,
@@ -815,6 +845,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				63ECC12B2B9106FE006E0841 /* CommonModels.swift in Sources */,
+				6399F0102BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift in Sources */,
+				6399F00D2BDEDBE6008B19E8 /* SettingsMainViewController.swift in Sources */,
 				63290CDA2B5EA399008F45F8 /* ShopGrantedViewController.swift in Sources */,
 				6342090C2BCC4439008A9496 /* StatsParameterView.swift in Sources */,
 				638594B42B2CFD7C009FEED6 /* QuestDetailsView.swift in Sources */,

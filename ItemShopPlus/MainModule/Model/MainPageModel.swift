@@ -16,6 +16,6 @@ enum ButtonType {
     case stats
     case map
     case augments
-    case cache
+    case settings
     case null
 }

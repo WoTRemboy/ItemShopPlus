@@ -55,32 +55,8 @@ final class MainPageViewController: UIViewController {
         navigationController?.pushViewController(MapPreviewViewController(image: "https://media.fortniteapi.io/images/map.png?showPOI=true"), animated: true)
     }
     
-    @objc func clearCache() {
-        let alertController = UIAlertController(title: nil, message: Texts.ClearCache.message, preferredStyle: .actionSheet)
-        
-        let cacheSize = ImageLoader.cacheSize() + VideoLoader.cacheSize()
-        guard cacheSize != 0 else {
-            alertControllerSetup(title: Texts.ClearCache.oops, message: Texts.ClearCache.alreadyClean)
-            return
-        }
-            
-        let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache) (\(String(format: "%.1f", cacheSize)) \(Texts.ClearCache.megabytes))", style: .destructive) { _ in
-            VideoLoader.cleanCache(entire: true) {}
-            ImageLoader.cleanCache(entire: true) {
-                self.alertControllerSetup(title: Texts.ClearCache.success, message: Texts.ClearCache.cleared)
-            }
-        }
-        let cancelAction = UIAlertAction(title: Texts.ClearCache.cancel, style: .cancel)
-        alertController.addAction(clearAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    private func alertControllerSetup(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Texts.ClearCache.ok, style: .default)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true)
+    @objc func settingTransfer() {
+        navigationController?.pushViewController(SettingsMainViewController(), animated: true)
     }
     
     @objc func doNothing() {

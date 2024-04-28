@@ -409,7 +409,10 @@ extension LootDetailsMainViewController: UICollectionViewDelegateFlowLayout {
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
             fatalError("Failed to dequeue CollectionHeaderReusableView in LootDetailsMainViewController")
         }
-        headerView.configurate(with: Texts.LootDetailsMain.header)
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
+        let count = filteredGroupedItems.count
+        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: selectedSectionTitle)
         return headerView
     }
 }

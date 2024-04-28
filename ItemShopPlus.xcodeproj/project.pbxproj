@@ -68,6 +68,8 @@
 		6399F0012BDA5356008B19E8 /* JSONParseItemVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0002BDA5356008B19E8 /* JSONParseItemVideo.swift */; };
 		6399F0032BDD50F9008B19E8 /* LootDetailsRarityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0022BDD50F9008B19E8 /* LootDetailsRarityViewController.swift */; };
 		6399F0052BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0042BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift */; };
+		6399F0072BDE765D008B19E8 /* LootDetailsStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0062BDE765D008B19E8 /* LootDetailsStatsViewController.swift */; };
+		6399F0092BDE7D9C008B19E8 /* LootDetailsReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0082BDE7D9C008B19E8 /* LootDetailsReusableView.swift */; };
 		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
 		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
 		63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */; };
@@ -161,6 +163,8 @@
 		6399F0002BDA5356008B19E8 /* JSONParseItemVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParseItemVideo.swift; sourceTree = "<group>"; };
 		6399F0022BDD50F9008B19E8 /* LootDetailsRarityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsRarityViewController.swift; sourceTree = "<group>"; };
 		6399F0042BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsRarityCollectionViewCell.swift; sourceTree = "<group>"; };
+		6399F0062BDE765D008B19E8 /* LootDetailsStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsStatsViewController.swift; sourceTree = "<group>"; };
+		6399F0082BDE7D9C008B19E8 /* LootDetailsReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsReusableView.swift; sourceTree = "<group>"; };
 		639E62342B92719100E17B4F /* BattlePassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainViewController.swift; sourceTree = "<group>"; };
 		63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewZoomView.swift; sourceTree = "<group>"; };
 		63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTestViewController.swift; sourceTree = "<group>"; };
@@ -455,6 +459,7 @@
 			children = (
 				6399EFF32BD85167008B19E8 /* LootDetailsMainViewController.swift */,
 				6399F0022BDD50F9008B19E8 /* LootDetailsRarityViewController.swift */,
+				6399F0062BDE765D008B19E8 /* LootDetailsStatsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 			children = (
 				6399EFFA2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift */,
 				6399F0042BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift */,
+				6399F0082BDE7D9C008B19E8 /* LootDetailsReusableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -821,6 +827,7 @@
 				637B26952B4DACCA0075B871 /* CollectionHeaderReusableView.swift in Sources */,
 				63290CDC2B5ED498008F45F8 /* CollectionRarityCell.swift in Sources */,
 				63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */,
+				6399F0072BDE765D008B19E8 /* LootDetailsStatsViewController.swift in Sources */,
 				637B268B2B4B3A5D0075B871 /* ShopCollectionViewCell.swift in Sources */,
 				634208FB2BC30E55008A9496 /* StatsMainViewController.swift in Sources */,
 				638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */,
@@ -865,6 +872,7 @@
 				63C899112B2508DB00FABD69 /* QuestsBundlePageController.swift in Sources */,
 				639418B02BD67C81007F02FA /* BundlesDetailsViewController.swift in Sources */,
 				634208F62BC2DC12008A9496 /* JSONStatsParce.swift in Sources */,
+				6399F0092BDE7D9C008B19E8 /* LootDetailsReusableView.swift in Sources */,
 				63C8990D2B2508B200FABD69 /* QuestsPageModel.swift in Sources */,
 				634209002BC874F9008A9496 /* NicknamePopupView.swift in Sources */,
 				63C899172B26220D00FABD69 /* ImageLoader.swift in Sources */,

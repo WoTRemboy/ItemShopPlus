@@ -303,6 +303,31 @@ final class Texts {
         static let identifier = "LootDetailsRarityCell"
     }
     
+    enum LootDetailsStats {
+        static let title = "Stats"
+        static let backRarities = "Rarities"
+        static let backLoot = "Loot"
+    }
+    
+    enum LootDetailsStatsCell {
+        static let footerIdentifier = "LootDetailsStatsFooter"
+        static let damageBulletTitle = "Damage"
+        static let firingRateTitle = "Firing rate"
+        static let clipSizeTitle = "Clip size"
+        static let reloadTimeTitle = "Reload time"
+        static let bulletsCartridgeTitle = "Cartridge size"
+        static let spreadTitle = "Spread"
+        static let spreadDownsightsTitle = "Spread downsights"
+        static let damageZoneTitle = "Damage zone critical"
+        static let no = "No"
+        
+        static let damageBullets = "Units / round:"
+        static let roundsSecond = "Rounds / second:"
+        static let rounds = "Rounds:"
+        static let seconds = "Seconds:"
+        static let multiplier = "Multiplier:"
+    }
+    
     // MARK: - Stats Module
     
     enum StatsPage {

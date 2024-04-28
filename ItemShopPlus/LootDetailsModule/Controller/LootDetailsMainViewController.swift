@@ -122,9 +122,18 @@ final class LootDetailsMainViewController: UIViewController {
             cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
             let items: Dictionary<String, [LootDetailsItem]>.Element
+            
             (self.filteredGroupedItems.count != 0 && self.filteredGroupedItems.count != self.groupedItems.count) ? (items = self.filteredGroupedItems[indexPath.item]) : (items = self.groupedItems[indexPath.item])
             
-            self.navigationController?.pushViewController(LootDetailsRarityViewController(items: items.value), animated: true)
+            guard items.value.count > 0 else { return }
+            
+            let vc: UIViewController
+            if items.value.count > 1 {
+                vc = LootDetailsRarityViewController(items: items.value)
+            } else {
+                vc = LootDetailsStatsViewController(item: items.value[0], fromRarity: false)
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
             UIView.animate(withDuration: 0.1, animations: {
                 cell?.transform = CGAffineTransform.identity
             })

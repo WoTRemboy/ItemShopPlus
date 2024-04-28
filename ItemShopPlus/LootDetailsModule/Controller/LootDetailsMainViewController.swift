@@ -14,6 +14,8 @@ final class LootDetailsMainViewController: UIViewController {
     private var filteredGroupedItems = [Dictionary<String, [LootDetailsItem]>.Element]()
     
     private var previousSearchedCount = 0
+    private var selectedSectionTitle = Texts.ShopPage.allMenu
+    private var tags = [String]()
     
     private let networkService = DefaultNetworkService()
     
@@ -24,6 +26,13 @@ final class LootDetailsMainViewController: UIViewController {
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToMain
+        return button
+    }()
+    
+    private let filterButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .FilterMenu.filter
+        button.isEnabled = false
         return button
     }()
     
@@ -87,7 +96,7 @@ final class LootDetailsMainViewController: UIViewController {
         UIView.appearance().isExclusiveTouch = true
     }
     
-    private func groupLootItems(items: [LootDetailsItem]) -> [Dictionary<String, [LootDetailsItem]>.Element] {
+    private func groupLootItems(items: [LootDetailsItem]) {
         var groupedItems = [String: [LootDetailsItem]]()
         let clearItems = uniqueItems(items: items)
         
@@ -98,8 +107,7 @@ final class LootDetailsMainViewController: UIViewController {
                 groupedItems[item.name]?.append(item)
             }
         }
-        
-        return groupedItems.sorted(by: { $0.key < $1.key })
+        self.groupedItems = groupedItems.sorted(by: { $0.key < $1.key })
     }
     
     private func uniqueItems(items: [LootDetailsItem]) -> [LootDetailsItem] {
@@ -113,6 +121,24 @@ final class LootDetailsMainViewController: UIViewController {
         }
 
         return Array(uniqueItems.values)
+    }
+    
+    private func searchTags() {
+        tags = ["Pistols", "Assault", "Shotgun", "Sniper", "Blade", "Bow", "Launcher",]
+    }
+    
+    private func filterItemsByMenu(sectionTitle: String, forAll: Bool) {
+        guard sectionTitle != selectedSectionTitle else { return }
+        
+        groupedItems.removeAll()
+        groupLootItems(items: items)
+        if !forAll {
+            groupedItems = groupedItems.filter { $0.value.first?.searchTags.contains(sectionTitle) == true }
+        }
+        updateMenuState(for: sectionTitle)
+        UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            self.collectionView.reloadData()
+        }, completion: nil)
     }
     
     private func animateCellSelection(at indexPath: IndexPath) {
@@ -159,12 +185,14 @@ final class LootDetailsMainViewController: UIViewController {
                     self?.activityIndicator.stopAnimating()
                     self?.activityIndicator.removeFromSuperview()
                 }
+                self?.selectedSectionTitle = Texts.ShopPage.allMenu
             }
             switch result {
             case .success(let newItems):
                 DispatchQueue.main.async {
                     self?.items = newItems
-                    self?.groupedItems = self?.groupLootItems(items: newItems) ?? []
+                    self?.groupLootItems(items: newItems)
+                    self?.menuSetup()
                     
                     guard let collectionView = self?.collectionView else { return }
                     collectionView.isHidden = false
@@ -176,6 +204,7 @@ final class LootDetailsMainViewController: UIViewController {
                         }, completion: nil)
                     }
                     self?.noInternetView.isHidden = true
+                    self?.filterButton.isEnabled = true
                     self?.searchController.searchBar.isHidden = false
                 }
             case .failure(let error):
@@ -183,6 +212,7 @@ final class LootDetailsMainViewController: UIViewController {
                     self?.collectionView.reloadData()
                     self?.collectionView.isHidden = true
                     self?.noInternetView.isHidden = false
+                    self?.filterButton.isEnabled = false
                     self?.searchController.searchBar.isHidden = true
                 }
                 print(error)
@@ -195,6 +225,40 @@ final class LootDetailsMainViewController: UIViewController {
         
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        filterButton.target = self
+        navigationItem.rightBarButtonItem = filterButton
+    }
+    
+    private func menuSetup() {
+        let allAction = UIAction(title: Texts.ShopPage.allMenu, image: nil) { [weak self] action in
+            self?.filterItemsByMenu(sectionTitle: Texts.ShopPage.allMenu, forAll: true)
+            self?.filterButton.image = .FilterMenu.filter
+        }
+        allAction.state = .on
+        var children = [allAction]
+        
+        searchTags()
+        for section in tags {
+            let sectionAction = UIAction(title: section, image: nil) { [weak self] action in
+                self?.filterItemsByMenu(sectionTitle: section, forAll: false)
+                self?.filterButton.image = .FilterMenu.filledFilter
+            }
+            
+            children.append(sectionAction)
+        }
+        filterButton.menu = UIMenu(title: "", children: children)
+        filterButton.image = .FilterMenu.filter
+    }
+    
+    private func updateMenuState(for sectionTitle: String) {
+        if let currentAction = filterButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
+            currentAction.state = .on
+        }
+        if let previousAction = filterButton.menu?.children.first(where: { $0.title == selectedSectionTitle }) as? UIAction {
+            previousAction.state = .off
+        }
+        selectedSectionTitle = sectionTitle
     }
     
     private func searchControllerSetup() {

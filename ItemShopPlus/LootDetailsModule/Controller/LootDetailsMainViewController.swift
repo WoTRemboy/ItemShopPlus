@@ -11,6 +11,9 @@ final class LootDetailsMainViewController: UIViewController {
     
     private var items = [LootDetailsItem]()
     private var groupedItems = [Dictionary<String, [LootDetailsItem]>.Element]()
+    private var filteredGroupedItems = [Dictionary<String, [LootDetailsItem]>.Element]()
+    
+    private var previousSearchedCount = 0
     
     private let networkService = DefaultNetworkService()
     
@@ -35,6 +38,14 @@ final class LootDetailsMainViewController: UIViewController {
         collectionView.register(CollectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderReusableView.identifier)
         return collectionView
     }()
+    
+    private let searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.placeholder = Texts.ShopMainCell.search
+        return searchController
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +54,20 @@ final class LootDetailsMainViewController: UIViewController {
         navigationBarSetup()
         collectionViewSetup()
         noInternetSetup()
+        searchControllerSetup()
         getItems(isRefreshControl: false)
     }
     
     @objc private func refreshWithControl() {
-        getItems(isRefreshControl: true)
+        if !searchController.isActive {
+            getItems(isRefreshControl: true)
+        }
     }
     
     @objc private func refreshWithoutControl() {
-        getItems(isRefreshControl: false)
+        if !searchController.isActive {
+            getItems(isRefreshControl: false)
+        }
     }
     
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -59,6 +75,16 @@ final class LootDetailsMainViewController: UIViewController {
         if let indexPath = collectionView.indexPathForItem(at: location) {
             animateCellSelection(at: indexPath)
         }
+    }
+    
+    @objc private func handleTapOutsideKeyboard() {
+        guard searchController.isActive else { return }
+        if searchController.searchBar.text?.isEmpty == true {
+            searchController.dismiss(animated: true)
+        } else {
+            searchController.searchBar.resignFirstResponder()
+        }
+        UIView.appearance().isExclusiveTouch = true
     }
     
     private func groupLootItems(items: [LootDetailsItem]) -> [Dictionary<String, [LootDetailsItem]>.Element] {
@@ -95,8 +121,10 @@ final class LootDetailsMainViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            let items = self.groupedItems[indexPath.item].value
-            self.navigationController?.pushViewController(LootDetailsRarityViewController(items: items), animated: true)
+            let items: Dictionary<String, [LootDetailsItem]>.Element
+            (self.filteredGroupedItems.count != 0 && self.filteredGroupedItems.count != self.groupedItems.count) ? (items = self.filteredGroupedItems[indexPath.item]) : (items = self.groupedItems[indexPath.item])
+            
+            self.navigationController?.pushViewController(LootDetailsRarityViewController(items: items.value), animated: true)
             UIView.animate(withDuration: 0.1, animations: {
                 cell?.transform = CGAffineTransform.identity
             })
@@ -110,6 +138,7 @@ final class LootDetailsMainViewController: UIViewController {
             self.activityIndicator.center = self.view.center
             self.view.addSubview(self.activityIndicator)
             self.activityIndicator.startAnimating()
+            self.searchController.searchBar.isHidden = true
         }
         noInternetView.isHidden = true
         
@@ -138,12 +167,14 @@ final class LootDetailsMainViewController: UIViewController {
                         }, completion: nil)
                     }
                     self?.noInternetView.isHidden = true
+                    self?.searchController.searchBar.isHidden = false
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
                     self?.collectionView.isHidden = true
                     self?.noInternetView.isHidden = false
+                    self?.searchController.searchBar.isHidden = true
                 }
                 print(error)
             }
@@ -155,6 +186,18 @@ final class LootDetailsMainViewController: UIViewController {
         
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+    
+    private func searchControllerSetup() {
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+        navigationItem.hidesSearchBarWhenScrolling = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
     private func collectionViewSetup() {
@@ -193,6 +236,32 @@ final class LootDetailsMainViewController: UIViewController {
     
 }
 
+// MARK: - UISearchResultsUpdating & UISearchControllerDelegate
+
+extension LootDetailsMainViewController: UISearchResultsUpdating, UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredGroupedItems = groupedItems
+        
+        if let searchText = searchController.searchBar.text {
+            filteredGroupedItems = groupedItems.filter { $0.key.lowercased().contains(searchText.lowercased()) }
+            if filteredGroupedItems.count != previousSearchedCount || (searchText.isEmpty && collectionView.visibleCells.count == 0) || (!searchText.isEmpty && filteredGroupedItems.count == 0) {
+                UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    self.collectionView.reloadData()
+                }, completion: nil)
+                previousSearchedCount = filteredGroupedItems.count
+            }
+        }
+    }
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+        UIView.appearance().isExclusiveTouch = false
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        UIView.appearance().isExclusiveTouch = true
+    }
+}
+
 
 // MARK: - UICollectionViewDelegate and UICollectionViewDataSource
 
@@ -203,20 +272,36 @@ extension LootDetailsMainViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return groupedItems.count
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
+        return inSearchMode ? filteredGroupedItems.count : groupedItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LootDetailsMainCollectionViewCell.identifier, for: indexPath) as? LootDetailsMainCollectionViewCell else {
             fatalError("Failed to dequeue LootDetailsMainCollectionViewCell in LootDetailsMainViewController")
         }
-        let groupedItem = groupedItems[indexPath.item]
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
+        
+        let groupedItem: Dictionary<String, [LootDetailsItem]>.Element
+        if inSearchMode {
+            groupedItem = filteredGroupedItems[indexPath.item]
+        } else {
+            groupedItem = groupedItems[indexPath.item]
+        }
         let item = groupedItem.value.first ?? LootDetailsItem.emptyLootDetails
         cell.configurate(type: .weapon, name: item.name, image: item.mainImage, firstStat: Double(groupedItem.value.count), secondStat: Double(item.stats.availableStats))
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         
         return cell
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        guard searchController.isActive else { return }
+        searchController.searchBar.resignFirstResponder()
+        UIView.appearance().isExclusiveTouch = true
     }
 }
 

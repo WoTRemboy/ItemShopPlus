@@ -11,8 +11,9 @@ class SettingsMainViewController: UIViewController {
     
     var settings: [[String]] = [
         [Texts.SettingsPage.aboutTitle],
-        ["Notifications", "Theme", "Language", "Clear Cache"],
-        ["Email"]
+        [Texts.SettingsPage.notificationsTitle, Texts.SettingsPage.appearanceTitle, Texts.SettingsPage.cacheTitle],
+        [Texts.SettingsPage.languageTitle, Texts.SettingsPage.currencyTitle],
+        [Texts.SettingsPage.emailTitle]
     ]
     
     private let backButton: UIBarButtonItem = {
@@ -24,6 +25,7 @@ class SettingsMainViewController: UIViewController {
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(SettingsAboutCollectionViewCell.self, forCellReuseIdentifier: SettingsAboutCollectionViewCell.identifier)
+        table.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
         return table
     }()
     
@@ -35,7 +37,6 @@ class SettingsMainViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         
@@ -74,15 +75,19 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1, indexPath.row == 3 {
-            clearCache()
+        let name = settings[indexPath.section][indexPath.row]
+        
+        if name == Texts.SettingsPage.cacheTitle {
+            clearCache(indexPath: indexPath)
+        } else if name == Texts.SettingsPage.emailTitle {
+            openMailApp()
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsAboutCollectionViewCell.identifier, for: indexPath) as? SettingsAboutCollectionViewCell else {
                 fatalError("Failed to dequeue SettingsAboutCollectionViewCell in SettingsMainViewController")
@@ -90,17 +95,23 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
             cell.configurate()
             cell.isUserInteractionEnabled = false
             return cell
-            
-        } else if indexPath.section == 1, indexPath.row == 3 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = settings[indexPath.section][indexPath.row]
-            cell.imageView?.image = UIImage(systemName: "trash.square.fill")
-            cell.accessoryType = .none
-        } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = settings[indexPath.section][indexPath.row]
-            cell.accessoryType = .disclosureIndicator
         }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.identifier, for: indexPath) as? SettingsTableViewCell else {
+            fatalError("Failed to dequeue SettingsTableViewCell in SettingsMainViewController")
+        }
+        
+        let name = settings[indexPath.section][indexPath.row]
+        let type = SettingType.typeDefinition(name: name)
+        
+        if name == Texts.SettingsPage.cacheTitle {
+            let cacheSize = ImageLoader.cacheSize() + VideoLoader.cacheSize()
+            let text = cacheSize != 0 ? "\(String(format: "%.1f", cacheSize)) \(Texts.ClearCache.megabytes)" : Texts.SettingsPage.emptyCacheContent
+            cell.setupCell(type: type, details: text)
+        } else {
+            cell.setupCell(type: type)
+        }
+        
         return cell
     }
     
@@ -109,15 +120,17 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         case 0:
             return Texts.SettingsPage.aboutTitle
         case 1:
-            return "General"
+            return Texts.SettingsPage.generalTitle
         case 2:
-            return "Contact"
+            return Texts.SettingsPage.localizationTitle
+        case 3:
+            return Texts.SettingsPage.contactTitle
         default:
             return nil
         }
     }
     
-    private func clearCache() {
+    private func clearCache(indexPath: IndexPath) {
         let alertController = UIAlertController(title: nil, message: Texts.ClearCache.message, preferredStyle: .actionSheet)
         
         let cacheSize = ImageLoader.cacheSize() + VideoLoader.cacheSize()
@@ -125,11 +138,12 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
             alertControllerSetup(title: Texts.ClearCache.oops, message: Texts.ClearCache.alreadyClean)
             return
         }
-            
-        let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache) (\(String(format: "%.1f", cacheSize)) \(Texts.ClearCache.megabytes))", style: .destructive) { _ in
+        
+        let clearAction = UIAlertAction(title: "\(Texts.ClearCache.cache)", style: .destructive) { _ in
             VideoLoader.cleanCache(entire: true) {}
             ImageLoader.cleanCache(entire: true) {
                 self.alertControllerSetup(title: Texts.ClearCache.success, message: Texts.ClearCache.cleared)
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
         let cancelAction = UIAlertAction(title: Texts.ClearCache.cancel, style: .cancel)
@@ -143,5 +157,17 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         let okAction = UIAlertAction(title: Texts.ClearCache.ok, style: .default)
         alertController.addAction(okAction)
         self.present(alertController, animated: true)
+    }
+    
+    private func openMailApp() {
+        guard let emailURL = URL(string: "mailto:\(Texts.SettingsPage.emailContent)") else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(emailURL) {
+            UIApplication.shared.open(emailURL)
+        } else {
+            print("Mail app unavailable")
+        }
     }
 }

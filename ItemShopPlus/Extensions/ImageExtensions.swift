@@ -93,6 +93,12 @@ extension UIImage {
     
     enum Settings {
         static let app = UIImage(named: "AppIcon")
+        static let notifications = UIImage(named: "NotificationsSetting")
+        static let appearance = UIImage(named: "AppearanceSetting")
+        static let cache = UIImage(named: "CacheSetting")
+        static let language = UIImage(named: "LanguageSetting")
+        static let currency = UIImage(named: "CurrencySetting")
+        static let email = UIImage(named: "EmailSetting")
     }
     
     // MARK: - Stats Module

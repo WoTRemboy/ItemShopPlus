@@ -121,7 +121,7 @@ final class Texts {
     
     enum ClearCache {
         static let message = "All media used in the app will remain in the cloud and will be re-downloaded when needed"
-        static let cache = "Clear Cache"
+        static let cache = "Clear Entire Cache"
         static let megabytes = "MB"
         static let cancel = "Cancel"
         
@@ -333,12 +333,29 @@ final class Texts {
     enum SettingsPage {
         static let title = "Settings"
         static let aboutTitle = "About"
+        static let generalTitle = "General"
+        static let localizationTitle = "Localization"
+        static let contactTitle = "Contact"
+        
+        static let notificationsTitle = "Notifications"
+        static let appearanceTitle = "Appearance"
+        static let cacheTitle = "Clear Cache"
+        static let languageTitle = "Language"
+        static let currencyTitle = "Currency"
+        static let emailTitle = "Email"
+        
+        static let emailContent = "fortsatellite@vk.ru"
+        static let emptyCacheContent = "Empty"
     }
     
     enum SettingsAboutCell {
         static let identifier = "SettingsAboutCell"
         static let name = "Fort Satellite"
         static let version = "0.6.3 release 1"
+    }
+    
+    enum SettingsCell {
+        static let identifier = "SettingsCell"
     }
     
     // MARK: - Stats Module

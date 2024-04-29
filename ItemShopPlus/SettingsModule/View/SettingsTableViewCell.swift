@@ -1,0 +1,84 @@
+//
+//  SettingsTableViewCell.swift
+//  ItemShopPlus
+//
+//  Created by Roman Tverdokhleb on 29.04.2024.
+//
+
+import UIKit
+
+class SettingsTableViewCell: UITableViewCell {
+    
+    static let identifier = Texts.SettingsCell.identifier
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    public func updateDetails(detail: String) {
+        detailTextLabel?.text = detail
+    }
+    
+    public func setupCell(type: SettingType, details: String? = nil) {
+        switch type {
+        case .notifications:
+            textLabel?.text = Texts.SettingsPage.notificationsTitle
+            imageView?.image = .Settings.notifications
+            accessoryType = .disclosureIndicator
+            detailTextLabel?.text = "On"
+        case .appearance:
+            textLabel?.text = Texts.SettingsPage.appearanceTitle
+            imageView?.image = .Settings.appearance
+            accessoryType = .disclosureIndicator
+            detailTextLabel?.text = "System"
+        case .cache:
+            textLabel?.text = Texts.SettingsPage.cacheTitle
+            imageView?.image = .Settings.cache
+            accessoryType = .none
+            if let details {
+                detailTextLabel?.text = details
+            }
+        case .language:
+            textLabel?.text = Texts.SettingsPage.languageTitle
+            imageView?.image = .Settings.language
+            accessoryType = .disclosureIndicator
+            detailTextLabel?.text = "English"
+        case .currency:
+            textLabel?.text = Texts.SettingsPage.currencyTitle
+            imageView?.image = .Settings.currency
+            accessoryType = .disclosureIndicator
+        case .email:
+            textLabel?.text = Texts.SettingsPage.emailTitle
+            imageView?.image = .Settings.email
+            accessoryType = .disclosureIndicator
+            detailTextLabel?.text = Texts.SettingsPage.emailContent
+        }
+        setupUI()
+    }
+    
+    private func setupUI() {
+        guard let imageView else { return }
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        
+        guard let textLabel else { return }
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        separatorInset = UIEdgeInsets(top: 0, left: 63, bottom: 0, right: 0)
+        
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 7),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
+            
+            textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            textLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16)
+        ])
+    }
+    
+}

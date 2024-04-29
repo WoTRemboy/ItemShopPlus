@@ -39,9 +39,6 @@ class SettingsTableViewCell: UITableViewCell {
             textLabel?.text = Texts.SettingsPage.cacheTitle
             imageView?.image = .Settings.cache
             accessoryType = .none
-            if let details {
-                detailTextLabel?.text = details
-            }
         case .language:
             textLabel?.text = Texts.SettingsPage.languageTitle
             imageView?.image = .Settings.language
@@ -56,6 +53,9 @@ class SettingsTableViewCell: UITableViewCell {
             imageView?.image = .Settings.email
             accessoryType = .disclosureIndicator
             detailTextLabel?.text = Texts.SettingsPage.emailContent
+        }
+        if let details {
+            detailTextLabel?.text = details
         }
         setupUI()
     }

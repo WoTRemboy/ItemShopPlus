@@ -26,6 +26,7 @@ final class Texts {
         static let backToShop = "Shop"
         static let backToPass = "Pass"
         static let backToBundles = "Bundles"
+        static let backToSettings = "Settings"
     }
     
     enum SearchController {
@@ -60,6 +61,20 @@ final class Texts {
     }
     
     enum Currency {
+        enum Name {
+            static let usd = "United States Dollar"
+            static let eur = "Euro"
+            static let gbr = "Pound Sterling"
+            static let cad = "Canadian Dollar"
+            static let rub = "Russian Ruble"
+            static let dkk = "Danish Krone"
+            static let jpy = "Japanese Yen"
+            static let sek = "Swedish Krona"
+            static let brl = "Brazilian Real"
+            static let nok = "Norwegian Krone"
+            static let aud = "Australian Dollar"
+            static let lira = "Turkish Lira"
+        }
         enum Code {
             static let usd = "USD"
             static let eur = "EUR"
@@ -356,6 +371,7 @@ final class Texts {
     
     enum SettingsCell {
         static let identifier = "SettingsCell"
+        static let selectIdentifier = "SettingsSelectCell"
     }
     
     // MARK: - Stats Module

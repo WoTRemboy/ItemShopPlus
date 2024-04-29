@@ -74,6 +74,8 @@
 		6399F0102BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F00F2BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift */; };
 		6399F0142BDFBB1F008B19E8 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0132BDFBB1F008B19E8 /* SettingsTableViewCell.swift */; };
 		6399F0172BDFBC11008B19E8 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0162BDFBC11008B19E8 /* SettingsModel.swift */; };
+		6399F0192BDFF50F008B19E8 /* SettingsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0182BDFF50F008B19E8 /* SettingsDetailsViewController.swift */; };
+		6399F01B2BDFFFB4008B19E8 /* SettingsSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F01A2BDFFFB4008B19E8 /* SettingsSelectTableViewCell.swift */; };
 		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
 		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
 		63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */; };
@@ -173,6 +175,8 @@
 		6399F00F2BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutCollectionViewCell.swift; sourceTree = "<group>"; };
 		6399F0132BDFBB1F008B19E8 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		6399F0162BDFBC11008B19E8 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		6399F0182BDFF50F008B19E8 /* SettingsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDetailsViewController.swift; sourceTree = "<group>"; };
+		6399F01A2BDFFFB4008B19E8 /* SettingsSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSelectTableViewCell.swift; sourceTree = "<group>"; };
 		639E62342B92719100E17B4F /* BattlePassMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattlePassMainViewController.swift; sourceTree = "<group>"; };
 		63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewZoomView.swift; sourceTree = "<group>"; };
 		63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTestViewController.swift; sourceTree = "<group>"; };
@@ -505,6 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				6399F00C2BDEDBE6008B19E8 /* SettingsMainViewController.swift */,
+				6399F0182BDFF50F008B19E8 /* SettingsDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 			children = (
 				6399F00F2BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift */,
 				6399F0132BDFBB1F008B19E8 /* SettingsTableViewCell.swift */,
+				6399F01A2BDFFFB4008B19E8 /* SettingsSelectTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -913,6 +919,7 @@
 				6342091F2BD40F87008A9496 /* BundlesCollectionViewCell.swift in Sources */,
 				632533B12B83D45700DA3F05 /* MapPreviewViewController.swift in Sources */,
 				63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */,
+				6399F0192BDFF50F008B19E8 /* SettingsDetailsViewController.swift in Sources */,
 				63C898D72B2334AA00FABD69 /* FontExtensions.swift in Sources */,
 				6320672A2B8B64200060AB1B /* CrewMainViewController.swift in Sources */,
 				63C898E72B233D9000FABD69 /* MainPageModel.swift in Sources */,
@@ -947,6 +954,7 @@
 				6342091A2BD2B0F3008A9496 /* BundlesModel.swift in Sources */,
 				6320672E2B8B66290060AB1B /* JSONCrewParce.swift in Sources */,
 				63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */,
+				6399F01B2BDFFFB4008B19E8 /* SettingsSelectTableViewCell.swift in Sources */,
 				63F8B9D52B2CD75D006E2430 /* QuestsPageController.swift in Sources */,
 				63290CE72B6180A6008F45F8 /* CollectionTotalPriceView.swift in Sources */,
 				6342091C2BD2B2A7008A9496 /* JSONBundleParse.swift in Sources */,

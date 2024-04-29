@@ -34,7 +34,17 @@ class SettingsMainViewController: UIViewController {
         view.backgroundColor = .BackColors.backTable
         
         navigationBarSetup()
+        tableViewSetup()
+    }
+    
+    private func navigationBarSetup() {
+        title = Texts.SettingsPage.title
         
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+    
+    private func tableViewSetup() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,14 +57,6 @@ class SettingsMainViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
-    
-    private func navigationBarSetup() {
-        title = Texts.SettingsPage.title
-        
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-    }
-    
 }
 
 extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -76,10 +78,21 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let name = settings[indexPath.section][indexPath.row]
+        let type = SettingType.typeDefinition(name: name)
         
-        if name == Texts.SettingsPage.cacheTitle {
+        switch type {
+        case .notifications, .appearance, .language:
+            print("Zmyak")
+        case .cache:
             clearCache(indexPath: indexPath)
-        } else if name == Texts.SettingsPage.emailTitle {
+        case .currency:
+            let vc = SettingsDetailsViewController(title: name, type: .currency)
+            vc.completionHandler = { currencyCode in
+                let cell = tableView.cellForRow(at: indexPath) as? SettingsTableViewCell
+                cell?.detailTextLabel?.text = currencyCode
+            }
+            navigationController?.pushViewController(vc, animated: true)
+        case .email:
             openMailApp()
         }
         
@@ -104,14 +117,17 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         let name = settings[indexPath.section][indexPath.row]
         let type = SettingType.typeDefinition(name: name)
         
-        if name == Texts.SettingsPage.cacheTitle {
+        switch type {
+        case .notifications, .appearance, .language, .email:
+            cell.setupCell(type: type)
+        case .cache:
             let cacheSize = ImageLoader.cacheSize() + VideoLoader.cacheSize()
             let text = cacheSize != 0 ? "\(String(format: "%.1f", cacheSize)) \(Texts.ClearCache.megabytes)" : Texts.SettingsPage.emptyCacheContent
             cell.setupCell(type: type, details: text)
-        } else {
-            cell.setupCell(type: type)
+        case .currency:
+            let text = getCurrency()
+            cell.setupCell(type: type, details: text)
         }
-        
         return cell
     }
     
@@ -168,6 +184,15 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
             UIApplication.shared.open(emailURL)
         } else {
             print("Mail app unavailable")
+        }
+    }
+    
+    private func getCurrency() -> String {
+        if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
+            return retrievedString
+        } else {
+            print("There is no currency data in UserDefaults")
+            return Texts.Currency.Code.usd
         }
     }
 }

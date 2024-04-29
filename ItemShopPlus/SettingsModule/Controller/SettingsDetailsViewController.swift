@@ -126,7 +126,7 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
         }
         
         let item = data[indexPath.row]
-        cell.configure(title: "\(item.code), \(item.name)", selected: selectedTitle == item.code)
+        cell.configure(title: item.code, details: item.name, selected: selectedTitle == item.code)
         return cell
     }
 }

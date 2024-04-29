@@ -11,6 +11,14 @@ class SettingsSelectTableViewCell: UITableViewCell {
     
     static let identifier = Texts.SettingsCell.selectIdentifier
     
+    private let detailsLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .labelSecondary
+        label.font = .body()
+        label.numberOfLines = 1
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
     }
@@ -23,12 +31,29 @@ class SettingsSelectTableViewCell: UITableViewCell {
         self.accessoryType = selected ? .checkmark : .none
         textLabel?.text = title
         if let details {
-            detailTextLabel?.text = details
+            detailsLabel.text = details
         }
+        setupUI()
     }
     
     public func selectUpdate() {
         accessoryType = .checkmark
+    }
+    
+    private func setupUI() {
+        addSubview(detailsLabel)
+        detailsLabel.translatesAutoresizingMaskIntoConstraints = false
+        textLabel?.translatesAutoresizingMaskIntoConstraints = false
+        
+        guard let textLabel else { return }
+        NSLayoutConstraint.activate([
+            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            textLabel.trailingAnchor.constraint(equalTo: detailsLabel.leadingAnchor),
+            textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            detailsLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 70),
+            detailsLabel.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor)
+        ])
     }
     
 }

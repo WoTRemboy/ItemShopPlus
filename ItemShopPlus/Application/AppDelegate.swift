@@ -25,7 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             print("Success in APNS registry")
         }
         
-        application.registerForRemoteNotifications()
+        if let retrievedString = UserDefaults.standard.string(forKey: Texts.NotificationSettings.key) {
+            if retrievedString == Texts.NotificationSettings.enable {
+                application.registerForRemoteNotifications()
+            }
+        } else {
+            application.registerForRemoteNotifications()
+        }
+
         return true
     }
     

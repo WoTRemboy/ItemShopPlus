@@ -118,8 +118,11 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         let type = SettingType.typeDefinition(name: name)
         
         switch type {
-        case .notifications, .appearance, .language, .email:
+        case .appearance, .language, .email:
             cell.setupCell(type: type)
+        case .notifications:
+            cell.setupCell(type: type)
+            cell.switchControl.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
         case .cache:
             let cacheSize = ImageLoader.cacheSize() + VideoLoader.cacheSize()
             let text = cacheSize != 0 ? "\(String(format: "%.1f", cacheSize)) \(Texts.ClearCache.megabytes)" : Texts.SettingsPage.emptyCacheContent
@@ -194,5 +197,75 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
             print("There is no currency data in UserDefaults")
             return Texts.Currency.Code.usd
         }
+    }
+}
+
+
+extension SettingsMainViewController {
+    
+    @objc func switchValueChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            enableNotifications(switchControl: sender)
+        } else {
+            disableAllNotifications(switchControl: sender)
+        }
+    }
+    
+    static func checkNotificationAuthorizationAndUpdateSwitch(switchControl: UISwitch) {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                switch settings.authorizationStatus {
+                case .authorized, .provisional, .ephemeral:
+                    if UIApplication.shared.isRegisteredForRemoteNotifications {
+                        switchControl.isOn = true
+                    } else {
+                        switchControl.isOn = false
+                    }
+                case .denied, .notDetermined:
+                    switchControl.isOn = false
+                @unknown default:
+                    switchControl.isOn = false
+                }
+            }
+        }
+    }
+    
+    private func disableAllNotifications(switchControl: UISwitch) {
+        UIApplication.shared.unregisterForRemoteNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UserDefaults.standard.set(Texts.NotificationSettings.disable, forKey: Texts.NotificationSettings.key)
+        switchControl.isOn = false
+        print("Notifications disabled")
+    }
+    
+    private func enableNotifications(switchControl: UISwitch) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { [weak self] granted, _ in
+            DispatchQueue.main.async {
+                if granted {
+                    UIApplication.shared.registerForRemoteNotifications()
+                    UserDefaults.standard.set(Texts.NotificationSettings.enable, forKey: Texts.NotificationSettings.key)
+                    switchControl.isOn = true
+                    print("Notifications enabled")
+                } else {
+                    switchControl.isOn = false
+                    self?.didRequestAlert()
+                    print("Notifications disabled")
+                }
+            }
+        }
+    }
+    
+    private func didRequestAlert() {
+        let alert = UIAlertController(title: Texts.NotificationSettings.alertTitle,
+                                      message: Texts.NotificationSettings.alertContent,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Texts.NotificationSettings.alertSettings, style: .default, handler: { _ in
+            if let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: Texts.NotificationSettings.alertCancel, style: .cancel))
+        present(alert, animated: true)
     }
 }

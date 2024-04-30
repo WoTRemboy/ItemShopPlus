@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseMessaging
 
 class SettingsTableViewCell: UITableViewCell {
     
     static let identifier = Texts.SettingsCell.identifier
+    
+    internal let switchControl = UISwitch()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
@@ -28,8 +31,8 @@ class SettingsTableViewCell: UITableViewCell {
         case .notifications:
             textLabel?.text = Texts.SettingsPage.notificationsTitle
             imageView?.image = .Settings.notifications
-            accessoryType = .disclosureIndicator
-            detailTextLabel?.text = "On"
+            switchSetup()
+            accessoryType = .none
         case .appearance:
             textLabel?.text = Texts.SettingsPage.appearanceTitle
             imageView?.image = .Settings.appearance
@@ -58,6 +61,18 @@ class SettingsTableViewCell: UITableViewCell {
             detailTextLabel?.text = details
         }
         setupUI()
+    }
+    
+    private func switchSetup() {
+        addSubview(switchControl)
+        switchControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        SettingsMainViewController.checkNotificationAuthorizationAndUpdateSwitch(switchControl: switchControl)
+        
+        NSLayoutConstraint.activate([
+            switchControl.centerYAnchor.constraint(equalTo: centerYAnchor),
+            switchControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ])
     }
     
     private func setupUI() {

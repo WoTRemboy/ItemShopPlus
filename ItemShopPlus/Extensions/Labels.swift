@@ -345,6 +345,16 @@ final class Texts {
     
     // MARK: - Settings Module
     
+    enum NotificationSettings {
+        static let key = "NotificationsKey"
+        static let enable = "Enable"
+        static let disable = "Disable"
+        static let alertTitle = "Notification Access Required"
+        static let alertContent = "Please enable notifications in Settings."
+        static let alertSettings = "Settings"
+        static let alertCancel = "Cancel"
+    }
+    
     enum SettingsPage {
         static let title = "Settings"
         static let aboutTitle = "About"
@@ -366,7 +376,7 @@ final class Texts {
     enum SettingsAboutCell {
         static let identifier = "SettingsAboutCell"
         static let name = "Fort Satellite"
-        static let version = "0.6.4 release 1"
+        static let version = "0.6.4 release 2"
     }
     
     enum SettingsCell {

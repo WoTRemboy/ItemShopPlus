@@ -359,7 +359,7 @@ final class Texts {
         static let currencyTitle = "Currency"
         static let emailTitle = "Email"
         
-        static let emailContent = "fortsatellite@vk.ru"
+        static let emailContent = "fortsatellite@vk.com"
         static let emptyCacheContent = "Empty"
     }
     

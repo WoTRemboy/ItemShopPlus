@@ -81,8 +81,15 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         let type = SettingType.typeDefinition(name: name)
         
         switch type {
-        case .notifications, .appearance, .language:
+        case .notifications, .language:
             print("Zmyak")
+        case .appearance:
+            let vc = SettingsDetailsViewController(title: name, type: .appearance)
+            vc.completionHandler = { currencyCode in
+                let cell = tableView.cellForRow(at: indexPath) as? SettingsTableViewCell
+                cell?.detailTextLabel?.text = currencyCode
+            }
+            navigationController?.pushViewController(vc, animated: true)
         case .cache:
             clearCache(indexPath: indexPath)
         case .currency:
@@ -118,8 +125,11 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         let type = SettingType.typeDefinition(name: name)
         
         switch type {
-        case .appearance, .language, .email:
+        case .language, .email:
             cell.setupCell(type: type)
+        case .appearance:
+            let text = getTheme()
+            cell.setupCell(type: type, details: text)
         case .notifications:
             cell.setupCell(type: type)
             cell.selectionStyle = .none
@@ -197,6 +207,15 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         } else {
             print("There is no currency data in UserDefaults")
             return Texts.Currency.Code.usd
+        }
+    }
+    
+    private func getTheme() -> String {
+        if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
+            return retrievedString
+        } else {
+            print("There is no currency data in UserDefaults")
+            return Texts.AppearanceSettings.system
         }
     }
 }

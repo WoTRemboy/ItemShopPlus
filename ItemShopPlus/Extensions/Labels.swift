@@ -355,6 +355,13 @@ final class Texts {
         static let alertCancel = "Cancel"
     }
     
+    enum AppearanceSettings {
+        static let key = "AppearanceKey"
+        static let system = "Device"
+        static let light = "Light"
+        static let dark = "Dark"
+    }
+    
     enum SettingsPage {
         static let title = "Settings"
         static let aboutTitle = "About"
@@ -376,7 +383,7 @@ final class Texts {
     enum SettingsAboutCell {
         static let identifier = "SettingsAboutCell"
         static let name = "Fort Satellite"
-        static let version = "0.6.5 release 1"
+        static let version = "0.6.6 release 1"
     }
     
     enum SettingsCell {

@@ -47,11 +47,11 @@ class SettingsSelectTableViewCell: UITableViewCell {
         
         guard let textLabel else { return }
         NSLayoutConstraint.activate([
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             textLabel.trailingAnchor.constraint(equalTo: detailsLabel.leadingAnchor),
             textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            detailsLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 70),
+            detailsLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 75),
             detailsLabel.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor)
         ])
     }

@@ -9,8 +9,11 @@ import UIKit
 
 class SettingsDetailsViewController: UIViewController {
     
-    private var data = [CurrencyModel]()
-    private var selectedTitle = Texts.Currency.Code.usd
+    private var currencyData = [CurrencyModel]()
+    private var themeData = [AppTheme]()
+    private var type: SettingType
+    
+    private var selectedTitle = String()
     private var previousIndex = IndexPath()
     public var completionHandler: ((String) -> Void)?
     
@@ -27,11 +30,19 @@ class SettingsDetailsViewController: UIViewController {
     }()
     
     init(title: String, type: SettingType) {
+        self.type = type
         super.init(nibName: nil, bundle: nil)
         self.title = title
-        self.data = CurrencyModel.currencies.filter({
-            SelectingMethods.selectCurrency(type: $0.code) != UIImage()
-        })
+        switch type {
+        case .currency:
+            self.currencyData = CurrencyModel.currencies.filter({
+                SelectingMethods.selectCurrency(type: $0.code) != UIImage()
+            })
+        case .appearance:
+            self.themeData = AppTheme.themes
+        default:
+            print("Default cell")
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -43,7 +54,14 @@ class SettingsDetailsViewController: UIViewController {
         view.backgroundColor = .BackColors.backTable
         
         navigationBarSetup()
-        currencyMemoryManager(request: .get)
+        switch type {
+        case .appearance:
+            themeMemoryManager(request: .get)
+        case .currency:
+            currencyMemoryManager(request: .get)
+        default:
+            return
+        }
         tableViewSetup()
     }
     
@@ -57,9 +75,10 @@ class SettingsDetailsViewController: UIViewController {
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
                 selectedTitle = retrievedString
             } else {
+                selectedTitle = Texts.Currency.Code.usd
                 print("There is no currency data in UserDefaults")
             }
-            let row = data.firstIndex(where: { $0.code == selectedTitle } )
+            let row = currencyData.firstIndex(where: { $0.code == selectedTitle } )
             previousIndex = IndexPath(row: row ?? 0, section: 0)
             
         case .save:
@@ -99,7 +118,14 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        switch type {
+        case .currency:
+            return currencyData.count
+        case .appearance:
+            return themeData.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -112,10 +138,20 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
             let selectedCell = tableView.cellForRow(at: indexPath) as? SettingsSelectTableViewCell
             previousCell?.accessoryType = .none
             selectedCell?.accessoryType = .checkmark
-            
-            selectedTitle = data[indexPath.row].code
             previousIndex = indexPath
-            currencyMemoryManager(request: .save)
+            
+            switch type {
+            case .appearance:
+                selectedTitle = themeData[indexPath.row].name
+                themeMemoryManager(request: .save)
+                changeTheme(style: themeData[indexPath.row].style)
+            case .currency:
+                selectedTitle = currencyData[indexPath.row].code
+                currencyMemoryManager(request: .save)
+            default:
+                return
+            }
+            
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -125,8 +161,49 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
             fatalError("Failed to dequeue SettingsSelectTableViewCell in SettingsDetailsViewController")
         }
         
-        let item = data[indexPath.row]
-        cell.configure(title: item.code, details: item.name, selected: selectedTitle == item.code)
+        switch type {
+        case .currency:
+            let item = currencyData[indexPath.row]
+            cell.configure(title: item.code, details: item.name, selected: selectedTitle == item.code)
+        case .appearance:
+            let item = themeData[indexPath.row]
+            cell.configure(title: item.name, selected: selectedTitle == item.name)
+        default:
+            return cell
+        }
         return cell
+    }
+}
+
+
+extension SettingsDetailsViewController {
+    
+    private func themeMemoryManager(request: CurrencyManager) {
+        switch request {
+        case .get:
+            if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
+                selectedTitle = retrievedString
+            } else {
+                selectedTitle = Texts.AppearanceSettings.system
+                print("There is no currency data in UserDefaults")
+            }
+            let row = themeData.firstIndex(where: { $0.name == selectedTitle } )
+            previousIndex = IndexPath(row: row ?? 0, section: 0)
+            
+        case .save:
+            UserDefaults.standard.set(selectedTitle, forKey: Texts.AppearanceSettings.key)
+        case .delete:
+            UserDefaults.standard.removeObject(forKey: Texts.AppearanceSettings.key)
+        }
+    }
+    
+    private func changeTheme(style: UIUserInterfaceStyle) {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
+                UIView.transition(with: window, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                    window.overrideUserInterfaceStyle = style
+                })
+            }
+        }
     }
 }

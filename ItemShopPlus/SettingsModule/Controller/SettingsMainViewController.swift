@@ -122,6 +122,7 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
             cell.setupCell(type: type)
         case .notifications:
             cell.setupCell(type: type)
+            cell.selectionStyle = .none
             cell.switchControl.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
         case .cache:
             let cacheSize = ImageLoader.cacheSize() + VideoLoader.cacheSize()

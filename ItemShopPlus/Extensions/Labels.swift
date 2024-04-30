@@ -115,7 +115,7 @@ final class Texts {
             static let shop = "Item Shop"
             static let bundles = "Bundles"
             static let battlePass = "Battle Pass"
-            static let lootDetails = "Loot Details"
+            static let lootDetails = "Armory"
             static let crew = "Crew"
             static let map = "Map"
             static let stats = "Stats"
@@ -299,7 +299,7 @@ final class Texts {
     // MARK: - Loot Details Module
     
     enum LootDetailsMain {
-        static let title = "Loot Details"
+        static let title = "Armory"
         static let header = "Weapons"
     }
     
@@ -311,7 +311,7 @@ final class Texts {
     
     enum LootDetailsRarity {
         static let title = "Rarities"
-        static let back = "Loot"
+        static let back = "Armory"
     }
     
     enum LootDetailsRarityCell {
@@ -321,7 +321,7 @@ final class Texts {
     enum LootDetailsStats {
         static let title = "Stats"
         static let backRarities = "Rarities"
-        static let backLoot = "Loot"
+        static let backLoot = "Armory"
     }
     
     enum LootDetailsStatsCell {
@@ -376,7 +376,7 @@ final class Texts {
     enum SettingsAboutCell {
         static let identifier = "SettingsAboutCell"
         static let name = "Fort Satellite"
-        static let version = "0.6.4 release 2"
+        static let version = "0.6.5 release 1"
     }
     
     enum SettingsCell {

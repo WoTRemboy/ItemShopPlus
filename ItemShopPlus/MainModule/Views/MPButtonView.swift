@@ -17,6 +17,8 @@ final class MPButtonView: UIView {
         let imageView = UIImageView()
         let image = UIImage.Placeholder.noImage
         imageView.image = image
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

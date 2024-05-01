@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Настройки_Светлая (1).svg",
+      "filename" : "Настройки_без градиента.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Настройки_Тёмная (1).svg",
+      "filename" : "Настройки_Т. Без градиента.svg",
       "idiom" : "universal"
     }
   ],

@@ -200,7 +200,7 @@ extension SettingsDetailsViewController {
     private func changeTheme(style: UIUserInterfaceStyle) {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-                UIView.transition(with: window, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
                     window.overrideUserInterfaceStyle = style
                 })
             }

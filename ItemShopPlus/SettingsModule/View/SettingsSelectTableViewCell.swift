@@ -44,14 +44,15 @@ class SettingsSelectTableViewCell: UITableViewCell {
         addSubview(detailsLabel)
         detailsLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel?.translatesAutoresizingMaskIntoConstraints = false
+        separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         
         guard let textLabel else { return }
         NSLayoutConstraint.activate([
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             textLabel.trailingAnchor.constraint(equalTo: detailsLabel.leadingAnchor),
             textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            detailsLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 75),
+            detailsLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 70),
             detailsLabel.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor)
         ])
     }

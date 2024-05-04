@@ -569,7 +569,6 @@
 		63C898AF2B232F4000FABD69 = {
 			isa = PBXGroup;
 			children = (
-				63178F6E2BE6710D00090F81 /* MobileAdsBundle.bundle */,
 				63C898BA2B232F4000FABD69 /* ItemShopPlus */,
 				63C898B92B232F4000FABD69 /* Products */,
 			);
@@ -604,6 +603,7 @@
 				63C898D02B2330B000FABD69 /* Extensions */,
 				63C898C92B232F4100FABD69 /* Info.plist */,
 				639418AA2BD59BD7007F02FA /* ItemShopPlus.entitlements */,
+				63178F6E2BE6710D00090F81 /* MobileAdsBundle.bundle */,
 			);
 			path = ItemShopPlus;
 			sourceTree = "<group>";
@@ -1139,7 +1139,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.0;
+				MARKETING_VERSION = 0.7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1173,7 +1173,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.0;
+				MARKETING_VERSION = 0.7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -17,10 +17,12 @@ final class ShopGrantedViewController: UIViewController {
     
     private var originalTitleAttributes: [NSAttributedString.Key : Any]?
     private var isPresentedFullScreen = false
+    private let networkService = DefaultNetworkService()
     
     // MARK: - UI Elements and Views
     
     private var playerViewController = AVPlayerViewController()
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -69,7 +71,7 @@ final class ShopGrantedViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-                
+        
         view.addSubview(collectionView)
         setupUI()
     }
@@ -85,6 +87,10 @@ final class ShopGrantedViewController: UIViewController {
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     // MARK: - Action
     
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -94,7 +100,13 @@ final class ShopGrantedViewController: UIViewController {
         }
     }
     
-    @objc private func videoDidEnd() {
+    @objc private func videoToRepeat() {
+        self.playerViewController.player?.seek(to: .zero, completionHandler: { _ in
+            self.playerViewController.player?.play()
+        })
+    }
+    
+    @objc private func videoToDismiss() {
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
         self.playerViewController.dismiss(animated: true, completion: nil)
     }
@@ -116,9 +128,14 @@ final class ShopGrantedViewController: UIViewController {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
             if self.items.count > 0, let video = self.items[indexPath.item]?.video, let videoURL = URL(string: video) {
-                self.videoSetup(videoURL: videoURL)
+                self.videoSetup(videoURL: videoURL, repeatable: false)
             } else {
-                self.previewSetup(index: indexPath.item)
+                let item = self.items[indexPath.item]
+                if item?.type == "Outfit" {
+                    self.getVideo(index: indexPath.item)
+                } else {
+                    self.previewSetup(index: indexPath.item)
+                }
             }
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = CGAffineTransform.identity
@@ -126,16 +143,58 @@ final class ShopGrantedViewController: UIViewController {
         }
     }
     
+    private func getVideo(index: Int) {
+        let item = items[index]
+        DispatchQueue.main.async {
+            self.collectionView.isUserInteractionEnabled = false
+            UIView.animate(withDuration: 0.2) {
+                self.collectionView.alpha = 0.5
+            }
+            self.activityIndicator.center = self.view.center
+            self.view.addSubview(self.activityIndicator)
+            self.activityIndicator.startAnimating()
+        }
+        self.networkService.getItemVideo(id: item?.id ?? "") { [weak self] result in
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.removeFromSuperview()
+                self?.collectionView.isUserInteractionEnabled = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self?.collectionView.alpha = 1
+                }
+            }
+            switch result {
+            case .success(let videoItem):
+                DispatchQueue.main.async {
+                    guard let url = URL(string: videoItem.video) else {
+                        self?.previewSetup(index: index)
+                        return
+                    }
+                    self?.videoSetup(videoURL: url, repeatable: true)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.previewSetup(index: index)
+                }
+                print(error)
+            }
+        }
+    }
+    
     // MARK: - UI Setup
     
-    private func videoSetup(videoURL: URL) {
+    private func videoSetup(videoURL: URL, repeatable: Bool) {
         let player = AVPlayer(url: videoURL)
         playerViewController.player = player
         
         self.isPresentedFullScreen = true
         self.present(playerViewController, animated: true) {
             self.playerViewController.player?.play()
-            NotificationCenter.default.addObserver(self, selector: #selector(self.videoDidEnd), name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+            if repeatable {
+                NotificationCenter.default.addObserver(self, selector: #selector(self.videoToRepeat), name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+            } else {
+                NotificationCenter.default.addObserver(self, selector: #selector(self.videoToDismiss), name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+            }
         }
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)

@@ -18,6 +18,7 @@ extension UIColor {
         static let backSplash = UIColor(named: "BackSplash")
         static let backStats = UIColor(named: "BackStats")
         static let backDefault = UIColor(named: "BackDefault")
+        static let backTable = UIColor(named: "BackTable")
     }
     
     enum LabelColors {
@@ -44,6 +45,7 @@ extension UIColor {
     enum IconColors {
         static let foregroundPages = UIColor(named: "ForegroundPages")
         static let backgroundPages = UIColor(named: "BackgroundPages")
+        static let LootItemColor = UIColor(named: "LootItemColor")
     }
     
     enum Shadows {

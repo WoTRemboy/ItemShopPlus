@@ -39,6 +39,32 @@ enum Rarity {
     case epic
     case legendary
     case star
+    case mythic
+    case transcendent
+    case exotic
+    
+    static func rarityToString(rarity: Rarity) -> String {
+        switch rarity {
+        case .common:
+            return Texts.Rarity.common
+        case .uncommon:
+            return Texts.Rarity.uncommon
+        case .rare:
+            return Texts.Rarity.rare
+        case .epic:
+            return Texts.Rarity.epic
+        case .legendary:
+            return Texts.Rarity.legendary
+        case .star:
+            return Texts.Rarity.star
+        case .mythic:
+            return Texts.Rarity.mythic
+        case .transcendent:
+            return Texts.Rarity.transcendent
+        case .exotic:
+            return Texts.Rarity.exotic
+        }
+    }
 }
 
 // MARK: - Internal Currency Image

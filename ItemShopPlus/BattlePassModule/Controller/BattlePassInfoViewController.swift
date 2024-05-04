@@ -127,7 +127,7 @@ final class BattlePassInfoViewController: UIViewController {
     private func playerSetup() {
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
-            self.videoLoadTask = VideoLoader.loadAndShowVideo(from: self.video, to: self.playerViewController, activityIndicator: self.activityIndicator)
+            VideoLoader.loadAndShowVideo(from: self.video, to: self.playerViewController, activityIndicator: self.activityIndicator)
         }
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)

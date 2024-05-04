@@ -26,6 +26,7 @@ final class Texts {
         static let backToShop = "Shop"
         static let backToPass = "Pass"
         static let backToBundles = "Bundles"
+        static let backToSettings = "Settings"
     }
     
     enum SearchController {
@@ -47,7 +48,33 @@ final class Texts {
         static let retry = "Please, retry later"
     }
     
+    enum Rarity {
+        static let common = "Common"
+        static let uncommon = "Uncommon"
+        static let rare = "Rare"
+        static let epic = "Epic"
+        static let legendary = "Legendary"
+        static let mythic = "Mythic"
+        static let star = "Star"
+        static let transcendent = "Transcendent"
+        static let exotic = "Exotic"
+    }
+    
     enum Currency {
+        enum Name {
+            static let usd = "United States Dollar"
+            static let eur = "Euro"
+            static let gbr = "Pound Sterling"
+            static let cad = "Canadian Dollar"
+            static let rub = "Russian Ruble"
+            static let dkk = "Danish Krone"
+            static let jpy = "Japanese Yen"
+            static let sek = "Swedish Krona"
+            static let brl = "Brazilian Real"
+            static let nok = "Norwegian Krone"
+            static let aud = "Australian Dollar"
+            static let lira = "Turkish Lira"
+        }
         enum Code {
             static let usd = "USD"
             static let eur = "EUR"
@@ -88,12 +115,12 @@ final class Texts {
             static let shop = "Item Shop"
             static let bundles = "Bundles"
             static let battlePass = "Battle Pass"
-            static let lootDetails = "Loot Details"
+            static let lootDetails = "Armory"
             static let crew = "Crew"
             static let map = "Map"
             static let stats = "Stats"
             static let augments = "Augments"
-            static let cache = "Clear Cache"
+            static let settings = "Settings"
         }
     }
     
@@ -109,7 +136,7 @@ final class Texts {
     
     enum ClearCache {
         static let message = "All media used in the app will remain in the cloud and will be re-downloaded when needed"
-        static let cache = "Clear Cache"
+        static let cache = "Clear Entire Cache"
         static let megabytes = "MB"
         static let cancel = "Cancel"
         
@@ -267,6 +294,101 @@ final class Texts {
         static let descriptionText = "Descriprion is..."
         static let about = "About"
         static let aboutText = "About this..."
+    }
+    
+    // MARK: - Loot Details Module
+    
+    enum LootDetailsMain {
+        static let title = "Armory"
+        static let header = "Weapons"
+    }
+    
+    enum LootDetailsMainCell {
+        static let identifier = "LootDetailsMainCell"
+        static let rarities = "Rarities"
+        static let stats = "Stats"
+    }
+    
+    enum LootDetailsRarity {
+        static let title = "Rarities"
+        static let back = "Armory"
+    }
+    
+    enum LootDetailsRarityCell {
+        static let identifier = "LootDetailsRarityCell"
+    }
+    
+    enum LootDetailsStats {
+        static let title = "Stats"
+        static let backRarities = "Rarities"
+        static let backLoot = "Armory"
+    }
+    
+    enum LootDetailsStatsCell {
+        static let footerIdentifier = "LootDetailsStatsFooter"
+        static let damageBulletTitle = "Damage"
+        static let firingRateTitle = "Firing rate"
+        static let clipSizeTitle = "Clip size"
+        static let reloadTimeTitle = "Reload time"
+        static let bulletsCartridgeTitle = "Cartridge size"
+        static let spreadTitle = "Spread"
+        static let spreadDownsightsTitle = "Spread downsights"
+        static let damageZoneTitle = "Damage zone critical"
+        static let no = "No"
+        
+        static let damageBullets = "Units / round:"
+        static let roundsSecond = "Rounds / second:"
+        static let rounds = "Rounds:"
+        static let seconds = "Seconds:"
+        static let multiplier = "Multiplier:"
+    }
+    
+    // MARK: - Settings Module
+    
+    enum NotificationSettings {
+        static let key = "NotificationsKey"
+        static let enable = "Enable"
+        static let disable = "Disable"
+        static let alertTitle = "Notification Access Required"
+        static let alertContent = "Please enable notifications in Settings."
+        static let alertSettings = "Settings"
+        static let alertCancel = "Cancel"
+    }
+    
+    enum AppearanceSettings {
+        static let key = "AppearanceKey"
+        static let system = "Device"
+        static let light = "Light"
+        static let dark = "Dark"
+    }
+    
+    enum SettingsPage {
+        static let title = "Settings"
+        static let aboutTitle = "About"
+        static let generalTitle = "General"
+        static let localizationTitle = "Localization"
+        static let contactTitle = "Contact"
+        
+        static let notificationsTitle = "Notifications"
+        static let appearanceTitle = "Appearance"
+        static let cacheTitle = "Clear Cache"
+        static let languageTitle = "Language"
+        static let currencyTitle = "Currency"
+        static let emailTitle = "Email"
+        
+        static let emailContent = "fortsatellite@vk.com"
+        static let emptyCacheContent = "Empty"
+    }
+    
+    enum SettingsAboutCell {
+        static let identifier = "SettingsAboutCell"
+        static let name = "Fort Satellite"
+        static let version = "0.6.7 release 2"
+    }
+    
+    enum SettingsCell {
+        static let identifier = "SettingsCell"
+        static let selectIdentifier = "SettingsSelectCell"
     }
     
     // MARK: - Stats Module

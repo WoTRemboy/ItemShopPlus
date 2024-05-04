@@ -18,6 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let viewController = SplashScreenViewController()
         window?.rootViewController = UINavigationController(rootViewController: viewController)
+        
+        if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
+            if let style = AppTheme.themes.first(where: { $0.name == retrievedString })?.style {
+                window?.overrideUserInterfaceStyle = style
+            }
+        }
+        
         window?.makeKeyAndVisible()
     }
 

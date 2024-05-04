@@ -121,16 +121,22 @@ final class SelectingMethods {
     
     static func selectRarity(rarityText: String?) -> Rarity {
         switch rarityText {
-        case "Common":
+        case "Common", "common":
             return .common
-        case "Uncommon":
+        case "Uncommon", "uncommon":
             return .uncommon
-        case "Rare":
+        case "Rare", "rare":
             return .rare
-        case "Epic":
+        case "Epic", "epic":
             return .epic
-        case "Legendary":
+        case "Legendary", "legendary":
             return .legendary
+        case "Mythic", "mythic":
+            return .mythic
+        case "Transcendent", "transcendent":
+            return .transcendent
+        case "Exotic", "exotic":
+            return .exotic
         default:
             return .common
         }
@@ -150,6 +156,12 @@ final class SelectingMethods {
             return .ShopGranted.legendary ?? .grantedLegendary
         case .star:
             return .BattlePass.star ?? .battlePassStar
+        case .mythic:
+            return .ShopGranted.legendary ?? .grantedLegendary
+        case .transcendent:
+            return .ShopGranted.legendary ?? .grantedLegendary
+        case .exotic:
+            return .ShopGranted.legendary ?? .grantedLegendary
         }
     }
     

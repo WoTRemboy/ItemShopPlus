@@ -13,6 +13,8 @@ extension UIImage {
     
     enum Placeholder {
         static let noImage = UIImage(named: "ImagePlaceholder")
+        static let noImage3To4 = UIImage(named: "ImagePlaceholder3To4")
+        static let noImage16To9 = UIImage(named: "ImagePlaceholder16To9")
         static let video = UIImage(named: "VideoBanner")
     }
     
@@ -39,16 +41,16 @@ extension UIImage {
     // MARK: - Main Module
     
     enum MainButtons {
-        static let shop = createImage(name: "basket")
+        static let shop = UIImage(named: "ShopIcon")
         static let battlePass = UIImage(named: "BattlePassIcon")
-        static let lootDetails = createImage(name: "chart.bar")
-        static let bundles = createImage(name: "tag")
+        static let lootDetails = UIImage(named: "LootDetailsIcon")
+        static let bundles = UIImage(named: "BundlesIcon")
         static let crew = UIImage(named: "CrewIcon")
-        static let map = createImage(name: "map")
+        static let map = UIImage(named: "MapIcon")
         static let stats = UIImage(named: "StatsIcon")
+        static let settings = UIImage(named: "SettingsIcon")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")
         static let question = createImage(name: "questionmark.square.dashed")
-        static let trash = createImage(name: "trash")
     }
     
     // MARK: - Splash Module
@@ -85,6 +87,18 @@ extension UIImage {
     
     enum BattlePass {
         static let star = UIImage(named: "BattlePassStar")
+    }
+    
+    // MARK: - Settings Module
+    
+    enum Settings {
+        static let app = UIImage(named: "AppIcon")
+        static let notifications = UIImage(named: "NotificationsSetting")
+        static let appearance = UIImage(named: "AppearanceSetting")
+        static let cache = UIImage(named: "CacheSetting")
+        static let language = UIImage(named: "LanguageSetting")
+        static let currency = UIImage(named: "CurrencySetting")
+        static let email = UIImage(named: "EmailSetting")
     }
     
     // MARK: - Stats Module

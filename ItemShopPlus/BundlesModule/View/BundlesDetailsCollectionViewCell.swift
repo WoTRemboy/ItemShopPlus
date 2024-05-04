@@ -15,7 +15,7 @@ class BundlesDetailsCollectionViewCell: UICollectionViewCell {
     
     private let detailsImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = .Placeholder.noImage
+        imageView.image = .Placeholder.noImage3To4
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
         return imageView

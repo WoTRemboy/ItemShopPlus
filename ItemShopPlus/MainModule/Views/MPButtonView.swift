@@ -17,6 +17,8 @@ final class MPButtonView: UIView {
         let imageView = UIImageView()
         let image = UIImage.Placeholder.noImage
         imageView.image = image
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -108,7 +110,7 @@ final class MPButtonView: UIView {
         case .lootDetails:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.lootDetails
             buttonImageView.image = .MainButtons.lootDetails
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.lootDetailsTransfer), for: .touchUpInside)
         case .stats:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.stats
             buttonImageView.image = .MainButtons.stats
@@ -121,10 +123,10 @@ final class MPButtonView: UIView {
             buttonLabel.text = Texts.ButtonLabels.MainButtons.augments
             buttonImageView.image = .MainButtons.augments
             selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
-        case .cache:
-            buttonLabel.text = Texts.ButtonLabels.MainButtons.cache
-            buttonImageView.image = .MainButtons.trash
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.clearCache), for: .touchUpInside)
+        case .settings:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.settings
+            buttonImageView.image = .MainButtons.settings
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.settingTransfer), for: .touchUpInside)
         case .null:
             buttonLabel.text = "??????"
             buttonImageView.image = .MainButtons.question

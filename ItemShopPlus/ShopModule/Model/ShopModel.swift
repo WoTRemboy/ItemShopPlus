@@ -28,6 +28,7 @@ struct ShopItem {
 
 struct GrantedItem {
     let id: String
+    let typeID: String
     let type: String
     let name: String
     let description: String

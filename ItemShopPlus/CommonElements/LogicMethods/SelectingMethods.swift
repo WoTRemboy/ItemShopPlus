@@ -214,4 +214,27 @@ final class SelectingMethods {
             return String()
         }
     }
+    
+    // MARK: - Armory
+    
+    static func selectWeaponTag(tag: String) -> String {
+        switch tag {
+        case "Pistols":
+            return Texts.LootDetailsStats.pistols
+        case "Assault":
+            return Texts.LootDetailsStats.assault
+        case "Shotgun":
+            return Texts.LootDetailsStats.shotgun
+        case "Sniper":
+            return Texts.LootDetailsStats.sniper
+        case "Blade":
+            return Texts.LootDetailsStats.blade
+        case "Bow":
+            return Texts.LootDetailsStats.bow
+        case "Launcher":
+            return Texts.LootDetailsStats.launcher
+        default:
+            return Texts.ShopPage.allMenu
+        }
+    }
 }

@@ -62,7 +62,6 @@ final class CollectionRarityCell: UICollectionViewCell {
         itemTypeLabel.text = type
         rarityImageView.image = SelectingMethods.selectRarity(rarity: rarity)
         video ? videoBannerImageViewSetup() : nil
-        type == "Outfit" ? videoBannerImageViewSetup() : nil
         setupUI()
     }
     

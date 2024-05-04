@@ -20,18 +20,18 @@ final class Texts {
     }
     
     enum Navigation {
-        static let cancel = "Cancel"
-        static let done = "Done"
-        static let backToMain = "Main"
-        static let backToShop = "Shop"
-        static let backToPass = "Pass"
-        static let backToBundles = "Bundles"
-        static let backToSettings = "Settings"
+        static let cancel = NSLocalizedString("NavigationCancel", comment: "Cancel")
+        static let done = NSLocalizedString("NavigationDone", comment: "Done")
+        static let backToMain = NSLocalizedString("NavigationMain", comment: "Main")
+        static let backToShop = NSLocalizedString("NavigationShop", comment: "Shop")
+        static let backToPass = NSLocalizedString("NavigationPass", comment: "Pass")
+        static let backToBundles = NSLocalizedString("NavigationBundles", comment: "Bundles")
+        static let backToSettings = NSLocalizedString("NavigationSettings", comment: "Settings")
     }
     
     enum SearchController {
-        static let result = "Result"
-        static let noResult = "No result"
+        static let result = NSLocalizedString("SearchResult", comment: "Result")
+        static let noResult = NSLocalizedString("SearchNoResult", comment: "No result")
     }
     
     enum Season {
@@ -40,40 +40,44 @@ final class Texts {
     }
     
     enum Placeholder {
-        static let noText = "Something wrong..."
+        static let noText = NSLocalizedString("PlaceholderSmth", comment: "Something wrong...")
     }
     
     enum noConnection {
-        static let noInternet = "No connection"
-        static let retry = "Please, retry later"
+        static let noInternet = NSLocalizedString("noConnectionInternet", comment: "No connection")
+        static let retry = NSLocalizedString("noConnectionRetry", comment: "Please, retry later")
     }
     
     enum Rarity {
-        static let common = "Common"
-        static let uncommon = "Uncommon"
-        static let rare = "Rare"
-        static let epic = "Epic"
-        static let legendary = "Legendary"
-        static let mythic = "Mythic"
-        static let star = "Star"
-        static let transcendent = "Transcendent"
-        static let exotic = "Exotic"
+        static let common = NSLocalizedString("RarityCommon", comment: "Common")
+        static let uncommon = NSLocalizedString("RarityUncommon", comment: "Uncommon")
+        static let rare = NSLocalizedString("RarityRare", comment: "Rare")
+        static let epic = NSLocalizedString("RarityEpic", comment: "Epic")
+        static let legendary = NSLocalizedString("RarityLegend", comment: "Legendary")
+        static let mythic = NSLocalizedString("RarityMythic", comment: "Mythic")
+        static let star = NSLocalizedString("RarityStar", comment: "Star")
+        static let transcendent = NSLocalizedString("RarityTrans", comment: "Transcendent")
+        static let exotic = NSLocalizedString("RarityExotic", comment: "Exotic")
+    }
+    
+    enum NetworkRequest {
+        static let language = NSLocalizedString("NetworkRequestLang", comment: "en")
     }
     
     enum Currency {
         enum Name {
-            static let usd = "United States Dollar"
-            static let eur = "Euro"
-            static let gbr = "Pound Sterling"
-            static let cad = "Canadian Dollar"
-            static let rub = "Russian Ruble"
-            static let dkk = "Danish Krone"
-            static let jpy = "Japanese Yen"
-            static let sek = "Swedish Krona"
-            static let brl = "Brazilian Real"
-            static let nok = "Norwegian Krone"
-            static let aud = "Australian Dollar"
-            static let lira = "Turkish Lira"
+            static let usd = NSLocalizedString("CurrencyNameUSD", comment: "United States Dollar")
+            static let eur = NSLocalizedString("CurrencyNameEUR", comment: "Euro")
+            static let gbr = NSLocalizedString("CurrencyNameGBR", comment: "Pound Sterling")
+            static let cad = NSLocalizedString("CurrencyNameCAD", comment: "Canadian Dollar")
+            static let rub = NSLocalizedString("CurrencyNameRUB", comment: "Russian Ruble")
+            static let dkk = NSLocalizedString("CurrencyNameDKK", comment: "Danish Krone")
+            static let jpy = NSLocalizedString("CurrencyNameJPY", comment: "Japanese Yen")
+            static let sek = NSLocalizedString("CurrencyNameSEK", comment: "Swedish Krona")
+            static let brl = NSLocalizedString("CurrencyNameBRL", comment: "Brazilian Real")
+            static let nok = NSLocalizedString("CurrencyNameNOK", comment: "Norwegian Krone")
+            static let aud = NSLocalizedString("CurrencyNameAUD", comment: "Australian Dollar")
+            static let lira = NSLocalizedString("CurrencyNameTRY", comment: "Turkish Lira")
         }
         enum Code {
             static let usd = "USD"
@@ -112,206 +116,208 @@ final class Texts {
     
     enum ButtonLabels {
         enum MainButtons {
-            static let shop = "Item Shop"
-            static let bundles = "Bundles"
-            static let battlePass = "Battle Pass"
-            static let lootDetails = "Armory"
-            static let crew = "Crew"
-            static let map = "Map"
-            static let stats = "Stats"
-            static let augments = "Augments"
-            static let settings = "Settings"
+            static let shop = NSLocalizedString("MainButtonsShop", comment: "Item Shop")
+            static let bundles = NSLocalizedString("MainButtonsBundles", comment: "Bundles")
+            static let battlePass = NSLocalizedString("MainButtonsBP", comment: "Battle Pass")
+            static let lootDetails = NSLocalizedString("MainButtonsArmory", comment: "Armory")
+            static let crew = NSLocalizedString("MainButtonsCrew", comment: "Crew")
+            static let map = NSLocalizedString("MainButtonsMap", comment: "Map")
+            static let stats = NSLocalizedString("MainButtonsStats", comment: "Stats")
+            static let augments = NSLocalizedString("MainButtonsAugments", comment: "Augments")
+            static let settings = NSLocalizedString("MainButtonsSettings", comment: "Settings")
         }
     }
     
     enum Pages {
         static let main = "Fort Satellite"
-        static let quests = "Quests"
-        static let quest = "Quest"
-        static let details = "Details"
-        static let shop = "Item Shop"
+        static let quests = NSLocalizedString("PagesQuests", comment: "Quests")
+        static let quest = NSLocalizedString("PagesQuest", comment: "Quest")
+        static let details = NSLocalizedString("PagesDetails", comment: "Details")
+        static let shop = NSLocalizedString("PagesShop", comment: "Item Shop")
     }
     
     // MARK: - Cache Module
     
     enum ClearCache {
-        static let message = "All media used in the app will remain in the cloud and will be re-downloaded when needed"
-        static let cache = "Clear Entire Cache"
-        static let megabytes = "MB"
-        static let cancel = "Cancel"
+        static let message = NSLocalizedString("ClearCacheMessage", comment: "All media used in the app will remain in the cloud and will be re-downloaded when needed")
+        static let cache = NSLocalizedString("ClearCacheCache", comment: "Clear Entire Cache")
+        static let megabytes = NSLocalizedString("ClearCacheMB", comment: "MB")
+        static let cancel = NSLocalizedString("ClearCacheCancel", comment: "Cancel")
         
-        static let oops = "Oops!"
-        static let alreadyClean = "The cache is already clean."
-        static let success = "Success"
-        static let cleared = "The cache has been cleared."
-        static let ok = "OK"
+        static let oops = NSLocalizedString("ClearCacheOops", comment: "Oops!")
+        static let alreadyClean = NSLocalizedString("ClearCacheClean", comment: "The cache is already clean.")
+        static let success = NSLocalizedString("ClearCacheSuccess", comment: "Success")
+        static let cleared = NSLocalizedString("ClearCacheCleared", comment: "The cache has been cleared.")
+        static let ok = NSLocalizedString("ClearCacheOk", comment: "OK")
     }
     
     // MARK: - Shop Module
     
     enum ShopPage {
-        static let itemName = "Item name..."
-        static let itemPrice = "Item price..."
-        static let bundleName = "Bundle name..."
-        static let segmentName = "Segment name..."
-        static let allMenu = "All"
-        static let rotaionTitle = "Shop Info"
-        static let rotationInfo = "The shop refreshes every day. Check back to see what's new!"
-        static let reloadShop = "It's time to update!"
-        static let remaining = "Remaining time"
-        static let jamTracks = "Jam Tracks"
+        static let itemName = NSLocalizedString("ShopPageItemName", comment: "Item name...")
+        static let itemPrice = NSLocalizedString("ShopPageItemPrice", comment: "Item price...")
+        static let bundleName = NSLocalizedString("ShopPageBundleName", comment: "Bundle name...")
+        static let segmentName = NSLocalizedString("ShopPageSegmentName", comment: "Segment name...")
+        static let allMenu = NSLocalizedString("ShopPageAllMenu", comment: "All")
+        static let rotaionTitle = NSLocalizedString("ShopPageShopInfo", comment: "Shop Info")
+        static let reloadShop = NSLocalizedString("ShopPageReloadShop", comment: "It's time to update!")
+        static let remaining = NSLocalizedString("ShopPageRemaining", comment: "Remaining time")
+        static let jamTracks = NSLocalizedString("ShopPageJamTracks", comment: "Jam Tracks")
+        static let backpack = NSLocalizedString("ShopPageShopBackpack", comment: "Backpack")
+        static let bundle = NSLocalizedString("ShopPageShopItemBundle", comment: "Item Bundle")
     }
     
     enum ShopMainCell {
         static let identifier = "ShopCollectionViewCell"
         static let vBucks = " VBucks"
-        static let search = "Search items"
+        static let search = NSLocalizedString("ShopMainCellSearch", comment: "Search items")
     }
     
     enum ShopGrantedCell {
         static let footerIdentifier = "ShopGrantedCollectionReusableView"
-        static let firstTime = "First time..."
-        static let lastTime = "Last time..."
-        static let total = "Total"
-        static let price = "Bundle price..."
-        static let title = "Title..."
-        static let content = "Content..."
+        static let firstTime = NSLocalizedString("ShopGrantedCellFirstTime", comment: "First time...")
+        static let lastTime = NSLocalizedString("ShopGrantedCellLastTime", comment: "Last time...")
+        static let total = NSLocalizedString("ShopGrantedCellTotal", comment: "Total")
+        static let price = NSLocalizedString("ShopGrantedCellPrice", comment: "Bundle price...")
+        static let title = NSLocalizedString("ShopGrantedCellTitle", comment: "Title...")
+        static let content = NSLocalizedString("ShopGrantedCellContent", comment: "Content...")
     }
     
     enum ShopGrantedParameters {
-        static let descriprion = "Descriprion"
-        static let series = "Series"
-        static let firstTime = "First release"
-        static let lastTime = "Previous release"
-        static let descriptionData = "Descriprion..."
-        static let seriesData = "Series..."
-        static let firstTimeData = "First release..."
-        static let lastTimeData = "Previous release..."
+        static let descriprion = NSLocalizedString("ShopGrantedParametersDescription", comment: "Descriprion")
+        static let series = NSLocalizedString("ShopGrantedParametersSeries", comment: "Series")
+        static let firstTime = NSLocalizedString("ShopGrantedParametersFirstTime", comment: "First release")
+        static let lastTime = NSLocalizedString("ShopGrantedParametersLastTime", comment: "Previous release")
+        static let descriptionData = NSLocalizedString("ShopGrantedParametersDescriptionData", comment: "Descriprion...")
+        static let seriesData = NSLocalizedString("ShopGrantedParametersSeriesData", comment: "Series...")
+        static let firstTimeData = NSLocalizedString("ShopGrantedParametersFirstTimeData", comment: "First release...")
+        static let lastTimeData = NSLocalizedString("ShopGrantedParametersLastTimeData", comment: "Previous release...")
     }
     
     enum ShopTimer {
-        static let whatMeans = "What is: "
-        static let swipeInfo = "Swipe over the cell image to see more variations!"
-        static let countInfo = "Number of elements in the item bundle."
-        static let aboutRotation = "About rotation"
-        static let rotationInfo = "The shop refreshes every day. Check back soon!"
+        static let whatMeans = NSLocalizedString("ShopTimerWhat", comment: "What is: ")
+        static let swipeInfo = NSLocalizedString("ShopTimerSwipeInfo", comment: "Swipe over the cell image to see more variations!")
+        static let countInfo = NSLocalizedString("ShopTimerCountInfo", comment: "Number of elements in the item bundle.")
+        static let aboutRotation = NSLocalizedString("ShopTimerAboutRotation", comment: "About rotation")
+        static let rotationInfo = NSLocalizedString("ShopTimerRotationInfo", comment: "The shop refreshes every day. Check back soon!")
     }
     
     // MARK: - Battle Pass Module
     
     enum BattlePassPage {
-        static let title = "Battle Pass"
-        static let free = "Free"
-        static let paid = "Paid"
-        static let allMenu = "All"
-        static let page = "Page"
-        static let search = "Search items"
+        static let title = NSLocalizedString("BattlePassPageTitle", comment: "Battle Pass")
+        static let free = NSLocalizedString("BattlePassPageFree", comment: "Free")
+        static let paid = NSLocalizedString("BattlePassPagePaid", comment: "Paid")
+        static let allMenu = NSLocalizedString("BattlePassPageAll", comment: "All")
+        static let page = NSLocalizedString("BattlePassPagePage", comment: "Page")
+        static let search = NSLocalizedString("BattlePassPageSearch", comment: "Search items")
     }
     
     enum BattlePassCell {
         static let identifier = "BattlePassCollectionViewCell"
         static let footerIdentifier = "BattlePassCollectionReusableView"
-        static let price = "Item price..."
-        static let loadingScreen = "Loading Screen"
-        static let remaining = "Remaining time"
+        static let price = NSLocalizedString("BattlePassCellPrice", comment: "Item price...")
+        static let loadingScreen = NSLocalizedString("BattlePassCellLoadingScreen", comment: "Loading Screen")
+        static let remaining = NSLocalizedString("BattlePassCellRemaining", comment: "Remaining time")
     }
     
     enum BattlePassItemsParameters {
-        static let descriprion = "Descriprion"
-        static let series = "Series"
-        static let addedDate = "First release"
-        static let paytype = "Tier type"
-        static let rewardWall = "Rewards needed for unlock"
-        static let levelWall = "Levels needed for unlock"
-        static let introduced = "Introduced"
-        static let set = "Set"
-        static let beginDate = "Start date"
-        static let endDate = "End date"
-        static let currentSeason = "Currently underway"
+        static let descriprion = NSLocalizedString("BattlePassItemsParametersDescription", comment: "Descriprion")
+        static let series = NSLocalizedString("BattlePassItemsParametersSeries", comment: "Series")
+        static let addedDate = NSLocalizedString("BattlePassItemsParametersFirstRelease", comment: "First release")
+        static let paytype = NSLocalizedString("BattlePassItemsParametersTierType", comment: "Tier type")
+        static let rewardWall = NSLocalizedString("BattlePassItemsParametersRewardWall", comment: "Rewards needed for unlock")
+        static let levelWall = NSLocalizedString("BattlePassItemsParametersLevelWall", comment: "Levels needed for unlock")
+        static let introduced = NSLocalizedString("BattlePassItemsParametersIntroduced", comment: "Introduced")
+        static let set = NSLocalizedString("BattlePassItemsParametersSet", comment: "Set")
+        static let beginDate = NSLocalizedString("BattlePassItemsParametersBeginDate", comment: "Start date")
+        static let endDate = NSLocalizedString("BattlePassItemsParametersEndDate", comment: "End date")
+        static let currentSeason = NSLocalizedString("BattlePassItemsParametersCurrentSeason", comment: "Currently underway")
         
-        static let descriptionData = "Descriprion..."
-        static let seriesData = "Series..."
-        static let firstTimeData = "First release..."
-        static let paytypeDara = "Tier type..."
-        static let rewardWallData = "Rewards needed for unlock..."
-        static let levelWallData = "Levels needed for unlock..."
-        static let introducedData = "introduced in..."
-        static let setData = "Part of..."
-        static let beginDateData = "Begin date..."
-        static let endDateData = "End date..."
-        static let currentData = "Currently underway..."
+        static let descriptionData = NSLocalizedString("BattlePassItemsParametersDescriprionData", comment: "Descriprion...")
+        static let seriesData = NSLocalizedString("BattlePassItemsParametersSeriesData", comment: "Series...")
+        static let firstTimeData = NSLocalizedString("BattlePassItemsParametersFirstTimeData", comment: "First release...")
+        static let paytypeDara = NSLocalizedString("BattlePassItemsParametersTierTypeData", comment: "Tier type...")
+        static let rewardWallData = NSLocalizedString("BattlePassItemsParametersRewardWallData", comment: "Rewards needed for unlock...")
+        static let levelWallData = NSLocalizedString("BattlePassItemsParametersLevelWallData", comment: "Levels needed for unlock...")
+        static let introducedData = NSLocalizedString("BattlePassItemsParametersIntroducedData", comment: "Introduced in...")
+        static let setData = NSLocalizedString("BattlePassItemsParametersSetData", comment: "Part of...")
+        static let beginDateData = NSLocalizedString("BattlePassItemsParametersBeginDateData", comment: "Begin date...")
+        static let endDateData = NSLocalizedString("BattlePassItemsParametersEndDateData", comment: "End date...")
+        static let currentData = NSLocalizedString("BattlePassItemsParametersCurrentData", comment: "Currently underway...")
     }
     
     enum BattlePassInfo {
-        static let season = "Season"
-        static let newSeason = "New season is coming soon!"
+        static let season = NSLocalizedString("BattlePassInfoSeason", comment: "Season")
+        static let newSeason = NSLocalizedString("BattlePassItemsParametersnewSeason", comment: "New season is coming soon!")
+        static let dateFormat = NSLocalizedString("BattlePassInfoDataFormat", comment: "%01dW %01dD %02d:%02d:%02d")
     }
     
     // MARK: - Crew Module
     
     enum CrewPage {
         static let currencyKey = "CurrencyKey"
-        static let title = "Crew Pack"
+        static let title = NSLocalizedString("CrewPageTitle", comment: "Crew Pack")
     }
     
     enum CrewPageCell {
         static let identifier = "CrewCell"
         static let footerIdentifier = "CrewFooterReusableView"
         
-        static let itemName = "Item name..."
-        static let price = "Pack price..."
+        static let itemName = NSLocalizedString("CrewPageCellItemName", comment: "Item name...")
+        static let price = NSLocalizedString("CrewPageCellPrice", comment: "Pack price...")
         static let symbol = "$"
-        static let header = "Item Bundle"
-        static let introductionTitle = "First appearance"
-        static let introductionText = "Introduced in..."
-        static let mainBenefits = "Main benefits"
+        static let header = NSLocalizedString("CrewPageCellHeader", comment: "Item Bundle")
+        static let introductionTitle = NSLocalizedString("CrewPageCellIntroduction", comment: "First appearance")
+        static let introductionText = NSLocalizedString("CrewPageCellIntroductionData", comment: "Introduced in...")
+        static let mainBenefits = NSLocalizedString("CrewPageCellMainBenefits", comment: "Main benefits")
         static let vbucks = "1,000 V-Bucks"
-        static let additionalBenefints = "Additional benefits"
-        static let yes = "Yes"
-        static let no = "No"
-        static let and = "and"
+        static let additionalBenefints = NSLocalizedString("CrewPageCellAdditional", comment: "Additional benefits")
+        static let yes = NSLocalizedString("CrewPageCellYes", comment: "Yes")
+        static let no = NSLocalizedString("CrewPageCellNo", comment: "No")
+        static let and = NSLocalizedString("CrewPageCellAnd", comment: "and")
     }
     
     // MARK: - Bundles Module
     
     enum BundlesPage {
-        static let title = "Bundles"
-        static let header = "Special Offers"
+        static let title = NSLocalizedString("BundlesPageTitle", comment: "Bundles")
+        static let header = NSLocalizedString("BundlesPageHeader", comment: "Special Offers")
     }
     
     enum BundleCell {
         static let identifier = "BundleCell"
-        static let free = "Free"
+        static let free = NSLocalizedString("BundleCellFree", comment: "Free")
     }
     
     enum BundleDetailsCell {
         static let identifier = "BundleDetailsCell"
         static let footerIdentifier = "BundleDetailsFooter"
         
-        static let expiryDate = "Expiry date"
+        static let expiryDate = NSLocalizedString("BundleDetailsCellExpityDate", comment: "Expiry date")
         static let expiryDateText = "00.00.0000"
-        static let description = "Description"
-        static let descriptionText = "Descriprion is..."
-        static let about = "About"
-        static let aboutText = "About this..."
+        static let description = NSLocalizedString("BundleDetailsCellDescription", comment: "Description")
+        static let descriptionText = NSLocalizedString("BundleDetailsCellDescriptionData", comment: "Descriprion is...")
+        static let about = NSLocalizedString("BundleDetailsCellAbout", comment: "About")
+        static let aboutText = NSLocalizedString("BundleDetailsCellAboutData", comment: "About this...")
     }
     
     // MARK: - Loot Details Module
     
     enum LootDetailsMain {
-        static let title = "Armory"
-        static let header = "Weapons"
+        static let title = NSLocalizedString("LootDetailsMainArmory", comment: "Armory")
+        static let header = NSLocalizedString("LootDetailsMainWeapons", comment: "Weapons")
     }
     
     enum LootDetailsMainCell {
         static let identifier = "LootDetailsMainCell"
-        static let rarities = "Rarities"
-        static let stats = "Stats"
+        static let rarities = NSLocalizedString("LootDetailsMainCellRarities", comment: "Rarities")
+        static let stats = NSLocalizedString("LootDetailsMainCellStats", comment: "Stats")
     }
     
     enum LootDetailsRarity {
-        static let title = "Rarities"
-        static let back = "Armory"
+        static let title = NSLocalizedString("LootDetailsRarityTitle", comment: "Rarities")
+        static let back = NSLocalizedString("LootDetailsRarityBack", comment: "Armory")
     }
     
     enum LootDetailsRarityCell {
@@ -319,28 +325,35 @@ final class Texts {
     }
     
     enum LootDetailsStats {
-        static let title = "Stats"
-        static let backRarities = "Rarities"
-        static let backLoot = "Armory"
+        static let title = NSLocalizedString("LootDetailsStatsTitle", comment: "Stats")
+        static let backRarities = NSLocalizedString("LootDetailsStatsRarities", comment: "Rarities")
+        static let backLoot = NSLocalizedString("LootDetailsStatsBackLoot", comment: "Armory")
+        static let pistols = NSLocalizedString("LootDetailsStatsPistols", comment: "Pistols")
+        static let assault = NSLocalizedString("LootDetailsStatsAssault", comment: "Assault")
+        static let shotgun = NSLocalizedString("LootDetailsStatsShotgun", comment: "Shotgun")
+        static let sniper = NSLocalizedString("LootDetailsStatsSniper", comment: "Sniper")
+        static let blade = NSLocalizedString("LootDetailsStatsBlade", comment: "Blade")
+        static let bow = NSLocalizedString("LootDetailsStatsBow", comment: "Bow")
+        static let launcher = NSLocalizedString("LootDetailsStatsLauncher", comment: "Launcher")
     }
     
     enum LootDetailsStatsCell {
         static let footerIdentifier = "LootDetailsStatsFooter"
-        static let damageBulletTitle = "Damage"
-        static let firingRateTitle = "Firing rate"
-        static let clipSizeTitle = "Clip size"
-        static let reloadTimeTitle = "Reload time"
-        static let bulletsCartridgeTitle = "Cartridge size"
-        static let spreadTitle = "Spread"
-        static let spreadDownsightsTitle = "Spread downsights"
-        static let damageZoneTitle = "Damage zone critical"
-        static let no = "No"
+        static let damageBulletTitle = NSLocalizedString("LootDetailsStatsCellDamage", comment: "Damage")
+        static let firingRateTitle = NSLocalizedString("LootDetailsStatsCellFiringRate", comment: "Firing rate")
+        static let clipSizeTitle = NSLocalizedString("LootDetailsStatsCellClipSize", comment: "Clip size")
+        static let reloadTimeTitle = NSLocalizedString("LootDetailsStatsCellReloadTime", comment: "Reload time")
+        static let bulletsCartridgeTitle = NSLocalizedString("LootDetailsStatsCellCartridgeSize", comment: "Cartridge size")
+        static let spreadTitle = NSLocalizedString("LootDetailsStatsCellSpread", comment: "Spread")
+        static let spreadDownsightsTitle = NSLocalizedString("LootDetailsStatsCellSpreadDownsights", comment: "Spread downsights")
+        static let damageZoneTitle = NSLocalizedString("LootDetailsStatsCellDamageZone", comment: "Damage zone critical")
+        static let no = NSLocalizedString("LootDetailsStatsCellNo", comment: "No")
         
-        static let damageBullets = "Units / round:"
-        static let roundsSecond = "Rounds / second:"
-        static let rounds = "Rounds:"
-        static let seconds = "Seconds:"
-        static let multiplier = "Multiplier:"
+        static let damageBullets = NSLocalizedString("LootDetailsStatsCellUnitsRound", comment: "Units / round:")
+        static let roundsSecond = NSLocalizedString("LootDetailsStatsCellRoundsSecond", comment: "Rounds / second:")
+        static let rounds = NSLocalizedString("LootDetailsStatsCellRounds", comment: "Rounds:")
+        static let seconds = NSLocalizedString("LootDetailsStatsCellSeconds", comment: "Seconds:")
+        static let multiplier = NSLocalizedString("LootDetailsStatsCellMultiplier", comment: "Multiplier:")
     }
     
     // MARK: - Settings Module
@@ -349,41 +362,50 @@ final class Texts {
         static let key = "NotificationsKey"
         static let enable = "Enable"
         static let disable = "Disable"
-        static let alertTitle = "Notification Access Required"
-        static let alertContent = "Please enable notifications in Settings."
-        static let alertSettings = "Settings"
-        static let alertCancel = "Cancel"
+        static let alertTitle = NSLocalizedString("NotificationSettingsAlertTitle", comment: "Notification Access Required")
+        static let alertContent = NSLocalizedString("NotificationSettingsAlertContent", comment: "Please enable notifications in Settings.")
+        static let alertSettings = NSLocalizedString("NotificationSettingsAlertSettings", comment: "Settings")
+        static let alertCancel = NSLocalizedString("NotificationSettingsAlertCancel", comment: "Cancel")
     }
     
     enum AppearanceSettings {
         static let key = "AppearanceKey"
-        static let system = "Device"
-        static let light = "Light"
-        static let dark = "Dark"
+        static let systemValue = "SystemValue"
+        static let lightValue = "LightValue"
+        static let darkValue = "DarkValue"
+        static let system = NSLocalizedString("AppearanceSettingsSystem", comment: "Device")
+        static let light = NSLocalizedString("AppearanceSettingsLight", comment: "Light")
+        static let dark = NSLocalizedString("AppearanceSettingsDark", comment: "Dark")
+    }
+    
+    enum LanguageSettings {
+        static let alertTitle = NSLocalizedString("LanguageSettingsAlertTitle", comment: "Change language")
+        static let alertContent = NSLocalizedString("LanguageSettingsAlertContent", comment: "Select the language you want in Settings.")
     }
     
     enum SettingsPage {
-        static let title = "Settings"
-        static let aboutTitle = "About"
-        static let generalTitle = "General"
-        static let localizationTitle = "Localization"
-        static let contactTitle = "Contact"
+        static let title = NSLocalizedString("SettingsPageTitle", comment: "Settings")
+        static let aboutTitle = NSLocalizedString("SettingsPageAboutTitle", comment: "About")
+        static let generalTitle = NSLocalizedString("SettingsPageGeneralTitle", comment: "General")
+        static let localizationTitle = NSLocalizedString("SettingsPageLocalizationTitle", comment: "Localization")
+        static let contactTitle = NSLocalizedString("SettingsPageContactTitle", comment: "Contact")
         
-        static let notificationsTitle = "Notifications"
-        static let appearanceTitle = "Appearance"
-        static let cacheTitle = "Clear Cache"
-        static let languageTitle = "Language"
-        static let currencyTitle = "Currency"
-        static let emailTitle = "Email"
+        static let notificationsTitle = NSLocalizedString("SettingsPageNotificationsTitle", comment: "Notifications")
+        static let appearanceTitle = NSLocalizedString("SettingsPageAppearanceTitle", comment: "Appearance")
+        static let cacheTitle = NSLocalizedString("SettingsPageClearCacheTitle", comment: "Clear Cache")
+        static let languageTitle = NSLocalizedString("SettingsPageLanguageTitle", comment: "Language")
+        static let currencyTitle = NSLocalizedString("SettingsPageCurrencyTitle", comment: "Currency")
+        static let emailTitle = NSLocalizedString("SettingsPageEmailTitle", comment: "Email")
         
         static let emailContent = "fortsatellite@vk.com"
-        static let emptyCacheContent = "Empty"
+        static let languageContent = NSLocalizedString("SettingsPageLanguageContent", comment: "English")
+        static let emptyCacheContent = NSLocalizedString("SettingsPageEmptyCache", comment: "Empty")
     }
     
     enum SettingsAboutCell {
         static let identifier = "SettingsAboutCell"
         static let name = "Fort Satellite"
-        static let version = "0.6.7 release 2"
+        static let version = "0.7.0 release 1"
     }
     
     enum SettingsCell {
@@ -394,20 +416,20 @@ final class Texts {
     // MARK: - Stats Module
     
     enum StatsPage {
-        static let title = "Stats"
-        static let placeholder = "Error"
-        static let progressTitle = "Progress"
-        static let progressFirst = "Current\nSeason"
-        static let progressSecond = "Current\nLevel"
-        static let globalTitle = "Global"
-        static let globalFirst = "Top 1\nPlaces"
-        static let globalSecond = "Kills\nDeaths"
-        static let inputTitle = "Input"
-        static let inputFirst = "K/D\nGpad"
-        static let inputSecond = "K/D\nMouse"
-        static let historyTitle = "History"
-        static let historyFirst = "Best\nSeason"
-        static let historySecond = "Max\nLevel"
+        static let title = NSLocalizedString("StatsPageTitle", comment: "Stats")
+        static let placeholder = NSLocalizedString("StatsPagePlaceholder", comment: "Error")
+        static let progressTitle = NSLocalizedString("StatsPageProgressTitle", comment: "Progress")
+        static let progressFirst = NSLocalizedString("StatsPageProgressFirst", comment: "Current Season")
+        static let progressSecond = NSLocalizedString("StatsPageProgressSecond", comment: "Current Level")
+        static let globalTitle = NSLocalizedString("StatsPageGlobalTitle", comment: "Global")
+        static let globalFirst = NSLocalizedString("StatsPageGlobalFirst", comment: "Top 1 Places")
+        static let globalSecond = NSLocalizedString("StatsPageGlobalSecond", comment: "Kills Deaths")
+        static let inputTitle = NSLocalizedString("StatsPageInputTitle", comment: "Input")
+        static let inputFirst = NSLocalizedString("StatsPageInputFirst", comment: "K/D Gpad")
+        static let inputSecond = NSLocalizedString("StatsPageInputSecond", comment: "K/D Mouse")
+        static let historyTitle = NSLocalizedString("StatsPageHistoryTitle", comment: "History")
+        static let historyFirst = NSLocalizedString("StatsPageHistoryFirst", comment: "Best Season")
+        static let historySecond = NSLocalizedString("StatsPageHistorySecond", comment: "Max Level")
         static let nicknameKey = "NicknameKey"
     }
     
@@ -419,37 +441,37 @@ final class Texts {
     }
     
     enum NicknamePopup {
-        static let placeholder = "Nickname"
+        static let placeholder = NSLocalizedString("NicknamePopupPlaceholder", comment: "Nickname")
         static let xbox = "Xbox"
         static let epic = "Epic"
         static let psn = "PSN"
-        static let accept = "Accept"
-        static let cancel = "Cancel"
-        static let noResult = "No result"
-        static let empty = "Empty text"
-        static let emptyMessage = "Please, enter any nickname"
+        static let accept = NSLocalizedString("NicknamePopupAccept", comment: "Accept")
+        static let cancel = NSLocalizedString("NicknamePopupCancel", comment: "Cancel")
+        static let noResult = NSLocalizedString("NicknamePopupNoResult", comment: "No result")
+        static let empty = NSLocalizedString("NicknamePopupEmpty", comment: "Empty text")
+        static let emptyMessage = NSLocalizedString("NicknamePopupEmptyMessage", comment: "Please, enter any nickname")
     }
     
     enum StatsDetailsPage {
-        static let gamepad = "Gamepad"
-        static let keyboard = "Keyboard"
-        static let touch = "Touch"
+        static let gamepad = NSLocalizedString("StatsDetailsPageGamepad", comment: "Gamepad")
+        static let keyboard = NSLocalizedString("StatsDetailsPageKeyboard", comment: "Keyboard")
+        static let touch = NSLocalizedString("StatsDetailsPageTouch", comment: "Touch")
     }
     
     enum StatsDetailsCell {
         static let identifier = "StatsDetailsCell"
-        static let mode = "Mode:"
-        static let winrate = "Winrate"
-        static let topOne = "Top 1"
-        static let matches = "Matches"
-        static let kd = "K/D"
-        static let kills = "Kills"
-        static let outlived = "Outlived"
-        static let hours = "Hours"
-        static let score = "Score"
-        static let season = "Season"
-        static let level = "Level"
-        static let progress = "Progress"
+        static let mode = NSLocalizedString("StatsDetailsCellMode", comment: "Mode:")
+        static let winrate = NSLocalizedString("StatsDetailsCellWinrate", comment: "Winrate")
+        static let topOne = NSLocalizedString("StatsDetailsCellTopOne", comment: "Top 1")
+        static let matches = NSLocalizedString("StatsDetailsCellMatches", comment: "Matches")
+        static let kd = NSLocalizedString("StatsDetailsCellKD", comment: "K/D")
+        static let kills = NSLocalizedString("StatsDetailsCellKills", comment: "Kills")
+        static let outlived = NSLocalizedString("StatsDetailsCellOutlived", comment: "Outlived")
+        static let hours = NSLocalizedString("StatsDetailsCellHours", comment: "Hours")
+        static let score = NSLocalizedString("StatsDetailsCellScore", comment: "Score")
+        static let season = NSLocalizedString("StatsDetailsCellSeason", comment: "Season")
+        static let level = NSLocalizedString("StatsDetailsCellLevel", comment: "Level")
+        static let progress = NSLocalizedString("StatsDetailsCellProgress", comment: "Progress")
     }
     
     // MARK: - Quests Module
@@ -481,10 +503,10 @@ final class Texts {
     // MARK: - Map Module
     
     enum MapPage {
-        static let title = "Map"
-        static let poi = "POI"
-        static let clear = "Clear"
-        static let archive = "Archive"
+        static let title = NSLocalizedString("MapPageTitle", comment: "Map")
+        static let poi = NSLocalizedString("MapPagePOI", comment: "POI")
+        static let clear = NSLocalizedString("MapPageClear", comment: "Clear")
+        static let archive = NSLocalizedString("MapPageArchive", comment: "Archive")
     }
 }
 

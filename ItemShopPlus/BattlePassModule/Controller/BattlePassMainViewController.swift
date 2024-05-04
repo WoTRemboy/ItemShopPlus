@@ -453,7 +453,7 @@ extension BattlePassMainViewController: UICollectionViewDelegateFlowLayout {
         let count = filteredItems.count
         let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
         
-        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: "Page \(sectionKey)")
+        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: headerTitleSetup(page: sectionKey))
         return headerView
     }
 }

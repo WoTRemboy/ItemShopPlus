@@ -95,9 +95,13 @@ extension GrantedItem {
             return nil
         }
         
-        var type = typeData["id"] as? String ?? String()
-        type = CommonLogicMethods.capitalizeFirstLetter(input: type)
-        
+        let type: String
+        let typeID = typeData["id"] as? String ?? String()
+        if typeID == "backpack" {
+            type = Texts.ShopPage.backpack
+        } else {
+            type = typeData["name"] as? String ?? String()
+        }
         let series = data["series"] as? String
         let rarity: Rarity? = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         
@@ -108,6 +112,6 @@ extension GrantedItem {
             image = imageData
         }
 
-        return GrantedItem(id: id, type: type, name: name, description: description, rarity: rarity, series: series, image: image, video: video)
+        return GrantedItem(id: id, typeID: typeID, type: type, name: name, description: description, rarity: rarity, series: series, image: image, video: video)
     }
 }

@@ -66,7 +66,11 @@ class SettingsDetailsViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        completionHandler?(selectedTitle)
+        if type == .appearance {
+            completionHandler?(AppTheme.keyToValue(key: selectedTitle))
+        } else {
+            completionHandler?(selectedTitle)
+        }
     }
     
     private func currencyMemoryManager(request: CurrencyManager) {
@@ -142,7 +146,7 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
             
             switch type {
             case .appearance:
-                selectedTitle = themeData[indexPath.row].name
+                selectedTitle = themeData[indexPath.row].keyValue
                 themeMemoryManager(request: .save)
                 changeTheme(style: themeData[indexPath.row].style)
             case .currency:
@@ -167,7 +171,7 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
             cell.configure(title: item.code, details: item.name, selected: selectedTitle == item.code)
         case .appearance:
             let item = themeData[indexPath.row]
-            cell.configure(title: item.name, selected: selectedTitle == item.name)
+            cell.configure(title: item.name, selected: selectedTitle == item.keyValue)
         default:
             return cell
         }
@@ -184,10 +188,10 @@ extension SettingsDetailsViewController {
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
                 selectedTitle = retrievedString
             } else {
-                selectedTitle = Texts.AppearanceSettings.system
+                selectedTitle = Texts.AppearanceSettings.systemValue
                 print("There is no currency data in UserDefaults")
             }
-            let row = themeData.firstIndex(where: { $0.name == selectedTitle } )
+            let row = themeData.firstIndex(where: { $0.keyValue == selectedTitle } )
             previousIndex = IndexPath(row: row ?? 0, section: 0)
             
         case .save:

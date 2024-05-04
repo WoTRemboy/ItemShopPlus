@@ -60,7 +60,8 @@ extension CrewItem {
               
               let id = data["id"] as? String,
               let typeData = data["type"] as? [String: Any],
-              let type = typeData["name"] as? String,
+              let typeID = typeData["id"] as? String,
+              var type = typeData["name"] as? String,
               let name = data["name"] as? String,
               let imageData = data["images"] as? [String: Any],
               let image = imageData["icon_background"] as? String
@@ -69,6 +70,10 @@ extension CrewItem {
         }
         
         let description = data["description"] as? String
+        
+        if typeID == "backpack" {
+            type = Texts.ShopPage.backpack
+        }
 
         var introduction = String()
         if let introductionData = data["introduction"] as? [String: Any] {

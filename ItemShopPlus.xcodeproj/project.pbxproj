@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631841DB2BE3F852008C3B4B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631841DA2BE3F852008C3B4B /* Localizable.xcstrings */; };
 		6320672A2B8B64200060AB1B /* CrewMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632067292B8B64200060AB1B /* CrewMainViewController.swift */; };
 		6320672C2B8B66130060AB1B /* CrewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6320672B2B8B66130060AB1B /* CrewModel.swift */; };
 		6320672E2B8B66290060AB1B /* JSONCrewParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6320672D2B8B66290060AB1B /* JSONCrewParce.swift */; };
@@ -109,6 +110,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		631841DA2BE3F852008C3B4B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		632067292B8B64200060AB1B /* CrewMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMainViewController.swift; sourceTree = "<group>"; };
 		6320672B2B8B66130060AB1B /* CrewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewModel.swift; sourceTree = "<group>"; };
 		6320672D2B8B66290060AB1B /* JSONCrewParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCrewParce.swift; sourceTree = "<group>"; };
@@ -224,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		631841D32BE3F457008C3B4B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				631841DA2BE3F852008C3B4B /* Localizable.xcstrings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		632067252B8B60950060AB1B /* CrewModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +599,7 @@
 				63C898BB2B232F4000FABD69 /* AppDelegate.swift */,
 				63C898BD2B232F4000FABD69 /* SceneDelegate.swift */,
 				639418AB2BD59D3D007F02FA /* GoogleService-Info.plist */,
+				631841D32BE3F457008C3B4B /* Localization */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -832,6 +843,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 63C898AF2B232F4000FABD69;
 			packageReferences = (
@@ -854,6 +866,7 @@
 			files = (
 				63C898C52B232F4100FABD69 /* Assets.xcassets in Resources */,
 				639418AC2BD59D3D007F02FA /* GoogleService-Info.plist in Resources */,
+				631841DB2BE3F852008C3B4B /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1095,7 +1108,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ItemShopPlus/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fort Satellite";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1104,7 +1117,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6.7;
+				MARKETING_VERSION = 0.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1129,7 +1142,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ItemShopPlus/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fort Satellite";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1138,7 +1151,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.6.7;
+				MARKETING_VERSION = 0.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

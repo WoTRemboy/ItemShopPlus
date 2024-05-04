@@ -70,10 +70,10 @@ extension CrewItem {
         }
         
         let description = data["description"] as? String
-        
-        if typeID == "backpack" {
-            type = Texts.ShopPage.backpack
-        }
+                
+        let video: Bool
+        typeID == "outfit" ? (video = true) : (video = false)
+        typeID == "backpack" ? (type = Texts.ShopPage.backpack) : nil
 
         var introduction = String()
         if let introductionData = data["introduction"] as? [String: Any] {
@@ -85,6 +85,6 @@ extension CrewItem {
             rarity = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         }
         
-        return CrewItem(id: id, type: type, name: name, description: description, rarity: rarity, image: image, introduction: introduction)
+        return CrewItem(id: id, type: type, name: name, description: description, rarity: rarity, image: image, introduction: introduction, video: video)
     }
 }

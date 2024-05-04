@@ -46,6 +46,7 @@ final class Texts {
     enum noConnection {
         static let noInternet = NSLocalizedString("noConnectionInternet", comment: "No connection")
         static let retry = NSLocalizedString("noConnectionRetry", comment: "Please, retry later")
+        static let retryButton = NSLocalizedString("noConnectionRetryButton", comment: "Retry")
     }
     
     enum Rarity {
@@ -456,6 +457,10 @@ final class Texts {
         static let gamepad = NSLocalizedString("StatsDetailsPageGamepad", comment: "Gamepad")
         static let keyboard = NSLocalizedString("StatsDetailsPageKeyboard", comment: "Keyboard")
         static let touch = NSLocalizedString("StatsDetailsPageTouch", comment: "Touch")
+        static let solo = NSLocalizedString("StatsDetailsPageSolo", comment: "Solo")
+        static let duo = NSLocalizedString("StatsDetailsPageDuo", comment: "Duo")
+        static let trio = NSLocalizedString("StatsDetailsPageTrio", comment: "Trio")
+        static let squad = NSLocalizedString("StatsDetailsPageSquad", comment: "Squad")
     }
     
     enum StatsDetailsCell {

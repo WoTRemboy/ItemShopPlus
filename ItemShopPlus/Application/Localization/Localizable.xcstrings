@@ -2347,6 +2347,23 @@
         }
       }
     },
+    "noConnectionRetryButton" : {
+      "comment" : "Retry",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reload"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перезагрузить"
+          }
+        }
+      }
+    },
     "NotificationSettingsAlertCancel" : {
       "comment" : "Cancel",
       "localizations" : {
@@ -3639,6 +3656,23 @@
         }
       }
     },
+    "StatsDetailsPageDuo" : {
+      "comment" : "Duo",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Парные сражения"
+          }
+        }
+      }
+    },
     "StatsDetailsPageGamepad" : {
       "comment" : "Gamepad",
       "localizations" : {
@@ -3673,6 +3707,40 @@
         }
       }
     },
+    "StatsDetailsPageSolo" : {
+      "comment" : "Solo",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Одиночки"
+          }
+        }
+      }
+    },
+    "StatsDetailsPageSquad" : {
+      "comment" : "Squad",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Squad"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бои отрядов"
+          }
+        }
+      }
+    },
     "StatsDetailsPageTouch" : {
       "comment" : "Touch",
       "localizations" : {
@@ -3686,6 +3754,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Касания"
+          }
+        }
+      }
+    },
+    "StatsDetailsPageTrio" : {
+      "comment" : "Trio",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trio"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Трио"
           }
         }
       }

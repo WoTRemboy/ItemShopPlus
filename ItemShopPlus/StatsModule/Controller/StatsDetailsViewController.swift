@@ -229,10 +229,8 @@ extension StatsDetailsViewController: UICollectionViewDelegateFlowLayout {
         switch type {
         case .title:
             return headerView
-        case .global:
-            headerView.configurate(with: "\(sortedStats[indexPath.section].0.capitalized)")
-        case .input:
-            headerView.configurate(with: sortedStats[indexPath.section].0.capitalized)
+        case .global, .input:
+            headerView.configurate(with: SelectingMethods.selectPartyType(type: sortedStats[indexPath.section].0))
         case .history:
             headerView.configurate(with: "\(Texts.StatsDetailsCell.season) \(allStats.history.reversed()[indexPath.section].season)")
         }

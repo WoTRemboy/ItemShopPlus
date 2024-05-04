@@ -215,6 +215,21 @@ final class SelectingMethods {
         }
     }
     
+    static func selectPartyType(type: String) -> String {
+        switch type {
+        case "solo":
+            return Texts.StatsDetailsPage.solo
+        case "duo":
+            return Texts.StatsDetailsPage.duo
+        case "trio":
+            return Texts.StatsDetailsPage.trio
+        case "squad":
+            return Texts.StatsDetailsPage.squad
+        default:
+            return Texts.StatsDetailsPage.solo
+        }
+    }
+    
     // MARK: - Armory
     
     static func selectWeaponTag(tag: String) -> String {

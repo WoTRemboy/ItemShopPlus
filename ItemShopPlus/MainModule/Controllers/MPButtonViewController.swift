@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YandexMobileAds
 
 final class MPButtonViewController: UIViewController {
     
@@ -17,6 +18,17 @@ final class MPButtonViewController: UIViewController {
     private let statsButton = MPButtonView(frame: .null, buttonType: .stats)
     private let mapButton = MPButtonView(frame: .null, buttonType: .map)
     private let cacheButton = MPButtonView(frame: .null, buttonType: .settings)
+    
+    private lazy var adView: AdView = {
+        let adSize = BannerAdSize.inlineSize(withWidth: 320, maxHeight: 50)
+
+        let adView = AdView(adUnitID: "R-M-8193757-1", adSize: adSize)
+        adView.delegate = self
+        adView.translatesAutoresizingMaskIntoConstraints = false
+        return adView
+    }()
+    
+    private var adHeightConstraint: NSLayoutConstraint = .init()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +44,15 @@ final class MPButtonViewController: UIViewController {
         
         shopButtonSetup()
         battlePassButtonSetup()
+        adSetup()
         crewButtonSetup()
         bundleButtonSetup()
         lootDetailsButtonSetup()
         statsButtonSetup()
         mapButtonSetup()
         cacheButtonSetup()
+        
+        adView.loadAd()
     }
     
     private func shopButtonSetup() {
@@ -60,7 +75,7 @@ final class MPButtonViewController: UIViewController {
     
     private func crewButtonSetup() {
         NSLayoutConstraint.activate([
-            crewButton.topAnchor.constraint(equalTo: shopButton.bottomAnchor, constant: 16),
+            crewButton.topAnchor.constraint(equalTo: adView.bottomAnchor, constant: 8),
             crewButton.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
             crewButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
             crewButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
@@ -69,7 +84,7 @@ final class MPButtonViewController: UIViewController {
     
     private func bundleButtonSetup() {
         NSLayoutConstraint.activate([
-            bundlesButton.topAnchor.constraint(equalTo: battlePassButton.bottomAnchor, constant: 16),
+            bundlesButton.topAnchor.constraint(equalTo: adView.bottomAnchor, constant: 8),
             bundlesButton.trailingAnchor.constraint(equalTo: battlePassButton.trailingAnchor),
             bundlesButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
             bundlesButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
@@ -110,5 +125,30 @@ final class MPButtonViewController: UIViewController {
             cacheButton.widthAnchor.constraint(equalTo: shopButton.widthAnchor),
             cacheButton.heightAnchor.constraint(equalTo: shopButton.heightAnchor)
         ])
+    }
+    
+    private func adSetup() {
+        view.addSubview(adView)
+        NSLayoutConstraint.activate([
+            adView.topAnchor.constraint(equalTo: shopButton.bottomAnchor, constant: 8),
+            adView.leadingAnchor.constraint(equalTo: shopButton.leadingAnchor),
+            adView.trailingAnchor.constraint(equalTo: battlePassButton.trailingAnchor),
+        ])
+        adHeightConstraint = adView.heightAnchor.constraint(equalToConstant: 0)
+        adHeightConstraint.isActive = true
+    }
+}
+
+extension MPButtonViewController: AdViewDelegate {
+    func adViewDidLoad(_ adView: AdView) {
+        adHeightConstraint.constant = 50
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+        print("YandexMobile " + #function)
+    }
+
+    func adViewDidFailLoading(_ adView: AdView, error: Error) {
+        print("YandexMobile " + #function)
     }
 }

@@ -13,7 +13,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Темное"
+            "value" : "Темная тема"
           }
         },
         "tr" : {
@@ -36,7 +36,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Светлое"
+            "value" : "Светлая тема"
           }
         },
         "tr" : {
@@ -1859,7 +1859,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nadirlikler"
+            "value" : "Türü"
           }
         }
       }
@@ -1882,7 +1882,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İstatistik"
+            "value" : "Puanlar"
           }
         }
       }
@@ -4412,7 +4412,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Müzik parçaları"
+            "value" : "Müzik Parçaları"
           }
         }
       }
@@ -4642,7 +4642,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hücre görüntüsünün üzerine kaydırarak daha fazla varyasyonu görün!"
+            "value" : "Daha fazla varyasyon görmek için kaydırın!"
           }
         }
       }
@@ -4711,7 +4711,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ö/Ö"
+            "value" : "E/Ö"
           }
         }
       }
@@ -4734,7 +4734,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öldürmeler"
+            "value" : "Elemeler"
           }
         }
       }
@@ -4826,7 +4826,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hayatta Kaldı"
+            "value" : "Kalmak"
           }
         }
       }
@@ -4941,7 +4941,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kazanma oranı"
+            "value" : "Kazanmalar"
           }
         }
       }
@@ -5148,7 +5148,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öldürmeler\nÖlümler"
+            "value" : "E/Ö\nToplam"
           }
         }
       }
@@ -5263,7 +5263,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ö/Ö\nKumandası"
+            "value" : "E/Ö\nJoystick"
           }
         }
       }
@@ -5286,7 +5286,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ö/Ö\nKlavye"
+            "value" : "E/Ö\nKlavye"
           }
         }
       }

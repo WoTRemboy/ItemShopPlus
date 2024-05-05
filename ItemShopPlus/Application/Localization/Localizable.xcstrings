@@ -15,6 +15,12 @@
             "state" : "translated",
             "value" : "Темное"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koyu tema"
+          }
         }
       }
     },
@@ -31,6 +37,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Светлое"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açık tema"
           }
         }
       }
@@ -49,6 +61,12 @@
             "state" : "translated",
             "value" : "Как в системе"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cihaz temasini"
+          }
         }
       }
     },
@@ -65,6 +83,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Экран загрузки"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleme Ekranı"
           }
         }
       }
@@ -83,6 +107,12 @@
             "state" : "translated",
             "value" : "Цена предмета..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ürün fiyatı..."
+          }
         }
       }
     },
@@ -99,6 +129,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Осталось"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalan süre"
           }
         }
       }
@@ -117,6 +153,12 @@
             "state" : "translated",
             "value" : "%01dН %01dД %02d:%02d:%02d"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%01dH %01dG %02d:%02d:%02d"
+          }
         }
       }
     },
@@ -133,6 +175,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сезон"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sezon"
           }
         }
       }
@@ -151,6 +199,12 @@
             "state" : "translated",
             "value" : "Начало"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç tarihi"
+          }
         }
       }
     },
@@ -167,6 +221,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Начало..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç tarihi..."
           }
         }
       }
@@ -185,6 +245,12 @@
             "state" : "translated",
             "value" : "Сейчас идет..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu anda devam ediyor..."
+          }
         }
       }
     },
@@ -201,6 +267,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сейчас идет"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu anda devam ediyor"
           }
         }
       }
@@ -219,6 +291,12 @@
             "state" : "translated",
             "value" : "Описание..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açıklaması..."
+          }
         }
       }
     },
@@ -235,6 +313,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Описание"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açıklaması"
           }
         }
       }
@@ -253,6 +337,12 @@
             "state" : "translated",
             "value" : "Конец"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitiş tarihi"
+          }
         }
       }
     },
@@ -269,6 +359,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Конец..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitiş tarihi..."
           }
         }
       }
@@ -287,6 +383,12 @@
             "state" : "translated",
             "value" : "Первое появление"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk sürüm"
+          }
         }
       }
     },
@@ -303,6 +405,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Первое появление..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk sürüm..."
           }
         }
       }
@@ -321,6 +429,12 @@
             "state" : "translated",
             "value" : "Дебют"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanıtıldı"
+          }
         }
       }
     },
@@ -337,6 +451,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Дебют в..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanıtıldı..."
           }
         }
       }
@@ -355,6 +475,12 @@
             "state" : "translated",
             "value" : "Уровень для разблокировки"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açılış için gereken seviyeler"
+          }
         }
       }
     },
@@ -371,6 +497,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Уровень для разблокировки..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açılış için gereken seviyeler..."
           }
         }
       }
@@ -389,6 +521,12 @@
             "state" : "translated",
             "value" : "Новый сезон уже выходит!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakında yeni sezon geliyor!"
+          }
         }
       }
     },
@@ -405,6 +543,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Наград для разблокировки"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açmak için gerekli ödüller"
           }
         }
       }
@@ -423,6 +567,12 @@
             "state" : "translated",
             "value" : "Наград для разблокировки..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açmak için gerekli ödüller..."
+          }
         }
       }
     },
@@ -439,6 +589,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Серия"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serisi"
           }
         }
       }
@@ -457,6 +613,12 @@
             "state" : "translated",
             "value" : "Серия..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serisi"
+          }
         }
       }
     },
@@ -473,6 +635,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Набор"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setinin bir parçası"
           }
         }
       }
@@ -491,6 +659,12 @@
             "state" : "translated",
             "value" : "Часть набора..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setinin bir parçası..."
+          }
         }
       }
     },
@@ -507,6 +681,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Тип пропуска"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katman türü"
           }
         }
       }
@@ -525,6 +705,12 @@
             "state" : "translated",
             "value" : "Тип пропуска..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katman türü..."
+          }
         }
       }
     },
@@ -541,6 +727,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Все"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hepsi"
           }
         }
       }
@@ -559,6 +751,12 @@
             "state" : "translated",
             "value" : "Бесплатный"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz"
+          }
         }
       }
     },
@@ -575,6 +773,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Страница"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sayfa"
           }
         }
       }
@@ -593,6 +797,12 @@
             "state" : "translated",
             "value" : "Платный"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretli"
+          }
         }
       }
     },
@@ -609,6 +819,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Искать предметы"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğeleri ara"
           }
         }
       }
@@ -627,6 +843,12 @@
             "state" : "translated",
             "value" : "Боевой пропуск"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Savaş Bileti"
+          }
         }
       }
     },
@@ -643,6 +865,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Бесплатно"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz"
           }
         }
       }
@@ -661,6 +889,12 @@
             "state" : "translated",
             "value" : "Описание"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakkında"
+          }
         }
       }
     },
@@ -677,6 +911,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Описание..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakkında..."
           }
         }
       }
@@ -695,6 +935,12 @@
             "state" : "translated",
             "value" : "Описание"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açıklaması"
+          }
         }
       }
     },
@@ -711,6 +957,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Описание..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açıklaması..."
           }
         }
       }
@@ -729,6 +981,12 @@
             "state" : "translated",
             "value" : "Выход из продажи"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son kullanma tarihi"
+          }
         }
       }
     },
@@ -745,6 +1003,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Специальные предложения"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel Teklifler"
           }
         }
       }
@@ -763,6 +1027,12 @@
             "state" : "translated",
             "value" : "Комплекты"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paketler"
+          }
         }
       }
     },
@@ -779,6 +1049,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очистить весь кэш"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm önbelleği temizle"
           }
         }
       }
@@ -797,6 +1073,12 @@
             "state" : "translated",
             "value" : "Отмена"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal"
+          }
         }
       }
     },
@@ -813,6 +1095,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кэш уже чист."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önbellek zaten temiz."
           }
         }
       }
@@ -831,6 +1119,12 @@
             "state" : "translated",
             "value" : "Кэш был очищен."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önbellek temizlendi."
+          }
         }
       }
     },
@@ -847,6 +1141,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "МБ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MB"
           }
         }
       }
@@ -865,6 +1165,12 @@
             "state" : "translated",
             "value" : "Медиафайлы останутся в облаке, при необходимости они будут скачаны снова."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulamada kullanılan tüm medya bulut üzerinde kalacak ve ihtiyaç duyulduğunda yeniden indirilecek."
+          }
         }
       }
     },
@@ -881,6 +1187,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ОК"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
           }
         }
       }
@@ -899,6 +1211,12 @@
             "state" : "translated",
             "value" : "Упс!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapılmadı"
+          }
         }
       }
     },
@@ -915,6 +1233,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Успешно"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başarı"
           }
         }
       }
@@ -933,6 +1257,12 @@
             "state" : "translated",
             "value" : "Дополнительные преимущества"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ek faydalar"
+          }
         }
       }
     },
@@ -949,6 +1279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "и"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ve"
           }
         }
       }
@@ -967,6 +1303,12 @@
             "state" : "translated",
             "value" : "Набор предметов"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğe Paketi"
+          }
         }
       }
     },
@@ -983,6 +1325,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Первое появление"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk görünüm"
           }
         }
       }
@@ -1001,6 +1349,12 @@
             "state" : "translated",
             "value" : "Дебют в..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanıtıldı..."
+          }
         }
       }
     },
@@ -1017,6 +1371,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Название предмета"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğe adı..."
           }
         }
       }
@@ -1035,6 +1395,12 @@
             "state" : "translated",
             "value" : "Основные преимущества"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana faydalar"
+          }
         }
       }
     },
@@ -1051,6 +1417,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нет"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayır"
           }
         }
       }
@@ -1069,6 +1441,12 @@
             "state" : "translated",
             "value" : "Цена набора..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket fiyatı..."
+          }
         }
       }
     },
@@ -1085,6 +1463,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Да"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evet"
           }
         }
       }
@@ -1103,6 +1487,12 @@
             "state" : "translated",
             "value" : "Отряд"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crew Paketi"
+          }
         }
       }
     },
@@ -1119,6 +1509,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Австралийский доллар"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avustralya Doları"
           }
         }
       }
@@ -1137,6 +1533,12 @@
             "state" : "translated",
             "value" : "Бразильский реал"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brezilya Reali"
+          }
         }
       }
     },
@@ -1153,6 +1555,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Канадский доллар"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanada Doları"
           }
         }
       }
@@ -1171,6 +1579,12 @@
             "state" : "translated",
             "value" : "Датская крона"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danimarka Kronu"
+          }
         }
       }
     },
@@ -1187,6 +1601,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Евро"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Euro"
           }
         }
       }
@@ -1205,6 +1625,12 @@
             "state" : "translated",
             "value" : "Фунт стерлингов"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sterlin"
+          }
         }
       }
     },
@@ -1221,6 +1647,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Японская иена"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Japon Yeni"
           }
         }
       }
@@ -1239,6 +1671,12 @@
             "state" : "translated",
             "value" : "Норвежская крона"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Norveç Kronu"
+          }
         }
       }
     },
@@ -1255,6 +1693,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Русский рубль"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rus Rublesi"
           }
         }
       }
@@ -1273,6 +1717,12 @@
             "state" : "translated",
             "value" : "Шведская крона"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İsveç Kronu"
+          }
         }
       }
     },
@@ -1289,6 +1739,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Турецкая лира"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Türk Lirası"
           }
         }
       }
@@ -1307,6 +1763,12 @@
             "state" : "translated",
             "value" : "Американский доллар"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amerikan Doları"
+          }
         }
       }
     },
@@ -1323,6 +1785,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Выберете язык, который желаете, в настройках."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar'da istediğiniz dili seçin."
           }
         }
       }
@@ -1341,6 +1809,12 @@
             "state" : "translated",
             "value" : "Сменить язык"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dili değiştir"
+          }
         }
       }
     },
@@ -1357,6 +1831,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Арсенал"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cephanelik"
           }
         }
       }
@@ -1375,6 +1855,12 @@
             "state" : "translated",
             "value" : "Виды"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nadirlikler"
+          }
         }
       }
     },
@@ -1391,6 +1877,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пункты"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstatistik"
           }
         }
       }
@@ -1409,6 +1901,12 @@
             "state" : "translated",
             "value" : "Орижие"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silahlar"
+          }
         }
       }
     },
@@ -1425,6 +1923,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Арсенал"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cephanelik"
           }
         }
       }
@@ -1443,6 +1947,12 @@
             "state" : "translated",
             "value" : "Редкости"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nadirlikler"
+          }
         }
       }
     },
@@ -1459,6 +1969,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Штурмовые"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldırı"
           }
         }
       }
@@ -1477,6 +1993,12 @@
             "state" : "translated",
             "value" : "Арсенал"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cephanelik"
+          }
         }
       }
     },
@@ -1493,6 +2015,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Мечи"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bıçak"
           }
         }
       }
@@ -1511,6 +2039,12 @@
             "state" : "translated",
             "value" : "Луки"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yay"
+          }
         }
       }
     },
@@ -1527,6 +2061,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Размер очереди"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kartuş boyutu"
           }
         }
       }
@@ -1545,6 +2085,12 @@
             "state" : "translated",
             "value" : "Размер обоймы"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarjör boyutu"
+          }
         }
       }
     },
@@ -1561,6 +2107,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Урон"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasar"
           }
         }
       }
@@ -1579,6 +2131,12 @@
             "state" : "translated",
             "value" : "Критический урон"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hasar bölgesi kritik"
+          }
         }
       }
     },
@@ -1595,6 +2153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скорострельность"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ateşleme hızı"
           }
         }
       }
@@ -1613,6 +2177,12 @@
             "state" : "translated",
             "value" : "Множитель:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çarpan:"
+          }
         }
       }
     },
@@ -1629,6 +2199,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нет"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayır"
           }
         }
       }
@@ -1647,6 +2223,12 @@
             "state" : "translated",
             "value" : "Время перезарядки"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniden yükleme süresi"
+          }
         }
       }
     },
@@ -1663,6 +2245,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Патроны:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mermiler:"
           }
         }
       }
@@ -1681,6 +2269,12 @@
             "state" : "translated",
             "value" : "Выстрелы / секунда:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saniyedeki mermi sayısı:"
+          }
         }
       }
     },
@@ -1697,6 +2291,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Секунды:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saniyeler:"
           }
         }
       }
@@ -1715,6 +2315,12 @@
             "state" : "translated",
             "value" : "Разброс"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dağılım"
+          }
         }
       }
     },
@@ -1731,6 +2337,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Разброс при прицеливании"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nişangahsız Dağılım"
           }
         }
       }
@@ -1749,6 +2361,12 @@
             "state" : "translated",
             "value" : "Единицы / выстрел:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tur başına birimler:"
+          }
         }
       }
     },
@@ -1765,6 +2383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Гранатометы"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Roketatar"
           }
         }
       }
@@ -1783,6 +2407,12 @@
             "state" : "translated",
             "value" : "Пистолеты"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabancalar"
+          }
         }
       }
     },
@@ -1799,6 +2429,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Редкости"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nadirlikler"
           }
         }
       }
@@ -1817,6 +2453,12 @@
             "state" : "translated",
             "value" : "Дробовики"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nadirlikler"
+          }
         }
       }
     },
@@ -1833,6 +2475,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Снайперские"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nişancı"
           }
         }
       }
@@ -1851,6 +2499,12 @@
             "state" : "translated",
             "value" : "Характеристики"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstatistik"
+          }
         }
       }
     },
@@ -1867,6 +2521,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Арсенал"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cephanelik"
           }
         }
       }
@@ -1885,6 +2545,12 @@
             "state" : "translated",
             "value" : "Улучшения"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geliştirmeler"
+          }
         }
       }
     },
@@ -1901,6 +2567,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пропуск"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Savaş Bileti"
           }
         }
       }
@@ -1919,6 +2591,12 @@
             "state" : "translated",
             "value" : "Комплекты"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paketler"
+          }
         }
       }
     },
@@ -1935,6 +2613,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отряд"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crew"
           }
         }
       }
@@ -1953,6 +2637,12 @@
             "state" : "translated",
             "value" : "Карта"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harita"
+          }
         }
       }
     },
@@ -1969,6 +2659,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
           }
         }
       }
@@ -1987,6 +2683,12 @@
             "state" : "translated",
             "value" : "Магазин"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mağaza"
+          }
         }
       }
     },
@@ -2003,6 +2705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Статистика"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstatistikler"
           }
         }
       }
@@ -2021,6 +2729,12 @@
             "state" : "translated",
             "value" : "Архив"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arşiv"
+          }
         }
       }
     },
@@ -2037,6 +2751,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Чисто"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizle"
           }
         }
       }
@@ -2055,6 +2775,12 @@
             "state" : "translated",
             "value" : "Локации"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konumlar"
+          }
         }
       }
     },
@@ -2071,6 +2797,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Карта"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harita"
           }
         }
       }
@@ -2089,6 +2821,12 @@
             "state" : "translated",
             "value" : "Комплекты"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paketler"
+          }
         }
       }
     },
@@ -2105,6 +2843,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отмена"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal"
           }
         }
       }
@@ -2123,6 +2867,12 @@
             "state" : "translated",
             "value" : "Готово"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
         }
       }
     },
@@ -2139,6 +2889,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Главная"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana Sayfa"
           }
         }
       }
@@ -2157,6 +2913,12 @@
             "state" : "translated",
             "value" : "Пропуск"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biteti"
+          }
         }
       }
     },
@@ -2173,6 +2935,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
           }
         }
       }
@@ -2191,6 +2959,12 @@
             "state" : "translated",
             "value" : "Магазин"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mağaza"
+          }
         }
       }
     },
@@ -2207,6 +2981,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ru"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tr"
           }
         }
       }
@@ -2225,6 +3005,12 @@
             "state" : "translated",
             "value" : "Принять"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kabul etmek"
+          }
         }
       }
     },
@@ -2241,6 +3027,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отменить"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal"
           }
         }
       }
@@ -2259,6 +3051,12 @@
             "state" : "translated",
             "value" : "Пустой текст"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boş metin"
+          }
         }
       }
     },
@@ -2275,6 +3073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Введите какое-либо имя"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lütfen herhangi bir takma ad girin."
           }
         }
       }
@@ -2293,6 +3097,12 @@
             "state" : "translated",
             "value" : "Нет результата"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonuç yok"
+          }
         }
       }
     },
@@ -2309,6 +3119,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Имя пользователя"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takma ad"
           }
         }
       }
@@ -2327,6 +3143,12 @@
             "state" : "translated",
             "value" : "Нет подключения"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlantı yok"
+          }
         }
       }
     },
@@ -2343,6 +3165,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Повторите позже"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lütfen daha sonra tekrar dene"
           }
         }
       }
@@ -2361,6 +3189,12 @@
             "state" : "translated",
             "value" : "Перезагрузить"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniden yükle"
+          }
         }
       }
     },
@@ -2377,6 +3211,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Отмена"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal"
           }
         }
       }
@@ -2395,6 +3235,12 @@
             "state" : "translated",
             "value" : "Пожалуйста, включите уведомления в настройках."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lütfen Ayarlar'dan bildirimleri etkinleştirin."
+          }
         }
       }
     },
@@ -2411,6 +3257,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
           }
         }
       }
@@ -2429,6 +3281,12 @@
             "state" : "translated",
             "value" : "Разрешить уведомления"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bildirim Erişimi Gerekli"
+          }
         }
       }
     },
@@ -2445,6 +3303,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Детали"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detaylar"
           }
         }
       }
@@ -2463,6 +3327,12 @@
             "state" : "translated",
             "value" : "Задание"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görev"
+          }
         }
       }
     },
@@ -2479,6 +3349,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Задания"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görevler"
           }
         }
       }
@@ -2497,6 +3373,12 @@
             "state" : "translated",
             "value" : "Магазин"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mağaza"
+          }
         }
       }
     },
@@ -2513,6 +3395,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Что-то не так..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir şeyler yanlış..."
           }
         }
       }
@@ -2531,6 +3419,12 @@
             "state" : "translated",
             "value" : "Обычный"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaygın"
+          }
         }
       }
     },
@@ -2547,6 +3441,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Эпический"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destansı"
           }
         }
       }
@@ -2565,6 +3465,12 @@
             "state" : "translated",
             "value" : "Экзотический"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Egzotik"
+          }
         }
       }
     },
@@ -2581,6 +3487,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Легендарный"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efsanevi"
           }
         }
       }
@@ -2599,6 +3511,12 @@
             "state" : "translated",
             "value" : "Мифический"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eşsiz"
+          }
         }
       }
     },
@@ -2615,6 +3533,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Редкий"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nadir"
           }
         }
       }
@@ -2633,6 +3557,12 @@
             "state" : "translated",
             "value" : "Звездный"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yıldız"
+          }
         }
       }
     },
@@ -2649,6 +3579,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Превосходный"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aşkın"
           }
         }
       }
@@ -2667,6 +3603,12 @@
             "state" : "translated",
             "value" : "Необычный"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıradışı"
+          }
         }
       }
     },
@@ -2683,6 +3625,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нет результата"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonuç yok"
           }
         }
       }
@@ -2701,6 +3649,12 @@
             "state" : "translated",
             "value" : "Результат"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonuç"
+          }
         }
       }
     },
@@ -2717,6 +3671,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "О приложении"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama hakkında"
           }
         }
       }
@@ -2735,6 +3695,12 @@
             "state" : "translated",
             "value" : "Оформление"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görünüm"
+          }
         }
       }
     },
@@ -2751,6 +3717,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очистить кэш"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önbelleği temizle"
           }
         }
       }
@@ -2769,6 +3741,12 @@
             "state" : "translated",
             "value" : "Для связи"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İletişim"
+          }
         }
       }
     },
@@ -2785,6 +3763,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Валюта"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para birimi"
           }
         }
       }
@@ -2803,6 +3787,12 @@
             "state" : "translated",
             "value" : "Email"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-posta"
+          }
         }
       }
     },
@@ -2819,6 +3809,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пусто"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boş"
           }
         }
       }
@@ -2837,6 +3833,12 @@
             "state" : "translated",
             "value" : "Основные"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genel"
+          }
         }
       }
     },
@@ -2853,6 +3855,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Русский"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Türkçe"
           }
         }
       }
@@ -2871,6 +3879,12 @@
             "state" : "translated",
             "value" : "Язык"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dil"
+          }
         }
       }
     },
@@ -2887,6 +3901,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Локализация"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yerelleştirme"
           }
         }
       }
@@ -2905,6 +3925,12 @@
             "state" : "translated",
             "value" : "Уведомления"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bildirimler"
+          }
         }
       }
     },
@@ -2921,6 +3947,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Настройки"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
           }
         }
       }
@@ -2939,6 +3971,12 @@
             "state" : "translated",
             "value" : "Содержание..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçerik..."
+          }
         }
       }
     },
@@ -2955,6 +3993,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Первое появление..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk kez..."
           }
         }
       }
@@ -2973,6 +4017,12 @@
             "state" : "translated",
             "value" : "Последнее появление..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son kez..."
+          }
         }
       }
     },
@@ -2989,6 +4039,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Цена набора..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket fiyatı..."
           }
         }
       }
@@ -3007,6 +4063,12 @@
             "state" : "translated",
             "value" : "Заголовок..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlık..."
+          }
         }
       }
     },
@@ -3023,6 +4085,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Всего"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam"
           }
         }
       }
@@ -3041,6 +4109,12 @@
             "state" : "translated",
             "value" : "Описание"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açıklaması"
+          }
         }
       }
     },
@@ -3057,6 +4131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Описание..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açıklaması..."
           }
         }
       }
@@ -3075,6 +4155,12 @@
             "state" : "translated",
             "value" : "Первое появление"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk sürüm"
+          }
         }
       }
     },
@@ -3091,6 +4177,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Первое появление..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk sürüm..."
           }
         }
       }
@@ -3109,6 +4201,12 @@
             "state" : "translated",
             "value" : "Последнее появление"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önceki sürüm"
+          }
         }
       }
     },
@@ -3125,6 +4223,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Последнее появление..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önceki sürüm..."
           }
         }
       }
@@ -3143,6 +4247,12 @@
             "state" : "translated",
             "value" : "Серия"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serisi"
+          }
         }
       }
     },
@@ -3159,6 +4269,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Серия..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serisi..."
           }
         }
       }
@@ -3177,6 +4293,12 @@
             "state" : "translated",
             "value" : "Поиск предметов"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğeleri ara"
+          }
         }
       }
     },
@@ -3193,6 +4315,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Все"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hepsi"
           }
         }
       }
@@ -3211,6 +4339,12 @@
             "state" : "translated",
             "value" : "Название набора..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket adı..."
+          }
         }
       }
     },
@@ -3227,6 +4361,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Название предмета..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğe adı..."
           }
         }
       }
@@ -3245,6 +4385,12 @@
             "state" : "translated",
             "value" : "Цена предмета..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğe fiyatı..."
+          }
         }
       }
     },
@@ -3261,6 +4407,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Треки"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müzik parçaları"
           }
         }
       }
@@ -3279,6 +4431,12 @@
             "state" : "translated",
             "value" : "Пора обновлять!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncelleme zamanı geldi!"
+          }
         }
       }
     },
@@ -3295,6 +4453,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Осталось"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalan süre"
           }
         }
       }
@@ -3313,6 +4477,12 @@
             "state" : "translated",
             "value" : "Название сегмента..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segment adı..."
+          }
         }
       }
     },
@@ -3329,6 +4499,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Рюкзак"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sırt Çantası"
           }
         }
       }
@@ -3347,6 +4523,12 @@
             "state" : "translated",
             "value" : "Информация"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mağaza bilgisi"
+          }
         }
       }
     },
@@ -3363,6 +4545,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Комплект"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğe paketi"
           }
         }
       }
@@ -3381,6 +4569,12 @@
             "state" : "translated",
             "value" : "О частоте обновления"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotasyon hakkında"
+          }
         }
       }
     },
@@ -3397,6 +4591,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Количество предметов в наборе."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğe paketindeki öğe sayısı."
           }
         }
       }
@@ -3415,6 +4615,12 @@
             "state" : "translated",
             "value" : "Следите за магазином каждый день!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her gün yenilenir. Yakında tekrar kontrol edin!"
+          }
         }
       }
     },
@@ -3431,6 +4637,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Больше вариаций по свайпу!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hücre görüntüsünün üzerine kaydırarak daha fazla varyasyonu görün!"
           }
         }
       }
@@ -3449,6 +4661,12 @@
             "state" : "translated",
             "value" : "Что такое: "
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nedir: "
+          }
         }
       }
     },
@@ -3465,6 +4683,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Часы"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saatler"
           }
         }
       }
@@ -3483,6 +4707,12 @@
             "state" : "translated",
             "value" : "У/С"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ö/Ö"
+          }
         }
       }
     },
@@ -3499,6 +4729,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Убито"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öldürmeler"
           }
         }
       }
@@ -3517,6 +4753,12 @@
             "state" : "translated",
             "value" : "Уровень"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aşama"
+          }
         }
       }
     },
@@ -3533,6 +4775,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Матчи"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maçlar"
           }
         }
       }
@@ -3551,6 +4799,12 @@
             "state" : "translated",
             "value" : "Режим:"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mod:"
+          }
         }
       }
     },
@@ -3567,6 +4821,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Пережито"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayatta Kaldı"
           }
         }
       }
@@ -3585,6 +4845,12 @@
             "state" : "translated",
             "value" : "Прогресс"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlerleme"
+          }
         }
       }
     },
@@ -3601,6 +4867,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Счет"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skor"
           }
         }
       }
@@ -3619,6 +4891,12 @@
             "state" : "translated",
             "value" : "Сезон"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sezon"
+          }
         }
       }
     },
@@ -3634,7 +4912,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Топ 1"
+            "value" : "Топ-1"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Yer"
           }
         }
       }
@@ -3653,6 +4937,12 @@
             "state" : "translated",
             "value" : "Победы"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kazanma oranı"
+          }
         }
       }
     },
@@ -3669,6 +4959,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Парные сражения"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çiftli"
           }
         }
       }
@@ -3687,6 +4983,12 @@
             "state" : "translated",
             "value" : "Геймпад"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyun kumandası"
+          }
         }
       }
     },
@@ -3703,6 +5005,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Клавиатура"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klavye"
           }
         }
       }
@@ -3721,6 +5029,12 @@
             "state" : "translated",
             "value" : "Одиночки"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekil"
+          }
         }
       }
     },
@@ -3737,6 +5051,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Бои отрядов"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekipli"
           }
         }
       }
@@ -3755,6 +5075,12 @@
             "state" : "translated",
             "value" : "Касания"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dokunmatik"
+          }
         }
       }
     },
@@ -3772,6 +5098,12 @@
             "state" : "translated",
             "value" : "Трио"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üçlü"
+          }
         }
       }
     },
@@ -3787,7 +5119,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Топ 1\nМест"
+            "value" : "Топ-1\nМест"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En İyi\n1. Yer"
           }
         }
       }
@@ -3806,6 +5144,12 @@
             "state" : "translated",
             "value" : "У/С\nВсего"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öldürmeler\nÖlümler"
+          }
         }
       }
     },
@@ -3822,6 +5166,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Общее"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Küresel"
           }
         }
       }
@@ -3840,6 +5190,12 @@
             "state" : "translated",
             "value" : "Макс\nСезон"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En İyi\nSezon"
+          }
         }
       }
     },
@@ -3856,6 +5212,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Макс\nЭтап"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maks\nAşama"
           }
         }
       }
@@ -3874,6 +5236,12 @@
             "state" : "translated",
             "value" : "История"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarih"
+          }
         }
       }
     },
@@ -3890,6 +5258,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "У/С\nСтики"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ö/Ö\nKumandası"
           }
         }
       }
@@ -3908,6 +5282,12 @@
             "state" : "translated",
             "value" : "У/С\nМышь"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ö/Ö\nKlavye"
+          }
         }
       }
     },
@@ -3924,6 +5304,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ввод"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş"
           }
         }
       }
@@ -3942,6 +5328,12 @@
             "state" : "translated",
             "value" : "Ошибка"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hata"
+          }
         }
       }
     },
@@ -3958,6 +5350,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Сезон\nСейчас"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mevcut\nSezon"
           }
         }
       }
@@ -3976,6 +5374,12 @@
             "state" : "translated",
             "value" : "Этап\nСейчас"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mevcut\nAşama"
+          }
         }
       }
     },
@@ -3993,6 +5397,12 @@
             "state" : "translated",
             "value" : "Прогресс"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlerleme"
+          }
         }
       }
     },
@@ -4009,6 +5419,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Статистика"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstatistikler"
           }
         }
       }

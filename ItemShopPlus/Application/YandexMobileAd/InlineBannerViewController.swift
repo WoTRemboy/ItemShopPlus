@@ -34,6 +34,7 @@ final class InlineBannerViewController: UIViewController {
 extension InlineBannerViewController: AdViewDelegate {
     func adViewDidLoad(_ adView: AdView) {
         // This method will call after successfully loading
+        showAdd()
         print("YandexMobile " + #function)
     }
 

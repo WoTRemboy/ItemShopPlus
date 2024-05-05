@@ -7,6 +7,7 @@
 
 import UIKit
 import AVKit
+import YandexMobileAds
 
 final class CrewMainViewController: UIViewController {
     
@@ -18,6 +19,7 @@ final class CrewMainViewController: UIViewController {
     private var currentSectionTitle = Texts.Currency.Code.usd
     private var selectedSectionTitle = Texts.Currency.Code.usd
     private let networkService = DefaultNetworkService()
+    private var adHeightConstraint: NSLayoutConstraint = .init()
     
     // MARK: - UI Elements and Views
     
@@ -50,6 +52,15 @@ final class CrewMainViewController: UIViewController {
         collectionView.register(CollectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderReusableView.identifier)
         collectionView.register(CrewFooterReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CrewFooterReusableView.identifier)
         return collectionView
+    }()
+    
+    private lazy var adView: AdView = {
+        let adSize = BannerAdSize.inlineSize(withWidth: 320, maxHeight: 50)
+
+        let adView = AdView(adUnitID: "R-M-8193757-1", adSize: adSize)
+        adView.delegate = self
+        adView.translatesAutoresizingMaskIntoConstraints = false
+        return adView
     }()
     
     // MARK: - ViewController Lifecycle
@@ -138,6 +149,7 @@ final class CrewMainViewController: UIViewController {
                     self?.noInternetView.isHidden = true
                     self?.symbolButton.isEnabled = true
                     self?.menuSetup()
+                    !isRefreshControl ? self?.adBannerSetup() : nil
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -350,6 +362,18 @@ final class CrewMainViewController: UIViewController {
             noInternetView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
     }
+    
+    private func adBannerSetup() {
+        view.addSubview(adView)
+        NSLayoutConstraint.activate([
+            adView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            adView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        adHeightConstraint = adView.heightAnchor.constraint(equalToConstant: 0)
+        adHeightConstraint.isActive = true
+        
+        adView.loadAd()
+    }
 }
 
 // MARK: - UICollectionViewDelegate and UICollectionViewDataSource
@@ -432,5 +456,20 @@ extension CrewMainViewController: UICollectionViewDelegateFlowLayout {
         let height: CGFloat = CGFloat(16 + 70 * 4 + 150)
         let size = CGSize(width: view.frame.width, height: height)
         return size
+    }
+}
+
+
+extension CrewMainViewController: AdViewDelegate {
+    func adViewDidLoad(_ adView: AdView) {
+        adHeightConstraint.constant = 50
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+        print("YandexMobile " + #function)
+    }
+
+    func adViewDidFailLoading(_ adView: AdView, error: Error) {
+        print("YandexMobile " + #function)
     }
 }

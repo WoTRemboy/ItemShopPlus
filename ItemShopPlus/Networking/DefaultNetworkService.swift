@@ -266,6 +266,9 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v1/maps/list")
         
+        let queryItems = [URLQueryItem(name: "lang", value: Texts.NetworkRequest.language)]
+        url.append(queryItems: queryItems)
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(token, forHTTPHeaderField: "Authorization")

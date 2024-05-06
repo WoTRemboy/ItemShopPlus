@@ -10,6 +10,12 @@
             "value" : "Dark"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thème sombre"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31,6 +37,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Light"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thème lumière"
           }
         },
         "ru" : {
@@ -56,6 +68,12 @@
             "value" : "Device"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -77,6 +95,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Loading Screen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Écran de chargement"
           }
         },
         "ru" : {
@@ -102,6 +126,12 @@
             "value" : "Item price..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prix de l'article..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -123,6 +153,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remaining time"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temps restant"
           }
         },
         "ru" : {
@@ -148,6 +184,12 @@
             "value" : "%01dW %01dD %02d:%02d:%02d"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%01dS %01dJ %02d:%02d:%02d"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -169,6 +211,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Season"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saison"
           }
         },
         "ru" : {
@@ -194,6 +242,12 @@
             "value" : "Start date"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date de début"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -215,6 +269,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Begin date..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date de commencement..."
           }
         },
         "ru" : {
@@ -240,6 +300,12 @@
             "value" : "Currently underway..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours actuellement..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -263,6 +329,12 @@
             "value" : "Currently underway"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours actuellement"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -283,7 +355,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descriprion..."
+            "value" : "Description..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description..."
           }
         },
         "ru" : {
@@ -306,7 +384,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descriprion"
+            "value" : "Description"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
           }
         },
         "ru" : {
@@ -332,6 +416,12 @@
             "value" : "End date"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date de fin"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -353,6 +443,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "End date..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date de fin..."
           }
         },
         "ru" : {
@@ -378,6 +474,12 @@
             "value" : "First release"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Première sortie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -399,6 +501,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "First release..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Première sortie..."
           }
         },
         "ru" : {
@@ -424,6 +532,12 @@
             "value" : "Introduced"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduit"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -445,6 +559,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Introduced in..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduit..."
           }
         },
         "ru" : {
@@ -470,6 +590,12 @@
             "value" : "Levels needed for unlock"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niveaux nécessaires pour débloquer"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -491,6 +617,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Levels needed for unlock..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niveaux nécessaires pour débloquer..."
           }
         },
         "ru" : {
@@ -516,10 +648,16 @@
             "value" : "New season is coming soon!"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une nouvelle saison arrive !"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Новый сезон уже выходит!"
+            "value" : "Новый сезон скоро!"
           }
         },
         "tr" : {
@@ -537,6 +675,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rewards needed for unlock"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Récompenses nécessaires pour débloquer"
           }
         },
         "ru" : {
@@ -562,6 +706,12 @@
             "value" : "Rewards needed for unlock..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Récompenses nécessaires pour débloquer..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -583,6 +733,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Series"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Série"
           }
         },
         "ru" : {
@@ -608,6 +764,12 @@
             "value" : "Series..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Série..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -629,6 +791,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Set"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ensemble"
           }
         },
         "ru" : {
@@ -654,6 +822,12 @@
             "value" : "Part of..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partie de..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -675,6 +849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tier type"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type de niveau"
           }
         },
         "ru" : {
@@ -700,6 +880,12 @@
             "value" : "Tier type..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type de niveau..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -721,6 +907,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "All"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout"
           }
         },
         "ru" : {
@@ -746,6 +938,12 @@
             "value" : "Free"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratuit"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -764,6 +962,12 @@
       "comment" : "Page",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Page"
@@ -792,6 +996,12 @@
             "value" : "Paid"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payé"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -813,6 +1023,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search items"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher des éléments"
           }
         },
         "ru" : {
@@ -838,6 +1054,12 @@
             "value" : "Battle Pass"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passe de combat"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -859,6 +1081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Free"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratuit"
           }
         },
         "ru" : {
@@ -884,6 +1112,12 @@
             "value" : "About"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -905,6 +1139,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "About this..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos..."
           }
         },
         "ru" : {
@@ -930,6 +1170,12 @@
             "value" : "Description"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -950,7 +1196,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descriprion is..."
+            "value" : "Description is..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description..."
           }
         },
         "ru" : {
@@ -976,6 +1228,12 @@
             "value" : "Expiry date"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date d'expiration"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -997,6 +1255,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Special Offers"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offres spéciales"
           }
         },
         "ru" : {
@@ -1022,6 +1286,12 @@
             "value" : "Bundles"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packs"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1043,6 +1313,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Clear Entire Cache"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer le cache entier"
           }
         },
         "ru" : {
@@ -1068,6 +1344,12 @@
             "value" : "Cancel"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1089,6 +1371,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The cache is already clean."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le cache est déjà nettoyé."
           }
         },
         "ru" : {
@@ -1114,6 +1402,12 @@
             "value" : "The cache has been cleared."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le cache a été effacé."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1135,6 +1429,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "MB"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mo"
           }
         },
         "ru" : {
@@ -1160,6 +1460,12 @@
             "value" : "All media used in the app will remain in the cloud and will be re-downloaded when needed."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous les médias utilisés dans l'application resteront dans le cloud et seront téléchargés à nouveau en cas de besoin."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1178,6 +1484,12 @@
       "comment" : "OK",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -1206,6 +1518,12 @@
             "value" : "Oops!"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oups !"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1227,6 +1545,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Success"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Succès"
           }
         },
         "ru" : {
@@ -1252,6 +1576,12 @@
             "value" : "Additional benefits"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avantages supplémentaires"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1273,6 +1603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "and"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "et"
           }
         },
         "ru" : {
@@ -1298,6 +1634,12 @@
             "value" : "Item Bundle"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pack d'articles"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1319,6 +1661,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "First appearance"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Première apparition"
           }
         },
         "ru" : {
@@ -1344,6 +1692,12 @@
             "value" : "Introduced in..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduit dans..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1365,6 +1719,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Item name..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom de l'article..."
           }
         },
         "ru" : {
@@ -1390,6 +1750,12 @@
             "value" : "Main benefits"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principaux avantages"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1411,6 +1777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non"
           }
         },
         "ru" : {
@@ -1436,6 +1808,12 @@
             "value" : "Pack price..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prix du pack..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1457,6 +1835,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yes"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oui"
           }
         },
         "ru" : {
@@ -1482,6 +1866,12 @@
             "value" : "Crew Pack"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pack d'équipage"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1503,6 +1893,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Australian Dollar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dollar australien"
           }
         },
         "ru" : {
@@ -1528,6 +1924,12 @@
             "value" : "Brazilian Real"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réel brésilien"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1549,6 +1951,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Canadian Dollar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dollar canadien"
           }
         },
         "ru" : {
@@ -1574,6 +1982,12 @@
             "value" : "Danish Krone"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couronne danoise"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1592,6 +2006,12 @@
       "comment" : "Euro",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Euro"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Euro"
@@ -1620,6 +2040,12 @@
             "value" : "Pound Sterling"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Livre sterling"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1641,6 +2067,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Japanese Yen"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yen japonais"
           }
         },
         "ru" : {
@@ -1666,6 +2098,12 @@
             "value" : "Norwegian Krone"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couronne norvégienne"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1687,6 +2125,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Russian Ruble"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rouble russe"
           }
         },
         "ru" : {
@@ -1712,6 +2156,12 @@
             "value" : "Swedish Krona"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couronne suédoise"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1733,6 +2183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Turkish Lira"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Livre turque"
           }
         },
         "ru" : {
@@ -1758,6 +2214,12 @@
             "value" : "United States Dollar"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dollar américain"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1779,6 +2241,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select the language you want in Settings."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez la langue dans les paramètres."
           }
         },
         "ru" : {
@@ -1804,6 +2272,12 @@
             "value" : "Change language"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changer de langue"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1825,6 +2299,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Armory"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Armurerie"
           }
         },
         "ru" : {
@@ -1850,6 +2330,12 @@
             "value" : "Rarities"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raretés"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1871,6 +2357,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stats"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Points"
           }
         },
         "ru" : {
@@ -1896,6 +2388,12 @@
             "value" : "Weapons"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Armes"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1917,6 +2415,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Armory"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Armurerie"
           }
         },
         "ru" : {
@@ -1942,6 +2446,12 @@
             "value" : "Rarities"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raretés"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1963,6 +2473,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Assault"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assaut"
           }
         },
         "ru" : {
@@ -1988,6 +2504,12 @@
             "value" : "Armory"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Armurerie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2009,6 +2531,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Blade"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lame"
           }
         },
         "ru" : {
@@ -2034,6 +2562,12 @@
             "value" : "Bow"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arc"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2055,6 +2589,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cartridge size"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille de la cartouche"
           }
         },
         "ru" : {
@@ -2080,6 +2620,12 @@
             "value" : "Clip size"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille du chargeur"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2101,6 +2647,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Damage"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dommages"
           }
         },
         "ru" : {
@@ -2126,6 +2678,12 @@
             "value" : "Damage zone critical"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zone critique des dommages"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2147,6 +2705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Firing rate"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cadence de tir"
           }
         },
         "ru" : {
@@ -2172,6 +2736,12 @@
             "value" : "Multiplier:"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiplicateur :"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2193,6 +2763,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non"
           }
         },
         "ru" : {
@@ -2218,6 +2794,12 @@
             "value" : "Reload time"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temps de recharge"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2239,6 +2821,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rounds:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balles :"
           }
         },
         "ru" : {
@@ -2264,6 +2852,12 @@
             "value" : "Rounds / second:"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balles / seconde :"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2285,6 +2879,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seconds:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secondes :"
           }
         },
         "ru" : {
@@ -2310,6 +2910,12 @@
             "value" : "Spread"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propagé"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2331,6 +2937,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Spread downsights"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Propagé visée"
           }
         },
         "ru" : {
@@ -2356,6 +2968,12 @@
             "value" : "Units / round:"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unités / balle :"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2377,6 +2995,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Launcher"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lance-grenades"
           }
         },
         "ru" : {
@@ -2402,6 +3026,12 @@
             "value" : "Pistols"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pistolets"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2423,6 +3053,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rarities"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raretés"
           }
         },
         "ru" : {
@@ -2448,6 +3084,12 @@
             "value" : "Rarities"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raretés"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2469,6 +3111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sniper"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fusil de sniper"
           }
         },
         "ru" : {
@@ -2494,6 +3142,12 @@
             "value" : "Stats"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiques"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2515,6 +3169,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Armory"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Armurerie"
           }
         },
         "ru" : {
@@ -2540,6 +3200,12 @@
             "value" : "Augments"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Augmentations"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2561,6 +3227,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Battle Pass"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passe de combat"
           }
         },
         "ru" : {
@@ -2586,6 +3258,12 @@
             "value" : "Bundles"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packs"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2604,6 +3282,12 @@
       "comment" : "Crew",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crew"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crew"
@@ -2632,6 +3316,12 @@
             "value" : "Map"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2653,6 +3343,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres"
           }
         },
         "ru" : {
@@ -2678,6 +3374,12 @@
             "value" : "Item Shop"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boutique"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2701,6 +3403,12 @@
             "value" : "Stats"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiques"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2719,6 +3427,12 @@
       "comment" : "Archive",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archive"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Archive"
@@ -2747,6 +3461,12 @@
             "value" : "Clear"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun lieu"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2768,6 +3488,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "POI"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lieux"
           }
         },
         "ru" : {
@@ -2793,6 +3519,12 @@
             "value" : "Map"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carte"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2814,6 +3546,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bundles"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packs"
           }
         },
         "ru" : {
@@ -2839,6 +3577,12 @@
             "value" : "Cancel"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2860,6 +3604,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Done"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
           }
         },
         "ru" : {
@@ -2885,6 +3635,12 @@
             "value" : "Main"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principal"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2906,6 +3662,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pass"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passe"
           }
         },
         "ru" : {
@@ -2931,6 +3693,12 @@
             "value" : "Settings"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2952,6 +3720,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Shop"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boutique"
           }
         },
         "ru" : {
@@ -2977,6 +3751,12 @@
             "value" : "en"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fr"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2998,6 +3778,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Accept"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accepter"
           }
         },
         "ru" : {
@@ -3023,6 +3809,12 @@
             "value" : "Cancel"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3044,6 +3836,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Empty text"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texte vide"
           }
         },
         "ru" : {
@@ -3069,6 +3867,12 @@
             "value" : "Please, enter any nickname"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez saisir un pseudo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3090,6 +3894,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No result"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun résultat"
           }
         },
         "ru" : {
@@ -3115,6 +3925,12 @@
             "value" : "Nickname"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pseudo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3136,6 +3952,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No connection"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas de connexion"
           }
         },
         "ru" : {
@@ -3161,6 +3983,12 @@
             "value" : "Please, retry later"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez réessayer plus tard"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3182,6 +4010,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reload"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recharger"
           }
         },
         "ru" : {
@@ -3207,6 +4041,12 @@
             "value" : "Cancel"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3228,6 +4068,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Please enable notifications in Settings."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez activer les notifications dans les paramètres."
           }
         },
         "ru" : {
@@ -3253,6 +4099,12 @@
             "value" : "Settings"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3274,6 +4126,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notification access required"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accès aux notifications requis"
           }
         },
         "ru" : {
@@ -3299,6 +4157,12 @@
             "value" : "Details"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3320,6 +4184,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quest"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quête"
           }
         },
         "ru" : {
@@ -3345,6 +4215,12 @@
             "value" : "Quests"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quêtes"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3366,6 +4242,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Item Shop"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boutique d'articles"
           }
         },
         "ru" : {
@@ -3391,6 +4273,12 @@
             "value" : "Something wrong..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quelque chose ne va pas..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3412,6 +4300,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Common"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commun"
           }
         },
         "ru" : {
@@ -3437,6 +4331,12 @@
             "value" : "Epic"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Épique"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3458,6 +4358,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exotic"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exotique"
           }
         },
         "ru" : {
@@ -3483,6 +4389,12 @@
             "value" : "Legendary"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Légendaire"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3506,6 +4418,12 @@
             "value" : "Mythic"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mythique"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3524,6 +4442,12 @@
       "comment" : "Rare",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rare"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rare"
@@ -3552,6 +4476,12 @@
             "value" : "Star"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Étoile"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3573,6 +4503,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Transcendent"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transcendant"
           }
         },
         "ru" : {
@@ -3598,6 +4534,12 @@
             "value" : "Uncommon"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atypique"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3619,6 +4561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No result"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun résultat"
           }
         },
         "ru" : {
@@ -3644,6 +4592,12 @@
             "value" : "Result"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résultat"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3665,6 +4619,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "About"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de l'application"
           }
         },
         "ru" : {
@@ -3690,6 +4650,12 @@
             "value" : "Appearance"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparence"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3713,6 +4679,12 @@
             "value" : "Clear Cache"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer le cache"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3731,6 +4703,12 @@
       "comment" : "Contact",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contact"
@@ -3759,6 +4737,12 @@
             "value" : "Currency"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devise"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3780,6 +4764,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Email"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail"
           }
         },
         "ru" : {
@@ -3805,6 +4795,12 @@
             "value" : "Empty"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vide"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3826,6 +4822,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "General"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Général"
           }
         },
         "ru" : {
@@ -3851,6 +4853,12 @@
             "value" : "English"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Français"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3872,6 +4880,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Language"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue"
           }
         },
         "ru" : {
@@ -3897,6 +4911,12 @@
             "value" : "Localization"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Localisation"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3915,6 +4935,12 @@
       "comment" : "Notifications",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notifications"
@@ -3943,6 +4969,12 @@
             "value" : "Settings"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3964,6 +4996,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Content..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contenu..."
           }
         },
         "ru" : {
@@ -3989,6 +5027,12 @@
             "value" : "First time..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Première fois..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4010,6 +5054,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Last time..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dernière fois..."
           }
         },
         "ru" : {
@@ -4035,6 +5085,12 @@
             "value" : "Bundle price..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prix du pack..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4056,6 +5112,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Title..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titre..."
           }
         },
         "ru" : {
@@ -4081,6 +5143,12 @@
             "value" : "Total"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4101,7 +5169,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descriprion"
+            "value" : "Description"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
           }
         },
         "ru" : {
@@ -4124,7 +5198,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descriprion..."
+            "value" : "Description..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description..."
           }
         },
         "ru" : {
@@ -4150,6 +5230,12 @@
             "value" : "First release"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Première sortie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4171,6 +5257,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "First release..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Première sortie..."
           }
         },
         "ru" : {
@@ -4196,6 +5288,12 @@
             "value" : "Previous release"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dernière sortie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4217,6 +5315,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Previous release..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dernière sortie..."
           }
         },
         "ru" : {
@@ -4242,6 +5346,12 @@
             "value" : "Series"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Série"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4263,6 +5373,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Series..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Série..."
           }
         },
         "ru" : {
@@ -4288,6 +5404,12 @@
             "value" : "Search items"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher des éléments"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4309,6 +5431,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "All"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout"
           }
         },
         "ru" : {
@@ -4334,6 +5462,12 @@
             "value" : "Bundle name..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du pack..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4355,6 +5489,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Item name..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom de l'article..."
           }
         },
         "ru" : {
@@ -4380,6 +5520,12 @@
             "value" : "Item price..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prix de l'article..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4401,6 +5547,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jam Tracks"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pistes musicales"
           }
         },
         "ru" : {
@@ -4426,6 +5578,12 @@
             "value" : "It's time to update!"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure de mise à jour !"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4447,6 +5605,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remaining time"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temps restant"
           }
         },
         "ru" : {
@@ -4472,6 +5636,12 @@
             "value" : "Segment name..."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du segment..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4493,6 +5663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Backpack"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sac à dos"
           }
         },
         "ru" : {
@@ -4518,6 +5694,12 @@
             "value" : "Shop Info"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infos boutique"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4539,6 +5721,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Item Bundle"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pack d'articles"
           }
         },
         "ru" : {
@@ -4564,6 +5752,12 @@
             "value" : "About rotation"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos de la rotation"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4585,6 +5779,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Number of elements in the item bundle."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre d'éléments dans le pack d'articles."
           }
         },
         "ru" : {
@@ -4610,6 +5810,12 @@
             "value" : "The shop refreshes every day. Check back soon!"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se rafraîchit tous les jours. Revenez bientôt !"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4631,6 +5837,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Swipe over the cell image to see more variations!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balayez pour voir plus de variations !"
           }
         },
         "ru" : {
@@ -4656,6 +5868,12 @@
             "value" : "What is: "
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qu'est-ce que c'est : "
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4677,6 +5895,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hours"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heures"
           }
         },
         "ru" : {
@@ -4702,6 +5926,12 @@
             "value" : "K/D"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "É/M"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4723,6 +5953,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kills"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Éliminations"
           }
         },
         "ru" : {
@@ -4748,6 +5984,12 @@
             "value" : "Level"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niveau"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4771,6 +6013,12 @@
             "value" : "Matches"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matchs"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4789,6 +6037,12 @@
       "comment" : "Mode:",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode:"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mode:"
@@ -4817,6 +6071,12 @@
             "value" : "Outlived"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Survécu"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4840,6 +6100,12 @@
             "value" : "Progress"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progression"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4858,6 +6124,12 @@
       "comment" : "Score",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Score"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Score"
@@ -4886,6 +6158,12 @@
             "value" : "Season"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saison"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4904,6 +6182,12 @@
       "comment" : "Top 1",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top 1"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Top 1"
@@ -4932,6 +6216,12 @@
             "value" : "Winrate"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Victoires"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4953,6 +6243,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Duo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duos"
           }
         },
         "ru" : {
@@ -4978,6 +6274,12 @@
             "value" : "Gamepad"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manette"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5001,6 +6303,12 @@
             "value" : "Keyboard"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clavier"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5019,6 +6327,12 @@
       "comment" : "Solo",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Solo"
@@ -5047,6 +6361,12 @@
             "value" : "Squad"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sections"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5068,6 +6388,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Touch"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Écran tactile"
           }
         },
         "ru" : {
@@ -5093,6 +6419,12 @@
             "value" : "Trio"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trios"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5111,6 +6443,12 @@
       "comment" : "Top 1 Places",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top 1\nPlaces"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Top 1\nPlaces"
@@ -5136,7 +6474,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kills\nDeaths"
+            "value" : "K/D\nTotal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "É/M\nTotal"
           }
         },
         "ru" : {
@@ -5157,6 +6501,12 @@
       "comment" : "Global",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Global"
@@ -5185,6 +6535,12 @@
             "value" : "Best\nSeason"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saison\nMax"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5206,6 +6562,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Max\nLevel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niveau\nMax"
           }
         },
         "ru" : {
@@ -5231,6 +6593,12 @@
             "value" : "History"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Histoire"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5252,6 +6620,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "K/D\nGpad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "É/M\nManette"
           }
         },
         "ru" : {
@@ -5277,6 +6651,12 @@
             "value" : "K/D\nMouse"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "É/M\nClavier"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5298,6 +6678,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Input"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saisir"
           }
         },
         "ru" : {
@@ -5323,6 +6709,12 @@
             "value" : "Error"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5344,6 +6736,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Current\nSeason"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saison\nActuelle"
           }
         },
         "ru" : {
@@ -5369,6 +6767,12 @@
             "value" : "Current\nLevel"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niveau\nActuel"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5392,6 +6796,12 @@
             "value" : "Progress"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progression"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5413,6 +6823,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stats"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiques"
           }
         },
         "ru" : {

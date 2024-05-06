@@ -26,6 +26,7 @@ class SettingsMainViewController: UIViewController {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(SettingsAboutCollectionViewCell.self, forCellReuseIdentifier: SettingsAboutCollectionViewCell.identifier)
         table.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        table.showsVerticalScrollIndicator = false
         return table
     }()
     

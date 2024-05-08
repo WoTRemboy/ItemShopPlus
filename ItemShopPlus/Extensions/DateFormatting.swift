@@ -30,11 +30,9 @@ final class DateFormating {
     
     // MARK: - Shop Module
     
-    static let dateFormatterDMY: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        return formatter
-    }()
+    static func dateFormatterDefault(date: Date) -> String {
+        date.formatted(date: .numeric, time: .omitted)
+    }
 }
 
 

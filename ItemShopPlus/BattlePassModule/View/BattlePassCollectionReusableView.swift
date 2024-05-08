@@ -70,7 +70,7 @@ final class BattlePassCollectionReusableView: UICollectionReusableView {
         setView.configurate(content: set ?? "")
         payTypeView.configurate(content: SelectingMethods.selectPayType(payType: payType))
         introducedView.configurate(content: introduced)
-        addedDateView.configurate(content: DateFormating.dateFormatterDMY.string(from: addedDate))
+        addedDateView.configurate(content: DateFormating.dateFormatterDefault(date: addedDate))
         rewardWallView.configurate(content: String(rewardWall))
         levelWallView.configurate(content: String(levelWall))
         priceView.configurate(price: String(price), currency: .star)

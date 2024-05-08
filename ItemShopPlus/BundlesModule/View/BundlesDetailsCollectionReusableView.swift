@@ -67,7 +67,7 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
         changePrice(price: price, firstTime: true)
         aboutContentLabel.text = about
         if let expireDate {
-            expiryDate.configurate(content: DateFormating.dateFormatterDMY.string(from: expireDate))
+            expiryDate.configurate(content: DateFormating.dateFormatterDefault(date: expireDate))
         }
         
         setupUI(isDate: expireDate != nil)

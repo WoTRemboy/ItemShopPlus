@@ -88,7 +88,7 @@ final class BattlePassInfoViewController: UIViewController {
     }
     
     private func contentSetup() {
-        dateView.configurate(content: DateFormating.dateFormatterDMY.string(from: beginDate), DateFormating.dateFormatterDMY.string(from: endDate))
+        dateView.configurate(content: DateFormating.dateFormatterDefault(date: beginDate), DateFormating.dateFormatterDefault(date: endDate))
         seasonInfo.configurate(content: seasonTitle)
     }
     

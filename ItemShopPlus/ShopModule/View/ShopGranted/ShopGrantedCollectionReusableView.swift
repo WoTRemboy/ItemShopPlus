@@ -65,8 +65,8 @@ final class ShopGrantedCollectionReusableView: UICollectionReusableView {
         seriesView.configurate(content: series ?? "")
         priceView.configurate(price: String(price), currency: .vbucks)
         
-        firstTimeView.configurate(content: DateFormating.dateFormatterDMY.string(from: firstDate))
-        lastTimeView.configurate(content: DateFormating.dateFormatterDMY.string(from: lastDate))
+        firstTimeView.configurate(content: DateFormating.dateFormatterDefault(date: firstDate))
+        lastTimeView.configurate(content: DateFormating.dateFormatterDefault(date: lastDate))
 
         setupUI(isSeries: series != nil, isDescription: !description.isEmpty, price: String(price))
     }

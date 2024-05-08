@@ -2315,7 +2315,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pack d'articles"
+            "value" : "Pack du club"
           }
         },
         "it" : {
@@ -4271,25 +4271,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pistols"
+            "value" : "Pistol"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pistolas"
+            "value" : "Pistola"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pistolets"
+            "value" : "Pistolet"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pistole"
+            "value" : "Pistola"
           }
         },
         "ru" : {
@@ -4301,7 +4301,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tabancalar"
+            "value" : "Tabanca"
           }
         }
       }
@@ -4353,7 +4353,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rarities"
+            "value" : "Shotgun"
           }
         },
         "es" : {
@@ -4365,13 +4365,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Raretés"
+            "value" : "Fusil à pompe"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rarità"
+            "value" : "Fucile"
           }
         },
         "ru" : {
@@ -4383,7 +4383,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nadirlikler"
+            "value" : "Pompalı tüfek"
           }
         }
       }

@@ -13,25 +13,25 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thème sombre"
+            "value" : "Sombre"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tema scura"
+            "value" : "Scuro"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Темная тема"
+            "value" : "Темное"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Koyu tema"
+            "value" : "Koyu"
           }
         }
       }
@@ -48,25 +48,25 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thème lumière"
+            "value" : "Claire"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tema leggero"
+            "value" : "Chiaro"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Светлая тема"
+            "value" : "Светлое"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Açık tema"
+            "value" : "Açık"
           }
         }
       }
@@ -77,31 +77,31 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Device"
+            "value" : "System"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Appareil"
+            "value" : "Système"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dispositivo"
+            "value" : "Sistema"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Как в системе"
+            "value" : "Системное"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cihaz temasini"
+            "value" : "Sistem"
           }
         }
       }
@@ -4388,7 +4388,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Principal"
+            "value" : "Accueil"
           }
         },
         "it" : {
@@ -4406,7 +4406,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ana Sayfa"
+            "value" : "Giriş"
           }
         }
       }
@@ -5631,7 +5631,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görünüm"
+            "value" : "Görünüş"
           }
         }
       }

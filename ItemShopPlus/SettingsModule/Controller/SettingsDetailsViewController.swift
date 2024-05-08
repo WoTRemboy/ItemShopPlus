@@ -141,15 +141,17 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
         if indexPath != previousIndex {
             let previousCell = tableView.cellForRow(at: previousIndex) as? SettingsSelectTableViewCell
             let selectedCell = tableView.cellForRow(at: indexPath) as? SettingsSelectTableViewCell
-            previousCell?.accessoryType = .none
-            selectedCell?.accessoryType = .checkmark
+            previousCell?.selectUpdate(checked: false)
+            selectedCell?.selectUpdate(checked: true)
             previousIndex = indexPath
             
             switch type {
             case .appearance:
                 selectedTitle = themeData[indexPath.row].keyValue
                 themeMemoryManager(request: .save)
-                changeTheme(style: themeData[indexPath.row].style)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                    self.changeTheme(style: self.themeData[indexPath.row].style)
+                }
             case .currency:
                 selectedTitle = currencyData[indexPath.row].code
                 currencyMemoryManager(request: .save)

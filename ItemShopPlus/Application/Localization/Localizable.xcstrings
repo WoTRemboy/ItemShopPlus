@@ -1448,19 +1448,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buscar elementos"
+            "value" : "Buscar"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rechercher des éléments"
+            "value" : "Chercher"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cerca oggetti"
+            "value" : "Esamina"
           }
         },
         "ru" : {
@@ -1472,7 +1472,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öğeleri ara"
+            "value" : "Ara"
           }
         }
       }
@@ -2333,7 +2333,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öğe Paketi"
+            "value" : "Tayfa Paketi"
           }
         }
       }
@@ -2643,13 +2643,13 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pack d'équipage"
+            "value" : "Crew"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pacchetto Crew"
+            "value" : "Crew"
           }
         },
         "ru" : {
@@ -2661,7 +2661,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crew Paketi"
+            "value" : "Crew"
           }
         }
       }
@@ -6005,7 +6005,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Boutique d'articles"
+            "value" : "Boutique"
           }
         },
         "it" : {
@@ -7639,19 +7639,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buscar elementos"
+            "value" : "Buscar"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rechercher des éléments"
+            "value" : "Chercher"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cerca oggetti"
+            "value" : "Esamina"
           }
         },
         "ru" : {
@@ -7663,7 +7663,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öğeleri ara"
+            "value" : "Ara"
           }
         }
       }

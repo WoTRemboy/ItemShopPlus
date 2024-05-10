@@ -35,6 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         }
         
         MobileAds.initializeSDK(completionHandler: completionHandler)
+        
+        if let deviceLanguage = Bundle.main.preferredLocalizations.first,
+           let userDefault = UserDefaults(suiteName: "group.notificationlocalized") {
+            userDefault.set(deviceLanguage, forKey: Texts.LanguageSave.userDefaultsKey)
+        }
 
         return true
     }

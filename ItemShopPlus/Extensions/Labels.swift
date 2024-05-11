@@ -410,7 +410,7 @@ final class Texts {
     enum SettingsAboutCell {
         static let identifier = "SettingsAboutCell"
         static let name = "Fort Satellite"
-        static let version = "0.7.5 release 1"
+        static let version = "0.7.5 release 2"
     }
     
     enum SettingsCell {

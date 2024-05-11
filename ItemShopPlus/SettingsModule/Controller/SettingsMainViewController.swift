@@ -115,7 +115,13 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsAboutCollectionViewCell.identifier, for: indexPath) as? SettingsAboutCollectionViewCell else {
                 fatalError("Failed to dequeue SettingsAboutCollectionViewCell in SettingsMainViewController")
             }
-            cell.configurate()
+            
+            var appVersionString = String()
+            if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+               let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                appVersionString = "\(appVersion) \(Texts.SettingsAboutCell.version) \(buildVersion)"
+            }
+            cell.configurate(appVersion: appVersionString)
             cell.isUserInteractionEnabled = false
             return cell
         }

@@ -144,7 +144,6 @@
 		630B7F962BEEAA95007E3797 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		630B7F982BEEAA95007E3797 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		630B7F9A2BEEAA95007E3797 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		630B7FA52BEEBD07007E3797 /* NotificationServiceExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationServiceExtensionDebug.entitlements; sourceTree = "<group>"; };
 		63178F6E2BE6710D00090F81 /* MobileAdsBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobileAdsBundle.bundle; sourceTree = "<group>"; };
 		63178F712BE6758800090F81 /* InlineBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineBannerViewController.swift; sourceTree = "<group>"; };
 		631841DA2BE3F852008C3B4B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -195,6 +194,7 @@
 		638FD6D02B854D4100CE47BD /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		638FD6D22B854DCD00CE47BD /* JSONMapsParce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapsParce.swift; sourceTree = "<group>"; };
 		638FD6D42B8900CF00CE47BD /* MapPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickerViewController.swift; sourceTree = "<group>"; };
+		639190582BEFDF0400102275 /* NotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		639418AA2BD59BD7007F02FA /* ItemShopPlus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ItemShopPlus.entitlements; sourceTree = "<group>"; };
 		639418AB2BD59D3D007F02FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		639418AF2BD67C81007F02FA /* BundlesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundlesDetailsViewController.swift; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 		630B7F972BEEAA95007E3797 /* NotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
-				630B7FA52BEEBD07007E3797 /* NotificationServiceExtensionDebug.entitlements */,
+				639190582BEFDF0400102275 /* NotificationServiceExtension.entitlements */,
 				630B7F982BEEAA95007E3797 /* NotificationService.swift */,
 				630B7F9A2BEEAA95007E3797 /* Info.plist */,
 			);
@@ -1104,9 +1104,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceExtension/NotificationServiceExtensionDebug.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZFH6DW7S4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
@@ -1120,6 +1123,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ItemShopPlusNotifications;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1134,9 +1139,12 @@
 		630B7FA02BEEAA95007E3797 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = NotificationServiceExtension/NotificationServiceExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZFH6DW7S4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationServiceExtension;
@@ -1150,6 +1158,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ItemShopPlusNotifications;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1289,10 +1299,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ItemShopPlus/ItemShopPlusDebug.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZFH6DW7S4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ItemShopPlus/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fort Satellite";
@@ -1308,6 +1320,8 @@
 				MARKETING_VERSION = 0.7.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ItemShopPlusDistribution;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1325,10 +1339,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ItemShopPlus/ItemShopPlus.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZFH6DW7S4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ItemShopPlus/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Fort Satellite";
@@ -1344,6 +1360,8 @@
 				MARKETING_VERSION = 0.7.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ItemShopPlusDistribution;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

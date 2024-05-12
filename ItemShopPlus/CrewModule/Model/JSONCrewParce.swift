@@ -77,7 +77,8 @@ extension CrewItem {
 
         var introduction = String()
         if let introductionData = data["introduction"] as? [String: Any] {
-            introduction = introductionData["text"] as? String ?? String()
+            let introductionString = introductionData["text"] as? String ?? String()
+            introduction = String(introductionString.split(separator: ": ").last ?? Substring(introductionString))
         }
         
         var rarity: Rarity?

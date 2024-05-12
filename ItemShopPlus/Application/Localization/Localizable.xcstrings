@@ -1284,7 +1284,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Todos"
+            "value" : "Todo"
           }
         },
         "fr" : {
@@ -1923,7 +1923,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İptal"
+            "value" : "Vazgeç"
           }
         }
       }
@@ -3498,19 +3498,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Asalto"
+            "value" : "Fusil de asalto"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Assaut"
+            "value" : "Fusil d'assaut"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Assalto"
+            "value" : "Fucile d'assalto"
           }
         },
         "ru" : {
@@ -3522,7 +3522,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saldırı"
+            "value" : "Taarruz tüfeği"
           }
         }
       }
@@ -3604,7 +3604,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bıçak"
+            "value" : "Kılıç"
           }
         }
       }
@@ -4236,19 +4236,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lanzacohetes"
+            "value" : "Misceláneo"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lance-grenades"
+            "value" : "Armes diverses"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lanciarazzi"
+            "value" : "Varie"
           }
         },
         "ru" : {
@@ -4260,7 +4260,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Roketatar"
+            "value" : "Çeşitli"
           }
         }
       }
@@ -4371,7 +4371,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fucile"
+            "value" : "Fucile pesante"
           }
         },
         "ru" : {
@@ -4400,7 +4400,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Francotirador"
+            "value" : "Fusil de tirador"
           }
         },
         "fr" : {
@@ -4412,7 +4412,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cecchino"
+            "value" : "Fucile di precisione"
           }
         },
         "ru" : {
@@ -4424,7 +4424,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nişancı"
+            "value" : "Keskin nişancı tüfeği"
           }
         }
       }
@@ -5080,7 +5080,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İptal"
+            "value" : "Vazgeç"
           }
         }
       }
@@ -5408,7 +5408,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İptal"
+            "value" : "Vazgeç"
           }
         }
       }
@@ -5736,7 +5736,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İptal"
+            "value" : "Vazgeç"
           }
         }
       }
@@ -7680,7 +7680,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Todos"
+            "value" : "Todo"
           }
         },
         "fr" : {

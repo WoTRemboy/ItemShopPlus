@@ -61,6 +61,8 @@ final class StatsDetailsCollectionViewCell: UICollectionViewCell {
         switch appLanguage {
         case "tr":
             return "%\(content)"
+        case "fr":
+            return "\(content) %"
         default:
             return "\(content)%"
         }

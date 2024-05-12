@@ -12109,7 +12109,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "É/M\nManette"
+            "value" : "É/M\nGpad"
           }
         },
         "it" : {
@@ -12127,13 +12127,13 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "У/С\nСтики"
+            "value" : "У/С\nGpad"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "E/Ö\nJoystick"
+            "value" : "E/Ö\nGpad"
           }
         }
       }

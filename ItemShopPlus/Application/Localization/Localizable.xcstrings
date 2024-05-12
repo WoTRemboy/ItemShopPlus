@@ -4,6 +4,12 @@
     "AppearanceSettingsDark" : {
       "comment" : "Dark",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dunkel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
     "AppearanceSettingsLight" : {
       "comment" : "Light",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hell"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -98,6 +110,12 @@
     "AppearanceSettingsSystem" : {
       "comment" : "Device",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -145,6 +163,12 @@
     "BattlePassCellLoadingScreen" : {
       "comment" : "Loading Screen",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ladebildschirm"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -192,6 +216,12 @@
     "BattlePassCellPrice" : {
       "comment" : "Item price...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artikelpreis..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -239,6 +269,12 @@
     "BattlePassCellRemaining" : {
       "comment" : "Remaining time",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbleibende Zeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -286,6 +322,12 @@
     "BattlePassInfoDataFormat" : {
       "comment" : "%01dW %01dD %02d:%02d:%02d",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%01dW %01dT %02d:%02d:%02d"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -333,6 +375,12 @@
     "BattlePassInfoSeason" : {
       "comment" : "Season",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saison"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -380,6 +428,12 @@
     "BattlePassItemsParametersBeginDate" : {
       "comment" : "Start date",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startdatum"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -427,6 +481,12 @@
     "BattlePassItemsParametersBeginDateData" : {
       "comment" : "Begin date...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginndatum..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -474,6 +534,12 @@
     "BattlePassItemsParametersCurrentData" : {
       "comment" : "Currently underway...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktuell im Gange..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -521,6 +587,12 @@
     "BattlePassItemsParametersCurrentSeason" : {
       "comment" : "Currently underway",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktuell im Gange"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -568,6 +640,12 @@
     "BattlePassItemsParametersDescriprionData" : {
       "comment" : "Descriprion...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -615,6 +693,12 @@
     "BattlePassItemsParametersDescription" : {
       "comment" : "Descriprion",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -662,6 +746,12 @@
     "BattlePassItemsParametersEndDate" : {
       "comment" : "End date",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enddatum"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -709,6 +799,12 @@
     "BattlePassItemsParametersEndDateData" : {
       "comment" : "End date...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enddatum..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -756,6 +852,12 @@
     "BattlePassItemsParametersFirstRelease" : {
       "comment" : "First release",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erste Veröffentlichung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -803,6 +905,12 @@
     "BattlePassItemsParametersFirstTimeData" : {
       "comment" : "First release...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erste Veröffentlichung..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -850,6 +958,12 @@
     "BattlePassItemsParametersIntroduced" : {
       "comment" : "Introduced",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eingeführt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -897,6 +1011,12 @@
     "BattlePassItemsParametersIntroducedData" : {
       "comment" : "Introduced in...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eingeführt..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -944,6 +1064,12 @@
     "BattlePassItemsParametersLevelWall" : {
       "comment" : "Levels needed for unlock",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erforderliche Stufen zum Entsperren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -991,6 +1117,12 @@
     "BattlePassItemsParametersLevelWallData" : {
       "comment" : "Levels needed for unlock...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erforderliche Stufen zum Entsperren..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1038,6 +1170,12 @@
     "BattlePassItemsParametersnewSeason" : {
       "comment" : "New season is coming soon!",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine neue Saison kommt!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1085,6 +1223,12 @@
     "BattlePassItemsParametersRewardWall" : {
       "comment" : "Rewards needed for unlock",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benötigte Belohnungen zum Entsperren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1132,6 +1276,12 @@
     "BattlePassItemsParametersRewardWallData" : {
       "comment" : "Rewards needed for unlock...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benötigte Belohnungen zum Entsperren..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1179,6 +1329,12 @@
     "BattlePassItemsParametersSeries" : {
       "comment" : "Series",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reihe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1226,6 +1382,12 @@
     "BattlePassItemsParametersSeriesData" : {
       "comment" : "Series...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reihe..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1273,6 +1435,12 @@
     "BattlePassItemsParametersSet" : {
       "comment" : "Set",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1320,6 +1488,12 @@
     "BattlePassItemsParametersSetData" : {
       "comment" : "Part of...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1367,6 +1541,12 @@
     "BattlePassItemsParametersTierType" : {
       "comment" : "Tier type",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leveltyp"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1414,6 +1594,12 @@
     "BattlePassItemsParametersTierTypeData" : {
       "comment" : "Tier type...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leveltyp..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1461,6 +1647,12 @@
     "BattlePassPageAll" : {
       "comment" : "All",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1508,6 +1700,12 @@
     "BattlePassPageFree" : {
       "comment" : "Free",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kostenlos"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1555,6 +1753,12 @@
     "BattlePassPagePage" : {
       "comment" : "Page",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seite"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1602,6 +1806,12 @@
     "BattlePassPagePaid" : {
       "comment" : "Paid",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezahlt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1649,6 +1859,12 @@
     "BattlePassPageSearch" : {
       "comment" : "Search items",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1696,6 +1912,12 @@
     "BattlePassPageTitle" : {
       "comment" : "Battle Pass",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battle Pass"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1743,6 +1965,12 @@
     "BundleCellFree" : {
       "comment" : "Free",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kostenlos"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1790,6 +2018,12 @@
     "BundleDetailsCellAbout" : {
       "comment" : "About",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1837,6 +2071,12 @@
     "BundleDetailsCellAboutData" : {
       "comment" : "About this...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1884,6 +2124,12 @@
     "BundleDetailsCellDescription" : {
       "comment" : "Description",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1931,6 +2177,12 @@
     "BundleDetailsCellDescriptionData" : {
       "comment" : "Descriprion is...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1978,6 +2230,12 @@
     "BundleDetailsCellExpityDate" : {
       "comment" : "Expiry date",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ablaufdatum"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2025,6 +2283,12 @@
     "BundlesPageHeader" : {
       "comment" : "Special Offers",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonderangebote"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2072,6 +2336,12 @@
     "BundlesPageTitle" : {
       "comment" : "Bundles",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakete"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2119,6 +2389,12 @@
     "ClearCacheCache" : {
       "comment" : "Clear Entire Cache",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamten Cache löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2166,6 +2442,12 @@
     "ClearCacheCancel" : {
       "comment" : "Cancel",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2213,6 +2495,12 @@
     "ClearCacheClean" : {
       "comment" : "The cache is already clean.",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Cache ist bereits sauber."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2260,6 +2548,12 @@
     "ClearCacheCleared" : {
       "comment" : "The cache has been cleared.",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Cache wurde gelöscht."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2307,6 +2601,12 @@
     "ClearCacheMB" : {
       "comment" : "MB",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MB"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2354,6 +2654,12 @@
     "ClearCacheMessage" : {
       "comment" : "All media used in the app will remain in the cloud and will be re-downloaded when needed",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle im App verwendeten Medien bleiben in der Cloud und werden bei Bedarf neu heruntergeladen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2401,6 +2707,12 @@
     "ClearCacheOk" : {
       "comment" : "OK",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2448,6 +2760,12 @@
     "ClearCacheOops" : {
       "comment" : "Oops!",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoppla!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2495,6 +2813,12 @@
     "ClearCacheSuccess" : {
       "comment" : "Success",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erfolg"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2542,6 +2866,12 @@
     "CrewPageCellAdditional" : {
       "comment" : "Additional benefits",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zusätzliche Vorteile"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2589,6 +2919,12 @@
     "CrewPageCellAnd" : {
       "comment" : "and",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "und"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2636,6 +2972,12 @@
     "CrewPageCellHeader" : {
       "comment" : "Item Bundle",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2683,6 +3025,12 @@
     "CrewPageCellIntroduction" : {
       "comment" : "First appearance",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erster Auftritt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2730,6 +3078,12 @@
     "CrewPageCellIntroductionData" : {
       "comment" : "Introduced in...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erster Auftritt..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2777,6 +3131,12 @@
     "CrewPageCellItemName" : {
       "comment" : "Item name...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artikelname..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2824,6 +3184,12 @@
     "CrewPageCellMainBenefits" : {
       "comment" : "Main benefits",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hauptvorteile"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2871,6 +3237,12 @@
     "CrewPageCellNo" : {
       "comment" : "No",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2918,6 +3290,12 @@
     "CrewPageCellPrice" : {
       "comment" : "Pack price...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packpreis..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2965,6 +3343,12 @@
     "CrewPageCellYes" : {
       "comment" : "Yes",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3012,6 +3396,12 @@
     "CrewPageTitle" : {
       "comment" : "Crew Pack",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crew"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3059,6 +3449,12 @@
     "CurrencyNameAUD" : {
       "comment" : "Australian Dollar",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Australischer Dollar"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3106,6 +3502,12 @@
     "CurrencyNameBRL" : {
       "comment" : "Brazilian Real",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brasilianischer Real"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3153,6 +3555,12 @@
     "CurrencyNameCAD" : {
       "comment" : "Canadian Dollar",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanadischer Dollar"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3200,6 +3608,12 @@
     "CurrencyNameDKK" : {
       "comment" : "Danish Krone",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dänische Krone"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3247,6 +3661,12 @@
     "CurrencyNameEUR" : {
       "comment" : "Euro",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Euro"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3294,6 +3714,12 @@
     "CurrencyNameGBR" : {
       "comment" : "Pound Sterling",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pfund Sterling"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3341,6 +3767,12 @@
     "CurrencyNameJPY" : {
       "comment" : "Japanese Yen",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Japanischer Yen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3388,6 +3820,12 @@
     "CurrencyNameNOK" : {
       "comment" : "Norwegian Krone",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Norwegische Krone"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3435,6 +3873,12 @@
     "CurrencyNameRUB" : {
       "comment" : "Russian Ruble",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Russischer Rubel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3482,6 +3926,12 @@
     "CurrencyNameSEK" : {
       "comment" : "Swedish Krona",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwedische Krone"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3529,6 +3979,12 @@
     "CurrencyNameTRY" : {
       "comment" : "Turkish Lira",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Türkische Lira"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3576,6 +4032,12 @@
     "CurrencyNameUSD" : {
       "comment" : "United States Dollar",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "US-Dollar"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3623,6 +4085,12 @@
     "LanguageSettingsAlertContent" : {
       "comment" : "Select the language you want in Settings.",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wählen Sie die gewünschte Sprache in den Einstellungen aus."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3670,6 +4138,12 @@
     "LanguageSettingsAlertTitle" : {
       "comment" : "Change language",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprache ändern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3717,6 +4191,12 @@
     "LootDetailsMainArmory" : {
       "comment" : "Armory",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waffenkammer"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3764,6 +4244,12 @@
     "LootDetailsMainCellRarities" : {
       "comment" : "Rarities",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3811,6 +4297,12 @@
     "LootDetailsMainCellStats" : {
       "comment" : "Stats",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkte"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3858,6 +4350,12 @@
     "LootDetailsMainWeapons" : {
       "comment" : "Weapons",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waffen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3905,6 +4403,12 @@
     "LootDetailsRarityBack" : {
       "comment" : "Armory",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waffenkammer"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3952,6 +4456,12 @@
     "LootDetailsRarityTitle" : {
       "comment" : "Rarities",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raritäten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3999,6 +4509,12 @@
     "LootDetailsStatsAssault" : {
       "comment" : "Assault",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sturmgewehr"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4046,6 +4562,12 @@
     "LootDetailsStatsBackLoot" : {
       "comment" : "Armory",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waffenkammer"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4093,6 +4615,12 @@
     "LootDetailsStatsBlade" : {
       "comment" : "Blade",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klinge"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4140,6 +4668,12 @@
     "LootDetailsStatsBow" : {
       "comment" : "Bow",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bogen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4187,6 +4721,12 @@
     "LootDetailsStatsCellCartridgeSize" : {
       "comment" : "Cartridge size",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patronengröße"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4234,6 +4774,12 @@
     "LootDetailsStatsCellClipSize" : {
       "comment" : "Clip size",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Magazingröße"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4281,6 +4827,12 @@
     "LootDetailsStatsCellDamage" : {
       "comment" : "Damage",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schaden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4328,6 +4880,12 @@
     "LootDetailsStatsCellDamageZone" : {
       "comment" : "Damage zone critical",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kritischer Schadensbereich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4375,6 +4933,12 @@
     "LootDetailsStatsCellFiringRate" : {
       "comment" : "Firing rate",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feuerrate"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4422,6 +4986,12 @@
     "LootDetailsStatsCellMultiplier" : {
       "comment" : "Multiplier:",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiplikator:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4469,6 +5039,12 @@
     "LootDetailsStatsCellNo" : {
       "comment" : "No",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4516,6 +5092,12 @@
     "LootDetailsStatsCellReloadTime" : {
       "comment" : "Reload time",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nachladezeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4563,6 +5145,12 @@
     "LootDetailsStatsCellRounds" : {
       "comment" : "Rounds:",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schüsse:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4610,6 +5198,12 @@
     "LootDetailsStatsCellRoundsSecond" : {
       "comment" : "Rounds / second:",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schüsse / Sekunde:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4657,6 +5251,12 @@
     "LootDetailsStatsCellSeconds" : {
       "comment" : "Seconds:",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekunden:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4704,6 +5304,12 @@
     "LootDetailsStatsCellSpread" : {
       "comment" : "Spread",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streuung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4751,6 +5357,12 @@
     "LootDetailsStatsCellSpreadDownsights" : {
       "comment" : "Spread downsights",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streuung beim Zielen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4798,6 +5410,12 @@
     "LootDetailsStatsCellUnitsRound" : {
       "comment" : "Units / round:",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einheiten / Schuss"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4845,6 +5463,12 @@
     "LootDetailsStatsLauncher" : {
       "comment" : "Launcher",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonstig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4892,6 +5516,12 @@
     "LootDetailsStatsPistols" : {
       "comment" : "Pistols",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pistole"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4939,6 +5569,12 @@
     "LootDetailsStatsRarities" : {
       "comment" : "Rarities",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raritäten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4986,6 +5622,12 @@
     "LootDetailsStatsShotgun" : {
       "comment" : "Shotgun",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schrotflinte"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5033,6 +5675,12 @@
     "LootDetailsStatsSniper" : {
       "comment" : "Sniper",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scharfschützengewehr"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5080,6 +5728,12 @@
     "LootDetailsStatsTitle" : {
       "comment" : "Stats",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiken"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5127,6 +5781,12 @@
     "MainButtonsArmory" : {
       "comment" : "Armory",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waffenkammer"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5174,6 +5834,12 @@
     "MainButtonsAugments" : {
       "comment" : "Augments",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Augmentierungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5221,6 +5887,12 @@
     "MainButtonsBP" : {
       "comment" : "Battle Pass",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battle Pass"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5268,6 +5940,12 @@
     "MainButtonsBundles" : {
       "comment" : "Bundles",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakete"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5315,6 +5993,12 @@
     "MainButtonsCrew" : {
       "comment" : "Crew",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crew"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5362,6 +6046,12 @@
     "MainButtonsMap" : {
       "comment" : "Map",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karte"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5409,6 +6099,12 @@
     "MainButtonsSettings" : {
       "comment" : "Settings",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5456,6 +6152,12 @@
     "MainButtonsShop" : {
       "comment" : "Item Shop",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5503,6 +6205,12 @@
     "MainButtonsStats" : {
       "comment" : "Stats",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiken"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5550,6 +6258,12 @@
     "MapPageArchive" : {
       "comment" : "Archive",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archiv"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5597,6 +6311,12 @@
     "MapPageClear" : {
       "comment" : "Clear",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reinigen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5644,6 +6364,12 @@
     "MapPagePOI" : {
       "comment" : "POI",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orte"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5691,6 +6417,12 @@
     "MapPageTitle" : {
       "comment" : "Map",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karte"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5738,6 +6470,12 @@
     "NavigationBundles" : {
       "comment" : "Bundles",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakete"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5785,6 +6523,12 @@
     "NavigationCancel" : {
       "comment" : "Cancel",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5832,6 +6576,12 @@
     "NavigationDone" : {
       "comment" : "Done",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5879,6 +6629,12 @@
     "NavigationMain" : {
       "comment" : "Main",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startseite"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5926,6 +6682,12 @@
     "NavigationPass" : {
       "comment" : "Pass",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pass"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5973,6 +6735,12 @@
     "NavigationSettings" : {
       "comment" : "Settings",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6020,6 +6788,12 @@
     "NavigationShop" : {
       "comment" : "Shop",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6067,6 +6841,12 @@
     "NetworkRequestLang" : {
       "comment" : "en",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6114,6 +6894,12 @@
     "NicknamePopupAccept" : {
       "comment" : "Accept",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akzeptieren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6161,6 +6947,12 @@
     "NicknamePopupCancel" : {
       "comment" : "Cancel",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6208,6 +7000,12 @@
     "NicknamePopupEmpty" : {
       "comment" : "Empty text",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leerer Text"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6255,6 +7053,12 @@
     "NicknamePopupEmptyMessage" : {
       "comment" : "Please, enter any nickname",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geben Sie einen Spitznamen ein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6302,6 +7106,12 @@
     "NicknamePopupNoResult" : {
       "comment" : "No result",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Ergebnis"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6349,6 +7159,12 @@
     "NicknamePopupPlaceholder" : {
       "comment" : "Nickname",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spitzname"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6396,6 +7212,12 @@
     "noConnectionInternet" : {
       "comment" : "No connection",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Verbindung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6443,6 +7265,12 @@
     "noConnectionRetry" : {
       "comment" : "Please, retry later",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versuchen Sie es erneut"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6490,6 +7318,12 @@
     "noConnectionRetryButton" : {
       "comment" : "Retry",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu laden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6537,6 +7371,12 @@
     "NotificationSettingsAlertCancel" : {
       "comment" : "Cancel",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbrechen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6584,6 +7424,12 @@
     "NotificationSettingsAlertContent" : {
       "comment" : "Please enable notifications in Settings.",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte aktivieren Sie Benachrichtigungen in den Einstellungen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6631,6 +7477,12 @@
     "NotificationSettingsAlertSettings" : {
       "comment" : "Settings",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6678,6 +7530,12 @@
     "NotificationSettingsAlertTitle" : {
       "comment" : "Notification Access Required",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benachrichtigungszugriff erforderlich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6725,6 +7583,12 @@
     "PagesDetails" : {
       "comment" : "Details",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6772,6 +7636,12 @@
     "PagesQuest" : {
       "comment" : "Quest",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufgabe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6819,6 +7689,12 @@
     "PagesQuests" : {
       "comment" : "Quests",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufgaben"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6866,6 +7742,12 @@
     "PagesShop" : {
       "comment" : "Item Shop",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6913,6 +7795,12 @@
     "PlaceholderSmth" : {
       "comment" : "Something wrong...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etwas stimmt nicht..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6960,6 +7848,12 @@
     "RarityCommon" : {
       "comment" : "Common",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gewöhnlich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7007,6 +7901,12 @@
     "RarityEpic" : {
       "comment" : "Epic",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Episch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7054,6 +7954,12 @@
     "RarityExotic" : {
       "comment" : "Exotic",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exotisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7101,6 +8007,12 @@
     "RarityLegend" : {
       "comment" : "Legendary",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legendär"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7148,6 +8060,12 @@
     "RarityMythic" : {
       "comment" : "Mythic",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mythisch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7195,6 +8113,12 @@
     "RarityRare" : {
       "comment" : "Rare",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7242,6 +8166,12 @@
     "RarityStar" : {
       "comment" : "Star",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stern"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7289,6 +8219,12 @@
     "RarityTrans" : {
       "comment" : "Transcendent",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transzendent"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7336,6 +8272,12 @@
     "RarityUncommon" : {
       "comment" : "Uncommon",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungewöhnlich"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7383,6 +8325,12 @@
     "SearchNoResult" : {
       "comment" : "No result",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein Ergebnis"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7430,6 +8378,12 @@
     "SearchResult" : {
       "comment" : "Result",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ergebnis"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7477,6 +8431,12 @@
     "SettingsPageAboutTitle" : {
       "comment" : "About",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über die App"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7524,6 +8484,12 @@
     "SettingsPageAppearanceTitle" : {
       "comment" : "Appearance",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erscheinungsbild"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7571,6 +8537,12 @@
     "SettingsPageClearCacheTitle" : {
       "comment" : "Clear Cache",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache leeren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7618,6 +8590,12 @@
     "SettingsPageContactTitle" : {
       "comment" : "Contact",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7665,6 +8643,12 @@
     "SettingsPageCurrencyTitle" : {
       "comment" : "Currency",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Währung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7712,6 +8696,12 @@
     "SettingsPageEmailTitle" : {
       "comment" : "Email",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-Mail"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7759,6 +8749,12 @@
     "SettingsPageEmptyCache" : {
       "comment" : "Empty",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leer"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7806,6 +8802,12 @@
     "SettingsPageGeneralTitle" : {
       "comment" : "General",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allgemein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7853,6 +8855,12 @@
     "SettingsPageLanguageContent" : {
       "comment" : "English",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deutsch"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7900,6 +8908,12 @@
     "SettingsPageLanguageTitle" : {
       "comment" : "Language",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprache"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7947,6 +8961,12 @@
     "SettingsPageLocalizationTitle" : {
       "comment" : "Localization",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokalisierung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7994,6 +9014,12 @@
     "SettingsPageNotificationsTitle" : {
       "comment" : "Notifications",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mitteilungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8041,6 +9067,12 @@
     "SettingsPageTitle" : {
       "comment" : "Settings",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8088,6 +9120,12 @@
     "ShopGrantedCellContent" : {
       "comment" : "Content...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inhalt..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8135,6 +9173,12 @@
     "ShopGrantedCellFirstTime" : {
       "comment" : "First time...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstes Mal..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8182,6 +9226,12 @@
     "ShopGrantedCellLastTime" : {
       "comment" : "Last time...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letztes Mal..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8229,6 +9279,12 @@
     "ShopGrantedCellPrice" : {
       "comment" : "Bundle price...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bündelpreis..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8276,6 +9332,12 @@
     "ShopGrantedCellTitle" : {
       "comment" : "Title...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titel..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8323,6 +9385,12 @@
     "ShopGrantedCellTotal" : {
       "comment" : "Total",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8370,6 +9438,12 @@
     "ShopGrantedParametersDescription" : {
       "comment" : "Descriprion",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8417,6 +9491,12 @@
     "ShopGrantedParametersDescriptionData" : {
       "comment" : "Descriprion...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beschreibung..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8464,6 +9544,12 @@
     "ShopGrantedParametersFirstTime" : {
       "comment" : "First release",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erste Veröffentlichung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8511,6 +9597,12 @@
     "ShopGrantedParametersFirstTimeData" : {
       "comment" : "First release...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erste Veröffentlichung..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8558,6 +9650,12 @@
     "ShopGrantedParametersLastTime" : {
       "comment" : "Previous release",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorherige Veröffentlichung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8605,6 +9703,12 @@
     "ShopGrantedParametersLastTimeData" : {
       "comment" : "Previous release...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorherige Veröffentlichung..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8652,6 +9756,12 @@
     "ShopGrantedParametersSeries" : {
       "comment" : "Series",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reihe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8699,6 +9809,12 @@
     "ShopGrantedParametersSeriesData" : {
       "comment" : "Series...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reihe..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8746,6 +9862,12 @@
     "ShopMainCellSearch" : {
       "comment" : "Search items",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8793,6 +9915,12 @@
     "ShopPageAllMenu" : {
       "comment" : "All",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8840,6 +9968,12 @@
     "ShopPageBundleName" : {
       "comment" : "Bundle name...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bündelname..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8887,6 +10021,12 @@
     "ShopPageItemName" : {
       "comment" : "Item name...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artikelname..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8934,6 +10074,12 @@
     "ShopPageItemPrice" : {
       "comment" : "Item price...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artikelpreis..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8981,6 +10127,12 @@
     "ShopPageJamTracks" : {
       "comment" : "Jam Tracks",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jam-Songs"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9028,6 +10180,12 @@
     "ShopPageReloadShop" : {
       "comment" : "It's time to update!",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seite neu laden!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9075,6 +10233,12 @@
     "ShopPageRemaining" : {
       "comment" : "Remaining time",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbleibende Zeit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9122,6 +10286,12 @@
     "ShopPageSegmentName" : {
       "comment" : "Segment name...",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segmentname..."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9169,6 +10339,12 @@
     "ShopPageShopBackpack" : {
       "comment" : "Backpack",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rucksack"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9216,6 +10392,12 @@
     "ShopPageShopInfo" : {
       "comment" : "Shop Info",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop-Info"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9263,6 +10445,12 @@
     "ShopPageShopItemBundle" : {
       "comment" : "Item Bundle",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artikelbündel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9310,6 +10498,12 @@
     "ShopTimerAboutRotation" : {
       "comment" : "About rotation",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über die Rotation"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9357,6 +10551,12 @@
     "ShopTimerCountInfo" : {
       "comment" : "Number of elements in the item bundle.",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzahl der Elemente im Artikelbündel."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9404,6 +10604,12 @@
     "ShopTimerRotationInfo" : {
       "comment" : "The shop refreshes every day. Check back soon!",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktualisiert sich täglich!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9451,6 +10657,12 @@
     "ShopTimerSwipeInfo" : {
       "comment" : "Swipe over the cell image to see more variations!",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wischen Sie, um mehr Variationen zu sehen!"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9498,6 +10710,12 @@
     "ShopTimerWhat" : {
       "comment" : "What is: ",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was ist: "
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9545,6 +10763,12 @@
     "StatsDetailsCellHours" : {
       "comment" : "Hours",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stunden"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9592,6 +10816,12 @@
     "StatsDetailsCellKD" : {
       "comment" : "K/D",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T/T"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9639,6 +10869,12 @@
     "StatsDetailsCellKills" : {
       "comment" : "Kills",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tötet"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9686,6 +10922,12 @@
     "StatsDetailsCellLevel" : {
       "comment" : "Level",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9733,6 +10975,12 @@
     "StatsDetailsCellMatches" : {
       "comment" : "Matches",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiele"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9780,6 +11028,12 @@
     "StatsDetailsCellMode" : {
       "comment" : "Mode:",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modus:"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9827,6 +11081,12 @@
     "StatsDetailsCellOutlived" : {
       "comment" : "Outlived",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überlebt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9874,6 +11134,12 @@
     "StatsDetailsCellProgress" : {
       "comment" : "Progress",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortschritt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9921,6 +11187,12 @@
     "StatsDetailsCellScore" : {
       "comment" : "Score",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punktzahl"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9968,6 +11240,12 @@
     "StatsDetailsCellSeason" : {
       "comment" : "Season",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saison"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10015,6 +11293,12 @@
     "StatsDetailsCellTopOne" : {
       "comment" : "Top 1",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top 1"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10062,6 +11346,12 @@
     "StatsDetailsCellWinrate" : {
       "comment" : "Winrate",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gewinnrate"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10109,6 +11399,12 @@
     "StatsDetailsPageDuo" : {
       "comment" : "Duo",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duo"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10156,6 +11452,12 @@
     "StatsDetailsPageGamepad" : {
       "comment" : "Gamepad",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gamepad"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10203,6 +11505,12 @@
     "StatsDetailsPageKeyboard" : {
       "comment" : "Keyboard",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tastatur"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10250,6 +11558,12 @@
     "StatsDetailsPageSolo" : {
       "comment" : "Solo",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10297,6 +11611,12 @@
     "StatsDetailsPageSquad" : {
       "comment" : "Squad",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Team"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10344,6 +11664,12 @@
     "StatsDetailsPageTouch" : {
       "comment" : "Touch",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berühren"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10391,6 +11717,12 @@
     "StatsDetailsPageTrio" : {
       "comment" : "Trio",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trio"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10438,6 +11770,12 @@
     "StatsPageGlobalFirst" : {
       "comment" : "Top 1 Places",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top 1\nPlätze"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10485,6 +11823,12 @@
     "StatsPageGlobalSecond" : {
       "comment" : "Kills Deaths",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T/T\nGesamt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10532,6 +11876,12 @@
     "StatsPageGlobalTitle" : {
       "comment" : "Global",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Global"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10579,6 +11929,12 @@
     "StatsPageHistoryFirst" : {
       "comment" : "Best Season",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beste\nSaison"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10626,6 +11982,12 @@
     "StatsPageHistorySecond" : {
       "comment" : "Max Level",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max\nLevel"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10673,6 +12035,12 @@
     "StatsPageHistoryTitle" : {
       "comment" : "History",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historie"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10720,6 +12088,12 @@
     "StatsPageInputFirst" : {
       "comment" : "K/D Gpad",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T/T\nGpad"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10767,6 +12141,12 @@
     "StatsPageInputSecond" : {
       "comment" : "K/D Mouse",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "T/T\nMaus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10814,6 +12194,12 @@
     "StatsPageInputTitle" : {
       "comment" : "Input",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eingabe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10861,6 +12247,12 @@
     "StatsPagePlaceholder" : {
       "comment" : "Error",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10908,6 +12300,12 @@
     "StatsPageProgressFirst" : {
       "comment" : "Current Season",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktuelle\nSaison"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10955,6 +12353,12 @@
     "StatsPageProgressSecond" : {
       "comment" : "Current Level",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level\nVorerst"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11002,6 +12406,12 @@
     "StatsPageProgressTitle" : {
       "comment" : "Progress",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortschritt"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11049,6 +12459,12 @@
     "StatsPageTitle" : {
       "comment" : "Stats",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiken"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

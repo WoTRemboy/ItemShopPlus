@@ -28,6 +28,12 @@
             "value" : "Scuro"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciemny"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -67,6 +73,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chiaro"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jasny"
           }
         },
         "ru" : {
@@ -110,6 +122,12 @@
             "value" : "Sistema"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -149,6 +167,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Schermata di caricamento"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran wczytywania"
           }
         },
         "ru" : {
@@ -192,6 +216,12 @@
             "value" : "Prezzo dell'articolo..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cena przedmiotu..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -231,6 +261,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tempo rimanente"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozostały czas"
           }
         },
         "ru" : {
@@ -274,6 +310,12 @@
             "value" : "%01dS %01dG %02d:%02d:%02d"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%01dT %01dD %02d:%02d:%02d"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -313,6 +355,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stagione"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sezon"
           }
         },
         "ru" : {
@@ -356,6 +404,12 @@
             "value" : "Data di inizio"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data rozpoczęcia"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -395,6 +449,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Data d'inizio..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data rozpoczęcia..."
           }
         },
         "ru" : {
@@ -438,6 +498,12 @@
             "value" : "Attualmente in corso..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obecnie trwa..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -477,6 +543,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Attualmente in corso"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obecnie trwa"
           }
         },
         "ru" : {
@@ -520,6 +592,12 @@
             "value" : "Descrizione..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -559,6 +637,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descrizione"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis"
           }
         },
         "ru" : {
@@ -602,6 +686,12 @@
             "value" : "Data di fine"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data zakończenia"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -641,6 +731,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Data di fine..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data zakończenia..."
           }
         },
         "ru" : {
@@ -684,6 +780,12 @@
             "value" : "Primo rilascio"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pierwsze wydanie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -723,6 +825,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Primo rilascio..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pierwsze wydanie..."
           }
         },
         "ru" : {
@@ -766,6 +874,12 @@
             "value" : "Introdotto"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Od"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -805,6 +919,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Introdotto..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Od..."
           }
         },
         "ru" : {
@@ -848,6 +968,12 @@
             "value" : "Livelli necessari per sbloccare"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poziomy potrzebne do odblokowania"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -887,6 +1013,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Livelli necessari per sbloccare..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poziomy potrzebne do odblokowania..."
           }
         },
         "ru" : {
@@ -930,6 +1062,12 @@
             "value" : "Arriva una nuova stagione!"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowy sezon nadchodzi!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -969,6 +1107,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ricompense necessarie per sbloccare"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nagrody potrzebne do odblokowania"
           }
         },
         "ru" : {
@@ -1012,6 +1156,12 @@
             "value" : "Ricompense necessarie per sbloccare..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nagrody potrzebne do odblokowania..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1051,6 +1201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Serie"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seria"
           }
         },
         "ru" : {
@@ -1094,6 +1250,12 @@
             "value" : "Serie..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seria..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1133,6 +1295,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Set"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zestaw"
           }
         },
         "ru" : {
@@ -1176,6 +1344,12 @@
             "value" : "Parte di..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zestaw..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1215,6 +1389,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tipo di passaggio"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ poziomu"
           }
         },
         "ru" : {
@@ -1258,6 +1438,12 @@
             "value" : "Tipo di passaggio..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ poziomu..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1297,6 +1483,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutto"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie"
           }
         },
         "ru" : {
@@ -1340,6 +1532,12 @@
             "value" : "Gratuito"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Darmowe"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1379,6 +1577,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pagina"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strona"
           }
         },
         "ru" : {
@@ -1422,6 +1626,12 @@
             "value" : "A pagamento"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Płatne"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1461,6 +1671,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Esamina"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szukaj"
           }
         },
         "ru" : {
@@ -1504,6 +1720,12 @@
             "value" : "Pass battaglia"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karnet bojowy"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1543,6 +1765,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gratuito"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Darmowe"
           }
         },
         "ru" : {
@@ -1586,6 +1814,12 @@
             "value" : "Informazioni"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1625,6 +1859,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Informazioni su questo..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis..."
           }
         },
         "ru" : {
@@ -1668,6 +1908,12 @@
             "value" : "Descrizione"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1707,6 +1953,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descrizione..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis..."
           }
         },
         "ru" : {
@@ -1750,6 +2002,12 @@
             "value" : "Data di scadenza"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data ważności"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1789,6 +2047,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Offerte speciali"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oferty Specjalne"
           }
         },
         "ru" : {
@@ -1832,6 +2096,12 @@
             "value" : "Bundle"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zestawy"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1871,6 +2141,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancella tutta la cache"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyczyść cały cache"
           }
         },
         "ru" : {
@@ -1914,6 +2190,12 @@
             "value" : "Annulla"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1953,6 +2235,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "La cache è già pulita."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache jest już czyste."
           }
         },
         "ru" : {
@@ -1996,6 +2284,12 @@
             "value" : "La cache è stata cancellata."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache został wyczyszczony."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2032,6 +2326,12 @@
           }
         },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MB"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "MB"
@@ -2078,6 +2378,12 @@
             "value" : "Tutti i media utilizzati nell'app rimarranno nel cloud e verranno scaricati nuovamente quando necessario."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie media używane w aplikacji pozostaną w chmurze i zostaną ponownie pobrane, gdy będą potrzebne."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2114,6 +2420,12 @@
           }
         },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
@@ -2160,6 +2472,12 @@
             "value" : "Ops!"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ups!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2199,6 +2517,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Successo"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sukces"
           }
         },
         "ru" : {
@@ -2242,6 +2566,12 @@
             "value" : "Benefici aggiuntivi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodatkowe korzyści"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2281,6 +2611,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "e"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "i"
           }
         },
         "ru" : {
@@ -2324,6 +2660,12 @@
             "value" : "Pacchetto di articoli"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekipaka"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2363,6 +2705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prima apparizione"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Od"
           }
         },
         "ru" : {
@@ -2406,6 +2754,12 @@
             "value" : "Introdotto in..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Od..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2445,6 +2799,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nome dell'articolo..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa przedmiotu..."
           }
         },
         "ru" : {
@@ -2488,6 +2848,12 @@
             "value" : "Principali vantaggi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Główne korzyści"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2527,6 +2893,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie"
           }
         },
         "ru" : {
@@ -2570,6 +2942,12 @@
             "value" : "Prezzo del pacchetto..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cena paczki..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2611,6 +2989,12 @@
             "value" : "Sì"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tak"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2647,6 +3031,12 @@
           }
         },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crew"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crew"
@@ -2693,6 +3083,12 @@
             "value" : "Dollaro Australiano"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolar australijski"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2732,6 +3128,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Real Brasiliano"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Real brazylijski"
           }
         },
         "ru" : {
@@ -2775,6 +3177,12 @@
             "value" : "Dollaro Canadese"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolar kanadyjski"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2816,6 +3224,12 @@
             "value" : "Corona Danese"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korona duńska"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2852,6 +3266,12 @@
           }
         },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Euro"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Euro"
@@ -2898,6 +3318,12 @@
             "value" : "Sterlina Britannica"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funt szterling"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2937,6 +3363,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yen Giapponese"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jen japoński"
           }
         },
         "ru" : {
@@ -2980,6 +3412,12 @@
             "value" : "Corona Norvegese"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korona norweska"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3019,6 +3457,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rublo Russo"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rubel rosyjski"
           }
         },
         "ru" : {
@@ -3062,6 +3506,12 @@
             "value" : "Corona Svedese"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Korona szwedzka"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3101,6 +3551,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lira Turca"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lira turecka"
           }
         },
         "ru" : {
@@ -3144,6 +3600,12 @@
             "value" : "Dollaro Statunitense"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolar amerykański"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3183,6 +3645,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seleziona la lingua nelle impostazioni."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz język w ustawieniach."
           }
         },
         "ru" : {
@@ -3226,6 +3694,12 @@
             "value" : "Cambia lingua"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zmień język"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3265,6 +3739,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Armeria"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zbrojownia"
           }
         },
         "ru" : {
@@ -3308,6 +3788,12 @@
             "value" : "Rarità"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typy"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3347,6 +3833,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Punti"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkty"
           }
         },
         "ru" : {
@@ -3390,6 +3882,12 @@
             "value" : "Armi"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bronie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3429,6 +3927,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Armeria"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zbrojownia"
           }
         },
         "ru" : {
@@ -3472,6 +3976,12 @@
             "value" : "Rarità"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rzadkości"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3511,6 +4021,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fucile d'assalto"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karabinu szturmowego"
           }
         },
         "ru" : {
@@ -3554,6 +4070,12 @@
             "value" : "Armeria"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zbrojownia"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3593,6 +4115,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lama"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ostrze"
           }
         },
         "ru" : {
@@ -3636,6 +4164,12 @@
             "value" : "Arco"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Łuk"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3675,6 +4209,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dimensioni della sequenza"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liczba strzałów"
           }
         },
         "ru" : {
@@ -3718,6 +4258,12 @@
             "value" : "Dimensione del caricatore"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozmiar magazynka"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3757,6 +4303,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Danno"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obrażenia"
           }
         },
         "ru" : {
@@ -3800,6 +4352,12 @@
             "value" : "Zona di danno critico"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strefa krytyczna obrażeń"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3839,6 +4397,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tasso di fuoco"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo strzału"
           }
         },
         "ru" : {
@@ -3882,6 +4446,12 @@
             "value" : "Moltiplicatore:"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mnożnik:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3921,6 +4491,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie"
           }
         },
         "ru" : {
@@ -3964,6 +4540,12 @@
             "value" : "Tempo di ricarica"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czas przeładowania"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4003,6 +4585,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Colpi:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naboje:"
           }
         },
         "ru" : {
@@ -4046,6 +4634,12 @@
             "value" : "Colpi al secondo:"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naboje / sekundę:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4085,6 +4679,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Secondi:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sekundy:"
           }
         },
         "ru" : {
@@ -4128,6 +4728,12 @@
             "value" : "Dispersione"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozrzut"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4167,6 +4773,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dispersione mirando"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozrzut celownik"
           }
         },
         "ru" : {
@@ -4210,6 +4822,12 @@
             "value" : "Unità per colpo:"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jednostki / rundę:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4249,6 +4867,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Varie"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Różny"
           }
         },
         "ru" : {
@@ -4292,6 +4916,12 @@
             "value" : "Pistola"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pistolet"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4331,6 +4961,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rarità"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rzadkości"
           }
         },
         "ru" : {
@@ -4374,6 +5010,12 @@
             "value" : "Fucile pesante"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strzelba"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4413,6 +5055,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fucile di precisione"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karabin snajperski"
           }
         },
         "ru" : {
@@ -4456,6 +5104,12 @@
             "value" : "Statistiche"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statystyki"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4495,6 +5149,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Armeria"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zbrojownia"
           }
         },
         "ru" : {
@@ -4538,6 +5198,12 @@
             "value" : "Potenziamenti"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Augmentacje"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4577,6 +5243,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pass battaglia"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karnet bojowy"
           }
         },
         "ru" : {
@@ -4620,6 +5292,12 @@
             "value" : "Bundle"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zestawy"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4656,6 +5334,12 @@
           }
         },
         "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crew"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Crew"
@@ -4702,6 +5386,12 @@
             "value" : "Mappa"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mapa"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4741,6 +5431,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impostazioni"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia"
           }
         },
         "ru" : {
@@ -4784,6 +5480,12 @@
             "value" : "Negozio"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sklep"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4823,6 +5525,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Statistiche"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statystyki"
           }
         },
         "ru" : {
@@ -4866,6 +5574,12 @@
             "value" : "Archivio"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archiwum"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4886,25 +5600,31 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Clear"
+            "value" : "Clean"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Limpiar"
+            "value" : "Limpio"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aucun lieu"
+            "value" : "Propre"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chiare"
+            "value" : "Pulito"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyczyść"
           }
         },
         "ru" : {
@@ -4916,7 +5636,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Temizle"
+            "value" : "Temiz"
           }
         }
       }
@@ -4946,6 +5666,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Località"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokalizacje"
           }
         },
         "ru" : {
@@ -4989,6 +5715,12 @@
             "value" : "Mappa"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mapa"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5028,6 +5760,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bundle"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zestawy"
           }
         },
         "ru" : {
@@ -5071,6 +5809,12 @@
             "value" : "Annulla"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5097,19 +5841,25 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hecho"
+            "value" : "OK"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Terminé"
+            "value" : "OK"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fatto"
+            "value" : "Fine"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         },
         "ru" : {
@@ -5121,7 +5871,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tamam"
+            "value" : "Bitti"
           }
         }
       }
@@ -5151,6 +5901,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Home"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
           }
         },
         "ru" : {
@@ -5194,6 +5950,12 @@
             "value" : "Pass"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karnet"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5233,6 +5995,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impostazioni"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia"
           }
         },
         "ru" : {
@@ -5276,6 +6044,12 @@
             "value" : "Negozio"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sklep"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5315,6 +6089,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "it"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pl"
           }
         },
         "ru" : {
@@ -5358,6 +6138,12 @@
             "value" : "Accetta"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akceptuj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5397,6 +6183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Annulla"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
           }
         },
         "ru" : {
@@ -5440,6 +6232,12 @@
             "value" : "Testo vuoto"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pusty tekst"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5479,6 +6277,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Per favore, inserisci un nickname"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proszę, podaj dowolny pseudonim"
           }
         },
         "ru" : {
@@ -5522,6 +6326,12 @@
             "value" : "Nessun risultato"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak wyników"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5561,6 +6371,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Soprannome"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pseudonim"
           }
         },
         "ru" : {
@@ -5604,6 +6420,12 @@
             "value" : "Nessuna connessione"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak połączenia"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5643,6 +6465,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Per favore, riprova più tardi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spróbuj ponownie później"
           }
         },
         "ru" : {
@@ -5686,6 +6514,12 @@
             "value" : "Ricarica"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przeładuj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5725,6 +6559,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Annulla"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
           }
         },
         "ru" : {
@@ -5768,6 +6608,12 @@
             "value" : "Per favore, abilita le notifiche nelle Impostazioni."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proszę włącz powiadomienia w ustawieniach."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5807,6 +6653,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impostazioni"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia"
           }
         },
         "ru" : {
@@ -5850,6 +6702,12 @@
             "value" : "Accesso alle notifiche richiesto"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagany dostęp do powiadomień"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5889,6 +6747,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dettagli"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szczegóły"
           }
         },
         "ru" : {
@@ -5932,6 +6796,12 @@
             "value" : "Incarico"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadanie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5971,6 +6841,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Incarichi"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadania"
           }
         },
         "ru" : {
@@ -6014,6 +6890,12 @@
             "value" : "Negozio"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sklep"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6053,6 +6935,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Qualcosa non va..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coś poszło nie tak..."
           }
         },
         "ru" : {
@@ -6096,6 +6984,12 @@
             "value" : "Comune"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwykłe"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6135,6 +7029,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Epico"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Epickie"
           }
         },
         "ru" : {
@@ -6178,6 +7078,12 @@
             "value" : "Esotico"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Egzotyczne"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6217,6 +7123,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Leggendario"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legendarne"
           }
         },
         "ru" : {
@@ -6260,6 +7172,12 @@
             "value" : "Mitico"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mityczne"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6299,6 +7217,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Raro"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rzadkie"
           }
         },
         "ru" : {
@@ -6342,6 +7266,12 @@
             "value" : "Stella"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gwiazda"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6381,6 +7311,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trascendente"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transcendentne"
           }
         },
         "ru" : {
@@ -6424,6 +7360,12 @@
             "value" : "Non comune"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niepospolite"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6463,6 +7405,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nessun risultato"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak wyników"
           }
         },
         "ru" : {
@@ -6506,6 +7454,12 @@
             "value" : "Risultato"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wynik"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6545,6 +7499,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Informazioni"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O aplikacji"
           }
         },
         "ru" : {
@@ -6588,6 +7548,12 @@
             "value" : "Aspetto"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląd"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6627,6 +7593,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancella Cache"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pamięć podręczna"
           }
         },
         "ru" : {
@@ -6670,6 +7642,12 @@
             "value" : "Contatto"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakt"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6709,6 +7687,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Valuta"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waluta"
           }
         },
         "ru" : {
@@ -6752,6 +7736,12 @@
             "value" : "Email"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-mail"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6791,6 +7781,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vuoto"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pusty"
           }
         },
         "ru" : {
@@ -6834,6 +7830,12 @@
             "value" : "Generale"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ogólne"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6873,6 +7875,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Italiano"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polski"
           }
         },
         "ru" : {
@@ -6916,6 +7924,12 @@
             "value" : "Lingua"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Język"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6955,6 +7969,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Localizzazione"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokalizacja"
           }
         },
         "ru" : {
@@ -6998,6 +8018,12 @@
             "value" : "Notifiche"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Powiadomienia"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7037,6 +8063,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Impostazioni"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia"
           }
         },
         "ru" : {
@@ -7080,6 +8112,12 @@
             "value" : "Contenuto..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zawartość..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7119,6 +8157,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prima volta..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pierwszy raz..."
           }
         },
         "ru" : {
@@ -7162,6 +8206,12 @@
             "value" : "Ultima volta..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ostatni raz..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7201,6 +8251,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prezzo del pacchetto..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cena pakietu..."
           }
         },
         "ru" : {
@@ -7244,6 +8300,12 @@
             "value" : "Titolo..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tytuł..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7283,6 +8345,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Totale"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Całkowity"
           }
         },
         "ru" : {
@@ -7326,6 +8394,12 @@
             "value" : "Descrizione"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7365,6 +8439,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descrizione..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis..."
           }
         },
         "ru" : {
@@ -7408,6 +8488,12 @@
             "value" : "Primo rilascio"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pierwsze wydanie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7447,6 +8533,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Primo rilascio..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pierwsze wydanie..."
           }
         },
         "ru" : {
@@ -7490,6 +8582,12 @@
             "value" : "Rilascio precedente"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poprzednie wydanie"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7529,6 +8627,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rilascio precedente..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poprzednie wydanie..."
           }
         },
         "ru" : {
@@ -7572,6 +8676,12 @@
             "value" : "Serie"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seria"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7611,6 +8721,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Serie..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seria..."
           }
         },
         "ru" : {
@@ -7654,6 +8770,12 @@
             "value" : "Esamina"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szukaj"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7693,6 +8815,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tutto"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie"
           }
         },
         "ru" : {
@@ -7736,6 +8864,12 @@
             "value" : "Nome del pacchetto..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa pakietu..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7775,6 +8909,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nome dell'articolo..."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa przedmiotu..."
           }
         },
         "ru" : {
@@ -7818,6 +8958,12 @@
             "value" : "Prezzo dell'articolo..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cena przedmiotu..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7857,6 +9003,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tracce Jam"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ścieżki Jamowe"
           }
         },
         "ru" : {
@@ -7900,6 +9052,12 @@
             "value" : "È ora di rinfrescarsi!"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czas na aktualizację!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7939,6 +9097,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tempo rimanente"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozostały czas"
           }
         },
         "ru" : {
@@ -7982,6 +9146,12 @@
             "value" : "Nome del segmento..."
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa segmentu..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8021,6 +9191,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zaino"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plecak"
           }
         },
         "ru" : {
@@ -8064,6 +9240,12 @@
             "value" : "Informazioni"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacje"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8103,6 +9285,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pacchetto di articoli"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakiet"
           }
         },
         "ru" : {
@@ -8146,6 +9334,12 @@
             "value" : "Informazioni sulla rotazione"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O rotacji"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8185,6 +9379,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Numero di elementi nel pacchetto articoli."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liczba elementów w pakiecie przedmiotów."
           }
         },
         "ru" : {
@@ -8228,6 +9428,12 @@
             "value" : "Aggiornamenti ogni giorno. Torna presto!"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odświeża się codziennie!"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8267,6 +9473,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Scorri per vedere più variazioni!"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przesuń palcem, aby zobaczyć więcej wariantów!"
           }
         },
         "ru" : {
@@ -8310,6 +9522,12 @@
             "value" : "Cosa è: "
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Co to jest: "
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8349,6 +9567,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ore"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Godziny"
           }
         },
         "ru" : {
@@ -8392,6 +9616,12 @@
             "value" : "U/M"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E/Ś"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8431,6 +9661,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uccisioni"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminacje"
           }
         },
         "ru" : {
@@ -8474,6 +9710,12 @@
             "value" : "Livello"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poziom"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8513,6 +9755,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Partite"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mecze"
           }
         },
         "ru" : {
@@ -8556,6 +9804,12 @@
             "value" : "Modalità:"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tryb:"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8595,6 +9849,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sopravvissuti"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przetrwałe"
           }
         },
         "ru" : {
@@ -8638,6 +9898,12 @@
             "value" : "Progresso"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postęp"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8677,6 +9943,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Punteggio"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wynik"
           }
         },
         "ru" : {
@@ -8720,6 +9992,12 @@
             "value" : "Stagione"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sezon"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8759,6 +10037,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Superiore 1"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top 1"
           }
         },
         "ru" : {
@@ -8802,6 +10086,12 @@
             "value" : "Vince"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zwycięstwa"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8841,6 +10131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Coppie"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pary"
           }
         },
         "ru" : {
@@ -8884,6 +10180,12 @@
             "value" : "Gamepad"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontroler"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8923,6 +10225,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tastiera"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klawiatura"
           }
         },
         "ru" : {
@@ -8966,6 +10274,12 @@
             "value" : "Singolo"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solo"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9005,6 +10319,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Squadre"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oddziały"
           }
         },
         "ru" : {
@@ -9048,6 +10368,12 @@
             "value" : "Tocco"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dotyk"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9087,6 +10413,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terzetti"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trójki"
           }
         },
         "ru" : {
@@ -9130,6 +10462,12 @@
             "value" : "Primi\nPosti"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top 1\nMiejsca"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9169,6 +10507,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "U/M\nTotale"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E/Ś\nŚrednie"
           }
         },
         "ru" : {
@@ -9212,6 +10556,12 @@
             "value" : "Globale"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Globalny"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9251,6 +10601,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Migliore\nStagione"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udany\nSezon"
           }
         },
         "ru" : {
@@ -9294,6 +10650,12 @@
             "value" : "Livello\nMassimo"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maks\nPoziom"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9333,6 +10695,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Storia"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historia"
           }
         },
         "ru" : {
@@ -9376,6 +10744,12 @@
             "value" : "U/M\nGpad"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E/Ś\nGpad"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9415,6 +10789,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "U/M\nTastiera"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E/Ś\nMysz"
           }
         },
         "ru" : {
@@ -9458,6 +10838,12 @@
             "value" : "Input"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wejście"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9497,6 +10883,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Errore"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błąd"
           }
         },
         "ru" : {
@@ -9540,6 +10932,12 @@
             "value" : "Stagione\nAttuale"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bieżący\nSezon"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9579,6 +10977,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Livello\nAttuale"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bieżący\nPoziom"
           }
         },
         "ru" : {
@@ -9622,6 +11026,12 @@
             "value" : "Progresso"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postęp"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9661,6 +11071,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Statistiche"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statystyki"
           }
         },
         "ru" : {

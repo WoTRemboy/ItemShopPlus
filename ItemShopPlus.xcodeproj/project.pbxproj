@@ -938,6 +938,7 @@
 				fr,
 				it,
 				es,
+				pl,
 			);
 			mainGroup = 63C898AF2B232F4000FABD69;
 			packageReferences = (

@@ -15,6 +15,15 @@ final class StatsDetailsCollectionViewCell: UICollectionViewCell {
     private var stats: SectionStats = SectionStats.emptyStats
     private var history: LevelHistory = LevelHistory.emptyHistory
     
+    private var appLanguage: String {
+        if let userDefault = UserDefaults(suiteName: "group.notificationlocalized") {
+            if let currentLang = userDefault.string(forKey: Texts.LanguageSave.userDefaultsKey) {
+                return currentLang
+            }
+        }
+        return Texts.NetworkRequest.language
+    }
+    
     // MARK: - UI Elements and Views
     
     private let topWinrateMatches = StatsParameterView()
@@ -44,6 +53,17 @@ final class StatsDetailsCollectionViewCell: UICollectionViewCell {
             historySetup()
         }
         setupUI()
+    }
+    
+    // MARK: - Texts Configuration Methods
+    
+    private func definePercentage(content: Int) -> String {
+        switch appLanguage {
+        case "tr":
+            return "%\(content)"
+        default:
+            return "\(content)%"
+        }
     }
     
     // MARK: - UI Setup
@@ -87,7 +107,7 @@ final class StatsDetailsCollectionViewCell: UICollectionViewCell {
             firstTitle: Texts.StatsDetailsCell.level,
             firstContent: String(history.level),
             secondTitle: Texts.StatsDetailsCell.progress,
-            secondContent: "\(history.progress)%",
+            secondContent: definePercentage(content: history.progress),
             separator: false)
         stackView.addArrangedSubview(historyRow)
         

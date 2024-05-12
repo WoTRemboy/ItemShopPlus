@@ -16,6 +16,15 @@ class StatsDetailsViewController: UIViewController {
     private let sortOrder = ["solo", "duo", "trio", "squad"]
     private var sortedStats = [(String, SectionStats)]()
     
+    private var appLanguage: String {
+        if let userDefault = UserDefaults(suiteName: "group.notificationlocalized") {
+            if let currentLang = userDefault.string(forKey: Texts.LanguageSave.userDefaultsKey) {
+                return currentLang
+            }
+        }
+        return Texts.NetworkRequest.language
+    }
+    
     private let inputButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         return button
@@ -65,6 +74,15 @@ class StatsDetailsViewController: UIViewController {
                 return (key, stats)
             }
             return nil
+        }
+    }
+    
+    private func defineNumberPosition(number: Int) -> String {
+        switch appLanguage {
+        case "tr":
+            return "\(number). \(Texts.StatsDetailsCell.season)"
+        default:
+            return "\(Texts.StatsDetailsCell.season) \(number)"
         }
     }
     
@@ -232,7 +250,7 @@ extension StatsDetailsViewController: UICollectionViewDelegateFlowLayout {
         case .global, .input:
             headerView.configurate(with: SelectingMethods.selectPartyType(type: sortedStats[indexPath.section].0))
         case .history:
-            headerView.configurate(with: "\(Texts.StatsDetailsCell.season) \(allStats.history.reversed()[indexPath.section].season)")
+            headerView.configurate(with: defineNumberPosition(number: allStats.history.reversed()[indexPath.section].season))
         }
         
         return headerView

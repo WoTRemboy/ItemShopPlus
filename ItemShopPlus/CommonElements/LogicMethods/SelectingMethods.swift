@@ -157,11 +157,11 @@ final class SelectingMethods {
         case .star:
             return .BattlePass.star ?? .battlePassStar
         case .mythic:
-            return .ShopGranted.legendary ?? .grantedLegendary
+            return .ShopGranted.mythic ?? .grantedMythic
         case .transcendent:
-            return .ShopGranted.legendary ?? .grantedLegendary
+            return .ShopGranted.transcendent ?? .grantedTranscendent
         case .exotic:
-            return .ShopGranted.legendary ?? .grantedLegendary
+            return .ShopGranted.exotic ?? .grantedExotic
         }
     }
     

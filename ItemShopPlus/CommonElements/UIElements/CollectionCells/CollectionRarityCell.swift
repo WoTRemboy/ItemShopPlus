@@ -106,8 +106,8 @@ final class CollectionRarityCell: UICollectionViewCell {
             
             rarityImageView.topAnchor.constraint(equalTo: itemNameLabel.bottomAnchor, constant: 2),
             rarityImageView.leadingAnchor.constraint(equalTo: itemNameLabel.leadingAnchor),
-            rarityImageView.heightAnchor.constraint(equalToConstant: 25),
-            rarityImageView.widthAnchor.constraint(equalTo: rarityImageView.heightAnchor, multiplier: 291/253)
+            rarityImageView.heightAnchor.constraint(equalToConstant: 20),
+            rarityImageView.widthAnchor.constraint(equalTo: rarityImageView.heightAnchor, multiplier: 50/36)
         ])
     }
     

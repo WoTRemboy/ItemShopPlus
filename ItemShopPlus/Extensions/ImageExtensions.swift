@@ -81,6 +81,9 @@ extension UIImage {
         static let rare = UIImage(named: "GrantedRare")
         static let epic = UIImage(named: "GrantedEpic")
         static let legendary = UIImage(named: "GrantedLegendary")
+        static let mythic = UIImage(named: "GrantedMythic")
+        static let exotic  = UIImage(named: "GrantedExotic")
+        static let transcendent = UIImage(named: "GrantedTranscendent")
     }
     
     // MARK: - Battle Pass Module
@@ -105,7 +108,7 @@ extension UIImage {
     
     enum Stats {
         static let newNickname = UIImage(systemName: "rectangle.and.pencil.and.ellipsis")
-        static let noStats = createImage(name: "person.slash")
+        static let noStats = UIImage(named: "NoStats")
         static let progress = UIImage(named: "ProgressStats")
         static let global = UIImage(named: "GlobalStats")
         static let input = UIImage(named: "InputStats")

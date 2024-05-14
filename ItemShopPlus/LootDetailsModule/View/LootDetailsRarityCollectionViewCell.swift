@@ -70,8 +70,8 @@ final class LootDetailsRarityCollectionViewCell: UICollectionViewCell {
             
             rarityImageView.topAnchor.constraint(equalTo: grantedImageView.bottomAnchor, constant: 5),
             rarityImageView.leadingAnchor.constraint(equalTo: grantedImageView.leadingAnchor),
-            rarityImageView.heightAnchor.constraint(equalToConstant: 25),
-            rarityImageView.widthAnchor.constraint(equalTo: rarityImageView.heightAnchor, multiplier: 291/253)
+            rarityImageView.heightAnchor.constraint(equalToConstant: 20),
+            rarityImageView.widthAnchor.constraint(equalTo: rarityImageView.heightAnchor, multiplier: 50/36)
         ])
     }
     

@@ -236,7 +236,7 @@ final class StatsMainViewController: UIViewController {
         NSLayoutConstraint.activate([
             noStatsImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             noStatsImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            noStatsImageView.heightAnchor.constraint(equalToConstant: 150),
+            noStatsImageView.heightAnchor.constraint(equalToConstant: 100),
             noStatsImageView.widthAnchor.constraint(equalTo: noStatsImageView.heightAnchor)
         ])
     }

@@ -5472,7 +5472,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Launcher"
+            "value" : "Misc"
           }
         },
         "es" : {
@@ -5502,7 +5502,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Гранатометы"
+            "value" : "Прочие виды"
           }
         },
         "tr" : {

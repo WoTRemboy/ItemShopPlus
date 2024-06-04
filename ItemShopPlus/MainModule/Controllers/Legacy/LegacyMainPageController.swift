@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainPageViewController: UIViewController {
+final class LegacyMainPageViewController: UIViewController {
     
     private let buttonController = MPButtonViewController()
     

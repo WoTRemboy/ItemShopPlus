@@ -14,13 +14,14 @@ struct BundleItem {
     let description: String
     let descriptionLong: String
     let detailsImage: String
+    let bannerImage: String
     let wideImage: String
     let expiryDate: Date?
     let prices: [BundlePrice]
     let granted: [BundleGranted]
     var currency: Currency = .usd
     
-    static let emptyBundle = BundleItem(id: "", available: false, name: "", description: "", descriptionLong: "", detailsImage: "", wideImage: "", expiryDate: .now, prices: [], granted: [])
+    static let emptyBundle = BundleItem(id: "", available: false, name: "", description: "", descriptionLong: "", detailsImage: "", bannerImage: "", wideImage: "", expiryDate: .now, prices: [], granted: [])
 }
 
 struct BundlePrice {

@@ -133,6 +133,13 @@ final class Texts {
         }
     }
     
+    enum Titles {
+        static let main = NSLocalizedString("TitlesMain", comment: "Main")
+        static let other = NSLocalizedString("TitlesOther", comment: "Other")
+        static let bundles = NSLocalizedString("TitlesBundles", comment: "Bundles")
+        static let bundlesIdentifier = "MainBundlesIdentifier"
+    }
+    
     enum Pages {
         static let main = "Fort Satellite"
         static let quests = NSLocalizedString("PagesQuests", comment: "Quests")

@@ -51,6 +51,7 @@ extension UIImage {
         static let settings = UIImage(named: "SettingsIcon")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")
         static let question = createImage(name: "questionmark.square.dashed")
+        static let chevron = UIImage(systemName: "chevron.right")
     }
     
     // MARK: - Splash Module

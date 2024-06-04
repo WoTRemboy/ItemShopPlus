@@ -39,6 +39,8 @@ extension BundleItem {
         
         let granted = grantedData.compactMap { BundleGranted.sharingParse(sharingJSON: $0) }
         
+        let bannerImage = globalData["thumbnail"] as? String ?? String()
+        
         let detailsImageSet = imageData.first(where: { $0["type"] as? String == "OfferImageTall" })
         let detailsImage = detailsImageSet?["url"] as? String ?? String()
         
@@ -53,7 +55,7 @@ extension BundleItem {
             expiryDate = date1
         }
         
-        return BundleItem(id: id, available: available, name: name, description: description, descriptionLong: descriptionLong, detailsImage: detailsImage, wideImage: wideImage, expiryDate: expiryDate, prices: priceArray, granted: granted)
+        return BundleItem(id: id, available: available, name: name, description: description, descriptionLong: descriptionLong, detailsImage: detailsImage, bannerImage: bannerImage, wideImage: wideImage, expiryDate: expiryDate, prices: priceArray, granted: granted)
     }
 }
 

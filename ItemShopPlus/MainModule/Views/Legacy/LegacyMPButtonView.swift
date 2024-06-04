@@ -94,43 +94,43 @@ final class MPButtonView: UIView {
         case .shop:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.shop
             buttonImageView.image = .MainButtons.shop
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.shopTransfer), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.shopTransfer), for: .touchUpInside)
         case .battlePass:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.battlePass
             buttonImageView.image = .MainButtons.battlePass
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.battlePassTransfer), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.battlePassTransfer), for: .touchUpInside)
         case .crew:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.crew
             buttonImageView.image = .MainButtons.crew
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.crewTransfer), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.crewTransfer), for: .touchUpInside)
         case .bundles:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.bundles
             buttonImageView.image = .MainButtons.bundles
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.bundleTransfer), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.bundleTransfer), for: .touchUpInside)
         case .lootDetails:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.lootDetails
             buttonImageView.image = .MainButtons.lootDetails
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.lootDetailsTransfer), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.lootDetailsTransfer), for: .touchUpInside)
         case .stats:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.stats
             buttonImageView.image = .MainButtons.stats
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.statsTransfer), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.statsTransfer), for: .touchUpInside)
         case .map:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
             buttonImageView.image = .MainButtons.map
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.mapTransfer), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.mapTransfer), for: .touchUpInside)
         case .augments:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.augments
             buttonImageView.image = .MainButtons.augments
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.doNothing), for: .touchUpInside)
         case .settings:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.settings
             buttonImageView.image = .MainButtons.settings
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.settingTransfer), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.settingTransfer), for: .touchUpInside)
         case .null:
             buttonLabel.text = "??????"
             buttonImageView.image = .MainButtons.question
-            selectButton.addTarget(nil, action: #selector(MainPageViewController.doNothing), for: .touchUpInside)
+            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.doNothing), for: .touchUpInside)
         }
     }
     

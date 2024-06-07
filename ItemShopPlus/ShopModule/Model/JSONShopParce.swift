@@ -27,19 +27,20 @@ extension ShopItem {
         }
         
         var images = [ShopItemImage]()
-        for asset in assetsData {
+        if assetsData.count > 1 {
+            for asset in assetsData {
+                let mode = asset["primaryMode"] as? String ?? String()
+                let image = asset["background"] as? String ?? String()
+                if mode == "MAX" {
+                    images.append(ShopItemImage(mode: mode, image: image))
+                }
+            }
+        } else {
+            let asset = assetsData.first ?? [:]
             let mode = asset["primaryMode"] as? String ?? String()
             let image = asset["background"] as? String ?? String()
-            images.append(ShopItemImage(mode: mode, image: image))
+            images.append(ShopItemImage(mode: "MAX", image: image))
         }
-        let sortOrder = ["BattleRoyale", "Juno", "DelMar"]
-        images.sort(by: {
-            guard let first = sortOrder.firstIndex(of: $0.mode),
-                  let second = sortOrder.firstIndex(of: $1.mode) else {
-                return false
-            }
-            return first < second
-        })
         
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
         let regularPrice = priceData["regularPrice"] as? Int ?? 0

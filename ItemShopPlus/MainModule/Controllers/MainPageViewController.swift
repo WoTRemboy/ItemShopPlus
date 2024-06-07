@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import YandexMobileAds
 
 final class MainPageViewController: UIViewController {
     
@@ -22,6 +23,7 @@ final class MainPageViewController: UIViewController {
     
     private var bundleItems = [BundleItem.emptyBundle, BundleItem.emptyBundle, BundleItem.emptyBundle]
     private var imageLoadTask: DownloadTask?
+    private var adHeightConstraint: NSLayoutConstraint = .init()
     
     private let bundleCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,6 +33,14 @@ final class MainPageViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(MainPageBundlesCollectionCell.self, forCellWithReuseIdentifier: MainPageBundlesCollectionCell.identifier)
         return collectionView
+    }()
+    
+    private lazy var adView: AdView = {
+        let adSize = BannerAdSize.inlineSize(withWidth: 320, maxHeight: 50)
+        let adView = AdView(adUnitID: "R-M-8193757-1", adSize: adSize)
+        adView.delegate = self
+        adView.translatesAutoresizingMaskIntoConstraints = false
+        return adView
     }()
 
     override func viewDidLoad() {
@@ -45,6 +55,7 @@ final class MainPageViewController: UIViewController {
         
         crewImageViewSetup()
         mainButtonsSetup()
+        adBannerSetup()
         bundlesHeaderViewSetup()
         bundleCollectionViewSetup()
         otherButtonsSetup()
@@ -54,15 +65,21 @@ final class MainPageViewController: UIViewController {
     }
 
     @objc func shopTransfer() {
-        navigationController?.pushViewController(ShopViewController(), animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.pushViewController(ShopViewController(), animated: true)
+        }
     }
     
     @objc func battlePassTransfer() {
-        navigationController?.pushViewController(BattlePassMainViewController(), animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.pushViewController(BattlePassMainViewController(), animated: true)
+        }
     }
     
     @objc func crewTransfer() {
-        navigationController?.pushViewController(CrewMainViewController(), animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.pushViewController(CrewMainViewController(), animated: true)
+        }
     }
     
     @objc func bundleTransfer() {
@@ -70,19 +87,27 @@ final class MainPageViewController: UIViewController {
     }
     
     @objc func lootDetailsTransfer() {
-        navigationController?.pushViewController(LootDetailsMainViewController(), animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.pushViewController(LootDetailsMainViewController(), animated: true)
+        }
     }
     
     @objc func statsTransfer() {
-        navigationController?.pushViewController(StatsMainViewController(), animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.pushViewController(StatsMainViewController(), animated: true)
+        }
     }
     
     @objc func mapTransfer() {
-        navigationController?.pushViewController(MapPreviewViewController(image: "https://media.fortniteapi.io/images/map.png?showPOI=true"), animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.pushViewController(MapPreviewViewController(image: "https://media.fortniteapi.io/images/map.png?showPOI=true"), animated: true)
+        }
     }
     
     @objc func settingTransfer() {
-        navigationController?.pushViewController(SettingsMainViewController(), animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.pushViewController(SettingsMainViewController(), animated: true)
+        }
     }
     
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -96,7 +121,7 @@ final class MainPageViewController: UIViewController {
         let cell = bundleCollectionView.cellForItem(at: indexPath)
         
         let item = bundleItems[indexPath.item]
-        let vc = BundlesDetailsViewController(item: item)
+        let vc = BundlesDetailsViewController(item: item, fromMainPage: true)
         
         UIView.animate(withDuration: 0.1, animations: {
             cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
@@ -189,17 +214,16 @@ final class MainPageViewController: UIViewController {
         ])
     }
     
-    private func otherButtonsSetup() {
-        contentView.addSubview(otherButtonsView)
-        otherButtonsView.translatesAutoresizingMaskIntoConstraints = false
-        
+    private func adBannerSetup() {
+        contentView.addSubview(adView)
         NSLayoutConstraint.activate([
-            otherButtonsView.topAnchor.constraint(equalTo: bundleCollectionView.bottomAnchor, constant: 16),
-            otherButtonsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            otherButtonsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            otherButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 16 * 2 + 8 * 3) / 4),
-            otherButtonsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            adView.topAnchor.constraint(equalTo: shopPassButtonsView.bottomAnchor, constant: 16),
+            adView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
+        adHeightConstraint = adView.heightAnchor.constraint(equalToConstant: 0)
+        adHeightConstraint.isActive = true
+        
+        adView.loadAd()
     }
     
     private func bundlesHeaderViewSetup() {
@@ -207,7 +231,7 @@ final class MainPageViewController: UIViewController {
         bundlesHeaderView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            bundlesHeaderView.topAnchor.constraint(equalTo: shopPassButtonsView.bottomAnchor, constant: 16),
+            bundlesHeaderView.topAnchor.constraint(equalTo: adView.bottomAnchor, constant: 16),
             bundlesHeaderView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bundlesHeaderView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             bundlesHeaderView.heightAnchor.constraint(equalToConstant: 25)
@@ -225,6 +249,19 @@ final class MainPageViewController: UIViewController {
             bundleCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             bundleCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             bundleCollectionView.heightAnchor.constraint(equalToConstant: 130)
+        ])
+    }
+    
+    private func otherButtonsSetup() {
+        contentView.addSubview(otherButtonsView)
+        otherButtonsView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            otherButtonsView.topAnchor.constraint(equalTo: bundleCollectionView.bottomAnchor, constant: 16),
+            otherButtonsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            otherButtonsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            otherButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 16 * 2 + 8 * 3) / 4),
+            otherButtonsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
     }
 }
@@ -273,5 +310,20 @@ extension MainPageViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    }
+}
+
+
+extension MainPageViewController: AdViewDelegate {
+    func adViewDidLoad(_ adView: AdView) {
+        adHeightConstraint.constant = 50
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+        print("YandexMobile " + #function)
+    }
+
+    func adViewDidFailLoading(_ adView: AdView, error: Error) {
+        print("YandexMobile " + #function)
     }
 }

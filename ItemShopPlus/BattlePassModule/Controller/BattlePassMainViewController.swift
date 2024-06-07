@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import YandexMobileAds
 
 final class BattlePassMainViewController: UIViewController {
     
@@ -28,7 +27,6 @@ final class BattlePassMainViewController: UIViewController {
     private var items = [BattlePassItem]()
     private var filteredItems = [BattlePassItem]()
     private var sectionedItems = [Int: [BattlePassItem]]()
-    private var adHeightConstraint: NSLayoutConstraint = .init()
     
     private let networkService = DefaultNetworkService()
     
@@ -76,15 +74,6 @@ final class BattlePassMainViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.placeholder = Texts.BattlePassPage.search
         return searchController
-    }()
-    
-    private lazy var adView: AdView = {
-        let adSize = BannerAdSize.inlineSize(withWidth: 320, maxHeight: 50)
-
-        let adView = AdView(adUnitID: "R-M-8193757-1", adSize: adSize)
-        adView.delegate = self
-        adView.translatesAutoresizingMaskIntoConstraints = false
-        return adView
     }()
     
     // MARK: - ViewController Lifecycle
@@ -209,7 +198,6 @@ final class BattlePassMainViewController: UIViewController {
                         }, completion: nil)
                     }
                     self?.menuSetup()
-                    !isRefreshControl ? self?.adBannerSetup() : nil
                     self?.noInternetView.isHidden = true
                     self?.searchController.searchBar.isHidden = false
                     self?.infoButton.isEnabled = true
@@ -344,18 +332,6 @@ final class BattlePassMainViewController: UIViewController {
         noInternetView.isHidden = true
         noInternetView.reloadButton.addTarget(self, action: #selector(refreshWithoutControl), for: .touchUpInside)
         noInternetView.configurate()
-    }
-    
-    private func adBannerSetup() {
-        view.addSubview(adView)
-        NSLayoutConstraint.activate([
-            adView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            adView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-        adHeightConstraint = adView.heightAnchor.constraint(equalToConstant: 0)
-        adHeightConstraint.isActive = true
-        
-        adView.loadAd()
     }
     
     private func setupUI() {
@@ -493,20 +469,5 @@ extension BattlePassMainViewController: UICollectionViewDelegateFlowLayout {
         
         inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: headerTitleSetup(page: sectionKey))
         return headerView
-    }
-}
-
-
-extension BattlePassMainViewController: AdViewDelegate {
-    func adViewDidLoad(_ adView: AdView) {
-        adHeightConstraint.constant = 50
-        UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
-        }
-        print("YandexMobile " + #function)
-    }
-
-    func adViewDidFailLoading(_ adView: AdView, error: Error) {
-        print("YandexMobile " + #function)
     }
 }

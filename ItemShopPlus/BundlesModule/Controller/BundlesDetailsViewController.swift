@@ -10,6 +10,7 @@ import UIKit
 final class BundlesDetailsViewController: UIViewController {
     
     private let item: BundleItem
+    private let fromMainPage: Bool
     private var currentSectionTitle = Texts.Currency.Code.usd
     private var selectedSectionTitle = Texts.Currency.Code.usd
     public var completionHandler: ((BundlePrice) -> Void)?
@@ -17,11 +18,7 @@ final class BundlesDetailsViewController: UIViewController {
     private var originalTitleAttributes: [NSAttributedString.Key : Any]?
     private var isPresentedFullScreen = false
     
-    private let backButton: UIBarButtonItem = {
-        let button = UIBarButtonItem()
-        button.title = Texts.Navigation.backToBundles
-        return button
-    }()
+    private let backButton = UIBarButtonItem()
     
     private let symbolButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -40,8 +37,9 @@ final class BundlesDetailsViewController: UIViewController {
         return collectionView
     }()
     
-    init(item: BundleItem) {
+    init(item: BundleItem, fromMainPage: Bool) {
         self.item = item
+        self.fromMainPage = fromMainPage
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -143,6 +141,7 @@ final class BundlesDetailsViewController: UIViewController {
         
         navigationItem.largeTitleDisplayMode = .always
         originalTitleAttributes = navigationController?.navigationBar.largeTitleTextAttributes
+        backButton.title = fromMainPage ? Texts.Navigation.backToMain : Texts.Navigation.backToBundles
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         symbolButton.target = self

@@ -7,7 +7,6 @@
 
 import UIKit
 import Kingfisher
-import YandexMobileAds
 
 final class ShopViewController: UIViewController {
     
@@ -20,7 +19,6 @@ final class ShopViewController: UIViewController {
     private var filteredItems = [ShopItem]()
     private var sectionedItems = [String: [ShopItem]]()
     private var sortedKeys = [String]()
-    private var adHeightConstraint: NSLayoutConstraint = .init()
     
     private let networkService = DefaultNetworkService()
     
@@ -68,15 +66,6 @@ final class ShopViewController: UIViewController {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.placeholder = Texts.ShopMainCell.search
         return searchController
-    }()
-    
-    private lazy var adView: AdView = {
-        let adSize = BannerAdSize.inlineSize(withWidth: 320, maxHeight: 50)
-
-        let adView = AdView(adUnitID: "R-M-8193757-1", adSize: adSize)
-        adView.delegate = self
-        adView.translatesAutoresizingMaskIntoConstraints = false
-        return adView
     }()
     
     // MARK: - ViewController Lifecycle
@@ -192,7 +181,6 @@ final class ShopViewController: UIViewController {
                         }, completion: nil)
                     }
                     self?.menuSetup()
-                    !isRefreshControl ? self?.adBannerSetup() : nil
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -346,18 +334,6 @@ final class ShopViewController: UIViewController {
         noInternetView.configurate()
     }
     
-    private func adBannerSetup() {
-        view.addSubview(adView)
-        NSLayoutConstraint.activate([
-            adView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            adView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-        adHeightConstraint = adView.heightAnchor.constraint(equalToConstant: 0)
-        adHeightConstraint.isActive = true
-        
-        adView.loadAd()
-    }
-    
     private func setupUI() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         noInternetView.translatesAutoresizingMaskIntoConstraints = false
@@ -490,20 +466,5 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout {
         let count = filteredItems.count
         inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: sectionKey)
         return headerView
-    }
-}
-
-
-extension ShopViewController: AdViewDelegate {
-    func adViewDidLoad(_ adView: AdView) {
-        adHeightConstraint.constant = 50
-        UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
-        }
-        print("YandexMobile " + #function)
-    }
-
-    func adViewDidFailLoading(_ adView: AdView, error: Error) {
-        print("YandexMobile " + #function)
     }
 }

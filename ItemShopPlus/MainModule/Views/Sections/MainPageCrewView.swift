@@ -25,8 +25,6 @@ class MainPageCrewView: UIView {
     private let selectButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.addTarget(nil, action: #selector(buttonTouchDown), for: .touchDown)
-        button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpOutside)
         button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpInside)
         button.addTarget(nil, action: #selector(MainPageViewController.crewTransfer), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -43,15 +41,13 @@ class MainPageCrewView: UIView {
 
     // MARK: - Actions
     
-    @objc private func buttonTouchDown() {
-        UIView.animate(withDuration: 0.1) {
-            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        }
-    }
-
     @objc private func buttonTouchUp() {
-        UIView.animate(withDuration: 0.1) {
-            self.transform = CGAffineTransform.identity
+        UIView.animate(withDuration: 0.1, animations: {
+            self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }) { (_) in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.transform = CGAffineTransform.identity
+            })
         }
     }
     

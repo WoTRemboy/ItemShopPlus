@@ -26,7 +26,7 @@ class MainPageButtonView: UIView {
     private let buttonLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.Placeholder.noText
-        label.font = .footnote()
+        label.font = .lightFootnote()
         label.textColor = .labelPrimary
         label.numberOfLines = 1
         label.textAlignment = .center
@@ -38,8 +38,6 @@ class MainPageButtonView: UIView {
     private let selectButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.addTarget(nil, action: #selector(buttonTouchDown), for: .touchDown)
-        button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpOutside)
         button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -72,8 +70,12 @@ class MainPageButtonView: UIView {
     }
 
     @objc private func buttonTouchUp() {
-        UIView.animate(withDuration: 0.1) {
-            self.transform = CGAffineTransform.identity
+        UIView.animate(withDuration: 0.1, animations: {
+            self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        }) { (_) in
+            UIView.animate(withDuration: 0.1, animations: {
+                self.transform = CGAffineTransform.identity
+            })
         }
     }
     

@@ -44,4 +44,8 @@ extension UIFont {
     static func footnote() -> UIFont? {
         UIFont.systemFont(ofSize: 13, weight: .medium)
     }
+    
+    static func lightFootnote() -> UIFont? {
+        UIFont.systemFont(ofSize: 13, weight: .light)
+    }
 }

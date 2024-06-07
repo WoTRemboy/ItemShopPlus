@@ -17,6 +17,7 @@ extension ShopItem {
               
               let assetsData = data["displayAssets"] as? [[String: Any]],
               let priceData = data["price"] as? [String: Any],
+              let offerData = data["offerDates"] as? [String: Any],
               let sectionsData = data["section"] as? [String: Any],
               
               let buyAllowed = data["buyAllowed"] as? Bool,
@@ -52,14 +53,23 @@ extension ShopItem {
         
         var firstDate: Date?
         var previousDate: Date?
+        var expiryDate: Date?
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateFormatterTime = DateFormatter()
+        dateFormatterTime.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
         let firstDateString = data["firstReleaseDate"] as? String ?? String()
         let previousDateString = data["previousReleaseDate"] as? String ?? String()
-        if let date1 = dateFormatter.date(from: firstDateString), let date2 = dateFormatter.date(from: previousDateString) {
+        let expiryDateString = offerData["out"] as? String ?? String()
+        
+        if let date1 = dateFormatter.date(from: firstDateString),
+           let date2 = dateFormatter.date(from: previousDateString),
+           let date3 = dateFormatterTime.date(from: expiryDateString) {
             firstDate = date1
             previousDate = date2
+            expiryDate = date3
         }
         
         let bannerData = data["banner"] as? [String: Any]
@@ -76,7 +86,7 @@ extension ShopItem {
             video = true
         }
         
-        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner, video: video)
+        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, expiryDate: expiryDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner, video: video)
     }
 }
 

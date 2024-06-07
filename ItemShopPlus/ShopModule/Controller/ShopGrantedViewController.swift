@@ -114,7 +114,7 @@ final class ShopGrantedViewController: UIViewController {
     // MARK: - Rows and Cell Animation Methods
     
     private func countRows() -> Int {
-        var count = 2 // first + last dates
+        var count = 3 // first + last + out dates
         if !bundle.description.isEmpty { count += 1 }
         if bundle.series != nil { count += 1 }
         
@@ -299,7 +299,13 @@ extension ShopGrantedViewController: UICollectionViewDelegateFlowLayout {
             fatalError("Failed to dequeue ShopCollectionReusableView in ShopViewController")
         }
         
-        footerView.configurate(description: bundle.description, firstDate: bundle.firstReleaseDate ?? .now, lastDate: bundle.previousReleaseDate ?? .now, series: bundle.series, price: bundle.price)
+        footerView.configurate(
+            description: bundle.description,
+            firstDate: bundle.firstReleaseDate ?? .now,
+            lastDate: bundle.previousReleaseDate ?? .now,
+            expiryDate: bundle.expiryDate ?? .now,
+            series: bundle.series,
+            price: bundle.price)
         return footerView
     }
 }

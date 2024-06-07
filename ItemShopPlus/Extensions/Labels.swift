@@ -200,10 +200,12 @@ final class Texts {
         static let series = NSLocalizedString("ShopGrantedParametersSeries", comment: "Series")
         static let firstTime = NSLocalizedString("ShopGrantedParametersFirstTime", comment: "First release")
         static let lastTime = NSLocalizedString("ShopGrantedParametersLastTime", comment: "Previous release")
+        static let expiryDate = NSLocalizedString("ShopGrantedParametersExpityDate", comment: "Expiry date")
         static let descriptionData = NSLocalizedString("ShopGrantedParametersDescriptionData", comment: "Descriprion...")
         static let seriesData = NSLocalizedString("ShopGrantedParametersSeriesData", comment: "Series...")
         static let firstTimeData = NSLocalizedString("ShopGrantedParametersFirstTimeData", comment: "First release...")
         static let lastTimeData = NSLocalizedString("ShopGrantedParametersLastTimeData", comment: "Previous release...")
+        static let expiryDateData = NSLocalizedString("ShopGrantedParametersExpityDateData", comment: "Expiry date...")
     }
     
     enum ShopTimer {

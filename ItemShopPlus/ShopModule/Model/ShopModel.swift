@@ -15,6 +15,7 @@ struct ShopItem {
     let images: [ShopItemImage]
     let firstReleaseDate: Date?
     let previousReleaseDate: Date?
+    let expiryDate: Date?
     let buyAllowed: Bool
     let price: Int
     let regularPrice: Int

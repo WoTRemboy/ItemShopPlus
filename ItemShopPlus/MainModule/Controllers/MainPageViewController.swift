@@ -13,6 +13,7 @@ final class MainPageViewController: UIViewController {
     
     private let scrollView = UIScrollView()
     private let contentView = UIView()
+    private let refreshControl = UIRefreshControl()
     
     private let shopPassButtonsView = MainPageMainButtonsView()
     private let otherButtonsView = MainPageOtherView()
@@ -61,7 +62,7 @@ final class MainPageViewController: UIViewController {
         otherButtonsSetup()
         
         getCrewImage()
-        getBundles()
+        getBundles(isRefreshing: false)
     }
 
     @objc func shopTransfer() {
@@ -110,6 +111,11 @@ final class MainPageViewController: UIViewController {
         }
     }
     
+    @objc private func refreshWithControl() {
+        getCrewImage()
+        getBundles(isRefreshing: true)
+    }
+    
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: bundleCollectionView)
         if let indexPath = bundleCollectionView.indexPathForItem(at: location) {
@@ -147,8 +153,12 @@ final class MainPageViewController: UIViewController {
         }
     }
     
-    private func getBundles() {
+    private func getBundles(isRefreshing: Bool) {
+        isRefreshing ? refreshControl.beginRefreshing() : nil
         self.networkService.getBundles { [weak self] result in
+            DispatchQueue.main.async {
+                isRefreshing ? self?.refreshControl.endRefreshing() : nil
+            }
             switch result {
             case .success(let newItems):
                 DispatchQueue.main.async {
@@ -166,6 +176,9 @@ final class MainPageViewController: UIViewController {
     
     private func scrollViewSetup() {
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshWithControl), for: .valueChanged)
+        
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -217,7 +230,7 @@ final class MainPageViewController: UIViewController {
     private func adBannerSetup() {
         contentView.addSubview(adView)
         NSLayoutConstraint.activate([
-            adView.topAnchor.constraint(equalTo: shopPassButtonsView.bottomAnchor, constant: 16),
+            adView.topAnchor.constraint(equalTo: shopPassButtonsView.bottomAnchor, constant: 10),
             adView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
         adHeightConstraint = adView.heightAnchor.constraint(equalToConstant: 0)

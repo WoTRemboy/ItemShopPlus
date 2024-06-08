@@ -1898,7 +1898,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Искать предметы"
+            "value" : "Поиск предметов"
           }
         },
         "tr" : {
@@ -4194,49 +4194,49 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Waffenkammer"
+            "value" : "Waffenkammer (beta)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Armory"
+            "value" : "Armory (beta)"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Armería"
+            "value" : "Armería (beta)"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Armurerie"
+            "value" : "Armurerie (beta)"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Armeria"
+            "value" : "Armeria (beta)"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zbrojownia"
+            "value" : "Zbrojownia (beta)"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Арсенал"
+            "value" : "Арсенал (beta)"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cephanelik"
+            "value" : "Cephanelik (beta)"
           }
         }
       }

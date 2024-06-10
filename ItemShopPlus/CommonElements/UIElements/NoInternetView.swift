@@ -33,7 +33,7 @@ final class NoInternetView: UIView {
     
     internal let reloadButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Reload", for: .normal)
+        button.setTitle(Texts.noConnection.retryButton, for: .normal)
         button.backgroundColor = .IconColors.backgroundPages
         button.layer.cornerRadius = 12
         button.titleLabel?.font = .title()

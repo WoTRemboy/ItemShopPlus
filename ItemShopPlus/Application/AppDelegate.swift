@@ -9,6 +9,7 @@ import Firebase
 import FirebaseMessaging
 import UserNotifications
 import UIKit
+import YandexMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
@@ -32,8 +33,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         } else {
             application.registerForRemoteNotifications()
         }
+        
+        MobileAds.initializeSDK(completionHandler: completionHandler)
+        
+        if let deviceLanguage = Bundle.main.preferredLocalizations.first,
+           let userDefault = UserDefaults(suiteName: "group.notificationlocalized") {
+            userDefault.set(deviceLanguage, forKey: Texts.LanguageSave.userDefaultsKey)
+        }
 
         return true
+    }
+    
+    func completionHandler() {
+        print("YandexMobileAds init completed")
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {

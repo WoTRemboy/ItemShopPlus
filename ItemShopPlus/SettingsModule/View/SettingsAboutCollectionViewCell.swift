@@ -43,7 +43,8 @@ class SettingsAboutCollectionViewCell: UITableViewCell {
     
     // MARK: - Public Configure Method
     
-    public func configurate() {
+    public func configurate(appVersion: String) {
+        appVersionLabel.text = appVersion
         setupUI()
     }
     

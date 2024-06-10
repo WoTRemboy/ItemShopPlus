@@ -29,6 +29,10 @@ extension UIFont {
         UIFont.systemFont(ofSize: 17, weight: .medium)
     }
     
+    static func settings() -> UIFont? {
+        UIFont.systemFont(ofSize: 17, weight: .regular)
+    }
+    
     static func body() -> UIFont? {
         UIFont.systemFont(ofSize: 17, weight: .light)
     }
@@ -39,5 +43,9 @@ extension UIFont {
     
     static func footnote() -> UIFont? {
         UIFont.systemFont(ofSize: 13, weight: .medium)
+    }
+    
+    static func lightFootnote() -> UIFont? {
+        UIFont.systemFont(ofSize: 13, weight: .light)
     }
 }

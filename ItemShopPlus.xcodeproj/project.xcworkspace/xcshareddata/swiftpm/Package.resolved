@@ -1,5 +1,5 @@
 {
-  "originHash" : "c62c7728e39ae40d9b5d470c3a553ebd231cc8d2a4d9a32f91e1e8c71fad095e",
+  "originHash" : "b68396600f393869f1be5a41eeb28f2e9637a85a69e4782d99a9dcb124231537",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -17,6 +17,24 @@
       "state" : {
         "revision" : "7d2688de038d5484866d835acb47b379722d610e",
         "version" : "10.19.0"
+      }
+    },
+    {
+      "identity" : "appmetrica-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/appmetrica/appmetrica-sdk-ios",
+      "state" : {
+        "revision" : "5fbc01777265f5bffabb7d7fbc318db3b561a5a6",
+        "version" : "5.3.1"
+      }
+    },
+    {
+      "identity" : "divkit-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/divkit/divkit-ios",
+      "state" : {
+        "revision" : "8e44e1266f4325b382d18725c00d851d3143dafd",
+        "version" : "28.13.0"
       }
     },
     {
@@ -92,6 +110,15 @@
       }
     },
     {
+      "identity" : "kscrash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kstenerud/KSCrash",
+      "state" : {
+        "revision" : "0ad825211ec38404e03b6f677a2312deb728528a",
+        "version" : "1.17.1"
+      }
+    },
+    {
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",
@@ -125,6 +152,24 @@
       "state" : {
         "revision" : "9f0c76544701845ad98716f3f6a774a892152bcb",
         "version" : "1.26.0"
+      }
+    },
+    {
+      "identity" : "vgsl",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yandex/vgsl.git",
+      "state" : {
+        "revision" : "714e915e99764be5940b4da7e30ccf9aea931eb4",
+        "version" : "2.4.1"
+      }
+    },
+    {
+      "identity" : "yandex-ads-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yandexmobile/yandex-ads-sdk-ios",
+      "state" : {
+        "revision" : "c4ad6437b775ab5367590abce2607202073e09de",
+        "version" : "7.0.1"
       }
     }
   ],

@@ -31,6 +31,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         label.textColor = .labelPrimary
         label.font = .body()
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 2
         return label
     }()
@@ -51,6 +52,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         label.textColor = .labelPrimary
         label.font = .body()
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 2
         return label
     }()

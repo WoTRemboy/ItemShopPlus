@@ -18,17 +18,17 @@ enum SettingType {
     
     static func typeDefinition(name: String) -> SettingType {
         switch name {
-        case "Notifications":
+        case Texts.SettingsPage.notificationsTitle:
             return .notifications
-        case "Appearance":
+        case Texts.SettingsPage.appearanceTitle:
             return .appearance
-        case "Clear Cache":
+        case Texts.SettingsPage.cacheTitle:
             return .cache
-        case "Language":
+        case Texts.SettingsPage.languageTitle:
             return .language
-        case "Currency":
+        case Texts.SettingsPage.currencyTitle:
             return .currency
-        case "Email":
+        case Texts.SettingsPage.emailTitle:
             return .email
         default:
             return .appearance
@@ -61,12 +61,26 @@ struct CurrencyModel {
 
 
 struct AppTheme {
+    let keyValue: String
     let name: String
     let style: UIUserInterfaceStyle
     
     static let themes = [
-        AppTheme(name: Texts.AppearanceSettings.system, style: .unspecified),
-        AppTheme(name: Texts.AppearanceSettings.light, style: .light),
-        AppTheme(name: Texts.AppearanceSettings.dark, style: .dark)
+        AppTheme(keyValue: Texts.AppearanceSettings.systemValue, name: Texts.AppearanceSettings.system, style: .unspecified),
+        AppTheme(keyValue: Texts.AppearanceSettings.lightValue, name: Texts.AppearanceSettings.light, style: .light),
+        AppTheme(keyValue: Texts.AppearanceSettings.darkValue, name: Texts.AppearanceSettings.dark, style: .dark)
     ]
+    
+    static func keyToValue(key: String) -> String {
+        switch key {
+        case "SystemValue":
+            return Texts.AppearanceSettings.system
+        case "LightValue":
+            return Texts.AppearanceSettings.light
+        case "DarkValue":
+            return Texts.AppearanceSettings.dark
+        default:
+            return Texts.AppearanceSettings.system
+        }
+    }
 }

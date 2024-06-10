@@ -11,6 +11,14 @@ class SettingsSelectTableViewCell: UITableViewCell {
     
     static let identifier = Texts.SettingsCell.selectIdentifier
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .labelPrimary
+        label.font = .settings()
+        label.numberOfLines = 1
+        return label
+    }()
+    
     private let detailsLabel: UILabel = {
         let label = UILabel()
         label.textColor = .labelSecondary
@@ -29,31 +37,32 @@ class SettingsSelectTableViewCell: UITableViewCell {
     
     public func configure(title: String, details: String? = nil, selected: Bool = false) {
         self.accessoryType = selected ? .checkmark : .none
-        textLabel?.text = title
+        titleLabel.text = title
         if let details {
             detailsLabel.text = details
         }
         setupUI()
     }
     
-    public func selectUpdate() {
-        accessoryType = .checkmark
+    public func selectUpdate(checked: Bool) {
+        checked ? (accessoryType = .checkmark) : (accessoryType = .none)
+        
     }
     
     private func setupUI() {
+        addSubview(titleLabel)
         addSubview(detailsLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         detailsLabel.translatesAutoresizingMaskIntoConstraints = false
-        textLabel?.translatesAutoresizingMaskIntoConstraints = false
         separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         
-        guard let textLabel else { return }
         NSLayoutConstraint.activate([
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            textLabel.trailingAnchor.constraint(equalTo: detailsLabel.leadingAnchor),
-            textLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: detailsLabel.leadingAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             detailsLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 70),
-            detailsLabel.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor)
+            detailsLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor)
         ])
     }
     

@@ -187,7 +187,7 @@ final class BundlesMainViewController: UIViewController {
         let cell = collectionView.cellForItem(at: indexPath)
         
         let item = items[indexPath.item]
-        let vc = BundlesDetailsViewController(item: item)
+        let vc = BundlesDetailsViewController(item: item, fromMainPage: false)
         vc.completionHandler = { [weak self] newBundlePrice in
             self?.updateAll(price: newBundlePrice, animated: false)
             self?.navigationItem.rightBarButtonItem?.image = SelectingMethods.selectCurrency(type: newBundlePrice.code)

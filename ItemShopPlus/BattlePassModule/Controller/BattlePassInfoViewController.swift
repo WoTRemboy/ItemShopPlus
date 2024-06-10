@@ -88,7 +88,7 @@ final class BattlePassInfoViewController: UIViewController {
     }
     
     private func contentSetup() {
-        dateView.configurate(content: DateFormating.dateFormatterDMY.string(from: beginDate), DateFormating.dateFormatterDMY.string(from: endDate))
+        dateView.configurate(content: DateFormating.dateFormatterDefault(date: beginDate), DateFormating.dateFormatterDefault(date: endDate))
         seasonInfo.configurate(content: seasonTitle)
     }
     
@@ -112,7 +112,7 @@ final class BattlePassInfoViewController: UIViewController {
         let hours = timeDifference.hour ?? 0
         let minutes = timeDifference.minute ?? 0
         let seconds = timeDifference.second ?? 0
-        let timerString = String(format: "%01dW %01dD %02d:%02d:%02d", weeks, days, hours, minutes, seconds)
+        let timerString = String(format: Texts.BattlePassInfo.dateFormat, weeks, days, hours, minutes, seconds)
         remainingView.updateTimer(content: timerString)
         
         if seconds < 0 {

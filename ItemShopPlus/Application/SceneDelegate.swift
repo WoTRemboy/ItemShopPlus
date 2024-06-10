@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = UINavigationController(rootViewController: viewController)
         
         if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
-            if let style = AppTheme.themes.first(where: { $0.name == retrievedString })?.style {
+            if let style = AppTheme.themes.first(where: { $0.keyValue == retrievedString })?.style {
                 window?.overrideUserInterfaceStyle = style
             }
         }

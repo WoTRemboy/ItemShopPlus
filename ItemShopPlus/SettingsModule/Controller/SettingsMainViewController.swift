@@ -26,6 +26,7 @@ class SettingsMainViewController: UIViewController {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(SettingsAboutCollectionViewCell.self, forCellReuseIdentifier: SettingsAboutCollectionViewCell.identifier)
         table.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        table.showsVerticalScrollIndicator = false
         return table
     }()
     
@@ -81,7 +82,7 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         let type = SettingType.typeDefinition(name: name)
         
         switch type {
-        case .notifications, .language:
+        case .notifications:
             print("Zmyak")
         case .appearance:
             let vc = SettingsDetailsViewController(title: name, type: .appearance)
@@ -90,6 +91,8 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
                 cell?.detailTextLabel?.text = currencyCode
             }
             navigationController?.pushViewController(vc, animated: true)
+        case .language:
+            didRequestAlert(type: .language)
         case .cache:
             clearCache(indexPath: indexPath)
         case .currency:
@@ -112,7 +115,13 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsAboutCollectionViewCell.identifier, for: indexPath) as? SettingsAboutCollectionViewCell else {
                 fatalError("Failed to dequeue SettingsAboutCollectionViewCell in SettingsMainViewController")
             }
-            cell.configurate()
+            
+            var appVersionString = String()
+            if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+               let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                appVersionString = "\(appVersion) \(Texts.SettingsAboutCell.version) \(buildVersion)"
+            }
+            cell.configurate(appVersion: appVersionString)
             cell.isUserInteractionEnabled = false
             return cell
         }
@@ -212,7 +221,7 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
     
     private func getTheme() -> String {
         if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
-            return retrievedString
+            return AppTheme.keyToValue(key: retrievedString)
         } else {
             print("There is no currency data in UserDefaults")
             return Texts.AppearanceSettings.system
@@ -269,16 +278,26 @@ extension SettingsMainViewController {
                     print("Notifications enabled")
                 } else {
                     switchControl.isOn = false
-                    self?.didRequestAlert()
+                    self?.didRequestAlert(type: .notifications)
                     print("Notifications disabled")
                 }
             }
         }
     }
     
-    private func didRequestAlert() {
-        let alert = UIAlertController(title: Texts.NotificationSettings.alertTitle,
-                                      message: Texts.NotificationSettings.alertContent,
+    private func didRequestAlert(type: SettingType) {
+        let title: String
+        let message: String
+        
+        if type == .notifications {
+            title = Texts.NotificationSettings.alertTitle
+            message = Texts.NotificationSettings.alertContent
+        } else {
+            title = Texts.LanguageSettings.alertTitle
+            message = Texts.LanguageSettings.alertContent
+        }
+        let alert = UIAlertController(title: title,
+                                      message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Texts.NotificationSettings.alertSettings, style: .default, handler: { _ in
             if let settingsUrl = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsUrl) {

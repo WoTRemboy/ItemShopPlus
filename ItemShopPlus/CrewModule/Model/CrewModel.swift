@@ -29,6 +29,7 @@ struct CrewItem {
     let rarity: Rarity?
     let image: String
     let introduction: String?
+    let video: Bool
 }
 
 struct CrewPrice {

@@ -90,7 +90,6 @@ final class ShopViewController: UIViewController {
         noInternetSetup()
         collectionViewSetup()
         searchControllerSetup()
-        
         setupUI()
     }
     

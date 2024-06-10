@@ -114,7 +114,7 @@ final class ShopGrantedViewController: UIViewController {
     // MARK: - Rows and Cell Animation Methods
     
     private func countRows() -> Int {
-        var count = 2 // first + last dates
+        var count = 3 // first + last + out dates
         if !bundle.description.isEmpty { count += 1 }
         if bundle.series != nil { count += 1 }
         
@@ -127,15 +127,19 @@ final class ShopGrantedViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            if self.items.count > 0, let video = self.items[indexPath.item]?.video, let videoURL = URL(string: video) {
-                self.videoSetup(videoURL: videoURL, repeatable: false)
-            } else {
-                let item = self.items[indexPath.item]
-                if item?.type == "Outfit" {
-                    self.getVideo(index: indexPath.item)
-                } else {
-                    self.previewSetup(index: indexPath.item)
+            if self.items.count > 0 {
+                if let video = self.items[indexPath.item]?.video, let videoURL = URL(string: video) {
+                    self.videoSetup(videoURL: videoURL, repeatable: false)
+                } else  {
+                    let item = self.items[indexPath.item]
+                    if item?.typeID == "outfit" {
+                        self.getVideo(index: indexPath.item)
+                    } else {
+                        self.previewSetup(index: indexPath.item)
+                    }
                 }
+            } else {
+                self.previewSetup(index: 0)
             }
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = CGAffineTransform.identity
@@ -250,7 +254,7 @@ extension ShopGrantedViewController: UICollectionViewDelegate, UICollectionViewD
             fatalError("Failed to dequeue ShopGrantedCollectionViewCell in ShopGrantedViewController")
         }
         if items.count > 0, let item = items[indexPath.item] {
-            cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image, video: item.video != nil)
+            cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image, video: item.video != nil || item.typeID == "outfit")
         } else {
             cell.configurate(name: bundle.name, type: bundle.type, rarity: bundle.rarity, image: bundle.images.first?.image ?? "", video: false)
         }
@@ -295,7 +299,13 @@ extension ShopGrantedViewController: UICollectionViewDelegateFlowLayout {
             fatalError("Failed to dequeue ShopCollectionReusableView in ShopViewController")
         }
         
-        footerView.configurate(description: bundle.description, firstDate: bundle.firstReleaseDate ?? .now, lastDate: bundle.previousReleaseDate ?? .now, series: bundle.series, price: bundle.price)
+        footerView.configurate(
+            description: bundle.description,
+            firstDate: bundle.firstReleaseDate ?? .now,
+            lastDate: bundle.previousReleaseDate ?? .now,
+            expiryDate: bundle.expiryDate ?? .now,
+            series: bundle.series,
+            price: bundle.price)
         return footerView
     }
 }

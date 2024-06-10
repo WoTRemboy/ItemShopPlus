@@ -16,6 +16,7 @@ final class ShopGrantedCollectionReusableView: UICollectionReusableView {
     private let seriesView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.series, content: Texts.ShopGrantedParameters.seriesData)
     private let firstTimeView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.firstTime, content: Texts.ShopGrantedParameters.firstTimeData)
     private let lastTimeView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.lastTime, content: Texts.ShopGrantedParameters.lastTimeData)
+    private let expiryDateView = CollectionParametersRowView(frame: .null, title: Texts.ShopGrantedParameters.expiryDate, content: Texts.ShopGrantedParameters.expiryDateData)
     private let priceView = CollectionTotalPriceView(frame: .null, price: Texts.ShopGrantedCell.price)
     
     private let stackView: UIStackView = {
@@ -60,13 +61,14 @@ final class ShopGrantedCollectionReusableView: UICollectionReusableView {
     
     // MARK: - Public Configure Method
     
-    public func configurate(description: String, firstDate: Date, lastDate: Date, series: String?, price: Int) {
+    public func configurate(description: String, firstDate: Date, lastDate: Date, expiryDate: Date, series: String?, price: Int) {
         descriptionContentLabel.text = description
         seriesView.configurate(content: series ?? "")
         priceView.configurate(price: String(price), currency: .vbucks)
         
-        firstTimeView.configurate(content: DateFormating.dateFormatterDMY.string(from: firstDate))
-        lastTimeView.configurate(content: DateFormating.dateFormatterDMY.string(from: lastDate))
+        firstTimeView.configurate(content: DateFormating.dateFormatterDefault(date: firstDate))
+        lastTimeView.configurate(content: DateFormating.dateFormatterDefault(date: lastDate))
+        expiryDateView.configurate(content: DateFormating.dateFormatterDefault(date: expiryDate))
 
         setupUI(isSeries: series != nil, isDescription: !description.isEmpty, price: String(price))
     }
@@ -79,6 +81,7 @@ final class ShopGrantedCollectionReusableView: UICollectionReusableView {
         isSeries ? stackView.addArrangedSubview(seriesView) : nil
         stackView.addArrangedSubview(firstTimeView)
         stackView.addArrangedSubview(lastTimeView)
+        stackView.addArrangedSubview(expiryDateView)
         
         stackViewSetup(isDescription: isDescription)
         subStackSetup(isSeries: isSeries)
@@ -100,6 +103,7 @@ final class ShopGrantedCollectionReusableView: UICollectionReusableView {
         NSLayoutConstraint.activate([
             firstTimeView.heightAnchor.constraint(equalToConstant: 70),
             lastTimeView.heightAnchor.constraint(equalToConstant: 70),
+            expiryDateView.heightAnchor.constraint(equalToConstant: 70)
         ])
         isSeries ? seriesView.heightAnchor.constraint(equalToConstant: 70).isActive = true : nil
     }

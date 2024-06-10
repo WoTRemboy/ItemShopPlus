@@ -15,6 +15,15 @@ final class BattlePassMainViewController: UIViewController {
     private var selectedSectionTitle = Texts.BattlePassPage.allMenu
     private var previousSearchedCount = 0
     
+    private var appLanguage: String {
+        if let userDefault = UserDefaults(suiteName: "group.notificationlocalized") {
+            if let currentLang = userDefault.string(forKey: Texts.LanguageSave.userDefaultsKey) {
+                return currentLang
+            }
+        }
+        return Texts.NetworkRequest.language
+    }
+    
     private var items = [BattlePassItem]()
     private var filteredItems = [BattlePassItem]()
     private var sectionedItems = [Int: [BattlePassItem]]()
@@ -245,7 +254,12 @@ final class BattlePassMainViewController: UIViewController {
     // MARK: - UI Setups
     
     private func headerTitleSetup(page: Int) -> String {
-        return "\(Texts.BattlePassPage.page) \(page)"
+        switch appLanguage {
+        case "tr":
+            return "\(page). \(Texts.BattlePassPage.page)"
+        default:
+            return "\(Texts.BattlePassPage.page) \(page)"
+        }
     }
     
     private func menuTitleSetup(page: Int, lastItemName: String) -> String {
@@ -453,7 +467,7 @@ extension BattlePassMainViewController: UICollectionViewDelegateFlowLayout {
         let count = filteredItems.count
         let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
         
-        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: "Page \(sectionKey)")
+        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: headerTitleSetup(page: sectionKey))
         return headerView
     }
 }

@@ -41,7 +41,7 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v3/challenges")
         
-        let queryItems = [URLQueryItem(name: "season", value: "current"), URLQueryItem(name: "lang", value: "en")]
+        let queryItems = [URLQueryItem(name: "season", value: "current"), URLQueryItem(name: "lang", value: Texts.NetworkRequest.language)]
         url.append(queryItems: queryItems)
         
         var request = URLRequest(url: url)
@@ -73,7 +73,7 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/shop")
         
-        let queryItems = [URLQueryItem(name: "lang", value: "en")]
+        let queryItems = [URLQueryItem(name: "lang", value: Texts.NetworkRequest.language)]
         url.append(queryItems: queryItems)
         
         var request = URLRequest(url: url)
@@ -105,7 +105,7 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/battlepass")
         
-        let queryItems = [URLQueryItem(name: "lang", value: "en"),
+        let queryItems = [URLQueryItem(name: "lang", value: Texts.NetworkRequest.language),
                           URLQueryItem(name: "season", value: "current")]
         url.append(queryItems: queryItems)
         
@@ -137,7 +137,7 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/crew")
         
-        let queryItems = [URLQueryItem(name: "lang", value: "en")]
+        let queryItems = [URLQueryItem(name: "lang", value: Texts.NetworkRequest.language)]
         url.append(queryItems: queryItems)
         
         var request = URLRequest(url: url)
@@ -168,7 +168,7 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/bundles")
         
-        let queryItems = [URLQueryItem(name: "lang", value: "en"), URLQueryItem(name: "available", value: "true")]
+        let queryItems = [URLQueryItem(name: "lang", value: Texts.NetworkRequest.language), URLQueryItem(name: "available", value: "true")]
         url.append(queryItems: queryItems)
         
         var request = URLRequest(url: url)
@@ -200,7 +200,7 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v1/loot/list")
         
-        let queryItems = [URLQueryItem(name: "lang", value: "en")]
+        let queryItems = [URLQueryItem(name: "lang", value: Texts.NetworkRequest.language)]
         url.append(queryItems: queryItems)
         
         var request = URLRequest(url: url)
@@ -266,6 +266,9 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v1/maps/list")
         
+        let queryItems = [URLQueryItem(name: "lang", value: Texts.NetworkRequest.language)]
+        url.append(queryItems: queryItems)
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(token, forHTTPHeaderField: "Authorization")
@@ -295,7 +298,7 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/items/get")
         
-        let queryItems = [URLQueryItem(name: "id", value: id), URLQueryItem(name: "lang", value: "en")]
+        let queryItems = [URLQueryItem(name: "id", value: id), URLQueryItem(name: "lang", value: Texts.NetworkRequest.language)]
         url.append(queryItems: queryItems)
         
         var request = URLRequest(url: url)

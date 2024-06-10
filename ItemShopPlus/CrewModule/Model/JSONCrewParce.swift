@@ -60,7 +60,8 @@ extension CrewItem {
               
               let id = data["id"] as? String,
               let typeData = data["type"] as? [String: Any],
-              let type = typeData["name"] as? String,
+              let typeID = typeData["id"] as? String,
+              var type = typeData["name"] as? String,
               let name = data["name"] as? String,
               let imageData = data["images"] as? [String: Any],
               let image = imageData["icon_background"] as? String
@@ -69,10 +70,15 @@ extension CrewItem {
         }
         
         let description = data["description"] as? String
+                
+        let video: Bool
+        typeID == "outfit" ? (video = true) : (video = false)
+        typeID == "backpack" ? (type = Texts.ShopPage.backpack) : nil
 
         var introduction = String()
         if let introductionData = data["introduction"] as? [String: Any] {
-            introduction = introductionData["text"] as? String ?? String()
+            let introductionString = introductionData["text"] as? String ?? String()
+            introduction = String(introductionString.split(separator: ": ").last ?? Substring(introductionString))
         }
         
         var rarity: Rarity?
@@ -80,6 +86,6 @@ extension CrewItem {
             rarity = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         }
         
-        return CrewItem(id: id, type: type, name: name, description: description, rarity: rarity, image: image, introduction: introduction)
+        return CrewItem(id: id, type: type, name: name, description: description, rarity: rarity, image: image, introduction: introduction, video: video)
     }
 }

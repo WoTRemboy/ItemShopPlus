@@ -17,6 +17,7 @@ extension ShopItem {
               
               let assetsData = data["displayAssets"] as? [[String: Any]],
               let priceData = data["price"] as? [String: Any],
+              let offerData = data["offerDates"] as? [String: Any],
               let sectionsData = data["section"] as? [String: Any],
               
               let buyAllowed = data["buyAllowed"] as? Bool,
@@ -26,19 +27,19 @@ extension ShopItem {
         }
         
         var images = [ShopItemImage]()
-        for asset in assetsData {
-            let mode = asset["primaryMode"] as? String ?? String()
-            let image = asset["background"] as? String ?? String()
-            images.append(ShopItemImage(mode: mode, image: image))
-        }
-        let sortOrder = ["BattleRoyale", "Juno", "DelMar"]
-        images.sort(by: {
-            guard let first = sortOrder.firstIndex(of: $0.mode),
-                  let second = sortOrder.firstIndex(of: $1.mode) else {
-                return false
+        if assetsData.count > 1 {
+            for asset in assetsData {
+                let mode = asset["primaryMode"] as? String ?? String()
+                let image = asset["background"] as? String ?? String()
+                if mode == "MAX" {
+                    images.append(ShopItemImage(mode: mode, image: image))
+                }
             }
-            return first < second
-        })
+        } else {
+            let asset = assetsData.first ?? [:]
+            let image = asset["background"] as? String ?? String()
+            images.append(ShopItemImage(mode: "MAX", image: image))
+        }
         
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
         let regularPrice = priceData["regularPrice"] as? Int ?? 0
@@ -52,14 +53,23 @@ extension ShopItem {
         
         var firstDate: Date?
         var previousDate: Date?
+        var expiryDate: Date?
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateFormatterTime = DateFormatter()
+        dateFormatterTime.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
         let firstDateString = data["firstReleaseDate"] as? String ?? String()
         let previousDateString = data["previousReleaseDate"] as? String ?? String()
-        if let date1 = dateFormatter.date(from: firstDateString), let date2 = dateFormatter.date(from: previousDateString) {
+        let expiryDateString = offerData["out"] as? String ?? String()
+        
+        if let date1 = dateFormatter.date(from: firstDateString),
+           let date2 = dateFormatter.date(from: previousDateString),
+           let date3 = dateFormatterTime.date(from: expiryDateString) {
             firstDate = date1
             previousDate = date2
+            expiryDate = date3
         }
         
         let bannerData = data["banner"] as? [String: Any]
@@ -76,7 +86,7 @@ extension ShopItem {
             video = true
         }
         
-        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner, video: video)
+        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstDate, previousReleaseDate: previousDate, expiryDate: expiryDate, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, series: series, rarity: rarity, granted: granted, section: section, banner: banner, video: video)
     }
 }
 
@@ -95,9 +105,13 @@ extension GrantedItem {
             return nil
         }
         
-        var type = typeData["id"] as? String ?? String()
-        type = CommonLogicMethods.capitalizeFirstLetter(input: type)
-        
+        let type: String
+        let typeID = typeData["id"] as? String ?? String()
+        if typeID == "backpack" {
+            type = Texts.ShopPage.backpack
+        } else {
+            type = typeData["name"] as? String ?? String()
+        }
         let series = data["series"] as? String
         let rarity: Rarity? = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         
@@ -108,6 +122,6 @@ extension GrantedItem {
             image = imageData
         }
 
-        return GrantedItem(id: id, type: type, name: name, description: description, rarity: rarity, series: series, image: image, video: video)
+        return GrantedItem(id: id, typeID: typeID, type: type, name: name, description: description, rarity: rarity, series: series, image: image, video: video)
     }
 }

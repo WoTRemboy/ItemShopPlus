@@ -157,11 +157,11 @@ final class SelectingMethods {
         case .star:
             return .BattlePass.star ?? .battlePassStar
         case .mythic:
-            return .ShopGranted.legendary ?? .grantedLegendary
+            return .ShopGranted.mythic ?? .grantedMythic
         case .transcendent:
-            return .ShopGranted.legendary ?? .grantedLegendary
+            return .ShopGranted.transcendent ?? .grantedTranscendent
         case .exotic:
-            return .ShopGranted.legendary ?? .grantedLegendary
+            return .ShopGranted.exotic ?? .grantedExotic
         }
     }
     
@@ -212,6 +212,44 @@ final class SelectingMethods {
             return Texts.StatsDetailsPage.gamepad
         default:
             return String()
+        }
+    }
+    
+    static func selectPartyType(type: String) -> String {
+        switch type {
+        case "solo":
+            return Texts.StatsDetailsPage.solo
+        case "duo":
+            return Texts.StatsDetailsPage.duo
+        case "trio":
+            return Texts.StatsDetailsPage.trio
+        case "squad":
+            return Texts.StatsDetailsPage.squad
+        default:
+            return Texts.StatsDetailsPage.solo
+        }
+    }
+    
+    // MARK: - Armory
+    
+    static func selectWeaponTag(tag: String) -> String {
+        switch tag {
+        case "Pistols":
+            return Texts.LootDetailsStats.pistols
+        case "Assault":
+            return Texts.LootDetailsStats.assault
+        case "Shotgun":
+            return Texts.LootDetailsStats.shotgun
+        case "Sniper":
+            return Texts.LootDetailsStats.sniper
+        case "Blade":
+            return Texts.LootDetailsStats.blade
+        case "Bow":
+            return Texts.LootDetailsStats.bow
+        case "Launcher":
+            return Texts.LootDetailsStats.launcher
+        default:
+            return Texts.ShopPage.allMenu
         }
     }
 }

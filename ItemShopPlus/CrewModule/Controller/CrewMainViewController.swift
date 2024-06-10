@@ -235,7 +235,7 @@ final class CrewMainViewController: UIViewController {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
             let item = self.items[indexPath.item]
-            if item.type == "Outfit" {
+            if item.video {
                 self.getVideo(index: indexPath.item)
             } else {
                 self.previewSetup(index: indexPath.item)
@@ -369,7 +369,7 @@ extension CrewMainViewController: UICollectionViewDelegate, UICollectionViewData
             fatalError("Failed to dequeue CrewCollectionViewCell in CrewMainViewController")
         }
         let item = items[indexPath.item]
-        cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image, video: false)
+        cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image, video: item.video)
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         

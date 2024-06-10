@@ -124,7 +124,7 @@ final class LootDetailsMainViewController: UIViewController {
     }
     
     private func searchTags() {
-        tags = ["Pistols", "Assault", "Shotgun", "Sniper", "Blade", "Bow", "Launcher",]
+        tags = ["Pistols", "Assault", "Shotgun", "Sniper", "Blade", "Bow", "Launcher"]
     }
     
     private func filterItemsByMenu(sectionTitle: String, forAll: Bool) {
@@ -240,7 +240,7 @@ final class LootDetailsMainViewController: UIViewController {
         
         searchTags()
         for section in tags {
-            let sectionAction = UIAction(title: section, image: nil) { [weak self] action in
+            let sectionAction = UIAction(title: SelectingMethods.selectWeaponTag(tag: section), image: nil) { [weak self] action in
                 self?.filterItemsByMenu(sectionTitle: section, forAll: false)
                 self?.filterButton.image = .FilterMenu.filledFilter
             }
@@ -252,10 +252,10 @@ final class LootDetailsMainViewController: UIViewController {
     }
     
     private func updateMenuState(for sectionTitle: String) {
-        if let currentAction = filterButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
+        if let currentAction = filterButton.menu?.children.first(where: { $0.title == SelectingMethods.selectWeaponTag(tag: sectionTitle) }) as? UIAction {
             currentAction.state = .on
         }
-        if let previousAction = filterButton.menu?.children.first(where: { $0.title == selectedSectionTitle }) as? UIAction {
+        if let previousAction = filterButton.menu?.children.first(where: { $0.title == SelectingMethods.selectWeaponTag(tag: selectedSectionTitle) }) as? UIAction {
             previousAction.state = .off
         }
         selectedSectionTitle = sectionTitle
@@ -412,7 +412,7 @@ extension LootDetailsMainViewController: UICollectionViewDelegateFlowLayout {
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
         let count = filteredGroupedItems.count
-        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: selectedSectionTitle)
+        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: SelectingMethods.selectWeaponTag(tag: selectedSectionTitle))
         return headerView
     }
 }

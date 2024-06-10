@@ -37,7 +37,7 @@ class SettingsTableViewCell: UITableViewCell {
             textLabel?.text = Texts.SettingsPage.appearanceTitle
             imageView?.image = .Settings.appearance
             accessoryType = .disclosureIndicator
-            detailTextLabel?.text = "System"
+            detailTextLabel?.text = Texts.AppearanceSettings.system
         case .cache:
             textLabel?.text = Texts.SettingsPage.cacheTitle
             imageView?.image = .Settings.cache
@@ -46,7 +46,7 @@ class SettingsTableViewCell: UITableViewCell {
             textLabel?.text = Texts.SettingsPage.languageTitle
             imageView?.image = .Settings.language
             accessoryType = .disclosureIndicator
-            detailTextLabel?.text = "English"
+            detailTextLabel?.text = Texts.SettingsPage.languageContent
         case .currency:
             textLabel?.text = Texts.SettingsPage.currencyTitle
             imageView?.image = .Settings.currency

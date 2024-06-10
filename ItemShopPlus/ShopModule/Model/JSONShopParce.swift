@@ -37,7 +37,6 @@ extension ShopItem {
             }
         } else {
             let asset = assetsData.first ?? [:]
-            let mode = asset["primaryMode"] as? String ?? String()
             let image = asset["background"] as? String ?? String()
             images.append(ShopItemImage(mode: "MAX", image: image))
         }

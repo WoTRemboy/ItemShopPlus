@@ -11,7 +11,7 @@ final class StatsMainViewController: UIViewController {
     
     private let networkService = DefaultNetworkService()
     private var stats = Stats.emptyStats
-    private var nickname = Texts.NicknamePopup.placeholder
+    private var nickname = String()
     private var platform: String? = nil
     
     private let noInternetView = NoInternetView()

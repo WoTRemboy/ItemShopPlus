@@ -58,14 +58,15 @@ extension ShopItem {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateFormatterTime = DateFormatter()
-        dateFormatterTime.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatterTime.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatterTime.locale = Locale(identifier: "en_US_POSIX")
         
         let firstDateString = data["firstReleaseDate"] as? String ?? String()
-        let previousDateString = data["previousReleaseDate"] as? String ?? String()
+        let previousDateString = offerData["in"] as? String ?? String()
         let expiryDateString = offerData["out"] as? String ?? String()
         
         if let date1 = dateFormatter.date(from: firstDateString),
-           let date2 = dateFormatter.date(from: previousDateString),
+           let date2 = dateFormatterTime.date(from: previousDateString),
            let date3 = dateFormatterTime.date(from: expiryDateString) {
             firstDate = date1
             previousDate = date2

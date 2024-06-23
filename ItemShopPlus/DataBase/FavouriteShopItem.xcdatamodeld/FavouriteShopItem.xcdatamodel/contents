@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="FavouriteShopItemEntity" representedClassName="FavouriteShopItemEntity" syncable="YES">
+        <attribute name="buyAllowed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="expiryDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstReleaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="itemDescription" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="previousReleaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rarity" optional="YES" attributeType="String"/>
+        <attribute name="regularPrice" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="section" optional="YES" attributeType="String"/>
+        <attribute name="series" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="video" optional="YES" attributeType="String"/>
+        <relationship name="grantedItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShopGrantedItemEntity" inverseName="parentShopItem" inverseEntity="ShopGrantedItemEntity"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShopItemImageEntity" inverseName="favouriteShopItem" inverseEntity="ShopItemImageEntity"/>
+    </entity>
+    <entity name="ShopGrantedItemEntity" representedClassName="ShopGrantedItemEntity" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="itemDescription" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rarity" optional="YES" attributeType="String"/>
+        <attribute name="series" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="typeID" optional="YES" attributeType="String"/>
+        <attribute name="video" optional="YES" attributeType="String"/>
+        <relationship name="parentShopItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavouriteShopItemEntity" inverseName="grantedItems" inverseEntity="FavouriteShopItemEntity"/>
+    </entity>
+    <entity name="ShopItemImageEntity" representedClassName="ShopItemImageEntity" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="favouriteShopItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavouriteShopItemEntity" inverseName="images" inverseEntity="FavouriteShopItemEntity"/>
+    </entity>
+</model>

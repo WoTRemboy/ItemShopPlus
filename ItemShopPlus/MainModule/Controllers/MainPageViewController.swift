@@ -105,6 +105,12 @@ final class MainPageViewController: UIViewController {
         }
     }
     
+    @objc func favouritesTransfer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.pushViewController(FavouritesItemsViewController(), animated: true)
+        }
+    }
+    
     @objc func settingTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(SettingsMainViewController(), animated: true)
@@ -273,7 +279,7 @@ final class MainPageViewController: UIViewController {
             otherButtonsView.topAnchor.constraint(equalTo: bundleCollectionView.bottomAnchor, constant: 16),
             otherButtonsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             otherButtonsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            otherButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 16 * 2 + 8 * 3) / 4),
+            otherButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 16 * 2 + 8 * 3) / 2),
             otherButtonsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
     }

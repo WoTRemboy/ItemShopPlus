@@ -127,6 +127,7 @@ final class Texts {
             static let lootDetails = NSLocalizedString("MainButtonsArmory", comment: "Armory")
             static let crew = NSLocalizedString("MainButtonsCrew", comment: "Crew")
             static let map = NSLocalizedString("MainButtonsMap", comment: "Map")
+            static let favourites = NSLocalizedString("MainButtonsFavourites", comment: "Favourites")
             static let stats = NSLocalizedString("MainButtonsStats", comment: "Stats")
             static let augments = NSLocalizedString("MainButtonsAugments", comment: "Augments")
             static let settings = NSLocalizedString("MainButtonsSettings", comment: "Settings")
@@ -368,6 +369,14 @@ final class Texts {
         static let rounds = NSLocalizedString("LootDetailsStatsCellRounds", comment: "Rounds:")
         static let seconds = NSLocalizedString("LootDetailsStatsCellSeconds", comment: "Seconds:")
         static let multiplier = NSLocalizedString("LootDetailsStatsCellMultiplier", comment: "Multiplier:")
+    }
+    
+    // MARK: - Favourites Module
+    
+    enum FavouritesPage {
+        static let title = NSLocalizedString("FavouritesPageTitle", comment: "Favourites")
+        static let available = NSLocalizedString("FavouritesPageAvailable", comment: "Available")
+        static let notAvailable = NSLocalizedString("FavouritesPageNotAvailable", comment: "Not Available")
     }
     
     // MARK: - Settings Module

@@ -7,11 +7,12 @@
 
 import UIKit
 
-class MainPageOtherView: UIView {
+final class MainPageOtherView: UIView {
 
     private let statsButton = MainPageButtonView(buttonType: .stats)
     private let mapButton = MainPageButtonView(buttonType: .map)
     private let armoryButton = MainPageButtonView(buttonType: .lootDetails)
+    private let favouritesButton = MainPageButtonView(buttonType: .favourites)
     private let settingsButton = MainPageButtonView(buttonType: .settings)
     
     private let titleLabel: UILabel = {
@@ -34,12 +35,14 @@ class MainPageOtherView: UIView {
         addSubview(statsButton)
         addSubview(mapButton)
         addSubview(armoryButton)
+        addSubview(favouritesButton)
         addSubview(settingsButton)
         addSubview(titleLabel)
         
         statsButton.translatesAutoresizingMaskIntoConstraints = false
         mapButton.translatesAutoresizingMaskIntoConstraints = false
         armoryButton.translatesAutoresizingMaskIntoConstraints = false
+        favouritesButton.translatesAutoresizingMaskIntoConstraints = false
         settingsButton.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -64,9 +67,14 @@ class MainPageOtherView: UIView {
             armoryButton.widthAnchor.constraint(equalTo: statsButton.widthAnchor),
             armoryButton.heightAnchor.constraint(equalTo: statsButton.heightAnchor),
             
-            settingsButton.topAnchor.constraint(equalTo: statsButton.topAnchor),
-            settingsButton.leadingAnchor.constraint(equalTo: armoryButton.trailingAnchor, constant: 12),
-            settingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            favouritesButton.topAnchor.constraint(equalTo: statsButton.topAnchor),
+            favouritesButton.leadingAnchor.constraint(equalTo: armoryButton.trailingAnchor, constant: 12),
+            favouritesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            favouritesButton.heightAnchor.constraint(equalTo: statsButton.heightAnchor),
+            
+            settingsButton.topAnchor.constraint(equalTo: statsButton.bottomAnchor, constant: 10),
+            settingsButton.leadingAnchor.constraint(equalTo: statsButton.leadingAnchor),
+            settingsButton.trailingAnchor.constraint(equalTo: statsButton.trailingAnchor),
             settingsButton.heightAnchor.constraint(equalTo: statsButton.heightAnchor),
         ])
     }

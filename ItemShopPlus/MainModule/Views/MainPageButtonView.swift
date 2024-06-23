@@ -124,6 +124,10 @@ class MainPageButtonView: UIView {
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
             buttonImageView.image = .MainButtons.map
             selectButton.addTarget(nil, action: #selector(MainPageViewController.mapTransfer), for: .touchUpInside)
+        case .favourites:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.favourites
+            buttonImageView.image = .MainButtons.favourites
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.favouritesTransfer), for: .touchUpInside)
         case .settings:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.settings
             buttonImageView.image = .MainButtons.settings

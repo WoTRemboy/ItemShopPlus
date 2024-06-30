@@ -134,6 +134,14 @@ final class ShopViewController: UIViewController {
         present(navVC, animated: true)
     }
     
+    @objc private func favouriteButtonPress(_ sender: UIButton) {
+        guard let cell = sender.superview as? ShopCollectionViewCell,
+              let indexPath = collectionView.indexPath(for: cell)
+        else { return }
+        
+        favouriteItemToggle(at: indexPath)
+    }
+    
     // MARK: - Networking
     
     private func getShop(isRefreshControl: Bool) {
@@ -236,6 +244,20 @@ final class ShopViewController: UIViewController {
         UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
             self.collectionView.reloadData()
         }, completion: nil)
+    }
+    
+    private func favouriteItemToggle(at indexPath: IndexPath) {
+        var item = ShopItem.emptyShopItem
+        let sectionKey = self.sortedKeys[indexPath.section]
+        if let itemsInSection = self.sectionedItems[sectionKey] {
+            if self.filteredItems.count != 0 && self.filteredItems.count != self.items.count {
+                item = self.filteredItems[indexPath.item]
+            } else {
+                item = itemsInSection[indexPath.item]
+            }
+            sectionedItems[sectionKey]?[itemsInSection.firstIndex(where: { $0.id == item.id }) ?? 0].favouriteToggle()
+        }
+        items[items.firstIndex(where: { $0.id == item.id }) ?? 0].favouriteToggle()
     }
     
     private func clearItems() {
@@ -406,16 +428,18 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if inSearchMode {
             let item = filteredItems[indexPath.item]
-            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
+            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, favourite: item.isFavourite, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
         } else {
             let sectionKey = sortedKeys[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
-                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
+                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, favourite: item.isFavourite, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
             }
         }
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
+        
+        cell.favouriteButton.addTarget(self, action: #selector(favouriteButtonPress), for: .touchUpInside)
         
         return cell
     }

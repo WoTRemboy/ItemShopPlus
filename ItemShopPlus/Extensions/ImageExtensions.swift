@@ -75,6 +75,8 @@ extension UIImage {
         static let pages = createInfoSymbol(name: "decrease.quotelevel", first: .backgroundPages, second: .white)
         static let grantedInfo = createInfoSymbol(name: "5.circle.fill", first: .white, second: .backgroundPages)
         static let pagesInfo = createInfoSymbol(name: "decrease.quotelevel", first: .backgroundPages, second: .systemBlue)
+        static let favouriteFalse = createInfoSymbol(name: "heart", first: .backgroundPages, second: .white)
+        static let favouriteTrue = createInfoSymbol(name: "heart.fill", first: .backgroundPages, second: .systemRed)
     }
     
     enum ShopGranted {

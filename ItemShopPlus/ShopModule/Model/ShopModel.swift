@@ -25,6 +25,13 @@ struct ShopItem {
     let section: String
     let banner: Banner
     let video: Bool
+    var isFavourite: Bool = false
+    
+    static let emptyShopItem = ShopItem(id: "", name: "", description: "", type: "", images: [], firstReleaseDate: nil, previousReleaseDate: nil, expiryDate: nil,  buyAllowed: false, price: 0, regularPrice: 0, series: "", rarity: .common, granted: [], section: "", banner: .null, video: false)
+    
+    mutating func favouriteToggle() {
+        isFavourite.toggle()
+    }
 }
 
 struct GrantedItem {

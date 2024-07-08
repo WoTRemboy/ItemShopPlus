@@ -278,9 +278,10 @@ final class ShopCollectionViewCell: UICollectionViewCell {
             itemPriceLabel.centerYAnchor.constraint(equalTo: itemPriceImageView.centerYAnchor),
             itemPriceLabel.leadingAnchor.constraint(equalTo: itemPriceImageView.trailingAnchor, constant: 5),
             
-            favouriteButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0),
-            favouriteButton.topAnchor.constraint(equalTo: itemPriceImageView.topAnchor),
-            favouriteButton.heightAnchor.constraint(equalTo: itemPriceImageView.heightAnchor)
+            favouriteButton.centerYAnchor.constraint(equalTo: itemPriceImageView.centerYAnchor),
+            favouriteButton.centerXAnchor.constraint(equalTo: trailingAnchor, constant: -17/2),
+            favouriteButton.heightAnchor.constraint(equalTo: itemPriceImageView.heightAnchor, multiplier: 2),
+            favouriteButton.widthAnchor.constraint(equalTo: favouriteButton.heightAnchor)
         ])
     }
     

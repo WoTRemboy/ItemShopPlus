@@ -210,6 +210,7 @@ final class ShopViewController: UIViewController {
     // MARK: - Items Management Methods
     
     private func sortingSections(items: [ShopItem]) {
+        sectionedItems.removeAll()
         for item in items {
             if var sectionItems = self.sectionedItems[item.section] {
                 sectionItems.append(item)
@@ -255,9 +256,9 @@ final class ShopViewController: UIViewController {
             } else {
                 item = itemsInSection[indexPath.item]
             }
-            sectionedItems[sectionKey]?[itemsInSection.firstIndex(where: { $0.id == item.id }) ?? 0].favouriteToggle()
         }
         items[items.firstIndex(where: { $0.id == item.id }) ?? 0].favouriteToggle()
+        sortingSections(items: items)
     }
     
     private func clearItems() {

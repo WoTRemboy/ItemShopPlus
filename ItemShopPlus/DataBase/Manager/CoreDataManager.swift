@@ -13,7 +13,7 @@ final class CoreDataManager {
     private init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CoreDataBaseFavouritesModel")
+        let container = NSPersistentContainer(name: "FavouriteShopItem")
         container.loadPersistentStores {_, error in
             _ = error.map { fatalError("Persistent container (Favourites DB) error: \($0)") }
         }
@@ -22,6 +22,10 @@ final class CoreDataManager {
     
     var mainContext: NSManagedObjectContext {
         return persistentContainer.viewContext
+    }
+    
+    func backgroundContext() -> NSManagedObjectContext {
+        return persistentContainer.newBackgroundContext()
     }
     
     func saveContext() {

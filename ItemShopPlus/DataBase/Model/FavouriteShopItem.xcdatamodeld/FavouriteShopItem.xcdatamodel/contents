@@ -14,7 +14,7 @@
         <attribute name="section" optional="YES" attributeType="String"/>
         <attribute name="series" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <attribute name="video" optional="YES" attributeType="String"/>
+        <attribute name="video" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="grantedItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShopGrantedItemEntity" inverseName="parentShopItem" inverseEntity="ShopGrantedItemEntity"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShopItemImageEntity" inverseName="favouriteShopItem" inverseEntity="ShopItemImageEntity"/>
     </entity>

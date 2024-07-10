@@ -32,6 +32,26 @@ struct ShopItem {
     mutating func favouriteToggle() {
         isFavourite.toggle()
     }
+    
+    static func toShopItem(from item: FavouriteShopItemEntity) -> ShopItem {
+        let id = item.id ?? String()
+        let name = item.name ?? String()
+        let description = item.itemDescription ?? String()
+        let type = item.type ?? String()
+        let firstReleaseDate = item.firstReleaseDate
+        let previousReleaseDate = item.previousReleaseDate
+        let expiryDate = item.expiryDate
+        let buyAllowed = item.buyAllowed
+        let price = Int(item.price)
+        let regularPrice = Int(item.regularPrice)
+        let series = item.series
+        let rarity = SelectingMethods.selectRarity(rarityText: item.rarity)
+        let section = item.section ?? String()
+        let video = item.video
+        
+        
+        return ShopItem(id: id, name: name, description: description, type: type, images: [], firstReleaseDate: firstReleaseDate, previousReleaseDate: previousReleaseDate, expiryDate: expiryDate, buyAllowed: buyAllowed, price: price, regularPrice: regularPrice, series: series, rarity: rarity, granted: [], section: section, banner: .null, video: video)
+    }
 }
 
 struct GrantedItem {

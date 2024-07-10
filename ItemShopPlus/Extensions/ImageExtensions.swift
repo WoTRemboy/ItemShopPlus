@@ -49,7 +49,7 @@ extension UIImage {
         static let map = UIImage(named: "MapIcon")
         static let stats = UIImage(named: "StatsIcon")
         static let favourites = UIImage(named: "FavouritesIcon")
-        static let settings = UIImage(named: "SettingIcon")
+        static let settings = UIImage(named: "SettingsIcon")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")
         static let question = createImage(name: "questionmark.square.dashed")
         static let chevron = createImage(name: "chevron.right")

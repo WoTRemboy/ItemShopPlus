@@ -28,7 +28,7 @@ extension FavouriteShopItemEntity {
     @NSManaged public var regularPrice: Int32
     @NSManaged public var series: String?
     @NSManaged public var section: String?
-    @NSManaged public var video: String?
+    @NSManaged public var video: Bool
     @NSManaged public var rarity: String?
     @NSManaged public var grantedItems: NSSet?
     @NSManaged public var images: NSSet?

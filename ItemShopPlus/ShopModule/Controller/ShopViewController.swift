@@ -21,6 +21,7 @@ final class ShopViewController: UIViewController {
     private var sortedKeys = [String]()
     
     private let networkService = DefaultNetworkService()
+    private let coreDataBase = FavouritesDataBaseManager.shared
     
     // MARK: - UI Elements and Views
     
@@ -257,7 +258,9 @@ final class ShopViewController: UIViewController {
                 item = itemsInSection[indexPath.item]
             }
         }
-        items[items.firstIndex(where: { $0.id == item.id }) ?? 0].favouriteToggle()
+        let index = items.firstIndex(where: { $0.id == item.id }) ?? 0
+        items[index].favouriteToggle()
+        coreDataBase.insertToDataBase(item: items[index])
         sortingSections(items: items)
     }
     

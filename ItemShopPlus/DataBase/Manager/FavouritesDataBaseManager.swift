@@ -15,6 +15,19 @@ final class FavouritesDataBaseManager {
     init() {
         loadFromDataBase()
     }
+    
+    func fetchItem(withID id: String, in context: NSManagedObjectContext) -> FavouriteShopItemEntity? {
+        let fetchRequest: NSFetchRequest<FavouriteShopItemEntity> = FavouriteShopItemEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            return results.first
+        } catch {
+            print("Error fetching item from database: \(error)")
+            return nil
+        }
+    }
 
     private func createCoreDataShopItem(from item: ShopItem, in context: NSManagedObjectContext) -> FavouriteShopItemEntity {
         
@@ -78,6 +91,24 @@ final class FavouritesDataBaseManager {
                 self.loadFromDataBase()
             } catch {
                 print("Inserting into database error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func removeFromDataBase(at itemID: String) {
+        let context = CoreDataManager.shared.backgroundContext()
+        
+        context.perform {
+            if let existingItem = self.fetchItem(withID: itemID, in: context) {
+                context.delete(existingItem)
+                
+                do {
+                    try context.save()
+                    print("Deleted from database CoreData")
+                    self.loadFromDataBase()
+                } catch {
+                    print("Deleting from database error: \(error)")
+                }
             }
         }
     }

@@ -10,7 +10,7 @@ import UIKit
 final class FavouritesItemsViewController: UIViewController {
     
     private var items = [ShopItem]()
-    private let coreData = FavouritesDataBaseManager.shared
+    private let coreDataBase = FavouritesDataBaseManager.shared
     
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -33,12 +33,19 @@ final class FavouritesItemsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .BackColors.backDefault
         
-        items = coreData.items.sorted { $0.name < $1.name }
-        print(items)
+        items = coreDataBase.items.sorted { $0.name < $1.name }
         
         navigationBarSetup()
         collectionViewSetup()
         setupUI()
+    }
+    
+    @objc private func favouriteButtonPress(_ sender: UIButton) {
+        guard let cell = sender.superview as? ShopCollectionViewCell,
+              let indexPath = collectionView.indexPath(for: cell)
+        else { return }
+        
+        favouriteItemToggle(at: indexPath)
     }
     
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -51,7 +58,6 @@ final class FavouritesItemsViewController: UIViewController {
     private func animateCellSelection(at indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         let item = items[indexPath.item]
-        print(item)
         
         UIView.animate(withDuration: 0.1, animations: {
             cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
@@ -59,6 +65,21 @@ final class FavouritesItemsViewController: UIViewController {
             self.navigationController?.pushViewController(ShopGrantedViewController(bundle: item), animated: true)
             UIView.animate(withDuration: 0.1, animations: {
                 cell?.transform = CGAffineTransform.identity
+            })
+        }
+    }
+    
+    private func favouriteItemToggle(at indexPath: IndexPath) {
+        items[indexPath.item].favouriteToggle()
+        DispatchQueue.main.async {
+            let item = self.items[indexPath.item]
+            !item.isFavourite ? self.coreDataBase.removeFromDataBase(at: item.id) : nil
+            
+            self.items.remove(at: indexPath.item)
+            UIView.animate(withDuration: 0.25, animations: {
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.deleteItems(at: [indexPath])
+                }, completion: nil)
             })
         }
     }
@@ -122,8 +143,8 @@ extension FavouritesItemsViewController: UICollectionViewDelegate, UICollectionV
         
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
-//        
-//        cell.favouriteButton.addTarget(self, action: #selector(favouriteButtonPress), for: .touchUpInside)
+        
+        cell.favouriteButton.addTarget(self, action: #selector(favouriteButtonPress), for: .touchUpInside)
         
         return cell
     }

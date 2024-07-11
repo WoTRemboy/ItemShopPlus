@@ -273,7 +273,8 @@ final class ShopViewController: UIViewController {
         let index = items.firstIndex(where: { $0.id == item.id }) ?? 0
         items[index].favouriteToggle()
         DispatchQueue.main.async {
-            self.items[index].isFavourite ? self.coreDataBase.insertToDataBase(item: self.items[index]) : nil
+            let item = self.items[index]
+            item.isFavourite ? self.coreDataBase.insertToDataBase(item: item) : self.coreDataBase.removeFromDataBase(at: item.id)
         }
         sortingSections(items: items)
     }

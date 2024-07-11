@@ -9,7 +9,6 @@ import UIKit
 
 final class MainPageOtherView: UIView {
 
-    private let statsButton = MainPageButtonView(buttonType: .stats)
     private let mapButton = MainPageButtonView(buttonType: .map)
     private let armoryButton = MainPageButtonView(buttonType: .lootDetails)
     private let favouritesButton = MainPageButtonView(buttonType: .favourites)
@@ -32,14 +31,12 @@ final class MainPageOtherView: UIView {
     }
     
     private func setupLayout() {
-        addSubview(statsButton)
         addSubview(mapButton)
         addSubview(armoryButton)
         addSubview(favouritesButton)
         addSubview(settingsButton)
         addSubview(titleLabel)
         
-        statsButton.translatesAutoresizingMaskIntoConstraints = false
         mapButton.translatesAutoresizingMaskIntoConstraints = false
         armoryButton.translatesAutoresizingMaskIntoConstraints = false
         favouritesButton.translatesAutoresizingMaskIntoConstraints = false
@@ -52,30 +49,25 @@ final class MainPageOtherView: UIView {
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             
-            statsButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            statsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            statsButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -(12 + (UIScreen.main.bounds.width - 68) / 4 + 6)),
-            statsButton.heightAnchor.constraint(equalTo: statsButton.widthAnchor, constant: 27),
+            mapButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            mapButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            mapButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -(12 + (UIScreen.main.bounds.width - 68) / 4 + 6)),
+            mapButton.heightAnchor.constraint(equalTo: mapButton.widthAnchor, constant: 27),
             
-            mapButton.topAnchor.constraint(equalTo: statsButton.topAnchor),
-            mapButton.leadingAnchor.constraint(equalTo: statsButton.trailingAnchor, constant: 12),
-            mapButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -4),
-            mapButton.heightAnchor.constraint(equalTo: statsButton.heightAnchor),
-            
-            armoryButton.topAnchor.constraint(equalTo: statsButton.topAnchor),
+            armoryButton.topAnchor.constraint(equalTo: mapButton.topAnchor),
             armoryButton.leadingAnchor.constraint(equalTo: mapButton.trailingAnchor, constant: 12),
-            armoryButton.widthAnchor.constraint(equalTo: statsButton.widthAnchor),
-            armoryButton.heightAnchor.constraint(equalTo: statsButton.heightAnchor),
+            armoryButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -4),
+            armoryButton.heightAnchor.constraint(equalTo: mapButton.heightAnchor),
             
-            favouritesButton.topAnchor.constraint(equalTo: statsButton.topAnchor),
+            favouritesButton.topAnchor.constraint(equalTo: mapButton.topAnchor),
             favouritesButton.leadingAnchor.constraint(equalTo: armoryButton.trailingAnchor, constant: 12),
-            favouritesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            favouritesButton.heightAnchor.constraint(equalTo: statsButton.heightAnchor),
+            favouritesButton.widthAnchor.constraint(equalTo: mapButton.widthAnchor),
+            favouritesButton.heightAnchor.constraint(equalTo: mapButton.heightAnchor),
             
-            settingsButton.topAnchor.constraint(equalTo: statsButton.bottomAnchor, constant: 10),
-            settingsButton.leadingAnchor.constraint(equalTo: statsButton.leadingAnchor),
-            settingsButton.trailingAnchor.constraint(equalTo: statsButton.trailingAnchor),
-            settingsButton.heightAnchor.constraint(equalTo: statsButton.heightAnchor),
+            settingsButton.topAnchor.constraint(equalTo: mapButton.topAnchor),
+            settingsButton.leadingAnchor.constraint(equalTo: favouritesButton.trailingAnchor, constant: 12),
+            settingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            settingsButton.heightAnchor.constraint(equalTo: mapButton.heightAnchor)
         ])
     }
 }

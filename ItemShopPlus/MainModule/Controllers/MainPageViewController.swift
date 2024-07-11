@@ -229,7 +229,7 @@ final class MainPageViewController: UIViewController {
             shopPassButtonsView.topAnchor.constraint(equalTo: crewButton.bottomAnchor, constant: 16),
             shopPassButtonsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             shopPassButtonsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            shopPassButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 20 * 3) / 2)
+            shopPassButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 16 * 4) / 3 + 27)
         ])
     }
     
@@ -279,7 +279,7 @@ final class MainPageViewController: UIViewController {
             otherButtonsView.topAnchor.constraint(equalTo: bundleCollectionView.bottomAnchor, constant: 16),
             otherButtonsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             otherButtonsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            otherButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 16 * 2 + 8 * 3) / 2 + 15),
+            otherButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 16 * 2 + 8 * 3) / 4),
             otherButtonsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
     }

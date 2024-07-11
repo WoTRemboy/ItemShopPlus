@@ -173,9 +173,8 @@ final class ShopViewController: UIViewController {
                     self?.clearItems()
                     self?.noInternetView.isHidden = true
                     self?.searchController.searchBar.isHidden = false
-
-                    self?.items = newItems
-                    self?.sortingSections(items: newItems)
+                    
+                    self?.checkFavouritesItems(items: newItems, favourites: self?.coreDataBase.items ?? [])
                     
                     self?.infoButton.isEnabled = true
                     self?.filterButton.isEnabled = true
@@ -248,6 +247,19 @@ final class ShopViewController: UIViewController {
         }, completion: nil)
     }
     
+    private func checkFavouritesItems(items: [ShopItem], favourites: [ShopItem]) {
+        self.items = items
+        let favouriteSet = Set(favourites)
+        for i in 0..<items.count {
+            if favouriteSet.contains(items[i]) {
+                self.items[i].isFavourite = true
+            } else {
+                self.items[i].isFavourite = false
+            }
+        }
+        sortingSections(items: self.items)
+    }
+    
     private func favouriteItemToggle(at indexPath: IndexPath) {
         var item = ShopItem.emptyShopItem
         let sectionKey = self.sortedKeys[indexPath.section]
@@ -260,7 +272,9 @@ final class ShopViewController: UIViewController {
         }
         let index = items.firstIndex(where: { $0.id == item.id }) ?? 0
         items[index].favouriteToggle()
-        coreDataBase.insertToDataBase(item: items[index])
+        DispatchQueue.main.async {
+            self.items[index].isFavourite ? self.coreDataBase.insertToDataBase(item: self.items[index]) : nil
+        }
         sortingSections(items: items)
     }
     
@@ -447,7 +461,7 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return cell
     }
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         guard searchController.isActive else { return }
         searchController.searchBar.resignFirstResponder()

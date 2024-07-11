@@ -15,18 +15,6 @@ final class FavouritesDataBaseManager {
     init() {
         loadFromDataBase()
     }
-    
-//    func fetchAllItems(in context: NSManagedObjectContext) -> [FavouriteShopItemEntity] {
-//        let fetchRequest: NSFetchRequest<FavouriteShopItemEntity> = FavouriteShopItemEntity.fetchRequest()
-//        
-//        do {
-//            let results = try context.fetch(fetchRequest)
-//            return results
-//        } catch {
-//            print("Error fetching items from database: \(error.localizedDescription)")
-//            return []
-//        }
-//    }
 
     private func createCoreDataShopItem(from item: ShopItem, in context: NSManagedObjectContext) -> FavouriteShopItemEntity {
         
@@ -45,19 +33,38 @@ final class FavouritesDataBaseManager {
         coreDataItem.section = item.section
         coreDataItem.video = item.video
         coreDataItem.rarity = Rarity.rarityToString(rarity: item.rarity)
+        coreDataItem.grantedItems = NSSet(array: item.granted.map { createCoreDataGrantedItem(from: $0 ?? GrantedItem.emptyItem(), parent: coreDataItem, in: context) })
+        coreDataItem.images = NSSet(array: item.images.map { createCoreDataShopImage(from: $0, parent: coreDataItem, in: context) })
         
         return coreDataItem
     }
     
-//    func safeToDataBase(items: [ShopItem]) {
-//        let context = CoreDataManager.shared.backgroundContext()
-//        
-//        context.perform {
-//            let existingItems = self.fetchAllItems(in: context)
-//            
-//            
-//        }
-//    }
+    private func createCoreDataGrantedItem(from item: GrantedItem, parent: FavouriteShopItemEntity, in context: NSManagedObjectContext) -> ShopGrantedItemEntity {
+        
+        let coreDataItem = ShopGrantedItemEntity(context: context)
+        coreDataItem.id = item.id
+        coreDataItem.name = item.name
+        coreDataItem.typeID = item.typeID
+        coreDataItem.type = item.type
+        coreDataItem.itemDescription = item.description
+        coreDataItem.series = item.series
+        coreDataItem.image = item.image
+        coreDataItem.video = item.video
+        coreDataItem.rarity = Rarity.rarityToString(rarity: item.rarity ?? .common)
+        coreDataItem.parentShopItem = parent
+        
+        return coreDataItem
+    }
+    
+    private func createCoreDataShopImage(from item: ShopItemImage, parent: FavouriteShopItemEntity, in context: NSManagedObjectContext) -> ShopItemImageEntity {
+        
+        let coreDataItem = ShopItemImageEntity(context: context)
+        coreDataItem.name = item.mode
+        coreDataItem.image = item.image
+        coreDataItem.favouriteShopItem = parent
+        
+        return coreDataItem
+    }
     
     func insertToDataBase(item: ShopItem) {
         let context = CoreDataManager.shared.backgroundContext()
@@ -81,10 +88,7 @@ final class FavouritesDataBaseManager {
         
         do {
             let items = try context.fetch(fetchRequest)
-            for item in items {
-                let shopItem = ShopItem.toShopItem(from: item)
-                self.items.append(shopItem)
-            }
+            self.items = items.map { ShopItem.toShopItem(from: $0) }
         } catch {
             print("Failed to fetch items: \(error.localizedDescription)")
         }

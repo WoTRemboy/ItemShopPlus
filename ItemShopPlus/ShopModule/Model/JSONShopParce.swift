@@ -28,13 +28,13 @@ extension ShopItem {
         
         var images = [ShopItemImage]()
         for asset in assetsData {
-            let mode = asset["primaryMode"] as? String ?? String()
+            let mode = asset["productTag"] as? String ?? String()
             let image = asset["background"] as? String ?? String()
             if mode != "MAX" {
                 images.append(ShopItemImage(mode: mode, image: image))
             }
         }
-        let sortOrder = ["BattleRoyale", "Juno", "DelMar"]
+        let sortOrder = ["Product.BR", "Product.Juno", "Product.DelMar"]
         images.sort(by: {
             guard let first = sortOrder.firstIndex(of: $0.mode),
                   let second = sortOrder.firstIndex(of: $1.mode) else {

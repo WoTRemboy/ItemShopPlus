@@ -379,6 +379,23 @@ final class Texts {
         static let notAvailable = NSLocalizedString("FavouritesPageNotAvailable", comment: "Not Available")
     }
     
+    enum ItemSortOrder {
+        static let outfit = "outfit"
+        static let emote = "emote"
+        static let backpack = "backpack"
+        static let pickaxe = "pickaxe"
+        static let glider = "glider"
+        static let wrap = "wrap"
+        static let loadingscreen = "loadingscreen"
+        static let sparkSong = "sparks_song"
+        static let music = "music"
+        static let spray = "spray"
+        static let bannertoken = "bannertoken"
+        static let contrail = "contrail"
+        static let buildingProp = "building_prop"
+        static let buildingSet = "building_set"
+    }
+    
     // MARK: - Settings Module
     
     enum NotificationSettings {

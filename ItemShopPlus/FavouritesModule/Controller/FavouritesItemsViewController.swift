@@ -34,6 +34,7 @@ final class FavouritesItemsViewController: UIViewController {
         view.backgroundColor = .BackColors.backDefault
         
         items = coreData.items.sorted { $0.name < $1.name }
+        print(items)
         
         navigationBarSetup()
         collectionViewSetup()

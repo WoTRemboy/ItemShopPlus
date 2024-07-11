@@ -91,7 +91,7 @@ struct ShopItem: Equatable, Hashable {
             })
         }
         
-        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstReleaseDate, previousReleaseDate: previousReleaseDate, expiryDate: expiryDate, buyAllowed: buyAllowed, price: price, regularPrice: regularPrice, series: series, rarity: rarity, granted: grantedItems, section: section, banner: .null, video: video)
+        return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstReleaseDate, previousReleaseDate: previousReleaseDate, expiryDate: expiryDate, buyAllowed: buyAllowed, price: price, regularPrice: regularPrice, series: series, rarity: rarity, granted: grantedItems, section: section, banner: .null, video: video, isFavourite: true)
     }
 }
 
@@ -119,7 +119,7 @@ struct GrantedItem {
         let rarity = SelectingMethods.selectRarity(rarityText: item.rarity)
         let series = item.series
         let image = item.image ?? String()
-        let video = item.video ?? String()
+        let video = item.video
         
         return GrantedItem(id: id, typeID: typeID, type: type, name: name, description: description, rarity: rarity, series: series, image: image, video: video)
     }

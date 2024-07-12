@@ -30,7 +30,6 @@ final class FavouritesDataBaseManager {
     }
 
     private func createCoreDataShopItem(from item: ShopItem, in context: NSManagedObjectContext) -> FavouriteShopItemEntity {
-        
         let coreDataItem = FavouriteShopItemEntity(context: context)
         coreDataItem.id = item.id
         coreDataItem.name = item.name
@@ -80,10 +79,8 @@ final class FavouritesDataBaseManager {
     }
     
     func insertToDataBase(item: ShopItem) {
-        let context = CoreDataManager.shared.backgroundContext()
-        
-        context.perform {
-            _ = self.createCoreDataShopItem(from: item, in: context)
+        CoreDataManager.shared.persistentContainer.performBackgroundTask { context in
+            let _ = self.createCoreDataShopItem(from: item, in: context)
             
             do {
                 try context.save()
@@ -96,9 +93,7 @@ final class FavouritesDataBaseManager {
     }
     
     func removeFromDataBase(at itemID: String) {
-        let context = CoreDataManager.shared.backgroundContext()
-        
-        context.perform {
+        CoreDataManager.shared.persistentContainer.performBackgroundTask { context in
             if let existingItem = self.fetchItem(withID: itemID, in: context) {
                 context.delete(existingItem)
                 
@@ -115,7 +110,7 @@ final class FavouritesDataBaseManager {
     
     func loadFromDataBase() {
         let context = CoreDataManager.shared.mainContext
-        let fetchRequest: NSFetchRequest<FavouriteShopItemEntity> = NSFetchRequest(entityName: "FavouriteShopItemEntity")
+        let fetchRequest: NSFetchRequest<FavouriteShopItemEntity> = FavouriteShopItemEntity.fetchRequest()
         
         do {
             let items = try context.fetch(fetchRequest)

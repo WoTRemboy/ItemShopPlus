@@ -71,19 +71,20 @@ final class FavouritesItemsViewController: UIViewController {
     }
     
     private func favouriteItemToggle(at indexPath: IndexPath) {
+        let item = items[indexPath.item]
         items[indexPath.item].favouriteToggle()
-        DispatchQueue.main.async {
-            let item = self.items[indexPath.item]
-            !item.isFavourite ? self.coreDataBase.removeFromDataBase(at: item.id) : nil
-            
-            self.items.remove(at: indexPath.item)
-            UIView.animate(withDuration: 0.25, animations: {
-                self.collectionView.performBatchUpdates({
-                    self.collectionView.deleteItems(at: [indexPath])
-                }, completion: nil)
-            })
-            let totalSum = self.items.reduce(0) { $0 + $1.price }
-            self.footerUpdate(to: totalSum)
+        items.remove(at: indexPath.item)
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [indexPath])
+            }, completion: nil)
+        })
+        let totalSum = self.items.reduce(0) { $0 + $1.price }
+        self.footerUpdate(to: totalSum)
+        
+        DispatchQueue.global(qos: .utility).async {
+            self.coreDataBase.removeFromDataBase(at: item.id)
         }
     }
     

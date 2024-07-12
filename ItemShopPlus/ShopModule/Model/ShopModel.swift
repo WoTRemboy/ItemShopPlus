@@ -57,38 +57,43 @@ struct ShopItem: Equatable, Hashable {
         let section = item.section ?? String()
         let video = item.video
         
-        var grantedItems = [GrantedItem]()
-        if let extractedItems = item.grantedItems?.allObjects as? [ShopGrantedItemEntity] {
-            grantedItems = extractedItems.map { GrantedItem.toGrantedItem(from: $0) }
-            let sortOrder = [
-                Texts.ItemSortOrder.outfit, Texts.ItemSortOrder.emote,
-                Texts.ItemSortOrder.backpack, Texts.ItemSortOrder.pickaxe,
-                Texts.ItemSortOrder.glider, Texts.ItemSortOrder.wrap,
-                Texts.ItemSortOrder.loadingscreen, Texts.ItemSortOrder.music,
-                Texts.ItemSortOrder.sparkSong, Texts.ItemSortOrder.spray,
-                Texts.ItemSortOrder.bannertoken, Texts.ItemSortOrder.contrail,
-                Texts.ItemSortOrder.buildingProp, Texts.ItemSortOrder.buildingSet]
-            grantedItems.sort(by: {
-                guard let first = sortOrder.firstIndex(of: $0.typeID),
-                      let second = sortOrder.firstIndex(of: $1.typeID) else {
-                    return false
-                }
-                return first < second
-            })
-        }
+        let context = CoreDataManager.shared.mainContext
         
+        var grantedItems = [GrantedItem]()
         var images = [ShopItemImage]()
-        if let extractedImages = item.images?.allObjects as? [ShopItemImageEntity] {
-            images = extractedImages.map { ShopItemImage.toItemImage(from: $0) }
-            
-            let sortOrder = ["Product.BR", "Product.Juno", "Product.DelMar"]
-            images.sort(by: {
-                guard let first = sortOrder.firstIndex(of: $0.mode),
-                      let second = sortOrder.firstIndex(of: $1.mode) else {
-                    return false
-                }
-                return first < second
-            })
+
+        context.performAndWait {
+            if let extractedItems = item.grantedItems?.allObjects as? [ShopGrantedItemEntity] {
+                grantedItems = extractedItems.map { GrantedItem.toGrantedItem(from: $0) }
+                let sortOrder = [
+                    Texts.ItemSortOrder.outfit, Texts.ItemSortOrder.emote,
+                    Texts.ItemSortOrder.backpack, Texts.ItemSortOrder.pickaxe,
+                    Texts.ItemSortOrder.glider, Texts.ItemSortOrder.wrap,
+                    Texts.ItemSortOrder.loadingscreen, Texts.ItemSortOrder.music,
+                    Texts.ItemSortOrder.sparkSong, Texts.ItemSortOrder.spray,
+                    Texts.ItemSortOrder.bannertoken, Texts.ItemSortOrder.contrail,
+                    Texts.ItemSortOrder.buildingProp, Texts.ItemSortOrder.buildingSet]
+                grantedItems.sort(by: {
+                    guard let first = sortOrder.firstIndex(of: $0.typeID),
+                          let second = sortOrder.firstIndex(of: $1.typeID) else {
+                        return false
+                    }
+                    return first < second
+                })
+            }
+        
+            if let extractedImages = item.images?.allObjects as? [ShopItemImageEntity] {
+                images = extractedImages.map { ShopItemImage.toItemImage(from: $0) }
+                
+                let sortOrder = ["Product.BR", "Product.Juno", "Product.DelMar"]
+                images.sort(by: {
+                    guard let first = sortOrder.firstIndex(of: $0.mode),
+                          let second = sortOrder.firstIndex(of: $1.mode) else {
+                        return false
+                    }
+                    return first < second
+                })
+            }
         }
         
         return ShopItem(id: id, name: name, description: description, type: type, images: images, firstReleaseDate: firstReleaseDate, previousReleaseDate: previousReleaseDate, expiryDate: expiryDate, buyAllowed: buyAllowed, price: price, regularPrice: regularPrice, series: series, rarity: rarity, granted: grantedItems, section: section, banner: .null, video: video, isFavourite: true)

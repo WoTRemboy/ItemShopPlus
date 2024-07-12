@@ -26,6 +26,7 @@ final class FavouritesItemsViewController: UIViewController {
 //        collectionView.isHidden = true
         collectionView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: ShopCollectionViewCell.identifier)
         collectionView.register(CollectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderReusableView.identifier)
+        collectionView.register(FavouritesFooterReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FavouritesFooterReusableView.identifier)
         return collectionView
     }()
 
@@ -81,6 +82,17 @@ final class FavouritesItemsViewController: UIViewController {
                     self.collectionView.deleteItems(at: [indexPath])
                 }, completion: nil)
             })
+            let totalSum = self.items.reduce(0) { $0 + $1.price }
+            self.footerUpdate(to: totalSum)
+        }
+    }
+    
+    private func footerUpdate(to price: Int) {
+        let visibleSections = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter)
+        for indexPath in visibleSections {
+            if let footerView = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionFooter, at: indexPath) as? FavouritesFooterReusableView {
+                footerView.changePrice(to: price)
+            }
         }
     }
     
@@ -177,12 +189,30 @@ extension FavouritesItemsViewController: UICollectionViewDelegateFlowLayout {
         return size
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        let height: CGFloat = 100
+        let size = CGSize(width: view.frame.width, height: height)
+        return size
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
-            fatalError("Failed to dequeue ShopCollectionReusableView in FavouritesItemsViewController")
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
+                fatalError("Failed to dequeue ShopCollectionReusableView in FavouritesItemsViewController")
+            }
+            headerView.configurate(with: "Available")
+            return headerView
+            
+        } else if kind == UICollectionView.elementKindSectionFooter {
+            guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FavouritesFooterReusableView.identifier, for: indexPath) as? FavouritesFooterReusableView else {
+                fatalError("Failed to dequeue CrewFooterReusableView in CrewMainViewController")
+            }
+            let totalSum = items.reduce(0) { $0 + $1.price }
+            footerView.configurate(price: totalSum)
+            
+            return footerView
+        } else {
+            fatalError("Unexpected kind value")
         }
-        headerView.configurate(with: "Available")
-        return headerView
     }
 }

@@ -375,6 +375,7 @@ final class Texts {
     
     enum FavouritesPage {
         static let title = NSLocalizedString("FavouritesPageTitle", comment: "Favourites")
+        static let footerIdentifier = "FavouritesFooterReusableView"
         static let available = NSLocalizedString("FavouritesPageAvailable", comment: "Available")
         static let notAvailable = NSLocalizedString("FavouritesPageNotAvailable", comment: "Not Available")
     }

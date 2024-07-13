@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+@objc(FavouriteShopItemEntity)
+public class FavouriteShopItemEntity: NSManagedObject {}
 
 extension FavouriteShopItemEntity {
 

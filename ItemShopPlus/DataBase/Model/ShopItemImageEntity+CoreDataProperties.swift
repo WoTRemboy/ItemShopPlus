@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+@objc(ShopItemImageEntity)
+public class ShopItemImageEntity: NSManagedObject {}
 
 extension ShopItemImageEntity {
 

@@ -45,8 +45,14 @@ final class FavouritesDataBaseManager {
         coreDataItem.section = item.section
         coreDataItem.video = item.video
         coreDataItem.rarity = Rarity.rarityToString(rarity: item.rarity)
-        coreDataItem.grantedItems = NSSet(array: item.granted.map { createCoreDataGrantedItem(from: $0 ?? GrantedItem.emptyItem(), parent: coreDataItem, in: context) })
-        coreDataItem.images = NSSet(array: item.images.map { createCoreDataShopImage(from: $0, parent: coreDataItem, in: context) })
+        
+        if !item.granted.isEmpty {
+            coreDataItem.addToGrantedItems(NSSet(array: item.granted.map { createCoreDataGrantedItem(from: $0 ?? GrantedItem.emptyItem(), parent: coreDataItem, in: context) }))
+        }
+
+        if !item.images.isEmpty {
+            coreDataItem.addToImages(NSSet(array: item.images.map { createCoreDataShopImage(from: $0, parent: coreDataItem, in: context) }))
+        }
         
         return coreDataItem
     }

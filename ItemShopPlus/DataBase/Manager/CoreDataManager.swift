@@ -24,10 +24,6 @@ final class CoreDataManager {
         return persistentContainer.viewContext
     }
     
-    func backgroundContext() -> NSManagedObjectContext {
-        return persistentContainer.newBackgroundContext()
-    }
-    
     func saveContext() {
         let context = mainContext
         if context.hasChanges {

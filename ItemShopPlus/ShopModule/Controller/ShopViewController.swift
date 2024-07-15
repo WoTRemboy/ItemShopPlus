@@ -174,6 +174,7 @@ final class ShopViewController: UIViewController {
                     self?.noInternetView.isHidden = true
                     self?.searchController.searchBar.isHidden = false
                     
+                    self?.coreDataBase.loadFromDataBase()
                     self?.checkFavouritesItems(items: newItems, favourites: self?.coreDataBase.items ?? [])
                     
                     self?.infoButton.isEnabled = true
@@ -262,18 +263,26 @@ final class ShopViewController: UIViewController {
     
     private func favouriteItemToggle(at indexPath: IndexPath) {
         var item = ShopItem.emptyShopItem
-        let sectionKey = self.sortedKeys[indexPath.section]
-        if let itemsInSection = self.sectionedItems[sectionKey] {
-            if self.filteredItems.count != 0 && self.filteredItems.count != self.items.count {
-                item = self.filteredItems[indexPath.item]
+        var sectionKey = sortedKeys[indexPath.section]
+        if let itemsInSection = sectionedItems[sectionKey] {
+            if filteredItems.count != 0 && filteredItems.count != self.items.count {
+                item = filteredItems[indexPath.item]
+                let index = items.firstIndex(where: { $0.id == item.id }) ?? 0
+                items[index].favouriteToggle()
+                filteredItems[indexPath.item].favouriteToggle()
+                
+                let sectioned = sectionedItems[item.section]
+                let sectionedIndex = sectioned?.firstIndex(where: { $0.id == item.id }) ?? 0
+                sectionedItems[item.section]?[sectionedIndex].favouriteToggle()
             } else {
                 item = itemsInSection[indexPath.item]
+                let index = items.firstIndex(where: { $0.id == item.id }) ?? 0
+                items[index].favouriteToggle()
+                sectionedItems[sectionKey]?[indexPath.item].favouriteToggle()
             }
         }
-        let index = items.firstIndex(where: { $0.id == item.id }) ?? 0
-        items[index].favouriteToggle()
+        
         !item.isFavourite ? self.coreDataBase.insertToDataBase(item: item) : self.coreDataBase.removeFromDataBase(at: item.id)
-        sortingSections(items: items)
     }
     
     private func clearItems() {

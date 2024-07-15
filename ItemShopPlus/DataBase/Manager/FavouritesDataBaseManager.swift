@@ -91,7 +91,6 @@ final class FavouritesDataBaseManager {
             do {
                 try context.save()
                 print("Inserted into database CoreData")
-                self.loadFromDataBase()
             } catch {
                 print("Inserting into database error: \(error.localizedDescription)")
             }
@@ -106,7 +105,6 @@ final class FavouritesDataBaseManager {
                 do {
                     try context.save()
                     print("Deleted from database CoreData")
-                    self.loadFromDataBase()
                 } catch {
                     print("Deleting from database error: \(error)")
                 }

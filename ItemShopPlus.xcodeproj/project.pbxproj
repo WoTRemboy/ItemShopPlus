@@ -15,6 +15,7 @@
 		63178F6F2BE6710D00090F81 /* MobileAdsBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63178F6E2BE6710D00090F81 /* MobileAdsBundle.bundle */; };
 		63178F722BE6758800090F81 /* InlineBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63178F712BE6758800090F81 /* InlineBannerViewController.swift */; };
 		631841DB2BE3F852008C3B4B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631841DA2BE3F852008C3B4B /* Localizable.xcstrings */; };
+		631A8E782C466D72008220AB /* ShopFavouritesNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631A8E772C466D72008220AB /* ShopFavouritesNotificationView.swift */; };
 		631ABE682C0B9D7800EC1902 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631ABE672C0B9D7800EC1902 /* MainPageViewController.swift */; };
 		631ABE6A2C0B9F5500EC1902 /* MainPageButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631ABE692C0B9F5500EC1902 /* MainPageButtonView.swift */; };
 		631ABE6C2C0C8F3A00EC1902 /* MainPageMainButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631ABE6B2C0C8F3A00EC1902 /* MainPageMainButtonsView.swift */; };
@@ -162,6 +163,7 @@
 		63178F6E2BE6710D00090F81 /* MobileAdsBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobileAdsBundle.bundle; sourceTree = "<group>"; };
 		63178F712BE6758800090F81 /* InlineBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineBannerViewController.swift; sourceTree = "<group>"; };
 		631841DA2BE3F852008C3B4B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		631A8E772C466D72008220AB /* ShopFavouritesNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopFavouritesNotificationView.swift; sourceTree = "<group>"; };
 		631ABE672C0B9D7800EC1902 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		631ABE692C0B9F5500EC1902 /* MainPageButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageButtonView.swift; sourceTree = "<group>"; };
 		631ABE6B2C0C8F3A00EC1902 /* MainPageMainButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageMainButtonsView.swift; sourceTree = "<group>"; };
@@ -976,6 +978,7 @@
 			children = (
 				637B268A2B4B3A5D0075B871 /* ShopCollectionViewCell.swift */,
 				63290CD72B5D869C008F45F8 /* ShopTimerInfoView.swift */,
+				631A8E772C466D72008220AB /* ShopFavouritesNotificationView.swift */,
 			);
 			path = ShopMain;
 			sourceTree = "<group>";
@@ -1118,6 +1121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				631A8E782C466D72008220AB /* ShopFavouritesNotificationView.swift in Sources */,
 				63ECC12B2B9106FE006E0841 /* CommonModels.swift in Sources */,
 				6399F0102BDEE6CA008B19E8 /* SettingsAboutCollectionViewCell.swift in Sources */,
 				63A654CF2C3833B20000B060 /* FavouritesDataBaseManager.swift in Sources */,

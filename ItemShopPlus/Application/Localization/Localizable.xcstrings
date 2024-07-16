@@ -4212,7 +4212,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Favorites"
+            "value" : "Favoris"
           }
         },
         "it" : {
@@ -4224,7 +4224,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ulubione"
+            "value" : "Ulubionych"
           }
         },
         "ru" : {
@@ -6226,7 +6226,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Favorites"
+            "value" : "Favoris"
           }
         },
         "it" : {
@@ -6238,7 +6238,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ulubione"
+            "value" : "Ulubionych"
           }
         },
         "ru" : {
@@ -10332,6 +10332,59 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paket adı..."
+          }
+        }
+      }
+    },
+    "ShopPageFavouritesNotification" : {
+      "comment" : "Added to Favorites.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu Favoriten hinzugefügt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Added to Favorites."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadido a Favoritos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouté aux Favoris."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiunto ai Preferiti."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodano do Ulubionych."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавлено в Избранное."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorilere eklendi."
           }
         }
       }

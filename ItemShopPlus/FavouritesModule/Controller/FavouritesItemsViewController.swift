@@ -90,7 +90,7 @@ final class FavouritesItemsViewController: UIViewController {
         })
         
         if self.items.isEmpty {
-            UIView.animate(withDuration: 0.25) {
+            UIView.animate(withDuration: 0.2) {
                 self.collectionView.alpha = 0
                 self.noFavouritesImageView.alpha = 1
             }

@@ -39,6 +39,7 @@ final class MainPageViewController: UIViewController {
     private lazy var adView: AdView = {
         let adSize = BannerAdSize.inlineSize(withWidth: 320, maxHeight: 50)
         let adView = AdView(adUnitID: "R-M-8193757-1", adSize: adSize)
+        adView.layer.cornerRadius = 10
         adView.delegate = self
         adView.translatesAutoresizingMaskIntoConstraints = false
         return adView

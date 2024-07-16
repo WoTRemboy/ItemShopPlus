@@ -14,6 +14,7 @@ final class ShopViewController: UIViewController {
     
     private var previousSearchedCount = 0
     private var selectedSectionTitle = Texts.ShopPage.allMenu
+    private var likeNotShown = true
     
     private var items = [ShopItem]()
     private var filteredItems = [ShopItem]()
@@ -26,6 +27,7 @@ final class ShopViewController: UIViewController {
     // MARK: - UI Elements and Views
     
     private let noInternetView = NoInternetView()
+    private let favouriteNotification = ShopFavouritesNotificationView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let refreshControl = UIRefreshControl()
     
@@ -92,6 +94,7 @@ final class ShopViewController: UIViewController {
         collectionViewSetup()
         searchControllerSetup()
         setupUI()
+        setupLikeNotificationView()
     }
     
     // MARK: - Actions
@@ -263,7 +266,7 @@ final class ShopViewController: UIViewController {
     
     private func favouriteItemToggle(at indexPath: IndexPath) {
         var item = ShopItem.emptyShopItem
-        var sectionKey = sortedKeys[indexPath.section]
+        let sectionKey = sortedKeys[indexPath.section]
         if let itemsInSection = sectionedItems[sectionKey] {
             if filteredItems.count != 0 && filteredItems.count != self.items.count {
                 item = filteredItems[indexPath.item]
@@ -282,7 +285,12 @@ final class ShopViewController: UIViewController {
             }
         }
         
-        !item.isFavourite ? self.coreDataBase.insertToDataBase(item: item) : self.coreDataBase.removeFromDataBase(at: item.id)
+        if item.isFavourite {
+            coreDataBase.removeFromDataBase(at: item.id)
+        } else {
+            coreDataBase.insertToDataBase(item: item)
+            showLikeNotification()
+        }
     }
     
     private func clearItems() {
@@ -396,6 +404,35 @@ final class ShopViewController: UIViewController {
             noInternetView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             noInternetView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
+    }
+    
+    private func setupLikeNotificationView() {
+        view.addSubview(favouriteNotification)
+        favouriteNotification.translatesAutoresizingMaskIntoConstraints = false
+        favouriteNotification.layer.cornerRadius = 10
+        
+        NSLayoutConstraint.activate([
+            favouriteNotification.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            favouriteNotification.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40),
+            favouriteNotification.heightAnchor.constraint(equalToConstant: 60),
+            favouriteNotification.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 100)
+        ])
+        
+        favouriteNotification.transform = CGAffineTransform(translationX: 0, y: 0)
+    }
+    
+    func showLikeNotification() {
+        guard likeNotShown else { return }
+        let bottomOffset: CGFloat = view.safeAreaInsets.bottom > 0 ? 100 : 116
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut], animations: {
+            self.favouriteNotification.transform = CGAffineTransform(translationX: 0, y: -bottomOffset)
+        }) { _ in
+            UIView.animate(withDuration: 0.2, delay: 1.5, options: [.curveEaseOut], animations: {
+                self.favouriteNotification.alpha = 0
+            }, completion: nil)
+        }
+        likeNotShown = false
     }
 }
 

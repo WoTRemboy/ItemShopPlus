@@ -11,6 +11,7 @@ extension UIColor {
     enum BackColors {
         static let backElevated = UIColor(named: "BackElevated")
         static let backiOSPrimary = UIColor(named: "BackiOSPrimary")
+        static let backNotification = UIColor(named: "BackNotification")
         static let backPopup = UIColor(named: "BackPopup")
         static let backPrimary = UIColor(named: "BackPrimary")
         static let backPreview = UIColor(named: "BackPreview")
@@ -23,6 +24,7 @@ extension UIColor {
     
     enum LabelColors {
         static let labelDisable = UIColor(named: "LabelDisable")
+        static let labelNotification = UIColor(named: "LabelNotification")
         static let labelPreview = UIColor(named: "LabelPreview")
         static let labelPrimary = UIColor(named: "LabelPrimary")
         static let labelSecondary = UIColor(named: "LabelSecondary")

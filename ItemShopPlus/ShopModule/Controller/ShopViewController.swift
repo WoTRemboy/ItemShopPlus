@@ -14,6 +14,7 @@ final class ShopViewController: UIViewController {
     
     private var previousSearchedCount = 0
     private var selectedSectionTitle = Texts.ShopPage.allMenu
+    private var likeNotShown = true
     
     private var items = [ShopItem]()
     private var filteredItems = [ShopItem]()
@@ -21,10 +22,12 @@ final class ShopViewController: UIViewController {
     private var sortedKeys = [String]()
     
     private let networkService = DefaultNetworkService()
+    private let coreDataBase = FavouritesDataBaseManager.shared
     
     // MARK: - UI Elements and Views
     
     private let noInternetView = NoInternetView()
+    private let favouriteNotification = ShopFavouritesNotificationView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let refreshControl = UIRefreshControl()
     
@@ -91,6 +94,7 @@ final class ShopViewController: UIViewController {
         collectionViewSetup()
         searchControllerSetup()
         setupUI()
+        setupLikeNotificationView()
     }
     
     // MARK: - Actions
@@ -134,6 +138,14 @@ final class ShopViewController: UIViewController {
         present(navVC, animated: true)
     }
     
+    @objc private func favouriteButtonPress(_ sender: UIButton) {
+        guard let cell = sender.superview as? ShopCollectionViewCell,
+              let indexPath = collectionView.indexPath(for: cell)
+        else { return }
+        
+        favouriteItemToggle(at: indexPath)
+    }
+    
     // MARK: - Networking
     
     private func getShop(isRefreshControl: Bool) {
@@ -164,9 +176,9 @@ final class ShopViewController: UIViewController {
                     self?.clearItems()
                     self?.noInternetView.isHidden = true
                     self?.searchController.searchBar.isHidden = false
-
-                    self?.items = newItems
-                    self?.sortingSections(items: newItems)
+                    
+                    self?.coreDataBase.loadFromDataBase()
+                    self?.checkFavouritesItems(items: newItems, favourites: self?.coreDataBase.items ?? [])
                     
                     self?.infoButton.isEnabled = true
                     self?.filterButton.isEnabled = true
@@ -202,6 +214,7 @@ final class ShopViewController: UIViewController {
     // MARK: - Items Management Methods
     
     private func sortingSections(items: [ShopItem]) {
+        sectionedItems.removeAll()
         for item in items {
             if var sectionItems = self.sectionedItems[item.section] {
                 sectionItems.append(item)
@@ -236,6 +249,48 @@ final class ShopViewController: UIViewController {
         UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
             self.collectionView.reloadData()
         }, completion: nil)
+    }
+    
+    private func checkFavouritesItems(items: [ShopItem], favourites: [ShopItem]) {
+        self.items = items
+        let favouriteSet = Set(favourites)
+        for i in 0..<items.count {
+            if favouriteSet.contains(items[i]) {
+                self.items[i].isFavourite = true
+            } else {
+                self.items[i].isFavourite = false
+            }
+        }
+        sortingSections(items: self.items)
+    }
+    
+    private func favouriteItemToggle(at indexPath: IndexPath) {
+        var item = ShopItem.emptyShopItem
+        let sectionKey = sortedKeys[indexPath.section]
+        if let itemsInSection = sectionedItems[sectionKey] {
+            if filteredItems.count != 0 && filteredItems.count != self.items.count {
+                item = filteredItems[indexPath.item]
+                let index = items.firstIndex(where: { $0.id == item.id }) ?? 0
+                items[index].favouriteToggle()
+                filteredItems[indexPath.item].favouriteToggle()
+                
+                let sectioned = sectionedItems[item.section]
+                let sectionedIndex = sectioned?.firstIndex(where: { $0.id == item.id }) ?? 0
+                sectionedItems[item.section]?[sectionedIndex].favouriteToggle()
+            } else {
+                item = itemsInSection[indexPath.item]
+                let index = items.firstIndex(where: { $0.id == item.id }) ?? 0
+                items[index].favouriteToggle()
+                sectionedItems[sectionKey]?[indexPath.item].favouriteToggle()
+            }
+        }
+        
+        if item.isFavourite {
+            coreDataBase.removeFromDataBase(at: item.id)
+        } else {
+            coreDataBase.insertToDataBase(item: item)
+            showLikeNotification()
+        }
     }
     
     private func clearItems() {
@@ -350,6 +405,35 @@ final class ShopViewController: UIViewController {
             noInternetView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
     }
+    
+    private func setupLikeNotificationView() {
+        view.addSubview(favouriteNotification)
+        favouriteNotification.translatesAutoresizingMaskIntoConstraints = false
+        favouriteNotification.layer.cornerRadius = 10
+        
+        NSLayoutConstraint.activate([
+            favouriteNotification.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            favouriteNotification.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 40),
+            favouriteNotification.heightAnchor.constraint(equalToConstant: 60),
+            favouriteNotification.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 100)
+        ])
+        
+        favouriteNotification.transform = CGAffineTransform(translationX: 0, y: 0)
+    }
+    
+    func showLikeNotification() {
+        guard likeNotShown else { return }
+        let bottomOffset: CGFloat = view.safeAreaInsets.bottom > 0 ? 100 : 116
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut], animations: {
+            self.favouriteNotification.transform = CGAffineTransform(translationX: 0, y: -bottomOffset)
+        }) { _ in
+            UIView.animate(withDuration: 0.2, delay: 1.5, options: [.curveEaseOut], animations: {
+                self.favouriteNotification.alpha = 0
+            }, completion: nil)
+        }
+        likeNotShown = false
+    }
 }
 
 // MARK: - UISearchResultsUpdating & UISearchControllerDelegate
@@ -406,20 +490,22 @@ extension ShopViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if inSearchMode {
             let item = filteredItems[indexPath.item]
-            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
+            cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, favourite: item.isFavourite, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
         } else {
             let sectionKey = sortedKeys[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
-                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
+                cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, favourite: item.isFavourite, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
             }
         }
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         
+        cell.favouriteButton.addTarget(self, action: #selector(favouriteButtonPress), for: .touchUpInside)
+        
         return cell
     }
-
+    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         guard searchController.isActive else { return }
         searchController.searchBar.resignFirstResponder()

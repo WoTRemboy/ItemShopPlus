@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Настройки_без градиента.svg",
+      "filename" : "SettingsIcon_Light.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Настройки_Т. Без градиента.svg",
+      "filename" : "SettingIcon_Dark.svg",
       "idiom" : "universal"
     }
   ],

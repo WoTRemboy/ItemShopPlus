@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Сундук_без градиента (2).svg",
+      "filename" : "Сердечко_без_градиента.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Сундук_Т. Без градиента (1).svg",
+      "filename" : "Сердечко_т_без_градиента.svg",
       "idiom" : "universal"
     }
   ],

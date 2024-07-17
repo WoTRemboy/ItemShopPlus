@@ -40,6 +40,12 @@ final class CollectionTotalPriceView: UIView {
         currency == .star ? priceImageView.image = .BattlePass.star : nil
     }
     
+    public func changePrice(price: Int, animated: Bool) {
+        UIView.transition(with: priceLabel, duration: animated ? 0.3 : 0, options: .transitionFlipFromBottom, animations: {
+            self.priceLabel.text = String(price)
+        }, completion: nil)
+    }
+    
     private func setupUI() {
         addSubview(priceImageView)
         addSubview(priceLabel)

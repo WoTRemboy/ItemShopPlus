@@ -39,6 +39,7 @@ final class MainPageViewController: UIViewController {
     private lazy var adView: AdView = {
         let adSize = BannerAdSize.inlineSize(withWidth: 320, maxHeight: 50)
         let adView = AdView(adUnitID: "R-M-8193757-1", adSize: adSize)
+        adView.layer.cornerRadius = 10
         adView.delegate = self
         adView.translatesAutoresizingMaskIntoConstraints = false
         return adView
@@ -102,6 +103,12 @@ final class MainPageViewController: UIViewController {
     @objc func mapTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(MapPreviewViewController(image: "https://media.fortniteapi.io/images/map.png?showPOI=true"), animated: true)
+        }
+    }
+    
+    @objc func favouritesTransfer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.pushViewController(FavouritesItemsViewController(), animated: true)
         }
     }
     
@@ -223,7 +230,7 @@ final class MainPageViewController: UIViewController {
             shopPassButtonsView.topAnchor.constraint(equalTo: crewButton.bottomAnchor, constant: 16),
             shopPassButtonsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             shopPassButtonsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            shopPassButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 20 * 3) / 2)
+            shopPassButtonsView.heightAnchor.constraint(equalToConstant: 57 + (UIScreen.main.bounds.width - 16 * 4) / 3 + 27)
         ])
     }
     

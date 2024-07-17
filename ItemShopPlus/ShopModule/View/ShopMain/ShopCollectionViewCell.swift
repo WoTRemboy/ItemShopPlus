@@ -89,12 +89,40 @@ final class ShopCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    internal let favouriteButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(nil, action: #selector(favouriteButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    // MARK: - Button Press Animation
+    
+    @objc private func favouriteButtonPressed(sender: UIButton) {
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+            feedbackGenerator.impactOccurred()
+        
+        let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        bounceAnimation.values = [1.0, 1.4, 0.9, 1.0]
+        bounceAnimation.keyTimes = [0.0, 0.3, 0.7, 1.0]
+        bounceAnimation.duration = 0.3
+
+        sender.layer.add(bounceAnimation, forKey: "bounce")
+
+        UIView.transition(with: sender, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            if sender.currentImage == .ShopMain.favouriteFalse {
+                sender.setImage(.ShopMain.favouriteTrue, for: .normal)
+            } else {
+                sender.setImage(.ShopMain.favouriteFalse, for: .normal)
+            }
+        }, completion: nil)
+    }
+    
     // MARK: - Public Configure Method
         
-    public func configurate(with images: [ShopItemImage], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, _ video: Bool, grantedCount: Int, _ width: CGFloat) {
+    public func configurate(with images: [ShopItemImage], _ name: String, _ price: Int, _ oldPrice: Int, _ banner: Banner, _ video: Bool, favourite: Bool, grantedCount: Int, _ width: CGFloat) {
         self.images = images
         setupImageCarousel(images: images, banner: banner, video: video, grantedCount: grantedCount, cellWidth: width)
-        contentSetup(name: name, price: price, oldPrice: oldPrice, count: grantedCount)
+        contentSetup(name: name, price: price, oldPrice: oldPrice, count: grantedCount, favourite: favourite)
         setupUI()
         
         if banner == .sale {
@@ -113,12 +141,13 @@ final class ShopCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Setups
     
-    private func contentSetup(name: String, price: Int, oldPrice: Int, count: Int) {
+    private func contentSetup(name: String, price: Int, oldPrice: Int, count: Int, favourite: Bool) {
         itemNameLabel.text = name
         itemPriceLabel.text = String(price)
         itemOldPriceLabel.text = String(oldPrice)
         grantedItemsImageView.image = UIImage(systemName: "\(count).circle.fill", withConfiguration: UIImage.SymbolConfiguration(
             paletteColors: [.white, .IconColors.backgroundPages ?? .orange]))
+        favouriteButton.setImage(favourite ? .ShopMain.favouriteTrue : .ShopMain.favouriteFalse, for: .normal)
     }
     
     private func setupImageCarousel(images: [ShopItemImage], banner: Banner, video: Bool, grantedCount: Int, cellWidth: CGFloat) {
@@ -223,11 +252,13 @@ final class ShopCollectionViewCell: UICollectionViewCell {
         addSubview(itemNameLabel)
         addSubview(itemPriceImageView)
         addSubview(itemPriceLabel)
+        addSubview(favouriteButton)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         itemNameLabel.translatesAutoresizingMaskIntoConstraints = false
         itemPriceImageView.translatesAutoresizingMaskIntoConstraints = false
         itemPriceLabel.translatesAutoresizingMaskIntoConstraints = false
+        favouriteButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -246,6 +277,11 @@ final class ShopCollectionViewCell: UICollectionViewCell {
             
             itemPriceLabel.centerYAnchor.constraint(equalTo: itemPriceImageView.centerYAnchor),
             itemPriceLabel.leadingAnchor.constraint(equalTo: itemPriceImageView.trailingAnchor, constant: 5),
+            
+            favouriteButton.centerYAnchor.constraint(equalTo: itemPriceImageView.centerYAnchor),
+            favouriteButton.centerXAnchor.constraint(equalTo: trailingAnchor, constant: -17/2),
+            favouriteButton.heightAnchor.constraint(equalTo: itemPriceImageView.heightAnchor, multiplier: 2),
+            favouriteButton.widthAnchor.constraint(equalTo: favouriteButton.heightAnchor)
         ])
     }
     
@@ -267,6 +303,7 @@ final class ShopCollectionViewCell: UICollectionViewCell {
         grantedItemsImageView.removeFromSuperview()
         itemPagesImageView.removeFromSuperview()
         videoImageView.removeFromSuperview()
+        favouriteButton.removeFromSuperview()
     }
     
     // MARK: - Networking?

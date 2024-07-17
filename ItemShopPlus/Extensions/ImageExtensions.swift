@@ -48,6 +48,7 @@ extension UIImage {
         static let crew = UIImage(named: "CrewIcon")
         static let map = UIImage(named: "MapIcon")
         static let stats = UIImage(named: "StatsIcon")
+        static let favourites = UIImage(named: "FavouritesIcon")
         static let settings = UIImage(named: "SettingsIcon")
         static let augments = createImage(name: "square.3.layers.3d.bottom.filled")
         static let question = createImage(name: "questionmark.square.dashed")
@@ -74,6 +75,8 @@ extension UIImage {
         static let pages = createInfoSymbol(name: "decrease.quotelevel", first: .backgroundPages, second: .white)
         static let grantedInfo = createInfoSymbol(name: "5.circle.fill", first: .white, second: .backgroundPages)
         static let pagesInfo = createInfoSymbol(name: "decrease.quotelevel", first: .backgroundPages, second: .systemBlue)
+        static let favouriteFalse = createInfoSymbol(name: "heart", first: .backgroundPages, second: .white)
+        static let favouriteTrue = createInfoSymbol(name: "heart.fill", first: .backgroundPages, second: .systemRed)
     }
     
     enum ShopGranted {

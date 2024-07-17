@@ -27,18 +27,28 @@ extension ShopItem {
         }
         
         var images = [ShopItemImage]()
-        if assetsData.count > 1 {
+        for asset in assetsData {
+            let mode = asset["productTag"] as? String ?? String()
+            let image = asset["background"] as? String ?? String()
+            if mode != "MAX" {
+                images.append(ShopItemImage(mode: mode, image: image))
+            }
+        }
+        let sortOrder = ["Product.BR", "Product.Juno", "Product.DelMar"]
+        images.sort(by: {
+            guard let first = sortOrder.firstIndex(of: $0.mode),
+                  let second = sortOrder.firstIndex(of: $1.mode) else {
+                return false
+            }
+            return first < second
+        })
+        
+        if images.isEmpty {
             for asset in assetsData {
                 let mode = asset["primaryMode"] as? String ?? String()
                 let image = asset["background"] as? String ?? String()
-                if mode == "MAX" {
-                    images.append(ShopItemImage(mode: mode, image: image))
-                }
+                images.append(ShopItemImage(mode: mode, image: image))
             }
-        } else {
-            let asset = assetsData.first ?? [:]
-            let image = asset["background"] as? String ?? String()
-            images.append(ShopItemImage(mode: "MAX", image: image))
         }
         
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
@@ -58,14 +68,15 @@ extension ShopItem {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateFormatterTime = DateFormatter()
-        dateFormatterTime.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatterTime.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatterTime.locale = Locale(identifier: "en_US_POSIX")
         
         let firstDateString = data["firstReleaseDate"] as? String ?? String()
-        let previousDateString = data["previousReleaseDate"] as? String ?? String()
+        let previousDateString = offerData["in"] as? String ?? String()
         let expiryDateString = offerData["out"] as? String ?? String()
         
         if let date1 = dateFormatter.date(from: firstDateString),
-           let date2 = dateFormatter.date(from: previousDateString),
+           let date2 = dateFormatterTime.date(from: previousDateString),
            let date3 = dateFormatterTime.date(from: expiryDateString) {
             firstDate = date1
             previousDate = date2

@@ -119,15 +119,11 @@ final class MPButtonView: UIView {
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
             buttonImageView.image = .MainButtons.map
             selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.mapTransfer), for: .touchUpInside)
-        case .augments:
-            buttonLabel.text = Texts.ButtonLabels.MainButtons.augments
-            buttonImageView.image = .MainButtons.augments
-            selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.doNothing), for: .touchUpInside)
         case .settings:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.settings
             buttonImageView.image = .MainButtons.settings
             selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.settingTransfer), for: .touchUpInside)
-        case .null:
+        case .null, .augments, .favourites:
             buttonLabel.text = "??????"
             buttonImageView.image = .MainButtons.question
             selectButton.addTarget(nil, action: #selector(LegacyMainPageViewController.doNothing), for: .touchUpInside)

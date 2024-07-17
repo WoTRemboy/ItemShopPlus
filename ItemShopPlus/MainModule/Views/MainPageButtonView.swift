@@ -82,6 +82,10 @@ class MainPageButtonView: UIView {
     // MARK: - UI Setup
     
     private func setupLayout() {
+        layer.shadowColor = UIColor.Shadows.primary
+        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 20
+        
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -118,12 +122,17 @@ class MainPageButtonView: UIView {
             selectButton.addTarget(nil, action: #selector(MainPageViewController.lootDetailsTransfer), for: .touchUpInside)
         case .stats:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.stats
+            buttonLabel.font = .body()
             buttonImageView.image = .MainButtons.stats
             selectButton.addTarget(nil, action: #selector(MainPageViewController.statsTransfer), for: .touchUpInside)
         case .map:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
             buttonImageView.image = .MainButtons.map
             selectButton.addTarget(nil, action: #selector(MainPageViewController.mapTransfer), for: .touchUpInside)
+        case .favourites:
+            buttonLabel.text = Texts.ButtonLabels.MainButtons.favourites
+            buttonImageView.image = .MainButtons.favourites
+            selectButton.addTarget(nil, action: #selector(MainPageViewController.favouritesTransfer), for: .touchUpInside)
         case .settings:
             buttonLabel.text = Texts.ButtonLabels.MainButtons.settings
             buttonImageView.image = .MainButtons.settings

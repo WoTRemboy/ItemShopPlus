@@ -127,6 +127,7 @@ final class Texts {
             static let lootDetails = NSLocalizedString("MainButtonsArmory", comment: "Armory")
             static let crew = NSLocalizedString("MainButtonsCrew", comment: "Crew")
             static let map = NSLocalizedString("MainButtonsMap", comment: "Map")
+            static let favourites = NSLocalizedString("MainButtonsFavourites", comment: "Favourites")
             static let stats = NSLocalizedString("MainButtonsStats", comment: "Stats")
             static let augments = NSLocalizedString("MainButtonsAugments", comment: "Augments")
             static let settings = NSLocalizedString("MainButtonsSettings", comment: "Settings")
@@ -177,6 +178,7 @@ final class Texts {
         static let jamTracks = NSLocalizedString("ShopPageJamTracks", comment: "Jam Tracks")
         static let backpack = NSLocalizedString("ShopPageShopBackpack", comment: "Backpack")
         static let bundle = NSLocalizedString("ShopPageShopItemBundle", comment: "Item Bundle")
+        static let favourites = NSLocalizedString("ShopPageFavouritesNotification", comment: "Added to Favorites.")
     }
     
     enum ShopMainCell {
@@ -368,6 +370,32 @@ final class Texts {
         static let rounds = NSLocalizedString("LootDetailsStatsCellRounds", comment: "Rounds:")
         static let seconds = NSLocalizedString("LootDetailsStatsCellSeconds", comment: "Seconds:")
         static let multiplier = NSLocalizedString("LootDetailsStatsCellMultiplier", comment: "Multiplier:")
+    }
+    
+    // MARK: - Favourites Module
+    
+    enum FavouritesPage {
+        static let title = NSLocalizedString("FavouritesPageTitle", comment: "Favourites")
+        static let footerIdentifier = "FavouritesFooterReusableView"
+        static let available = NSLocalizedString("FavouritesPageAvailable", comment: "Available")
+        static let notAvailable = NSLocalizedString("FavouritesPageNotAvailable", comment: "Not Available")
+    }
+    
+    enum ItemSortOrder {
+        static let outfit = "outfit"
+        static let emote = "emote"
+        static let backpack = "backpack"
+        static let pickaxe = "pickaxe"
+        static let glider = "glider"
+        static let wrap = "wrap"
+        static let loadingscreen = "loadingscreen"
+        static let sparkSong = "sparks_song"
+        static let music = "music"
+        static let spray = "spray"
+        static let bannertoken = "bannertoken"
+        static let contrail = "contrail"
+        static let buildingProp = "building_prop"
+        static let buildingSet = "building_set"
     }
     
     // MARK: - Settings Module

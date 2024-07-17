@@ -15,6 +15,7 @@ enum ButtonType {
     case lootDetails
     case stats
     case map
+    case favourites
     case augments
     case settings
     case null

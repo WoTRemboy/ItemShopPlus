@@ -4353,49 +4353,49 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Waffenkammer (beta)"
+            "value" : "Waffenkammer"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Armory (beta)"
+            "value" : "Armory"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Armería (beta)"
+            "value" : "Armería"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Armurerie (beta)"
+            "value" : "Armurerie"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Armeria (beta)"
+            "value" : "Armeria"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zbrojownia (beta)"
+            "value" : "Zbrojownia"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Арсенал (beta)"
+            "value" : "Арсенал"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cephanelik (beta)"
+            "value" : "Cephanelik"
           }
         }
       }
@@ -5619,8 +5619,61 @@
         }
       }
     },
+    "LootDetailsStatsGadget" : {
+      "comment" : "Gadget",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gadget"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gadget"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artilugio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gadget"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gadget"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Urządzenie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Гаджеты"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alet"
+          }
+        }
+      }
+    },
     "LootDetailsStatsLauncher" : {
-      "comment" : "Launcher",
+      "comment" : "Misc",
       "localizations" : {
         "de" : {
           "stringUnit" : {

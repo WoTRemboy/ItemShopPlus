@@ -200,7 +200,7 @@ final class DefaultNetworkService: NetworkingService {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v1/loot/list")
         
-        let queryItems = [URLQueryItem(name: "lang", value: Texts.NetworkRequest.language)]
+        let queryItems = [URLQueryItem(name: "lang", value: Texts.NetworkRequest.language), URLQueryItem(name: "enabled", value: "true")]
         url.append(queryItems: queryItems)
         
         var request = URLRequest(url: url)

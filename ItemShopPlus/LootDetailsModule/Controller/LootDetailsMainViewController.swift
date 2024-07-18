@@ -124,7 +124,7 @@ final class LootDetailsMainViewController: UIViewController {
     }
     
     private func searchTags() {
-        tags = ["Pistols", "Assault", "Shotgun", "Sniper", "Blade", "Bow", "Launcher"]
+        tags = ["Pistols", "Assault", "Shotgun", "Sniper", "Gadget", "Misc"]
     }
     
     private func filterItemsByMenu(sectionTitle: String, forAll: Bool) {

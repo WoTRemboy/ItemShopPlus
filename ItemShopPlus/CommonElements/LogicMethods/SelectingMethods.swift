@@ -242,12 +242,10 @@ final class SelectingMethods {
             return Texts.LootDetailsStats.shotgun
         case "Sniper":
             return Texts.LootDetailsStats.sniper
-        case "Blade":
-            return Texts.LootDetailsStats.blade
-        case "Bow":
-            return Texts.LootDetailsStats.bow
-        case "Launcher":
-            return Texts.LootDetailsStats.launcher
+        case "Gadget":
+            return "Gadget"
+        case "Misc":
+            return Texts.LootDetailsStats.misc
         default:
             return Texts.ShopPage.allMenu
         }

@@ -243,7 +243,9 @@ final class SelectingMethods {
         case "Sniper":
             return Texts.LootDetailsStats.sniper
         case "Gadget":
-            return "Gadget"
+            return Texts.LootDetailsStats.gadget
+        case "Heal":
+            return Texts.LootDetailsStats.heal
         case "Misc":
             return Texts.LootDetailsStats.misc
         default:

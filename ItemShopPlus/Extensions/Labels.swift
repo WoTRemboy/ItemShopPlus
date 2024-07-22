@@ -351,7 +351,18 @@ final class Texts {
         static let blade = NSLocalizedString("LootDetailsStatsBlade", comment: "Blade")
         static let bow = NSLocalizedString("LootDetailsStatsBow", comment: "Bow")
         static let gadget = NSLocalizedString("LootDetailsStatsGadget", comment: "Gadget")
+        static let heal = NSLocalizedString("LootDetailsStatsHeal", comment: "Heal")
         static let misc = NSLocalizedString("LootDetailsStatsLauncher", comment: "Misc")
+        
+        enum Tags {
+            static let pistols = "Pistols"
+            static let assault = "Assault"
+            static let shotgun = "Shotgun"
+            static let sniper = "Sniper"
+            static let gadget = "Gadget"
+            static let heal = "Heal"
+            static let misc = "Misc"
+        }
     }
     
     enum LootDetailsStatsCell {

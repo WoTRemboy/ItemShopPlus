@@ -31,9 +31,41 @@ extension LootDetailsItem {
         let type = LootItemType.selectingLootType(type: typeData)
         
         let stats = LootItemStats.sharingParse(sharingJSON: statsData) ?? LootItemStats.emptyStats
+        guard stats.availableStats > 0 else { return nil }
         
         let searchTagsData = data["searchTags"] as? String
         let searchTags = searchTagsData?.split(separator: " ").map({ String($0) }) ?? []
+        
+        guard id != "WID_HighTower_Mango_DualPistol_Auto_Heavy_Athena",
+              id != "WID_WaffleTruck_SMG_RunGun",
+              id != "WID_Assault_Chrono_BackPackMiniGun_Athena_R",
+              id != "WID_WaffleTruck_Assault_BigMoney",
+              id != "WID_WaffleTruck_Assault_Brrrrst",
+              id != "WID_StudGun_ActivationSwitch",
+              id != "WID_StudGun",
+              id != "WID_Athena_AvacadoEaterThrown",
+              id != "WID_BigWheelGrenade",
+              id != "WID_ModBox_BulletproofTires_Spawner",
+              id != "ChainGrenade",
+              id != "WID_ModBox_CowCatcher_Spawner",
+              id != "WID_Lime_Consumable_SlurpJuice",
+              id != "WID_ModBox_Repair_Spawner",
+              id != "WID_BigWheelGrenade",
+              id != "WID_ThrowingToy_Basketball",
+              id != "WID_Pilgrim_BandQuickPlay_Bass",
+              id != "WID_Athena_BurstSquadHeal",
+              id != "WID_Pilgrim_BandQuickPlay_Drums",
+              id != "TID_Floor_Minigame_Trigger_Plate",
+              id != "WID_VehicleMortarMod",
+              id != "WID_Pilgrim_BandQuickPlay_Guitar",
+              id != "WID_Pilgrim_BandQuickPlay_Keytar",
+              id != "Athena_Intel_Pack",
+              id != "WID_VehicleMachineGunMod",
+              id != "WID_TinStack",
+              id != "TID_Floor_VehicleSpawner",
+              id != "WID_Pilgrim_BandQuickPlay_Mic",
+              id != "WID_WheelGrenade"
+        else { return nil }
         
         return LootDetailsItem(id: id, enabled: enabled, name: name, description: description, rarity: rarity, type: type, searchTags: searchTags, mainImage: mainImage, rarityImage: rarityImage, stats: stats)
     }

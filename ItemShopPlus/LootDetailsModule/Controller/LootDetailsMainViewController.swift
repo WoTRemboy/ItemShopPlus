@@ -141,6 +141,9 @@ final class LootDetailsMainViewController: UIViewController {
                 Texts.LootDetailsStats.Tags.assault,
                 Texts.LootDetailsStats.Tags.shotgun,
                 Texts.LootDetailsStats.Tags.sniper,
+                Texts.LootDetailsStats.Tags.bow,
+                Texts.LootDetailsStats.Tags.blade,
+                Texts.LootDetailsStats.Tags.launcher,
                 Texts.LootDetailsStats.Tags.gadget,
                 Texts.LootDetailsStats.Tags.heal,
                 Texts.LootDetailsStats.Tags.misc]

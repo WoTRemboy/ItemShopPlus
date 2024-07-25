@@ -132,7 +132,12 @@ extension GrantedItem {
         if let imageData = imagesData["background"] as? String {
             image = imageData
         }
+        
+        var shareImage = String()
+        if let shareImageData = imagesData["full_background"] as? String {
+            shareImage = shareImageData
+        }
 
-        return GrantedItem(id: id, typeID: typeID, type: type, name: name, description: description, rarity: rarity, series: series, image: image, video: video)
+        return GrantedItem(id: id, typeID: typeID, type: type, name: name, description: description, rarity: rarity, series: series, image: image, shareImage: shareImage, video: video)
     }
 }

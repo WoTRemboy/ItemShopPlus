@@ -70,6 +70,7 @@ extension CrewItem {
         }
         
         let description = data["description"] as? String
+        let shareImage = imageData["full_background"] as? String ?? String()
                 
         let video: Bool
         typeID == "outfit" ? (video = true) : (video = false)
@@ -86,6 +87,6 @@ extension CrewItem {
             rarity = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         }
         
-        return CrewItem(id: id, type: type, name: name, description: description, rarity: rarity, image: image, introduction: introduction, video: video)
+        return CrewItem(id: id, type: type, name: name, description: description, rarity: rarity, image: image, shareImage: shareImage, introduction: introduction, video: video)
     }
 }

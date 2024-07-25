@@ -109,10 +109,11 @@ struct GrantedItem {
     let rarity: Rarity?
     let series: String?
     let image: String
+    let shareImage: String
     let video: String?
     
     static let emptyItem = {
-        GrantedItem(id: "", typeID: "", type: "", name: "", description: "", rarity: .common, series: "", image: "", video: "")
+        GrantedItem(id: "", typeID: "", type: "", name: "", description: "", rarity: .common, series: "", image: "", shareImage: "", video: "")
     }
     
     static func toGrantedItem(from item: ShopGrantedItemEntity) -> GrantedItem {
@@ -124,9 +125,10 @@ struct GrantedItem {
         let rarity = SelectingMethods.selectRarity(rarityText: item.rarity)
         let series = item.series
         let image = item.image ?? String()
+        let shareImage = item.shareImage ?? String()
         let video = item.video
         
-        return GrantedItem(id: id, typeID: typeID, type: type, name: name, description: description, rarity: rarity, series: series, image: image, video: video)
+        return GrantedItem(id: id, typeID: typeID, type: type, name: name, description: description, rarity: rarity, series: series, image: image, shareImage: shareImage, video: video)
     }
 }
 

@@ -87,7 +87,7 @@ final class BundlesDetailsViewController: UIViewController {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
             self.isPresentedFullScreen = true
-            let vc = ShopGrantedPreviewViewController(image: self.item.detailsImage, name: self.item.name, size: CGSize(width: 1200, height: 1600), zoom: 1.5)
+            let vc = ShopGrantedPreviewViewController(image: self.item.detailsImage, shareImage: self.item.detailsImage, name: self.item.name, size: CGSize(width: 1200, height: 1600), zoom: 1.5)
             let navVC = UINavigationController(rootViewController: vc)
             navVC.modalPresentationStyle = .fullScreen
             navVC.modalTransitionStyle = .crossDissolve

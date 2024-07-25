@@ -36,11 +36,12 @@ struct BattlePassItem {
     let series: String?
     let releaseDate: Date
     let image: String
+    let shareImage: String
     let video: String?
     let introduction: String
     let set: String?
     
-    static let emptyItem = BattlePassItem(id: "", tier: 0, page: 0, payType: .paid, price: 0, rewardWall: 0, levelWall: 0, type: "", name: "", description: "", rarity: .common, series: nil, releaseDate: .now, image: "", video: "", introduction: "", set: "")
+    static let emptyItem = BattlePassItem(id: "", tier: 0, page: 0, payType: .paid, price: 0, rewardWall: 0, levelWall: 0, type: "", name: "", description: "", rarity: .common, series: nil, releaseDate: .now, image: "", shareImage: "", video: "", introduction: "", set: "")
 }
 
 enum PayType {

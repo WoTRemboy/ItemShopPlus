@@ -9,17 +9,28 @@ import UIKit
 
 final class ShopGrantedPreviewViewController: UIViewController {
     
+    private let shareButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .ShopGranted.share
+        button.action = #selector(presentShareSheet)
+        return button
+    }()
+    
     // MARK: - Properties
     
     private var image: String
+    private var shareImage: String
     private var name: String
     private var size: CGSize
     private var zoom: Double
     
+    private let networkManager = DefaultNetworkService()
+    
     // MARK: - Initialization
     
-    init(image: String, name: String, size: CGSize = CGSize(width: 1024, height: 1024), zoom: Double = 2) {
+    init(image: String, shareImage: String = String(), name: String, size: CGSize = CGSize(width: 1024, height: 1024), zoom: Double = 2) {
         self.image = image
+        self.shareImage = shareImage
         self.name = name
         self.size = size
         self.zoom = zoom
@@ -46,6 +57,24 @@ final class ShopGrantedPreviewViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    @objc private func presentShareSheet() {
+        guard !shareImage.isEmpty else { return }
+        var itemsToShare = [UIImage?]()
+        if let imageURL = URL(string: shareImage) {
+            networkManager.getItemImage(from: imageURL) { data, response, error in
+                guard let data = data, error == nil else { return }
+                DispatchQueue.main.async() { [weak self] in
+                    itemsToShare.append(UIImage(data: data))
+                    let shareSheetVC = UIActivityViewController(
+                        activityItems: itemsToShare as [Any],
+                        applicationActivities: nil)
+                    self?.present(shareSheetVC, animated: true)
+                }
+            }
+        }
+        
+    }
+    
     // MARK: - UI Setups
     
     private func navigationBarSetup() {
@@ -56,6 +85,10 @@ final class ShopGrantedPreviewViewController: UIViewController {
             target: self,
             action: #selector(cancelButtonTapped)
         )
+        
+        shareButton.target = self
+        shareImage.isEmpty ? shareButton.isHidden = true : nil
+        navigationItem.rightBarButtonItem = shareButton
     }
     
     private func scrollViewSetup() {

@@ -16,6 +16,7 @@ protocol NetworkingService {
     func getLootDetails(completion: @escaping (Result<[LootDetailsItem], Error>) -> Void)
     func getAccountStats(nickname: String, platform: String?, completion: @escaping (Result<Stats, Error>) -> Void)
     func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void)
+    func getItemImage(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ())
     func getItemVideo(id: String, completion: @escaping (Result<ItemVideo, Error>) -> Void)
 }
 
@@ -290,6 +291,12 @@ final class DefaultNetworkService: NetworkingService {
                 }
             }
         }
+    }
+    
+    // MARK: - Item Image Module Request
+    
+    func getItemImage(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     // MARK: - Item Video Module Request

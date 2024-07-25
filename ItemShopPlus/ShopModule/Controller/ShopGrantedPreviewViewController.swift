@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ShopGrantedPreviewViewController: UIViewController {
     
@@ -24,6 +25,7 @@ final class ShopGrantedPreviewViewController: UIViewController {
     private var size: CGSize
     private var zoom: Double
     
+    private var imageLoadTask: DownloadTask?
     private let networkManager = DefaultNetworkService()
     
     // MARK: - Initialization
@@ -51,6 +53,10 @@ final class ShopGrantedPreviewViewController: UIViewController {
         scrollViewSetup()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        imageLoadTask?.cancel()
+    }
+    
     // MARK: - Action
     
     @objc private func cancelButtonTapped() {
@@ -60,19 +66,13 @@ final class ShopGrantedPreviewViewController: UIViewController {
     @objc private func presentShareSheet() {
         guard !shareImage.isEmpty else { return }
         var itemsToShare = [UIImage?]()
-        if let imageURL = URL(string: shareImage) {
-            networkManager.getItemImage(from: imageURL) { data, response, error in
-                guard let data = data, error == nil else { return }
-                DispatchQueue.main.async() { [weak self] in
-                    itemsToShare.append(UIImage(data: data))
-                    let shareSheetVC = UIActivityViewController(
-                        activityItems: itemsToShare as [Any],
-                        applicationActivities: nil)
-                    self?.present(shareSheetVC, animated: true)
-                }
-            }
+        imageLoadTask = ImageLoader.loadImage(urlString: shareImage, size: size) { image in
+            itemsToShare.append(image)
+            let shareSheetVC = UIActivityViewController(
+                activityItems: itemsToShare as [Any],
+                applicationActivities: nil)
+            self.present(shareSheetVC, animated: true)
         }
-        
     }
     
     // MARK: - UI Setups

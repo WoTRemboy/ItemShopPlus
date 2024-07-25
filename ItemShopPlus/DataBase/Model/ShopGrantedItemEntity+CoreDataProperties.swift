@@ -25,6 +25,7 @@ extension ShopGrantedItemEntity {
     @NSManaged public var itemDescription: String?
     @NSManaged public var series: String?
     @NSManaged public var image: String?
+    @NSManaged public var shareImage: String?
     @NSManaged public var video: String?
     @NSManaged public var rarity: String?
     @NSManaged public var parentShopItem: FavouriteShopItemEntity?

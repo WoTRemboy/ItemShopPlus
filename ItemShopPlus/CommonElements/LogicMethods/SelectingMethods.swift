@@ -242,6 +242,12 @@ final class SelectingMethods {
             return Texts.LootDetailsStats.shotgun
         case "Sniper":
             return Texts.LootDetailsStats.sniper
+        case "Bow":
+            return Texts.LootDetailsStats.bow
+        case "Blade":
+            return Texts.LootDetailsStats.blade
+        case "Launcher":
+            return Texts.LootDetailsStats.launcher
         case "Gadget":
             return Texts.LootDetailsStats.gadget
         case "Heal":

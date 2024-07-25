@@ -88,6 +88,7 @@ extension UIImage {
         static let mythic = UIImage(named: "GrantedMythic")
         static let exotic  = UIImage(named: "GrantedExotic")
         static let transcendent = UIImage(named: "GrantedTranscendent")
+        static let share = UIImage(systemName: "square.and.arrow.up")
     }
     
     // MARK: - Battle Pass Module

@@ -209,16 +209,18 @@ final class ShopGrantedViewController: UIViewController {
     }
     
     private func previewSetup(index: Int) {
-        var itemImage = self.bundle.images.first?.image ?? ""
+        var itemImage = self.bundle.images.first?.image ?? String()
+        var shareImage = itemImage
         var itemName = self.bundle.name
         if !self.items.isEmpty {
             let item = self.items[index]
-            itemImage = item?.image ?? ""
-            itemName = item?.name ?? ""
+            itemImage = item?.image ?? String()
+            shareImage = item?.shareImage ?? String()
+            itemName = item?.name ?? String()
         }
         self.isPresentedFullScreen = true
         
-        let vc = ShopGrantedPreviewViewController(image: itemImage, name: itemName)
+        let vc = ShopGrantedPreviewViewController(image: itemImage, shareImage: shareImage, name: itemName)
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = .fullScreen
         navVC.modalTransitionStyle = .crossDissolve

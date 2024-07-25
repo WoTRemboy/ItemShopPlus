@@ -147,7 +147,7 @@ final class BattlePassGrantedViewController: UIViewController {
     private func previewSetup() {
         self.isPresentedFullScreen = true
         
-        let vc = ShopGrantedPreviewViewController(image: self.item.image, name: self.item.name)
+        let vc = ShopGrantedPreviewViewController(image: self.item.image, shareImage: self.item.shareImage, name: self.item.name)
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = .fullScreen
         navVC.modalTransitionStyle = .crossDissolve

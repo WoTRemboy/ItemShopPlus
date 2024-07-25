@@ -6,20 +6,33 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ShopGrantedPreviewViewController: UIViewController {
+    
+    private let shareButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = .ShopGranted.share
+        button.action = #selector(presentShareSheet)
+        return button
+    }()
     
     // MARK: - Properties
     
     private var image: String
+    private var shareImage: String
     private var name: String
     private var size: CGSize
     private var zoom: Double
     
+    private var imageLoadTask: DownloadTask?
+    private let networkManager = DefaultNetworkService()
+    
     // MARK: - Initialization
     
-    init(image: String, name: String, size: CGSize = CGSize(width: 1024, height: 1024), zoom: Double = 2) {
+    init(image: String, shareImage: String = String(), name: String, size: CGSize = CGSize(width: 1024, height: 1024), zoom: Double = 2) {
         self.image = image
+        self.shareImage = shareImage
         self.name = name
         self.size = size
         self.zoom = zoom
@@ -40,10 +53,26 @@ final class ShopGrantedPreviewViewController: UIViewController {
         scrollViewSetup()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        imageLoadTask?.cancel()
+    }
+    
     // MARK: - Action
     
     @objc private func cancelButtonTapped() {
         dismiss(animated: true)
+    }
+    
+    @objc private func presentShareSheet() {
+        guard !shareImage.isEmpty else { return }
+        var itemsToShare = [UIImage?]()
+        imageLoadTask = ImageLoader.loadImage(urlString: shareImage, size: size) { image in
+            itemsToShare.append(image)
+            let shareSheetVC = UIActivityViewController(
+                activityItems: itemsToShare as [Any],
+                applicationActivities: nil)
+            self.present(shareSheetVC, animated: true)
+        }
     }
     
     // MARK: - UI Setups
@@ -56,6 +85,10 @@ final class ShopGrantedPreviewViewController: UIViewController {
             target: self,
             action: #selector(cancelButtonTapped)
         )
+        
+        shareButton.target = self
+        shareImage.isEmpty ? shareButton.isHidden = true : nil
+        navigationItem.rightBarButtonItem = shareButton
     }
     
     private func scrollViewSetup() {

@@ -67,6 +67,7 @@ final class FavouritesDataBaseManager {
         coreDataItem.itemDescription = item.description
         coreDataItem.series = item.series
         coreDataItem.image = item.image
+        coreDataItem.shareImage = item.shareImage
         coreDataItem.video = item.video
         coreDataItem.rarity = Rarity.rarityToString(rarity: item.rarity ?? .common)
         coreDataItem.parentShopItem = parent

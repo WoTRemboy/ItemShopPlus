@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct LootNamedItems {
+    let name: String
+    var items: [LootDetailsItem]
+}
+
 struct LootDetailsItem {
     let id: String
     let enabled: Bool

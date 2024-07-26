@@ -28,6 +28,7 @@ struct CrewItem {
     let description: String?
     let rarity: Rarity?
     let image: String
+    let shareImage: String
     let introduction: String?
     let video: Bool
 }

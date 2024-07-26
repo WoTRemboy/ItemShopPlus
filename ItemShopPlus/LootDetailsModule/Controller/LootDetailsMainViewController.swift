@@ -10,8 +10,9 @@ import UIKit
 final class LootDetailsMainViewController: UIViewController {
     
     private var items = [LootDetailsItem]()
-    private var groupedItems = [Dictionary<String, [LootDetailsItem]>.Element]()
-    private var filteredGroupedItems = [Dictionary<String, [LootDetailsItem]>.Element]()
+    private var namedItems = [LootNamedItems]()
+    private var filteredGroupedItems = [LootNamedItems]()
+    private var groupedItems = [String: [LootNamedItems]]()
     
     private var previousSearchedCount = 0
     private var selectedSectionTitle = Texts.ShopPage.allMenu
@@ -59,6 +60,7 @@ final class LootDetailsMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .BackColors.backDefault
+        searchTags()
         
         navigationBarSetup()
         collectionViewSetup()
@@ -97,17 +99,28 @@ final class LootDetailsMainViewController: UIViewController {
     }
     
     private func groupLootItems(items: [LootDetailsItem]) {
-        var groupedItems = [String: [LootDetailsItem]]()
+        var namedItems = [String: [LootDetailsItem]]()
         let clearItems = uniqueItems(items: items)
         
+        self.namedItems.removeAll()
+        self.groupedItems.removeAll()
+        
         for item in clearItems {
-            if groupedItems[item.name] == nil {
-                groupedItems[item.name] = [item]
+            if namedItems[item.name] == nil {
+                namedItems[item.name] = [item]
             } else {
-                groupedItems[item.name]?.append(item)
+                namedItems[item.name]?.append(item)
             }
         }
-        self.groupedItems = groupedItems.sorted(by: { $0.key < $1.key })
+        for item in namedItems {
+            let namedItem = LootNamedItems(name: item.key, items: item.value)
+            self.namedItems.append(namedItem)
+            
+            let type = item.value.first?.searchTags.filter { tags.contains($0) }.last ?? Texts.LootDetailsStats.Tags.misc
+            groupedItems[type, default: []].append(namedItem)
+            groupedItems[type]?.sort { $0.name < $1.name }
+        }
+        self.namedItems.sort { $0.name < $1.name }
     }
     
     private func uniqueItems(items: [LootDetailsItem]) -> [LootDetailsItem] {
@@ -124,17 +137,21 @@ final class LootDetailsMainViewController: UIViewController {
     }
     
     private func searchTags() {
-        tags = ["Pistols", "Assault", "Shotgun", "Sniper", "Blade", "Bow", "Launcher"]
+        tags = [Texts.LootDetailsStats.Tags.pistols,
+                Texts.LootDetailsStats.Tags.assault,
+                Texts.LootDetailsStats.Tags.shotgun,
+                Texts.LootDetailsStats.Tags.sniper,
+                Texts.LootDetailsStats.Tags.bow,
+                Texts.LootDetailsStats.Tags.blade,
+                Texts.LootDetailsStats.Tags.launcher,
+                Texts.LootDetailsStats.Tags.gadget,
+                Texts.LootDetailsStats.Tags.heal,
+                Texts.LootDetailsStats.Tags.misc]
     }
     
     private func filterItemsByMenu(sectionTitle: String, forAll: Bool) {
         guard sectionTitle != selectedSectionTitle else { return }
         
-        groupedItems.removeAll()
-        groupLootItems(items: items)
-        if !forAll {
-            groupedItems = groupedItems.filter { $0.value.first?.searchTags.contains(sectionTitle) == true }
-        }
         updateMenuState(for: sectionTitle)
         UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
             self.collectionView.reloadData()
@@ -143,22 +160,30 @@ final class LootDetailsMainViewController: UIViewController {
     
     private func animateCellSelection(at indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
+        let items: [LootDetailsItem]
+        if filteredGroupedItems.count != 0 && filteredGroupedItems.count != groupedItems.count {
+            items = filteredGroupedItems[indexPath.item].items
+        } else {
+            var sectionKey = selectedSectionTitle
+            if selectedSectionTitle == Texts.ShopPage.allMenu {
+                sectionKey = tags[indexPath.section]
+            }
+            let itemsInSection = groupedItems[sectionKey] ?? []
+            items = itemsInSection[indexPath.item].items
+        }
+        
+        guard items.count > 0 else { return }
+        
+        let vc: UIViewController
+        if items.count > 1 {
+            vc = LootDetailsRarityViewController(items: items)
+        } else {
+            vc = LootDetailsStatsViewController(item: items[0], fromRarity: false)
+        }
         
         UIView.animate(withDuration: 0.1, animations: {
             cell?.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            let items: Dictionary<String, [LootDetailsItem]>.Element
-            
-            (self.filteredGroupedItems.count != 0 && self.filteredGroupedItems.count != self.groupedItems.count) ? (items = self.filteredGroupedItems[indexPath.item]) : (items = self.groupedItems[indexPath.item])
-            
-            guard items.value.count > 0 else { return }
-            
-            let vc: UIViewController
-            if items.value.count > 1 {
-                vc = LootDetailsRarityViewController(items: items.value)
-            } else {
-                vc = LootDetailsStatsViewController(item: items.value[0], fromRarity: false)
-            }
             self.navigationController?.pushViewController(vc, animated: true)
             UIView.animate(withDuration: 0.1, animations: {
                 cell?.transform = CGAffineTransform.identity
@@ -313,10 +338,9 @@ final class LootDetailsMainViewController: UIViewController {
 
 extension LootDetailsMainViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        filteredGroupedItems = groupedItems
-        
+        filteredGroupedItems = namedItems
         if let searchText = searchController.searchBar.text {
-            filteredGroupedItems = groupedItems.filter { $0.key.lowercased().contains(searchText.lowercased()) }
+            filteredGroupedItems = namedItems.filter { $0.name.lowercased().contains(searchText.lowercased()) }
             if filteredGroupedItems.count != previousSearchedCount || (searchText.isEmpty && collectionView.visibleCells.count == 0) || (!searchText.isEmpty && filteredGroupedItems.count == 0) {
                 UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
                     self.collectionView.reloadData()
@@ -341,13 +365,20 @@ extension LootDetailsMainViewController: UISearchResultsUpdating, UISearchContro
 extension LootDetailsMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        let text = searchController.searchBar.text ?? ""
+        let inSearchMode = searchController.isActive && !text.isEmpty
+        return inSearchMode || filterButton.menu?.selectedElements.first?.title != Texts.ShopPage.allMenu ? 1 : tags.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
-        return inSearchMode ? filteredGroupedItems.count : groupedItems.count
+        var sectionKey = selectedSectionTitle
+        if selectedSectionTitle == Texts.ShopPage.allMenu {
+            sectionKey = tags[section]
+        }
+        let groupedCount = groupedItems[sectionKey]?.count ?? 0
+        return inSearchMode ? filteredGroupedItems.count : groupedCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -357,14 +388,19 @@ extension LootDetailsMainViewController: UICollectionViewDelegate, UICollectionV
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
         
-        let groupedItem: Dictionary<String, [LootDetailsItem]>.Element
+        let groupedItem: [LootDetailsItem]
+        var sectionKey = selectedSectionTitle
         if inSearchMode {
-            groupedItem = filteredGroupedItems[indexPath.item]
+            groupedItem = filteredGroupedItems[indexPath.item].items
         } else {
-            groupedItem = groupedItems[indexPath.item]
+            if selectedSectionTitle == Texts.ShopPage.allMenu {
+                sectionKey = tags[indexPath.section]
+            }
+            let itemsInSection = self.groupedItems[sectionKey] ?? []
+            groupedItem = itemsInSection[indexPath.item].items
         }
-        let item = groupedItem.value.first ?? LootDetailsItem.emptyLootDetails
-        cell.configurate(type: .weapon, name: item.name, image: item.mainImage, firstStat: Double(groupedItem.value.count), secondStat: Double(item.stats.availableStats))
+        let item = groupedItem.first ?? LootDetailsItem.emptyLootDetails
+        cell.configurate(type: .weapon, name: item.name, image: item.mainImage, firstStat: Double(groupedItem.count), secondStat: Double(item.stats.availableStats))
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         
@@ -411,8 +447,13 @@ extension LootDetailsMainViewController: UICollectionViewDelegateFlowLayout {
         }
         let text = searchController.searchBar.text ?? ""
         let inSearchMode = searchController.isActive && !text.isEmpty
+        
+        var sectionKey = selectedSectionTitle
+        if selectedSectionTitle == Texts.ShopPage.allMenu {
+            sectionKey = tags[indexPath.section]
+        }
         let count = filteredGroupedItems.count
-        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: SelectingMethods.selectWeaponTag(tag: selectedSectionTitle))
+        inSearchMode ? headerView.configurate(with: count > 0 ? Texts.SearchController.result : Texts.SearchController.noResult) : headerView.configurate(with: SelectingMethods.selectWeaponTag(tag: sectionKey))
         return headerView
     }
 }

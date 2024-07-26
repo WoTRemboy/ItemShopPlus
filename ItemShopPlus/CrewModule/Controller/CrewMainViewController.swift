@@ -292,9 +292,10 @@ final class CrewMainViewController: UIViewController {
     private func previewSetup(index: Int) {
         let item = self.items[index]
         let image = item.image
+        let shareImage = item.shareImage
         let name = item.name
         
-        let vc = ShopGrantedPreviewViewController(image: image, name: name)
+        let vc = ShopGrantedPreviewViewController(image: image, shareImage: shareImage, name: name)
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = .fullScreen
         navVC.modalTransitionStyle = .crossDissolve

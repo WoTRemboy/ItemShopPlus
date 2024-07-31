@@ -13,6 +13,7 @@ final class ShopGrantedViewController: UIViewController {
     // MARK: - Properties
     
     private var items = [GrantedItem?]()
+    private var itemsWithoutImages = 0
     private let bundle: ShopItem
     
     private var originalTitleAttributes: [NSAttributedString.Key : Any]?
@@ -50,6 +51,7 @@ final class ShopGrantedViewController: UIViewController {
                 self.items.append(grant)
             }
         }
+        itemsWithoutImages = items.filter { $0?.image == String() }.count
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -127,7 +129,7 @@ final class ShopGrantedViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             cell.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
         }) { (_) in
-            if self.items.count > 0 {
+            if self.items.count > 0, self.itemsWithoutImages != self.items.count {
                 if let video = self.items[indexPath.item]?.video, let videoURL = URL(string: video) {
                     self.videoSetup(videoURL: videoURL, repeatable: false)
                 } else  {
@@ -135,7 +137,9 @@ final class ShopGrantedViewController: UIViewController {
                     if item?.typeID == "outfit" {
                         self.getVideo(index: indexPath.item)
                     } else {
-                        self.previewSetup(index: indexPath.item)
+                        if item?.image != String() {
+                            self.previewSetup(index: indexPath.item)
+                        }
                     }
                 }
             } else {
@@ -209,11 +213,11 @@ final class ShopGrantedViewController: UIViewController {
     }
     
     private func previewSetup(index: Int) {
-        var itemImage = self.bundle.images.first?.image ?? String()
+        var itemImage = bundle.images.first?.image ?? String()
         var shareImage = itemImage
-        var itemName = self.bundle.name
-        if !self.items.isEmpty {
-            let item = self.items[index]
+        var itemName = bundle.name
+        if !items.isEmpty, itemsWithoutImages != items.count {
+            let item = items[index]
             itemImage = item?.image ?? String()
             shareImage = item?.shareImage ?? String()
             itemName = item?.name ?? String()
@@ -248,14 +252,14 @@ extension ShopGrantedViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count != 0 ? items.count : 1
+        return (items.count != 0 && itemsWithoutImages != items.count) ? items.count : 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionRarityCell.identifier, for: indexPath) as? CollectionRarityCell else {
             fatalError("Failed to dequeue ShopGrantedCollectionViewCell in ShopGrantedViewController")
         }
-        if items.count > 0, let item = items[indexPath.item] {
+        if items.count > 0, itemsWithoutImages != items.count, let item = items[indexPath.item] {
             cell.configurate(name: item.name, type: item.type, rarity: item.rarity ?? .common, image: item.image, video: item.video != nil || item.typeID == "outfit")
         } else {
             cell.configurate(name: bundle.name, type: bundle.type, rarity: bundle.rarity, image: bundle.images.first?.image ?? "", video: false)

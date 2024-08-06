@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 import Kingfisher
 
 final class ShopViewController: UIViewController {
@@ -79,6 +80,11 @@ final class ShopViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showRaitingViewIfNeeded()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,6 +92,7 @@ final class ShopViewController: UIViewController {
         view.backgroundColor = .BackColors.backDefault
         
         navigationBarSetup()
+        pageShowCount()
         
         view.addSubview(collectionView)
         view.addSubview(noInternetView)
@@ -144,6 +151,24 @@ final class ShopViewController: UIViewController {
         else { return }
         
         favouriteItemToggle(at: indexPath)
+    }
+    
+    // MARK: - StoreKit raiting
+    
+    private func pageShowCount() {
+        let retrievedInt = UserDefaults.standard.integer(forKey: Texts.ShopPage.countKey)
+        let nextStep = retrievedInt + 1
+        UserDefaults.standard.set(nextStep, forKey: Texts.ShopPage.countKey)
+    }
+    
+    private func showRaitingViewIfNeeded() {
+        let retrievedInt = UserDefaults.standard.integer(forKey: Texts.ShopPage.countKey)
+        guard retrievedInt == 5 else { return }
+        if let windowScene = view.window?.windowScene {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                SKStoreReviewController.requestReview(in: windowScene)
+            }
+        }
     }
     
     // MARK: - Networking

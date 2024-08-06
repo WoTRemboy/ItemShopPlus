@@ -77,6 +77,12 @@
 		639418B02BD67C81007F02FA /* BundlesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639418AF2BD67C81007F02FA /* BundlesDetailsViewController.swift */; };
 		639418B22BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639418B12BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift */; };
 		639418B42BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639418B32BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift */; };
+		6394FC122C5AC3FA00FC2C44 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; };
+		6394FC142C5AC3FA00FC2C44 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; };
+		6394FC172C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6394FC162C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift */; };
+		6394FC192C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6394FC182C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift */; };
+		6394FC1B2C5AC3FC00FC2C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6394FC1A2C5AC3FC00FC2C44 /* Assets.xcassets */; };
+		6394FC1F2C5AC3FC00FC2C44 /* ItemShopPlusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 6394FC0F2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6399EFF42BD85167008B19E8 /* LootDetailsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF32BD85167008B19E8 /* LootDetailsMainViewController.swift */; };
 		6399EFF62BD85176008B19E8 /* LootDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF52BD85176008B19E8 /* LootDetailsModel.swift */; };
 		6399EFF82BD8566B008B19E8 /* JSONLootDetailsParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF72BD8566B008B19E8 /* JSONLootDetailsParse.swift */; };
@@ -140,19 +146,27 @@
 			remoteGlobalIDString = 630B7F952BEEAA95007E3797;
 			remoteInfo = NotificationServiceExtension;
 		};
+		6394FC1D2C5AC3FC00FC2C44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63C898B02B232F4000FABD69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6394FC0E2C5AC3FA00FC2C44;
+			remoteInfo = ItemShopPlusWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		630B7FA12BEEAA95007E3797 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
 				630B7F9D2BEEAA95007E3797 /* NotificationServiceExtension.appex in Embed Foundation Extensions */,
+				6394FC1F2C5AC3FC00FC2C44 /* ItemShopPlusWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -225,6 +239,13 @@
 		639418AF2BD67C81007F02FA /* BundlesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundlesDetailsViewController.swift; sourceTree = "<group>"; };
 		639418B12BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundlesDetailsCollectionReusableView.swift; sourceTree = "<group>"; };
 		639418B32BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundlesDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
+		6394FC0F2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ItemShopPlusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		6394FC162C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemShopPlusWidgetBundle.swift; sourceTree = "<group>"; };
+		6394FC182C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemShopPlusWidget.swift; sourceTree = "<group>"; };
+		6394FC1A2C5AC3FC00FC2C44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6394FC1C2C5AC3FC00FC2C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6399EFF32BD85167008B19E8 /* LootDetailsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsMainViewController.swift; sourceTree = "<group>"; };
 		6399EFF52BD85176008B19E8 /* LootDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsModel.swift; sourceTree = "<group>"; };
 		6399EFF72BD8566B008B19E8 /* JSONLootDetailsParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLootDetailsParse.swift; sourceTree = "<group>"; };
@@ -286,6 +307,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6394FC0C2C5AC3FA00FC2C44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6394FC142C5AC3FA00FC2C44 /* SwiftUI.framework in Frameworks */,
+				6394FC122C5AC3FA00FC2C44 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +611,26 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6394FC102C5AC3FA00FC2C44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */,
+				6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6394FC152C5AC3FA00FC2C44 /* ItemShopPlusWidget */ = {
+			isa = PBXGroup;
+			children = (
+				6394FC162C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift */,
+				6394FC182C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift */,
+				6394FC1A2C5AC3FC00FC2C44 /* Assets.xcassets */,
+				6394FC1C2C5AC3FC00FC2C44 /* Info.plist */,
+			);
+			path = ItemShopPlusWidget;
+			sourceTree = "<group>";
+		};
 		6399EFF02BD85107008B19E8 /* LootDetailsModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,6 +793,8 @@
 			children = (
 				63C898BA2B232F4000FABD69 /* ItemShopPlus */,
 				630B7F972BEEAA95007E3797 /* NotificationServiceExtension */,
+				6394FC152C5AC3FA00FC2C44 /* ItemShopPlusWidget */,
+				6394FC102C5AC3FA00FC2C44 /* Frameworks */,
 				63C898B92B232F4000FABD69 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -752,6 +804,7 @@
 			children = (
 				63C898B82B232F4000FABD69 /* ItemShopPlus.app */,
 				630B7F962BEEAA95007E3797 /* NotificationServiceExtension.appex */,
+				6394FC0F2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1011,6 +1064,23 @@
 			productReference = 630B7F962BEEAA95007E3797 /* NotificationServiceExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		6394FC0E2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6394FC202C5AC3FC00FC2C44 /* Build configuration list for PBXNativeTarget "ItemShopPlusWidgetExtension" */;
+			buildPhases = (
+				6394FC0B2C5AC3FA00FC2C44 /* Sources */,
+				6394FC0C2C5AC3FA00FC2C44 /* Frameworks */,
+				6394FC0D2C5AC3FA00FC2C44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ItemShopPlusWidgetExtension;
+			productName = ItemShopPlusWidgetExtension;
+			productReference = 6394FC0F2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		63C898B72B232F4000FABD69 /* ItemShopPlus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63C898CC2B232F4100FABD69 /* Build configuration list for PBXNativeTarget "ItemShopPlus" */;
@@ -1024,6 +1094,7 @@
 			);
 			dependencies = (
 				630B7F9C2BEEAA95007E3797 /* PBXTargetDependency */,
+				6394FC1E2C5AC3FC00FC2C44 /* PBXTargetDependency */,
 			);
 			name = ItemShopPlus;
 			packageProductDependencies = (
@@ -1043,11 +1114,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					630B7F952BEEAA95007E3797 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					6394FC0E2C5AC3FA00FC2C44 = {
+						CreatedOnToolsVersion = 15.4;
 					};
 					63C898B72B232F4000FABD69 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -1081,6 +1155,7 @@
 			targets = (
 				63C898B72B232F4000FABD69 /* ItemShopPlus */,
 				630B7F952BEEAA95007E3797 /* NotificationServiceExtension */,
+				6394FC0E2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1091,6 +1166,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				630B7FA82BEEC34C007E3797 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6394FC0D2C5AC3FA00FC2C44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6394FC1B2C5AC3FC00FC2C44 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1114,6 +1197,15 @@
 			files = (
 				630B7FA32BEEB1EC007E3797 /* Labels.swift in Sources */,
 				630B7F992BEEAA95007E3797 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6394FC0B2C5AC3FA00FC2C44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6394FC192C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift in Sources */,
+				6394FC172C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1243,6 +1335,11 @@
 			target = 630B7F952BEEAA95007E3797 /* NotificationServiceExtension */;
 			targetProxy = 630B7F9B2BEEAA95007E3797 /* PBXContainerItemProxy */;
 		};
+		6394FC1E2C5AC3FC00FC2C44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6394FC0E2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension */;
+			targetProxy = 6394FC1D2C5AC3FC00FC2C44 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -1306,6 +1403,74 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ItemShopPlusNotifications;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		6394FC212C5AC3FC00FC2C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ItemShopPlusWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ItemShopPlusWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus.ItemShopPlusWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6394FC222C5AC3FC00FC2C44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ItemShopPlusWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ItemShopPlusWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus.ItemShopPlusWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1465,7 +1630,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1505,7 +1670,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1528,6 +1693,15 @@
 			buildConfigurations = (
 				630B7F9F2BEEAA95007E3797 /* Debug */,
 				630B7FA02BEEAA95007E3797 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6394FC202C5AC3FC00FC2C44 /* Build configuration list for PBXNativeTarget "ItemShopPlusWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6394FC212C5AC3FC00FC2C44 /* Debug */,
+				6394FC222C5AC3FC00FC2C44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -179,6 +179,7 @@ final class Texts {
         static let backpack = NSLocalizedString("ShopPageShopBackpack", comment: "Backpack")
         static let bundle = NSLocalizedString("ShopPageShopItemBundle", comment: "Item Bundle")
         static let favourites = NSLocalizedString("ShopPageFavouritesNotification", comment: "Added to Favorites.")
+        static let countKey = "ShopPageCountUserDefaultsKey"
     }
     
     enum ShopMainCell {

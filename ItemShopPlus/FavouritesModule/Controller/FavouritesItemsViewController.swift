@@ -18,12 +18,7 @@ final class FavouritesItemsViewController: UIViewController {
         return button
     }()
     
-    private let noFavouritesImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = .Stats.noStats
-//        imageView.isHidden = false
-        return imageView
-    }()
+    private let emptyView = EmptyView(type: .favourite)
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -32,7 +27,6 @@ final class FavouritesItemsViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true
         collectionView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: ShopCollectionViewCell.identifier)
-//        collectionView.register(CollectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderReusableView.identifier)
         collectionView.register(FavouritesFooterReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FavouritesFooterReusableView.identifier)
         return collectionView
     }()
@@ -46,6 +40,7 @@ final class FavouritesItemsViewController: UIViewController {
         
         navigationBarSetup()
         collectionViewSetup()
+        emptyView.configurate()
         setupUI()
     }
     
@@ -92,7 +87,7 @@ final class FavouritesItemsViewController: UIViewController {
         if self.items.isEmpty {
             UIView.animate(withDuration: 0.2) {
                 self.collectionView.alpha = 0
-                self.noFavouritesImageView.alpha = 1
+                self.emptyView.alpha = 1
             }
         }
         
@@ -121,40 +116,31 @@ final class FavouritesItemsViewController: UIViewController {
     }
     
     private func collectionViewSetup() {
-//        collectionView.refreshControl = refreshControl
         collectionView.delegate = self
         collectionView.dataSource = self
         
         if !items.isEmpty {
             collectionView.isHidden = false
-            noFavouritesImageView.alpha = 0
+            emptyView.alpha = 0
         }
-        
-//        refreshControl.addTarget(self, action: #selector(refreshWithControl), for: .valueChanged)
     }
     
     private func setupUI() {
         view.addSubview(collectionView)
-        view.addSubview(noFavouritesImageView)
+        view.addSubview(emptyView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        noFavouritesImageView.translatesAutoresizingMaskIntoConstraints = false
-//        noInternetView.translatesAutoresizingMaskIntoConstraints = false
-        
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
+                
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            noFavouritesImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            noFavouritesImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            noFavouritesImageView.heightAnchor.constraint(equalToConstant: 100),
-            noFavouritesImageView.widthAnchor.constraint(equalTo: noFavouritesImageView.heightAnchor)
-            
-//            noInternetView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            noInternetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            noInternetView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            noInternetView.heightAnchor.constraint(equalTo: view.heightAnchor)
+            emptyView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            emptyView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            emptyView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            emptyView.heightAnchor.constraint(equalToConstant: 115)
         ])
     }
     
@@ -213,11 +199,6 @@ extension FavouritesItemsViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        let size = CGSize(width: view.frame.width, height: 40)
-//        return size
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         let height: CGFloat = 100
         let size = CGSize(width: view.frame.width, height: height)
@@ -225,20 +206,8 @@ extension FavouritesItemsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        if kind == UICollectionView.elementKindSectionHeader {
-//            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
-//                fatalError("Failed to dequeue ShopCollectionReusableView in FavouritesItemsViewController")
-//            }
-//            headerView.configurate(with: "Available")
-//            return headerView
-//            
-//        } else if kind == UICollectionView.elementKindSectionFooter {
-//            
-//        } else {
-//            fatalError("Unexpected kind value")
-//        }
         guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FavouritesFooterReusableView.identifier, for: indexPath) as? FavouritesFooterReusableView else {
-            fatalError("Failed to dequeue CrewFooterReusableView in CrewMainViewController")
+            fatalError("Failed to dequeue FavouritesFooterReusableView in FavouritesItemsViewController")
         }
         let totalSum = items.reduce(0) { $0 + $1.price }
         footerView.configurate(price: totalSum)

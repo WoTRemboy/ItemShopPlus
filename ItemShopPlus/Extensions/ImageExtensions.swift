@@ -18,6 +18,12 @@ extension UIImage {
         static let video = UIImage(named: "VideoBanner")
     }
     
+    enum EmptyView {
+        static let stats = UIImage(systemName: "chart.xyaxis.line")
+        static let favourites = UIImage(systemName: "heart")
+        static let internet = UIImage(systemName: "wifi")
+    }
+    
     enum CurrencySymbol {
         static let usd = UIImage(systemName: "dollarsign")
         static let eur = UIImage(systemName: "eurosign")
@@ -106,6 +112,8 @@ extension UIImage {
         static let cache = UIImage(named: "CacheSetting")
         static let language = UIImage(named: "LanguageSetting")
         static let currency = UIImage(named: "CurrencySetting")
+        static let developer = UIImage(named: "DeveloperSetting")
+        static let designer = UIImage(named: "DesignerSetting")
         static let email = UIImage(named: "EmailSetting")
     }
     

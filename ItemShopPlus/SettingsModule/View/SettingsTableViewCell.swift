@@ -51,6 +51,16 @@ class SettingsTableViewCell: UITableViewCell {
             textLabel?.text = Texts.SettingsPage.currencyTitle
             imageView?.image = .Settings.currency
             accessoryType = .disclosureIndicator
+        case .developer:
+            textLabel?.text = Texts.SettingsPage.developerTitle
+            imageView?.image = .Settings.developer
+            accessoryType = .disclosureIndicator
+            detailTextLabel?.text = Texts.SettingsPage.developerContent
+        case .designer:
+            textLabel?.text = Texts.SettingsPage.designerTitle
+            imageView?.image = .Settings.designer
+            accessoryType = .disclosureIndicator
+            detailTextLabel?.text = Texts.SettingsPage.designerContent
         case .email:
             textLabel?.text = Texts.SettingsPage.emailTitle
             imageView?.image = .Settings.email

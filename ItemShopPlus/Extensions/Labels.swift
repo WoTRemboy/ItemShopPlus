@@ -43,10 +43,14 @@ final class Texts {
         static let noText = NSLocalizedString("PlaceholderSmth", comment: "Something wrong...")
     }
     
-    enum noConnection {
-        static let noInternet = NSLocalizedString("noConnectionInternet", comment: "No connection")
-        static let retry = NSLocalizedString("noConnectionRetry", comment: "Please, retry later")
-        static let retryButton = NSLocalizedString("noConnectionRetryButton", comment: "Retry")
+    enum EmptyView {
+        static let statsTitle = NSLocalizedString("EmptyViewStatsTitle", comment: "No stats")
+        static let statsContent = NSLocalizedString("EmptyViewStatsContent", comment: "Enter a nickname and try again")
+        static let favouriteTitle = NSLocalizedString("EmptyViewFavouriteTitle", comment: "No favorites")
+        static let favouriteContent = NSLocalizedString("EmptyViewFavouriteContent", comment: "Add some shop items to your favorites")
+        static let noInternetTitle = NSLocalizedString("EmptyViewInternetTitle", comment: "No connection")
+        static let noInternetContent = NSLocalizedString("EmptyViewInternetContent", comment: "Please, check your internet connection")
+        static let retryButton = NSLocalizedString("EmptyViewRetryButton", comment: "Retry")
     }
     
     enum Rarity {
@@ -447,18 +451,25 @@ final class Texts {
         static let aboutTitle = NSLocalizedString("SettingsPageAboutTitle", comment: "About")
         static let generalTitle = NSLocalizedString("SettingsPageGeneralTitle", comment: "General")
         static let localizationTitle = NSLocalizedString("SettingsPageLocalizationTitle", comment: "Localization")
-        static let contactTitle = NSLocalizedString("SettingsPageContactTitle", comment: "Contact")
+        static let teamTitle = NSLocalizedString("SettingsPageTeamTitle", comment: "Team")
         
         static let notificationsTitle = NSLocalizedString("SettingsPageNotificationsTitle", comment: "Notifications")
         static let appearanceTitle = NSLocalizedString("SettingsPageAppearanceTitle", comment: "Appearance")
         static let cacheTitle = NSLocalizedString("SettingsPageClearCacheTitle", comment: "Clear Cache")
         static let languageTitle = NSLocalizedString("SettingsPageLanguageTitle", comment: "Language")
         static let currencyTitle = NSLocalizedString("SettingsPageCurrencyTitle", comment: "Currency")
+        static let developerTitle = NSLocalizedString("SettingsPageDeveloperTitle", comment: "Developer")
+        static let designerTitle = NSLocalizedString("SettingsPageDesignerTitle", comment: "Designer")
         static let emailTitle = NSLocalizedString("SettingsPageEmailTitle", comment: "Email")
         
+        static let developerContent = NSLocalizedString("SettingsPageDeveloperContent", comment: "Roman T.")
+        static let designerContent = NSLocalizedString("SettingsPageDesignerContent", comment: "Artyom T.")
         static let emailContent = "fortsatellite@vk.com"
         static let languageContent = NSLocalizedString("SettingsPageLanguageContent", comment: "English")
         static let emptyCacheContent = NSLocalizedString("SettingsPageEmptyCache", comment: "Empty")
+        
+        static let developerLink = "https://www.linkedin.com/in/voityvit"
+        static let designerLink = "https://t.me/ArtyomTver"
     }
     
     enum SettingsAboutCell {

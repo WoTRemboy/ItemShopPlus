@@ -106,6 +106,8 @@ extension UIImage {
         static let cache = UIImage(named: "CacheSetting")
         static let language = UIImage(named: "LanguageSetting")
         static let currency = UIImage(named: "CurrencySetting")
+        static let developer = UIImage(named: "DeveloperSetting")
+        static let designer = UIImage(named: "DesignerSetting")
         static let email = UIImage(named: "EmailSetting")
     }
     

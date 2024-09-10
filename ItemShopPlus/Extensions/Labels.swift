@@ -447,18 +447,25 @@ final class Texts {
         static let aboutTitle = NSLocalizedString("SettingsPageAboutTitle", comment: "About")
         static let generalTitle = NSLocalizedString("SettingsPageGeneralTitle", comment: "General")
         static let localizationTitle = NSLocalizedString("SettingsPageLocalizationTitle", comment: "Localization")
-        static let contactTitle = NSLocalizedString("SettingsPageContactTitle", comment: "Contact")
+        static let teamTitle = NSLocalizedString("SettingsPageTeamTitle", comment: "Team")
         
         static let notificationsTitle = NSLocalizedString("SettingsPageNotificationsTitle", comment: "Notifications")
         static let appearanceTitle = NSLocalizedString("SettingsPageAppearanceTitle", comment: "Appearance")
         static let cacheTitle = NSLocalizedString("SettingsPageClearCacheTitle", comment: "Clear Cache")
         static let languageTitle = NSLocalizedString("SettingsPageLanguageTitle", comment: "Language")
         static let currencyTitle = NSLocalizedString("SettingsPageCurrencyTitle", comment: "Currency")
+        static let developerTitle = NSLocalizedString("SettingsPageDeveloperTitle", comment: "Developer")
+        static let designerTitle = NSLocalizedString("SettingsPageDesignerTitle", comment: "Designer")
         static let emailTitle = NSLocalizedString("SettingsPageEmailTitle", comment: "Email")
         
+        static let developerContent = NSLocalizedString("SettingsPageDeveloperContent", comment: "Roman T.")
+        static let designerContent = NSLocalizedString("SettingsPageDesignerContent", comment: "Artyom T.")
         static let emailContent = "fortsatellite@vk.com"
         static let languageContent = NSLocalizedString("SettingsPageLanguageContent", comment: "English")
         static let emptyCacheContent = NSLocalizedString("SettingsPageEmptyCache", comment: "Empty")
+        
+        static let developerLink = "https://www.linkedin.com/in/voityvit"
+        static let designerLink = "https://t.me/ArtyomTver"
     }
     
     enum SettingsAboutCell {

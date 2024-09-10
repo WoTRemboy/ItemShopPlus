@@ -15,6 +15,7 @@ final class StatsMainViewController: UIViewController {
     private var platform: String? = nil
     
     private let noInternetView = EmptyView(type: .internet)
+    private let noStatsView = EmptyView(type: .stats)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let refreshControl = UIRefreshControl()
     
@@ -42,13 +43,6 @@ final class StatsMainViewController: UIViewController {
         return collectionView
     }()
     
-    private let noStatsImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = .Stats.noStats
-        imageView.isHidden = true
-        return imageView
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .BackColors.backDefault
@@ -62,7 +56,7 @@ final class StatsMainViewController: UIViewController {
         navigationBarSetup()
         collectionViewSetup()
         noInternetSetup()
-        noStatsImageViewSetup()
+        noStatsViewSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,7 +95,7 @@ final class StatsMainViewController: UIViewController {
         }
         if firstAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                self.noStatsImageView.isHidden = false
+                self.noStatsView.isHidden = false
             }
         }
         nicknameVC.appear(sender: self, firstAppear: firstAppear)
@@ -139,7 +133,7 @@ final class StatsMainViewController: UIViewController {
             self.activityIndicator.startAnimating()
         }
         noInternetView.isHidden = true
-        noStatsImageView.isHidden = true
+        noStatsView.isHidden = true
         nicknameButton.isEnabled = false
         
         self.networkService.getAccountStats(nickname: nickname, platform: platform) { [weak self] result in
@@ -171,7 +165,7 @@ final class StatsMainViewController: UIViewController {
                         }, completion: nil)
                     }
                     self?.noInternetView.isHidden = true
-                    self?.noStatsImageView.isHidden = true
+                    self?.noStatsView.isHidden = true
                     self?.nicknameButton.isEnabled = true
                     UserDefaults.standard.set(newStats.name, forKey: Texts.StatsPage.nicknameKey)
                 }
@@ -194,7 +188,7 @@ final class StatsMainViewController: UIViewController {
                 self.showNicknamePopup(firstAppear: false)
                 self.nicknameButton.isEnabled = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    self.noStatsImageView.isHidden = false
+                    self.noStatsView.isHidden = false
                 }
             }
             alertController.addAction(okAction)
@@ -229,16 +223,17 @@ final class StatsMainViewController: UIViewController {
         ])
     }
     
-    private func noStatsImageViewSetup() {
-        view.addSubview(noStatsImageView)
-        noStatsImageView.translatesAutoresizingMaskIntoConstraints = false
+    private func noStatsViewSetup() {
+        view.addSubview(noStatsView)
+        noStatsView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            noStatsImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            noStatsImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            noStatsImageView.heightAnchor.constraint(equalToConstant: 100),
-            noStatsImageView.widthAnchor.constraint(equalTo: noStatsImageView.heightAnchor)
+            noStatsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            noStatsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            noStatsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            noStatsView.heightAnchor.constraint(equalToConstant: 115)
         ])
+        noStatsView.configurate()
     }
     
     private func collectionViewSetup() {

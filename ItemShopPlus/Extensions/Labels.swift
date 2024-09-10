@@ -43,10 +43,14 @@ final class Texts {
         static let noText = NSLocalizedString("PlaceholderSmth", comment: "Something wrong...")
     }
     
-    enum noConnection {
-        static let noInternet = NSLocalizedString("noConnectionInternet", comment: "No connection")
-        static let retry = NSLocalizedString("noConnectionRetry", comment: "Please, retry later")
-        static let retryButton = NSLocalizedString("noConnectionRetryButton", comment: "Retry")
+    enum EmptyView {
+        static let statsTitle = NSLocalizedString("EmptyViewStatsTitle", comment: "No connection")
+        static let statsContent = NSLocalizedString("EmptyViewStatsContent", comment: "Enter a nickname and try again")
+        static let favouriteTitle = NSLocalizedString("EmptyViewFavouriteTitle", comment: "No favorites")
+        static let favouriteContent = NSLocalizedString("EmptyViewFavouriteContent", comment: "Add some shop items to your favorites")
+        static let noInternetTitle = NSLocalizedString("EmptyViewInternetTitle", comment: "No connection")
+        static let noInternetContent = NSLocalizedString("EmptyViewInternetContent", comment: "Please, check your internet connection")
+        static let retryButton = NSLocalizedString("EmptyViewRetryButton", comment: "Retry")
     }
     
     enum Rarity {

@@ -13,6 +13,30 @@ final class EmptyView: UIView {
     
     private let type: EmptyViewType
     
+    private var title: String? = nil {
+        didSet {
+            titleLabel.text = title
+        }
+    }
+    
+    private var content: String? = nil {
+        didSet {
+            contentLabel.text = content
+        }
+    }
+    
+    private var image: UIImage? = nil {
+        didSet {
+            imageView.image = image
+        }
+    }
+    
+    private var aspectRatio: CGFloat {
+        guard let trueImage = image else { return 1 }
+        let ratio = trueImage.size.width / trueImage.size.height
+        return ratio
+    }
+    
     init(type: EmptyViewType) {
         self.type = type
         super.init(frame: .null)
@@ -23,30 +47,35 @@ final class EmptyView: UIView {
     }
     
     // MARK: - UI Elements and Views
+    
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.tintColor = .LabelColors.labelSecondary
+        imageView.sizeToFit()
+        return imageView
+    }()
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Texts.noConnection.noInternet
         label.textColor = .labelPrimary
-        label.font = .segmentTitle()
+        label.font = .placeholderTitle()
         label.textAlignment = .center
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         return label
     }()
     
-    private let retryLabel: UILabel = {
+    private let contentLabel: UILabel = {
         let label = UILabel()
-        label.text = Texts.noConnection.retry
-        label.textColor = .labelPrimary
-        label.font = .segmentTitle()
+        label.textColor = .labelSecondary
+        label.font = .subhead()
         label.textAlignment = .center
-        label.numberOfLines = 0
+        label.numberOfLines = 2
         return label
     }()
     
     internal let reloadButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Texts.noConnection.retryButton, for: .normal)
+        button.setTitle(Texts.EmptyView.retryButton, for: .normal)
         button.backgroundColor = .IconColors.backgroundPages
         button.layer.cornerRadius = 12
         button.titleLabel?.font = .title()
@@ -73,30 +102,57 @@ final class EmptyView: UIView {
     // MARK: - Public Configure Method
     
     public func configurate() {
+        setupContent()
         setupUI()
+    }
+    
+    private func setupContent() {
+        switch type {
+        case .stats:
+            title = Texts.EmptyView.statsTitle
+            content = Texts.EmptyView.statsContent
+            image = .EmptyView.stats
+            reloadButton.isHidden = true
+        case .favourite:
+            title = Texts.EmptyView.favouriteTitle
+            content = Texts.EmptyView.favouriteContent
+            image = .EmptyView.favourites
+            reloadButton.isHidden = true
+        case .internet:
+            title = Texts.EmptyView.noInternetTitle
+            content = Texts.EmptyView.noInternetContent
+            image = .EmptyView.internet
+        }
     }
     
     // MARK: - UI Setup
     
     private func setupUI() {
+        addSubview(imageView)
         addSubview(titleLabel)
-        addSubview(retryLabel)
+        addSubview(contentLabel)
         addSubview(reloadButton)
         
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        retryLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentLabel.translatesAutoresizingMaskIntoConstraints = false
         reloadButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 45),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: aspectRatio),
+            
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -UIScreen.main.bounds.height / 20),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
             
-            retryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
-            retryLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            retryLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            contentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
+            contentLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            contentLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             
-            reloadButton.topAnchor.constraint(equalTo: retryLabel.bottomAnchor, constant: UIScreen.main.bounds.height / 20),
+            reloadButton.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: UIScreen.main.bounds.height / 20),
             reloadButton.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
             reloadButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2),
             reloadButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 20),
@@ -108,6 +164,6 @@ final class EmptyView: UIView {
 
 enum EmptyViewType {
     case stats
-    case archive
+    case favourite
     case internet
 }

@@ -21,7 +21,7 @@ final class CrewMainViewController: UIViewController {
     
     // MARK: - UI Elements and Views
     
-    private let noInternetView = NoInternetView()
+    private let noInternetView = EmptyView(type: .internet)
     private var playerViewController = AVPlayerViewController()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let refreshControl = UIRefreshControl()

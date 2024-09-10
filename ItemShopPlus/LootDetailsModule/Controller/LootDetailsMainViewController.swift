@@ -20,7 +20,7 @@ final class LootDetailsMainViewController: UIViewController {
     
     private let networkService = DefaultNetworkService()
     
-    private let noInternetView = NoInternetView()
+    private let noInternetView = EmptyView(type: .internet)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let refreshControl = UIRefreshControl()
     

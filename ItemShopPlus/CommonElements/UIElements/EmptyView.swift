@@ -1,5 +1,5 @@
 //
-//  NoInternetView.swift
+//  EmptyView.swift
 //  ItemShopPlus
 //
 //  Created by Roman Tverdokhleb on 29.01.2024.
@@ -7,11 +7,24 @@
 
 import UIKit
 
-final class NoInternetView: UIView {
+final class EmptyView: UIView {
+    
+    // MARK: - Properties & Initialization
+    
+    private let type: EmptyViewType
+    
+    init(type: EmptyViewType) {
+        self.type = type
+        super.init(frame: .null)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - UI Elements and Views
 
-    private let noInternetLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.noConnection.noInternet
         label.textColor = .labelPrimary
@@ -66,28 +79,35 @@ final class NoInternetView: UIView {
     // MARK: - UI Setup
     
     private func setupUI() {
-        addSubview(noInternetLabel)
+        addSubview(titleLabel)
         addSubview(retryLabel)
         addSubview(reloadButton)
         
-        noInternetLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         retryLabel.translatesAutoresizingMaskIntoConstraints = false
         reloadButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            noInternetLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            noInternetLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            noInternetLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -UIScreen.main.bounds.height / 20),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -UIScreen.main.bounds.height / 20),
             
-            retryLabel.topAnchor.constraint(equalTo: noInternetLabel.bottomAnchor, constant: 2),
-            retryLabel.leadingAnchor.constraint(equalTo: noInternetLabel.leadingAnchor),
-            retryLabel.trailingAnchor.constraint(equalTo: noInternetLabel.trailingAnchor),
+            retryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2),
+            retryLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            retryLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             
             reloadButton.topAnchor.constraint(equalTo: retryLabel.bottomAnchor, constant: UIScreen.main.bounds.height / 20),
-            reloadButton.centerXAnchor.constraint(equalTo: noInternetLabel.centerXAnchor),
+            reloadButton.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor),
             reloadButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2),
             reloadButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 20),
         ])
     }
 
+}
+
+
+enum EmptyViewType {
+    case stats
+    case archive
+    case internet
 }

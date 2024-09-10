@@ -44,7 +44,7 @@ final class Texts {
     }
     
     enum EmptyView {
-        static let statsTitle = NSLocalizedString("EmptyViewStatsTitle", comment: "No connection")
+        static let statsTitle = NSLocalizedString("EmptyViewStatsTitle", comment: "No stats")
         static let statsContent = NSLocalizedString("EmptyViewStatsContent", comment: "Enter a nickname and try again")
         static let favouriteTitle = NSLocalizedString("EmptyViewFavouriteTitle", comment: "No favorites")
         static let favouriteContent = NSLocalizedString("EmptyViewFavouriteContent", comment: "Add some shop items to your favorites")

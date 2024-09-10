@@ -427,7 +427,7 @@ final class ShopViewController: UIViewController {
             noInternetView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             noInternetView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             noInternetView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            noInternetView.heightAnchor.constraint(equalToConstant: 200)
+            noInternetView.heightAnchor.constraint(equalToConstant: 210)
         ])
     }
     

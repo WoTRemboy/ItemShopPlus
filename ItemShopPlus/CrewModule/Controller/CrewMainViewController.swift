@@ -345,10 +345,10 @@ final class CrewMainViewController: UIViewController {
         noInternetView.reloadButton.addTarget(self, action: #selector(refreshWithoutControl), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            noInternetView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            noInternetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            noInternetView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            noInternetView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             noInternetView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            noInternetView.heightAnchor.constraint(equalTo: view.heightAnchor)
+            noInternetView.heightAnchor.constraint(equalToConstant: 210)
         ])
     }
 }

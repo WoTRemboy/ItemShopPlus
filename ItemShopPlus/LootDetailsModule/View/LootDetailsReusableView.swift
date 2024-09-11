@@ -14,6 +14,11 @@ final class LootDetailsReusableView: UICollectionReusableView {
     static let identifier = Texts.LootDetailsStatsCell.footerIdentifier
     private var item: LootItemStats = .emptyStats
     
+    private var isDescription: Bool {
+        guard let text = descriptionContentLabel.text else { return false }
+        return !text.isEmpty
+    }
+    
     // MARK: - UI Elements and Views
     
     private let damageBullet = CollectionParametersRowView(frame: .null, title: Texts.LootDetailsStatsCell.damageBulletTitle, content: Texts.LootDetailsStatsCell.no)
@@ -32,10 +37,36 @@ final class LootDetailsReusableView: UICollectionReusableView {
         return stackView
     }()
     
+    private let descriptionTitleLable: UILabel = {
+        let label = UILabel()
+        label.text = Texts.ShopGrantedParameters.descriprion
+        label.textColor = .labelPrimary
+        label.font = .headline()
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    private let descriptionContentLabel: UILabel = {
+        let label = UILabel()
+        label.text = Texts.ShopGrantedParameters.descriptionData
+        label.textColor = .labelSecondary
+        label.font = .subhead()
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let descriptionSeparatorLine: UIView = {
+        let line = UIView()
+        line.backgroundColor = .labelDisable
+        return line
+    }()
+    
     // MARK: - Public Configure Methods
     
-    public func configurate(item: LootItemStats) {
+    public func configurate(item: LootItemStats, description: String) {
         self.item = item
+        self.descriptionContentLabel.text = description
+        
         let damageToShow = Int(item.dmgBullet * 10) % 10 == 0 ? String(Int(item.dmgBullet.rounded())) : String(format: "%.1f", item.dmgBullet)
         let rateToShow = Int(item.firingRate * 10) % 10 == 0 ? String(Int(item.firingRate.rounded())) : String(format: "%.1f", item.firingRate)
         
@@ -67,13 +98,39 @@ final class LootDetailsReusableView: UICollectionReusableView {
         item.zoneCritical != 0 ? stackView.addArrangedSubview(damageZone) : nil
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.topAnchor.constraint(equalTo: isDescription ? descriptionContentLabel.bottomAnchor : topAnchor, constant: 16),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
     }
     
+    private func descriptionSetup() {
+        addSubview(descriptionSeparatorLine)
+        addSubview(descriptionTitleLable)
+        addSubview(descriptionContentLabel)
+        
+        descriptionSeparatorLine.translatesAutoresizingMaskIntoConstraints = false
+        descriptionTitleLable.translatesAutoresizingMaskIntoConstraints = false
+        descriptionContentLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            descriptionSeparatorLine.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            descriptionSeparatorLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            descriptionSeparatorLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            descriptionSeparatorLine.heightAnchor.constraint(equalToConstant: 1),
+            
+            descriptionTitleLable.bottomAnchor.constraint(equalTo: descriptionSeparatorLine.topAnchor, constant: 70/2 - 2),
+            descriptionTitleLable.leadingAnchor.constraint(equalTo: descriptionSeparatorLine.leadingAnchor),
+            descriptionTitleLable.trailingAnchor.constraint(equalTo: descriptionSeparatorLine.trailingAnchor),
+            
+            descriptionContentLabel.topAnchor.constraint(equalTo: descriptionTitleLable.bottomAnchor, constant: 4),
+            descriptionContentLabel.leadingAnchor.constraint(equalTo: descriptionTitleLable.leadingAnchor),
+            descriptionContentLabel.trailingAnchor.constraint(equalTo: descriptionTitleLable.trailingAnchor)
+        ])
+    }
+    
     private func setupUI() {
+        isDescription ? descriptionSetup() : nil
         stackViewSetup()
         
         NSLayoutConstraint.activate([

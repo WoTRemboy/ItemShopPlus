@@ -51,6 +51,13 @@
 		6342091A2BD2B0F3008A9496 /* BundlesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209192BD2B0F3008A9496 /* BundlesModel.swift */; };
 		6342091C2BD2B2A7008A9496 /* JSONBundleParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342091B2BD2B2A7008A9496 /* JSONBundleParse.swift */; };
 		6342091F2BD40F87008A9496 /* BundlesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342091E2BD40F87008A9496 /* BundlesCollectionViewCell.swift */; };
+		6343B0B52C9309380060E499 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; };
+		6343B0B62C9309380060E499 /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6343B0B82C9309390060E499 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; };
+		6343B0B92C9309390060E499 /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		634C4B7E2C92D7470007E100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C898C42B232F4100FABD69 /* Assets.xcassets */; };
+		634C4B7F2C92F8F50007E100 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898E82B233DDA00FABD69 /* ImageExtensions.swift */; };
+		634C4B822C92FAD60007E100 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898EA2B233E9900FABD69 /* Labels.swift */; };
 		634F3F8B2B67CC8800C01426 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F3F8A2B67CC8800C01426 /* EmptyView.swift */; };
 		63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */; };
 		63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */; };
@@ -77,8 +84,6 @@
 		639418B02BD67C81007F02FA /* BundlesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639418AF2BD67C81007F02FA /* BundlesDetailsViewController.swift */; };
 		639418B22BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639418B12BD6814A007F02FA /* BundlesDetailsCollectionReusableView.swift */; };
 		639418B42BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639418B32BD68E78007F02FA /* BundlesDetailsCollectionViewCell.swift */; };
-		6394FC122C5AC3FA00FC2C44 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; };
-		6394FC142C5AC3FA00FC2C44 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; };
 		6394FC172C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6394FC162C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift */; };
 		6394FC192C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6394FC182C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift */; };
 		6394FC1B2C5AC3FC00FC2C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6394FC1A2C5AC3FC00FC2C44 /* Assets.xcassets */; };
@@ -166,6 +171,18 @@
 				6394FC1F2C5AC3FC00FC2C44 /* ItemShopPlusWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6343B0B72C9309380060E499 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6343B0B62C9309380060E499 /* SwiftUI.framework in Embed Frameworks */,
+				6343B0B92C9309390060E499 /* WidgetKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -315,8 +332,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6394FC142C5AC3FA00FC2C44 /* SwiftUI.framework in Frameworks */,
-				6394FC122C5AC3FA00FC2C44 /* WidgetKit.framework in Frameworks */,
+				6343B0B52C9309380060E499 /* SwiftUI.framework in Frameworks */,
+				6343B0B82C9309390060E499 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,6 +1090,7 @@
 				6394FC0B2C5AC3FA00FC2C44 /* Sources */,
 				6394FC0C2C5AC3FA00FC2C44 /* Frameworks */,
 				6394FC0D2C5AC3FA00FC2C44 /* Resources */,
+				6343B0B72C9309380060E499 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1175,6 +1193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634C4B7E2C92D7470007E100 /* Assets.xcassets in Resources */,
 				6394FC1B2C5AC3FC00FC2C44 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1206,6 +1225,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634C4B7F2C92F8F50007E100 /* ImageExtensions.swift in Sources */,
+				634C4B822C92FAD60007E100 /* Labels.swift in Sources */,
 				6394FC192C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift in Sources */,
 				6394FC172C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift in Sources */,
 			);

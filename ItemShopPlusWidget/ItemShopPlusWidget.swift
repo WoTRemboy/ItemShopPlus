@@ -37,15 +37,57 @@ struct StatsEntry: TimelineEntry {
     let date: Date
 }
 
-struct ItemShopPlusWidgetEntryView : View {
-    var entry: Provider.Entry
+struct ItemShopPlusWidgetEntryView: View {
+    internal var entry: Provider.Entry
 
-    var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
+    internal var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            itemIconAndBanner
+            itemNamePrice
         }
-        .widgetBackground(Color.red)
+        .widgetBackground(Color.backDefault)
+    }
+    
+    private var itemIconAndBanner: some View {
+        HStack(alignment: .top) {
+            Image.Widget.mockItem
+                .resizable()
+                .scaledToFit()
+                .clipShape(.rect(cornerRadius: 10))
+                .frame(width: 80)
+            Spacer()
+            
+            Image.Widget.newBanner
+                .resizable()
+                .scaledToFit()
+                .frame(width: 35)
+        }
+    }
+    
+    private var itemNamePrice: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(Texts.Widget.mockTitle)
+                .lineLimit(1)
+                .font(.system(size: 17, weight: .light))
+                .padding(.top, 8)
+            
+            itemPrice
+                .padding(.top, 2)
+        }
+    }
+    
+    private var itemPrice: some View {
+        HStack(spacing: 3) {
+            Image.Widget.vBucks
+                .resizable()
+                .scaledToFit()
+                .frame(width: 13)
+            
+            Text(Texts.Widget.mockPrice)
+                .lineLimit(1)
+                .font(.system(size: 13, weight: .medium))
+                .foregroundStyle(Color.labelPrimary)
+        }
     }
 }
 
@@ -63,8 +105,9 @@ struct ItemShopPlusWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Item of the Day")
+        .description("New or the most interesting offer today.")
+        .supportedFamilies([.systemSmall])
     }
 }
 

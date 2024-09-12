@@ -10,7 +10,7 @@ import SwiftUI
 
 @main
 struct ItemShopPlusWidgetBundle: WidgetBundle {
-    var body: some Widget {
+    internal var body: some Widget {
         ItemShopPlusWidget()
     }
 }

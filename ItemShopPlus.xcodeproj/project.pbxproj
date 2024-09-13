@@ -51,10 +51,6 @@
 		6342091A2BD2B0F3008A9496 /* BundlesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634209192BD2B0F3008A9496 /* BundlesModel.swift */; };
 		6342091C2BD2B2A7008A9496 /* JSONBundleParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342091B2BD2B2A7008A9496 /* JSONBundleParse.swift */; };
 		6342091F2BD40F87008A9496 /* BundlesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6342091E2BD40F87008A9496 /* BundlesCollectionViewCell.swift */; };
-		6343B0B52C9309380060E499 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; };
-		6343B0B62C9309380060E499 /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6343B0B82C9309390060E499 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; };
-		6343B0B92C9309390060E499 /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		634C4B7E2C92D7470007E100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C898C42B232F4100FABD69 /* Assets.xcassets */; };
 		634C4B7F2C92F8F50007E100 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898E82B233DDA00FABD69 /* ImageExtensions.swift */; };
 		634C4B822C92FAD60007E100 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898EA2B233E9900FABD69 /* Labels.swift */; };
@@ -107,6 +103,10 @@
 		639E62352B92719100E17B4F /* BattlePassMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E62342B92719100E17B4F /* BattlePassMainViewController.swift */; };
 		63A654CC2C382E850000B060 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A654CB2C382E850000B060 /* CoreDataManager.swift */; };
 		63A654CF2C3833B20000B060 /* FavouritesDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A654CE2C3833B20000B060 /* FavouritesDataBaseManager.swift */; };
+		63BB3AD62C9490C9006C7038 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; };
+		63BB3AD72C9490C9006C7038 /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63BB3AD92C9490CA006C7038 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; };
+		63BB3ADA2C9490CA006C7038 /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
 		63C38BDF2C2870F9001995B3 /* FavouriteShopItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63C38BDD2C2870F9001995B3 /* FavouriteShopItem.xcdatamodeld */; };
 		63C38C272C287AE5001995B3 /* FavouriteShopItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C38C222C287AE5001995B3 /* FavouriteShopItemEntity+CoreDataProperties.swift */; };
@@ -173,14 +173,14 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6343B0B72C9309380060E499 /* Embed Frameworks */ = {
+		63BB3AD82C9490C9006C7038 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6343B0B62C9309380060E499 /* SwiftUI.framework in Embed Frameworks */,
-				6343B0B92C9309390060E499 /* WidgetKit.framework in Embed Frameworks */,
+				63BB3AD72C9490C9006C7038 /* SwiftUI.framework in Embed Frameworks */,
+				63BB3ADA2C9490CA006C7038 /* WidgetKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,8 +332,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6343B0B52C9309380060E499 /* SwiftUI.framework in Frameworks */,
-				6343B0B82C9309390060E499 /* WidgetKit.framework in Frameworks */,
+				63BB3AD62C9490C9006C7038 /* SwiftUI.framework in Frameworks */,
+				63BB3AD92C9490CA006C7038 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,7 +1090,7 @@
 				6394FC0B2C5AC3FA00FC2C44 /* Sources */,
 				6394FC0C2C5AC3FA00FC2C44 /* Frameworks */,
 				6394FC0D2C5AC3FA00FC2C44 /* Resources */,
-				6343B0B72C9309380060E499 /* Embed Frameworks */,
+				63BB3AD82C9490C9006C7038 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

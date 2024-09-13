@@ -54,7 +54,6 @@ struct ItemShopPlusWidgetEntryView: View {
                 .resizable()
                 .scaledToFit()
                 .clipShape(.rect(cornerRadius: 10))
-                .frame(width: 80)
             Spacer()
             
             Image.Widget.newBanner
@@ -105,8 +104,8 @@ struct ItemShopPlusWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("Item of the Day")
-        .description("New or the most interesting offer today.")
+        .configurationDisplayName(Texts.Widget.displayName)
+        .description(Texts.Widget.description)
         .supportedFamilies([.systemSmall])
     }
 }

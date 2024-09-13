@@ -588,6 +588,8 @@ final class Texts {
     enum Widget {
         static let mockTitle = "Test Strength"
         static let mockPrice = "500"
+        static let displayName = "Day Offer"
+        static let description = "New or the most interesting item today."
     }
 }
 

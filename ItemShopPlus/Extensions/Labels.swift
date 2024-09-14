@@ -586,8 +586,11 @@ final class Texts {
     // MARK: - Widget
     
     enum Widget {
+        static let placeholderName = "Item name"
+        
         static let mockTitle = "Test Strength"
         static let mockPrice = "500"
+        
         static let displayName = "Day Offer"
         static let description = "New or the most interesting item today."
     }

@@ -174,6 +174,7 @@ private func createInfoSymbol(name: String, first: UIColor, second: UIColor) -> 
 
 extension Image {
     enum Widget {
+        static let placeholder = Image("ImagePlaceholder")
         static let vBucks = Image("VBucks")
         static let newBanner = Image("NewItemBanner")
         static let appIcon = Image("AppIcon")

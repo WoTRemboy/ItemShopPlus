@@ -29,7 +29,7 @@ final class WidgetNetworkService: WidgetNetworkProtocol {
     
     // MARK: - Shop Module Request
     
-    func getShopItems(completion: @escaping (Result<[WidgetShopItem], Error>) -> Void) {
+    internal func getShopItems(completion: @escaping (Result<[WidgetShopItem], Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/shop")
         

@@ -7,39 +7,83 @@
 
 import WidgetKit
 import SwiftUI
+import UIKit
 
 struct Provider: TimelineProvider {
+    private let networkService = WidgetNetworkService()
+    
     func placeholder(in context: Context) -> StatsEntry {
-        StatsEntry(date: Date())
+        StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
     }
-
+    
     func getSnapshot(in context: Context, completion: @escaping (StatsEntry) -> ()) {
-        let entry = StatsEntry(date: Date())
+        let entry = StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
         completion(entry)
     }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [StatsEntry] = []
-
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = StatsEntry(date: entryDate)
-            entries.append(entry)
+    
+    func getTimeline(in context: Context, completion: @escaping (Timeline<StatsEntry>) -> ()) {
+        networkService.getShopItems { result in
+            switch result {
+            case .success(let items):
+                if let newItem = items.filter({ $0.banner == .new }).max(by: { $0.price < $1.price }) {
+                    downloadImage(for: newItem) { downloadedImage in
+                        let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
+                        let entry = StatsEntry(date: Date(), shopItem: newItem, image: downloadedImage)
+                        let timeline = Timeline(entries: [entry], policy: .after(futureDate))
+                        completion(timeline)
+                    }
+                    
+                } else if let mostExpensiveItem = items.max(by: { $0.price < $1.price }) {
+                    downloadImage(for: mostExpensiveItem) { downloadedImage in
+                        let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
+                        let entry = StatsEntry(date: Date(), shopItem: mostExpensiveItem, image: downloadedImage)
+                        let timeline = Timeline(entries: [entry], policy: .after(futureDate))
+                        completion(timeline)
+                    }
+                    
+                } else {
+                    let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
+                    let entry = StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
+                    let timeline = Timeline(entries: [entry], policy: .after(futureDate))
+                    completion(timeline)
+                }
+                
+            case .failure(let error):
+                print("Failed to load items: \(error)")
+                let entry = StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
+                let timeline = Timeline(entries: [entry], policy: .atEnd)
+                completion(timeline)
+            }
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+    }
+    
+    private func downloadImage(for item: WidgetShopItem, completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: item.image) else {
+            completion(nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                completion(nil)
+            }
+        }
+        
+        task.resume()
     }
 }
 
 struct StatsEntry: TimelineEntry {
     let date: Date
+    let shopItem: WidgetShopItem
+    let image: UIImage?
 }
 
 struct ItemShopPlusWidgetEntryView: View {
     internal var entry: Provider.Entry
-
+    
     internal var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             itemIconAndBanner
@@ -50,22 +94,31 @@ struct ItemShopPlusWidgetEntryView: View {
     
     private var itemIconAndBanner: some View {
         HStack(alignment: .top) {
-            Image.Widget.mockItem
-                .resizable()
-                .scaledToFit()
-                .clipShape(.rect(cornerRadius: 10))
+            if let image = entry.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            } else {
+                Image.Widget.placeholder
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
             Spacer()
             
-            Image.Widget.newBanner
-                .resizable()
-                .scaledToFit()
-                .frame(width: 35)
+            if entry.shopItem.banner == .new {
+                Image.Widget.newBanner
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 35)
+            }
         }
     }
     
     private var itemNamePrice: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(Texts.Widget.mockTitle)
+            Text(!entry.shopItem.name.isEmpty ? entry.shopItem.name : Texts.Widget.placeholderName)
                 .lineLimit(1)
                 .font(.system(size: 17, weight: .light))
                 .padding(.top, 8)
@@ -82,7 +135,7 @@ struct ItemShopPlusWidgetEntryView: View {
                 .scaledToFit()
                 .frame(width: 13)
             
-            Text(Texts.Widget.mockPrice)
+            Text(String(entry.shopItem.price))
                 .lineLimit(1)
                 .font(.system(size: 13, weight: .medium))
                 .foregroundStyle(Color.labelPrimary)
@@ -92,8 +145,8 @@ struct ItemShopPlusWidgetEntryView: View {
 
 struct ItemShopPlusWidget: Widget {
     let kind: String = "ItemShopPlusWidget"
-
-    var body: some WidgetConfiguration {
+    
+    internal var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
                 ItemShopPlusWidgetEntryView(entry: entry)
@@ -124,7 +177,7 @@ extension View {
 
 struct ItemShopPlusWidget_Previews: PreviewProvider {
     static var previews: some View {
-        ItemShopPlusWidgetEntryView(entry: StatsEntry(date: .now))
+        ItemShopPlusWidgetEntryView(entry: StatsEntry(date: .now, shopItem: .emptyShopItem, image: .Placeholder.noImage))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

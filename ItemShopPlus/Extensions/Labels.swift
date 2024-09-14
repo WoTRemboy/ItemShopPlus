@@ -582,5 +582,17 @@ final class Texts {
         static let clear = NSLocalizedString("MapPageClear", comment: "Clear")
         static let archive = NSLocalizedString("MapPageArchive", comment: "Archive")
     }
+    
+    // MARK: - Widget
+    
+    enum Widget {
+        static let placeholderName = "Item name"
+        
+        static let mockTitle = "Test Strength"
+        static let mockPrice = "500"
+        
+        static let displayName = "Day Offer"
+        static let description = "New or the most interesting item today."
+    }
 }
 

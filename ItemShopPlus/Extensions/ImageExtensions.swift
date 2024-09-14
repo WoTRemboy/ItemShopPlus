@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SwiftUI
+
+// MARK: - UIKit image extension
 
 extension UIImage {
     
@@ -164,4 +167,17 @@ private func createInfoSymbol(name: String, first: UIColor, second: UIColor) -> 
         withConfiguration: UIImage.SymbolConfiguration(
             paletteColors: [first, second]))
     return image
+}
+
+
+// MARK: - SwiftUI image extension
+
+extension Image {
+    enum Widget {
+        static let placeholder = Image("ImagePlaceholder")
+        static let vBucks = Image("VBucks")
+        static let newBanner = Image("NewItemBanner")
+        static let appIcon = Image("AppIcon")
+        static let mockItem = Image("MockItem")
+    }
 }

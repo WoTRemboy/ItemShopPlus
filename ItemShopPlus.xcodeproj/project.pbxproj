@@ -107,9 +107,9 @@
 		63A654CC2C382E850000B060 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A654CB2C382E850000B060 /* CoreDataManager.swift */; };
 		63A654CF2C3833B20000B060 /* FavouritesDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A654CE2C3833B20000B060 /* FavouritesDataBaseManager.swift */; };
 		63BB3AD62C9490C9006C7038 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; };
-		63BB3AD72C9490C9006C7038 /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63BB3AD72C9490C9006C7038 /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		63BB3AD92C9490CA006C7038 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; };
-		63BB3ADA2C9490CA006C7038 /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63BB3ADA2C9490CA006C7038 /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
 		63C38BDF2C2870F9001995B3 /* FavouriteShopItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63C38BDD2C2870F9001995B3 /* FavouriteShopItem.xcdatamodeld */; };
 		63C38C272C287AE5001995B3 /* FavouriteShopItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C38C222C287AE5001995B3 /* FavouriteShopItemEntity+CoreDataProperties.swift */; };
@@ -1500,9 +1500,11 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ItemShopPlusWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZFH6DW7S4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ItemShopPlusWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ItemShopPlusWidget;
@@ -1517,6 +1519,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus.ItemShopPlusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ItemShopPlusWidget;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1535,9 +1538,11 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = ItemShopPlusWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = ZFH6DW7S4P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ItemShopPlusWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ItemShopPlusWidget;
@@ -1552,6 +1557,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlus.ItemShopPlusWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = ItemShopPlusWidget;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

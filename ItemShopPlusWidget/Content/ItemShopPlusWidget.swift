@@ -58,20 +58,14 @@ struct Provider: TimelineProvider {
     }
     
     private func downloadImage(for item: WidgetShopItem, completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: item.image) else {
+        guard URL(string: item.image) != nil else {
             completion(nil)
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let data = data, let image = UIImage(data: data) {
-                completion(image)
-            } else {
-                completion(nil)
-            }
+        let _ = ImageLoader.loadImage(urlString: item.image, size: CGSize(width: 300, height: 300)) { image in
+            completion(image)
         }
-        
-        task.resume()
     }
 }
 

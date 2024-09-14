@@ -138,6 +138,8 @@
 		63ECC12D2B910A00006E0841 /* SelectingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC12C2B910A00006E0841 /* SelectingMethods.swift */; };
 		63ECC1352B9259A2006E0841 /* BattlePassModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC1342B9259A2006E0841 /* BattlePassModel.swift */; };
 		63ECC1372B9259C6006E0841 /* JSONBattlePassParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ECC1362B9259C6006E0841 /* JSONBattlePassParce.swift */; };
+		63F453CF2C9629C000C5F72D /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C899162B26220D00FABD69 /* ImageLoader.swift */; };
+		63F453D12C962A9100C5F72D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 63F453D02C962A9100C5F72D /* Kingfisher */; };
 		63F547872B34A8D500B3F941 /* DefaultNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F547862B34A8D500B3F941 /* DefaultNetworkService.swift */; };
 		63F547892B34AE2200B3F941 /* JSONParce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F547882B34AE2200B3F941 /* JSONParce.swift */; };
 		63F5478B2B35E40500B3F941 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F5478A2B35E40500B3F941 /* DateFormatting.swift */; };
@@ -338,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63F453D12C962A9100C5F72D /* Kingfisher in Frameworks */,
 				63BB3AD62C9490C9006C7038 /* SwiftUI.framework in Frameworks */,
 				63BB3AD92C9490CA006C7038 /* WidgetKit.framework in Frameworks */,
 			);
@@ -1280,6 +1283,7 @@
 				633CF6772C95FB59006F3981 /* WidgetNetworkService.swift in Sources */,
 				634C4B822C92FAD60007E100 /* Labels.swift in Sources */,
 				6394FC192C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift in Sources */,
+				63F453CF2C9629C000C5F72D /* ImageLoader.swift in Sources */,
 				6394FC172C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1849,6 +1853,11 @@
 			productName = FirebaseMessaging;
 		};
 		63C9AB5A2BD7F4F30046951B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63C9AB592BD7F4F30046951B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		63F453D02C962A9100C5F72D /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 63C9AB592BD7F4F30046951B /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;

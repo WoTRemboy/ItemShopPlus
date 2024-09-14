@@ -33,7 +33,7 @@ struct Provider: TimelineProvider {
                         completion(timeline)
                     }
                     
-                } else if let mostExpensiveItem = items.max(by: { $0.price < $1.price }) {
+                } else if let mostExpensiveItem = items.max(by: { $0.price < $1.price && $0.previousReleaseDate > $1.previousReleaseDate }) {
                     downloadImage(for: mostExpensiveItem) { downloadedImage in
                         let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
                         let entry = StatsEntry(date: Date(), shopItem: mostExpensiveItem, image: downloadedImage)
@@ -120,7 +120,7 @@ struct ItemShopPlusWidgetEntryView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(!entry.shopItem.name.isEmpty ? entry.shopItem.name : Texts.Widget.placeholderName)
                 .lineLimit(1)
-                .font(.system(size: 17, weight: .light))
+                .font(.system(size: 15, weight: .light))
                 .padding(.top, 8)
             
             itemPrice
@@ -133,11 +133,11 @@ struct ItemShopPlusWidgetEntryView: View {
             Image.Widget.vBucks
                 .resizable()
                 .scaledToFit()
-                .frame(width: 13)
+                .frame(width: 15)
             
             Text(String(entry.shopItem.price))
                 .lineLimit(1)
-                .font(.system(size: 13, weight: .medium))
+                .font(.system(size: 15, weight: .medium))
                 .foregroundStyle(Color.labelPrimary)
         }
     }

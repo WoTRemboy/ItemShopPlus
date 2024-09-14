@@ -24,7 +24,7 @@ extension WidgetShopItem {
         
         
         let asset = assetsData.first
-        let image = asset?["background"] as? String ?? String()
+        var image = asset?["background"] as? String ?? String()
         
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
         let regularPrice = priceData["regularPrice"] as? Int ?? 0
@@ -32,6 +32,13 @@ extension WidgetShopItem {
         let bannerData = data["banner"] as? [String: Any]
         let bannerName = bannerData?["id"] as? String ?? String()
         let banner = WidgetBanner.init(rawValue: bannerName) ?? .null
+        
+        if let grantedData = data["granted"] as? [[String: Any]], let granted = grantedData.first {
+            let imagesData = granted["images"] as? [String: Any]
+            if let imageData = imagesData?["icon_background"] as? String {
+                image = imageData
+            }
+        }
         
         return WidgetShopItem(id: id, name: name, image: image, buyAllowed: buyAllowed, price: finalPrice, regularPrice: regularPrice, banner: banner)
     }

@@ -12,58 +12,58 @@ import UIKit
 struct Provider: TimelineProvider {
     private let networkService = WidgetNetworkService()
     
-    func placeholder(in context: Context) -> StatsEntry {
-        StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
+    func placeholder(in context: Context) -> ShopEntry {
+        ShopEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
     }
     
-    func getSnapshot(in context: Context, completion: @escaping (StatsEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (ShopEntry) -> ()) {
         Task {
             do {
                 let items = try await fetchShopItems()
                 let newItem = items.filter({ $0.banner == .new }).max(by: { $0.price < $1.price }) ?? items.max(by: { $0.previousReleaseDate < $1.previousReleaseDate }) ?? .emptyShopItem
                 
                 downloadImage(for: newItem) { image in
-                    let entry = StatsEntry(date: Date(), shopItem: newItem, image: image)
+                    let entry = ShopEntry(date: Date(), shopItem: newItem, image: image)
                     completion(entry)
                 }
             } catch {
                 print("Failed to load snapshot data: \(error)")
-                let entry = StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
+                let entry = ShopEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
                 completion(entry)
             }
         }
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<StatsEntry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<ShopEntry>) -> ()) {
         networkService.getShopItems { result in
             switch result {
             case .success(let items):
                 if let newItem = items.filter({ $0.banner == .new }).max(by: { $0.price < $1.price }) {
                     downloadImage(for: newItem) { downloadedImage in
-                        let futureDate = Calendar.current.date(byAdding: .hour, value: 3, to: Date())!
-                        let entry = StatsEntry(date: Date(), shopItem: newItem, image: downloadedImage)
+                        let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
+                        let entry = ShopEntry(date: Date(), shopItem: newItem, image: downloadedImage)
                         let timeline = Timeline(entries: [entry], policy: .after(futureDate))
                         completion(timeline)
                     }
                     
                 } else if let mostNewItem = items.max(by: { $0.previousReleaseDate < $1.previousReleaseDate }) {
                     downloadImage(for: mostNewItem) { downloadedImage in
-                        let futureDate = Calendar.current.date(byAdding: .hour, value: 3, to: Date())!
-                        let entry = StatsEntry(date: Date(), shopItem: mostNewItem, image: downloadedImage)
+                        let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
+                        let entry = ShopEntry(date: Date(), shopItem: mostNewItem, image: downloadedImage)
                         let timeline = Timeline(entries: [entry], policy: .after(futureDate))
                         completion(timeline)
                     }
                     
                 } else {
                     let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
-                    let entry = StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
+                    let entry = ShopEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
                     let timeline = Timeline(entries: [entry], policy: .after(futureDate))
                     completion(timeline)
                 }
                 
             case .failure(let error):
                 print("Failed to load items: \(error)")
-                let entry = StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
+                let entry = ShopEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
                 let timeline = Timeline(entries: [entry], policy: .atEnd)
                 completion(timeline)
             }
@@ -95,7 +95,7 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct StatsEntry: TimelineEntry {
+struct ShopEntry: TimelineEntry {
     let date: Date
     let shopItem: WidgetShopItem
     let image: UIImage?
@@ -120,37 +120,52 @@ struct ItemShopPlusWidgetEntryView: View {
                     .scaledToFit()
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             } else {
-                Image.Widget.placeholder
-                    .resizable()
+                RoundedRectangle(cornerRadius: 10)
                     .scaledToFit()
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .foregroundStyle(Color.gray)
             }
             Spacer()
             
-            if entry.shopItem.banner == .new {
-                Image.Widget.newBanner
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 35)
-            } else {
+            VStack {
                 Image.Widget.appIcon
                     .resizable()
                     .scaledToFit()
                     .clipShape(.rect(cornerRadius: 3))
                     .frame(width: 20)
+                
+                if entry.shopItem.banner == .new {
+                    Image.Widget.newBanner
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 35)
+                }
             }
         }
     }
     
     private var itemNamePrice: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(!entry.shopItem.name.isEmpty ? entry.shopItem.name : Texts.Widget.placeholderName)
-                .lineLimit(1)
-                .font(.system(size: 15, weight: .light))
-                .padding(.top, 8)
+            if !entry.shopItem.name.isEmpty {
+                Text(entry.shopItem.name)
+                    .lineLimit(1)
+                    .font(.system(size: 15, weight: .light))
+                    .padding(.top, 8)
+            } else {
+                RoundedRectangle(cornerRadius: 3)
+                    .foregroundStyle(Color.Widget.placeholder)
+                    .frame(height: 15)
+                    .padding(.top, 8)
+            }
             
-            itemPrice
-                .padding(.top, 2)
+            if entry.shopItem.price != -100 {
+                itemPrice
+                    .padding(.top, 2)
+            } else {
+                RoundedRectangle(cornerRadius: 3)
+                    .foregroundStyle(Color.Widget.placeholder)
+                    .frame(width: 50, height: 15)
+                    .padding(.top, 2)
+            }
         }
     }
     
@@ -203,7 +218,7 @@ extension View {
 
 struct ItemShopPlusWidget_Previews: PreviewProvider {
     static var previews: some View {
-        ItemShopPlusWidgetEntryView(entry: StatsEntry(date: .now, shopItem: .emptyShopItem, image: .Placeholder.noImage))
+        ItemShopPlusWidgetEntryView(entry: ShopEntry(date: .now, shopItem: .emptyShopItem, image: .Placeholder.noImage))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

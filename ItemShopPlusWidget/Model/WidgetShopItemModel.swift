@@ -17,7 +17,7 @@ struct WidgetShopItem: Equatable, Hashable {
     let previousReleaseDate: Date
     let banner: WidgetBanner
     
-    static let emptyShopItem = WidgetShopItem(id: "", name: Texts.Widget.placeholderName, image: "", buyAllowed: false, price: 0, regularPrice: 0, previousReleaseDate: .now, banner: .null)
+    static let emptyShopItem = WidgetShopItem(id: "", name: "", image: "", buyAllowed: false, price: -100, regularPrice: 0, previousReleaseDate: .now, banner: .null)
     
     static func == (lhs: WidgetShopItem, rhs: WidgetShopItem) -> Bool {
         lhs.id == rhs.id

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIColor {
     enum BackColors {
@@ -52,5 +53,11 @@ extension UIColor {
     
     enum Shadows {
         static let primary = UIColor.black.cgColor
+    }
+}
+
+extension Color {
+    enum Widget {
+        static let placeholder = Color("WidgetPlaceholder")
     }
 }

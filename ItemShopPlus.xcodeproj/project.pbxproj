@@ -59,6 +59,7 @@
 		634C4B822C92FAD60007E100 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898EA2B233E9900FABD69 /* Labels.swift */; };
 		634F3F8B2B67CC8800C01426 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F3F8A2B67CC8800C01426 /* EmptyView.swift */; };
 		636997E32C971931000A8807 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631841DA2BE3F852008C3B4B /* Localizable.xcstrings */; };
+		636997E42C972065000A8807 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898D82B2334BA00FABD69 /* ColorExtensions.swift */; };
 		63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */; };
 		63750CA82B9346B300ED7E0B /* BattlePassCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA72B9346B300ED7E0B /* BattlePassCollectionReusableView.swift */; };
 		63750CAA2B934FDD00ED7E0B /* BattlePassGrantedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA92B934FDD00ED7E0B /* BattlePassGrantedViewController.swift */; };
@@ -1269,6 +1270,7 @@
 				633CF6762C95FB50006F3981 /* WidgetShopItemModel.swift in Sources */,
 				633CF6772C95FB59006F3981 /* WidgetNetworkService.swift in Sources */,
 				634C4B822C92FAD60007E100 /* Labels.swift in Sources */,
+				636997E42C972065000A8807 /* ColorExtensions.swift in Sources */,
 				6394FC192C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift in Sources */,
 				63F453CF2C9629C000C5F72D /* ImageLoader.swift in Sources */,
 				6394FC172C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift in Sources */,

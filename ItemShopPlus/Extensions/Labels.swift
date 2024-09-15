@@ -586,13 +586,10 @@ final class Texts {
     // MARK: - Widget
     
     enum Widget {
-        static let placeholderName = "Item name"
+        static let placeholderName = NSLocalizedString("WidgetPlaceholderName", comment: "Item name")
         
-        static let mockTitle = "Test Strength"
-        static let mockPrice = "500"
-        
-        static let displayName = "Day Offer"
-        static let description = "New or the most interesting item today."
+        static let displayName = NSLocalizedString("WidgetDisplayName", comment: "Day Offer")
+        static let description = NSLocalizedString("WidgetDisplayDescription", comment: "New or the most interesting item today.")
     }
 }
 

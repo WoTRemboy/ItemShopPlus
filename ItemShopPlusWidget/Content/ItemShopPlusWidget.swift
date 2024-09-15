@@ -40,7 +40,7 @@ struct Provider: TimelineProvider {
             case .success(let items):
                 if let newItem = items.filter({ $0.banner == .new }).max(by: { $0.price < $1.price }) {
                     downloadImage(for: newItem) { downloadedImage in
-                        let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
+                        let futureDate = Calendar.current.date(byAdding: .hour, value: 3, to: Date())!
                         let entry = StatsEntry(date: Date(), shopItem: newItem, image: downloadedImage)
                         let timeline = Timeline(entries: [entry], policy: .after(futureDate))
                         completion(timeline)
@@ -48,7 +48,7 @@ struct Provider: TimelineProvider {
                     
                 } else if let mostNewItem = items.max(by: { $0.previousReleaseDate < $1.previousReleaseDate }) {
                     downloadImage(for: mostNewItem) { downloadedImage in
-                        let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
+                        let futureDate = Calendar.current.date(byAdding: .hour, value: 3, to: Date())!
                         let entry = StatsEntry(date: Date(), shopItem: mostNewItem, image: downloadedImage)
                         let timeline = Timeline(entries: [entry], policy: .after(futureDate))
                         completion(timeline)

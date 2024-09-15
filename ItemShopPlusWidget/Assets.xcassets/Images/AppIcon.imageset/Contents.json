@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "1024-Photoroom-2.png",
+      "filename" : "1024 3-2.png",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "1024 3-2 1.png",
       "idiom" : "universal"
     }
   ],

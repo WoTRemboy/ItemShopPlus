@@ -17,8 +17,21 @@ struct Provider: TimelineProvider {
     }
     
     func getSnapshot(in context: Context, completion: @escaping (StatsEntry) -> ()) {
-        let entry = StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
-        completion(entry)
+        Task {
+            do {
+                let items = try await fetchShopItems()
+                let newItem = items.filter({ $0.banner == .new }).max(by: { $0.price < $1.price }) ?? items.max(by: { $0.previousReleaseDate < $1.previousReleaseDate }) ?? .emptyShopItem
+                
+                downloadImage(for: newItem) { image in
+                    let entry = StatsEntry(date: Date(), shopItem: newItem, image: image)
+                    completion(entry)
+                }
+            } catch {
+                print("Failed to load snapshot data: \(error)")
+                let entry = StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
+                completion(entry)
+            }
+        }
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<StatsEntry>) -> ()) {
@@ -33,10 +46,10 @@ struct Provider: TimelineProvider {
                         completion(timeline)
                     }
                     
-                } else if let mostExpensiveItem = items.max(by: { $0.price < $1.price && $0.previousReleaseDate > $1.previousReleaseDate }) {
-                    downloadImage(for: mostExpensiveItem) { downloadedImage in
+                } else if let mostNewItem = items.max(by: { $0.previousReleaseDate < $1.previousReleaseDate }) {
+                    downloadImage(for: mostNewItem) { downloadedImage in
                         let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
-                        let entry = StatsEntry(date: Date(), shopItem: mostExpensiveItem, image: downloadedImage)
+                        let entry = StatsEntry(date: Date(), shopItem: mostNewItem, image: downloadedImage)
                         let timeline = Timeline(entries: [entry], policy: .after(futureDate))
                         completion(timeline)
                     }
@@ -53,6 +66,19 @@ struct Provider: TimelineProvider {
                 let entry = StatsEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
                 let timeline = Timeline(entries: [entry], policy: .atEnd)
                 completion(timeline)
+            }
+        }
+    }
+    
+    private func fetchShopItems() async throws -> [WidgetShopItem] {
+        return try await withCheckedThrowingContinuation { continuation in
+            networkService.getShopItems { result in
+                switch result {
+                case .success(let items):
+                    continuation.resume(returning: items)
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                }
             }
         }
     }
@@ -106,6 +132,12 @@ struct ItemShopPlusWidgetEntryView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 35)
+            } else {
+                Image.Widget.appIcon
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(.rect(cornerRadius: 3))
+                    .frame(width: 20)
             }
         }
     }

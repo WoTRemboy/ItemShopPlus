@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import WidgetKit
+import UIKit
 
 struct WidgetShopItem: Equatable, Hashable {
     let id: String
@@ -17,7 +19,9 @@ struct WidgetShopItem: Equatable, Hashable {
     let previousReleaseDate: Date
     let banner: WidgetBanner
     
-    static let emptyShopItem = WidgetShopItem(id: "", name: Texts.Widget.placeholderName, image: "", buyAllowed: false, price: 0, regularPrice: 0, previousReleaseDate: .now, banner: .null)
+    static let emptyShopItem = WidgetShopItem(id: "", name: "", image: "", buyAllowed: false, price: -100, regularPrice: 0, previousReleaseDate: .now, banner: .null)
+    
+    static let mockShopItem = WidgetShopItem(id: "", name: "Galaxy Scout", image: "", buyAllowed: true, price: 2000, regularPrice: 2000, previousReleaseDate: .now, banner: .new)
     
     static func == (lhs: WidgetShopItem, rhs: WidgetShopItem) -> Bool {
         lhs.id == rhs.id
@@ -26,6 +30,12 @@ struct WidgetShopItem: Equatable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+}
+
+struct ShopEntry: TimelineEntry {
+    let date: Date
+    let shopItem: WidgetShopItem
+    let image: UIImage?
 }
 
 enum WidgetBanner: String {

@@ -149,6 +149,12 @@ extension UIImage {
         static let poiAction = UIImage(systemName: "mappin")
         static let clearAction = UIImage(systemName: "mappin.slash")
     }
+    
+    // MARK: - Widget Module
+    
+    enum Widget {
+        static let mockItem = UIImage(named: "MockItem")
+    }
 }
 
 // MARK: - Main Module Button Images Color Setup
@@ -178,6 +184,5 @@ extension Image {
         static let vBucks = Image("VBucks")
         static let newBanner = Image("NewItemBanner")
         static let appIcon = Image("AppIcon")
-        static let mockItem = Image("MockItem")
     }
 }

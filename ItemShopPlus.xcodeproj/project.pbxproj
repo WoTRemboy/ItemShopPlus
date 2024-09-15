@@ -107,9 +107,9 @@
 		63A654CC2C382E850000B060 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A654CB2C382E850000B060 /* CoreDataManager.swift */; };
 		63A654CF2C3833B20000B060 /* FavouritesDataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A654CE2C3833B20000B060 /* FavouritesDataBaseManager.swift */; };
 		63BB3AD62C9490C9006C7038 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; };
-		63BB3AD72C9490C9006C7038 /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		63BB3AD72C9490C9006C7038 /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC132C5AC3FA00FC2C44 /* SwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63BB3AD92C9490CA006C7038 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; };
-		63BB3ADA2C9490CA006C7038 /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		63BB3ADA2C9490CA006C7038 /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6394FC112C5AC3FA00FC2C44 /* WidgetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63C061852BC1F6D500C66DDB /* PreviewZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C061842BC1F6D500C66DDB /* PreviewZoomView.swift */; };
 		63C38BDF2C2870F9001995B3 /* FavouriteShopItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63C38BDD2C2870F9001995B3 /* FavouriteShopItem.xcdatamodeld */; };
 		63C38C272C287AE5001995B3 /* FavouriteShopItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C38C222C287AE5001995B3 /* FavouriteShopItemEntity+CoreDataProperties.swift */; };

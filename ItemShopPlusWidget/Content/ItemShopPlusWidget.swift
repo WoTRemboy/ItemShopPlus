@@ -38,26 +38,25 @@ struct Provider: TimelineProvider {
         networkService.getShopItems { result in
             switch result {
             case .success(let items):
-                if let newItem = items.filter({ $0.banner == .new }).max(by: { $0.price < $1.price }) {
+                if let newItem = items.filter({ $0.banner == .new }).randomElement() {
                     downloadImage(for: newItem) { downloadedImage in
-                        let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
                         let entry = ShopEntry(date: Date(), shopItem: newItem, image: downloadedImage)
-                        let timeline = Timeline(entries: [entry], policy: .after(futureDate))
+                        let timeline = Timeline(entries: [entry], policy: .atEnd)
                         completion(timeline)
                     }
                     
-                } else if let mostNewItem = items.max(by: { $0.previousReleaseDate < $1.previousReleaseDate }) {
+                } else if let maxDate = items.max(by: { $0.previousReleaseDate < $1.previousReleaseDate })?.previousReleaseDate,
+                          let mostNewItem = items.filter({ $0.previousReleaseDate == maxDate }).randomElement() {
+                    
                     downloadImage(for: mostNewItem) { downloadedImage in
-                        let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
                         let entry = ShopEntry(date: Date(), shopItem: mostNewItem, image: downloadedImage)
-                        let timeline = Timeline(entries: [entry], policy: .after(futureDate))
+                        let timeline = Timeline(entries: [entry], policy: .atEnd)
                         completion(timeline)
                     }
                     
                 } else {
-                    let futureDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
                     let entry = ShopEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
-                    let timeline = Timeline(entries: [entry], policy: .after(futureDate))
+                    let timeline = Timeline(entries: [entry], policy: .atEnd)
                     completion(timeline)
                 }
                 
@@ -93,12 +92,6 @@ struct Provider: TimelineProvider {
             completion(image)
         }
     }
-}
-
-struct ShopEntry: TimelineEntry {
-    let date: Date
-    let shopItem: WidgetShopItem
-    let image: UIImage?
 }
 
 struct ItemShopPlusWidgetEntryView: View {
@@ -218,7 +211,7 @@ extension View {
 
 struct ItemShopPlusWidget_Previews: PreviewProvider {
     static var previews: some View {
-        ItemShopPlusWidgetEntryView(entry: ShopEntry(date: .now, shopItem: .emptyShopItem, image: .Placeholder.noImage))
+        ItemShopPlusWidgetEntryView(entry: ShopEntry(date: .now, shopItem: .mockShopItem, image: .Widget.mockItem))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

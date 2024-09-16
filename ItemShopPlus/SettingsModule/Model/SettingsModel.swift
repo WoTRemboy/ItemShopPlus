@@ -14,6 +14,8 @@ enum SettingType {
     case cache
     case language
     case currency
+    case developer
+    case designer
     case email
     
     static func typeDefinition(name: String) -> SettingType {
@@ -28,6 +30,10 @@ enum SettingType {
             return .language
         case Texts.SettingsPage.currencyTitle:
             return .currency
+        case Texts.SettingsPage.developerTitle:
+            return .developer
+        case Texts.SettingsPage.designerTitle:
+            return .designer
         case Texts.SettingsPage.emailTitle:
             return .email
         default:

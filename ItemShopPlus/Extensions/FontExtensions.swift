@@ -21,6 +21,10 @@ extension UIFont {
         UIFont.systemFont(ofSize: 25, weight: .medium)
     }
     
+    static func placeholderTitle() -> UIFont? {
+        UIFont.systemFont(ofSize: 25, weight: .bold)
+    }
+    
     static func title() -> UIFont? {
         UIFont.systemFont(ofSize: 20, weight: .medium)
     }

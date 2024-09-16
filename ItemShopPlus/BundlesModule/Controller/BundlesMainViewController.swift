@@ -15,7 +15,7 @@ final class BundlesMainViewController: UIViewController {
     
     private let networkService = DefaultNetworkService()
     
-    private let noInternetView = NoInternetView()
+    private let noInternetView = EmptyView(type: .internet)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let refreshControl = UIRefreshControl()
     
@@ -270,10 +270,10 @@ final class BundlesMainViewController: UIViewController {
         noInternetView.reloadButton.addTarget(self, action: #selector(refreshWithoutControl), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            noInternetView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            noInternetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            noInternetView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            noInternetView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             noInternetView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            noInternetView.heightAnchor.constraint(equalTo: view.heightAnchor)
+            noInternetView.heightAnchor.constraint(equalToConstant: 210)
         ])
     }
 }

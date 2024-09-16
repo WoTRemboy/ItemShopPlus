@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SwiftUI
+
+// MARK: - UIKit image extension
 
 extension UIImage {
     
@@ -16,6 +19,12 @@ extension UIImage {
         static let noImage3To4 = UIImage(named: "ImagePlaceholder3To4")
         static let noImage16To9 = UIImage(named: "ImagePlaceholder16To9")
         static let video = UIImage(named: "VideoBanner")
+    }
+    
+    enum EmptyView {
+        static let stats = UIImage(systemName: "chart.xyaxis.line")
+        static let favourites = UIImage(systemName: "heart")
+        static let internet = UIImage(systemName: "wifi")
     }
     
     enum CurrencySymbol {
@@ -106,6 +115,8 @@ extension UIImage {
         static let cache = UIImage(named: "CacheSetting")
         static let language = UIImage(named: "LanguageSetting")
         static let currency = UIImage(named: "CurrencySetting")
+        static let developer = UIImage(named: "DeveloperSetting")
+        static let designer = UIImage(named: "DesignerSetting")
         static let email = UIImage(named: "EmailSetting")
     }
     
@@ -138,6 +149,12 @@ extension UIImage {
         static let poiAction = UIImage(systemName: "mappin")
         static let clearAction = UIImage(systemName: "mappin.slash")
     }
+    
+    // MARK: - Widget Module
+    
+    enum Widget {
+        static let mockItem = UIImage(named: "MockItem")
+    }
 }
 
 // MARK: - Main Module Button Images Color Setup
@@ -156,4 +173,16 @@ private func createInfoSymbol(name: String, first: UIColor, second: UIColor) -> 
         withConfiguration: UIImage.SymbolConfiguration(
             paletteColors: [first, second]))
     return image
+}
+
+
+// MARK: - SwiftUI image extension
+
+extension Image {
+    enum Widget {
+        static let placeholder = Image("ImagePlaceholder")
+        static let vBucks = Image("VBucks")
+        static let newBanner = Image("NewItemBanner")
+        static let appIcon = Image("AppIcon")
+    }
 }

@@ -7,13 +7,13 @@
 
 import UIKit
 
-class SettingsMainViewController: UIViewController {
+final class SettingsMainViewController: UIViewController {
     
     var settings: [[String]] = [
         [Texts.SettingsPage.aboutTitle],
         [Texts.SettingsPage.notificationsTitle, Texts.SettingsPage.appearanceTitle, Texts.SettingsPage.cacheTitle],
         [Texts.SettingsPage.languageTitle, Texts.SettingsPage.currencyTitle],
-        [Texts.SettingsPage.emailTitle]
+        [Texts.SettingsPage.developerTitle, Texts.SettingsPage.designerTitle, Texts.SettingsPage.emailTitle]
     ]
     
     private let backButton: UIBarButtonItem = {
@@ -102,8 +102,8 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
                 cell?.detailTextLabel?.text = currencyCode
             }
             navigationController?.pushViewController(vc, animated: true)
-        case .email:
-            openMailApp()
+        case .email, .developer, .designer:
+            openURL(type: type)
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -134,7 +134,7 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         let type = SettingType.typeDefinition(name: name)
         
         switch type {
-        case .language, .email:
+        case .language, .email, .developer, .designer:
             cell.setupCell(type: type)
         case .appearance:
             let text = getTheme()
@@ -163,7 +163,7 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         case 2:
             return Texts.SettingsPage.localizationTitle
         case 3:
-            return Texts.SettingsPage.contactTitle
+            return Texts.SettingsPage.teamTitle
         default:
             return nil
         }
@@ -198,15 +198,31 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         self.present(alertController, animated: true)
     }
     
-    private func openMailApp() {
-        guard let emailURL = URL(string: "mailto:\(Texts.SettingsPage.emailContent)") else {
+    private func openURL(type: SettingType) {
+        var url: URL? = nil
+        switch type {
+        case .developer:
+            if let linkedInURL = URL(string: Texts.SettingsPage.developerLink) {
+                url = linkedInURL
+            }
+        case .designer:
+            if let telegramURL = URL(string: Texts.SettingsPage.designerLink) {
+                url = telegramURL
+            }
+        case .email:
+            if let emailURL = URL(string: "mailto:\(Texts.SettingsPage.emailContent)") {
+                url = emailURL
+            }
+        default:
             return
         }
         
-        if UIApplication.shared.canOpenURL(emailURL) {
-            UIApplication.shared.open(emailURL)
+        guard let openUrl = url else { return }
+        
+        if UIApplication.shared.canOpenURL(openUrl) {
+            UIApplication.shared.open(openUrl)
         } else {
-            print("Mail app unavailable")
+            print("url is incorrect")
         }
     }
     

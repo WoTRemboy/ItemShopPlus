@@ -166,7 +166,7 @@ extension LootDetailsStatsViewController: UICollectionViewDelegateFlowLayout {
             guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LootDetailsReusableView.identifier, for: indexPath) as? LootDetailsReusableView else {
                 fatalError("Failed to dequeue LootDetailsReusableView in LootDetailsStatsViewController")
             }
-            footerView.configurate(item: item.stats)
+            footerView.configurate(item: item.stats, description: item.description)
             return footerView
         } else {
             fatalError("Unexpected kind value")
@@ -174,8 +174,21 @@ extension LootDetailsStatsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        let height: CGFloat = CGFloat(16 + 70 * item.stats.availableStats)
+        let textWidth = view.frame.width - 32
+        let textHeight = heightForText(item.description, width: textWidth, font: .subhead() ?? .systemFont(ofSize: 15)) + (!item.description.isEmpty ? 55 : 0)
+        
+        let height: CGFloat = CGFloat(16 + Int(textHeight) + 70 * item.stats.availableStats)
         let size = CGSize(width: view.frame.width, height: height)
         return size
+    }
+    
+    private func heightForText(_ text: String, width: CGFloat, font: UIFont) -> CGFloat {
+        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+        let boundingRect = NSString(string: text).boundingRect(
+            with: CGSize(width: width, height: .greatestFiniteMagnitude),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            attributes: attributes,
+            context: nil)
+        return ceil(boundingRect.height)
     }
 }

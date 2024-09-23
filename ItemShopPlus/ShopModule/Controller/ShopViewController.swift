@@ -163,9 +163,9 @@ final class ShopViewController: UIViewController {
     
     private func showRaitingViewIfNeeded() {
         let retrievedInt = UserDefaults.standard.integer(forKey: Texts.ShopPage.countKey)
-        guard retrievedInt == 5 else { return }
+        guard retrievedInt == 15 else { return }
         if let windowScene = view.window?.windowScene {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 SKStoreReviewController.requestReview(in: windowScene)
             }
         }

@@ -17,7 +17,6 @@ final class WidgetNetworkService: WidgetNetworkProtocol {
     
     private let session: URLSession
     private let baseURL = URL(string: "https://fortniteapi.io")
-    private let token = "8b1729e0-29cc1b7d-71873902-21bf48f0"
     
     // MARK: - Initialization
     
@@ -38,7 +37,9 @@ final class WidgetNetworkService: WidgetNetworkProtocol {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in

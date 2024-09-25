@@ -605,3 +605,10 @@ final class Texts {
     }
 }
 
+// MARK: - Notification Names
+
+extension Notification.Name {
+    static let transferToMainPage = Notification.Name("TransferToMainPageNotification")
+}
+
+

@@ -10,9 +10,32 @@ import SwiftUI
 
 class OnboardingViewController: UIViewController {
     
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTransferToMain), name: .transferToMainPage, object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+    }
+    
+    @objc private func handleTransferToMain() {
+        transferToMain()
+    }
+    
+    private func transferToMain() {
+        let vc = MainPageViewController()
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalTransitionStyle = .crossDissolve
+        navVC.modalPresentationStyle = .fullScreen
+
+        UIView.transition(with: self.view.window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            self.view.window?.rootViewController = navVC
+        }, completion: nil)
+    }
+    
+    private func setupUI() {
         // Create an instance of the SwiftUI View
         let onboardingView = OnboardingScreenSwiftUIView()
             .environmentObject(OnboardingViewModel()) // Pass the ViewModel

@@ -10,7 +10,7 @@ import SwiftUI
 
 final class OnboardingViewModel: ObservableObject {
     
-    @AppStorage(Texts.OnboardingScreen.userDefaultsKey) var firstLaunch: Bool = true
+    @AppStorage(Texts.OnboardingScreen.userDefaultsKey) var transferMain: Bool = false
     @Published internal var steps = OnboardingStep.stepsSetup()
     @Published internal var currentStep = 0
     
@@ -40,7 +40,8 @@ final class OnboardingViewModel: ObservableObject {
     
     internal func getStarted() {
         withAnimation {
-            firstLaunch = false
+            NotificationCenter.default.post(name: .transferToMainPage, object: nil)
+            transferMain = true
         }
     }
 }

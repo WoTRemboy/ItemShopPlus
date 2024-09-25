@@ -14,18 +14,23 @@ final class SplashScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .BackColors.backSplash
-        
         view.addSubview(splashView)
+        
         setConstraints()
+        transferToPage()
+    }
+    
+    private func transferToPage() {
+        let transferMain = UserDefaults.standard.bool(forKey: Texts.OnboardingScreen.userDefaultsKey)
+        
+        let vc = transferMain ? UINavigationController(rootViewController: MainPageViewController()) : OnboardingViewController()
+        
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let vc = MainPageViewController()
-            let navVC = UINavigationController(rootViewController: vc)
-            navVC.modalTransitionStyle = .crossDissolve
-            navVC.modalPresentationStyle = .fullScreen
-
             UIView.transition(with: self.view.window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                self.view.window?.rootViewController = navVC
+                self.view.window?.rootViewController = vc
             }, completion: nil)
         }
     }

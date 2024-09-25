@@ -66,14 +66,17 @@ struct OnboardingScreenSwiftUIView: View {
         HStack {
             ForEach(0 ..< viewModel.stepsCount, id: \.self) { step in
                 if step == viewModel.currentStep {
-                    Rectangle()
-                        .frame(width: 20, height: 10)
-                        .clipShape(.rect(cornerRadius: 10))
+                    Circle()
+                        .frame(width: 15, height: 15)
                         .foregroundStyle(Color.blue)
+                        .transition(.scale)
+                        .animation(.easeInOut(duration: 0.3), value: viewModel.currentStep)
                 } else {
                     Circle()
                         .frame(width: 10, height: 10)
                         .foregroundStyle(Color.labelDisable)
+                        .transition(.scale)
+                        .animation(.easeInOut(duration: 0.3), value: viewModel.currentStep)
                 }
             }
         }

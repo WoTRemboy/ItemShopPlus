@@ -39,23 +39,23 @@ struct OnboardingScreenSwiftUIView: View {
     
     private var content: some View {
         TabView(selection: $viewModel.currentStep) {
-            ForEach(viewModel.steps, id: \.self) { step in
+            ForEach(0 ..< viewModel.stepsCount, id: \.self) { index in
                 VStack(spacing: 16) {
-                    step.image
+                    viewModel.steps[index].image
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250, height: 250)
-                        .clipShape(.rect(cornerRadius: 10))
+                        .clipShape(.rect(cornerRadius: 30))
                     
-                    Text(step.name)
+                    Text(viewModel.steps[index].name)
                         .font(.largeTitle)
                         .padding(.top)
                     
-                    Text(step.description)
+                    Text(viewModel.steps[index].description)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
                 }
-                .tag(step)
+                .tag(index)
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))

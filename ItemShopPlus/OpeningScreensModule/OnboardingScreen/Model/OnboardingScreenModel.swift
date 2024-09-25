@@ -25,23 +25,19 @@ struct OnboardingStep: Hashable {
 
 extension OnboardingStep {
     static func stepsSetup() -> [OnboardingStep] {
-        let first = OnboardingStep(name: Texts.OnboardingScreen.title,
-                                   description: Texts.OnboardingScreen.widget,
+        let first = OnboardingStep(name: Texts.OnboardingScreen.widgetTitle,
+                                   description: Texts.OnboardingScreen.widgetContent,
                                    image: .OnboardingScreen.widget)
         
-        let second = OnboardingStep(name: Texts.OnboardingScreen.title,
-                                    description: Texts.OnboardingScreen.widget,
-                                    image: .OnboardingScreen.widget)
+        let second = OnboardingStep(name: Texts.OnboardingScreen.placeholderTitle,
+                                    description: Texts.OnboardingScreen.placeholderContent,
+                                    image: .OnboardingScreen.placeholder)
         
-        let third = OnboardingStep(name: Texts.OnboardingScreen.title,
-                                   description: Texts.OnboardingScreen.widget,
-                                   image: .OnboardingScreen.widget)
+        let third = OnboardingStep(name: Texts.OnboardingScreen.iconTitle,
+                                   description: Texts.OnboardingScreen.iconContent,
+                                   image: .OnboardingScreen.appIcon)
         
-        let fourth = OnboardingStep(name: Texts.OnboardingScreen.title,
-                                    description: Texts.OnboardingScreen.widget,
-                                    image: .OnboardingScreen.widget)
-        
-        return [first, second, third, fourth]
+        return [first, second, third]
     }
 }
 

@@ -184,6 +184,8 @@ extension Image {
     
     enum OnboardingScreen {
         static let widget = Image("OnboardWidget")
+        static let placeholder = Image("OnboardPlaceholder")
+        static let appIcon = Image("OnboardAppIcon")
     }
     
     // MARK: - Widget Module

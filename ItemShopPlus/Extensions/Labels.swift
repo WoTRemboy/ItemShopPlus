@@ -125,12 +125,17 @@ final class Texts {
     
     enum OnboardingScreen {
         static let userDefaultsKey = "FirstLaunch"
-        static let title = "What's new"
+        
+        static let widgetTitle = "New widget"
+        static let widgetContent = "The 'Day Offer' shows what’s interesting in the shop today."
+        static let placeholderTitle = "Placeholders"
+        static let placeholderContent = "Now the pages without content have a context description."
+        static let iconTitle = "App Icon"
+        static let iconContent = "With iOS 18, a specific icon theme will now be displayed."
+        
         static let skip = "Skip"
         static let next = "Next page"
         static let started = "Get started"
-        
-        static let widget = "The 'Day Offer' widget, which shows what’s interesting in the shop today."
     }
     
     // MARK: - Main Module

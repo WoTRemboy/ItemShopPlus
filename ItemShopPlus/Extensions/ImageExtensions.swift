@@ -64,7 +64,7 @@ extension UIImage {
         static let chevron = createImage(name: "chevron.right")
     }
     
-    // MARK: - Splash Module
+    // MARK: - Opening Screens Module
     
     enum SplashScreen {
         static let splashScreen = UIImage(named: "SplashScreen")
@@ -179,6 +179,15 @@ private func createInfoSymbol(name: String, first: UIColor, second: UIColor) -> 
 // MARK: - SwiftUI image extension
 
 extension Image {
+    
+    // MARK: - Opening Screens Module
+    
+    enum OnboardingScreen {
+        static let widget = Image("OnboardWidget")
+    }
+    
+    // MARK: - Widget Module
+    
     enum Widget {
         static let placeholder = Image("ImagePlaceholder")
         static let vBucks = Image("VBucks")

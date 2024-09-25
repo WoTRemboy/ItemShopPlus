@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "Screenshot_2024-09-16_at_12.23.37_AM-2-removebg-preview.png",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Screenshot_2024-09-16_at_12.26.17_AM__1_-removebg-preview.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

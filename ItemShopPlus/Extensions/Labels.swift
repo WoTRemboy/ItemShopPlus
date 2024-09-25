@@ -121,6 +121,18 @@ final class Texts {
         }
     }
     
+    // MARK: - Opening Screens Module
+    
+    enum OnboardingScreen {
+        static let userDefaultsKey = "FirstLaunch"
+        static let title = "What's new"
+        static let skip = "Skip"
+        static let next = "Next page"
+        static let started = "Get started"
+        
+        static let widget = "The 'Day Offer' widget, which shows what’s interesting in the shop today."
+    }
+    
     // MARK: - Main Module
     
     enum ButtonLabels {

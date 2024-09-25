@@ -9,7 +9,7 @@ import UIKit
 
 final class SplashScreenView: UIView {
 
-    let splashImageView: UIImageView = {
+    private let splashImageView: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage.SplashScreen.splashScreen
         imageView.image = image

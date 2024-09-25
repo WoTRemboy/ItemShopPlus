@@ -57,6 +57,11 @@ extension UIColor {
 }
 
 extension Color {
+    enum OnboardingScreen {
+        static let orange = Color("BackgroundOrange")
+        static let green = Color("BackgroundGreen")
+    }
+    
     enum Widget {
         static let placeholder = Color("WidgetPlaceholder")
     }

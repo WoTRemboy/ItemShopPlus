@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingScreenSwiftUIView: View {
     
     @EnvironmentObject private var viewModel: OnboardingViewModel
+    @State private var isPressed = false
     
     internal var body: some View {
         VStack {
@@ -80,14 +81,7 @@ struct OnboardingScreenSwiftUIView: View {
     }
     
     private var actionButton: some View {
-        Button {
-            switch viewModel.buttonType {
-            case .nextPage:
-                viewModel.nextStep()
-            case .getStarted:
-                viewModel.getStarted()
-            }
-        } label: {
+        HStack {
             switch viewModel.buttonType {
             case .nextPage:
                 Text(Texts.OnboardingScreen.next)
@@ -101,14 +95,31 @@ struct OnboardingScreenSwiftUIView: View {
         .frame(maxWidth: .infinity)
         .minimumScaleFactor(0.4)
         
-        .foregroundStyle(viewModel.buttonType == .nextPage ? Color.orange : Color.green)
-        .tint(viewModel.buttonType == .nextPage ? Color.orange : Color.green)
-        .buttonStyle(.bordered)
+        .foregroundColor(.white)
+        .background(viewModel.buttonType == .nextPage ?
+                    Color.OnboardingScreen.orange :
+                    Color.OnboardingScreen.green)
+        .cornerRadius(10)
+        .scaleEffect(isPressed ? 0.97 : 1.0)
         
         .padding(.horizontal)
         .padding(.vertical, 30)
         
         .animation(.easeInOut, value: viewModel.buttonType)
+        .onLongPressGesture(minimumDuration: 0.0, maximumDistance: 50, pressing: { pressing in
+                withAnimation(.snappy(duration: 0.2)) {
+                    isPressed = pressing
+                }
+            }, perform: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    switch viewModel.buttonType {
+                    case .nextPage:
+                        viewModel.nextStep()
+                    case .getStarted:
+                        viewModel.getStarted()
+                    }
+                }
+            })
     }
 }
 

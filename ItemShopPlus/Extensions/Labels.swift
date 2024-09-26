@@ -126,16 +126,16 @@ final class Texts {
     enum OnboardingScreen {
         static let userDefaultsKey = "FirstLaunch"
         
-        static let widgetTitle = "New widget"
-        static let widgetContent = "The 'Day Offer' shows what’s interesting in the shop today."
-        static let placeholderTitle = "Placeholders"
-        static let placeholderContent = "Now the pages without content have a context description."
-        static let iconTitle = "App Icon"
-        static let iconContent = "With iOS 18, a specific icon theme will now be displayed."
+        static let widgetTitle = NSLocalizedString("OnboardingScreenWidgetTitle", comment: "New widget")
+        static let widgetContent = NSLocalizedString("OnboardingScreenWidgetContent", comment: "The 'Day Offer' shows what’s interesting in the shop today.")
+        static let placeholderTitle = NSLocalizedString("OnboardingScreenPlaceholderTitle", comment: "Placeholders")
+        static let placeholderContent = NSLocalizedString("OnboardingScreenPlaceholderContent", comment: "Now the pages without content have a context description.")
+        static let iconTitle = NSLocalizedString("OnboardingScreenIconitle", comment: "App Icon")
+        static let iconContent = NSLocalizedString("OnboardingScreenIconContent", comment: "With iOS 18, a specific icon theme will now be displayed.")
         
-        static let skip = "Skip"
-        static let next = "Next page"
-        static let started = "Get started"
+        static let skip = NSLocalizedString("OnboardingScreenSkipButton", comment: "Skip")
+        static let next = NSLocalizedString("OnboardingScreenNextPageButton", comment: "Next page")
+        static let started = NSLocalizedString("OnboardingScreenStartedButton", comment: "Get started")
     }
     
     // MARK: - Main Module

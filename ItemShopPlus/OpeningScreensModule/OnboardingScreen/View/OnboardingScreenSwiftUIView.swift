@@ -24,15 +24,16 @@ struct OnboardingScreenSwiftUIView: View {
     private var skipButton: some View {
         HStack {
             Spacer()
-            Button {
-                viewModel.skipSteps()
-            } label: {
-                Text(Texts.OnboardingScreen.skip)
-                    .font(.body)
-                    .foregroundStyle(viewModel.buttonType == .nextPage ? Color.labelSecondary : Color.clear)
-                    .padding(.horizontal)
-            }
-            .padding(.top)
+            Text(Texts.OnboardingScreen.skip)
+                .font(.body)
+                .foregroundStyle(viewModel.buttonType == .nextPage ? Color.labelSecondary : Color.clear)
+                .padding(.horizontal)
+                .padding(.top)
+            
+                .onTapGesture {
+                    viewModel.skipSteps()
+                }
+            
         }
         .disabled(viewModel.buttonType == .getStarted)
         .animation(.easeInOut, value: viewModel.buttonType)

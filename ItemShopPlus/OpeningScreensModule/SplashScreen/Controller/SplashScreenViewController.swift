@@ -23,7 +23,9 @@ final class SplashScreenViewController: UIViewController {
     private func transferToPage() {
         let transferMain = UserDefaults.standard.bool(forKey: Texts.OnboardingScreen.userDefaultsKey)
         
-        let vc = transferMain ? UINavigationController(rootViewController: MainPageViewController()) : OnboardingViewController()
+        #warning("restore after testing")
+//        let vc = transferMain ? UINavigationController(rootViewController: MainPageViewController()) : OnboardingViewController()
+        let vc = OnboardingViewController()
         
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .fullScreen

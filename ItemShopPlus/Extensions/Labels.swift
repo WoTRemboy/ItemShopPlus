@@ -200,7 +200,7 @@ final class Texts {
         static let backpack = NSLocalizedString("ShopPageShopBackpack", comment: "Backpack")
         static let bundle = NSLocalizedString("ShopPageShopItemBundle", comment: "Item Bundle")
         static let favourites = NSLocalizedString("ShopPageFavouritesNotification", comment: "Added to Favorites.")
-        static let countKey = "ShopPageCountUserDefaultsKey"
+        static let countKey = "ShopPageRatingUserDefaultsKey"
     }
     
     enum ShopMainCell {
@@ -603,8 +603,7 @@ final class Texts {
     // MARK: - Widget
     
     enum Widget {
-        static let placeholderName = NSLocalizedString("WidgetPlaceholderName", comment: "Item name")
-        
+        static let placeholderName = "--"
         static let displayName = NSLocalizedString("WidgetDisplayName", comment: "Day Offer")
         static let description = NSLocalizedString("WidgetDisplayDescription", comment: "New or the most interesting item today.")
     }

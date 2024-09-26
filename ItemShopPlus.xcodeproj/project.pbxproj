@@ -504,23 +504,23 @@
 			children = (
 				633D380A2CA1C72B007304DA /* Model */,
 				633D38052CA1C38B007304DA /* View */,
-				633D38042CA1C382007304DA /* ViewModel */,
+				633D38042CA1C382007304DA /* ViewModel & Controller */,
 			);
 			path = OnboardingScreen;
 			sourceTree = "<group>";
 		};
-		633D38042CA1C382007304DA /* ViewModel */ = {
+		633D38042CA1C382007304DA /* ViewModel & Controller */ = {
 			isa = PBXGroup;
 			children = (
+				633D38082CA1C3E6007304DA /* OnboardingScreenView.swift */,
 				633D38062CA1C3AC007304DA /* OnboardingScreenViewController.swift */,
 			);
-			path = ViewModel;
+			path = "ViewModel & Controller";
 			sourceTree = "<group>";
 		};
 		633D38052CA1C38B007304DA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				633D38082CA1C3E6007304DA /* OnboardingScreenView.swift */,
 				633D380D2CA1D2A8007304DA /* OnboardingScreenSwiftUIView.swift */,
 			);
 			path = View;

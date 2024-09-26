@@ -138,27 +138,15 @@ struct ItemShopPlusWidgetEntryView: View {
     
     private var itemNamePrice: some View {
         VStack(alignment: .leading, spacing: 0) {
-            if !entry.shopItem.name.isEmpty {
-                Text(entry.shopItem.name)
-                    .lineLimit(1)
-                    .font(.system(size: 15, weight: .light))
-                    .padding(.top, 8)
-            } else {
-                RoundedRectangle(cornerRadius: 3)
-                    .foregroundStyle(Color.Widget.placeholder)
-                    .frame(height: 15)
-                    .padding(.top, 8)
-            }
+            Text(!entry.shopItem.name.isEmpty ?
+                 entry.shopItem.name :
+                    Texts.Widget.placeholderName)
+            .lineLimit(1)
+            .font(.system(size: 15, weight: .light))
+            .padding(.top, 8)
             
-            if entry.shopItem.price != -100 {
-                itemPrice
-                    .padding(.top, 2)
-            } else {
-                RoundedRectangle(cornerRadius: 3)
-                    .foregroundStyle(Color.Widget.placeholder)
-                    .frame(width: 50, height: 15)
-                    .padding(.top, 2)
-            }
+            itemPrice
+                .padding(.top, 2)
         }
     }
     
@@ -169,7 +157,9 @@ struct ItemShopPlusWidgetEntryView: View {
                 .scaledToFit()
                 .frame(width: 15)
             
-            Text(String(entry.shopItem.price))
+            Text(entry.shopItem.price != -100 ?
+                 String(entry.shopItem.price) :
+                    Texts.Widget.placeholderName)
                 .lineLimit(1)
                 .font(.system(size: 15, weight: .medium))
                 .foregroundStyle(Color.labelPrimary)

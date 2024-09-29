@@ -446,7 +446,7 @@ final class ShopViewController: UIViewController {
         favouriteNotification.transform = CGAffineTransform(translationX: 0, y: 0)
     }
     
-    func showLikeNotification() {
+    private func showLikeNotification() {
         guard likeNotShown else { return }
         let bottomOffset: CGFloat = view.safeAreaInsets.bottom > 0 ? 100 : 116
         

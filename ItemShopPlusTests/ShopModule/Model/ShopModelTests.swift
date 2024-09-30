@@ -13,7 +13,7 @@ final class ShopModelTests: XCTestCase {
 
     // MARK: - ShopItem Tests
     
-    var context: NSManagedObjectContext!
+    private var context: NSManagedObjectContext!
     
     override func setUpWithError() throws {
         try super.setUpWithError()

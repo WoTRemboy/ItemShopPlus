@@ -97,6 +97,6 @@ final class BattlePassTests: XCTestCase {
         XCTAssertEqual(emptyItem.shareImage, "")
         XCTAssertEqual(emptyItem.video, "")
         XCTAssertEqual(emptyItem.introduction, "")
-        XCTAssertEqual(emptyItem.set, "") // Set is nil
+        XCTAssertEqual(emptyItem.set, "")
     }
 }

@@ -175,6 +175,13 @@
 			remoteGlobalIDString = 6394FC0E2C5AC3FA00FC2C44;
 			remoteInfo = ItemShopPlusWidgetExtension;
 		};
+		63C5906E2CADD4D00079D352 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63C898B02B232F4000FABD69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63C898B72B232F4000FABD69;
+			remoteInfo = ItemShopPlus;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -302,6 +309,7 @@
 		63C38C232C287AE5001995B3 /* ShopItemImageEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopItemImageEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		63C38C252C287AE5001995B3 /* ShopGrantedItemEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopGrantedItemEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		63C38C332C287E6C001995B3 /* FavouritesItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesItemsViewController.swift; sourceTree = "<group>"; };
+		63C590682CADD4D00079D352 /* ItemShopPlusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ItemShopPlusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTestViewController.swift; sourceTree = "<group>"; };
 		63C898B82B232F4000FABD69 /* ItemShopPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemShopPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C898BB2B232F4000FABD69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -335,6 +343,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		63123FD12CA83AB500ADF239 /* ItemShopPlusTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ItemShopPlusTests; sourceTree = "<group>"; };
+		63C590692CADD4D00079D352 /* ItemShopPlusUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ItemShopPlusUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +368,13 @@
 				63F453D12C962A9100C5F72D /* Kingfisher in Frameworks */,
 				63BB3AD62C9490C9006C7038 /* SwiftUI.framework in Frameworks */,
 				63BB3AD92C9490CA006C7038 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63C590652CADD4D00079D352 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,6 +934,7 @@
 				6394FC152C5AC3FA00FC2C44 /* ItemShopPlusWidget */,
 				638620B62C62AA4B00453944 /* ItemShopPlusWidgetExtension.entitlements */,
 				63123FD12CA83AB500ADF239 /* ItemShopPlusTests */,
+				63C590692CADD4D00079D352 /* ItemShopPlusUITests */,
 				6394FC102C5AC3FA00FC2C44 /* Frameworks */,
 				63C898B92B232F4000FABD69 /* Products */,
 			);
@@ -930,6 +947,7 @@
 				630B7F962BEEAA95007E3797 /* NotificationServiceExtension.appex */,
 				6394FC0F2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension.appex */,
 				63123FD02CA83AB500ADF239 /* ItemShopPlusTests.xctest */,
+				63C590682CADD4D00079D352 /* ItemShopPlusUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1237,6 +1255,29 @@
 			productReference = 6394FC0F2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		63C590672CADD4D00079D352 /* ItemShopPlusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63C590702CADD4D00079D352 /* Build configuration list for PBXNativeTarget "ItemShopPlusUITests" */;
+			buildPhases = (
+				63C590642CADD4D00079D352 /* Sources */,
+				63C590652CADD4D00079D352 /* Frameworks */,
+				63C590662CADD4D00079D352 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63C5906F2CADD4D00079D352 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				63C590692CADD4D00079D352 /* ItemShopPlusUITests */,
+			);
+			name = ItemShopPlusUITests;
+			packageProductDependencies = (
+			);
+			productName = ItemShopPlusUITests;
+			productReference = 63C590682CADD4D00079D352 /* ItemShopPlusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		63C898B72B232F4000FABD69 /* ItemShopPlus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63C898CC2B232F4100FABD69 /* Build configuration list for PBXNativeTarget "ItemShopPlus" */;
@@ -1283,6 +1324,10 @@
 					6394FC0E2C5AC3FA00FC2C44 = {
 						CreatedOnToolsVersion = 15.4;
 					};
+					63C590672CADD4D00079D352 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 63C898B72B232F4000FABD69;
+					};
 					63C898B72B232F4000FABD69 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -1317,6 +1362,7 @@
 				630B7F952BEEAA95007E3797 /* NotificationServiceExtension */,
 				6394FC0E2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension */,
 				63123FCF2CA83AB500ADF239 /* ItemShopPlusTests */,
+				63C590672CADD4D00079D352 /* ItemShopPlusUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1344,6 +1390,13 @@
 				634C4B7E2C92D7470007E100 /* Assets.xcassets in Resources */,
 				6394FC1B2C5AC3FC00FC2C44 /* Assets.xcassets in Resources */,
 				636997E32C971931000A8807 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63C590662CADD4D00079D352 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1391,6 +1444,13 @@
 				6394FC192C5AC3FA00FC2C44 /* ItemShopPlusWidget.swift in Sources */,
 				63F453CF2C9629C000C5F72D /* ImageLoader.swift in Sources */,
 				6394FC172C5AC3FA00FC2C44 /* ItemShopPlusWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63C590642CADD4D00079D352 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1533,6 +1593,11 @@
 			isa = PBXTargetDependency;
 			target = 6394FC0E2C5AC3FA00FC2C44 /* ItemShopPlusWidgetExtension */;
 			targetProxy = 6394FC1D2C5AC3FC00FC2C44 /* PBXContainerItemProxy */;
+		};
+		63C5906F2CADD4D00079D352 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63C898B72B232F4000FABD69 /* ItemShopPlus */;
+			targetProxy = 63C5906E2CADD4D00079D352 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1719,6 +1784,42 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		63C590712CADD4D00079D352 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ItemShopPlus;
+			};
+			name = Debug;
+		};
+		63C590722CADD4D00079D352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZFH6DW7S4P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.remby.ItemShopPlusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ItemShopPlus;
 			};
 			name = Release;
 		};
@@ -1953,6 +2054,15 @@
 			buildConfigurations = (
 				6394FC212C5AC3FC00FC2C44 /* Debug */,
 				6394FC222C5AC3FC00FC2C44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63C590702CADD4D00079D352 /* Build configuration list for PBXNativeTarget "ItemShopPlusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63C590712CADD4D00079D352 /* Debug */,
+				63C590722CADD4D00079D352 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

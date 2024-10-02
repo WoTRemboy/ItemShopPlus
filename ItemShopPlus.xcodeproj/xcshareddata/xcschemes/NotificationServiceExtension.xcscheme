@@ -56,6 +56,17 @@
                ReferencedContainer = "container:ItemShopPlus.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "63C590672CADD4D00079D352"
+               BuildableName = "ItemShopPlusUITests.xctest"
+               BlueprintName = "ItemShopPlusUITests"
+               ReferencedContainer = "container:ItemShopPlus.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

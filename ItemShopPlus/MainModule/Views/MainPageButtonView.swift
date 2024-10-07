@@ -38,6 +38,7 @@ class MainPageButtonView: UIView {
     private let selectButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
+        button.setTitleColor(.clear, for: .normal)
         button.addTarget(nil, action: #selector(buttonTouchUp), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -99,16 +100,19 @@ class MainPageButtonView: UIView {
     private func buttonContentSetup(buttonType: ButtonType) {
         switch buttonType {
         case .shop:
+            selectButton.setTitle(Texts.ButtonLabels.MainButtons.shop, for: .normal)
             buttonLabel.text = Texts.ButtonLabels.MainButtons.shop
             buttonLabel.font = .body()
             buttonImageView.image = .MainButtons.shop
             selectButton.addTarget(nil, action: #selector(MainPageViewController.shopTransfer), for: .touchUpInside)
         case .battlePass:
+            selectButton.setTitle(Texts.ButtonLabels.MainButtons.battlePass, for: .normal)
             buttonLabel.text = Texts.ButtonLabels.MainButtons.battlePass
             buttonLabel.font = .body()
             buttonImageView.image = .MainButtons.battlePass
             selectButton.addTarget(nil, action: #selector(MainPageViewController.battlePassTransfer), for: .touchUpInside)
         case .crew:
+            selectButton.setTitle(Texts.ButtonLabels.MainButtons.crew, for: .normal)
             buttonLabel.text = Texts.ButtonLabels.MainButtons.crew
             buttonImageView.image = .MainButtons.crew
             selectButton.addTarget(nil, action: #selector(MainPageViewController.crewTransfer), for: .touchUpInside)
@@ -117,23 +121,28 @@ class MainPageButtonView: UIView {
             buttonImageView.image = .MainButtons.bundles
             selectButton.addTarget(nil, action: #selector(MainPageViewController.bundleTransfer), for: .touchUpInside)
         case .lootDetails:
+            selectButton.setTitle(Texts.ButtonLabels.MainButtons.lootDetails, for: .normal)
             buttonLabel.text = Texts.ButtonLabels.MainButtons.lootDetails
             buttonImageView.image = .MainButtons.lootDetails
             selectButton.addTarget(nil, action: #selector(MainPageViewController.lootDetailsTransfer), for: .touchUpInside)
         case .stats:
+            selectButton.setTitle(Texts.ButtonLabels.MainButtons.stats, for: .normal)
             buttonLabel.text = Texts.ButtonLabels.MainButtons.stats
             buttonLabel.font = .body()
             buttonImageView.image = .MainButtons.stats
             selectButton.addTarget(nil, action: #selector(MainPageViewController.statsTransfer), for: .touchUpInside)
         case .map:
+            selectButton.setTitle(Texts.ButtonLabels.MainButtons.map, for: .normal)
             buttonLabel.text = Texts.ButtonLabels.MainButtons.map
             buttonImageView.image = .MainButtons.map
             selectButton.addTarget(nil, action: #selector(MainPageViewController.mapTransfer), for: .touchUpInside)
         case .favourites:
+            selectButton.setTitle(Texts.ButtonLabels.MainButtons.favourites, for: .normal)
             buttonLabel.text = Texts.ButtonLabels.MainButtons.favourites
             buttonImageView.image = .MainButtons.favourites
             selectButton.addTarget(nil, action: #selector(MainPageViewController.favouritesTransfer), for: .touchUpInside)
         case .settings:
+            selectButton.setTitle(Texts.ButtonLabels.MainButtons.settings, for: .normal)
             buttonLabel.text = Texts.ButtonLabels.MainButtons.settings
             buttonImageView.image = .MainButtons.settings
             selectButton.addTarget(nil, action: #selector(MainPageViewController.settingTransfer), for: .touchUpInside)

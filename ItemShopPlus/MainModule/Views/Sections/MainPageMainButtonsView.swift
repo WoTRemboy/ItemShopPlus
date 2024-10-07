@@ -39,8 +39,6 @@ class MainPageMainButtonsView: UIView {
         battlePassButton.translatesAutoresizingMaskIntoConstraints = false
         statsButton.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        shopButton.backgroundColor = .red
-//        statsButton.backgroundColor = .yellow
     }
 
     private func setConstraints() {

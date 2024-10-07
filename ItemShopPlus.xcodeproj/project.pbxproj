@@ -121,6 +121,8 @@
 		63C38C282C287AE5001995B3 /* ShopItemImageEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C38C232C287AE5001995B3 /* ShopItemImageEntity+CoreDataProperties.swift */; };
 		63C38C2A2C287AE5001995B3 /* ShopGrantedItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C38C252C287AE5001995B3 /* ShopGrantedItemEntity+CoreDataProperties.swift */; };
 		63C38C342C287E6C001995B3 /* FavouritesItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C38C332C287E6C001995B3 /* FavouritesItemsViewController.swift */; };
+		63C591282CB421760079D352 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898EA2B233E9900FABD69 /* Labels.swift */; };
+		63C591292CB421800079D352 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631841DA2BE3F852008C3B4B /* Localizable.xcstrings */; };
 		63C640DC2B992F1D00EEA8BD /* QuestTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C640DB2B992F1D00EEA8BD /* QuestTestViewController.swift */; };
 		63C898BC2B232F4000FABD69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BB2B232F4000FABD69 /* AppDelegate.swift */; };
 		63C898BE2B232F4000FABD69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898BD2B232F4000FABD69 /* SceneDelegate.swift */; };
@@ -1397,6 +1399,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C591292CB421800079D352 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1451,6 +1454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C591282CB421760079D352 /* Labels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

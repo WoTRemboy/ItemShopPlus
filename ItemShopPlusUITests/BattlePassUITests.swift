@@ -1,5 +1,5 @@
 //
-//  ShopPageUITests.swift
+//  BattlePassUITests.swift
 //  ItemShopPlusUITests
 //
 //  Created by Roman Tverdokhleb on 10/7/24.
@@ -7,15 +7,15 @@
 
 import XCTest
 
-final class ShopPageUITests: XCTestCase {
-    
+final class BattlePassUITests: XCTestCase {
+
     private var onboarding = false
     
     override func setUp() {
         onboarding = UserDefaults.standard.bool(forKey: Texts.OnboardingScreen.userDefaultsKey)
     }
 
-    internal func testShopPageInfoStruct() throws {
+    internal func testBattlePassInfoStruct() throws {
         let app = XCUIApplication()
         app.launch()
         
@@ -31,33 +31,26 @@ final class ShopPageUITests: XCTestCase {
             getStartedStaticText.tap()
         }
         
-        let mainButton = app.buttons["Item Shop"]
-        XCTAssertTrue(mainButton.exists, "Item Shop button doesn't exist")
+        let mainButton = app.buttons["Battle Pass"]
+        XCTAssertTrue(mainButton.exists, "Battle Pass button doesn't exist")
         mainButton.tap()
         
-        let itemShopNavigationBar = app.navigationBars["Item Shop"]
+        let itemShopNavigationBar = app.navigationBars["Battle Pass"]
         XCTAssertTrue(itemShopNavigationBar.exists, "Navigation Bar doesn't exist")
         
         let infoButton = itemShopNavigationBar.buttons["info"]
         XCTAssertTrue(infoButton.exists, "Info button doesn't exist")
         infoButton.tap()
         
-        let whatIsText = app.staticTexts["What is: "]
-        XCTAssertTrue(whatIsText.exists, "What is label doesn't exist")
-        let aboutRotationText = app.staticTexts["About rotation"]
-        XCTAssertTrue(aboutRotationText.exists, "About rotation label doesn't exist")
+        let whatIsText = app.staticTexts["Start date"]
+        XCTAssertTrue(whatIsText.exists, "Start date label doesn't exist")
+        let aboutRotationText = app.staticTexts["End date"]
+        XCTAssertTrue(aboutRotationText.exists, "End date label doesn't exist")
         let remainingTimeText = app.staticTexts["Remaining time"]
         XCTAssertTrue(remainingTimeText.exists, "Remaining time label doesn't exist")
-        
-        let shopInfoNavigationBar = app.navigationBars["Shop Info"]
-        XCTAssertTrue(shopInfoNavigationBar.exists, "Shop Info Navigation Bar doesn't exist")
-        
-        let cancelButton = shopInfoNavigationBar.buttons["Cancel"]
-        XCTAssertTrue(cancelButton.exists, "Cancel button doesn't exist")
-        cancelButton.tap()
     }
     
-    internal func testItemShopItemInfo() throws {
+    internal func testBattlePassItemInfo() throws {
         let app = XCUIApplication()
         app.launch()
         
@@ -73,14 +66,13 @@ final class ShopPageUITests: XCTestCase {
             getStartedStaticText.tap()
         }
         
-        let mainButton = app.buttons["Item Shop"]
-        XCTAssertTrue(mainButton.exists, "Item Shop button doesn't exist")
+        let mainButton = app.buttons["Battle Pass"]
+        XCTAssertTrue(mainButton.exists, "Battle Pass button doesn't exist")
         mainButton.tap()
         
         let collectionViewsQuery = app.collectionViews
-        let cell = collectionViewsQuery.cells.firstMatch.scrollViews.containing(.other, identifier: "Vertical scroll bar, 1 page").element
-        cell.tap()
-        
+        collectionViewsQuery.cells.firstMatch.tap()
+
         let grantedCell = collectionViewsQuery.cells.firstMatch
         XCTAssertTrue(grantedCell.exists, "Collection granted cell doesn't exist")
         grantedCell.tap()

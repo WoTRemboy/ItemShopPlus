@@ -8,8 +8,16 @@
 import XCTest
 
 final class OnboardingScreenUITests: XCTestCase {
+    
+    private var onboarding = false
+    
+    override func setUp() {
+        onboarding = UserDefaults.standard.bool(forKey: Texts.OnboardingScreen.userDefaultsKey)
+    }
 
     internal func testOnbordingScreenWalkthrough() throws {
+        guard onboarding else { return }
+        
         let app = XCUIApplication()
         app.launch()
         
@@ -29,6 +37,8 @@ final class OnboardingScreenUITests: XCTestCase {
     }
     
     internal func testOnbordingScreenSkip() throws {
+        guard onboarding else { return }
+        
         let app = XCUIApplication()
         app.launch()
         

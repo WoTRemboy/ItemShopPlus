@@ -9,8 +9,13 @@ import SwiftUI
 
 struct OnboardingScreenSwiftUIView: View {
     
+    // MARK: - Properties
+    
     @EnvironmentObject private var viewModel: OnboardingViewModel
+    // A state to handle button press animations
     @State private var isPressed = false
+    
+    // MARK: - Body
     
     internal var body: some View {
         VStack {
@@ -21,6 +26,9 @@ struct OnboardingScreenSwiftUIView: View {
         }
     }
     
+    // MARK: - Subviews
+    
+    // The skip button at the top-right corner
     private var skipButton: some View {
         HStack {
             Spacer()
@@ -39,20 +47,24 @@ struct OnboardingScreenSwiftUIView: View {
         .animation(.easeInOut, value: viewModel.buttonType)
     }
     
+    // The main content displaying the onboarding steps
     private var content: some View {
         TabView(selection: $viewModel.currentStep) {
             ForEach(0 ..< viewModel.stepsCount, id: \.self) { index in
                 VStack(spacing: 16) {
+                    // Step Image
                     viewModel.steps[index].image
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250, height: 250)
                         .clipShape(.rect(cornerRadius: 30))
                     
+                    // Step Name
                     Text(viewModel.steps[index].name)
                         .font(.largeTitle)
                         .padding(.top)
                     
+                    // Step Description
                     Text(viewModel.steps[index].description)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 32)
@@ -63,16 +75,19 @@ struct OnboardingScreenSwiftUIView: View {
         .tabViewStyle(.page(indexDisplayMode: .never))
     }
     
+    // The progress indicator showing the current step
     private var progressCircles: some View {
         HStack {
             ForEach(0 ..< viewModel.stepsCount, id: \.self) { step in
                 if step == viewModel.currentStep {
+                    // Current step indicator
                     Circle()
                         .frame(width: 15, height: 15)
                         .foregroundStyle(Color.blue)
                         .transition(.scale)
                         .animation(.easeInOut(duration: 0.3), value: viewModel.currentStep)
                 } else {
+                    // Not current step indicator
                     Circle()
                         .frame(width: 10, height: 10)
                         .foregroundStyle(Color.labelDisable)
@@ -84,12 +99,15 @@ struct OnboardingScreenSwiftUIView: View {
         .animation(.easeInOut, value: viewModel.currentStep)
     }
     
+    // The action button at the bottom of the screen
     private var actionButton: some View {
         HStack {
             switch viewModel.buttonType {
+            // Next Page button
             case .nextPage:
                 Text(Texts.OnboardingScreen.next)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            // Get Started button
             case .getStarted:
                 Text(Texts.OnboardingScreen.started)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
@@ -118,14 +136,18 @@ struct OnboardingScreenSwiftUIView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     switch viewModel.buttonType {
                     case .nextPage:
+                        // Transfer to next step
                         viewModel.nextStep()
                     case .getStarted:
+                        // Transfer to Main page
                         viewModel.getStarted()
                     }
                 }
             })
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     OnboardingScreenSwiftUIView()

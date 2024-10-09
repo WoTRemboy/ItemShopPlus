@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct OnboardingStep: Hashable {
+    
+    // MARK: - Main Properties
+    
     let name: String
     let description: String
     let image: Image
+    
+    // MARK: - Hashable Conformance
     
     internal func hash(into hasher: inout Hasher) {
         hasher.combine(name)
@@ -23,7 +28,11 @@ struct OnboardingStep: Hashable {
     }
 }
 
+// MARK: - OnboardingStep Methods Extension
+
 extension OnboardingStep {
+    
+    // Sets up the onboarding steps
     static func stepsSetup() -> [OnboardingStep] {
         let first = OnboardingStep(name: Texts.OnboardingScreen.widgetTitle,
                                    description: Texts.OnboardingScreen.widgetContent,
@@ -41,7 +50,9 @@ extension OnboardingStep {
     }
 }
 
+// MARK: - OnboardingButtonType
 
+// Representing the type of onboarding button
 enum OnboardingButtonType {
     case nextPage
     case getStarted

@@ -8,7 +8,10 @@
 import UIKit
 
 final class SplashScreenView: UIView {
+    
+    // MARK: - Properties
 
+    // The image view displaying the splash screen image
     private let splashImageView: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage.SplashScreen.splashScreen
@@ -16,6 +19,8 @@ final class SplashScreenView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+    
+    // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,10 +33,14 @@ final class SplashScreenView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup Methods
+    
+    // Adds imageview subview to the view hierarchy
     private func setupLayout() {
         addSubview(splashImageView)
     }
     
+    // Sets up the constraints for the imageview subview
     private func setConstraints() {
         NSLayoutConstraint.activate([
             splashImageView.topAnchor.constraint(equalTo: topAnchor),

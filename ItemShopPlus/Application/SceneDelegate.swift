@@ -10,6 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    // MARK: - UIScene Lifecycle
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -19,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = SplashScreenViewController()
         window?.rootViewController = UINavigationController(rootViewController: viewController)
         
+        // Apply user-selected appearance settings if available
         if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
             if let style = AppTheme.themes.first(where: { $0.keyValue == retrievedString })?.style {
                 window?.overrideUserInterfaceStyle = style

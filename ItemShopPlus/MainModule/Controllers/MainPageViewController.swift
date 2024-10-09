@@ -9,23 +9,38 @@ import UIKit
 import Kingfisher
 import YandexMobileAds
 
+/// The main page view controller displaying various buttons, banners, and content sections
 final class MainPageViewController: UIViewController {
     
+    // MARK: - UI Elements
+    
+    /// The scroll view for content layout
     private let scrollView = UIScrollView()
+    /// The content view inside the scroll view
     private let contentView = UIView()
+    /// The refresh control for the scroll view
     private let refreshControl = UIRefreshControl()
     
+    /// The main buttons view containing shop, battle pass and stats buttons
     private let shopPassButtonsView = MainPageMainButtonsView()
+    /// The "Other" buttons view containing additional actions like map, armory, settings and favorites
     private let otherButtonsView = MainPageOtherView()
+    /// The crew button view
     private let crewButton = MainPageCrewView()
+    /// The header view for the bundles section
     private let bundlesHeaderView = MainPageBundlesHeaderView()
     
+    /// The network service responsible for fetching data
     private let networkService = DefaultNetworkService()
     
+    /// The collection of bundle items
     private var bundleItems = [BundleItem.emptyBundle, BundleItem.emptyBundle, BundleItem.emptyBundle]
+    /// The image download task for asynchronous loading
     private var imageLoadTask: DownloadTask?
+    /// The height constraint for the ad view
     private var adHeightConstraint: NSLayoutConstraint = .init()
     
+    /// The collection view displaying bundles in a horizontal layout
     private let bundleCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -36,6 +51,7 @@ final class MainPageViewController: UIViewController {
         return collectionView
     }()
     
+    /// The ad view displaying inline banner ads
     private lazy var adView: AdView = {
         let adSize = BannerAdSize.inlineSize(withWidth: 320, maxHeight: 50)
         let adView = AdView(adUnitID: "R-M-8193757-1", adSize: adSize)
@@ -44,6 +60,8 @@ final class MainPageViewController: UIViewController {
         adView.translatesAutoresizingMaskIntoConstraints = false
         return adView
     }()
+    
+    // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,64 +83,82 @@ final class MainPageViewController: UIViewController {
         getCrewImage()
         getBundles(isRefreshing: false)
     }
-
+    
+    // MARK: - Navigation Methods
+    
+    /// Navigates to the shop page
     @objc func shopTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(ShopViewController(), animated: true)
         }
     }
     
+    /// Navigates to the battle pass page
     @objc func battlePassTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(BattlePassMainViewController(), animated: true)
         }
     }
     
+    /// Navigates to the crew page
     @objc func crewTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(CrewMainViewController(), animated: true)
         }
     }
     
+    /// Navigates to the bundles page
     @objc func bundleTransfer() {
         navigationController?.pushViewController(BundlesMainViewController(), animated: true)
     }
     
+    /// Navigates to the loot details page
     @objc func lootDetailsTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(LootDetailsMainViewController(), animated: true)
         }
     }
     
+    /// Navigates to the stats page
     @objc func statsTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(StatsMainViewController(), animated: true)
         }
     }
     
+    /// Navigates to the map preview page
     @objc func mapTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(MapPreviewViewController(image: "https://media.fortniteapi.io/images/map.png?showPOI=true"), animated: true)
         }
     }
     
+    /// Navigates to the favorites items page
     @objc func favouritesTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(FavouritesItemsViewController(), animated: true)
         }
     }
     
+    /// Navigates to the settings page
     @objc func settingTransfer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.navigationController?.pushViewController(SettingsMainViewController(), animated: true)
         }
     }
     
+    // MARK: - Refresh Control
+    
+    /// Refreshes the content when the refresh control is activated
     @objc private func refreshWithControl() {
         getCrewImage()
         getBundles(isRefreshing: true)
     }
     
+    // MARK: - Gesture Handlers
+    
+    /// Handles the tap gesture on the bundle collection view
+    /// - Parameter gestureRecognizer: The gesture recognizer that triggered the action
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: bundleCollectionView)
         if let indexPath = bundleCollectionView.indexPathForItem(at: location) {
@@ -130,6 +166,8 @@ final class MainPageViewController: UIViewController {
         }
     }
     
+    /// Animates the selection of a bundle cell and navigates to its detail page
+    /// - Parameter indexPath: The index path of the selected cell
     private func animateCellSelection(at indexPath: IndexPath) {
         let cell = bundleCollectionView.cellForItem(at: indexPath)
         
@@ -146,6 +184,9 @@ final class MainPageViewController: UIViewController {
         }
     }
     
+    // MARK: - Data Fetching Methods
+    
+    /// Fetches the crew image from the network service
     private func getCrewImage() {
         self.networkService.getCrewItems { [weak self] result in
             switch result {
@@ -160,7 +201,10 @@ final class MainPageViewController: UIViewController {
         }
     }
     
+    /// Fetches the bundles from the network service
+    /// - Parameter isRefreshing: A Boolean indicating whether the refresh control is active
     private func getBundles(isRefreshing: Bool) {
+        // Check if refresh control process is necessary
         isRefreshing ? refreshControl.beginRefreshing() : nil
         self.networkService.getBundles { [weak self] result in
             DispatchQueue.main.async {
@@ -169,6 +213,7 @@ final class MainPageViewController: UIViewController {
             switch result {
             case .success(let newItems):
                 DispatchQueue.main.async {
+                    // Add received items & update collection view content
                     self?.bundleItems = newItems
                     guard let collectionView = self?.bundleCollectionView else { return }
                     UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
@@ -181,6 +226,9 @@ final class MainPageViewController: UIViewController {
         }
     }
     
+    // MARK: - UI Setup Methods
+    
+    /// Sets up the scroll view
     private func scrollViewSetup() {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.refreshControl = refreshControl
@@ -197,6 +245,7 @@ final class MainPageViewController: UIViewController {
         ])
     }
     
+    /// Sets up the content view inside the scroll view
     private func contentViewSetup() {
         scrollView.addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -209,7 +258,8 @@ final class MainPageViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
     }
-
+    
+    /// Sets up the crew image view
     private func crewImageViewSetup() {
         contentView.addSubview(crewButton)
         crewButton.translatesAutoresizingMaskIntoConstraints = false
@@ -222,6 +272,7 @@ final class MainPageViewController: UIViewController {
         ])
     }
     
+    /// Sets up the main buttons view
     private func mainButtonsSetup() {
         contentView.addSubview(shopPassButtonsView)
         shopPassButtonsView.translatesAutoresizingMaskIntoConstraints = false
@@ -234,6 +285,7 @@ final class MainPageViewController: UIViewController {
         ])
     }
     
+    /// Sets up the ad banner view
     private func adBannerSetup() {
         contentView.addSubview(adView)
         NSLayoutConstraint.activate([
@@ -246,6 +298,7 @@ final class MainPageViewController: UIViewController {
         adView.loadAd()
     }
     
+    /// Sets up the bundles header view
     private func bundlesHeaderViewSetup() {
         contentView.addSubview(bundlesHeaderView)
         bundlesHeaderView.translatesAutoresizingMaskIntoConstraints = false
@@ -258,6 +311,7 @@ final class MainPageViewController: UIViewController {
         ])
     }
     
+    /// Sets up the bundle collection view
     private func bundleCollectionViewSetup() {
         contentView.addSubview(bundleCollectionView)
         bundleCollectionView.delegate = self
@@ -272,6 +326,7 @@ final class MainPageViewController: UIViewController {
         ])
     }
     
+    /// Sets up the "Other" buttons view
     private func otherButtonsSetup() {
         contentView.addSubview(otherButtonsView)
         otherButtonsView.translatesAutoresizingMaskIntoConstraints = false
@@ -285,6 +340,8 @@ final class MainPageViewController: UIViewController {
         ])
     }
 }
+
+// MARK: - UICollectionViewDelegate & DataSource
 
 extension MainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -303,6 +360,8 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
         
         let item = bundleItems[indexPath.item]
         cell.configurate(image: item.bannerImage)
+        
+        // Do not transfer if bundle is not loaded
         if !item.bannerImage.isEmpty {
             let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
             cell.addGestureRecognizer(pressGesture)
@@ -333,8 +392,11 @@ extension MainPageViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - AdViewDelegate
 
 extension MainPageViewController: AdViewDelegate {
+    /// Called when the ad view successfully loads an ad
+    /// - Parameter adView: The ad view that loaded an ad
     func adViewDidLoad(_ adView: AdView) {
         adHeightConstraint.constant = 50
         UIView.animate(withDuration: 0.5) {
@@ -342,7 +404,11 @@ extension MainPageViewController: AdViewDelegate {
         }
         print("YandexMobile " + #function)
     }
-
+    
+    /// Called when the ad view fails to load an ad
+    /// - Parameters:
+    ///   - adView: The ad view that failed to load an ad
+    ///   - error: The error that occurred during loading
     func adViewDidFailLoading(_ adView: AdView, error: Error) {
         print("YandexMobile " + #function)
     }

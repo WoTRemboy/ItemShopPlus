@@ -8,10 +8,15 @@
 import UIKit
 import Kingfisher
 
-class MainPageCrewView: UIView {
+/// A view that displays the crew section on the main page
+final class MainPageCrewView: UIView {
     
+    // MARK: - Properties
+    
+    /// The task responsible for loading the image
     private var imageLoadTask: DownloadTask?
 
+    /// The image view displaying the crew image
     private let buttonImageView: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage.Placeholder.noImage16To9
@@ -22,6 +27,7 @@ class MainPageCrewView: UIView {
         return imageView
     }()
     
+    /// The button that triggers actions when tapped
     private let selectButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
@@ -35,12 +41,12 @@ class MainPageCrewView: UIView {
     
     convenience init() {
         self.init(frame: .null)
-        
         setupUI()
     }
 
     // MARK: - Actions
     
+    /// Handles the touch up event on the button to provide a visual feedback
     @objc private func buttonTouchUp() {
         UIView.animate(withDuration: 0.1, animations: {
             self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
@@ -51,11 +57,15 @@ class MainPageCrewView: UIView {
         }
     }
     
+    /// Updates the image displayed in the button image view
+    /// - Parameter image: The URL string of the image to load
     public func updateImage(image: String) {
         imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: buttonImageView, size: CGSize(width: UIScreen.main.nativeBounds.width - 32, height: (UIScreen.main.nativeBounds.width - 32) * 9/16))
     }
     
+    /// Sets up the user interface elements and constraints
     private func setupUI() {
+        // Configure shadow properties
         layer.shadowColor = UIColor.Shadows.primary
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 20
@@ -65,6 +75,7 @@ class MainPageCrewView: UIView {
         selectButton.translatesAutoresizingMaskIntoConstraints = false
         buttonImageView.translatesAutoresizingMaskIntoConstraints = false
         
+        // Set up constraints
         NSLayoutConstraint.activate([
             buttonImageView.topAnchor.constraint(equalTo: topAnchor),
             buttonImageView.leadingAnchor.constraint(equalTo: leadingAnchor),

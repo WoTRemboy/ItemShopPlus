@@ -8,10 +8,12 @@
 import UIKit
 import YandexMobileAds
 
+/// A view controller that handles displaying inline banner ads
 final class InlineBannerViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// The ad view used to display banner ads
     private lazy var adView: AdView = {
         // Configure the banner ad size
         let adSize = BannerAdSize.inlineSize(withWidth: 320, maxHeight: 320)
@@ -32,7 +34,7 @@ final class InlineBannerViewController: UIViewController {
     
     // MARK: - Helper Methods
     
-    // Displays the ad view by adding it to the view hierarchy and setting up constraints
+    /// Displays the ad view by adding it to the view hierarchy and setting up constraints
     func showAdd() {
         view.addSubview(adView)
         NSLayoutConstraint.activate([
@@ -46,14 +48,14 @@ final class InlineBannerViewController: UIViewController {
 
 extension InlineBannerViewController: AdViewDelegate {
     
-    // This method will call after successfully loading
+    /// This method will call after successfully loading
     func adViewDidLoad(_ adView: AdView) {
         // Display the ad
         showAdd()
         print("YandexMobile " + #function)
     }
 
-    // This method will call after getting any error while loading the ad
+    /// This method will call after getting any error while loading the ad
     func adViewDidFailLoading(_ adView: AdView, error: Error) {
         // Handle the ad loading failure
         print("YandexMobile " + #function)

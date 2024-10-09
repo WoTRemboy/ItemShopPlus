@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+/// A SwiftUI view that displays the onboarding screens
 struct OnboardingScreenSwiftUIView: View {
     
     // MARK: - Properties
     
+    /// The view model managing the onboarding logic
     @EnvironmentObject private var viewModel: OnboardingViewModel
-    // A state to handle button press animations
+    /// A state to handle button press animations
     @State private var isPressed = false
     
     // MARK: - Body
@@ -28,7 +30,7 @@ struct OnboardingScreenSwiftUIView: View {
     
     // MARK: - Subviews
     
-    // The skip button at the top-right corner
+    /// The skip button at the top-right corner
     private var skipButton: some View {
         HStack {
             Spacer()
@@ -47,7 +49,7 @@ struct OnboardingScreenSwiftUIView: View {
         .animation(.easeInOut, value: viewModel.buttonType)
     }
     
-    // The main content displaying the onboarding steps
+    /// The main content displaying the onboarding steps
     private var content: some View {
         TabView(selection: $viewModel.currentStep) {
             ForEach(0 ..< viewModel.stepsCount, id: \.self) { index in
@@ -75,7 +77,7 @@ struct OnboardingScreenSwiftUIView: View {
         .tabViewStyle(.page(indexDisplayMode: .never))
     }
     
-    // The progress indicator showing the current step
+    /// The progress indicator showing the current step
     private var progressCircles: some View {
         HStack {
             ForEach(0 ..< viewModel.stepsCount, id: \.self) { step in
@@ -99,7 +101,7 @@ struct OnboardingScreenSwiftUIView: View {
         .animation(.easeInOut, value: viewModel.currentStep)
     }
     
-    // The action button at the bottom of the screen
+    /// The action button at the bottom of the screen
     private var actionButton: some View {
         HStack {
             switch viewModel.buttonType {

@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 
+/// A view controller that displays the onboarding screen using a SwiftUI view
 final class OnboardingViewController: UIViewController {
     
     // MARK: - Initializers
@@ -27,14 +28,14 @@ final class OnboardingViewController: UIViewController {
     
     // MARK: - Notification Handlers
     
-    // Handles the notification to transfer to the Main page
+    /// Handles the notification to transfer to the Main page
     @objc private func handleTransferToMain() {
         transferToMain()
     }
     
     // MARK: - Helper Methods
     
-    // Transitions from the onboarding screen to the main page
+    /// Transitions from the onboarding screen to the main page
     private func transferToMain() {
         let vc = MainPageViewController()
         let navVC = UINavigationController(rootViewController: vc)
@@ -46,7 +47,7 @@ final class OnboardingViewController: UIViewController {
         }, completion: nil)
     }
     
-    // Sets up the user interface by embedding the SwiftUI onboarding view
+    /// Sets up the user interface by embedding the SwiftUI onboarding view
     private func setupUI() {
         // Create an instance of the SwiftUI View
         let onboardingView = OnboardingScreenSwiftUIView()

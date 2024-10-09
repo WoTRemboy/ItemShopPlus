@@ -7,11 +7,12 @@
 
 import UIKit
 
+/// A view controller that manages the splash screen and transitions to the main content
 final class SplashScreenViewController: UIViewController {
     
     // MARK: - Properties
     
-    // The splash screen view displayed during app launch
+    /// The splash screen view displayed during app launch
     private let splashView = SplashScreenView()
     
     // MARK: - Lifecycle Methods
@@ -27,7 +28,7 @@ final class SplashScreenViewController: UIViewController {
     
     // MARK: - Helper Methods
     
-    // Determines which page to transfer to and performs the transition
+    /// Determines which page to transfer to and performs the transition
     private func transferToPage() {
         // Check if the onboarding page has passed
         let transferMain = UserDefaults.standard.bool(forKey: Texts.OnboardingScreen.userDefaultsKey)
@@ -47,7 +48,7 @@ final class SplashScreenViewController: UIViewController {
     }
     
 
-    // Sets up the constraints for the splash view
+    /// Sets up the constraints for the splash view
     private func setConstraints() {
         NSLayoutConstraint.activate([
             splashView.centerYAnchor.constraint(equalTo: view.centerYAnchor),

@@ -7,11 +7,12 @@
 
 import UIKit
 
+/// A view representing the splash screen
 final class SplashScreenView: UIView {
     
     // MARK: - Properties
 
-    // The image view displaying the splash screen image
+    /// The image view displaying the splash screen image
     private let splashImageView: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage.SplashScreen.splashScreen
@@ -35,12 +36,12 @@ final class SplashScreenView: UIView {
     
     // MARK: - Setup Methods
     
-    // Adds imageview subview to the view hierarchy
+    /// Adds imageview subview to the view hierarchy
     private func setupLayout() {
         addSubview(splashImageView)
     }
     
-    // Sets up the constraints for the imageview subview
+    /// Sets up the constraints for the image view subview
     private func setConstraints() {
         NSLayoutConstraint.activate([
             splashImageView.topAnchor.constraint(equalTo: topAnchor),

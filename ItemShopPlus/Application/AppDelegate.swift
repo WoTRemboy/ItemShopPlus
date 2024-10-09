@@ -56,14 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
     // MARK: - Yandex Mobile Ads Initialization
     
-    // Completion handler for Yandex Mobile Ads SDK initialization
+    /// Completion handler for Yandex Mobile Ads SDK initialization
     func completionHandler() {
         print("YandexMobileAds init completed")
     }
     
     // MARK: - Messaging Delegate Methods
     
-    // Called when a new FCM registration token is received
+    /// Called when a new FCM registration token is received
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         messaging.token { token, _ in
             guard token != nil else { return }

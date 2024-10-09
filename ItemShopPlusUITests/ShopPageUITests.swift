@@ -10,10 +10,6 @@ import XCTest
 final class ShopPageUITests: XCTestCase {
     
     private var onboarding = false
-    
-    override func setUp() {
-        onboarding = UserDefaults.standard.bool(forKey: Texts.OnboardingScreen.userDefaultsKey)
-    }
 
     internal func testShopPageInfoStruct() throws {
         let app = XCUIApplication()

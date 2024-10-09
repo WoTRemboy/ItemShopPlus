@@ -10,10 +10,6 @@ import XCTest
 final class BattlePassUITests: XCTestCase {
 
     private var onboarding = false
-    
-    override func setUp() {
-        onboarding = UserDefaults.standard.bool(forKey: Texts.OnboardingScreen.userDefaultsKey)
-    }
 
     internal func testBattlePassInfoStruct() throws {
         let app = XCUIApplication()
@@ -31,9 +27,9 @@ final class BattlePassUITests: XCTestCase {
             getStartedStaticText.tap()
         }
         
-        let mainButton = app.buttons["Battle Pass"]
-        XCTAssertTrue(mainButton.exists, "Battle Pass button doesn't exist")
-        mainButton.tap()
+        let passButton = app.buttons["Battle Pass"]
+        XCTAssertTrue(passButton.exists, "Battle Pass button doesn't exist")
+        passButton.tap()
         
         let itemShopNavigationBar = app.navigationBars["Battle Pass"]
         XCTAssertTrue(itemShopNavigationBar.exists, "Navigation Bar doesn't exist")
@@ -66,9 +62,9 @@ final class BattlePassUITests: XCTestCase {
             getStartedStaticText.tap()
         }
         
-        let mainButton = app.buttons["Battle Pass"]
-        XCTAssertTrue(mainButton.exists, "Battle Pass button doesn't exist")
-        mainButton.tap()
+        let passButton = app.buttons["Battle Pass"]
+        XCTAssertTrue(passButton.exists, "Battle Pass button doesn't exist")
+        passButton.tap()
         
         let collectionViewsQuery = app.collectionViews
         collectionViewsQuery.cells.firstMatch.tap()

@@ -9,11 +9,7 @@ import XCTest
 
 final class OnboardingScreenUITests: XCTestCase {
     
-    private var onboarding = false
-    
-    override func setUp() {
-        onboarding = UserDefaults.standard.bool(forKey: Texts.OnboardingScreen.userDefaultsKey)
-    }
+    private var onboarding = true
 
     internal func testOnbordingScreenWalkthrough() throws {
         guard onboarding else { return }

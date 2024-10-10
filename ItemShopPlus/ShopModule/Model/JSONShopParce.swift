@@ -7,7 +7,12 @@
 
 import Foundation
 
+// MARK: - ShopItem JSON Parsing Extension
+
 extension ShopItem {
+    /// Parses a `ShopItem` from a given JSON object
+    /// - Parameter sharingJSON: The JSON object representing a shop item
+    /// - Returns: A `ShopItem` if the JSON could be successfully parsed, otherwise `nil`
     static func sharingParse(sharingJSON: Any) -> ShopItem? {
         guard let data = sharingJSON as? [String: Any],
               let id = data["mainId"] as? String,
@@ -26,6 +31,7 @@ extension ShopItem {
             return nil
         }
         
+        // Parse images
         var images = [ShopItemImage]()
         for asset in assetsData {
             let mode = asset["productTag"] as? String ?? String()
@@ -43,6 +49,7 @@ extension ShopItem {
             return first < second
         })
         
+        // If images are empty, uses fallback parsing
         if images.isEmpty {
             for asset in assetsData {
                 let mode = asset["primaryMode"] as? String ?? String()
@@ -51,16 +58,20 @@ extension ShopItem {
             }
         }
         
+        // Parse price details
         let finalPrice = priceData["finalPrice"] as? Int ?? 0
         let regularPrice = priceData["regularPrice"] as? Int ?? 0
         
+        // Parse rarity details
         let rarityData = data["rarity"] as? [String: Any]
         let rarity = SelectingMethods.selectRarity(rarityText: rarityData?["id"] as? String)
         let section = sectionsData["name"] as? String ?? String()
         
+        // Parse series details
         let seriesData = data["series"] as? [String: Any]
         let series = seriesData?["name"] as? String
         
+        // Parse date details
         var firstDate: Date?
         var previousDate: Date?
         var expiryDate: Date?
@@ -83,15 +94,18 @@ extension ShopItem {
             expiryDate = date3
         }
         
+        // Parse banner details
         let bannerData = data["banner"] as? [String: Any]
         let bannerName = bannerData?["id"] as? String
         let banner = SelectingMethods.selectBanner(bannerText: bannerName)
         
+        // Parse granted items
         var granted = [GrantedItem]()
         if let grantedData = data["granted"] as? [[String: Any]] {
             granted = grantedData.compactMap { GrantedItem.sharingParce(sharingJSON: $0) }
         }
         
+        // Determine if the item has an associated video
         var video = false
         if regularPrice == finalPrice && granted.contains(where: { ($0.video != nil) }) {
             video = true
@@ -101,8 +115,12 @@ extension ShopItem {
     }
 }
 
+// MARK: - GrantedItem JSON Parsing Extension
 
 extension GrantedItem {
+    /// Parses a `GrantedItem` from a given JSON object
+    /// - Parameter sharingJSON: The JSON object representing a granted item
+    /// - Returns: A `GrantedItem` if the JSON could be successfully parsed, otherwise `nil`
     static func sharingParce(sharingJSON: Any) -> GrantedItem? {
         guard let data = sharingJSON as? [String: Any],
               let id = data["id"] as? String,
@@ -116,6 +134,7 @@ extension GrantedItem {
             return nil
         }
         
+        // Parse type ID and type name
         let type: String
         let typeID = typeData["id"] as? String ?? String()
         if typeID == "backpack" {
@@ -123,16 +142,21 @@ extension GrantedItem {
         } else {
             type = typeData["name"] as? String ?? String()
         }
+        
+        // Parse series and rarity details
         let series = data["series"] as? String
         let rarity: Rarity? = SelectingMethods.selectRarity(rarityText: rarityData["id"] as? String)
         
+        // Parse video URL
         let video = data["video"] as? String
         
+        // Parse image
         var image = String()
         if let imageData = imagesData["background"] as? String {
             image = imageData
         }
         
+        // Parse share image
         var shareImage = String()
         if let shareImageData = imagesData["full_background"] as? String {
             shareImage = shareImageData

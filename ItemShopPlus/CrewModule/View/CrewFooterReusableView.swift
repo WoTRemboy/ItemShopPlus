@@ -7,19 +7,37 @@
 
 import UIKit
 
+/// A reusable view used as a footer in the Crew section of the collection view
 final class CrewFooterReusableView: UICollectionReusableView {
     
     // MARK: - Properties
     
+    /// Identifier used to dequeue the reusable view
     static let identifier = Texts.CrewPageCell.footerIdentifier
+    /// Indicates the position of the currency symbol for the displayed price
     private var symbolPosition: CurrencySymbolPosition = .left
     
     // MARK: - UI Elements and Views
     
-    private let introductionView = CollectionParametersRowView(frame: .null, title: Texts.CrewPageCell.introductionTitle, content: Texts.CrewPageCell.introductionText)
-    private let mainBenefitsView = CollectionParametersRowView(frame: .null, title: Texts.CrewPageCell.mainBenefits, content: Texts.CrewPageCell.no)
-    private let addBenefitsView = CollectionParametersRowView(frame: .null, title: Texts.CrewPageCell.additionalBenefints, content: Texts.CrewPageCell.no)
+    /// A view displaying the introduction of the crew pack
+    private let introductionView = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.CrewPageCell.introductionTitle,
+        content: Texts.CrewPageCell.introductionText)
     
+    /// A view displaying the main benefits of the crew pack
+    private let mainBenefitsView = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.CrewPageCell.mainBenefits,
+        content: Texts.CrewPageCell.no)
+    
+    /// A view displaying additional benefits of the crew pack
+    private let addBenefitsView = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.CrewPageCell.additionalBenefints,
+        content: Texts.CrewPageCell.no)
+    
+    /// A label that shows the price of the crew pack
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.price
@@ -30,6 +48,7 @@ final class CrewFooterReusableView: UICollectionReusableView {
         return label
     }()
     
+    /// A label that shows the title for the description section
     private let descriptionTitleLable: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedParameters.descriprion
@@ -39,6 +58,7 @@ final class CrewFooterReusableView: UICollectionReusableView {
         return label
     }()
     
+    /// A label that shows the description content of the crew pack
     private let descriptionContentLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedParameters.descriptionData
@@ -48,12 +68,14 @@ final class CrewFooterReusableView: UICollectionReusableView {
         return label
     }()
     
+    /// A separator line view to visually separate the description content from other rows
     private let descriptionSeparatorLine: UIView = {
         let line = UIView()
         line.backgroundColor = .labelDisable
         return line
     }()
     
+    /// A label that shows the total price label text
     private let totalPriceLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.total
@@ -63,6 +85,7 @@ final class CrewFooterReusableView: UICollectionReusableView {
         return label
     }()
     
+    /// A stack view that contains the `introductionView`, `mainBenefitsView`, and `addBenefitsView` for layout management
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -72,6 +95,13 @@ final class CrewFooterReusableView: UICollectionReusableView {
     
     // MARK: - Public Configure Methods
     
+    /// Configures the reusable view with the provided details of the crew pack
+    /// - Parameters:
+    ///   - price: The price of the crew pack
+    ///   - description: The description of the crew pack
+    ///   - introduced: The introduction details of the crew pack
+    ///   - battlePass: The battle pass details of the crew pack
+    ///   - benefits: Additional benefits of the crew pack
     public func configurate(price: CrewPrice, description: String, introduced: String, battlePass: String, benefits: String) {
         changePrice(price: price, firstTime: true)
         descriptionContentLabel.text = description
@@ -83,10 +113,15 @@ final class CrewFooterReusableView: UICollectionReusableView {
         setupUI()
     }
     
+    /// Changes the price displayed in the view
+    /// - Parameters:
+    ///   - price: The new price details to be displayed
+    ///   - firstTime: A boolean indicating if it's the first view launch, which affects the animation
     public func changePrice(price: CrewPrice, firstTime: Bool) {
         symbolPosition = SelectingMethods.selectCurrencyPosition(type: price.type)
         let priceToShow = Int(price.price * 10) % 10 == 0 ? String(Int(price.price.rounded())) : String(price.price)
         
+        // Updates the price label with a flip animation based on the currency symbol position
         switch symbolPosition {
         case .left:
             UIView.transition(with: priceLabel, duration: firstTime ? 0 : 0.3, options: .transitionFlipFromBottom, animations: {
@@ -101,6 +136,7 @@ final class CrewFooterReusableView: UICollectionReusableView {
     
     // MARK: - UI Setups
     
+    /// Configures the description section layout
     private func descriptionSetup() {
         addSubview(descriptionTitleLable)
         addSubview(descriptionContentLabel)
@@ -126,6 +162,7 @@ final class CrewFooterReusableView: UICollectionReusableView {
         ])
     }
     
+    /// Configures the stack view layout
     private func stackViewSetup() {
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -141,6 +178,7 @@ final class CrewFooterReusableView: UICollectionReusableView {
         ])
     }
     
+    /// Configures the total price section layout
     private func totalPriceSetup() {
         addSubview(totalPriceLabel)
         addSubview(priceLabel)
@@ -158,6 +196,7 @@ final class CrewFooterReusableView: UICollectionReusableView {
         ])
     }
     
+    /// Configures the overall UI layout by setting up the individual sections
     private func setupUI() {
         descriptionSetup()
         stackViewSetup()

@@ -7,8 +7,14 @@
 
 import Foundation
 
+// MARK: - BattlePass JSON Parsing Extension
+
 extension BattlePass {
+    /// Parses a `BattlePass` instance from a JSON object
+    /// - Parameter sharingJSON: The JSON data to parse
+    /// - Returns: An optional `BattlePass` instance if parsing is successful, otherwise `nil`
     static func sharingParse(sharingJSON: Any) -> BattlePass? {
+        // Unwrapping the required fields from the JSON data
         guard let globalData = sharingJSON as? [String: Any],
               let displayData = globalData["displayInfo"] as? [String: Any],
               let seasonsData = globalData["seasonDates"] as? [String: Any],
@@ -26,9 +32,12 @@ extension BattlePass {
             return nil
         }
         
+        // Extracting the video URL
         let video = videoData.first?["url"] as? String
+        // Parsing Battle Pass items from the nested JSON array
         let items: [BattlePassItem] = itemsData.compactMap { BattlePassItem.sharingParse(sharingJSON: $0) }
         
+        // Parsing date strings to Date objects using a date formatter
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
@@ -40,9 +49,14 @@ extension BattlePass {
     }
 }
 
+// MARK: - BattlePassItem JSON Parsing Extension
 
 extension BattlePassItem {
+    /// Parses a `BattlePassItem` instance from a JSON object
+    /// - Parameter sharingJSON: The JSON data to parse
+    /// - Returns: An optional `BattlePassItem` instance if parsing is successful, otherwise `nil`
     static func sharingParse(sharingJSON: Any) -> BattlePassItem? {
+        // Unwrapping the required fields from the JSON data
         guard let data = sharingJSON as? [String: Any],
               let id = data["offerId"] as? String,
               let tier = data["tier"] as? Int,
@@ -71,6 +85,7 @@ extension BattlePassItem {
             return nil
         }
         
+        // Extracting optional fields from the JSON data
         let shareImage = imageData["full_background"] as? String ?? String()
         let video = itemData["video"] as? String
         let description = itemData["description"] as? String ?? ""
@@ -78,6 +93,7 @@ extension BattlePassItem {
         let payType = SelectingMethods.selectPayType(payType: payTypeString)
         let series = itemData["series"] as? String
         
+        // Parsing additional nested data
         let setData = itemData["set"] as? [String: Any]
         let set = setData?["partOf"] as? String
         
@@ -85,6 +101,7 @@ extension BattlePassItem {
         let displayData = bpData?["displayText"] as? [String: Any]
         let introduction = displayData?["chapterSeason"] as? String ?? ""
         
+        // Formatting the release date using a date formatter
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let releaseDate = dateFormatter.date(from: releaseDateString) ?? .now

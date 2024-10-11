@@ -14,6 +14,7 @@ extension ShopItem {
     /// - Parameter sharingJSON: The JSON object representing a shop item
     /// - Returns: A `ShopItem` if the JSON could be successfully parsed, otherwise `nil`
     static func sharingParse(sharingJSON: Any) -> ShopItem? {
+        // Unwrapping the required fields from the JSON data
         guard let data = sharingJSON as? [String: Any],
               let id = data["mainId"] as? String,
               let name = data["displayName"] as? String,
@@ -122,6 +123,7 @@ extension GrantedItem {
     /// - Parameter sharingJSON: The JSON object representing a granted item
     /// - Returns: A `GrantedItem` if the JSON could be successfully parsed, otherwise `nil`
     static func sharingParce(sharingJSON: Any) -> GrantedItem? {
+        // Unwrapping the required fields from the JSON data
         guard let data = sharingJSON as? [String: Any],
               let id = data["id"] as? String,
               let name = data["name"] as? String,

@@ -8,23 +8,32 @@
 import UIKit
 import AVKit
 
+/// The view controller displays detailed information about the current Battle Pass season, including its video preview, start and end dates, and the time remaining until the next season
 final class BattlePassInfoViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// The title of the Battle Pass season
     private let seasonTitle: String
+    /// URL of the video associated with the season
     private let video: String
     
+    /// The network task responsible for downloading the video
     private var videoLoadTask: URLSessionDataTask?
     
+    /// The date when the Battle Pass season begins
     private let beginDate: Date
+    /// The date when the Battle Pass season ends
     private let endDate: Date
+    /// Timer used to update the remaining time until the end of the season
     private var timer: Timer?
     
     // MARK: - UI Elements and Views
     
+    /// The player view controller used to display the video for the current Battle Pass season
     private var playerViewController = AVPlayerViewController()
     
+    /// A custom view displaying the beginning and ending dates of the current Battle Pass season
     private let dateView = BattlePassSeasonParameterRow(
         frame: .null,
         beginTitle: Texts.BattlePassItemsParameters.beginDate,
@@ -32,10 +41,14 @@ final class BattlePassInfoViewController: UIViewController {
         endTitle: Texts.BattlePassItemsParameters.endDate,
         endContent: Texts.BattlePassItemsParameters.endDateData
     )
+    
+    /// A view displaying the current Battle Pass season information
     private let seasonInfo = CollectionParametersRowView(frame: .null, title: Texts.BattlePassItemsParameters.currentSeason, content: Texts.BattlePassItemsParameters.currentData, textAlignment: .center)
     
+    /// A view showing the remaining time until the end of the current Battle Pass season
     private let remainingView = TimerRemainingView()
     
+    /// Activity indicator displayed during video loading
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.hidesWhenStopped = true
@@ -44,6 +57,12 @@ final class BattlePassInfoViewController: UIViewController {
     
     // MARK: - Initialization
     
+    /// Custom initializer to create the controller with the specific Battle Pass information
+    /// - Parameters:
+    ///   - seasonName: The name of the Battle Pass season
+    ///   - video: Optional URL of the season video
+    ///   - beginDate: Start date of the season
+    ///   - endDate: End date of the season
     init(seasonName: String, video: String?, beginDate: Date, endDate: Date) {
         self.seasonTitle = seasonName
         self.video = video ?? String()
@@ -60,12 +79,14 @@ final class BattlePassInfoViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        // Invalidates the timer and cancels video loading if necessary
         timer?.invalidate()
         VideoLoader.cancelVideoLoad(task: videoLoadTask)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // Initializes the timer to show the remaining time
         timer?.invalidate()
         setupTimer()
     }
@@ -83,10 +104,12 @@ final class BattlePassInfoViewController: UIViewController {
     
     // MARK: - Actions
     
+    /// Dismisses the current view controller
     @objc private func cancelButtonTapped() {
         dismiss(animated: true)
     }
     
+    /// Sets up content views with the provided data
     private func contentSetup() {
         dateView.configurate(content: DateFormating.dateFormatterDefault(date: beginDate), DateFormating.dateFormatterDefault(date: endDate))
         seasonInfo.configurate(content: seasonTitle)
@@ -94,6 +117,7 @@ final class BattlePassInfoViewController: UIViewController {
     
     // MARK: - Working with Timer
     
+    /// Sets up and starts a timer to update the remaining time until the end of the season
     private func setupTimer() {
         var calendar = Calendar.current
         if let timeZone = TimeZone(identifier: "UTC") {
@@ -103,6 +127,7 @@ final class BattlePassInfoViewController: UIViewController {
         timer?.fire()
     }
     
+    /// Updates the remaining time label based on the current time and the season end date
     @objc private func updateTimer() {
         let timeDifference = Calendar.current.dateComponents([.weekOfYear, .day, .hour, .minute, .second], from: .now, to: endDate)
         print(timeDifference)
@@ -124,6 +149,7 @@ final class BattlePassInfoViewController: UIViewController {
     
     // MARK: - Networking
     
+    /// Sets up and configures the video player with the provided video URL
     private func playerSetup() {
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
@@ -140,6 +166,7 @@ final class BattlePassInfoViewController: UIViewController {
     
     // MARK: - UI Setups
     
+    /// Configures the navigation bar with the title and action buttons
     private func navigationBarSetup() {
         navigationItem.title = seasonTitle
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -153,6 +180,7 @@ final class BattlePassInfoViewController: UIViewController {
         navigationItem.rightBarButtonItem = activityBarButtonItem
     }
     
+    /// Configures and lays out the player view for the video
     private func playerLayout() {
         playerViewController.view.layer.masksToBounds = true
         
@@ -172,6 +200,7 @@ final class BattlePassInfoViewController: UIViewController {
         playerSetup()
     }
     
+    /// Sets up and configures the stack view containing the date and season information
     private func stackViewSetup() {
         view.addSubview(dateView)
         dateView.translatesAutoresizingMaskIntoConstraints = false
@@ -185,6 +214,7 @@ final class BattlePassInfoViewController: UIViewController {
         contentSetup()
     }
     
+    /// Sets up and configures the view displaying the remaining time until the end of the season
     private func remainingSetup() {
         remainingView.configurate(title: Texts.BattlePassCell.remaining, content: Texts.BattlePassCell.remaining)
         

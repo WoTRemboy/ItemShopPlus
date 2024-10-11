@@ -8,19 +8,25 @@
 import UIKit
 import AVKit
 
+/// The view controller displays detailed information about a specific Battle Pass item, including its video preview, description, and other related parameters
 final class BattlePassGrantedViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// The Battle Pass item displayed in this view
     private var item = BattlePassItem.emptyItem
     
+    /// Stores the original navigation bar title attributes to restore later
     private var originalTitleAttributes: [NSAttributedString.Key : Any]?
+    /// Flag to indicate if the video player is presented fullscreen
     private var isPresentedFullScreen = false
     
     // MARK: - UI Elements and Views
     
+    /// The player view controller for displaying the item's video
     private var playerViewController = AVPlayerViewController()
     
+    /// Collection view to display item details, rarity, and related parameters
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -32,6 +38,7 @@ final class BattlePassGrantedViewController: UIViewController {
         return collectionView
     }()
     
+    /// Back button to return to the previous screen
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToPass
@@ -40,6 +47,8 @@ final class BattlePassGrantedViewController: UIViewController {
     
     // MARK: - Initialization
     
+    /// Custom initializer to create the controller with a specific Battle Pass item
+    /// - Parameter item: The Battle Pass item to be displayed in the view
     init(item: BattlePassItem) {
         self.item = item
         super.init(nibName: nil, bundle: nil)
@@ -70,17 +79,21 @@ final class BattlePassGrantedViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         isPresentedFullScreen = false
+        // Updates the navigation bar title attributes
         navigationController?.navigationBar.largeTitleTextAttributes = [.font: UIFont.segmentTitle() ?? UIFont.systemFont(ofSize: 25)]
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         if !isPresentedFullScreen {
+            // Restores the original title attributes
             navigationController?.navigationBar.largeTitleTextAttributes = originalTitleAttributes
         }
     }
     
     // MARK: - Action
     
+    /// Handles taps on the collection view cells and triggers animations and video playback or image previews
+    /// - Parameter gestureRecognizer: The gesture recognizer detecting taps
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: location) {
@@ -88,6 +101,7 @@ final class BattlePassGrantedViewController: UIViewController {
         }
     }
     
+    /// Handles the end of video playback and dismisses the video player
     @objc private func videoDidEnd() {
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: playerViewController.player?.currentItem)
         self.playerViewController.dismiss(animated: true, completion: nil)
@@ -95,6 +109,8 @@ final class BattlePassGrantedViewController: UIViewController {
     
     // MARK: - Rows and Cell Animation Methods
     
+    /// Counts the number of rows required to display the item's attributes
+    /// - Returns: The number of rows as a `Float`
     private func countRows() -> Float {
         var count: Float = 2 // payType + addedDate
         if !item.description.isEmpty { count += 1 }
@@ -108,6 +124,8 @@ final class BattlePassGrantedViewController: UIViewController {
         return count
     }
     
+    /// Animates the selection of a cell and triggers video playback or image preview
+    /// - Parameter indexPath: The index path of the selected cell
     private func animateCellSelection(at indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
@@ -127,6 +145,8 @@ final class BattlePassGrantedViewController: UIViewController {
     
     // MARK: - UI Setup
     
+    /// Sets up and configures the video player for the item's video
+    /// - Parameter videoURL: The URL of the video to be played
     private func videoSetup(videoURL: URL) {
         let player = AVPlayer(url: videoURL)
         playerViewController.player = player
@@ -144,6 +164,7 @@ final class BattlePassGrantedViewController: UIViewController {
         }
     }
     
+    /// Configures and presents a preview view for the item's image
     private func previewSetup() {
         self.isPresentedFullScreen = true
         
@@ -154,6 +175,7 @@ final class BattlePassGrantedViewController: UIViewController {
         self.present(navVC, animated: true)
     }
     
+    /// Configures and sets up UI constraints for the `collectionView`
     private func setupUI() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -178,6 +200,7 @@ extension BattlePassGrantedViewController: UICollectionViewDelegate, UICollectio
         return 1
     }
     
+    /// Configures and returns the cell for a given index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionRarityCell.identifier, for: indexPath) as? CollectionRarityCell else {
             fatalError("Failed to dequeue ShopGrantedCollectionViewCell in ShopGrantedViewController")
@@ -218,6 +241,7 @@ extension BattlePassGrantedViewController: UICollectionViewDelegateFlowLayout {
         return size
     }
     
+    /// Configures and returns a footer view for the given section
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BattlePassCollectionReusableView.identifier, for: indexPath) as? BattlePassCollectionReusableView else {

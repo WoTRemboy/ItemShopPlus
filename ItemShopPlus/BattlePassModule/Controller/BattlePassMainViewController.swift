@@ -7,14 +7,19 @@
 
 import UIKit
 
+/// A view controller manages the main view displaying the Battle Pass items
 final class BattlePassMainViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// The `BattlePass` model storing information about the current Battle Pass season
     private var battlePass = BattlePass.emptyPass
+    /// The title of the currently selected section in the filter menu
     private var selectedSectionTitle = Texts.BattlePassPage.allMenu
+    /// Keeps track of the previous number of searched items to manage collection view updates
     private var previousSearchedCount = 0
     
+    /// Retrieves the current app language stored in user defaults
     private var appLanguage: String {
         if let userDefault = UserDefaults(suiteName: "group.notificationlocalized") {
             if let currentLang = userDefault.string(forKey: Texts.LanguageSave.userDefaultsKey) {
@@ -24,24 +29,33 @@ final class BattlePassMainViewController: UIViewController {
         return Texts.NetworkRequest.language
     }
     
+    /// Stores all items available in the Battle Pass
     private var items = [BattlePassItem]()
+    /// Stores items that match the user's search query
     private var filteredItems = [BattlePassItem]()
+    /// A dictionary categorizing Battle Pass items by their section (page number)
     private var sectionedItems = [Int: [BattlePassItem]]()
     
+    /// The service responsible for fetching data related to the Battle Pass
     private let networkService = DefaultNetworkService()
     
     // MARK: - UI Elements and Views
     
+    /// A view displayed when there is no internet connection
     private let noInternetView = EmptyView(type: .internet)
+    /// A loading indicator displayed during network requests
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    /// A refresh control for updating the Battle Pass items
     private let refreshControl = UIRefreshControl()
     
+    /// Navigation bar back button
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToMain
         return button
     }()
     
+    /// Navigation bar info button for displaying Battle Pass information
     private let infoButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .ShopMain.info
@@ -50,6 +64,7 @@ final class BattlePassMainViewController: UIViewController {
         return button
     }()
     
+    /// Navigation bar filter button for selecting different Battle Pass sections
     private let filterButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .FilterMenu.filter
@@ -57,6 +72,7 @@ final class BattlePassMainViewController: UIViewController {
         return button
     }()
     
+    /// The main collection view displaying Battle Pass items
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -68,6 +84,7 @@ final class BattlePassMainViewController: UIViewController {
         return collectionView
     }()
     
+    /// Search controller to handle text-based searches for Battle Pass items
     private let searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -99,6 +116,7 @@ final class BattlePassMainViewController: UIViewController {
     
     // MARK: - Actions
     
+    /// Presents the `BattlePassInfoViewController` with detailed season information
     @objc private func infoButtonTapped() {
         let vc = BattlePassInfoViewController(seasonName: battlePass.season, video: battlePass.video, beginDate: battlePass.beginDate, endDate: battlePass.endDate)
         let navVC = UINavigationController(rootViewController: vc)
@@ -109,18 +127,21 @@ final class BattlePassMainViewController: UIViewController {
         present(navVC, animated: true)
     }
     
+    /// Called when the refresh control is triggered by a pull-to-refresh gesture
     @objc private func refreshWithControl() {
         if !searchController.isActive {
             getBattlePass(isRefreshControl: true)
         }
     }
     
+    /// Called when the refresh control is not necessary
     @objc private func refreshWithoutControl() {
         if !searchController.isActive {
             getBattlePass(isRefreshControl: false)
         }
     }
     
+    /// Handles the dismissal of the search controller or resigning of the keyboard
     @objc private func handleTapOutsideKeyboard() {
         guard searchController.isActive else { return }
         if searchController.searchBar.text?.isEmpty == true {
@@ -131,6 +152,8 @@ final class BattlePassMainViewController: UIViewController {
         UIView.appearance().isExclusiveTouch = true
     }
     
+    /// Handles the tap gesture on a collection view cell, triggering cell selection animation
+    /// - Parameter gestureRecognizer: The tap gesture recognizer object
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: location) {
@@ -138,6 +161,8 @@ final class BattlePassMainViewController: UIViewController {
         }
     }
     
+    /// Animates the selection of a cell and navigates to a detailed view if an item is selected
+    /// - Parameter indexPath: The index path of the selected item in the collection view
     private func animateCellSelection(at indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
@@ -158,6 +183,8 @@ final class BattlePassMainViewController: UIViewController {
     
     // MARK: - Networking
     
+    /// Fetches the Battle Pass items from the network service
+    /// - Parameter isRefreshControl: Determines if the request was triggered by the refresh control
     private func getBattlePass(isRefreshControl: Bool) {
         if isRefreshControl {
             self.refreshControl.beginRefreshing()
@@ -191,8 +218,10 @@ final class BattlePassMainViewController: UIViewController {
                     guard let collectionView = self?.collectionView else { return }
                     collectionView.isHidden = false
                     if isRefreshControl {
+                        // Reload without animation
                         collectionView.reloadData()
                     } else {
+                        // Reload with animation
                         UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
                             collectionView.reloadData()
                         }, completion: nil)
@@ -220,6 +249,8 @@ final class BattlePassMainViewController: UIViewController {
     
     // MARK: - Items Management Methods
     
+    /// Sorts the items by their section (page number) and stores them in `sectionedItems`
+    /// - Parameter items: The list of Battle Pass items to be sorted
     private func sortingSections(items: [BattlePassItem]) {
         for item in items {
             if var sectionItems = self.sectionedItems[item.page] {
@@ -231,6 +262,11 @@ final class BattlePassMainViewController: UIViewController {
         }
     }
     
+    /// Filters items by the selected section title and reloads the collection view
+    /// - Parameters:
+    ///   - sectionTitle: The section title to filter by
+    ///   - displayTitle: The display title of the section
+    ///   - forAll: Indicates whether to show all items or only items in the selected section
     private func filterItemsBySection(sectionTitle: String, displayTitle: String, forAll: Bool) {
         guard displayTitle != selectedSectionTitle else { return }
         
@@ -245,6 +281,7 @@ final class BattlePassMainViewController: UIViewController {
         }, completion: nil)
     }
     
+    /// Clears all items stored in the data models
     private func clearItems() {
         items.removeAll()
         sectionedItems.removeAll()
@@ -253,6 +290,9 @@ final class BattlePassMainViewController: UIViewController {
     
     // MARK: - UI Setups
     
+    /// Configures the title and display the header in each section
+    /// - Parameter page: The page number of the section
+    /// - Returns: A formatted string for the header title
     private func headerTitleSetup(page: Int) -> String {
         switch appLanguage {
         case "tr":
@@ -262,10 +302,16 @@ final class BattlePassMainViewController: UIViewController {
         }
     }
     
+    /// Generates the display title for a section in the filter menu
+    /// - Parameters:
+    ///   - page: The page number of the section
+    ///   - lastItemName: The name of the last item in the section
+    /// - Returns: A formatted string for the menu title
     private func menuTitleSetup(page: Int, lastItemName: String) -> String {
         return "\(lastItemName)"
     }
     
+    /// Configures the navigation bar with buttons and titles
     private func navigationBarSetup() {
         title = Texts.BattlePassPage.title
         navigationItem.largeTitleDisplayMode = .never
@@ -279,6 +325,7 @@ final class BattlePassMainViewController: UIViewController {
         ]
     }
     
+    /// Configures the collection view, setting its delegate, data source, and refresh control
     private func collectionViewSetup() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -286,6 +333,7 @@ final class BattlePassMainViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshWithControl), for: .valueChanged)
     }
     
+    /// Configures the search controller and attaches gesture recognizers
     private func searchControllerSetup() {
         searchController.delegate = self
         searchController.searchResultsUpdater = self
@@ -298,13 +346,16 @@ final class BattlePassMainViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    /// Configures the filter menu for the Battle Pass sections
     private func menuSetup() {
+        // All sections filter
         let allAction = UIAction(title: Texts.BattlePassPage.allMenu, image: nil) { [weak self] action in
             self?.filterItemsBySection(sectionTitle: Texts.BattlePassPage.allMenu, displayTitle: Texts.BattlePassPage.allMenu, forAll: true)
             self?.filterButton.image = .FilterMenu.filter
         }
         allAction.state = .on
         var children = [allAction]
+        // Filter by specific section
         for section in sectionedItems.sorted(by: { $0.key < $1.key }) {
             let sectionAction = UIAction(title: menuTitleSetup(page: section.key, lastItemName: section.value.last?.name ?? String()), image: nil) { [weak self] action in
                 
@@ -318,6 +369,8 @@ final class BattlePassMainViewController: UIViewController {
         filterButton.image = .FilterMenu.filter
     }
     
+    /// Updates the menu state to reflect the currently selected section
+    /// - Parameter sectionTitle: The title of the currently selected section
     private func updateMenuState(for sectionTitle: String) {
         if let currentAction = filterButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
             currentAction.state = .on
@@ -328,12 +381,14 @@ final class BattlePassMainViewController: UIViewController {
         selectedSectionTitle = sectionTitle
     }
     
+    /// Configures the `noInternetView` and attaches action handlers
     private func noInternetSetup() {
         noInternetView.isHidden = true
         noInternetView.reloadButton.addTarget(self, action: #selector(refreshWithoutControl), for: .touchUpInside)
         noInternetView.configurate()
     }
     
+    /// Sets up the UI layout constraints for the `collectionView` and `noInternetView`
     private func setupUI() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         noInternetView.translatesAutoresizingMaskIntoConstraints = false
@@ -403,9 +458,11 @@ extension BattlePassMainViewController: UICollectionViewDelegate, UICollectionVi
         let inSearchMode = searchController.isActive && !text.isEmpty
         
         if inSearchMode {
+            // Display the search results
             let item = filteredItems[indexPath.item]
             cell.configurate(name: item.name, type: String(item.price), image: item.image, payType: item.payType, video: item.video != nil)
         } else {
+            // Display sorted by sections items
             let sectionKey = Array(sectionedItems.keys).sorted()[indexPath.section]
             if let itemsInSection = sectionedItems[sectionKey] {
                 let item = itemsInSection[indexPath.item]
@@ -422,8 +479,10 @@ extension BattlePassMainViewController: UICollectionViewDelegate, UICollectionVi
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         guard searchController.isActive else { return }
         if searchController.searchBar.text?.isEmpty == true {
+            // Dismiss isSearching status
             searchController.dismiss(animated: false)
         } else {
+            // Hide the keyboard
             searchController.searchBar.resignFirstResponder()
         }
         UIView.appearance().isExclusiveTouch = true
@@ -459,6 +518,7 @@ extension BattlePassMainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
+        // Section or Search result header
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
             fatalError("Failed to dequeue CollectionHeaderReusableView in BattlePassMainViewController")
         }

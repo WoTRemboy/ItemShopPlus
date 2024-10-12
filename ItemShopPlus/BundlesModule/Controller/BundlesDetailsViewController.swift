@@ -7,25 +7,40 @@
 
 import UIKit
 
+/// A view controller that handles the display of detailed information about a specific bundle
 final class BundlesDetailsViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    /// The bundle item whose details are displayed in the view controller
     private let item: BundleItem
+    /// A boolean indicating whether the view controller was opened from the main page
     private let fromMainPage: Bool
+    /// The current selected currency section title (e.g., USD, EUR)
     private var currentSectionTitle = Texts.Currency.Code.usd
+    /// The previously selected currency section title
     private var selectedSectionTitle = Texts.Currency.Code.usd
+    /// A closure that handles updating the price in the main page
     public var completionHandler: ((BundlePrice) -> Void)?
     
+    /// Stores the original title attributes of the navigation bar to reset after view disappears
     private var originalTitleAttributes: [NSAttributedString.Key : Any]?
+    /// A boolean indicating whether the view is currently presented in full screen mode
     private var isPresentedFullScreen = false
     
+    // MARK: - UI Elements
+    
+    /// A back button for navigating back to the previous screen
     private let backButton = UIBarButtonItem()
     
+    /// A button for selecting the currency symbol
     private let symbolButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .CurrencySymbol.usd
         return button
     }()
     
+    /// A collection view for displaying the bundle details, including images and price information
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -37,6 +52,12 @@ final class BundlesDetailsViewController: UIViewController {
         return collectionView
     }()
     
+    // MARK: - Initialization
+    
+    /// Initializes the view controller with the given bundle item and a flag indicating if it was opened from the main page
+    /// - Parameters:
+    ///   - item: The `BundleItem` to display
+    ///   - fromMainPage: A boolean indicating if the view controller was opened from the main page
     init(item: BundleItem, fromMainPage: Bool) {
         self.item = item
         self.fromMainPage = fromMainPage
@@ -60,10 +81,12 @@ final class BundlesDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         isPresentedFullScreen = false
+        // Adjusts title attributes
         navigationController?.navigationBar.largeTitleTextAttributes = [.font: UIFont.segmentTitle() ?? UIFont.systemFont(ofSize: 25)]
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        // Resets title attributes and passes the selected price back
         if !isPresentedFullScreen {
             navigationController?.navigationBar.largeTitleTextAttributes = originalTitleAttributes
         }
@@ -71,6 +94,10 @@ final class BundlesDetailsViewController: UIViewController {
         completionHandler?(price)
     }
     
+    // MARK: - Actions
+    
+    /// Handles the tap gesture on the collection view, triggering the animation of cell selection
+    /// - Parameter gestureRecognizer: The tap gesture recognizer object
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: location) {
@@ -80,6 +107,8 @@ final class BundlesDetailsViewController: UIViewController {
     
     // MARK: - Cell Animation Method
     
+    /// Animates the selection of a cell in the collection view, briefly scaling it before presenting the item in full screen
+    /// - Parameter indexPath: The index path of the selected cell
     private func animateCellSelection(at indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
@@ -99,8 +128,10 @@ final class BundlesDetailsViewController: UIViewController {
         }
     }
 
-    // MARK: - UserDefaults Currency
+    // MARK: - Currency Management
     
+    /// Manages the retrieval, saving, and deletion of currency data in `UserDefaults`
+    /// - Parameter request: The type of action to perform (get, save, delete)
     private func currencyMemoryManager(request: CurrencyManager) {
         switch request {
         case .get:
@@ -116,8 +147,9 @@ final class BundlesDetailsViewController: UIViewController {
         }
     }
     
-    // MARK: - Changing Currency Methods
-    
+    /// Updates the bundle prices with the selected currency and reloads the data
+    /// - Parameters:
+    ///   - price: The new `BundlePrice` to apply
     private func updateAll(price: BundlePrice) {
         guard selectedSectionTitle != price.code else { return }
         updateMenuState(for: price.code)
@@ -127,6 +159,8 @@ final class BundlesDetailsViewController: UIViewController {
         footerUpdate(price: price)
     }
     
+    /// Updates the price displayed in the footer based on the selected currency
+    /// - Parameter price: The `BundlePrice` to apply
     private func footerUpdate(price: BundlePrice) {
         let visibleSections = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter)
         for indexPath in visibleSections {
@@ -136,6 +170,9 @@ final class BundlesDetailsViewController: UIViewController {
         }
     }
     
+    // MARK: - Navigation Bar Setup
+    
+    /// Sets up the navigation bar, configuring the title, back button, and currency selection button
     private func navigationBarSetup() {
         title = item.name
         
@@ -150,6 +187,9 @@ final class BundlesDetailsViewController: UIViewController {
         menuSetup()
     }
     
+    // MARK: - Menu Setup
+    
+    /// Configures the menu for currency selection
     private func menuSetup() {
         let prices = item.prices.filter( {
             SelectingMethods.selectCurrency(type: $0.code) != UIImage()
@@ -169,6 +209,8 @@ final class BundlesDetailsViewController: UIViewController {
         footerUpdate(price: curPrice)
     }
     
+    /// Updates the state of the menu to reflect the current selected currency
+    /// - Parameter sectionTitle: The title of the currently selected section
     private func updateMenuState(for sectionTitle: String) {
         guard selectedSectionTitle != sectionTitle else { return }
         if let currentAction = symbolButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
@@ -180,6 +222,9 @@ final class BundlesDetailsViewController: UIViewController {
         selectedSectionTitle = sectionTitle
     }
     
+    // MARK: - UI Setup
+    
+    /// Configures the collection view for displaying bundle details
     private func collectionViewSetup() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -196,6 +241,7 @@ final class BundlesDetailsViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate and UICollectionViewDataSource
 
 extension BundlesDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -250,6 +296,7 @@ extension BundlesDetailsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        // Specifies the size of the footer for each section
         let textWidth = view.frame.width - 32
         let textHeight = heightForText(item.descriptionLong, width: textWidth, font: .subhead() ?? .systemFont(ofSize: 15))
         let dateHeight = CGFloat(item.expiryDate != nil ? 70 : 0)
@@ -259,6 +306,12 @@ extension BundlesDetailsViewController: UICollectionViewDelegateFlowLayout {
         return size
     }
     
+    /// Calculates the height of text based on its content, width, and font
+    /// - Parameters:
+    ///   - text: The string of text whose height needs to be calculated
+    ///   - width: The width within which the text is constrained
+    ///   - font: The font used to render the text
+    /// - Returns: The calculated height of the text, accounting for line breaks and font leading
     private func heightForText(_ text: String, width: CGFloat, font: UIFont) -> CGFloat {
         let attributes: [NSAttributedString.Key: Any] = [.font: font]
         let boundingRect = NSString(string: text).boundingRect(

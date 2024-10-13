@@ -7,8 +7,12 @@
 
 import UIKit
 
+/// A custom popup view that allows the user to input a nickname and select an account type (Xbox, Epic, PSN)
 final class NicknamePopupView: UIView {
     
+    // MARK: - UI Elements and Views
+    
+    /// A segmented control for selecting the platform (Xbox, Epic, or PSN)
     private let segmentControl: UISegmentedControl = {
         let control = UISegmentedControl()
         control.insertSegment(withTitle: Texts.NicknamePopup.xbox, at: 0, animated: false)
@@ -19,6 +23,7 @@ final class NicknamePopupView: UIView {
         return control
     }()
     
+    /// A text field for entering the nickname
     internal let textField: UITextField = {
         let field = UITextField()
         field.placeholder = Texts.NicknamePopup.placeholder
@@ -29,6 +34,7 @@ final class NicknamePopupView: UIView {
         return field
     }()
     
+    /// A button to save the entered nickname and platform selection
     internal let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Texts.NicknamePopup.accept, for: .normal)
@@ -40,6 +46,7 @@ final class NicknamePopupView: UIView {
         return button
     }()
     
+    /// A button to cancel the nickname input process
     internal let cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Texts.NicknamePopup.cancel, for: .normal)
@@ -52,6 +59,8 @@ final class NicknamePopupView: UIView {
         return button
     }()
     
+    // MARK: - Initializer
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -62,11 +71,15 @@ final class NicknamePopupView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Private Methods
+    
+    /// Sets up the main view's properties, such as background color and corner radius
     private func setupView() {
         backgroundColor = .BackColors.backPopup
         layer.cornerRadius = 10
     }
     
+    /// Configures the layout and constraints for the popup's UI elements
     private func setupUI() {
         addSubview(textField)
         addSubview(segmentControl)

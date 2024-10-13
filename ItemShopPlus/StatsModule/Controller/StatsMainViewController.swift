@@ -7,30 +7,46 @@
 
 import UIKit
 
+/// This view controller is responsible for displaying the main statistics page, showing player stats such as kills, winrate, and match history
 final class StatsMainViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    /// Network service to handle data fetching for stats
     private let networkService = DefaultNetworkService()
+    /// The stats model holding all statistics data
     private var stats = Stats.emptyStats
+    /// The player's nickname
     private var nickname = String()
+    /// The player's platform (e.g., Xbox, PlayStation), can be nil if not selected
     private var platform: String? = nil
     
+    // MARK: - UI Elements
+    
+    /// A view that appears when there is no internet connection
     private let noInternetView = EmptyView(type: .internet)
+    /// A view that appears when there are no stats to display
     private let noStatsView = EmptyView(type: .stats)
+    /// Activity indicator to show loading progress
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    /// A control for refreshing the stats
     private let refreshControl = UIRefreshControl()
     
+    /// Back button on the navigation bar
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToMain
         return button
     }()
     
+    /// A button for updating the player's nickname
     private let nicknameButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .Stats.newNickname
         return button
     }()
     
+    /// Collection view to display the statistics
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -42,6 +58,8 @@ final class StatsMainViewController: UIViewController {
         collectionView.register(CollectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderReusableView.identifier)
         return collectionView
     }()
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +78,7 @@ final class StatsMainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // Fetches stats if not already available
         guard stats.name == Texts.StatsPage.placeholder else { return }
         if nickname.isEmpty {
             showNicknamePopup(firstAppear: true)
@@ -68,14 +87,20 @@ final class StatsMainViewController: UIViewController {
         }
     }
     
+    // MARK: - Action Methods
+    
+    /// Called when the user pulls to refresh the stats data
     @objc private func refreshWithControl() {
         getStats(nickname: nickname, platform: platform, isRefreshControl: true)
     }
     
+    /// Called when the user taps to reload data without pull-to-refresh control
     @objc private func refreshWithoutControl() {
         getStats(nickname: nickname, platform: platform, isRefreshControl: false)
     }
     
+    /// Handles cell selection by animating it and then navigating to a detailed stats page
+    /// - Parameter gestureRecognizer: The tap gesture recognizer object
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: location) {
@@ -83,6 +108,8 @@ final class StatsMainViewController: UIViewController {
         }
     }
     
+    /// Shows a popup for entering or changing the nickname
+    /// - Parameter firstAppear: Bool that shows if it's the first time view appears
     @objc private func showNicknamePopup(firstAppear: Bool) {
         let nicknameVC = NicknamePopupViewController()
         nicknameVC.completionHandler = { [weak self] newNickname, platform in
@@ -101,6 +128,10 @@ final class StatsMainViewController: UIViewController {
         nicknameVC.appear(sender: self, firstAppear: firstAppear)
     }
     
+    // MARK: - Animation Methods
+    
+    /// Animates the cell selection, then transitions to the detailed stats view for the selected row
+    /// - Parameter indexPath: The index path of the selected row
     private func animateCellSelection(at indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? StatsCollectionViewCell, indexPath.row != 0 else { return }
         
@@ -124,6 +155,13 @@ final class StatsMainViewController: UIViewController {
         }
     }
     
+    // MARK: - Networking
+    
+    /// Fetches the player's statistics data from the server
+    /// - Parameters:
+    ///   - nickname: The player's nickname
+    ///   - platform: The platform on which the player is playing (e.g., Xbox, PSN, Epic)
+    ///   - isRefreshControl: A flag indicating whether the refresh control is being used
     private func getStats(nickname: String, platform: String?, isRefreshControl: Bool) {
         if isRefreshControl {
             self.refreshControl.beginRefreshing()
@@ -181,6 +219,8 @@ final class StatsMainViewController: UIViewController {
         }
     }
     
+    /// Displays an alert if no result is found
+    /// - Parameter message: Text for message content
     private func noResultDisplay(message: String?) {
         dismiss(animated: false) {
             let alertController = UIAlertController(title: Texts.NicknamePopup.noResult, message: message ?? String(), preferredStyle: .alert)
@@ -196,6 +236,9 @@ final class StatsMainViewController: UIViewController {
         }
     }
     
+    // MARK: - UI Setup
+    
+    /// Sets up the navigation bar and its buttons
     private func navigationBarSetup() {
         title = Texts.StatsPage.title
         
@@ -207,6 +250,7 @@ final class StatsMainViewController: UIViewController {
         navigationItem.rightBarButtonItem = nicknameButton
     }
     
+    /// Sets up the view for when there is no internet connection
     private func noInternetSetup() {
         view.addSubview(noInternetView)
         noInternetView.translatesAutoresizingMaskIntoConstraints = false
@@ -223,6 +267,7 @@ final class StatsMainViewController: UIViewController {
         ])
     }
     
+    /// Sets up the view for when no stats are available
     private func noStatsViewSetup() {
         view.addSubview(noStatsView)
         noStatsView.translatesAutoresizingMaskIntoConstraints = false
@@ -236,6 +281,7 @@ final class StatsMainViewController: UIViewController {
         noStatsView.configurate()
     }
     
+    /// Sets up the collection view that displays the stats
     private func collectionViewSetup() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -255,6 +301,7 @@ final class StatsMainViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate & DataSource
 
 extension StatsMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -270,6 +317,7 @@ extension StatsMainViewController: UICollectionViewDelegate, UICollectionViewDat
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatsCollectionViewCell.identifier, for: indexPath) as? StatsCollectionViewCell else {
             fatalError("Failed to dequeue StatsCollectionViewCell in StatsMainViewController")
         }
+        // Stats content for list of rows
         switch indexPath.row {
         case 0:
             cell.configurate(type: .title, firstStat: Double(stats.season ?? 0), secondStat: Double(stats.level))

@@ -7,15 +7,20 @@
 
 import UIKit
 
+/// A view controller that presents a picker allowing users to select a map version from the available map archive
 final class MapPickerViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// The currently selected map in the picker
     private var currentMap: Map
+    /// List of all available maps
     private let maps: [Map]
     
+    /// Completion handler to pass the selected map back to the presenting view controller
     public var completionHandler: ((Map) -> Void)?
     
+    /// The picker used for selecting a map
     private let pickerView: UIPickerView = {
         let picker = UIPickerView()
         picker.backgroundColor = .BackColors.backElevated
@@ -24,6 +29,10 @@ final class MapPickerViewController: UIViewController {
     
     // MARK: - Initialization
     
+    /// Initializes the view controller with a list of maps and the currently selected map
+    /// - Parameters:
+    ///   - maps: Array of available maps
+    ///   - currentMap: The map that is currently selected
     init(maps: [Map], currentMap: Map) {
         self.maps = maps
         self.currentMap = currentMap
@@ -46,15 +55,22 @@ final class MapPickerViewController: UIViewController {
     
     // MARK: - Actions
     
+    /// Dismisses the view controller without making any changes
     @objc private func cancelButtonTapped() {
         dismiss(animated: true)
     }
     
+    /// Confirms the selected map and passes it back using the completion handler
     @objc private func doneButtonPressed() {
         completionHandler?(currentMap)
         dismiss(animated: true)
     }
     
+    /// Creates a title for each map in the format "v{version} – {release date}"
+    /// - Parameters:
+    ///   - version: The version of the map
+    ///   - date: The release date of the map
+    /// - Returns: A formatted string containing the map version and release date
     private func createTitle(version: String, date: Date) -> String {
         let stringDate = DateFormating.dateFormatterDefault(date: date)
         return "v\(version) – \(stringDate)"
@@ -62,6 +78,7 @@ final class MapPickerViewController: UIViewController {
     
     // MARK: - UI Setups
     
+    /// Configures the navigation bar with cancel and done buttons
     private func navigationBarSetup() {
         navigationItem.title = Texts.MapPage.archive
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -78,6 +95,7 @@ final class MapPickerViewController: UIViewController {
         )
     }
     
+    /// Configures the UIPickerView, sets its delegate and data source, and adds it to the view hierarchy
     private func pickerViewSetup() {
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -85,6 +103,7 @@ final class MapPickerViewController: UIViewController {
         view.addSubview(pickerView)
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         
+        // Select the currently active map in the picker
         guard let row = maps.firstIndex(where: { $0.realeseDate == currentMap.realeseDate } ) else { return }
         pickerView.selectRow(row, inComponent: 0, animated: false)
         

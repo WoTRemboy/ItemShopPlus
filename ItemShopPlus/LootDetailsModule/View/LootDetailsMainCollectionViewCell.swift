@@ -8,15 +8,19 @@
 import UIKit
 import Kingfisher
 
+/// A custom collection view cell for displaying loot item details in the Loot Details section.
 final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    /// Cell identifier for reuse
     static let identifier = Texts.LootDetailsMainCell.identifier
+    /// Task responsible for downloading the image asynchronously
     private var imageLoadTask: DownloadTask?
     
     // MARK: - UI Elements and Views
     
+    /// Label to display the title of the loot item
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = String()
@@ -28,6 +32,7 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// Label to display the title of the first stat
     private let firstStatTitleLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.StatsCell.firstStatPlaceholder
@@ -38,6 +43,7 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// Label to display the value of the first stat
     private let firstStatValueLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.StatsCell.statValuePlaceholder
@@ -48,6 +54,7 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// Label to display the title of the second stat
     private let secondStatTitleLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.StatsCell.secondStatPlaceholder
@@ -58,6 +65,7 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// Label to display the value of the second stat
     private let secondStatValueLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.StatsCell.statValuePlaceholder
@@ -68,6 +76,7 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// Image view to display the loot item's image
     private let sectionImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = .Placeholder.noImage
@@ -77,6 +86,7 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    /// A separator line to visually divide the UI elements
     private let separatorLine: UIView = {
         let line = UIView()
         line.backgroundColor = .LabelColors.labelDisable
@@ -85,14 +95,23 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public Configure Method
     
+    /// Configures the cell with the provided loot item data
+    /// - Parameters:
+    ///   - type: The type of the loot item (weapon, health, or trap)
+    ///   - name: The name of the loot item
+    ///   - image: The URL of the loot item's image
+    ///   - firstStat: The first stat value to display
+    ///   - secondStat: The second stat value to display
     public func configurate(type: LootItemGameType, name: String, image: String, firstStat: Double, secondStat: Double) {
         backgroundColor = .BackColors.backElevated
         layer.cornerRadius = 25
         layer.shadowColor = UIColor.Shadows.primary
         layer.shadowOpacity = 0.1
         layer.shadowRadius = 20
+        // Load image asynchronously using Kingfisher
         imageLoadTask = ImageLoader.loadAndShowImage(from: image, to: sectionImageView, size: CGSize(width: 512, height: 512))
         
+        // Configure the cell based on the type of loot item
         switch type {
         case .weapon:
             titleLabel.text = name
@@ -116,10 +135,13 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
         setupUI()
     }
     
+    /// Returns the text of the title label
+    /// - Returns: Title text as String
     internal func getTitleText() -> String? {
         return titleLabel.text
     }
     
+    /// Responds to changes in trait collection, such as light/dark mode transitions
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
@@ -129,6 +151,7 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Setup
     
+    /// Sets up the UI elements and layout constraints for the cell
     private func setupUI() {
         addSubview(sectionImageView)
         addSubview(titleLabel)
@@ -181,6 +204,7 @@ final class LootDetailsMainCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Reusing Preparation
     
+    /// Prepares the cell for reuse by resetting necessary properties and canceling image loading tasks
     override func prepareForReuse() {
         super.prepareForReuse()
         layer.shadowRadius = 0

@@ -7,13 +7,17 @@
 
 import UIKit
 
+/// A custom reusable view for displaying detailed loot stats and optional description
 final class LootDetailsReusableView: UICollectionReusableView {
     
     // MARK: - Properties
     
+    /// A static identifier for reusing the view in collection views
     static let identifier = Texts.LootDetailsStatsCell.footerIdentifier
+    /// The loot item statistics associated with the view
     private var item: LootItemStats = .emptyStats
     
+    /// A computed property that checks if the description label contains text
     private var isDescription: Bool {
         guard let text = descriptionContentLabel.text else { return false }
         return !text.isEmpty
@@ -21,15 +25,55 @@ final class LootDetailsReusableView: UICollectionReusableView {
     
     // MARK: - UI Elements and Views
     
-    private let damageBullet = CollectionParametersRowView(frame: .null, title: Texts.LootDetailsStatsCell.damageBulletTitle, content: Texts.LootDetailsStatsCell.no)
-    private let firingRate = CollectionParametersRowView(frame: .null, title: Texts.LootDetailsStatsCell.firingRateTitle, content: Texts.LootDetailsStatsCell.no)
-    private let clipSize = CollectionParametersRowView(frame: .null, title: Texts.LootDetailsStatsCell.clipSizeTitle, content: Texts.LootDetailsStatsCell.no)
-    private let reloadTime = CollectionParametersRowView(frame: .null, title: Texts.LootDetailsStatsCell.reloadTimeTitle, content: Texts.LootDetailsStatsCell.no)
-    private let bulletsCartridge = CollectionParametersRowView(frame: .null, title: Texts.LootDetailsStatsCell.bulletsCartridgeTitle, content: Texts.LootDetailsStatsCell.no)
-    private let spread = CollectionParametersRowView(frame: .null, title: Texts.LootDetailsStatsCell.spreadTitle, content: Texts.LootDetailsStatsCell.no)
-    private let spreadDownsights = CollectionParametersRowView(frame: .null, title: Texts.LootDetailsStatsCell.spreadDownsightsTitle, content: Texts.LootDetailsStatsCell.no)
-    private let damageZone = CollectionParametersRowView(frame: .null, title: Texts.LootDetailsStatsCell.damageZoneTitle, content: Texts.LootDetailsStatsCell.no)
+    /// A view displaying the damage per bullet stat of the loot item
+    private let damageBullet = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.LootDetailsStatsCell.damageBulletTitle,
+        content: Texts.LootDetailsStatsCell.no)
     
+    /// A view displaying the firing rate stat of the loot item
+    private let firingRate = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.LootDetailsStatsCell.firingRateTitle,
+        content: Texts.LootDetailsStatsCell.no)
+    
+    /// A view displaying the clip size stat of the loot item
+    private let clipSize = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.LootDetailsStatsCell.clipSizeTitle,
+        content: Texts.LootDetailsStatsCell.no)
+    
+    /// A view displaying the reload time stat of the loot item
+    private let reloadTime = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.LootDetailsStatsCell.reloadTimeTitle,
+        content: Texts.LootDetailsStatsCell.no)
+    
+    /// A view displaying the bullets per cartridge stat of the loot item
+    private let bulletsCartridge = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.LootDetailsStatsCell.bulletsCartridgeTitle,
+        content: Texts.LootDetailsStatsCell.no)
+    
+    /// A view displaying the spread stat of the loot item
+    private let spread = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.LootDetailsStatsCell.spreadTitle,
+        content: Texts.LootDetailsStatsCell.no)
+    
+    /// A view displaying the spread when aiming down sights stat of the loot item
+    private let spreadDownsights = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.LootDetailsStatsCell.spreadDownsightsTitle,
+        content: Texts.LootDetailsStatsCell.no)
+    
+    /// A view displaying the critical damage zone multiplier stat of the loot item
+    private let damageZone = CollectionParametersRowView(
+        frame: .null,
+        title: Texts.LootDetailsStatsCell.damageZoneTitle,
+        content: Texts.LootDetailsStatsCell.no)
+    
+    /// A vertical stack view to organize all the stat views
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -37,6 +81,7 @@ final class LootDetailsReusableView: UICollectionReusableView {
         return stackView
     }()
     
+    /// The label for the description title of the loot item
     private let descriptionTitleLable: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedParameters.descriprion
@@ -46,6 +91,7 @@ final class LootDetailsReusableView: UICollectionReusableView {
         return label
     }()
     
+    /// The label for displaying the detailed description of the loot item
     private let descriptionContentLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedParameters.descriptionData
@@ -55,6 +101,7 @@ final class LootDetailsReusableView: UICollectionReusableView {
         return label
     }()
     
+    /// A separator line for visual separation of description and stats
     private let descriptionSeparatorLine: UIView = {
         let line = UIView()
         line.backgroundColor = .labelDisable
@@ -63,13 +110,19 @@ final class LootDetailsReusableView: UICollectionReusableView {
     
     // MARK: - Public Configure Methods
     
+    /// Configures the view with the specified loot item stats and description
+    /// - Parameters:
+    ///   - item: The `LootItemStats` object containing stats about the loot item
+    ///   - description: The description text of the loot item
     public func configurate(item: LootItemStats, description: String) {
         self.item = item
         self.descriptionContentLabel.text = description
         
+        // Formatting the damage and rate to show with proper precision
         let damageToShow = Int(item.dmgBullet * 10) % 10 == 0 ? String(Int(item.dmgBullet.rounded())) : String(format: "%.1f", item.dmgBullet)
         let rateToShow = Int(item.firingRate * 10) % 10 == 0 ? String(Int(item.firingRate.rounded())) : String(format: "%.1f", item.firingRate)
         
+        // Configuring each stat row with the corresponding stat values
         damageBullet.configurate(content: "\(Texts.LootDetailsStatsCell.damageBullets) \(damageToShow)")
         firingRate.configurate(content: "\(Texts.LootDetailsStatsCell.roundsSecond) \(rateToShow)")
         clipSize.configurate(content: "\(Texts.LootDetailsStatsCell.rounds) \(item.clipSize)")
@@ -84,10 +137,12 @@ final class LootDetailsReusableView: UICollectionReusableView {
     
     // MARK: - UI Setups
     
+    /// Sets up the stack view that holds all the stat views
     private func stackViewSetup() {
         addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
+        // Add stat views conditionally based on whether they have values
         item.dmgBullet != 0 ? stackView.addArrangedSubview(damageBullet) : nil
         item.firingRate != 0 ? stackView.addArrangedSubview(firingRate) : nil
         item.clipSize != 0 ? stackView.addArrangedSubview(clipSize) : nil
@@ -104,6 +159,7 @@ final class LootDetailsReusableView: UICollectionReusableView {
         ])
     }
     
+    /// Sets up the description section
     private func descriptionSetup() {
         addSubview(descriptionSeparatorLine)
         addSubview(descriptionTitleLable)
@@ -129,6 +185,7 @@ final class LootDetailsReusableView: UICollectionReusableView {
         ])
     }
     
+    /// Sets up the entire UI for the loot stats view, including the stack view and optional description
     private func setupUI() {
         isDescription ? descriptionSetup() : nil
         stackViewSetup()

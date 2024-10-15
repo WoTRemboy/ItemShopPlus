@@ -7,10 +7,17 @@
 
 import UIKit
 
-class SettingsSelectTableViewCell: UITableViewCell {
+/// A custom table view cell used in the settings screen to display selectable options with an optional checkmark for selected items
+final class SettingsSelectTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    
+    /// The unique identifier for dequeuing the cell
     static let identifier = Texts.SettingsCell.selectIdentifier
     
+    // MARK: - UI Elements and Views
+    
+    /// The label used for displaying the title of the setting option
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .labelPrimary
@@ -19,6 +26,7 @@ class SettingsSelectTableViewCell: UITableViewCell {
         return label
     }()
     
+    /// The label used for displaying additional details for the setting option
     private let detailsLabel: UILabel = {
         let label = UILabel()
         label.textColor = .labelSecondary
@@ -26,6 +34,8 @@ class SettingsSelectTableViewCell: UITableViewCell {
         label.numberOfLines = 1
         return label
     }()
+    
+    // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
@@ -35,6 +45,13 @@ class SettingsSelectTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    // MARK: - Public Configurate Methods
+    
+    /// Configures the cell with a title, optional details, and a selection state
+    /// - Parameters:
+    ///   - title: The title of the setting option
+    ///   - details: An optional string providing additional details about the setting
+    ///   - selected: A Boolean indicating whether the option is currently selected (true for showing a checkmark)
     public func configure(title: String, details: String? = nil, selected: Bool = false) {
         self.accessoryType = selected ? .checkmark : .none
         titleLabel.text = title
@@ -44,11 +61,15 @@ class SettingsSelectTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    /// Updates the cell's accessory type based on whether the option is checked
+    /// - Parameter checked: A Boolean value indicating whether to display a checkmark
     public func selectUpdate(checked: Bool) {
         checked ? (accessoryType = .checkmark) : (accessoryType = .none)
-        
     }
     
+    // MARK: - UI Setup Method
+    
+    ///  Sets up the UI layout and constraints for the title and details labels
     private func setupUI() {
         addSubview(titleLabel)
         addSubview(detailsLabel)
@@ -65,5 +86,4 @@ class SettingsSelectTableViewCell: UITableViewCell {
             detailsLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor)
         ])
     }
-    
 }

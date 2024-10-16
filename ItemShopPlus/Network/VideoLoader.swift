@@ -8,11 +8,14 @@
 import Foundation
 import AVKit
 
+/// A class for loading and caching video data, supporting download and cache management of video files
 final class VideoLoader {
     
     // MARK: - Properties
     
+    /// The file manager used for handling cache directory operations
     private static let fileManager = FileManager.default
+    /// The directory where video files are cached
     private static let cacheDirectory: URL = {
         do {
             let cachesDirectory = try fileManager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -26,6 +29,11 @@ final class VideoLoader {
     
     // MARK: - Loading Methods
     
+    /// Loads a video from a URL string and caches it for future use
+    /// - Parameters:
+    ///   - urlString: The URL string of the video to be loaded
+    ///   - completion: Completion handler that returns the URL of the video or `nil` if the loading fails
+    /// - Returns: A `URLSessionDataTask` that can be used to manage the download
     static func loadVideo(urlString: String?, completion: @escaping (URL?) -> Void) -> URLSessionDataTask? {
         guard let urlString = urlString else {
             completion(nil)
@@ -62,6 +70,11 @@ final class VideoLoader {
         return task
     }
     
+    /// Loads and plays a video in the provided `AVPlayerViewController`, showing an activity indicator during loading
+    /// - Parameters:
+    ///   - videoUrlString: The URL string of the video
+    ///   - playerViewController: The `AVPlayerViewController` that will present the video
+    ///   - activityIndicator: An activity indicator that is shown while the video is loading
     static func loadAndShowVideo(from videoUrlString: String, to playerViewController: AVPlayerViewController, activityIndicator: UIActivityIndicatorView) {
             DispatchQueue.main.async {
                 playerViewController.view.alpha = 0.5
@@ -76,6 +89,11 @@ final class VideoLoader {
             }
     }
     
+    /// Loads a video and presents it in full-screen using an `AVPlayerViewController`
+    /// - Parameters:
+    ///   - videoUrlString: The URL string of the video
+    ///   - viewController: The view controller from which the video will be presented
+    /// - Returns: A `URLSessionDataTask` for managing the video loading task
     static func loadAndShowItemVideo(from videoUrlString: String, viewController: UIViewController) -> URLSessionDataTask? {
         return loadVideo(urlString: videoUrlString) { video in
             DispatchQueue.main.async {
@@ -93,18 +111,25 @@ final class VideoLoader {
     
     // MARK: - Cancel Method
     
+    /// Cancels a video download task
+    /// - Parameter task: The `URLSessionDataTask` that should be canceled
     static func cancelVideoLoad(task: URLSessionDataTask?) {
         task?.cancel()
     }
     
     // MARK: - Cache Methods
     
+    /// Creates the cache directory if it doesn't already exist
     private static func createCacheDirectoryIfNeeded() throws {
         if !fileManager.fileExists(atPath: cacheDirectory.path) {
             try fileManager.createDirectory(at: cacheDirectory, withIntermediateDirectories: true)
         }
     }
     
+    /// Caches the downloaded video data to the file system
+    /// - Parameters:
+    ///   - videoData: The `Data` object containing the video data
+    ///   - key: The unique key (typically the video URL) for the cached file
     private static func setVideoCache(videoData: Data, key: String) {
         do {
             try createCacheDirectoryIfNeeded()
@@ -116,6 +141,9 @@ final class VideoLoader {
         }
     }
     
+    /// Retrieves the video file from the cache if available
+    /// - Parameter key: The unique key (based on video URL) used to cache the file
+    /// - Returns: The local file URL for the cached video, or `nil` if not found
     private static func getVideoFromCache(from key: String) -> URL? {
         guard let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return nil
@@ -130,6 +158,10 @@ final class VideoLoader {
         return cacheURL
     }
     
+    /// Cleans the video cache by either removing all cached files or removing only expired files
+    /// - Parameters:
+    ///   - entire: If `true`, clears the entire cache. If `false`, removes only expired videos based on access time
+    ///   - completion: A completion handler that is called once the cache has been cleaned
     static func cleanCache(entire: Bool, completion: @escaping () -> Void) {
         do {
             let cacheExpirationInterval: TimeInterval = 90 * 24 * 60 * 60 // 90 days
@@ -153,6 +185,8 @@ final class VideoLoader {
         }
     }
     
+    /// Calculates the total size of the video cache in megabytes
+    /// - Returns: The size of the video cache in megabytes
     static func cacheSize() -> Float {
         do {
             let contents = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
@@ -177,6 +211,8 @@ final class VideoLoader {
     
     // MARK: - Recently Used Time Marks Methods
     
+    /// Updates the access time for a cached video file to mark it as recently used
+    /// - Parameter cacheURL: The URL of the cached video file
     private static func markAccessTime(for cacheURL: URL) {
         do {
             try fileManager.setAttributes([.modificationDate: Date()], ofItemAtPath: cacheURL.path)

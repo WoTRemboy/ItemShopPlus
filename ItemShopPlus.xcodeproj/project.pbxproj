@@ -98,7 +98,7 @@
 		6399EFF62BD85176008B19E8 /* LootDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF52BD85176008B19E8 /* LootDetailsModel.swift */; };
 		6399EFF82BD8566B008B19E8 /* JSONLootDetailsParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFF72BD8566B008B19E8 /* JSONLootDetailsParse.swift */; };
 		6399EFFB2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFFA2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift */; };
-		6399EFFF2BDA5318008B19E8 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFFE2BDA5318008B19E8 /* ItemModel.swift */; };
+		6399EFFF2BDA5318008B19E8 /* ItemVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399EFFE2BDA5318008B19E8 /* ItemVideoModel.swift */; };
 		6399F0012BDA5356008B19E8 /* JSONParseItemVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0002BDA5356008B19E8 /* JSONParseItemVideo.swift */; };
 		6399F0032BDD50F9008B19E8 /* LootDetailsRarityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0022BDD50F9008B19E8 /* LootDetailsRarityViewController.swift */; };
 		6399F0052BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6399F0042BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift */; };
@@ -290,7 +290,7 @@
 		6399EFF52BD85176008B19E8 /* LootDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsModel.swift; sourceTree = "<group>"; };
 		6399EFF72BD8566B008B19E8 /* JSONLootDetailsParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONLootDetailsParse.swift; sourceTree = "<group>"; };
 		6399EFFA2BD93353008B19E8 /* LootDetailsMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsMainCollectionViewCell.swift; sourceTree = "<group>"; };
-		6399EFFE2BDA5318008B19E8 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		6399EFFE2BDA5318008B19E8 /* ItemVideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVideoModel.swift; sourceTree = "<group>"; };
 		6399F0002BDA5356008B19E8 /* JSONParseItemVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParseItemVideo.swift; sourceTree = "<group>"; };
 		6399F0022BDD50F9008B19E8 /* LootDetailsRarityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsRarityViewController.swift; sourceTree = "<group>"; };
 		6399F0042BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootDetailsRarityCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -794,13 +794,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		6399EFFD2BDA5305008B19E8 /* ItemModel */ = {
+		6399EFFD2BDA5305008B19E8 /* ItemVideoModel */ = {
 			isa = PBXGroup;
 			children = (
-				6399EFFE2BDA5318008B19E8 /* ItemModel.swift */,
+				6399EFFE2BDA5318008B19E8 /* ItemVideoModel.swift */,
 				6399F0002BDA5356008B19E8 /* JSONParseItemVideo.swift */,
 			);
-			path = ItemModel;
+			path = ItemVideoModel;
 			sourceTree = "<group>";
 		};
 		6399F00A2BDEDBBA008B19E8 /* SettingsModule */ = {
@@ -1104,7 +1104,7 @@
 		63ECC1252B90A901006E0841 /* CommonElements */ = {
 			isa = PBXGroup;
 			children = (
-				6399EFFD2BDA5305008B19E8 /* ItemModel */,
+				6399EFFD2BDA5305008B19E8 /* ItemVideoModel */,
 				63ECC1292B90FB41006E0841 /* UIElements */,
 				63ECC1262B90A91A006E0841 /* LogicMethods */,
 			);
@@ -1491,7 +1491,7 @@
 				6399F0142BDFBB1F008B19E8 /* SettingsTableViewCell.swift in Sources */,
 				638FD6D32B854DCD00CE47BD /* JSONMapsParce.swift in Sources */,
 				6399F0052BDD5DFC008B19E8 /* LootDetailsRarityCollectionViewCell.swift in Sources */,
-				6399EFFF2BDA5318008B19E8 /* ItemModel.swift in Sources */,
+				6399EFFF2BDA5318008B19E8 /* ItemVideoModel.swift in Sources */,
 				63ECC1282B90A930006E0841 /* CommonLogicMethods.swift in Sources */,
 				6399F0012BDA5356008B19E8 /* JSONParseItemVideo.swift in Sources */,
 				63178F722BE6758800090F81 /* InlineBannerViewController.swift in Sources */,

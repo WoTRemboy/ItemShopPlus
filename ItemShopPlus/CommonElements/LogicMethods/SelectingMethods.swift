@@ -8,10 +8,14 @@
 import Foundation
 import UIKit
 
+/// A class that provides selection logic for banners, currencies, rarities, payment types, input types, and weapon tags
 final class SelectingMethods {
     
     // MARK: - Banner
     
+    /// Selects the appropriate `Banner` enum based on the given banner text
+    /// - Parameter bannerText: A string representing the banner text
+    /// - Returns: A `Banner` enum value
     static func selectBanner(bannerText: String?) -> Banner {
         switch bannerText {
         case "New":
@@ -27,6 +31,9 @@ final class SelectingMethods {
         }
     }
     
+    /// Selects the appropriate banner image based on the `Banner` enum value
+    /// - Parameter banner: A `Banner` enum
+    /// - Returns: A `UIImage?` representing the banner image
     static func selectBanner(banner: Banner) -> UIImage? {
         switch banner {
         case .new:
@@ -46,6 +53,9 @@ final class SelectingMethods {
     
     // MARK: - Currency
     
+    /// Selects the appropriate `Currency` enum based on the given currency code
+    /// - Parameter code: A string representing the currency code
+    /// - Returns: A `Currency` enum value
     static func selectCurrency(code: String?) -> Currency {
         switch code {
         case Texts.Currency.Code.eur:
@@ -77,6 +87,9 @@ final class SelectingMethods {
         }
     }
     
+    /// Selects the appropriate currency symbol image based on the given currency type
+    /// - Parameter type: A string representing the currency type
+    /// - Returns: A `UIImage` representing the currency symbol
     static func selectCurrency(type: String?) -> UIImage {
         switch type {
         case Texts.Currency.Code.usd:
@@ -108,6 +121,9 @@ final class SelectingMethods {
         }
     }
     
+    /// Selects the appropriate currency symbol position based on the `Currency` enum
+    /// - Parameter type: A `Currency` enum value
+    /// - Returns: A `CurrencySymbolPosition` enum value
     static func selectCurrencyPosition(type: Currency) -> CurrencySymbolPosition {
         switch type {
         case .usd, .eur, .gbp, .cad, .brl, .nok, .aud, .jpy:
@@ -119,6 +135,9 @@ final class SelectingMethods {
     
     // MARK: - Rarity
     
+    /// Selects the appropriate `Rarity` enum based on the given rarity text
+    /// - Parameter rarityText: A string representing the rarity
+    /// - Returns: A `Rarity` enum value
     static func selectRarity(rarityText: String?) -> Rarity {
         switch rarityText {
         case "Common", "common":
@@ -142,6 +161,9 @@ final class SelectingMethods {
         }
     }
     
+    /// Selects the appropriate rarity image based on the `Rarity` enum
+    /// - Parameter rarity: A `Rarity` enum
+    /// - Returns: A `UIImage` representing the rarity
     static func selectRarity(rarity: Rarity) -> UIImage {
         switch rarity {
         case .common:
@@ -167,6 +189,9 @@ final class SelectingMethods {
     
     // MARK: - Rarity
     
+    /// Selects the appropriate `PayType` enum based on the given string
+    /// - Parameter payType: A string representing the pay type
+    /// - Returns: A `PayType` enum value
     static func selectPayType(payType: String) -> PayType {
         switch payType {
         case "free":
@@ -178,6 +203,9 @@ final class SelectingMethods {
         }
     }
     
+    /// Converts the `PayType` enum into a string representation
+    /// - Parameter payType: A `PayType` enum value
+    /// - Returns: A string representing the pay type
     static func selectPayType(payType: PayType) -> String {
         switch payType {
         case .free:
@@ -189,6 +217,9 @@ final class SelectingMethods {
     
     // MARK: - Input
     
+    /// Selects the appropriate input type image based on the given type
+    /// - Parameter type: A string representing the input type
+    /// - Returns: A `UIImage` representing the input type
     static func selectInput(type: String?) -> UIImage {
         switch type {
         case "touch":
@@ -202,6 +233,9 @@ final class SelectingMethods {
         }
     }
     
+    /// Converts the input type into a string representation
+    /// - Parameter type: A string representing the input type
+    /// - Returns: A string representing the input type
     static func selectInput(type: String?) -> String {
         switch type {
         case "touch":
@@ -215,6 +249,9 @@ final class SelectingMethods {
         }
     }
     
+    /// Converts the party type into a string representation
+    /// - Parameter type: A string representing the party type
+    /// - Returns: A string representing the party type
     static func selectPartyType(type: String) -> String {
         switch type {
         case "solo":
@@ -232,6 +269,9 @@ final class SelectingMethods {
     
     // MARK: - Armory
     
+    /// Converts the weapon tag into a string representation
+    /// - Parameter tag: A string representing the weapon tag
+    /// - Returns: A string representing the weapon type
     static func selectWeaponTag(tag: String) -> String {
         switch tag {
         case "Pistols":

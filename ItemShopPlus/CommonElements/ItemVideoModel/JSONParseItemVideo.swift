@@ -8,6 +8,9 @@
 import Foundation
 
 extension ItemVideo {
+    /// Parses JSON data and creates an `ItemVideo` instance
+    /// - Parameter sharingJSON: A JSON object representing an item video
+    /// - Returns: An optional `ItemVideo` instance if the parsing is successful, otherwise `nil`
     static func sharingParse(sharingJSON: Any) -> ItemVideo? {
         guard let data = sharingJSON as? [String: Any],
               let id = data["id"] as? String,

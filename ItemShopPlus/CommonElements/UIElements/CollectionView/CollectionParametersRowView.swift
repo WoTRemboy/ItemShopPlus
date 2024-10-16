@@ -7,10 +7,15 @@
 
 import UIKit
 
+/// A custom view that displays a title, content, and optionally an image with flexible text alignment
 final class CollectionParametersRowView: UIView {
     
+    // MARK: - UI Elements
+    
+    /// The image view to display a meaning-related icon
     private let meaningImageView = UIImageView()
-
+    
+    /// A label that displays the title of the row
     private let titleLable: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.title
@@ -20,6 +25,7 @@ final class CollectionParametersRowView: UIView {
         return label
     }()
     
+    /// A label that displays the content or description under the title
     private let contentLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.content
@@ -29,12 +35,22 @@ final class CollectionParametersRowView: UIView {
         return label
     }()
     
+    /// A separator line to visually divide the row from others
     private let separatorLine: UIView = {
         let line = UIView()
         line.backgroundColor = .LabelColors.labelDisable
         return line
     }()
     
+    // MARK: - Initialization
+    
+    /// Initializes the view with a frame, title, content, text alignment, and an optional image
+    /// - Parameters:
+    ///   - frame: The frame of the view
+    ///   - title: The title text to be displayed
+    ///   - content: The content or description text
+    ///   - textAlignment: The alignment for the title and content text. Default is `.left`
+    ///   - image: An optional image to display next to the title
     init(frame: CGRect, title: String, content: String, textAlignment: TextAlignment = .left, image: UIImage? = nil) {
         titleLable.text = title
         contentLabel.text = content
@@ -54,10 +70,18 @@ final class CollectionParametersRowView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Configurate Method
+    
+    /// Updates the content label with new content
+    /// - Parameter content: The updated content string
     public func configurate(content: String) {
         contentLabel.text = content
     }
     
+    // MARK: - Setup Methods
+    
+    /// Sets the alignment of the title and content labels
+    /// - Parameter aligment: The alignment to apply to the labels (left, right, or center)
     private func selectAlignment(aligment: TextAlignment) {
         switch aligment {
         case .left:
@@ -72,6 +96,7 @@ final class CollectionParametersRowView: UIView {
         }
     }
     
+    /// Sets up the basic UI elements and their constraints
     private func setupUI() {
         addSubview(separatorLine)
         addSubview(titleLable)
@@ -96,6 +121,8 @@ final class CollectionParametersRowView: UIView {
         ])
     }
     
+    /// Adds an image next to the title label and sets up its constraints
+    /// - Parameter image: The image to display next to the title
     private func setupMeaningImageView(image: UIImage) {
         meaningImageView.image = image
         
@@ -111,6 +138,9 @@ final class CollectionParametersRowView: UIView {
     }
 }
 
+// MARK: - TextAlignment
+
+/// An enum representing the possible text alignments
 enum TextAlignment {
     case left
     case right

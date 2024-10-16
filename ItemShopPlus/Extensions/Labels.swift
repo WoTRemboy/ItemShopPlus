@@ -7,18 +7,22 @@
 
 import UIKit
 
+/// The class containing all the localized strings used in the application
 final class Texts {
     
     // MARK: - Common
     
+    /// Common elements like identifiers used across multiple modules
     enum CommonElements {
         static let headerIdentifier = "HeaderReusableView"
     }
     
+    /// Collection cell identifiers
     enum CollectionCell {
         static let identifier = "CollectionRarityCell"
     }
     
+    /// Navigation texts such as button labels for 'cancel', 'done'
     enum Navigation {
         static let cancel = NSLocalizedString("NavigationCancel", comment: "Cancel")
         static let done = NSLocalizedString("NavigationDone", comment: "Done")
@@ -29,20 +33,24 @@ final class Texts {
         static let backToSettings = NSLocalizedString("NavigationSettings", comment: "Settings")
     }
     
+    /// Texts for search controller, including "no result" messages
     enum SearchController {
         static let result = NSLocalizedString("SearchResult", comment: "Result")
         static let noResult = NSLocalizedString("SearchNoResult", comment: "No result")
     }
     
+    /// Season date constants for battle pass parsing error
     enum Season {
         static let beginDate = "2023-12-03T08:00:00.000Z"
         static let endDate = "2024-03-08T02:00:00.000Z"
     }
     
+    /// Placeholder texts for empty fields or errors
     enum Placeholder {
         static let noText = NSLocalizedString("PlaceholderSmth", comment: "Something wrong...")
     }
     
+    /// Placeholder texts for empty views such as stats, favorites, and internet connectivity issues
     enum EmptyView {
         static let statsTitle = NSLocalizedString("EmptyViewStatsTitle", comment: "No stats")
         static let statsContent = NSLocalizedString("EmptyViewStatsContent", comment: "Enter a nickname and try again")
@@ -53,6 +61,7 @@ final class Texts {
         static let retryButton = NSLocalizedString("EmptyViewRetryButton", comment: "Retry")
     }
     
+    /// Localized texts for item rarity types
     enum Rarity {
         static let common = NSLocalizedString("RarityCommon", comment: "Common")
         static let uncommon = NSLocalizedString("RarityUncommon", comment: "Uncommon")
@@ -65,15 +74,20 @@ final class Texts {
         static let exotic = NSLocalizedString("RarityExotic", comment: "Exotic")
     }
     
+    /// Texts related to network requests, including language settings
     enum NetworkRequest {
         static let language = NSLocalizedString("NetworkRequestLang", comment: "en")
     }
     
+    /// Key for saving language settings to UserDefaults
     enum LanguageSave {
         static let userDefaultsKey = "UserDefaultsNotificationsKey"
     }
     
+    /// Localized texts related to currencies
     enum Currency {
+        
+        /// Currency names used for different regions
         enum Name {
             static let usd = NSLocalizedString("CurrencyNameUSD", comment: "United States Dollar")
             static let eur = NSLocalizedString("CurrencyNameEUR", comment: "Euro")
@@ -88,6 +102,8 @@ final class Texts {
             static let aud = NSLocalizedString("CurrencyNameAUD", comment: "Australian Dollar")
             static let lira = NSLocalizedString("CurrencyNameTRY", comment: "Turkish Lira")
         }
+        
+        /// Currency codes used for different regions
         enum Code {
             static let usd = "USD"
             static let eur = "EUR"
@@ -105,6 +121,8 @@ final class Texts {
             static let qar = "QAR"
             static let sar = "SAR"
         }
+        
+        /// Currency symbols corresponding to the currency codes
         enum Symbol {
             static let usd = "$"
             static let eur = "€"
@@ -123,6 +141,7 @@ final class Texts {
     
     // MARK: - Opening Screens Module
     
+    /// Texts used in the onboarding screens
     enum OnboardingScreen {
         static let userDefaultsKey = "FirstLaunch"
         
@@ -140,7 +159,10 @@ final class Texts {
     
     // MARK: - Main Module
     
+    /// Contains the button labels
     enum ButtonLabels {
+        
+        /// Button labels for the main screen buttons
         enum MainButtons {
             static let shop = NSLocalizedString("MainButtonsShop", comment: "Item Shop")
             static let bundles = NSLocalizedString("MainButtonsBundles", comment: "Bundles")
@@ -155,6 +177,7 @@ final class Texts {
         }
     }
     
+    /// Contains the section titles for different modules and screens
     enum Titles {
         static let main = NSLocalizedString("TitlesMain", comment: "Main")
         static let other = NSLocalizedString("TitlesOther", comment: "Other")
@@ -162,6 +185,7 @@ final class Texts {
         static let bundlesIdentifier = "MainBundlesIdentifier"
     }
     
+    /// Contains the titles of various pages in the app
     enum Pages {
         static let main = "Fort Satellite"
         static let quests = NSLocalizedString("PagesQuests", comment: "Quests")
@@ -172,6 +196,7 @@ final class Texts {
     
     // MARK: - Cache Module
     
+    /// Contains texts related to clearing cache
     enum ClearCache {
         static let message = NSLocalizedString("ClearCacheMessage", comment: "All media used in the app will remain in the cloud and will be re-downloaded when needed")
         static let cache = NSLocalizedString("ClearCacheCache", comment: "Clear Entire Cache")
@@ -187,6 +212,7 @@ final class Texts {
     
     // MARK: - Shop Module
     
+    /// Contains localized texts related to the shop module
     enum ShopPage {
         static let itemName = NSLocalizedString("ShopPageItemName", comment: "Item name...")
         static let itemPrice = NSLocalizedString("ShopPageItemPrice", comment: "Item price...")
@@ -203,12 +229,14 @@ final class Texts {
         static let countKey = "ShopPageRatingUserDefaultsKey"
     }
     
+    /// Collection view cell identifiers and texts related to the shop items
     enum ShopMainCell {
         static let identifier = "ShopCollectionViewCell"
         static let vBucks = " VBucks"
         static let search = NSLocalizedString("ShopMainCellSearch", comment: "Search items")
     }
     
+    /// Collection view cell identifiers and texts related to the shop granted items
     enum ShopGrantedCell {
         static let footerIdentifier = "ShopGrantedCollectionReusableView"
         static let firstTime = NSLocalizedString("ShopGrantedCellFirstTime", comment: "First time...")
@@ -219,6 +247,7 @@ final class Texts {
         static let content = NSLocalizedString("ShopGrantedCellContent", comment: "Content...")
     }
     
+    /// Collection view parameters related to the shop granted items
     enum ShopGrantedParameters {
         static let descriprion = NSLocalizedString("ShopGrantedParametersDescription", comment: "Descriprion")
         static let series = NSLocalizedString("ShopGrantedParametersSeries", comment: "Series")
@@ -232,6 +261,7 @@ final class Texts {
         static let expiryDateData = NSLocalizedString("ShopGrantedParametersExpityDateData", comment: "Expiry date...")
     }
     
+    /// Content related to the shop info page
     enum ShopTimer {
         static let whatMeans = NSLocalizedString("ShopTimerWhat", comment: "What is: ")
         static let swipeInfo = NSLocalizedString("ShopTimerSwipeInfo", comment: "Swipe over the cell image to see more variations!")
@@ -242,6 +272,7 @@ final class Texts {
     
     // MARK: - Battle Pass Module
     
+    /// Contains localized texts related to the Battle Pass module
     enum BattlePassPage {
         static let title = NSLocalizedString("BattlePassPageTitle", comment: "Battle Pass")
         static let free = NSLocalizedString("BattlePassPageFree", comment: "Free")
@@ -251,6 +282,7 @@ final class Texts {
         static let search = NSLocalizedString("BattlePassPageSearch", comment: "Search items")
     }
     
+    /// Collection view cell identifiers and texts related to Battle Pass items
     enum BattlePassCell {
         static let identifier = "BattlePassCollectionViewCell"
         static let footerIdentifier = "BattlePassCollectionReusableView"
@@ -259,6 +291,7 @@ final class Texts {
         static let remaining = NSLocalizedString("BattlePassCellRemaining", comment: "Remaining time")
     }
     
+    /// Contains localized texts related to the parameters of Battle Pass items
     enum BattlePassItemsParameters {
         static let descriprion = NSLocalizedString("BattlePassItemsParametersDescription", comment: "Descriprion")
         static let series = NSLocalizedString("BattlePassItemsParametersSeries", comment: "Series")
@@ -285,6 +318,7 @@ final class Texts {
         static let currentData = NSLocalizedString("BattlePassItemsParametersCurrentData", comment: "Currently underway...")
     }
     
+    /// Contains localized texts related to the Battle Pass information
     enum BattlePassInfo {
         static let season = NSLocalizedString("BattlePassInfoSeason", comment: "Season")
         static let newSeason = NSLocalizedString("BattlePassItemsParametersnewSeason", comment: "New season is coming soon!")
@@ -293,11 +327,13 @@ final class Texts {
     
     // MARK: - Crew Module
     
+    /// Contains localized texts related to the Crew module
     enum CrewPage {
         static let currencyKey = "CurrencyKey"
         static let title = NSLocalizedString("CrewPageTitle", comment: "Crew Pack")
     }
     
+    /// Collection view cell identifiers and texts related to Crew items
     enum CrewPageCell {
         static let identifier = "CrewCell"
         static let footerIdentifier = "CrewFooterReusableView"
@@ -318,16 +354,19 @@ final class Texts {
     
     // MARK: - Bundles Module
     
+    /// Contains localized texts related to the Bundles module
     enum BundlesPage {
         static let title = NSLocalizedString("BundlesPageTitle", comment: "Bundles")
         static let header = NSLocalizedString("BundlesPageHeader", comment: "Special Offers")
     }
     
+    /// Collection view cell identifiers and texts related to Bundles
     enum BundleCell {
         static let identifier = "BundleCell"
         static let free = NSLocalizedString("BundleCellFree", comment: "Free")
     }
     
+    /// Collection view cell identifiers and texts for Bundle details
     enum BundleDetailsCell {
         static let identifier = "BundleDetailsCell"
         static let footerIdentifier = "BundleDetailsFooter"
@@ -342,26 +381,31 @@ final class Texts {
     
     // MARK: - Loot Details Module
     
+    /// Contains localized texts related to the Loot Details (Armory) module
     enum LootDetailsMain {
         static let title = NSLocalizedString("LootDetailsMainArmory", comment: "Armory")
         static let header = NSLocalizedString("LootDetailsMainWeapons", comment: "Weapons")
     }
     
+    /// Collection view cell identifiers and texts for the main loot details section
     enum LootDetailsMainCell {
         static let identifier = "LootDetailsMainCell"
         static let rarities = NSLocalizedString("LootDetailsMainCellRarities", comment: "Rarities")
         static let stats = NSLocalizedString("LootDetailsMainCellStats", comment: "Stats")
     }
     
+    /// Contains localized texts related to the Rarity section in Loot Details (Armory)
     enum LootDetailsRarity {
         static let title = NSLocalizedString("LootDetailsRarityTitle", comment: "Rarities")
         static let back = NSLocalizedString("LootDetailsRarityBack", comment: "Armory")
     }
     
+    /// ollection view cell identifiers related to the Rarity section in Loot Details
     enum LootDetailsRarityCell {
         static let identifier = "LootDetailsRarityCell"
     }
     
+    /// Contains localized texts related to the Stats section in Loot Details
     enum LootDetailsStats {
         static let title = NSLocalizedString("LootDetailsStatsTitle", comment: "Stats")
         static let backRarities = NSLocalizedString("LootDetailsStatsRarities", comment: "Rarities")
@@ -377,6 +421,7 @@ final class Texts {
         static let heal = NSLocalizedString("LootDetailsStatsHeal", comment: "Heal")
         static let misc = NSLocalizedString("LootDetailsStatsLauncher", comment: "Misc")
         
+        /// Enum defining the tags used for weapon categories in the Loot Details Stats page
         enum Tags {
             static let pistols = "Pistols"
             static let assault = "Assault"
@@ -391,6 +436,7 @@ final class Texts {
         }
     }
     
+    /// Collection view cell identifiers and labels related to Stats in Loot Details
     enum LootDetailsStatsCell {
         static let footerIdentifier = "LootDetailsStatsFooter"
         static let damageBulletTitle = NSLocalizedString("LootDetailsStatsCellDamage", comment: "Damage")
@@ -412,6 +458,7 @@ final class Texts {
     
     // MARK: - Favourites Module
     
+    /// Contains localized texts related to the Favourites module
     enum FavouritesPage {
         static let title = NSLocalizedString("FavouritesPageTitle", comment: "Favourites")
         static let footerIdentifier = "FavouritesFooterReusableView"
@@ -419,6 +466,7 @@ final class Texts {
         static let notAvailable = NSLocalizedString("FavouritesPageNotAvailable", comment: "Not Available")
     }
     
+    /// Defines the sort order for shop items in Favourites data base
     enum ItemSortOrder {
         static let outfit = "outfit"
         static let emote = "emote"
@@ -438,6 +486,7 @@ final class Texts {
     
     // MARK: - Settings Module
     
+    /// Contains localized texts related to Notification Settings in the Settings module
     enum NotificationSettings {
         static let key = "NotificationsKey"
         static let enable = "Enable"
@@ -448,6 +497,7 @@ final class Texts {
         static let alertCancel = NSLocalizedString("NotificationSettingsAlertCancel", comment: "Cancel")
     }
     
+    /// Contains localized texts related to Appearance Settings in the Settings module
     enum AppearanceSettings {
         static let key = "AppearanceKey"
         static let systemValue = "SystemValue"
@@ -458,11 +508,13 @@ final class Texts {
         static let dark = NSLocalizedString("AppearanceSettingsDark", comment: "Dark")
     }
     
+    /// Contains localized texts related to Language Settings in the Settings module
     enum LanguageSettings {
         static let alertTitle = NSLocalizedString("LanguageSettingsAlertTitle", comment: "Change language")
         static let alertContent = NSLocalizedString("LanguageSettingsAlertContent", comment: "Select the language you want in Settings.")
     }
     
+    /// Contains localized texts for the Settings page
     enum SettingsPage {
         static let title = NSLocalizedString("SettingsPageTitle", comment: "Settings")
         static let aboutTitle = NSLocalizedString("SettingsPageAboutTitle", comment: "About")
@@ -489,12 +541,14 @@ final class Texts {
         static let designerLink = "https://t.me/ArtyomTver"
     }
     
+    /// Contains localized texts for the About section in Settings
     enum SettingsAboutCell {
         static let identifier = "SettingsAboutCell"
         static let name = "Fort Satellite"
         static let version = "release"
     }
     
+    /// Contains localized texts for cells in Settings
     enum SettingsCell {
         static let identifier = "SettingsCell"
         static let selectIdentifier = "SettingsSelectCell"
@@ -502,6 +556,7 @@ final class Texts {
     
     // MARK: - Stats Module
     
+    /// Contains localized texts related to the Stats module
     enum StatsPage {
         static let title = NSLocalizedString("StatsPageTitle", comment: "Stats")
         static let placeholder = NSLocalizedString("StatsPagePlaceholder", comment: "Error")
@@ -520,6 +575,7 @@ final class Texts {
         static let nicknameKey = "NicknameKey"
     }
     
+    /// Contains localized texts for the Stats cell in the Stats module
     enum StatsCell {
         static let identifier = "StatsCell"
         static let firstStatPlaceholder = "First\nStat"
@@ -527,6 +583,7 @@ final class Texts {
         static let statValuePlaceholder = "0"
     }
     
+    /// Contains localized texts for the Nickname popup in the Stats module
     enum NicknamePopup {
         static let placeholder = NSLocalizedString("NicknamePopupPlaceholder", comment: "Nickname")
         static let xbox = "Xbox"
@@ -539,6 +596,7 @@ final class Texts {
         static let emptyMessage = NSLocalizedString("NicknamePopupEmptyMessage", comment: "Please, enter any nickname")
     }
     
+    /// Contains localized texts related to details about stats input methods and party types in the Stats module
     enum StatsDetailsPage {
         static let gamepad = NSLocalizedString("StatsDetailsPageGamepad", comment: "Gamepad")
         static let keyboard = NSLocalizedString("StatsDetailsPageKeyboard", comment: "Keyboard")
@@ -549,6 +607,7 @@ final class Texts {
         static let squad = NSLocalizedString("StatsDetailsPageSquad", comment: "Squad")
     }
     
+    /// Contains localized texts for the Stats details cell in the Stats module
     enum StatsDetailsCell {
         static let identifier = "StatsDetailsCell"
         static let mode = NSLocalizedString("StatsDetailsCellMode", comment: "Mode:")
@@ -567,16 +626,19 @@ final class Texts {
     
     // MARK: - Quests Module
     
+    /// Contains localized texts related to the Quests module
     enum Quest {
         static let title = "Quest"
     }
     
+    /// Contains localized texts for the Bundle Quests cell in the Quests module
     enum BundleQuestsCell {
         static let identifier = "BundleCell"
         static let bundleName = "Bundle name..."
         static let bundleDate = "Until the end of this season"
     }
     
+    /// Contains localized texts for the Quest cell in the Quests module
     enum QuestCell {
         static let identifier = "QuestCell"
         static let questName = "Task name..."
@@ -584,6 +646,7 @@ final class Texts {
         static let requirement = "Requirement: "
     }
     
+    /// Contains localized texts related to Quest details in the Quests module
     enum QuestDetails {
         static let rewards = "Rewards: "
         static let reward = "Reward: "
@@ -593,6 +656,7 @@ final class Texts {
     
     // MARK: - Map Module
     
+    /// Contains localized texts related to the Map module
     enum MapPage {
         static let title = NSLocalizedString("MapPageTitle", comment: "Map")
         static let poi = NSLocalizedString("MapPagePOI", comment: "POI")
@@ -602,6 +666,7 @@ final class Texts {
     
     // MARK: - Widget
     
+    /// Contains localized texts related to the Widget module
     enum Widget {
         static let placeholderName = "--"
         static let displayName = NSLocalizedString("WidgetDisplayName", comment: "Day Offer")
@@ -612,6 +677,7 @@ final class Texts {
 // MARK: - Notification Names
 
 extension Notification.Name {
+    /// Notification to trigger a transfer back to the main page
     static let transferToMainPage = Notification.Name("TransferToMainPageNotification")
 }
 

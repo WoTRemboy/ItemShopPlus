@@ -7,6 +7,10 @@
 
 import UIKit
 import AVKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "CrewModule", category: "MainController")
 
 /// The view controller for displaying the Crew pack items
 final class CrewMainViewController: UIViewController {
@@ -160,6 +164,7 @@ final class CrewMainViewController: UIViewController {
                     self?.symbolButton.isEnabled = true
                     self?.menuSetup()
                 }
+                logger.info("CrewPack loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
@@ -167,7 +172,7 @@ final class CrewMainViewController: UIViewController {
                     self?.noInternetView.isHidden = false
                     self?.symbolButton.isEnabled = false
                 }
-                print(error)
+                logger.error("CrewPack loading error: \(error.localizedDescription)")
             }
         }
     }
@@ -203,11 +208,12 @@ final class CrewMainViewController: UIViewController {
                     }
                     self?.videoSetup(videoURL: url)
                 }
+                logger.info("Crew item video loading success")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.previewSetup(index: index)
                 }
-                print(error)
+                logger.error("Crew item video loading error: \(error.localizedDescription)")
             }
         }
     }
@@ -221,8 +227,9 @@ final class CrewMainViewController: UIViewController {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
                 currentSectionTitle = retrievedString
+                logger.info("Currency data retrieved from UserDefaults: \(retrievedString)")
             } else {
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no currency data in UserDefaults")
             }
         case .save:
             UserDefaults.standard.set(currentSectionTitle, forKey: Texts.CrewPage.currencyKey)
@@ -352,8 +359,9 @@ final class CrewMainViewController: UIViewController {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
+            logger.info("Audio session set up")
         } catch {
-            print("Error setting audio session:", error)
+            logger.error("Error setting audio session: \(error)")
         }
     }
     

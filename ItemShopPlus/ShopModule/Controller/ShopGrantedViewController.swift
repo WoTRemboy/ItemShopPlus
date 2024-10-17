@@ -210,12 +210,12 @@ final class ShopGrantedViewController: UIViewController {
                     }
                     self?.videoSetup(videoURL: url, repeatable: true)
                 }
-                logger.info("Shop granted items loading success")
+                logger.info("Shop granted video loading success")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.previewSetup(index: index)
                 }
-                logger.error("Shop granted items loading error: \(error.localizedDescription)")
+                logger.error("Shop granted video loading error: \(error.localizedDescription)")
             }
         }
     }

@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "BattlePassModule", category: "MainController")
 
 /// A view controller manages the main view displaying the Battle Pass items
 final class BattlePassMainViewController: UIViewController {
@@ -232,6 +236,7 @@ final class BattlePassMainViewController: UIViewController {
                     self?.infoButton.isEnabled = true
                     self?.filterButton.isEnabled = true
                 }
+                logger.info("Battle pass items loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.clearItems()
@@ -242,7 +247,7 @@ final class BattlePassMainViewController: UIViewController {
                     self?.infoButton.isEnabled = false
                     self?.filterButton.isEnabled = false
                 }
-                print(error)
+                logger.error("Battle pass items loading error: \(error.localizedDescription)")
             }
         }
     }

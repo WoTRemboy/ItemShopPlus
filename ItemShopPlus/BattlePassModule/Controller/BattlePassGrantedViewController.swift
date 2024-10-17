@@ -7,6 +7,10 @@
 
 import UIKit
 import AVKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "BattlePassModule", category: "GrantedController")
 
 /// The view controller displays detailed information about a specific Battle Pass item, including its video preview, description, and other related parameters
 final class BattlePassGrantedViewController: UIViewController {
@@ -159,8 +163,9 @@ final class BattlePassGrantedViewController: UIViewController {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
+            logger.info("Audio session set up")
         } catch {
-            print("Error setting audio session:", error)
+            logger.error("Error setting audio session: \(error)")
         }
     }
     

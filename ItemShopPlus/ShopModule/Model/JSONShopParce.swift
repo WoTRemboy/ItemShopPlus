@@ -9,7 +9,7 @@ import Foundation
 import OSLog
 
 /// A log object to organize messages
-private let logger = Logger(subsystem: "ShopModule", category: "Model")
+private let logger = Logger(subsystem: "ShopModule", category: "JSONParse")
 
 // MARK: - ShopItem JSON Parsing Extension
 
@@ -33,7 +33,7 @@ extension ShopItem {
               let buyAllowed = data["buyAllowed"] as? Bool,
               buyAllowed == true
         else {
-            logger.error("Failed to parse shop item sharing data")
+            logger.error("Failed to parse ShopItem sharing data")
             return nil
         }
         

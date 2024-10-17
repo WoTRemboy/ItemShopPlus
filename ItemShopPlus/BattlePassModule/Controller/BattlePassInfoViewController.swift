@@ -7,6 +7,10 @@
 
 import UIKit
 import AVKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "BattlePassModule", category: "TimerController")
 
 /// The view controller displays detailed information about the current Battle Pass season, including its video preview, start and end dates, and the time remaining until the next season
 final class BattlePassInfoViewController: UIViewController {
@@ -130,7 +134,7 @@ final class BattlePassInfoViewController: UIViewController {
     /// Updates the remaining time label based on the current time and the season end date
     @objc private func updateTimer() {
         let timeDifference = Calendar.current.dateComponents([.weekOfYear, .day, .hour, .minute, .second], from: .now, to: endDate)
-        print(timeDifference)
+        logger.info("Battle Pass Info page timer - \(timeDifference)")
         
         let weeks = timeDifference.weekOfYear ?? 0
         let days = timeDifference.day ?? 0
@@ -158,8 +162,9 @@ final class BattlePassInfoViewController: UIViewController {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
+            logger.info("Audio session set up")
         } catch {
-            print("Error setting audio session:", error)
+            logger.error("Error setting audio session: \(error)")
         }
         
     }

@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "BattlePassModule", category: "JSONParse")
 
 // MARK: - BattlePass JSON Parsing Extension
 
@@ -29,6 +33,7 @@ extension BattlePass {
               let beginDateString = seasonsData["begin"] as? String,
               let endDateString = seasonsData["end"] as? String
         else {
+            logger.error("Failed to parse BattlePass item sharing data")
             return nil
         }
         

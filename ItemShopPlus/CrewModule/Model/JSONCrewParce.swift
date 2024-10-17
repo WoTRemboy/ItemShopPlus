@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "CrewModule", category: "JSONParse")
 
 // MARK: - Crew Pack JSON Extension
 
@@ -25,6 +29,7 @@ extension CrewPack {
               let imageData = data["images"] as? [String: Any],
               let dateString = data["date"] as? String
         else {
+            logger.error("Failed to parse CrewPack sharing data")
             return nil
         }
         
@@ -60,6 +65,7 @@ extension CrewPack {
             priceArray.append(CrewPrice(type: type, code: code, symbol: symbol, price: price))
         }
         
+        logger.info("Successfully parsed CrewPack data")
         return CrewPack(title: title, items: items, battlePassTitle: battlePassTitle, addPassTitle: addPassTitle, image: image, date: month, price: priceArray)
     }
 }

@@ -10,7 +10,7 @@ import XCTest
 
 final class CrewModelTests: XCTestCase {
     
-    // Test CrewPack creation with valid data
+    /// Test CrewPack creation with valid data
     internal func testCrewPackCreation() {
         // Create sample CrewItem and CrewPrice data
         let crewItem = CrewItem(id: "item1", type: "Skin", name: "Crew Skin", description: "Exclusive skin", rarity: .legendary, image: "https://example.com/item.png", shareImage: "https://example.com/share.png", introduction: "Chapter 2", video: true)
@@ -32,7 +32,7 @@ final class CrewModelTests: XCTestCase {
         XCTAssertEqual(crewPack.vbucks, 1000) // Default value
     }
     
-    // Test CrewItem creation and attributes
+    /// Test CrewItem creation and attributes
     internal func testCrewItemCreation() {
         // Create a sample CrewItem
         let crewItem = CrewItem(id: "item2", type: "Back Bling", name: "Crew Back Bling", description: "Exclusive back bling", rarity: .epic, image: "https://example.com/item2.png", shareImage: "https://example.com/share2.png", introduction: "Chapter 3", video: false)
@@ -50,7 +50,7 @@ final class CrewModelTests: XCTestCase {
         XCTAssertFalse(crewItem.video)
     }
     
-    // Test CrewPrice creation and attributes
+    /// Test CrewPrice creation and attributes
     internal func testCrewPriceCreation() {
         // Create a sample CrewPrice
         let crewPrice = CrewPrice(type: .eur, code: "EUR", symbol: "€", price: 9.99)
@@ -63,7 +63,7 @@ final class CrewModelTests: XCTestCase {
         XCTAssertEqual(crewPrice.price, 9.99)
     }
     
-    // Test the emptyPack constant
+    /// Test the emptyPack constant
     internal func testEmptyCrewPack() {
         // Verify that the emptyPack is correctly initialized
         let emptyPack = CrewPack.emptyPack
@@ -78,7 +78,7 @@ final class CrewModelTests: XCTestCase {
         XCTAssertEqual(emptyPack.price.first?.price, -5) // Default empty price
     }
     
-    // Test the emptyPrice constant
+    /// Test the emptyPrice constant
     internal func testEmptyCrewPrice() {
         // Verify that the emptyPrice is correctly initialized
         let emptyPrice = CrewPrice.emptyPrice

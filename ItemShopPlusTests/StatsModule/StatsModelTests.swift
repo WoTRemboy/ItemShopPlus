@@ -10,7 +10,7 @@ import XCTest
 
 final class StatsTests: XCTestCase {
     
-    // Test for sumTopOne() method
+    /// Tests the `sumTopOne()` method to ensure it accurately sums the top one placements across different modes
     internal func testSumTopOne() {
         let globalStats: [String: SectionStats] = [
             "mode1": SectionStats(topOne: 3, kd: 2.0, winrate: 50.0, topThree: 5, topFive: 10, topSix: 12, topTen: 15, topTwelve: 20, topTwentyFive: 25, kills: 50, matchesPlayed: 30, minutesPlayed: 1000, score: 1500, playersOutlived: 200, lastModified: 123456789),
@@ -23,7 +23,7 @@ final class StatsTests: XCTestCase {
         XCTAssertEqual(sumTopOne, 10.0, "Expected sum of topOne to be 10")
     }
     
-    // Test for averageKD() method with global stats
+    /// Tests the `averageKD()` method when calculating the kill-death ratio across global stats
     internal func testAverageKDGlobal() {
         let globalStats: [String: SectionStats] = [
             "mode1": SectionStats(topOne: 3, kd: 2.0, winrate: 50.0, topThree: 5, topFive: 10, topSix: 12, topTen: 15, topTwelve: 20, topTwentyFive: 25, kills: 50, matchesPlayed: 30, minutesPlayed: 1000, score: 1500, playersOutlived: 200, lastModified: 123456789),
@@ -36,7 +36,7 @@ final class StatsTests: XCTestCase {
         XCTAssertEqual(averageKD, 2.7164, accuracy: 0.0001, "Expected average KD to be close to 2.7778")
     }
     
-    // Test for averageKD() method with keyboard input stats
+    /// Tests the `averageKD()` method for keyboard input stats to ensure correct KD calculation for that input method
     internal func testAverageKDKeyboard() {
         let inputStats: [String: SectionStats] = [
             "keyboardmouse": SectionStats(topOne: 3, kd: 4.0, winrate: 55.0, topThree: 5, topFive: 12, topSix: 14, topTen: 20, topTwelve: 22, topTwentyFive: 30, kills: 100, matchesPlayed: 60, minutesPlayed: 1500, score: 2200, playersOutlived: 350, lastModified: 135792468)
@@ -50,7 +50,7 @@ final class StatsTests: XCTestCase {
         XCTAssertEqual(averageKD, 4.0, "Expected average KD for keyboard input to be 4.0")
     }
     
-    // Test for empty stats
+    /// Tests the initialization of an empty `Stats` object to verify that default values are properly set
     internal func testEmptyStats() {
         let emptyStats = Stats.emptyStats
         
@@ -65,7 +65,7 @@ final class StatsTests: XCTestCase {
         XCTAssertTrue(emptyStats.input.isEmpty)
     }
     
-    // Test for LevelHistory data
+    /// Tests the initialization of a `LevelHistory` object and verifies that the data is correctly stored
     internal func testLevelHistory() {
         let history = LevelHistory(season: 3, level: 45, progress: 75)
         XCTAssertEqual(history.season, 3)
@@ -73,7 +73,7 @@ final class StatsTests: XCTestCase {
         XCTAssertEqual(history.progress, 75)
     }
     
-    // Test for SectionStats data
+    /// Tests the initialization of a `SectionStats` object and verifies that all properties are set as expected
     internal func testSectionStats() {
         let sectionStats = SectionStats(topOne: 2, kd: 1.5, winrate: 50.0, topThree: 4, topFive: 6, topSix: 8, topTen: 10, topTwelve: 12, topTwentyFive: 15, kills: 20, matchesPlayed: 25, minutesPlayed: 500, score: 1000, playersOutlived: 300, lastModified: 123456789)
         

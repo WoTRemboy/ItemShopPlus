@@ -10,7 +10,7 @@ import XCTest
 
 final class ItemVideoModelTests: XCTestCase {
 
-    // Test for ItemVideo.emptyVideo
+    /// Test for ItemVideo.emptyVideo
     internal func testEmptyVideo() {
         // Check if emptyVideo has the expected default values
         let emptyVideo = ItemVideo.emptyVideo
@@ -18,7 +18,7 @@ final class ItemVideoModelTests: XCTestCase {
         XCTAssertEqual(emptyVideo.video, "")
     }
     
-    // Test for ItemVideo.sharingParse with valid JSON input
+    /// Test for ItemVideo.sharingParse with valid JSON input
     internal func testSharingParseWithValidJSON() {
         // Prepare a valid JSON input
         let validJSON: [String: Any] = [
@@ -37,7 +37,7 @@ final class ItemVideoModelTests: XCTestCase {
         XCTAssertEqual(itemVideo?.video, "https://example.com/video.mp4")
     }
     
-    // Test for ItemVideo.sharingParse with missing 'id' field
+    /// Test for ItemVideo.sharingParse with missing 'id' field
     internal func testSharingParseWithMissingID() {
         // Prepare a JSON input with a missing 'id' field
         let invalidJSON: [String: Any] = [
@@ -53,7 +53,7 @@ final class ItemVideoModelTests: XCTestCase {
         XCTAssertNil(itemVideo, "ItemVideo should be nil when 'id' field is missing.")
     }
     
-    // Test for ItemVideo.sharingParse with missing 'previewVideos' field
+    /// Test for ItemVideo.sharingParse with missing 'previewVideos' field
     internal func testSharingParseWithMissingPreviewVideos() {
         // Prepare a JSON input with a missing 'previewVideos' field
         let invalidJSON: [String: Any] = [
@@ -67,7 +67,7 @@ final class ItemVideoModelTests: XCTestCase {
         XCTAssertNil(itemVideo, "ItemVideo should be nil when 'previewVideos' field is missing.")
     }
     
-    // Test for ItemVideo.sharingParse with empty 'previewVideos' array
+    /// Test for ItemVideo.sharingParse with empty 'previewVideos' array
     internal func testSharingParseWithEmptyPreviewVideos() {
         // Prepare a JSON input with an empty 'previewVideos' array
         let invalidJSON: [String: Any] = [
@@ -82,7 +82,7 @@ final class ItemVideoModelTests: XCTestCase {
         XCTAssertNil(itemVideo, "ItemVideo should be nil when 'previewVideos' array is empty.")
     }
     
-    // Test for ItemVideo.sharingParse with missing 'url' field in previewVideos
+    /// Test for ItemVideo.sharingParse with missing 'url' field in previewVideos
     internal func testSharingParseWithMissingURLInPreviewVideos() {
         // Prepare a JSON input where the 'url' field in 'previewVideos' is missing
         let invalidJSON: [String: Any] = [
@@ -99,7 +99,7 @@ final class ItemVideoModelTests: XCTestCase {
         XCTAssertNil(itemVideo, "ItemVideo should be nil when 'url' field is missing in 'previewVideos'.")
     }
 
-    // Test for ItemVideo.sharingParse with non-dictionary JSON input
+    /// Test for ItemVideo.sharingParse with non-dictionary JSON input
     internal func testSharingParseWithNonDictionaryInput() {
         // Prepare a non-dictionary JSON input (invalid format)
         let invalidJSON = "Invalid format"

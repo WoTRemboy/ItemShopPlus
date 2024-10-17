@@ -10,7 +10,7 @@ import XCTest
 
 final class SettingsModelTests: XCTestCase {
 
-    // Test for SettingType.typeDefinition(name:) function
+    /// Test for SettingType.typeDefinition(name:) function
     internal func testTypeDefinition() {
         // Test known cases
         XCTAssertEqual(SettingType.typeDefinition(name: "Notifications"), .notifications)
@@ -26,7 +26,7 @@ final class SettingsModelTests: XCTestCase {
         XCTAssertEqual(SettingType.typeDefinition(name: "Unknown"), .appearance)
     }
     
-    // Test for CurrencyModel initialization
+    /// Test for CurrencyModel initialization
     internal func testCurrencyModelInitialization() {
         let audCurrency = CurrencyModel(type: .aud, name: "Australian Dollar", code: "AUD", symbol: "$")
 
@@ -36,7 +36,7 @@ final class SettingsModelTests: XCTestCase {
         XCTAssertEqual(audCurrency.symbol, "$")
     }
 
-    // Test if currencies array contains all predefined currencies
+    /// Test if currencies array contains all predefined currencies
     internal func testCurrenciesArray() {
         let currencies = CurrencyModel.currencies
 
@@ -49,7 +49,7 @@ final class SettingsModelTests: XCTestCase {
         XCTAssertEqual(currencies.first?.symbol, Texts.Currency.Symbol.aud)
     }
 
-    // Test for AppTheme initialization
+    /// Test for AppTheme initialization
     internal func testAppThemeInitialization() {
         let systemTheme = AppTheme(keyValue: "SystemValue", name: "System", style: .unspecified)
 
@@ -58,7 +58,7 @@ final class SettingsModelTests: XCTestCase {
         XCTAssertEqual(systemTheme.style, .unspecified)
     }
 
-    // Test if themes array contains all predefined themes
+    /// Test if themes array contains all predefined themes
     internal func testThemesArray() {
         let themes = AppTheme.themes
 
@@ -70,7 +70,7 @@ final class SettingsModelTests: XCTestCase {
         XCTAssertEqual(themes.first?.style, .unspecified)
     }
 
-    // Test for AppTheme.keyToValue(key:) function
+    /// Test for AppTheme.keyToValue(key:) function
     internal func testKeyToValue() {
         XCTAssertEqual(AppTheme.keyToValue(key: "SystemValue"), Texts.AppearanceSettings.system)
         XCTAssertEqual(AppTheme.keyToValue(key: "LightValue"), Texts.AppearanceSettings.light)

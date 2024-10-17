@@ -10,7 +10,7 @@ import XCTest
 
 final class JSONDetailLootParseTests: XCTestCase {
     
-    // Test parsing a valid LootDetailsItem JSON structure
+    /// Test parsing a valid LootDetailsItem JSON structure
     internal func testLootDetailsItemParsingValid() {
         // Arrange: create a valid JSON dictionary
         let json: [String: Any] = [
@@ -53,7 +53,7 @@ final class JSONDetailLootParseTests: XCTestCase {
         XCTAssertEqual(parsedItem?.searchTags, ["weapon", "sword", "powerful"])
     }
 
-    // Test parsing an invalid LootDetailsItem JSON with missing fields
+    /// Test parsing an invalid LootDetailsItem JSON with missing fields
     internal func testLootDetailsItemParsingInvalid() {
         // Arrange: create an invalid JSON dictionary with missing fields
         let json: [String: Any] = [
@@ -70,7 +70,7 @@ final class JSONDetailLootParseTests: XCTestCase {
         XCTAssertNil(parsedItem, "Parsing should fail for invalid JSON with missing fields")
     }
 
-    // Test parsing a LootDetailsItem JSON that should be excluded based on ID filtering
+    /// Test parsing a LootDetailsItem JSON that should be excluded based on ID filtering
     internal func testLootDetailsItemParsingExcludedID() {
         // Arrange: create a JSON with an ID that is in the exclusion list
         let json: [String: Any] = [
@@ -96,7 +96,7 @@ final class JSONDetailLootParseTests: XCTestCase {
         XCTAssertNil(parsedItem, "Parsing should return nil for excluded ID")
     }
 
-    // Test parsing valid LootItemStats JSON
+    /// Test parsing valid LootItemStats JSON
     internal func testLootItemStatsParsingValid() {
         // Arrange: create a valid JSON for stats
         let json: [String: Any] = [
@@ -125,7 +125,7 @@ final class JSONDetailLootParseTests: XCTestCase {
         XCTAssertEqual(parsedStats?.zoneCritical, 1.8)
     }
 
-    // Test parsing an invalid LootItemStats JSON with missing fields
+    /// Test parsing an invalid LootItemStats JSON with missing fields
     internal func testLootItemStatsParsingInvalid() {
         // Arrange: create an invalid stats JSON with missing required fields
         let json: [String: Any] = [

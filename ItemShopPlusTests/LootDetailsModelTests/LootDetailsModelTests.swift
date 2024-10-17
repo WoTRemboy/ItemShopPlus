@@ -10,7 +10,7 @@ import XCTest
 
 final class LootTests: XCTestCase {
     
-    // Test LootItemType selection logic
+    /// Test LootItemType selection logic
     internal func testLootItemTypeSelection() {
         XCTAssertEqual(LootItemType.selectingLootType(type: "standart"), .standart)
         XCTAssertEqual(LootItemType.selectingLootType(type: "starwars"), .starWars)
@@ -20,7 +20,7 @@ final class LootTests: XCTestCase {
         XCTAssertEqual(LootItemType.selectingLootType(type: "unknown"), .standart) // Unknown type should return .standart by default
     }
     
-    // Test LootDetailsItem initialization with empty details
+    /// Test LootDetailsItem initialization with empty details
     internal func testEmptyLootDetailsItem() {
         let emptyItem = LootDetailsItem.emptyLootDetails
         
@@ -35,7 +35,7 @@ final class LootTests: XCTestCase {
         XCTAssertEqual(emptyItem.rarityImage, "")
     }
     
-    // Test LootItemStats empty stats
+    /// Test LootItemStats empty stats
     internal func testEmptyLootItemStats() {
         let emptyStats = LootItemStats.emptyStats
         
@@ -50,7 +50,7 @@ final class LootTests: XCTestCase {
         XCTAssertEqual(emptyStats.availableStats, -1) // availableStats should be -1 for empty stats
     }
     
-    // Test LootDetailsItem initialization with custom data
+    /// Test LootDetailsItem initialization with custom data
     internal func testCustomLootDetailsItem() {
         let stats = LootItemStats(dmgBullet: 50, firingRate: 0.8, clipSize: 30, reloadTime: 2.5, inCartridge: 10, spread: 0.1, downsight: 1.2, zoneCritical: 2.0, availableStats: 5)
         
@@ -87,7 +87,7 @@ final class LootTests: XCTestCase {
         XCTAssertEqual(customItem.stats.availableStats, 5)
     }
     
-    // Test LootNamedItems initialization
+    /// Test LootNamedItems initialization
     internal func testLootNamedItems() {
         let stats = LootItemStats(dmgBullet: 10, firingRate: 1.2, clipSize: 5, reloadTime: 1.5, inCartridge: 2, spread: 0.2, downsight: 1.0, zoneCritical: 1.5, availableStats: 4)
         let item1 = LootDetailsItem(id: "001", enabled: true, name: "Item 1", description: "Test item 1", rarity: .rare, type: .standart, searchTags: ["test"], mainImage: "item1.png", rarityImage: "rare.png", stats: stats)

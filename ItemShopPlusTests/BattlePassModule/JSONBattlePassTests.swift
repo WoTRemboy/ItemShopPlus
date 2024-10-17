@@ -10,7 +10,7 @@ import XCTest
 
 final class JSONBattlePassParseTests: XCTestCase {
     
-    // Test parsing of BattlePass from JSON
+    /// Test parsing of BattlePass from JSON
     internal func testBattlePassParsing() {
         // Sample JSON for a BattlePass
         let json: [String: Any] = [
@@ -67,7 +67,7 @@ final class JSONBattlePassParseTests: XCTestCase {
         XCTAssertEqual(parsedBattlePass?.items.count, 1)
     }
 
-    // Test parsing of BattlePassItem from JSON
+    /// Test parsing of BattlePassItem from JSON
     internal func testBattlePassItemParsing() {
         // Sample JSON for a BattlePassItem
         let json: [String: Any] = [
@@ -116,14 +116,18 @@ final class JSONBattlePassParseTests: XCTestCase {
     
     // MARK: - Date Formatting Methods
     
-    // Helper method for release date
+    /// Converts a given date string in the format "yyyy-MM-dd" into a `Date` object
+    /// - Parameter dateString: A string representing the date in the format "yyyy-MM-dd"
+    /// - Returns: A `Date` object corresponding to the date string, or the current date if parsing fails
     private func releaseDateFormatter(_ dateString: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.date(from: dateString) ?? Date()
     }
     
-    // Helper method for begin/end dates
+    /// Converts a given date string in the format "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" into a `Date` object
+    /// - Parameter dateString: A string representing the date and time in the format "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    /// - Returns: A `Date` object corresponding to the date string, or the current date if parsing fails
     private func beginEndDateFormatter(_ dateString: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"

@@ -10,7 +10,7 @@ import XCTest
 
 final class BattlePassTests: XCTestCase {
     
-    // Test for initializing a BattlePass
+    /// Test for initializing a BattlePass
     internal func testBattlePassInitialization() {
         let beginDate = Date() // Current date as the start date
         let endDate = Date().addingTimeInterval(60 * 60 * 24) // 1 day later as the end date
@@ -34,7 +34,7 @@ final class BattlePassTests: XCTestCase {
         XCTAssertEqual(battlePass.items.count, 1) // Ensure there's one item in the array
     }
 
-    // Test for initializing a BattlePassItem
+    /// Test for initializing a BattlePassItem
     internal func testBattlePassItemInitialization() {
         let releaseDate = Date() // Current date as the release date
         
@@ -62,7 +62,7 @@ final class BattlePassTests: XCTestCase {
         XCTAssertEqual(battlePassItem.set, "Set 1")
     }
 
-    // Test for the empty BattlePass static instance
+    /// Test for the empty BattlePass static instance
     internal func testEmptyBattlePass() {
         let emptyPass = BattlePass.emptyPass // Access the static empty instance
         
@@ -76,7 +76,7 @@ final class BattlePassTests: XCTestCase {
         XCTAssertEqual(emptyPass.items.first?.id, "") // Ensure the ID of the empty item is an empty string
     }
 
-    // Test for the empty BattlePassItem static instance
+    /// Test for the empty BattlePassItem static instance
     internal func testEmptyBattlePassItem() {
         let emptyItem = BattlePassItem.emptyItem // Access the static empty instance
         

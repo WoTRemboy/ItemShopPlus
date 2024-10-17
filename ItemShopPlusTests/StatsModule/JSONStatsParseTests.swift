@@ -10,7 +10,7 @@ import XCTest
 
 final class StatsParsingTests: XCTestCase {
     
-    // Test parsing Stats with valid JSON
+    /// Test parsing Stats with valid JSON
     internal func testParseValidStatsJSON() {
         let json: [String: Any] = [
             "result": true,
@@ -95,7 +95,7 @@ final class StatsParsingTests: XCTestCase {
         XCTAssertNil(stats?.global["mode1"]?.kd, "KD should be nil due to invalid value")
     }
     
-    // Test parsing with minimal JSON structure
+    /// Test parsing with minimal JSON structure
     internal func testParseMinimalValidJSON() {
         let json: [String: Any] = [
             "result": true,
@@ -110,7 +110,7 @@ final class StatsParsingTests: XCTestCase {
         XCTAssertTrue(stats?.global.isEmpty ?? false, "Global stats should be empty")
     }
     
-    // Test parsing LevelHistory with valid data
+    /// Test parsing LevelHistory with valid data
     internal func testParseLevelHistoryValidJSON() {
         let historyJSON: [String: Any] = [
             "season": 2,
@@ -126,7 +126,7 @@ final class StatsParsingTests: XCTestCase {
         XCTAssertEqual(history?.progress, 60)
     }
     
-    // Test parsing SectionStats with valid data
+    /// Test parsing SectionStats with valid data
     internal func testParseSectionStatsValidJSON() {
         let sectionJSON: [String: Any] = [
             "placetop1": 10,
@@ -155,7 +155,7 @@ final class StatsParsingTests: XCTestCase {
         XCTAssertEqual(sectionStats?.kills, 200)
     }
     
-    // Test parsing InputStats with valid data
+    /// Test parsing InputStats with valid data
     internal func testParseInputStatsValidJSON() {
         let inputJSON: [String: Any] = [
             "mode1": [

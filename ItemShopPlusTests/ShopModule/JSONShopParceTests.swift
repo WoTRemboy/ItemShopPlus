@@ -10,7 +10,7 @@ import XCTest
 
 final class JSONShopParceTests: XCTestCase {
 
-    // Test valid JSON parsing for ShopItem
+    /// Test valid JSON parsing for ShopItem
     internal func testValidShopItemParsing() {
         let json: [String: Any] = [
             "mainId": "123",
@@ -51,7 +51,7 @@ final class JSONShopParceTests: XCTestCase {
         XCTAssertEqual(shopItem?.section, "Featured")
     }
 
-    // Test invalid JSON parsing that should return nil
+    /// Test invalid JSON parsing that should return nil
     internal func testInvalidShopItemParsing() {
         let invalidJson: [String: Any] = [
             "mainId": "123",
@@ -64,7 +64,7 @@ final class JSONShopParceTests: XCTestCase {
         XCTAssertNil(shopItem)
     }
 
-    // Test valid JSON parsing for GrantedItem
+    /// Test valid JSON parsing for GrantedItem
     internal func testValidGrantedItemParsing() {
         let json: [String: Any] = [
             "id": "001",
@@ -88,7 +88,7 @@ final class JSONShopParceTests: XCTestCase {
         XCTAssertEqual(grantedItem?.rarity, .epic)
     }
 
-    // Test invalid JSON parsing for GrantedItem
+    /// Test invalid JSON parsing for GrantedItem
     internal func testInvalidGrantedItemParsing() {
         let invalidJson: [String: Any] = [
             "id": "001",

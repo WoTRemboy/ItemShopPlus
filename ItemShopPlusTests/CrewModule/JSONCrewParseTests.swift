@@ -10,7 +10,7 @@ import XCTest
 
 final class JSONCrewParseTests: XCTestCase {
     
-    // Test parsing a valid CrewPack JSON
+    /// Test parsing a valid CrewPack JSON
     internal func testCrewPackParsing() {
         let json: [String: Any] = [
             "prices": [
@@ -71,7 +71,7 @@ final class JSONCrewParseTests: XCTestCase {
         XCTAssertTrue(crewItem.video)
     }
     
-    // Test parsing a CrewItem JSON
+    /// Test parsing a CrewItem JSON
     internal func testCrewItemParsing() {
         let json: [String: Any] = [
             "item": [
@@ -105,7 +105,7 @@ final class JSONCrewParseTests: XCTestCase {
         XCTAssertFalse(crewItem.video) // Since it's not an outfit
     }
     
-    // Test invalid CrewPack parsing
+    /// Test invalid CrewPack parsing
     internal func testInvalidCrewPackParsing() {
         let invalidJson: [String: Any] = [
             "invalidKey": "invalidValue"
@@ -117,7 +117,7 @@ final class JSONCrewParseTests: XCTestCase {
         XCTAssertNil(crewPack)
     }
     
-    // Test invalid CrewItem parsing
+    /// Test invalid CrewItem parsing
     internal func testInvalidCrewItemParsing() {
         let invalidJson: [String: Any] = [
             "invalidKey": "invalidValue"

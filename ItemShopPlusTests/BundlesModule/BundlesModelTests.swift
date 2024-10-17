@@ -10,7 +10,7 @@ import XCTest
 
 final class BundleItemTests: XCTestCase {
 
-    // Test initializing BundleItem with all properties
+    /// Test initializing BundleItem with all properties
     internal func testBundleItemInitialization() {
         let expiryDate = Date()
         let prices = [BundlePrice(type: .usd, code: "USD", symbol: "$", price: 9.99)]
@@ -48,7 +48,7 @@ final class BundleItemTests: XCTestCase {
         XCTAssertEqual(bundleItem.currency, .usd)
     }
 
-    // Test BundleItem empty state
+    /// Test BundleItem empty state
     internal func testBundleItemEmpty() {
         let emptyBundle = BundleItem.emptyBundle
         
@@ -67,7 +67,7 @@ final class BundleItemTests: XCTestCase {
         XCTAssertEqual(emptyBundle.currency, .usd)
     }
 
-    // Test initializing BundlePrice
+    /// Test initializing BundlePrice
     internal func testBundlePriceInitialization() {
         let price = BundlePrice(type: .usd, code: "USD", symbol: "$", price: 19.99)
         
@@ -78,7 +78,7 @@ final class BundleItemTests: XCTestCase {
         XCTAssertEqual(price.price, 19.99)
     }
 
-    // Test BundlePrice empty state
+    /// Test BundlePrice empty state
     internal func testBundlePriceEmpty() {
         let emptyPrice = BundlePrice.emptyPrice
         
@@ -89,7 +89,7 @@ final class BundleItemTests: XCTestCase {
         XCTAssertEqual(emptyPrice.price, -5)
     }
 
-    // Test initializing BundleGranted
+    /// Test initializing BundleGranted
     internal func testBundleGrantedInitialization() {
         let grantedItem = BundleGranted(id: "granted1", quantity: 3)
         
@@ -98,7 +98,7 @@ final class BundleItemTests: XCTestCase {
         XCTAssertEqual(grantedItem.quantity, 3)
     }
 
-    // Test BundleItem with multiple prices and granted items
+    /// Test BundleItem with multiple prices and granted items
     internal func testBundleItemWithMultiplePricesAndGrantedItems() {
         let prices = [
             BundlePrice(type: .usd, code: "USD", symbol: "$", price: 19.99),

@@ -10,7 +10,7 @@ import XCTest
 
 final class BundleItemParsingTests: XCTestCase {
 
-    // Test parsing a valid JSON to BundleItem
+    /// Test parsing a valid JSON to BundleItem
     internal func testBundleItemParsingValidJSON() {
         let validJSON: [String: Any] = [
             "offerId": "bundle1",
@@ -71,7 +71,7 @@ final class BundleItemParsingTests: XCTestCase {
         }
     }
 
-    // Test parsing an invalid JSON (missing required fields)
+    /// Test parsing an invalid JSON (missing required fields)
     internal func testBundleItemParsingInvalidJSON() {
         let invalidJSON: [String: Any] = [
             "offerId": "bundle1",
@@ -83,7 +83,7 @@ final class BundleItemParsingTests: XCTestCase {
         XCTAssertNil(bundleItem, "Expected parsing to fail for unavailable bundle.")
     }
 
-    // Test BundleGranted parsing valid JSON
+    /// Test BundleGranted parsing valid JSON
     internal func testBundleGrantedParsingValidJSON() {
         let validGrantedJSON: [String: Any] = [
             "templateId": "item1",
@@ -98,7 +98,7 @@ final class BundleItemParsingTests: XCTestCase {
         }
     }
 
-    // Test BundleGranted parsing invalid JSON (missing fields)
+    /// Test BundleGranted parsing invalid JSON (missing fields)
     internal func testBundleGrantedParsingInvalidJSON() {
         let invalidGrantedJSON: [String: Any] = [
             "templateId": "item1"
@@ -109,7 +109,7 @@ final class BundleItemParsingTests: XCTestCase {
         XCTAssertNil(grantedItem, "Expected parsing to fail due to missing quantity.")
     }
 
-    // Test BundleItem parsing with missing fields in JSON
+    /// Test BundleItem parsing with missing fields in JSON
     internal func testBundleItemParsingWithMissingFields() {
         let missingFieldsJSON: [String: Any] = [
             "offerId": "bundle1",

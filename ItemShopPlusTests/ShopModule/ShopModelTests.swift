@@ -13,8 +13,11 @@ final class ShopModelTests: XCTestCase {
 
     // MARK: - ShopItem Tests
     
+    /// The in-memory `NSManagedObjectContext` used for testing CoreData models
     private var context: NSManagedObjectContext!
     
+    /// This method initializes the `context` to use an in-memory store, which does not persist any data
+    /// - Throws: If there is an issue with the test setup
     override func setUpWithError() throws {
         try super.setUpWithError()
         
@@ -35,13 +38,15 @@ final class ShopModelTests: XCTestCase {
         context = persistentContainer.viewContext
     }
     
+    /// Tears down the `context` and clears all data after each test
+    /// - Throws: If there is an issue with the teardown
     override func tearDownWithError() throws {
         // Clear the context after each test
         context = nil
         try super.tearDownWithError()
     }
     
-    // Test default emptyShopItem initialization
+    /// Test the default initialization of an empty `ShopItem`
     internal func testEmptyShopItem() {
         let emptyItem = ShopItem.emptyShopItem
         
@@ -65,7 +70,7 @@ final class ShopModelTests: XCTestCase {
         XCTAssertFalse(emptyItem.isFavourite)
     }
 
-    // Test toggling the isFavourite property
+    /// Test toggling the `isFavourite` property of `ShopItem`
     internal func testFavouriteToggle() {
         var item = ShopItem.emptyShopItem
         XCTAssertFalse(item.isFavourite)
@@ -77,7 +82,7 @@ final class ShopModelTests: XCTestCase {
         XCTAssertFalse(item.isFavourite)
     }
     
-    // Test ShopItem equality by ID
+    /// Test equality of two `ShopItem` instances based on their `id`
     internal func testShopItemEquality() {
         let item1 = ShopItem(id: "001", name: "Cool Item", description: "A cool item", type: "Outfit", images: [], firstReleaseDate: nil, previousReleaseDate: nil, expiryDate: nil, buyAllowed: true, price: 100, regularPrice: 120, series: nil, rarity: .rare, granted: [], section: "Featured", banner: .new, video: false)
         let item2 = ShopItem(id: "001", name: "Cool Item2", description: "A cool item2", type: "Outfit2", images: [], firstReleaseDate: .now, previousReleaseDate: .now, expiryDate: .now, buyAllowed: false, price: 90, regularPrice: 100, series: nil, rarity: .common, granted: [], section: "Featured2", banner: .null, video: true)
@@ -85,7 +90,7 @@ final class ShopModelTests: XCTestCase {
         XCTAssertEqual(item1, item2)
     }
     
-    // Test ShopItem inequality
+    /// Test inequality of two `ShopItem` instances based on their `id`
     internal func testShopItemInequality() {
         let item1 = ShopItem(id: "001", name: "Cool Item", description: "A cool item", type: "Outfit", images: [], firstReleaseDate: nil, previousReleaseDate: nil, expiryDate: nil, buyAllowed: true, price: 100, regularPrice: 120, series: nil, rarity: .rare, granted: [], section: "Featured", banner: .new, video: false)
         let item2 = ShopItem(id: "002", name: "Cooler Item", description: "A cooler item", type: "Backpack", images: [], firstReleaseDate: nil, previousReleaseDate: nil, expiryDate: nil, buyAllowed: true, price: 150, regularPrice: 180, series: nil, rarity: .epic, granted: [], section: "Daily", banner: .sale, video: true)
@@ -93,6 +98,8 @@ final class ShopModelTests: XCTestCase {
         XCTAssertNotEqual(item1, item2)
     }
     
+    /// Test creation of a `FavouriteShopItemEntity` in CoreData and saving it to the in-memory store
+    /// - Throws: If there is an error during context saving
     internal func testFavouriteShopItemEntityCreation() throws {
         // Create an entity
         let favouriteItem = FavouriteShopItemEntity(context: context)
@@ -107,7 +114,7 @@ final class ShopModelTests: XCTestCase {
         XCTAssertNoThrow(try context.save())
     }
     
-    // Test ShopItem creation from FavouriteShopItemEntity
+    /// Test conversion of a `FavouriteShopItemEntity` to a `ShopItem` object
     internal func testShopItemFromFavouriteShopItemEntity() {
         let mockEntity = FavouriteShopItemEntity(context: context)
         mockEntity.id = "123"
@@ -135,7 +142,7 @@ final class ShopModelTests: XCTestCase {
     
     // MARK: - GrantedItem Tests
     
-    // Test default emptyItem initialization
+    /// Test the default initialization of an empty `GrantedItem`
     internal func testEmptyGrantedItem() {
         let emptyItem = GrantedItem.emptyItem()
         
@@ -151,7 +158,7 @@ final class ShopModelTests: XCTestCase {
         XCTAssertEqual(emptyItem.video, "")
     }
     
-    // Test GrantedItem creation from ShopGrantedItemEntity
+    /// Test creation of a `GrantedItem` from a `ShopGrantedItemEntity` object
     internal func testGrantedItemFromEntity() {
         let mockEntity = ShopGrantedItemEntity(context: context)
         mockEntity.id = "001"
@@ -181,7 +188,7 @@ final class ShopModelTests: XCTestCase {
 
     // MARK: - ShopItemImage Tests
     
-    // Test ShopItemImage creation from ShopItemImageEntity
+    /// Test creation of a `ShopItemImage` from a `ShopItemImageEntity`
     internal func testShopItemImageFromEntity() {
         let mockEntity = ShopItemImageEntity(context: context)
         mockEntity.name = "Product.BR"

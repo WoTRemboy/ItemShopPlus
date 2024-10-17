@@ -10,7 +10,7 @@ import XCTest
 
 final class JSONMapParseTests: XCTestCase {
 
-    // Test for successful parsing of a valid JSON
+    /// Test for successful parsing of a valid JSON
     internal func testMapParsingValid() {
         // Create a valid JSON dictionary
         let json: [String: Any] = [
@@ -36,7 +36,7 @@ final class JSONMapParseTests: XCTestCase {
         XCTAssertEqual(parsedMap?.realeseDate, expectedDate)
     }
 
-    // Test for missing or invalid data
+    /// Test for missing or invalid data
     internal func testMapParsingInvalid() {
         // Create an invalid JSON dictionary (missing required fields)
         let json: [String: Any] = [
@@ -53,7 +53,7 @@ final class JSONMapParseTests: XCTestCase {
         XCTAssertNil(parsedMap, "Parsing should fail when required data is missing or invalid")
     }
     
-    // Test for invalid date format
+    /// Test for invalid date format
     internal func testMapParsingInvalidDateFormat() {
         // Create a JSON dictionary with an invalid date format
         let json: [String: Any] = [

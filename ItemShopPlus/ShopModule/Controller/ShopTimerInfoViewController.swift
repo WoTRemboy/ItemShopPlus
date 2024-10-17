@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "ShopModule", category: "TimerController")
 
 /// A view controller that displays information about the timer and item shop rotation
 final class ShopTimerInfoViewController: UIViewController {
@@ -51,7 +55,7 @@ final class ShopTimerInfoViewController: UIViewController {
     @objc private func updateTimer() {
         // Calculate the time difference between now and the target time
         let timeDifference = Calendar.current.dateComponents([.hour, .minute, .second], from: .now, to: targetTime ?? .now)
-        print(timeDifference)
+        logger.info("Shop Info page timer - \(timeDifference)")
         
         // Extract hour, minute, and second components
         let hours = timeDifference.hour ?? 0

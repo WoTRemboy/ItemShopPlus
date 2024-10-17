@@ -6,7 +6,11 @@
 //
 
 import UIKit
+import OSLog
 import AVKit
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "ShopModule", category: "GrantedController")
 
 /// A view controller to display the granted items of a shop bundle with options to preview and watch videos of individual items
 final class ShopGrantedViewController: UIViewController {
@@ -206,11 +210,12 @@ final class ShopGrantedViewController: UIViewController {
                     }
                     self?.videoSetup(videoURL: url, repeatable: true)
                 }
+                logger.info("Shop granted items loading success")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.previewSetup(index: index)
                 }
-                print(error)
+                logger.error("Shop granted items loading error: \(error.localizedDescription)")
             }
         }
     }
@@ -237,8 +242,9 @@ final class ShopGrantedViewController: UIViewController {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
+            logger.info("Audio session set up")
         } catch {
-            print("Error setting audio session:", error)
+            logger.error("Error setting audio session: \(error)")
         }
     }
     

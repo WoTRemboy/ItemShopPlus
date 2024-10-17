@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import OSLog
 import Kingfisher
 import YandexMobileAds
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "MainModule", category: "Controllers")
 
 /// The main page view controller displaying various buttons, banners, and content sections
 final class MainPageViewController: UIViewController {
@@ -195,8 +199,9 @@ final class MainPageViewController: UIViewController {
                     guard let image = newPack.image else { return }
                     self?.crewButton.updateImage(image: image)
                 }
+                logger.info("Crew image fetched successfully")
             case .failure(let error):
-                print(error)
+                logger.error("Crew image loading error: \(error.localizedDescription)")
             }
         }
     }
@@ -219,9 +224,10 @@ final class MainPageViewController: UIViewController {
                     UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
                         collectionView.reloadData()
                     }, completion: nil)
+                    logger.info("Bundles fetched successfully")
                 }
             case .failure(let error):
-                print(error)
+                logger.error("Bundles loading error: \(error.localizedDescription)")
             }
         }
     }
@@ -402,7 +408,7 @@ extension MainPageViewController: AdViewDelegate {
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
-        print("YandexMobile " + #function)
+        logger.info("YandexMobile successfully loaded")
     }
     
     /// Called when the ad view fails to load an ad
@@ -410,6 +416,6 @@ extension MainPageViewController: AdViewDelegate {
     ///   - adView: The ad view that failed to load an ad
     ///   - error: The error that occurred during loading
     func adViewDidFailLoading(_ adView: AdView, error: Error) {
-        print("YandexMobile " + #function)
+        logger.error("YandexMobile got error while loading")
     }
 }

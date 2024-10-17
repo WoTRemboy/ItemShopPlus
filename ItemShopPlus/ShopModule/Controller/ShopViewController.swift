@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import OSLog
 import StoreKit
 import Kingfisher
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "ShopModule", category: "MainController")
 
 /// A view controller responsible for displaying the shop items in a collection view, handling item interactions, and managing data
 final class ShopViewController: UIViewController {
@@ -254,6 +258,7 @@ final class ShopViewController: UIViewController {
                         }, completion: nil)
                     }
                     self?.menuSetup()
+                    logger.info("Shop items loaded successfully")
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -267,7 +272,7 @@ final class ShopViewController: UIViewController {
                     self?.infoButton.isEnabled = false
                     self?.filterButton.isEnabled = false
                 }
-                print(error)
+                logger.error("Shop items loading error: \(error.localizedDescription)")
             }
         }
     }

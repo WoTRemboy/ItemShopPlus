@@ -8,8 +8,12 @@
 import Firebase
 import FirebaseMessaging
 import UserNotifications
-import UIKit
 import YandexMobileAds
+import OSLog
+import UIKit
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "Application", category: "AppDelegate")
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
@@ -26,9 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         
         // Request authorization for user notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { success, _ in
-            guard success else { return }
+            guard success else {
+                logger.error("Request authorization for user notifications failed")
+                return
+            }
             
-            print("Success in APNS registry")
+            logger.info("Success in APNS registry")
         }
         
         // Check notification settings in UserDefaults
@@ -49,6 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         if let deviceLanguage = Bundle.main.preferredLocalizations.first,
            let userDefault = UserDefaults(suiteName: "group.notificationlocalized") {
             userDefault.set(deviceLanguage, forKey: Texts.LanguageSave.userDefaultsKey)
+            logger.info("Device language successfully saved in UserDefaults")
+        } else {
+            logger.error("Device language could not be found from Bundle")
         }
 
         return true
@@ -58,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
     /// Completion handler for Yandex Mobile Ads SDK initialization
     func completionHandler() {
-        print("YandexMobileAds init completed")
+        logger.info("YandexMobileAds init completed")
     }
     
     // MARK: - Messaging Delegate Methods
@@ -66,8 +76,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     /// Called when a new FCM registration token is received
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         messaging.token { token, _ in
-            guard token != nil else { return }
-            print("Token received successful")
+            guard token != nil else {
+                logger.error("FCM registration token not received")
+                return
+            }
+            logger.info("FCM registration token received successful")
         }
     }
 }

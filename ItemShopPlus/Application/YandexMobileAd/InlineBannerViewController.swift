@@ -6,7 +6,11 @@
 //
 
 import UIKit
+import OSLog
 import YandexMobileAds
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "Application", category: "YandexMobileAd")
 
 /// A view controller that handles displaying inline banner ads
 final class InlineBannerViewController: UIViewController {
@@ -52,12 +56,12 @@ extension InlineBannerViewController: AdViewDelegate {
     func adViewDidLoad(_ adView: AdView) {
         // Display the ad
         showAdd()
-        print("YandexMobile " + #function)
+        logger.info("YandexMobile successfully loaded")
     }
 
     /// This method will call after getting any error while loading the ad
     func adViewDidFailLoading(_ adView: AdView, error: Error) {
         // Handle the ad loading failure
-        print("YandexMobile " + #function)
+        logger.error("YandexMobile got error while loading")
     }
 }

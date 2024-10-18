@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "StatsModule", category: "MainController")
 
 /// This view controller is responsible for displaying the main statistics page, showing player stats such as kills, winrate, and match history
 final class StatsMainViewController: UIViewController {
@@ -67,8 +71,9 @@ final class StatsMainViewController: UIViewController {
         
         if let retrievedString = UserDefaults.standard.string(forKey: Texts.StatsPage.nicknameKey) {
             nickname = retrievedString
+            logger.info("Nickname data retrieved from UserDefaults: \(retrievedString)")
         } else {
-            print("There is no currency data in UserDefaults")
+            logger.info("There is no nickname data in UserDefaults")
         }
         
         navigationBarSetup()
@@ -207,6 +212,7 @@ final class StatsMainViewController: UIViewController {
                     self?.nicknameButton.isEnabled = true
                     UserDefaults.standard.set(newStats.name, forKey: Texts.StatsPage.nicknameKey)
                 }
+                logger.info("Stats data loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
@@ -214,7 +220,7 @@ final class StatsMainViewController: UIViewController {
                     self?.noInternetView.isHidden = false
                     self?.nicknameButton.isEnabled = false
                 }
-                print(error)
+                logger.error("Stats data loading error: \(error.localizedDescription)")
             }
         }
     }

@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "StatsModule", category: "JSONParse")
 
 // MARK: - Stats JSON Parsing
 
@@ -17,6 +21,7 @@ extension Stats {
         guard let globalData = sharingJSON as? [String: Any],
               let result = globalData["result"] as? Bool
         else {
+            logger.error("Failed to parse Stats sharing data")
             return nil
         }
         let name = globalData["name"] as? String ?? "Error"
@@ -46,6 +51,7 @@ extension Stats {
             }
         }
         
+        logger.info("Successfully parsed Stats data")
         return Stats(name: name, season: season, level: level, process: process, result: result, resultMessage: resultMessage ?? resultError, history: history, global: global, input: inputs)
     }
 }

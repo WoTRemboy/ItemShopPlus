@@ -58,6 +58,7 @@ extension CrewPack {
                   let symbol = priceDatum["paymentCurrencySymbol"] as? String,
                   let price = priceDatum["paymentCurrencyAmountNatural"] as? Double
             else {
+                logger.error("Failed to parse CrewPack price data")
                 return nil
             }
             // Selects the currency type based on the currency code

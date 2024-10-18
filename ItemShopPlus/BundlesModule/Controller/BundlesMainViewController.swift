@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "BundlesModule", category: "MainController")
 
 /// The view controller for displaying and managing bundle items in the shop
 final class BundlesMainViewController: UIViewController {
@@ -133,6 +137,7 @@ final class BundlesMainViewController: UIViewController {
                         }, completion: nil)
                     }
                 }
+                logger.info("Bundles items loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.items.removeAll()
@@ -141,7 +146,7 @@ final class BundlesMainViewController: UIViewController {
                     self?.noInternetView.isHidden = false
                     self?.symbolButton.isEnabled = false
                 }
-                print(error)
+                logger.error("Bundles items loading error: \(error.localizedDescription)")
             }
         }
     }
@@ -155,8 +160,9 @@ final class BundlesMainViewController: UIViewController {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
                 currentSectionTitle = retrievedString
+                logger.info("Currency data retrieved from UserDefaults: \(retrievedString)")
             } else {
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no currency data in UserDefaults")
             }
         case .save:
             UserDefaults.standard.set(currentSectionTitle, forKey: Texts.CrewPage.currencyKey)

@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "BundlesModule", category: "DetailsController")
 
 /// A view controller that handles the display of detailed information about a specific bundle
 final class BundlesDetailsViewController: UIViewController {
@@ -137,11 +141,13 @@ final class BundlesDetailsViewController: UIViewController {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
                 currentSectionTitle = retrievedString
+                logger.info("Currency data retrieved from UserDefaults: \(retrievedString)")
             } else {
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no currency data in UserDefaults")
             }
         case .save:
             UserDefaults.standard.set(currentSectionTitle, forKey: Texts.CrewPage.currencyKey)
+            logger.info("New currency data saved to UserDefaults")
         case .delete:
             UserDefaults.standard.removeObject(forKey: Texts.CrewPage.currencyKey)
         }

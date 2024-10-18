@@ -233,6 +233,7 @@ final class CrewMainViewController: UIViewController {
             }
         case .save:
             UserDefaults.standard.set(currentSectionTitle, forKey: Texts.CrewPage.currencyKey)
+            logger.info("New currency data saved to UserDefaults")
         case .delete:
             UserDefaults.standard.removeObject(forKey: Texts.CrewPage.currencyKey)
         }

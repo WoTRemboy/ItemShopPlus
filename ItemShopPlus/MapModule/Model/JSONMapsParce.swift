@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "MapModule", category: "JSONParse")
 
 extension Map {
     /// Parses a JSON object to create a `Map` instance
@@ -19,6 +23,7 @@ extension Map {
               let image = data["url"] as? String,
               let poiImage = data["urlPOI"] as? String
         else {
+            logger.error("Failed to parse Map sharing data")
             return nil
         }
         

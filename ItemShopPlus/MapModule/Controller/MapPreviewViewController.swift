@@ -6,7 +6,11 @@
 //
 
 import UIKit
+import OSLog
 import Kingfisher
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "MapModule", category: "PreviewController")
 
 /// A view controller responsible for displaying and managing the preview of a game map
 final class MapPreviewViewController: UIViewController {
@@ -147,11 +151,12 @@ final class MapPreviewViewController: UIViewController {
                     self?.archiveMenuSetup()
                     self?.showActualMap()
                 }
+                logger.info("Maps loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.loadSuccess(success: false)
                 }
-                print(error)
+                logger.error("Maps loading error: \(error.localizedDescription)")
             }
         }
     }

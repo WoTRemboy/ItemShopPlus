@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "BundlesModule", category: "JSONParse")
 
 // MARK: - Bundle Item Parsing
 
@@ -24,6 +28,7 @@ extension BundleItem {
               let pricesData = globalData["prices"] as? [[String: Any]],
               let grantedData = globalData["granted"] as? [[String: Any]]
         else {
+            logger.error("Failed to parse BundleItem sharing data")
             return nil
         }
         
@@ -38,6 +43,7 @@ extension BundleItem {
                   let symbol = priceDatum["paymentCurrencySymbol"] as? String,
                   let price = priceDatum["paymentCurrencyAmountNatural"] as? Double
             else {
+                logger.error("Failed to parse BundleItem price data")
                 return nil
             }
             let type = SelectingMethods.selectCurrency(code: code)

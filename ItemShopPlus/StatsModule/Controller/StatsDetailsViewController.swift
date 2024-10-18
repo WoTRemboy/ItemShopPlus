@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "StatsModule", category: "DetailsController")
 
 /// A view controller that displays detailed statistics based on the segment (global, input, history)
 final class StatsDetailsViewController: UIViewController {
@@ -121,8 +125,9 @@ final class StatsDetailsViewController: UIViewController {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: "\(Texts.StatsPage.title)\(allStats.name)") {
                 inputKey = retrievedString
+                logger.info("Input data retrieved from UserDefaults: \(retrievedString)")
             } else {
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no input data in UserDefaults")
             }
         case .save:
             UserDefaults.standard.set(inputKey, forKey: "\(Texts.StatsPage.title)\(allStats.name)")

@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "LootDetailsModule", category: "JSONParse")
 
 // MARK: - LootDetailsItem JSON Parsing
 
@@ -25,6 +29,7 @@ extension LootDetailsItem {
               let mainImage = imageData["icon"] as? String,
               let rarityImage = imageData["background"] as? String
         else {
+            logger.error("Failed to parse LootDetailsItem sharing data")
             return nil
         }
         

@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "LootDetailsModule", category: "MainController")
 
 ///  The main view controller for displaying a list of loot details, supporting filtering and searching functionality
 final class LootDetailsMainViewController: UIViewController {
@@ -283,6 +287,7 @@ final class LootDetailsMainViewController: UIViewController {
                     self?.filterButton.isEnabled = true
                     self?.searchController.searchBar.isHidden = false
                 }
+                logger.info("Loot details items loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
@@ -291,7 +296,7 @@ final class LootDetailsMainViewController: UIViewController {
                     self?.filterButton.isEnabled = false
                     self?.searchController.searchBar.isHidden = true
                 }
-                print(error)
+                logger.error("Loot details items loading error: \(error.localizedDescription)")
             }
         }
     }

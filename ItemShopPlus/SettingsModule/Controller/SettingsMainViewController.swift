@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "SettingsModule", category: "MainController")
 
 /// A view controller for displaying the settings options in the app
 final class SettingsMainViewController: UIViewController {
@@ -124,8 +128,9 @@ final class SettingsMainViewController: UIViewController {
         
         if UIApplication.shared.canOpenURL(openUrl) {
             UIApplication.shared.open(openUrl)
+            logger.info("Opened URL successfully")
         } else {
-            print("url is incorrect")
+            logger.error("Open URL is incorrect")
         }
     }
     
@@ -135,9 +140,10 @@ final class SettingsMainViewController: UIViewController {
     /// - Returns: A string representing the currency code
     private func getCurrency() -> String {
         if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
+            logger.info("Currency data retrieved from UserDefaults: \(retrievedString)")
             return retrievedString
         } else {
-            print("There is no currency data in UserDefaults")
+            logger.info("There is no currency data in UserDefaults")
             return Texts.Currency.Code.usd
         }
     }
@@ -146,9 +152,10 @@ final class SettingsMainViewController: UIViewController {
     /// - Returns: A string representing the theme name
     private func getTheme() -> String {
         if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
+            logger.info("App theme data retrieved from UserDefaults: \(retrievedString)")
             return AppTheme.keyToValue(key: retrievedString)
         } else {
-            print("There is no currency data in UserDefaults")
+            logger.info("There is no app theme data in UserDefaults")
             return Texts.AppearanceSettings.system
         }
     }
@@ -236,7 +243,7 @@ extension SettingsMainViewController {
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UserDefaults.standard.set(Texts.NotificationSettings.disable, forKey: Texts.NotificationSettings.key)
         switchControl.isOn = false
-        print("Notifications disabled")
+        logger.info("Notifications disabled")
     }
     
     /// Requests authorization from the user to enable notifications. If granted, the app is registered for remote notifications
@@ -248,11 +255,11 @@ extension SettingsMainViewController {
                     UIApplication.shared.registerForRemoteNotifications()
                     UserDefaults.standard.set(Texts.NotificationSettings.enable, forKey: Texts.NotificationSettings.key)
                     switchControl.isOn = true
-                    print("Notifications enabled")
+                    logger.info("Notifications enabled")
                 } else {
                     switchControl.isOn = false
                     self?.didRequestAlert(type: .notifications)
-                    print("Notifications disabled")
+                    logger.info("Notifications disabled")
                 }
             }
         }
@@ -285,7 +292,7 @@ extension SettingsMainViewController: UITableViewDelegate, UITableViewDataSource
         // Row type select methods
         switch type {
         case .notifications:
-            print("Zmyak")
+            logger.info("Notifications cell has been selected")
         case .appearance:
             let vc = SettingsDetailsViewController(title: name, type: .appearance)
             vc.completionHandler = { currencyCode in

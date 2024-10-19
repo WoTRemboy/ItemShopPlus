@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "SettingsModule", category: "DetailsController")
 
 /// A view controller for displaying and managing detailed settings such as appearance themes and currency options
 final class SettingsDetailsViewController: UIViewController {
@@ -61,7 +65,7 @@ final class SettingsDetailsViewController: UIViewController {
         case .appearance:
             self.themeData = AppTheme.themes
         default:
-            print("Default cell")
+            logger.info("Default setting type cell initialized")
         }
     }
     
@@ -105,9 +109,10 @@ final class SettingsDetailsViewController: UIViewController {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
                 selectedTitle = retrievedString
+                logger.info("Currency data retrieved from UserDefaults: \(retrievedString)")
             } else {
                 selectedTitle = Texts.Currency.Code.usd
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no currency data in UserDefaults")
             }
             let row = currencyData.firstIndex(where: { $0.code == selectedTitle } )
             previousIndex = IndexPath(row: row ?? 0, section: 0)
@@ -226,9 +231,10 @@ extension SettingsDetailsViewController {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
                 selectedTitle = retrievedString
+                logger.info("App theme data retrieved from UserDefaults: \(retrievedString)")
             } else {
                 selectedTitle = Texts.AppearanceSettings.systemValue
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no app theme data in UserDefaults")
             }
             let row = themeData.firstIndex(where: { $0.keyValue == selectedTitle } )
             previousIndex = IndexPath(row: row ?? 0, section: 0)

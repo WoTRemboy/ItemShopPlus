@@ -8,6 +8,10 @@
 import WidgetKit
 import SwiftUI
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "WidgetTarget", category: "MainModule")
 
 // MARK: - Provider
 
@@ -38,11 +42,12 @@ struct Provider: TimelineProvider {
                 
                 // Download the corresponding image for the selected shop item
                 downloadImage(for: newItem) { image in
+                    logger.info("Snaplshot image downloaded")
                     let entry = ShopEntry(date: Date(), shopItem: newItem, image: image)
                     completion(entry)
                 }
             } catch {
-                print("Failed to load snapshot data: \(error)")
+                logger.error("Failed to load snapshot data: \(error)")
                 let entry = ShopEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
                 completion(entry)
             }
@@ -82,10 +87,10 @@ struct Provider: TimelineProvider {
                     let timeline = Timeline(entries: [entry], policy: .atEnd)
                     completion(timeline)
                 }
-                
+                logger.info("Shop item loaded successfully")
             case .failure(let error):
                 // Log the error and create a placeholder entry
-                print("Failed to load items: \(error)")
+                logger.error("Failed to load items: \(error)")
                 let entry = ShopEntry(date: Date(), shopItem: .emptyShopItem, image: .Placeholder.noImage)
                 let timeline = Timeline(entries: [entry], policy: .atEnd)
                 completion(timeline)

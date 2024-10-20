@@ -6,7 +6,11 @@
 //
 
 import UIKit
+import OSLog
 import Kingfisher
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "NetworkModule", category: "ImageLoader")
 
 /// A class for loading and caching images from network requests using Kingfisher
 final class ImageLoader {
@@ -19,10 +23,11 @@ final class ImageLoader {
     private static let cacheDirectory: URL = {
         do {
             let cachesDirectory = try fileManager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            logger.info("Cache directory URL: \(cachesDirectory)")
             return cachesDirectory.appendingPathComponent("ImageCache")
         }
         catch {
-            print("Cache directory URL error: \(error)")
+            logger.error("Cache directory URL error: \(error)")
         }
         return URL(fileURLWithPath: "")
     }()
@@ -123,7 +128,7 @@ final class ImageLoader {
                 
             }
         } catch {
-            print("Error saving image to cache: \(error)")
+            logger.error("Error saving image to cache: \(error)")
         }
     }
     
@@ -166,9 +171,10 @@ final class ImageLoader {
                     }
                 }
             }
+            logger.info("Cash cleaned successfully")
             completion()
         } catch {
-            print("Error cleaning cache: \(error)")
+            logger.error("Error cleaning cache: \(error)")
         }
     }
     
@@ -189,9 +195,10 @@ final class ImageLoader {
             }
             
             let sizeInMegabytes = Float(totalSize) / bytesInMegabyte
+            logger.info("Calculated image cache size: \(sizeInMegabytes) MB")
             return sizeInMegabytes
         } catch {
-            print("Error calculating cache size: \(error)")
+            logger.error("Error calculating image cache size: \(error)")
             return 0
         }
     }
@@ -204,7 +211,7 @@ final class ImageLoader {
         do {
             try fileManager.setAttributes([.modificationDate: Date()], ofItemAtPath: cacheURL.path)
         } catch {
-            print("Error marking access time for \(cacheURL): \(error)")
+            logger.error("Error marking access time for \(cacheURL): \(error)")
         }
     }
 }

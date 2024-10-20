@@ -7,6 +7,10 @@
 
 import Foundation
 import AVKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "NetworkModule", category: "VideoLoader")
 
 /// A class for loading and caching video data, supporting download and cache management of video files
 final class VideoLoader {
@@ -19,10 +23,11 @@ final class VideoLoader {
     private static let cacheDirectory: URL = {
         do {
             let cachesDirectory = try fileManager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            logger.info("Cache directory URL: \(cachesDirectory)")
             return cachesDirectory.appendingPathComponent("VideoCache")
         }
         catch {
-            print("Cache directory URL error: \(error)")
+            logger.error("Cache directory URL error: \(error)")
         }
         return URL(fileURLWithPath: "")
     }()
@@ -49,12 +54,12 @@ final class VideoLoader {
         }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else {
-                print(error ?? "URLSession unknown error")
+                logger.error("URLSession error: \(error?.localizedDescription ?? "URLSession unknown error")")
                 completion(nil)
                 return
             }
             guard let loadedVideo = data else {
-                print("No data found")
+                logger.info("No loaded video data found")
                 completion(nil)
                 return
             }
@@ -137,7 +142,7 @@ final class VideoLoader {
             let cacheURL = cacheDirectory.appendingPathComponent(encodedKey)
             try videoData.write(to: cacheURL)
         } catch {
-            print("Error saving image to cache: \(error)")
+            logger.error("Error saving image to cache: \(error)")
         }
     }
     
@@ -179,9 +184,10 @@ final class VideoLoader {
                     }
                 }
             }
+            logger.info("Cash cleaned successfully")
             completion()
         } catch {
-            print("Error cleaning cache: \(error)")
+            logger.error("Error cleaning cache: \(error)")
         }
     }
     
@@ -202,9 +208,10 @@ final class VideoLoader {
             }
             
             let sizeInMegabytes = Float(totalSize) / bytesInMegabyte
+            logger.info("Calculated video cache size: \(sizeInMegabytes) MB")
             return sizeInMegabytes
         } catch {
-            print("Error calculating cache size: \(error)")
+            logger.error("Error calculating video cache size: \(error)")
             return 0
         }
     }
@@ -217,7 +224,7 @@ final class VideoLoader {
         do {
             try fileManager.setAttributes([.modificationDate: Date()], ofItemAtPath: cacheURL.path)
         } catch {
-            print("Error marking access time for \(cacheURL): \(error)")
+            logger.error("Error marking access time for \(cacheURL): \(error)")
         }
     }
 }

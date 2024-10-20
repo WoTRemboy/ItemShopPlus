@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "ItemVideoModule", category: "JSONParse")
 
 extension ItemVideo {
     /// Parses JSON data and creates an `ItemVideo` instance
@@ -17,6 +21,7 @@ extension ItemVideo {
               let videoData = data["previewVideos"] as? [[String: Any]],
               let video = videoData.first?["url"] as? String
         else {
+            logger.error("Failed to parse ItemVideo sharing data")
             return nil
         }
         

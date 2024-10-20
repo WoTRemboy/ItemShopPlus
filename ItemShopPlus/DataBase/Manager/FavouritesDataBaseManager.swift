@@ -7,6 +7,10 @@
 
 import Foundation
 import CoreData
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "DataBaseModel", category: "FavouritesManager")
 
 /// Manages the storage and retrieval of favorite shop items in the Core Data database
 final class FavouritesDataBaseManager {
@@ -35,7 +39,7 @@ final class FavouritesDataBaseManager {
             let results = try context.fetch(fetchRequest)
             return results.first
         } catch {
-            print("Error fetching item from database: \(error)")
+            logger.error("Error fetching item from database: \(error)")
             return nil
         }
     }
@@ -126,9 +130,9 @@ final class FavouritesDataBaseManager {
             
             do {
                 try context.save()
-                print("Inserted into database CoreData")
+                logger.info("Inserted into database CoreData")
             } catch {
-                print("Inserting into database error: \(error.localizedDescription)")
+                logger.error("Inserting into database error: \(error.localizedDescription)")
             }
         }
     }
@@ -142,9 +146,9 @@ final class FavouritesDataBaseManager {
                 
                 do {
                     try context.save()
-                    print("Deleted from database CoreData")
+                    logger.info("Deleted from database CoreData")
                 } catch {
-                    print("Deleting from database error: \(error)")
+                    logger.error("Deleting from database error: \(error)")
                 }
             }
         }
@@ -158,8 +162,9 @@ final class FavouritesDataBaseManager {
         do {
             let items = try context.fetch(fetchRequest)
             self.items = items.map { ShopItem.toShopItem(from: $0) }
+            logger.info("Fetched items from database CoreData")
         } catch {
-            print("Failed to fetch items: \(error.localizedDescription)")
+            logger.error("Failed to fetch items: \(error.localizedDescription)")
         }
     }
 }

@@ -7,6 +7,10 @@
 
 import Foundation
 import CoreData
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "DataBaseModel", category: "DataManager")
 
 /// A class responsible for managing the Core Data stack, specifically for saving and retrieving data related to `FavouriteShopItem`
 final class CoreDataManager {
@@ -41,7 +45,7 @@ final class CoreDataManager {
             do {
                 try context.save()
             } catch {
-                print("SaveContext (Favourites DB) error: \(error)")
+                logger.error("SaveContext (Favourites DB) error: \(error)")
             }
         }
     }

@@ -4,11 +4,11 @@
 </div>
 
 **ItemShopPlus** is a Swift-based iOS app designed to provide users with up-to-date information about in-game items from a popular gaming platform.
-The app includes features like a _shop_ for viewing items, _battle pass_, _stats_, and _widget_ integration.
+The app includes features like a `shop` for viewing items, `battle pass`, `stats`, and `widget` integration.
 It provides a well-structured, user-friendly interface for navigating through various item collections and their details, as well as supporting network requests for real-time data updates.
 Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-shop/id6478311226?l=en-GB).
 
-## Table of Contents
+## Table of Contents 📋
 
 - [Features](#features)
 - [Technologies](#technologies)
@@ -17,7 +17,7 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 - [Documentation](#documentation)
 - [Requirements](#requirements)
 
-## Features
+## Features ⚒️
 
 ### Main Page
 - Navigate seamlessly between different sections of the app, including the shop, battle pass, and stats.
@@ -72,7 +72,7 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 - Provides support for localized push notifications.
 - Notifications show the latest item shop content and updates.
 
-## Technologies
+## Technologies 💻
 
 ### iOS Frameworks and Languages
 - **Swift:** The primary language used to build the entire app, offering safety, performance, and modern language features.
@@ -98,7 +98,7 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 ### Logging
 - **OSLog:** Integrated for logging essential app data, system events, and debugging information, making it easier to track performance and bugs.
 
-## Architecture
+## Architecture 🏗️
 The **ItemShopPlus** app follows the Model-View-Controller (MVC) architecture pattern in its UIKit components.
 This pattern organizes the app’s structure, dividing it into three distinct layers:
 
@@ -125,7 +125,7 @@ Examples:
 - `FavouritesItemsViewController`: Handles interactions with favorite items, allowing users to toggle and view their favorite shop items.
 - `ShopViewController`: Manages the display of the shop page, handling user navigation and data presentation.
 
-## Testing
+## Testing 🧪
 
 ### Unit Testing
 
@@ -136,7 +136,7 @@ Unit tests are written for both models and utility methods.
 Example:
 - `testEmptyShopItem()`: Verifies that a default, empty ShopItem is properly initialized with default values.
 
-**StatsModelTests:** Tests for Stats and related classes, focusing on ensuring correct calculations of statistics such as sumTopOne() and averageKD().
+**StatsModelTests:** Tests for Stats and related classes, focusing on ensuring correct calculations of statistics such as `sumTopOne()` and `averageKD()`.
 Example:
 - `testAverageKDGlobal()`: Verifies the calculation of the average kill/death ratio for global stats.
 
@@ -155,7 +155,7 @@ Example:
 Example:
 - `testBattlePassInfoStruct()`: Simulates user navigation to the Battle Pass screen and verifies that the correct information (e.g., start date, end date) is displayed.
 
-## Documentation
+## Documentation 📚
 All significant classes, methods, and properties in the ItemShopPlus project are documented using Apple’s standard DocC format.
 This format generates human-readable documentation directly from the source code, making it easy for developers to navigate through the project.
 
@@ -178,7 +178,7 @@ private func downloadImage(for item: WidgetShopItem, completion: @escaping (UIIm
 }
 ```
 
-## Requirements
+## Requirements ✅
 - Xcode 15.0+
 - Swift 5.0+
 - iOS 16.0+

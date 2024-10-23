@@ -24,20 +24,44 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 - Access frequently used features like loot details, map, favorites and settings.
 - Actual information for crew membership and bundles blocks.
 
+<img src="https://github.com/user-attachments/assets/61903185-86e3-4b36-8356-220153bc0aac" alt="Demo" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/5a24ef3c-5e5d-47f9-ba4f-bde9dc545113" alt="Splash" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/d431c020-9cf0-412e-8ae8-996a14e8a123" alt="Onboarding" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/518b4708-fddd-4d8b-98aa-48734158a6b8" alt="Main" width="200" height="435">
+
 ### Item Shop
 - Browse available in-game items.
 - View item details including price, rarity, release dates, and more.
 - Add items to favorites or view items in the shop.
 - Filtering and sorting options based on item section.
 
+<img src="https://github.com/user-attachments/assets/b13cdd83-dc14-4eb4-b4c2-e77f70b2c895" alt="Demo" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/538caebc-c785-44da-a909-0b279efd48f4" alt="Shop" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/50187803-1b66-47bd-af77-a873ed6c1c4d" alt="Granted" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/3ed72ff2-a4da-4452-9a22-af6aa297bf38" alt="VideoPreview" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/ffd64453-95ab-4f39-9dfc-cb5ec9894b6f" alt="Search" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/9b45f5ee-f58b-4d4b-9f38-99dea8baadfe" alt="Info" width="200" height="435">
+
 ### Battle Pass
 - See details about items available in the current battle pass.
 - Display essential information like start and end dates and remaining time.
+
+<img src="https://github.com/user-attachments/assets/d985e069-e9e6-4a77-b4bf-e3114ff1c142" alt="Demo" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/6c59db65-7c63-4b80-85a6-724b4de1e55b" alt="BattlePass" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/7a65c57d-61dc-4342-acc1-f766b6a57e5c" alt="Granted" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/17b354b3-99b1-4aab-b2ea-e508e69caa4f" alt="VideoPreview" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/7e84df95-e43a-4adb-b141-ef4d0ffce7c7" alt="Search" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/1360afbb-de0f-4d47-9576-fe9b1398d19d" alt="Info" width="200" height="435">
 
 ### Stats
 - View and track in-game statistics.
 - Global stats such as wins, kills, and playtime are available across different game modes.
 - Player statistics based on input methods (e.g., gamepad, keyboard, mouse).
+
+<img src="https://github.com/user-attachments/assets/974afe3d-9b3b-45f3-bef1-4be45a7e92cc" alt="Demo" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/f6763b80-8525-40cd-a008-f58fc748baed" alt="UserSearch" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/d2704df1-58fb-4e96-8df0-07b955c06895" alt="Stats" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/48948f6a-e277-4c54-a30d-1add086eff64" alt="Details" width="200" height="435">
 
 ### Bundles
 - Explore special offers and item bundles.

@@ -10,12 +10,12 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 
 ## Table of Contents 📋
 
-- [Features](#features)
-- [Technologies](#technologies)
-- [Architecture](#architecture)
-- [Testing](#testing)
-- [Documentation](#documentation)
-- [Requirements](#requirements)
+- [Features](#Features)
+- [Technologies](#Technologies)
+- [Architecture](#Architecture)
+- [Testing](#Testing)
+- [Documentation](#Documentation)
+- [Requirements](#Requirements)
 
 ## Features ⚒️
 
@@ -68,20 +68,38 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 - View detailed descriptions of bundled items and their pricing.
 - Easily identify expiration dates for limited-time bundles.
 
+<img src="https://github.com/user-attachments/assets/4d0d02c0-b957-4557-b29e-7d8559639752" alt="Demo" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/d193911b-aca9-4d06-b3c8-da569250814d" alt="Bundles" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/0bdd0a96-6d95-4b23-a579-88fb8edd78dd" alt="Details" width="200" height="435">
+
 ### Crew
 - Access the exclusive crew membership section.
 - View crew pack details, including items and V-Bucks rewards.
 - Track the introduction dates of new crew packs and their benefits.
+
+<img src="https://github.com/user-attachments/assets/f0c7c2f3-2b3b-48de-ad59-134400dd5435" alt="Demo" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/e3679602-0644-4761-b80f-870fc84c36aa" alt="Bundle" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/17ec7cbf-62f6-476e-8fbd-c802caef7867" alt="Prices" width="200" height="435">
 
 ### Loot Details
 - Browse and filter through various weapons and loot items.
 - View detailed statistics such as damage, firing rate, and rarity.
 - Sort items by weapon type sections.
 
+<img src="https://github.com/user-attachments/assets/5018fa07-9ea5-4b6e-ad20-fe31b4766239" alt="Demo" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/ffb68f00-7953-4a3f-abe2-1c7f0fddd6e9" alt="Armory" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/4dcec8e5-0a29-4401-a44c-fa56ebcb4bca" alt="Rarities" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/0c6ca9a0-8477-4291-bb73-0f74c72fe03c" alt="Granted" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/9e92c002-4778-4e68-b8cb-3e904d9b3622" alt="Search" width="200" height="435">
+
 ### Map
 - Interact with the in-game map to explore different points of interest (POIs).
 - Use the archive feature to view past and present locations.
 - Quickly switch between map views and clear markers with ease.
+
+<img src="https://github.com/user-attachments/assets/1fb016ba-99cd-4a56-9be2-7c6bbbe3e075" alt="Demo" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/661a40c5-54f3-41e7-8ea3-8821de55a563" alt="Map" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/62f63eff-2cfb-42b1-b3ca-82a8775085d2" alt="Archive" width="200" height="435">
 
 ### Favourites
 - Manage your collection of favorite items from the shop.

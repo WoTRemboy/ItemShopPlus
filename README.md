@@ -104,15 +104,25 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 ### Favourites
 - Manage your collection of favorite items from the shop.
 - Quickly access and view saved items from the favorites section.
-- Toggle items as favorites for future reference and shop tracking.
+- Toggle items as favorites for future reference and shop tracking.      
+
+<img src="https://github.com/user-attachments/assets/f8f0b4d4-9b1f-4f47-97de-939df7a8216b" alt="Demo" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/eae399d9-5a34-4844-9806-f3296c6bae36" alt="Favorites" width="200" height="435">
+<img src="https://github.com/user-attachments/assets/0569860e-d2d2-4cae-8a68-25255aca8afd" alt="Empty" width="200" height="435">
 
 ### Widgets
 - Custom widgets to display featured items or new arrivals in the game shop.
 - Easy-to-use widget interface for a quick look at the most relevant items of the day.
 
+<img src="https://github.com/user-attachments/assets/e2c3f6aa-1047-4ebf-b1fd-184abe38317e" alt="Light" width="200" height="200">
+<img src="https://github.com/user-attachments/assets/543e80c0-d78f-4c04-9b87-47fc437d9d8a" alt="Dark" width="200" height="200">
+
 ### In-App Notifications
 - Provides support for localized push notifications.
 - Notifications show the latest item shop content and updates.
+
+<img src="https://github.com/user-attachments/assets/6e5ad1d9-ac04-4d69-8558-4d829148ef44" alt="English" width="500" height="100">
+<img src="https://github.com/user-attachments/assets/8903d274-6f0e-4268-926f-7d3dbce23067" alt="Russian" width="500" height="100">
 
 ## Technologies 💻
 

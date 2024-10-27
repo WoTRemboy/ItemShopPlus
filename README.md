@@ -6,18 +6,18 @@
 **ItemShopPlus** is a Swift-based iOS app designed to provide users with up-to-date information about in-game items from a popular gaming platform.
 The app includes features like a `shop` for viewing items, `battle pass`, `stats`, and `widget` integration.
 It provides a well-structured, user-friendly interface for navigating through various item collections and their details, as well as supporting network requests for real-time data updates.
-Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-shop/id6478311226?l=en-GB).
+Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-shop/id6478311226?l=en-GB). Full Demo available on my [Google Drive](https://drive.google.com/file/d/1JiDiRoT-Im5oC3zYM-SPa9539DR2_xIh/view).
 
 ## Table of Contents 📋
 
-- [Features](#Features)
-- [Technologies](#Technologies)
-- [Architecture](#Architecture)
-- [Testing](#Testing)
-- [Documentation](#Documentation)
-- [Requirements](#Requirements)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Architecture](#architecture)
+- [Testing](#testing)
+- [Documentation](#documentation)
+- [Requirements](#requirements)
 
-## Features ⚒️
+<h2 id="features">Features ⚒️</h2>
 
 ### Main Page
 - Navigate seamlessly between different sections of the app, including the shop, battle pass, and stats.
@@ -25,8 +25,6 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 - Actual information for crew membership and bundles blocks.
 
 <img src="https://github.com/user-attachments/assets/61903185-86e3-4b36-8356-220153bc0aac" alt="Demo" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/5a24ef3c-5e5d-47f9-ba4f-bde9dc545113" alt="Splash" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/d431c020-9cf0-412e-8ae8-996a14e8a123" alt="Onboarding" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/518b4708-fddd-4d8b-98aa-48734158a6b8" alt="Main" width="200" height="435">
 
 ### Item Shop
@@ -38,9 +36,6 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 <img src="https://github.com/user-attachments/assets/b13cdd83-dc14-4eb4-b4c2-e77f70b2c895" alt="Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/538caebc-c785-44da-a909-0b279efd48f4" alt="Shop" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/50187803-1b66-47bd-af77-a873ed6c1c4d" alt="Granted" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/3ed72ff2-a4da-4452-9a22-af6aa297bf38" alt="VideoPreview" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/ffd64453-95ab-4f39-9dfc-cb5ec9894b6f" alt="Search" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/9b45f5ee-f58b-4d4b-9f38-99dea8baadfe" alt="Info" width="200" height="435">
 
 ### Battle Pass
 - See details about items available in the current battle pass.
@@ -49,9 +44,6 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 <img src="https://github.com/user-attachments/assets/d985e069-e9e6-4a77-b4bf-e3114ff1c142" alt="Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/6c59db65-7c63-4b80-85a6-724b4de1e55b" alt="BattlePass" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/7a65c57d-61dc-4342-acc1-f766b6a57e5c" alt="Granted" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/17b354b3-99b1-4aab-b2ea-e508e69caa4f" alt="VideoPreview" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/7e84df95-e43a-4adb-b141-ef4d0ffce7c7" alt="Search" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/1360afbb-de0f-4d47-9576-fe9b1398d19d" alt="Info" width="200" height="435">
 
 ### Stats
 - View and track in-game statistics.
@@ -61,7 +53,6 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 <img src="https://github.com/user-attachments/assets/974afe3d-9b3b-45f3-bef1-4be45a7e92cc" alt="Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/f6763b80-8525-40cd-a008-f58fc748baed" alt="UserSearch" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/d2704df1-58fb-4e96-8df0-07b955c06895" alt="Stats" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/48948f6a-e277-4c54-a30d-1add086eff64" alt="Details" width="200" height="435">
 
 ### Bundles
 - Explore special offers and item bundles.
@@ -79,7 +70,6 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 
 <img src="https://github.com/user-attachments/assets/f0c7c2f3-2b3b-48de-ad59-134400dd5435" alt="Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/e3679602-0644-4761-b80f-870fc84c36aa" alt="Bundle" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/17ec7cbf-62f6-476e-8fbd-c802caef7867" alt="Prices" width="200" height="435">
 
 ### Loot Details
 - Browse and filter through various weapons and loot items.
@@ -88,9 +78,7 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 
 <img src="https://github.com/user-attachments/assets/5018fa07-9ea5-4b6e-ad20-fe31b4766239" alt="Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/ffb68f00-7953-4a3f-abe2-1c7f0fddd6e9" alt="Armory" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/4dcec8e5-0a29-4401-a44c-fa56ebcb4bca" alt="Rarities" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/0c6ca9a0-8477-4291-bb73-0f74c72fe03c" alt="Granted" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/9e92c002-4778-4e68-b8cb-3e904d9b3622" alt="Search" width="200" height="435">
 
 ### Map
 - Interact with the in-game map to explore different points of interest (POIs).
@@ -99,7 +87,6 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 
 <img src="https://github.com/user-attachments/assets/1fb016ba-99cd-4a56-9be2-7c6bbbe3e075" alt="Demo" width="200" height="435">
 <img src="https://github.com/user-attachments/assets/661a40c5-54f3-41e7-8ea3-8821de55a563" alt="Map" width="200" height="435">
-<img src="https://github.com/user-attachments/assets/62f63eff-2cfb-42b1-b3ca-82a8775085d2" alt="Archive" width="200" height="435">
 
 ### Favourites
 - Manage your collection of favorite items from the shop.
@@ -124,7 +111,7 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 <img src="https://github.com/user-attachments/assets/6e5ad1d9-ac04-4d69-8558-4d829148ef44" alt="English" width="500" height="100">
 <img src="https://github.com/user-attachments/assets/8903d274-6f0e-4268-926f-7d3dbce23067" alt="Russian" width="500" height="100">
 
-## Technologies 💻
+<h2 id="technologies">Technologies 💻</h2>
 
 ### iOS Frameworks and Languages
 - **Swift:** The primary language used to build the entire app, offering safety, performance, and modern language features.
@@ -150,7 +137,8 @@ Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-sho
 ### Logging
 - **OSLog:** Integrated for logging essential app data, system events, and debugging information, making it easier to track performance and bugs.
 
-## Architecture 🏗️
+<h2 id="architecture">Architecture 🏗️</h2>
+
 The **ItemShopPlus** app follows the Model-View-Controller (MVC) architecture pattern in its UIKit components.
 This pattern organizes the app’s structure, dividing it into three distinct layers:
 
@@ -177,7 +165,7 @@ Examples:
 - `FavouritesItemsViewController`: Handles interactions with favorite items, allowing users to toggle and view their favorite shop items.
 - `ShopViewController`: Manages the display of the shop page, handling user navigation and data presentation.
 
-## Testing 🧪
+<h2 id="testing">Testing 🧪</h2>
 
 ### Unit Testing
 
@@ -207,7 +195,7 @@ Example:
 Example:
 - `testBattlePassInfoStruct()`: Simulates user navigation to the Battle Pass screen and verifies that the correct information (e.g., start date, end date) is displayed.
 
-## Documentation 📚
+<h2 id="documentation">Documentation 📚</h2>
 All significant classes, methods, and properties in the ItemShopPlus project are documented using Apple’s standard DocC format.
 This format generates human-readable documentation directly from the source code, making it easy for developers to navigate through the project.
 
@@ -230,7 +218,8 @@ private func downloadImage(for item: WidgetShopItem, completion: @escaping (UIIm
 }
 ```
 
-## Requirements ✅
+<h2 id="requirements">Requirements ✅</h2>
+
 - Xcode 15.0+
 - Swift 5.0+
 - iOS 16.0+

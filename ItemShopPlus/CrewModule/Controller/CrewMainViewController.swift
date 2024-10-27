@@ -7,31 +7,47 @@
 
 import UIKit
 import AVKit
+import OSLog
 
+/// A log object to organize messages
+private let logger = Logger(subsystem: "CrewModule", category: "MainController")
+
+/// The view controller for displaying the Crew pack items
 final class CrewMainViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// List of Crew items to be displayed in the collection view
     private var items = [CrewItem]()
+    /// The currently displayed Crew pack, containing information like items, price, and benefits
     private var itemPack = CrewPack.emptyPack
     
+    /// The current currency code selected by the user
     private var currentSectionTitle = Texts.Currency.Code.usd
+    /// The currency code selected in the menu for displaying prices
     private var selectedSectionTitle = Texts.Currency.Code.usd
+    /// Network service responsible for fetching Crew items and related data
     private let networkService = DefaultNetworkService()
     
     // MARK: - UI Elements and Views
     
+    /// View displayed when there is no internet connection
     private let noInternetView = EmptyView(type: .internet)
+    /// AVPlayerViewController used to display item preview videos
     private var playerViewController = AVPlayerViewController()
+    /// Activity indicator displayed during network requests
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    /// Refresh control for reloading Crew items in the collection view
     private let refreshControl = UIRefreshControl()
     
+    /// Navigation bar button for navigating back to the main screen
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToMain
         return button
     }()
     
+    /// Navigation bar button for displaying the currently selected currency symbol
     private let symbolButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .CurrencySymbol.usd
@@ -39,6 +55,7 @@ final class CrewMainViewController: UIViewController {
         return button
     }()
     
+    /// Collection view for displaying Crew items
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -55,6 +72,7 @@ final class CrewMainViewController: UIViewController {
     // MARK: - ViewController Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
+        // Fetches the Crew items if the list is currently empty
         guard items.isEmpty else { return }
         getItems(isRefreshControl: false)
     }
@@ -77,14 +95,18 @@ final class CrewMainViewController: UIViewController {
     
     // MARK: - Actions
     
+    /// Called when the refresh control is triggered, refreshing the Crew items in the collection view
     @objc private func refreshWithControl() {
         getItems(isRefreshControl: true)
     }
     
+    /// Called when the refresh button is pressed in the noInternetView, fetching without displaying the refresh control indicator
     @objc private func refreshWithoutControl() {
         getItems(isRefreshControl: false)
     }
     
+    /// Handles tap gestures on the collection view cells, animating the cell and presenting its details
+    /// - Parameter gestureRecognizer: The tap gesture recognizer object
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: location) {
@@ -92,6 +114,7 @@ final class CrewMainViewController: UIViewController {
         }
     }
     
+    /// Restarts the video when it reaches the end
     @objc private func videoDidEnd() {
         self.playerViewController.player?.seek(to: .zero, completionHandler: { _ in
             self.playerViewController.player?.play()
@@ -100,6 +123,8 @@ final class CrewMainViewController: UIViewController {
     
     // MARK: - Networking
     
+    /// Fetches the Crew items from the network
+    /// - Parameter isRefreshControl: Indicates whether to show the refresh control indicator
     private func getItems(isRefreshControl: Bool) {
         if isRefreshControl {
             self.refreshControl.beginRefreshing()
@@ -139,6 +164,7 @@ final class CrewMainViewController: UIViewController {
                     self?.symbolButton.isEnabled = true
                     self?.menuSetup()
                 }
+                logger.info("CrewPack loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
@@ -146,11 +172,13 @@ final class CrewMainViewController: UIViewController {
                     self?.noInternetView.isHidden = false
                     self?.symbolButton.isEnabled = false
                 }
-                print(error)
+                logger.error("CrewPack loading error: \(error.localizedDescription)")
             }
         }
     }
     
+    /// Fetches the video for a selected Crew item and displays it
+    /// - Parameter index: The index of the item in the collection view
     private func getVideo(index: Int) {
         let item = items[index]
         DispatchQueue.main.async {
@@ -180,27 +208,32 @@ final class CrewMainViewController: UIViewController {
                     }
                     self?.videoSetup(videoURL: url)
                 }
+                logger.info("Crew item video loading success")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.previewSetup(index: index)
                 }
-                print(error)
+                logger.error("Crew item video loading error: \(error.localizedDescription)")
             }
         }
     }
     
     // MARK: - UserDefaults Currency
     
+    /// Manages the storage and retrieval of currency data in UserDefaults
+    /// - Parameter request: The action to perform with the currency data (get, save, or delete)
     private func currencyMemoryManager(request: CurrencyManager) {
         switch request {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
                 currentSectionTitle = retrievedString
+                logger.info("Currency data retrieved from UserDefaults: \(retrievedString)")
             } else {
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no currency data in UserDefaults")
             }
         case .save:
             UserDefaults.standard.set(currentSectionTitle, forKey: Texts.CrewPage.currencyKey)
+            logger.info("New currency data saved to UserDefaults")
         case .delete:
             UserDefaults.standard.removeObject(forKey: Texts.CrewPage.currencyKey)
         }
@@ -208,6 +241,8 @@ final class CrewMainViewController: UIViewController {
     
     // MARK: - Changing Currency Methods
     
+    /// Updates the UI and prices when a new currency is selected
+    /// - Parameter price: The new currency price to display
     private func updateAll(price: CrewPrice) {
         guard selectedSectionTitle != price.code else { return }
         updateMenuState(for: price.code)
@@ -217,6 +252,8 @@ final class CrewMainViewController: UIViewController {
         footerUpdate(price: price)
     }
     
+    /// Updates the footer view with the new currency price
+    /// - Parameter price: The new currency price to display in the footer
     private func footerUpdate(price: CrewPrice) {
         let visibleSections = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter)
         for indexPath in visibleSections {
@@ -228,6 +265,8 @@ final class CrewMainViewController: UIViewController {
     
     // MARK: - Cell Animation Method
     
+    /// Animates the selection of a collection view cell and presents item details
+    /// - Parameter indexPath: The index path of the selected cell
     private func animateCellSelection(at indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
@@ -248,6 +287,7 @@ final class CrewMainViewController: UIViewController {
     
     // MARK: - UI Setups
     
+    /// Sets up the navigation bar, including the currency symbol and title
     private func navigationBarSetup() {
         title = Texts.CrewPage.title
         
@@ -259,6 +299,7 @@ final class CrewMainViewController: UIViewController {
         symbolButton.image = SelectingMethods.selectCurrency(type: currentSectionTitle)
     }
     
+    /// Sets up the menu for currency selection and initializes it with the available options
     private func menuSetup() {
         let prices = itemPack.price.filter( {
             SelectingMethods.selectCurrency(type: $0.code) != UIImage()
@@ -277,7 +318,9 @@ final class CrewMainViewController: UIViewController {
         symbolButton.menu = UIMenu(title: "", children: children)
         footerUpdate(price: curPrice)
     }
-
+    
+    /// Updates the menu state to reflect the currently selected currency
+    /// - Parameter sectionTitle: The currency code of the newly selected currency
     private func updateMenuState(for sectionTitle: String) {
         guard selectedSectionTitle != sectionTitle else { return }
         if let currentAction = symbolButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
@@ -289,6 +332,8 @@ final class CrewMainViewController: UIViewController {
         selectedSectionTitle = sectionTitle
     }
     
+    /// Prepares and presents a preview of a selected item
+    /// - Parameter index: The index of the selected item
     private func previewSetup(index: Int) {
         let item = self.items[index]
         let image = item.image
@@ -302,6 +347,8 @@ final class CrewMainViewController: UIViewController {
         self.present(navVC, animated: true)
     }
     
+    /// Configures the video player with the specified URL and presents it
+    /// - Parameter videoURL: The URL of the video to be displayed
     private func videoSetup(videoURL: URL) {
         let player = AVPlayer(url: videoURL)
         playerViewController.player = player
@@ -313,11 +360,13 @@ final class CrewMainViewController: UIViewController {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true)
+            logger.info("Audio session set up")
         } catch {
-            print("Error setting audio session:", error)
+            logger.error("Error setting audio session: \(error)")
         }
     }
     
+    /// Sets up the collection view with delegates, data sources, and constraints
     private func collectionViewSetup() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -336,6 +385,7 @@ final class CrewMainViewController: UIViewController {
         ])
     }
     
+    /// Sets up the noInternetView for displaying when there is no internet connection
     private func noInternetSetup() {
         view.addSubview(noInternetView)
         noInternetView.translatesAutoresizingMaskIntoConstraints = false
@@ -406,6 +456,7 @@ extension CrewMainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
+            // Header setup
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
                 fatalError("Failed to dequeue CollectionHeaderReusableView in CrewMainViewController")
             }
@@ -413,6 +464,7 @@ extension CrewMainViewController: UICollectionViewDelegateFlowLayout {
             return headerView
             
         } else if kind == UICollectionView.elementKindSectionFooter {
+            // Footer setup
             guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CrewFooterReusableView.identifier, for: indexPath) as? CrewFooterReusableView else {
                 fatalError("Failed to dequeue CrewFooterReusableView in CrewMainViewController")
             }

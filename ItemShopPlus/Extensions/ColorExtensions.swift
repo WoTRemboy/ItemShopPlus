@@ -8,7 +8,11 @@
 import UIKit
 import SwiftUI
 
+// MARK: - UIKit UIColor Extension
+
 extension UIColor {
+    
+    /// A collection of background colors used for various UI elements
     enum BackColors {
         static let backElevated = UIColor(named: "BackElevated")
         static let backiOSPrimary = UIColor(named: "BackiOSPrimary")
@@ -23,6 +27,7 @@ extension UIColor {
         static let backTable = UIColor(named: "BackTable")
     }
     
+    /// A collection of label colors for text and informational elements
     enum LabelColors {
         static let labelDisable = UIColor(named: "LabelDisable")
         static let labelNotification = UIColor(named: "LabelNotification")
@@ -32,6 +37,7 @@ extension UIColor {
         static let labelTertiary = UIColor(named: "LabelTertiary")
     }
     
+    /// A collection of support colors for buttons, separators, navigation bars, and overlays
     enum SupportColors {
         static let supportButton = UIColor(named: "SupportButton")
         static let supportNavBar = UIColor(named: "SupportNavBar")
@@ -41,22 +47,35 @@ extension UIColor {
         static let supportTextView = UIColor(named: "SupportTextView")
     }
     
+    /// A collection of colors related to quest bundles
     enum QuestsBundleColors {
         static let bundleBackground = UIColor(named: "BundleImageBackground")
     }
     
+    /// Colors for icons used across the app
     enum IconColors {
         static let foregroundPages = UIColor(named: "ForegroundPages")
         static let backgroundPages = UIColor(named: "BackgroundPages")
         static let LootItemColor = UIColor(named: "LootItemColor")
     }
     
+    /// A collection of shadow colors used in the app
     enum Shadows {
         static let primary = UIColor.black.cgColor
     }
 }
 
+// MARK: - SwiftUI Color Extension
+
 extension Color {
+    
+    /// Colors used in the onboarding screen in SwiftUI
+    enum OnboardingScreen {
+        static let orange = Color("BackgroundOrange")
+        static let green = Color("BackgroundGreen")
+    }
+    
+    /// Colors used for widgets
     enum Widget {
         static let placeholder = Color("WidgetPlaceholder")
     }

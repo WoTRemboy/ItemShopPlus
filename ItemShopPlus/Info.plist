@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>API_TOKEN</key>
+	<string>8b1729e0-29cc1b7d-71873902-21bf48f0</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This application will save item photos to Library</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

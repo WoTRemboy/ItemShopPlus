@@ -6,19 +6,36 @@
 //
 
 import UIKit
+import OSLog
 
+/// A log object to organize messages
+private let logger = Logger(subsystem: "BundlesModule", category: "MainController")
+
+/// The view controller for displaying and managing bundle items in the shop
 final class BundlesMainViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    /// The list of bundle items
     private var items = [BundleItem]()
+    /// The currently selected currency section
     private var currentSectionTitle = Texts.Currency.Code.usd
+    /// The previously selected currency section
     private var selectedSectionTitle = Texts.Currency.Code.usd
     
+    /// The network service responsible for fetching bundle data
     private let networkService = DefaultNetworkService()
     
+    // MARK: - UI Elements
+    
+    /// A view displayed when there is no internet connection
     private let noInternetView = EmptyView(type: .internet)
+    /// The activity indicator displayed when loading data
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    /// The refresh control for reloading the bundle list
     private let refreshControl = UIRefreshControl()
     
+    /// The collection view for displaying the bundle items
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -30,18 +47,22 @@ final class BundlesMainViewController: UIViewController {
         return collectionView
     }()
     
+    /// A back button to navigate to the main screen
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToMain
         return button
     }()
     
+    /// A button for selecting the currency symbol
     private let symbolButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .CurrencySymbol.usd
         button.isEnabled = false
         return button
     }()
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,15 +77,20 @@ final class BundlesMainViewController: UIViewController {
         getShop(isRefreshControl: false)
     }
     
+    // MARK: - Actions
     
+    /// Fetches the shop bundles either from a refresh control
     @objc private func refreshWithControl() {
         getShop(isRefreshControl: true)
     }
     
+    /// Fetches the shop bundles without using a refresh control
     @objc private func refreshWithoutControl() {
         getShop(isRefreshControl: false)
     }
     
+    /// Handles tap gestures on the collection view cells, animating the cell and presenting its details
+    /// - Parameter gestureRecognizer: The tap gesture recognizer object
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: location) {
@@ -72,6 +98,8 @@ final class BundlesMainViewController: UIViewController {
         }
     }
     
+    /// Retrieves shop data from the network and updates the UI accordingly
+    /// - Parameter isRefreshControl: Indicates whether to show the refresh control indicator
     private func getShop(isRefreshControl: Bool) {
         if isRefreshControl {
             self.refreshControl.beginRefreshing()
@@ -109,6 +137,7 @@ final class BundlesMainViewController: UIViewController {
                         }, completion: nil)
                     }
                 }
+                logger.info("Bundles items loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.items.removeAll()
@@ -117,20 +146,23 @@ final class BundlesMainViewController: UIViewController {
                     self?.noInternetView.isHidden = false
                     self?.symbolButton.isEnabled = false
                 }
-                print(error)
+                logger.error("Bundles items loading error: \(error.localizedDescription)")
             }
         }
     }
     
-    // MARK: - UserDefaults Currency
+    // MARK: - Currency Management
     
+    /// Manages saving, retrieving, or deleting the selected currency from `UserDefaults`
+    /// - Parameter request: The type of action to perform (get, save, delete)
     private func currencyMemoryManager(request: CurrencyManager) {
         switch request {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
                 currentSectionTitle = retrievedString
+                logger.info("Currency data retrieved from UserDefaults: \(retrievedString)")
             } else {
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no currency data in UserDefaults")
             }
         case .save:
             UserDefaults.standard.set(currentSectionTitle, forKey: Texts.CrewPage.currencyKey)
@@ -138,9 +170,11 @@ final class BundlesMainViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: Texts.CrewPage.currencyKey)
         }
     }
-    
-    // MARK: - Changing Currency Methods
-    
+        
+    /// Updates the bundle prices with the selected currency and reloads the data
+    /// - Parameters:
+    ///   - price: The new `BundlePrice` to apply
+    ///   - animated: A boolean to determine if the change should be animated
     private func updateAll(price: BundlePrice, animated: Bool = true) {
         guard selectedSectionTitle != price.code else { return }
         updateMenuState(for: price.code)
@@ -149,6 +183,11 @@ final class BundlesMainViewController: UIViewController {
         priceLabelUpdate(type: price.type, reload: true, animated: animated)
     }
     
+    /// Updates the price labels in all visible cells based on the selected currency
+    /// - Parameters:
+    ///   - type: The `Currency` to apply to the prices
+    ///   - reload: Whether the collection view should be reloaded
+    ///   - animated: A boolean to determine if the update should be animated
     private func priceLabelUpdate(type: Currency, reload: Bool, animated: Bool = true) {
         for i in 0..<items.count {
             items[i].currency = type
@@ -168,6 +207,9 @@ final class BundlesMainViewController: UIViewController {
         }
     }
     
+    /// Converts the `BundlePrice` to a formatted string based on the currency's symbol position
+    /// - Parameter price: The `BundlePrice` to format
+    /// - Returns: A formatted string of the price
     private func priceDefinition(price: BundlePrice) -> String {
         let symbolPosition = SelectingMethods.selectCurrencyPosition(type: price.type)
         guard price.price != 0.0 else { return Texts.BundleCell.free }
@@ -181,8 +223,10 @@ final class BundlesMainViewController: UIViewController {
         }
     }
     
-    // MARK: - Animating Cell Method
+    // MARK: - Cell Animation
     
+    /// Animates the selection of a bundle cell and presents the details view for the selected bundle
+    /// - Parameter indexPath: The index path of the selected cell
     private func animateCellSelection(at indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         
@@ -203,6 +247,9 @@ final class BundlesMainViewController: UIViewController {
         }
     }
     
+    // MARK: - Menu Setup
+    
+    /// Sets up the currency menu for switching between different currencies
     private func menuSetup() {
         guard let prices = items.first?.prices.filter( {
             SelectingMethods.selectCurrency(type: $0.code) != UIImage()
@@ -222,6 +269,8 @@ final class BundlesMainViewController: UIViewController {
         priceLabelUpdate(type: curPrice.type, reload: false)
     }
     
+    /// Updates the menu state to reflect the currently selected currency
+    /// - Parameter sectionTitle: The title of the currently selected section
     private func updateMenuState(for sectionTitle: String) {
         guard selectedSectionTitle != sectionTitle else { return }
         if let currentAction = symbolButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
@@ -233,6 +282,9 @@ final class BundlesMainViewController: UIViewController {
         selectedSectionTitle = sectionTitle
     }
     
+    // MARK: - UI Setup
+    
+    /// Configures the navigation bar for the view
     private func navigationBarSetup() {
         title = Texts.BundlesPage.title
         
@@ -244,6 +296,7 @@ final class BundlesMainViewController: UIViewController {
         symbolButton.image = SelectingMethods.selectCurrency(type: currentSectionTitle)
     }
     
+    /// Configures the collection view, its delegate, and its layout
     private func collectionViewSetup() {
         view.addSubview(collectionView)
         collectionView.refreshControl = refreshControl
@@ -261,6 +314,7 @@ final class BundlesMainViewController: UIViewController {
         ])
     }
     
+    /// Configures the no-internet view for cases when the network is unavailable
     private func noInternetSetup() {
         view.addSubview(noInternetView)
         noInternetView.translatesAutoresizingMaskIntoConstraints = false
@@ -278,6 +332,7 @@ final class BundlesMainViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegate & UICollectionViewDataSource
 
 extension BundlesMainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     

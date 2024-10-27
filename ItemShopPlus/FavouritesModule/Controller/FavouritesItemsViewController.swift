@@ -7,19 +7,29 @@
 
 import UIKit
 
+/// A view controller responsible for managing the user's favorite items in the shop
 final class FavouritesItemsViewController: UIViewController {
     
+    // MARK: - Properties
+        
+    /// Array to store the favorite items
     private var items = [ShopItem]()
+    /// Core Data manager for the favorite items
     private let coreDataBase = FavouritesDataBaseManager.shared
     
+    // MARK: - UI Elements
+    
+    /// Navigation bar back button
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToMain
         return button
     }()
     
+    /// View displayed when there are no favorite items
     private let emptyView = EmptyView(type: .favourite)
     
+    /// Collection view to display the favorite items
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -30,11 +40,14 @@ final class FavouritesItemsViewController: UIViewController {
         collectionView.register(FavouritesFooterReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FavouritesFooterReusableView.identifier)
         return collectionView
     }()
+    
+    // MARK: - ViewController Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .BackColors.backDefault
         
+        // Load favorite items from the Core Data database
         coreDataBase.loadFromDataBase()
         items = coreDataBase.items.sorted { $0.name < $1.name }
         
@@ -44,6 +57,10 @@ final class FavouritesItemsViewController: UIViewController {
         setupUI()
     }
     
+    // MARK: - Actions
+    
+    /// Handles the press on the favorite button to toggle favorite status
+    /// - Parameter sender: The button that was pressed
     @objc private func favouriteButtonPress(_ sender: UIButton) {
         guard let cell = sender.superview as? ShopCollectionViewCell,
               let indexPath = collectionView.indexPath(for: cell)
@@ -52,6 +69,8 @@ final class FavouritesItemsViewController: UIViewController {
         favouriteItemToggle(at: indexPath)
     }
     
+    /// Handles tapping on the item cell for selection and animation
+    /// - Parameter gestureRecognizer: The gesture recognizer responsible for detecting the tap
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: location) {
@@ -59,6 +78,8 @@ final class FavouritesItemsViewController: UIViewController {
         }
     }
     
+    /// Animates the cell when it is selected
+    /// - Parameter indexPath: The index path of the selected cell
     private func animateCellSelection(at indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         let item = items[indexPath.item]
@@ -73,6 +94,8 @@ final class FavouritesItemsViewController: UIViewController {
         }
     }
     
+    /// Toggles the favorite status of the item and updates the UI accordingly
+    /// - Parameter indexPath: The index path of the item to be toggled
     private func favouriteItemToggle(at indexPath: IndexPath) {
         let item = items[indexPath.item]
         items[indexPath.item].favouriteToggle()
@@ -99,6 +122,8 @@ final class FavouritesItemsViewController: UIViewController {
         }
     }
     
+    /// Updates the footer with the total price
+    /// - Parameter price: The new total price to display in the footer
     private func footerUpdate(to price: Int) {
         let visibleSections = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter)
         for indexPath in visibleSections {
@@ -108,6 +133,9 @@ final class FavouritesItemsViewController: UIViewController {
         }
     }
     
+    // MARK: - UI Setup Methods
+    
+    /// Sets up the navigation bar for this view controller
     private func navigationBarSetup() {
         title = Texts.FavouritesPage.title
         
@@ -115,6 +143,7 @@ final class FavouritesItemsViewController: UIViewController {
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
+    /// Sets up the collection view for displaying the favorite items
     private func collectionViewSetup() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -125,6 +154,7 @@ final class FavouritesItemsViewController: UIViewController {
         }
     }
     
+    /// Sets up the UI components and their layout
     private func setupUI() {
         view.addSubview(collectionView)
         view.addSubview(emptyView)
@@ -168,6 +198,7 @@ extension FavouritesItemsViewController: UICollectionViewDelegate, UICollectionV
         let item = items[indexPath.item]
         cell.configurate(with: item.images, item.name, item.price, item.regularPrice, item.banner, item.video, favourite: item.isFavourite, grantedCount: item.granted.filter({ $0?.name != "" }).count, width)
         
+        // Tap gesture setup
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         
@@ -206,6 +237,7 @@ extension FavouritesItemsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        // Footer setup
         guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FavouritesFooterReusableView.identifier, for: indexPath) as? FavouritesFooterReusableView else {
             fatalError("Failed to dequeue FavouritesFooterReusableView in FavouritesItemsViewController")
         }

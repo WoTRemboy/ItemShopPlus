@@ -6,26 +6,41 @@
 //
 
 import UIKit
+import OSLog
 import Kingfisher
 
+/// A log object to organize messages
+private let logger = Logger(subsystem: "NetworkModule", category: "ImageLoader")
+
+/// A class for loading and caching images from network requests using Kingfisher
 final class ImageLoader {
     
     // MARK: - Properties
     
+    /// The file manager used for managing the cache director
     private static let fileManager = FileManager.default
+    /// The URL for the cache directory where images will be stored
     private static let cacheDirectory: URL = {
         do {
             let cachesDirectory = try fileManager.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            logger.info("Cache directory URL: \(cachesDirectory)")
             return cachesDirectory.appendingPathComponent("ImageCache")
         }
         catch {
-            print("Cache directory URL error: \(error)")
+            logger.error("Cache directory URL error: \(error)")
         }
         return URL(fileURLWithPath: "")
     }()
     
     // MARK: - Loading Methods
     
+    /// Loads an image from a URL string and resizes it based on the provided size
+    /// The image is cached after it's retrieved
+    /// - Parameters:
+    ///   - urlString: The URL string of the image
+    ///   - size: The target size to which the image will be resized
+    ///   - completion: Completion handler that returns the image
+    /// - Returns: A Kingfisher `DownloadTask` that can be used to manage the download
     static func loadImage(urlString: String?, size: CGSize, completion: @escaping (UIImage?) -> Void) -> DownloadTask? {
         guard let urlString = urlString else {
             completion(nil)
@@ -61,6 +76,12 @@ final class ImageLoader {
         return task
     }
     
+    /// Loads and sets the image to a `UIImageView` while applying a fade-in animation once the image is loaded
+    /// - Parameters:
+    ///   - imageUrlString: The URL string of the image
+    ///   - imageView: The `UIImageView` where the image will be displayed
+    ///   - size: The target size for the image
+    /// - Returns: A Kingfisher `DownloadTask` for managing the download
     static func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView, size: CGSize) -> DownloadTask? {
         return loadImage(urlString: imageUrlString, size: size) { image in
             DispatchQueue.main.async {
@@ -77,18 +98,25 @@ final class ImageLoader {
     
     // MARK: - Cancel Method
     
+    /// Cancels an ongoing image download task
+    /// - Parameter task: The Kingfisher `DownloadTask` to be canceled
     static func cancelImageLoad(task: DownloadTask?) {
         task?.cancel()
     }
     
     // MARK: - Cache Methods
     
+    /// Creates the cache directory if it doesn't already exist
     private static func createCacheDirectoryIfNeeded() throws {
         if !fileManager.fileExists(atPath: cacheDirectory.path) {
             try fileManager.createDirectory(at: cacheDirectory, withIntermediateDirectories: true)
         }
     }
     
+    /// Caches the image with the specified key
+    /// - Parameters:
+    ///   - image: The `UIImage` to be cached
+    ///   - key: The unique key representing the image URL
     private static func setImageCache(image: UIImage, key: String) {
         do {
             try createCacheDirectoryIfNeeded()
@@ -100,10 +128,13 @@ final class ImageLoader {
                 
             }
         } catch {
-            print("Error saving image to cache: \(error)")
+            logger.error("Error saving image to cache: \(error)")
         }
     }
     
+    /// Retrieves an image from the cache if available
+    /// - Parameter key: The unique key representing the image URL
+    /// - Returns: The cached `UIImage` or `nil` if not found
     private static func getImageFromCache(from key: String) -> UIImage? {
         guard let encodedKey = key.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             return nil
@@ -119,6 +150,10 @@ final class ImageLoader {
         return UIImage(data: imageData)
     }
     
+    /// Cleans the cache by either removing all cached items or removing items based on expiration time
+    /// - Parameters:
+    ///   - entire: If `true`, clears the entire cache. If `false`, removes only expired items
+    ///   - completion: Completion handler to be called once cache cleaning is done
     static func cleanCache(entire: Bool, completion: @escaping () -> Void) {
         do {
             let cacheExpirationInterval: TimeInterval = 24 * 60 * 60 // 24 hours
@@ -136,12 +171,15 @@ final class ImageLoader {
                     }
                 }
             }
+            logger.info("Cash cleaned successfully")
             completion()
         } catch {
-            print("Error cleaning cache: \(error)")
+            logger.error("Error cleaning cache: \(error)")
         }
     }
     
+    /// Calculates the total cache size in megabytes
+    /// - Returns: The cache size in megabytes
     static func cacheSize() -> Float {
         do {
             let contents = try fileManager.contentsOfDirectory(at: cacheDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
@@ -157,20 +195,23 @@ final class ImageLoader {
             }
             
             let sizeInMegabytes = Float(totalSize) / bytesInMegabyte
+            logger.info("Calculated image cache size: \(sizeInMegabytes) MB")
             return sizeInMegabytes
         } catch {
-            print("Error calculating cache size: \(error)")
+            logger.error("Error calculating image cache size: \(error)")
             return 0
         }
     }
     
     // MARK: - Recently Used Time Marks Methods
     
+    /// Updates the access time of a cached image to mark it as recently used
+    /// - Parameter cacheURL: The URL of the cached image
     private static func markAccessTime(for cacheURL: URL) {
         do {
             try fileManager.setAttributes([.modificationDate: Date()], ofItemAtPath: cacheURL.path)
         } catch {
-            print("Error marking access time for \(cacheURL): \(error)")
+            logger.error("Error marking access time for \(cacheURL): \(error)")
         }
     }
 }

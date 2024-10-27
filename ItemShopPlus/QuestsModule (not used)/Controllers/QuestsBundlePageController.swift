@@ -72,7 +72,7 @@
 //                }
 //                
 //            case .failure(let error):
-//                print(error)
+//                logger.error(error)
 //            }
 //        }
 //    }

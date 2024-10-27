@@ -7,8 +7,12 @@
 
 import UIKit
 
-class MainPageBundlesHeaderView: UIView {
+/// A view that displays the header for the bundles section on the main page
+final class MainPageBundlesHeaderView: UIView {
     
+    // MARK: - UI Elements
+    
+    /// The title label for the bundles section
     private let title: UILabel = {
         let label = UILabel()
         label.font = .segmentTitle()
@@ -18,12 +22,14 @@ class MainPageBundlesHeaderView: UIView {
         return label
     }()
     
+    /// The image view for the chevron icon
     private let buttonImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = .MainButtons.chevron
         return imageView
     }()
     
+    /// The button that navigates to all bundles
     private let allButton: UIButton = {
         let button = UIButton(type: .system)
         let text = Texts.ShopPage.allMenu
@@ -33,6 +39,7 @@ class MainPageBundlesHeaderView: UIView {
         ]
         let attributedText = NSMutableAttributedString(string: text, attributes: textAttributes)
         
+        // Append chevron image to the button title
         if let chevronImage = UIImage.MainButtons.chevron {
             let chevronAttachment = NSTextAttachment()
             chevronAttachment.image = chevronImage
@@ -48,11 +55,16 @@ class MainPageBundlesHeaderView: UIView {
         return button
     }()
     
+    // MARK: - Initializers
+    
     convenience init() {
         self.init(frame: .null)
         setupUI()
     }
     
+    // MARK: - UI Setup
+    
+    /// Configures the user interface elements and layout constraints
     private func setupUI() {
         addSubview(title)
         addSubview(allButton)

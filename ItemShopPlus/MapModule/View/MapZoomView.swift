@@ -7,16 +7,20 @@
 
 import UIKit
 
+/// A custom scroll view subclass that provides zooming functionality for an image
 final class MapZoomView: UIScrollView {
     
     // MARK: - Properties
         
-    private var initialTouchPoint: CGPoint = CGPoint.zero
+    /// Stores the initial touch point for gesture recognition
+    private var initialTouchPoint: CGPoint = .zero
+    /// Stores the center point of the superview, used for calculating zooming
     private var centerSuperView: CGPoint = .zero
     
     // MARK: - UI Elements
     
-    let imageView: UIImageView = {
+    /// The image view displayed inside the scroll view, which can be zoomed
+    internal let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -36,6 +40,8 @@ final class MapZoomView: UIScrollView {
     
     // MARK: - Action
     
+    /// Handles double-tap gestures to zoom in and out
+    /// - Parameter gesture: The double-tap gesture recognizer
     @objc private func handleDoubleTap(gesture: UITapGestureRecognizer) {
         if zoomScale == 1 {
             zoom(to: zoomForScale(scale: 2, center: gesture.location(in: gesture.view)), animated: true)
@@ -46,10 +52,16 @@ final class MapZoomView: UIScrollView {
     
     // MARK: - Zoom Rules
     
+    /// Calculates the zoom rectangle based on the scale and center point of the zoom
+    /// - Parameters:
+    ///   - scale: The desired zoom scale
+    ///   - center: The center point where the zoom should occur
+    /// - Returns: A CGRect representing the zoom area
     private func zoomForScale(scale: CGFloat, center: CGPoint) -> CGRect {
         var zoomRect = CGRect.zero
         zoomRect.size.height = imageView.frame.size.height / scale
         zoomRect.size.width = imageView.frame.size.width / scale
+        
         let centerNew = imageView.convert(center, from: self)
         zoomRect.origin.x = centerNew.x - (zoomRect.size.width / 2.0)
         zoomRect.origin.y = zoomRect.size.height / 2.0
@@ -57,7 +69,8 @@ final class MapZoomView: UIScrollView {
     }
     
     // MARK: - UI Setups
-
+    
+    /// Sets up the image view within the scroll view, applying constraints to center it
     private func setupImageView() {
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +83,7 @@ final class MapZoomView: UIScrollView {
         ])
     }
     
+    /// Configures the scroll view to enable zooming and sets up gesture recognizers
     private func setupScrollView() {
         minimumZoomScale = 1
         maximumZoomScale = 5
@@ -78,6 +92,7 @@ final class MapZoomView: UIScrollView {
         delegate = self
         scrollsToTop = false
         
+        // Adds double-tap gesture for zooming
         let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
         doubleTapRecognizer.numberOfTapsRequired = 2
         addGestureRecognizer(doubleTapRecognizer)
@@ -88,7 +103,10 @@ final class MapZoomView: UIScrollView {
 
 extension MapZoomView: UIScrollViewDelegate {
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    /// Specifies the view to be zoomed in the scroll view
+    /// - Parameter scrollView: The scroll view that is performing the zoom
+    /// - Returns: The view to zoom (in this case, the `imageView`)
+    internal func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
 }

@@ -6,12 +6,22 @@
 //
 
 import Foundation
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "StatsModule", category: "JSONParse")
+
+// MARK: - Stats JSON Parsing
 
 extension Stats {
+    /// Parses JSON data to create a `Stats` object
+    /// - Parameter sharingJSON: The JSON data received from the server
+    /// - Returns: A `Stats` object if parsing succeeds, or `nil` if required data is missing
     static func sharingParse(sharingJSON: Any) -> Stats? {
         guard let globalData = sharingJSON as? [String: Any],
               let result = globalData["result"] as? Bool
         else {
+            logger.error("Failed to parse Stats sharing data")
             return nil
         }
         let name = globalData["name"] as? String ?? "Error"
@@ -41,11 +51,17 @@ extension Stats {
             }
         }
         
+        logger.info("Successfully parsed Stats data")
         return Stats(name: name, season: season, level: level, process: process, result: result, resultMessage: resultMessage ?? resultError, history: history, global: global, input: inputs)
     }
 }
 
+// MARK: - Level History JSON Parsing
+
 extension LevelHistory {
+    /// Parses JSON data to create a `LevelHistory` object
+    /// - Parameter sharingJSON: The JSON data received from the server
+    /// - Returns: A `LevelHistory` object if parsing succeeds, or `nil` if required data is missing
     static func sharingParce(sharingJSON: Any) -> LevelHistory? {
         guard let globalData = sharingJSON as? [String: Any],
               let season = globalData["season"] as? Int,
@@ -58,7 +74,12 @@ extension LevelHistory {
     }
 }
 
+// MARK: - Section Stats JSON Parsing
+
 extension SectionStats {
+    /// Parses JSON data to create a `SectionStats` object
+    /// - Parameter sharingJSON: The JSON data received from the server
+    /// - Returns: A `SectionStats` object if parsing succeeds, or `nil` if required data is missing
     static func sharingParce(sharingJSON: Any) -> SectionStats? {
         guard let globalData = sharingJSON as? [String: Any],
               let topOne = globalData["placetop1"] as? Int,
@@ -83,7 +104,14 @@ extension SectionStats {
     }
 }
 
+// MARK: - Input Stats JSON Parsing
+
 extension InputStats {
+    /// Parses JSON data to create an `InputStats` object
+    /// - Parameters:
+    ///   - input: The input method used (e.g., "keyboardmouse", "gamepad", "touch")
+    ///   - sharingJSON: The JSON data received from the server
+    /// - Returns: An `InputStats` object if parsing succeeds, or `nil` if required data is missing
     static func sharingParce(input: String, sharingJSON: Any) -> InputStats? {
         guard let globalData = sharingJSON as? [String: Any]
         else {

@@ -6,8 +6,17 @@
 //
 
 import Foundation
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "LootDetailsModule", category: "JSONParse")
+
+// MARK: - LootDetailsItem JSON Parsing
 
 extension LootDetailsItem {
+    /// Parses the provided JSON object into a `LootDetailsItem` object
+    /// - Parameter sharingJSON: The raw JSON object that contains the loot item data
+    /// - Returns: A `LootDetailsItem` object if the parsing is successful, otherwise, `nil`
     static func sharingParse(sharingJSON: Any) -> LootDetailsItem? {
         guard let data = sharingJSON as? [String: Any],
               let id = data["id"] as? String,
@@ -20,9 +29,11 @@ extension LootDetailsItem {
               let mainImage = imageData["icon"] as? String,
               let rarityImage = imageData["background"] as? String
         else {
+            logger.error("Failed to parse LootDetailsItem sharing data")
             return nil
         }
         
+        // Splitting ID to filter out certain invalid items
         let splitedID = id.split(separator: "_")
         guard !splitedID.contains("Juno"), !splitedID.contains("Coal") else { return nil }
         
@@ -30,12 +41,15 @@ extension LootDetailsItem {
         let rarity = SelectingMethods.selectRarity(rarityText: rarityData)
         let type = LootItemType.selectingLootType(type: typeData)
         
+        // Parse item stats
         let stats = LootItemStats.sharingParse(sharingJSON: statsData) ?? LootItemStats.emptyStats
         guard stats.availableStats > 0 else { return nil }
         
+        // Parse search tags
         let searchTagsData = data["searchTags"] as? String
         let searchTags = searchTagsData?.split(separator: " ").map({ String($0) }) ?? []
         
+        // Filtering out specific unwanted IDs
         guard id != "WID_HighTower_Mango_DualPistol_Auto_Heavy_Athena",
               id != "WID_WaffleTruck_SMG_RunGun",
               id != "WID_Assault_Chrono_BackPackMiniGun_Athena_R",
@@ -71,7 +85,12 @@ extension LootDetailsItem {
     }
 }
 
+// MARK: - LootItemStats JSON Parsing
+
 extension LootItemStats {
+    /// Parses the provided JSON object into a `LootItemStats` object
+    /// - Parameter sharingJSON: The raw JSON object that contains the item stats data
+    /// - Returns: A `LootItemStats` object if the parsing is successful, otherwise, `nil`
     static func sharingParse(sharingJSON: Any) -> LootItemStats? {
         guard let data = sharingJSON as? [String: Any],
               let dmgBullet = data["DmgPB"] as? Double,
@@ -86,6 +105,7 @@ extension LootItemStats {
             return nil
         }
         
+        // Counting available stats
         var availableStats = 0
         if dmgBullet != 0 { availableStats += 1 }
         if firingRate != 0 { availableStats += 1 }

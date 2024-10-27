@@ -8,11 +8,18 @@
 import UIKit
 import FirebaseMessaging
 
-class SettingsTableViewCell: UITableViewCell {
+/// A custom cell designed to represent different settings options in the app's settings screen
+final class SettingsTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    
+    /// The unique identifier for dequeuing the cell
     static let identifier = Texts.SettingsCell.identifier
     
+    /// The switch control used for toggle options like notifications
     internal let switchControl = UISwitch()
+    
+    // MARK: - Initializers
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
@@ -22,10 +29,18 @@ class SettingsTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    // MARK: - Public Configuration Methods
+    
+    /// Updates the detail text of the cell
+    /// - Parameter detail: The text to display in the detail text label of the cell
     public func updateDetails(detail: String) {
         detailTextLabel?.text = detail
     }
     
+    /// Sets up the cell based on the `SettingType` and optional details
+    /// - Parameters:
+    ///   - type: The type of the setting, which determines the title, icon, and cell configuration
+    ///   - details: An optional detail string that provides extra information (e.g., current selection or value)
     public func setupCell(type: SettingType, details: String? = nil) {
         switch type {
         case .notifications:
@@ -73,6 +88,9 @@ class SettingsTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    // MARK: - UI Setup Methods
+    
+    /// Sets up the switch control for settings that involve toggling options (like notifications)
     private func switchSetup() {
         addSubview(switchControl)
         switchControl.translatesAutoresizingMaskIntoConstraints = false
@@ -85,6 +103,7 @@ class SettingsTableViewCell: UITableViewCell {
         ])
     }
     
+    /// Sets up the UI layout and constraints for the cell's components, including the image, text, and switch control
     private func setupUI() {
         guard let imageView else { return }
         imageView.translatesAutoresizingMaskIntoConstraints = false

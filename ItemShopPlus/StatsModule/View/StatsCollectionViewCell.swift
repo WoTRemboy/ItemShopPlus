@@ -7,14 +7,17 @@
 
 import UIKit
 
+/// A custom collection view cell that displays statistics related to a specific segment (e.g., global stats, input stats, history)
 final class StatsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    /// The identifier used to dequeue reusable cells of this type
     static let identifier = Texts.StatsCell.identifier
     
     // MARK: - UI Elements and Views
     
+    /// The title label that shows the name of the stats section (e.g., "Global", "Input")
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = String()
@@ -25,6 +28,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// The label for displaying the title of the first stat (e.g., "Wins", "Kills")
     private let firstStatTitleLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.StatsCell.firstStatPlaceholder
@@ -36,6 +40,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// The label for displaying the value of the first stat
     private let firstStatValueLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.StatsCell.statValuePlaceholder
@@ -46,6 +51,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// The label for displaying the title of the second stat
     private let secondStatTitleLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.StatsCell.secondStatPlaceholder
@@ -57,6 +63,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// The label for displaying the value of the second stat
     private let secondStatValueLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.StatsCell.statValuePlaceholder
@@ -67,6 +74,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    /// An image view to display an icon representing the stats section (e.g., global stats, input stats)
     private let sectionImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = .Placeholder.noImage
@@ -75,6 +83,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    /// A separator line placed between the first and second stat value
     private let separatorLine: UIView = {
         let line = UIView()
         line.backgroundColor = .LabelColors.labelDisable
@@ -83,6 +92,11 @@ final class StatsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public Configure Method
     
+    /// Configures the cell with the provided data
+    /// - Parameters:
+    ///   - type: The segment type of the stats (e.g., title, global, input, history)
+    ///   - firstStat: The value of the first statistic
+    ///   - secondStat: The value of the second statistic
     public func configurate(type: StatsSegment, firstStat: Double, secondStat: Double) {
         backgroundColor = .BackColors.backElevated
         layer.cornerRadius = 25
@@ -130,10 +144,13 @@ final class StatsCollectionViewCell: UICollectionViewCell {
         setupUI()
     }
     
+    /// Returns the text of the title label
+    /// - Returns: The current text of the `titleLabel`, or `nil` if not set
     internal func getTitleText() -> String? {
         return titleLabel.text
     }
     
+    /// Updates the border color to match the new trait collection
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
@@ -143,6 +160,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Setup
     
+    /// Sets up the UI elements by adding them to the view and configuring constraints
     private func setupUI() {
         addSubview(sectionImageView)
         addSubview(titleLabel)
@@ -195,6 +213,7 @@ final class StatsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Reusing Preparation
     
+    /// Prepares the cell for reuse by resetting properties such as shadows and borders
     override func prepareForReuse() {
         super.prepareForReuse()
         layer.shadowRadius = 0

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Represents the different types of buttons available on the main page
 enum ButtonType {
     case shop
     case battlePass

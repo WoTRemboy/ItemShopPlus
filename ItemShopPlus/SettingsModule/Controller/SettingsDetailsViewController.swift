@@ -6,23 +6,40 @@
 //
 
 import UIKit
+import OSLog
 
-class SettingsDetailsViewController: UIViewController {
+/// A log object to organize messages
+private let logger = Logger(subsystem: "SettingsModule", category: "DetailsController")
+
+/// A view controller for displaying and managing detailed settings such as appearance themes and currency options
+final class SettingsDetailsViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    /// Data source for currency options
     private var currencyData = [CurrencyModel]()
+    /// Data source for appearance theme options
     private var themeData = [AppTheme]()
+    /// The type of setting being displayed (e.g., appearance, currency)
     private var type: SettingType
     
+    /// The currently selected option's title (e.g., currency code or theme key)
     private var selectedTitle = String()
+    /// Index path of the previously selected cell
     private var previousIndex = IndexPath()
+    /// A closure used to pass the selected value back to the calling view controller
     public var completionHandler: ((String) -> Void)?
     
+    // MARK: - UI Elements
+    
+    /// The back button for navigation
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToSettings
         return button
     }()
-        
+    
+    /// The table view for displaying the list of options
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(SettingsSelectTableViewCell.self, forCellReuseIdentifier: SettingsSelectTableViewCell.identifier)
@@ -30,6 +47,12 @@ class SettingsDetailsViewController: UIViewController {
         return table
     }()
     
+    // MARK: - Initializers
+    
+    /// Initializes the view controller with the given title and setting type
+    /// - Parameters:
+    ///   - title: The title of the settings section (e.g., "Currency", "Appearance")
+    ///   - type: The type of setting being managed (appearance or currency)
     init(title: String, type: SettingType) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
@@ -42,13 +65,15 @@ class SettingsDetailsViewController: UIViewController {
         case .appearance:
             self.themeData = AppTheme.themes
         default:
-            print("Default cell")
+            logger.info("Default setting type cell initialized")
         }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +92,7 @@ class SettingsDetailsViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        // Sends the selected value back via the completion handler when the view disappears
         if type == .appearance {
             completionHandler?(AppTheme.keyToValue(key: selectedTitle))
         } else {
@@ -74,14 +100,19 @@ class SettingsDetailsViewController: UIViewController {
         }
     }
     
+    // MARK: - Memory Management
+    
+    /// Manages the saving and retrieving of the selected currency option
+    /// - Parameter request: Specifies whether to get, save, or delete the currency selection
     private func currencyMemoryManager(request: CurrencyManager) {
         switch request {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.CrewPage.currencyKey) {
                 selectedTitle = retrievedString
+                logger.info("Currency data retrieved from UserDefaults: \(retrievedString)")
             } else {
                 selectedTitle = Texts.Currency.Code.usd
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no currency data in UserDefaults")
             }
             let row = currencyData.firstIndex(where: { $0.code == selectedTitle } )
             previousIndex = IndexPath(row: row ?? 0, section: 0)
@@ -93,11 +124,15 @@ class SettingsDetailsViewController: UIViewController {
         }
     }
     
+    // MARK: - UI Setup
+    
+    /// Configures the navigation bar
     private func navigationBarSetup() {
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
+    /// Sets up the table view layout and constraints
     private func tableViewSetup() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -115,6 +150,7 @@ class SettingsDetailsViewController: UIViewController {
 
 }
 
+// MARK: - UITableViewDelegate & UITableViewDataSource
 
 extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -145,6 +181,7 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
             selectedCell?.selectUpdate(checked: true)
             previousIndex = indexPath
             
+            // Details content methods
             switch type {
             case .appearance:
                 selectedTitle = themeData[indexPath.row].keyValue
@@ -168,6 +205,7 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
             fatalError("Failed to dequeue SettingsSelectTableViewCell in SettingsDetailsViewController")
         }
         
+        // Details content content
         switch type {
         case .currency:
             let item = currencyData[indexPath.row]
@@ -182,17 +220,21 @@ extension SettingsDetailsViewController: UITableViewDelegate, UITableViewDataSou
     }
 }
 
+// MARK: - Theme Management
 
 extension SettingsDetailsViewController {
     
+    /// Manages the saving and retrieving of the selected theme option
+    /// - Parameter request: Specifies whether to get, save, or delete the theme selection
     private func themeMemoryManager(request: CurrencyManager) {
         switch request {
         case .get:
             if let retrievedString = UserDefaults.standard.string(forKey: Texts.AppearanceSettings.key) {
                 selectedTitle = retrievedString
+                logger.info("App theme data retrieved from UserDefaults: \(retrievedString)")
             } else {
                 selectedTitle = Texts.AppearanceSettings.systemValue
-                print("There is no currency data in UserDefaults")
+                logger.info("There is no app theme data in UserDefaults")
             }
             let row = themeData.firstIndex(where: { $0.keyValue == selectedTitle } )
             previousIndex = IndexPath(row: row ?? 0, section: 0)
@@ -204,6 +246,8 @@ extension SettingsDetailsViewController {
         }
     }
     
+    /// Changes the app's appearance theme
+    /// - Parameter style: The Interface Style to apply (light, dark, or system)
     private func changeTheme(style: UIUserInterfaceStyle) {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first(where: { $0.isKeyWindow }) {

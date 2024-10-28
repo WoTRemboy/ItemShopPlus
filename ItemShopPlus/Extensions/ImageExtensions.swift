@@ -14,6 +14,7 @@ extension UIImage {
     
     // MARK: - Common
     
+    /// Placeholder images used for missing or unavailable content
     enum Placeholder {
         static let noImage = UIImage(named: "ImagePlaceholder")
         static let noImage3To4 = UIImage(named: "ImagePlaceholder3To4")
@@ -21,12 +22,14 @@ extension UIImage {
         static let video = UIImage(named: "VideoBanner")
     }
     
+    /// Icons used in empty view states
     enum EmptyView {
         static let stats = UIImage(systemName: "chart.xyaxis.line")
         static let favourites = UIImage(systemName: "heart")
         static let internet = UIImage(systemName: "wifi")
     }
     
+    /// Icons for currency symbols used throughout the app
     enum CurrencySymbol {
         static let usd = UIImage(systemName: "dollarsign")
         static let eur = UIImage(systemName: "eurosign")
@@ -42,6 +45,7 @@ extension UIImage {
         static let unknown = UIImage(systemName: "banknote")
     }
     
+    /// Filter menu icons
     enum FilterMenu {
         static let filter = UIImage(systemName: "line.3.horizontal.decrease.circle")
         static let filledFilter = UIImage(systemName: "line.3.horizontal.decrease.circle.fill")
@@ -49,6 +53,7 @@ extension UIImage {
     
     // MARK: - Main Module
     
+    /// Icons for the main module, including shop, battle pass
     enum MainButtons {
         static let shop = UIImage(named: "ShopIcon")
         static let battlePass = UIImage(named: "BattlePassIcon")
@@ -64,14 +69,16 @@ extension UIImage {
         static let chevron = createImage(name: "chevron.right")
     }
     
-    // MARK: - Splash Module
+    // MARK: - Opening Screens Module
     
+    /// Splash Screen app logo
     enum SplashScreen {
         static let splashScreen = UIImage(named: "SplashScreen")
     }
     
     // MARK: - Shop Module
     
+    /// Icons specific to the shop items
     enum ShopMain {
         static let price = UIImage(named: "VBucks")
         static let info = UIImage(systemName: "info.circle")
@@ -88,6 +95,7 @@ extension UIImage {
         static let favouriteTrue = createInfoSymbol(name: "heart.fill", first: .backgroundPages, second: .systemRed)
     }
     
+    /// Icons specific to the shop granted items
     enum ShopGranted {
         static let common = UIImage(named: "GrantedCommon")
         static let uncommon = UIImage(named: "GrantedUncommon")
@@ -102,12 +110,14 @@ extension UIImage {
     
     // MARK: - Battle Pass Module
     
+    /// Icon for the battle pass module
     enum BattlePass {
         static let star = UIImage(named: "BattlePassStar")
     }
     
     // MARK: - Settings Module
     
+    /// Icons used in the settings module
     enum Settings {
         static let app = UIImage(named: "AboutAppIcon")
         static let notifications = UIImage(named: "NotificationsSetting")
@@ -122,6 +132,7 @@ extension UIImage {
     
     // MARK: - Stats Module
     
+    /// Icons for the stats module
     enum Stats {
         static let newNickname = UIImage(systemName: "rectangle.and.pencil.and.ellipsis")
         static let noStats = UIImage(named: "NoStats")
@@ -136,13 +147,15 @@ extension UIImage {
     
     // MARK: - Quests Module
     
+    /// Icons for the quests module
     enum Quests {
         static let experience = UIImage(named: "QuestXP")
         static let bundleBackground = UIImage(named: "BundleBackground")
     }
     
     // MARK: - Map Module
-
+    
+    /// Icons used in the map module
     enum MapPage {
         static let poiMenu = UIImage(systemName: "slider.horizontal.3")
         static let archiveMenu = UIImage(systemName: "clock.arrow.circlepath")
@@ -152,6 +165,7 @@ extension UIImage {
     
     // MARK: - Widget Module
     
+    /// Icons for the widget module
     enum Widget {
         static let mockItem = UIImage(named: "MockItem")
     }
@@ -159,6 +173,9 @@ extension UIImage {
 
 // MARK: - Main Module Button Images Color Setup
 
+/// Creates an image with a specific system name and predefined palette colors
+/// - Parameter name: The system name of the image
+/// - Returns: An optional `UIImage` object with the specified configuration
 private func createImage(name: String) -> UIImage? {
     let image = UIImage(
         systemName: name,
@@ -167,6 +184,12 @@ private func createImage(name: String) -> UIImage? {
     return image
 }
 
+/// Creates a dual-color icon using a system name and custom colors
+/// - Parameters:
+///   - name: The system name of the image
+///   - first: The primary color of the image
+///   - second: The secondary color of the image
+/// - Returns: An optional `UIImage` object with the specified colors
 private func createInfoSymbol(name: String, first: UIColor, second: UIColor) -> UIImage? {
     let image = UIImage(
         systemName: name,
@@ -179,6 +202,15 @@ private func createInfoSymbol(name: String, first: UIColor, second: UIColor) -> 
 // MARK: - SwiftUI image extension
 
 extension Image {
+        
+    /// Images for the onboarding screens
+    enum OnboardingScreen {
+        static let widget = Image("OnboardWidget")
+        static let placeholder = Image("OnboardPlaceholder")
+        static let appIcon = Image("OnboardAppIcon")
+    }
+        
+    /// Icons for the widget module
     enum Widget {
         static let placeholder = Image("ImagePlaceholder")
         static let vBucks = Image("VBucks")

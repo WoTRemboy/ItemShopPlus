@@ -7,30 +7,48 @@
 
 import UIKit
 
+/// A view controller that manages the splash screen and transitions to the main content
 final class SplashScreenViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    /// The splash screen view displayed during app launch
     private let splashView = SplashScreenView()
+    
+    // MARK: - Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .BackColors.backSplash
-        
         view.addSubview(splashView)
-        setConstraints()
         
+        setConstraints()
+        transferToPage()
+    }
+    
+    // MARK: - Helper Methods
+    
+    /// Determines which page to transfer to and performs the transition
+    private func transferToPage() {
+        // Check if the onboarding page has passed
+        let transferMain = UserDefaults.standard.bool(forKey: Texts.OnboardingScreen.userDefaultsKey)
+        
+        // Choose the appropriate view controller based on onboarding status
+        let vc = transferMain ? UINavigationController(rootViewController: MainPageViewController()) : OnboardingViewController()
+        
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        
+        // Perform the transition after a short delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let vc = MainPageViewController()
-            let navVC = UINavigationController(rootViewController: vc)
-            navVC.modalTransitionStyle = .crossDissolve
-            navVC.modalPresentationStyle = .fullScreen
-
             UIView.transition(with: self.view.window!, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                self.view.window?.rootViewController = navVC
+                self.view.window?.rootViewController = vc
             }, completion: nil)
         }
     }
     
 
+    /// Sets up the constraints for the splash view
     private func setConstraints() {
         NSLayoutConstraint.activate([
             splashView.centerYAnchor.constraint(equalTo: view.centerYAnchor),

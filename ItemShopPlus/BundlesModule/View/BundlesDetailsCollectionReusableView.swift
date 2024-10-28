@@ -7,17 +7,22 @@
 
 import UIKit
 
+/// A reusable view used in the bundle details section, displaying the expiration date, price, and description of a bundle
 final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
     
     // MARK: - Properties
     
+    /// The identifier for reuse of the collection reusable view
     static let identifier = Texts.BundleDetailsCell.footerIdentifier
+    /// The position of the currency symbol (either left or right of the price)
     private var symbolPosition: CurrencySymbolPosition = .left
     
     // MARK: - UI Elements and Views
     
+    /// A view displaying the expiration date of the bundle
     private let expiryDate = CollectionParametersRowView(frame: .null, title: Texts.BundleDetailsCell.expiryDate, content: Texts.BundleDetailsCell.expiryDateText)
     
+    /// A label displaying the price of the bundle
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.price
@@ -28,6 +33,7 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
         return label
     }()
     
+    /// A label displaying the title for the "About" section
     private let aboutTitleLable: UILabel = {
         let label = UILabel()
         label.text = Texts.BundleDetailsCell.about
@@ -37,6 +43,7 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
         return label
     }()
     
+    /// A label displaying the content of the "About" section
     private let aboutContentLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.BundleDetailsCell.aboutText
@@ -46,12 +53,14 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
         return label
     }()
     
+    /// A separator line between sections
     private let aboutSeparatorLine: UIView = {
         let line = UIView()
         line.backgroundColor = .labelDisable
         return line
     }()
     
+    /// A label displaying the header of the bundle total price
     private let totalPriceLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.ShopGrantedCell.total
@@ -63,6 +72,12 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
     
     // MARK: - Public Configure Methods
     
+    /// Configures the view with the provided price, description, about text, and expiration date
+    /// - Parameters:
+    ///   - price: The price of the bundle
+    ///   - description: A brief description of the bundle
+    ///   - about: Additional details about the bundle
+    ///   - expireDate: The expiration date of the bundle, if available
     public func configurate(price: BundlePrice, description: String, about: String, expireDate: Date?) {
         changePrice(price: price, firstTime: true)
         aboutContentLabel.text = about
@@ -73,6 +88,10 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
         setupUI(isDate: expireDate != nil)
     }
     
+    /// Updates the price displayed in the view, with an option to animate the transition
+    /// - Parameters:
+    ///   - price: The new price to display
+    ///   - firstTime: Whether this is the first time the view was shown
     public func changePrice(price: BundlePrice, firstTime: Bool) {
         symbolPosition = SelectingMethods.selectCurrencyPosition(type: price.type)
         let priceToShow = Int(price.price * 10) % 10 == 0 ? String(Int(price.price.rounded())) : String(price.price)
@@ -91,6 +110,7 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
     
     // MARK: - UI Setups
     
+    /// Sets up the UI for the expiration date section
     private func expireDateSetup() {
         addSubview(expiryDate)
         expiryDate.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +123,8 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
         ])
     }
     
+    /// Sets up the UI for the "About" section
+    /// - Parameter isDate: Whether the bundle has an expiration date
     private func aboutSetup(isDate: Bool) {
         addSubview(aboutTitleLable)
         addSubview(aboutContentLabel)
@@ -128,6 +150,7 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
         ])
     }
     
+    /// Sets up the UI for the total price section
     private func totalPriceSetup() {
         addSubview(totalPriceLabel)
         addSubview(priceLabel)
@@ -145,6 +168,8 @@ final class BundlesDetailsCollectionReusableView: UICollectionReusableView {
         ])
     }
     
+    /// Sets up the UI based on whether the bundle has an expiration date
+    /// - Parameter isDate: Whether the bundle has an expiration date
     private func setupUI(isDate: Bool) {
         isDate ? expireDateSetup() : nil
         aboutSetup(isDate: isDate)

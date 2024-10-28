@@ -7,14 +7,17 @@
 
 import UIKit
 
-class SettingsAboutCollectionViewCell: UITableViewCell {
+/// A custom cell that displays information about the app, including its name, icon, and version
+final class SettingsAboutCollectionViewCell: UITableViewCell {
     
     // MARK: - Properties
     
+    /// The unique identifier for the cell, used for dequeuing
     static let identifier = Texts.SettingsAboutCell.identifier
 
     // MARK: - UI Elements and Views
     
+    /// The image view displaying the app's icon
     private let appImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = .Settings.app
@@ -23,6 +26,7 @@ class SettingsAboutCollectionViewCell: UITableViewCell {
         return imageView
     }()
     
+    /// The label displaying the app's name
     private let appNameLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.SettingsAboutCell.name
@@ -32,6 +36,7 @@ class SettingsAboutCollectionViewCell: UITableViewCell {
         return label
     }()
     
+    /// The label displaying the app's version number
     private let appVersionLabel: UILabel = {
         let label = UILabel()
         label.text = Texts.SettingsAboutCell.version
@@ -43,6 +48,8 @@ class SettingsAboutCollectionViewCell: UITableViewCell {
     
     // MARK: - Public Configure Method
     
+    /// Configures the cell with the app version
+    /// - Parameter appVersion: A string representing the current version of the app
     public func configurate(appVersion: String) {
         appVersionLabel.text = appVersion
         setupUI()
@@ -50,6 +57,7 @@ class SettingsAboutCollectionViewCell: UITableViewCell {
     
     // MARK: - UI Setup
     
+    /// Sets up the UI layout and constraints for the cell's components
     private func setupUI() {
         addSubview(appImageView)
         addSubview(appNameLabel)

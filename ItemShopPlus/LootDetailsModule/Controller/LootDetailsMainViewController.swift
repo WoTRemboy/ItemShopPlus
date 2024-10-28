@@ -6,30 +6,52 @@
 //
 
 import UIKit
+import OSLog
 
+/// A log object to organize messages
+private let logger = Logger(subsystem: "LootDetailsModule", category: "MainController")
+
+///  The main view controller for displaying a list of loot details, supporting filtering and searching functionality
 final class LootDetailsMainViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    /// A list of all loot items
     private var items = [LootDetailsItem]()
+    /// A list of grouped loot items by name
     private var namedItems = [LootNamedItems]()
+    /// A list of filtered and grouped loot items
     private var filteredGroupedItems = [LootNamedItems]()
+    /// Dictionary grouping loot items by type or category
     private var groupedItems = [String: [LootNamedItems]]()
     
+    /// Tracks the previous count of searched results to handle UI updates
     private var previousSearchedCount = 0
+    /// The currently selected section title for filtering
     private var selectedSectionTitle = Texts.ShopPage.allMenu
+    /// Array of search tags for filtering items
     private var tags = [String]()
     
+    /// A network service instance for fetching loot details
     private let networkService = DefaultNetworkService()
     
+    // MARK: - UI Elements & Views
+    
+    /// A view displayed when there is no internet connection
     private let noInternetView = EmptyView(type: .internet)
+    /// Activity indicator to show loading state
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    /// Refresh control to reload the list of items
     private let refreshControl = UIRefreshControl()
     
+    /// Back button for navigation
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToMain
         return button
     }()
     
+    /// Filter button to trigger filtering options
     private let filterButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .FilterMenu.filter
@@ -37,6 +59,7 @@ final class LootDetailsMainViewController: UIViewController {
         return button
     }()
     
+    /// The main collection view to display loot items
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -49,6 +72,7 @@ final class LootDetailsMainViewController: UIViewController {
         return collectionView
     }()
     
+    /// Search controller to handle item search functionality
     private let searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -56,6 +80,8 @@ final class LootDetailsMainViewController: UIViewController {
         searchController.searchBar.placeholder = Texts.ShopMainCell.search
         return searchController
     }()
+    
+    // MARK: - Lifecycle Method
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,18 +95,26 @@ final class LootDetailsMainViewController: UIViewController {
         getItems(isRefreshControl: false)
     }
     
+    // MARK: - Refresh Methods
+    
+    /// Refresh items when triggered by the refresh control
     @objc private func refreshWithControl() {
         if !searchController.isActive {
             getItems(isRefreshControl: true)
         }
     }
     
+    /// Refresh items when triggered without the refresh control
     @objc private func refreshWithoutControl() {
         if !searchController.isActive {
             getItems(isRefreshControl: false)
         }
     }
     
+    // MARK: - Handling User Interactions
+    
+    /// Handles cell selection by animating the cell and navigating to detailed loot view
+    /// - Parameter gestureRecognizer: The tap gesture recognizer object
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: location) {
@@ -88,6 +122,7 @@ final class LootDetailsMainViewController: UIViewController {
         }
     }
     
+    /// Handles tap gesture outside the search bar to dismiss the keyboard
     @objc private func handleTapOutsideKeyboard() {
         guard searchController.isActive else { return }
         if searchController.searchBar.text?.isEmpty == true {
@@ -98,6 +133,10 @@ final class LootDetailsMainViewController: UIViewController {
         UIView.appearance().isExclusiveTouch = true
     }
     
+    // MARK: - Grouping and Filtering
+    
+    /// Groups loot items by their name and type
+    /// - Parameter items: The list of loot items to be grouped
     private func groupLootItems(items: [LootDetailsItem]) {
         var namedItems = [String: [LootDetailsItem]]()
         let clearItems = uniqueItems(items: items)
@@ -123,6 +162,9 @@ final class LootDetailsMainViewController: UIViewController {
         self.namedItems.sort { $0.name < $1.name }
     }
     
+    /// Removes duplicate loot items based on their name and rarity
+    /// - Parameter items: The list of loot items to be filtered for unique values
+    /// - Returns: A list of unique loot items
     private func uniqueItems(items: [LootDetailsItem]) -> [LootDetailsItem] {
         var uniqueItems = [String: LootDetailsItem]()
 
@@ -136,6 +178,7 @@ final class LootDetailsMainViewController: UIViewController {
         return Array(uniqueItems.values)
     }
     
+    /// Sets up the search tags used for filtering loot items
     private func searchTags() {
         tags = [Texts.LootDetailsStats.Tags.pistols,
                 Texts.LootDetailsStats.Tags.assault,
@@ -148,7 +191,11 @@ final class LootDetailsMainViewController: UIViewController {
                 Texts.LootDetailsStats.Tags.heal,
                 Texts.LootDetailsStats.Tags.misc]
     }
-    
+        
+    /// Updates the filter and reloads the collection view based on the selected section title
+    /// - Parameters:
+    ///   - sectionTitle: The title of the section to filter items by
+    ///   - forAll: A boolean indicating whether to filter for all sections or just a specific one
     private func filterItemsByMenu(sectionTitle: String, forAll: Bool) {
         guard sectionTitle != selectedSectionTitle else { return }
         
@@ -158,6 +205,10 @@ final class LootDetailsMainViewController: UIViewController {
         }, completion: nil)
     }
     
+    // MARK: - Animations
+    
+    /// Animates the cell selection and pushes a detailed loot view based on the selected item
+    /// - Parameter indexPath: The index path of the selected cell
     private func animateCellSelection(at indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         let items: [LootDetailsItem]
@@ -191,6 +242,10 @@ final class LootDetailsMainViewController: UIViewController {
         }
     }
     
+    // MARK: - Data Fetching
+    
+    /// Fetches loot items from the network service and handles UI updates
+    /// - Parameter isRefreshControl: A boolean indicating whether the data is being fetched via a refresh control or not
     private func getItems(isRefreshControl: Bool) {
         if isRefreshControl {
             self.refreshControl.beginRefreshing()
@@ -232,6 +287,7 @@ final class LootDetailsMainViewController: UIViewController {
                     self?.filterButton.isEnabled = true
                     self?.searchController.searchBar.isHidden = false
                 }
+                logger.info("Loot details items loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.collectionView.reloadData()
@@ -240,21 +296,14 @@ final class LootDetailsMainViewController: UIViewController {
                     self?.filterButton.isEnabled = false
                     self?.searchController.searchBar.isHidden = true
                 }
-                print(error)
+                logger.error("Loot details items loading error: \(error.localizedDescription)")
             }
         }
     }
     
-    private func navigationBarSetup() {
-        title = Texts.LootDetailsMain.title
-        
-        navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        
-        filterButton.target = self
-        navigationItem.rightBarButtonItem = filterButton
-    }
+    // MARK: - Menu & Searching Setup
     
+    /// Configures the menu for filtering loot items
     private func menuSetup() {
         let allAction = UIAction(title: Texts.ShopPage.allMenu, image: nil) { [weak self] action in
             self?.filterItemsByMenu(sectionTitle: Texts.ShopPage.allMenu, forAll: true)
@@ -276,6 +325,8 @@ final class LootDetailsMainViewController: UIViewController {
         filterButton.image = .FilterMenu.filter
     }
     
+    /// Updates the filter menu state to reflect the currently selected section
+    /// - Parameter sectionTitle: The title of the section that has been selected
     private func updateMenuState(for sectionTitle: String) {
         if let currentAction = filterButton.menu?.children.first(where: { $0.title == SelectingMethods.selectWeaponTag(tag: sectionTitle) }) as? UIAction {
             currentAction.state = .on
@@ -286,6 +337,7 @@ final class LootDetailsMainViewController: UIViewController {
         selectedSectionTitle = sectionTitle
     }
     
+    /// Sets up the search controller for filtering loot items by name
     private func searchControllerSetup() {
         searchController.delegate = self
         searchController.searchResultsUpdater = self
@@ -298,6 +350,20 @@ final class LootDetailsMainViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    // MARK: - UI Setup
+    
+    /// Sets up the navigation bar with a title and filter button
+    private func navigationBarSetup() {
+        title = Texts.LootDetailsMain.title
+        
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        filterButton.target = self
+        navigationItem.rightBarButtonItem = filterButton
+    }
+    
+    /// Sets up the collection view to display loot items and handle refreshing
     private func collectionViewSetup() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -316,6 +382,7 @@ final class LootDetailsMainViewController: UIViewController {
         ])
     }
     
+    /// Sets up the view that is displayed when there is no internet connection
     private func noInternetSetup() {
         view.addSubview(noInternetView)
         noInternetView.translatesAutoresizingMaskIntoConstraints = false
@@ -340,8 +407,10 @@ extension LootDetailsMainViewController: UISearchResultsUpdating, UISearchContro
     func updateSearchResults(for searchController: UISearchController) {
         filteredGroupedItems = namedItems
         if let searchText = searchController.searchBar.text {
+            // Filter the items based on the search text entered by the user
             filteredGroupedItems = namedItems.filter { $0.name.lowercased().contains(searchText.lowercased()) }
             if filteredGroupedItems.count != previousSearchedCount || (searchText.isEmpty && collectionView.visibleCells.count == 0) || (!searchText.isEmpty && filteredGroupedItems.count == 0) {
+                // Update the collection view if the filtered result changes or certain conditions are met
                 UIView.transition(with: collectionView, duration: 0.3, options: .transitionCrossDissolve, animations: {
                     self.collectionView.reloadData()
                 }, completion: nil)
@@ -401,6 +470,8 @@ extension LootDetailsMainViewController: UICollectionViewDelegate, UICollectionV
         }
         let item = groupedItem.first ?? LootDetailsItem.emptyLootDetails
         cell.configurate(type: .weapon, name: item.name, image: item.mainImage, firstStat: Double(groupedItem.count), secondStat: Double(item.stats.availableStats))
+        
+        // Adds a tap gesture recognizer to handle cell selection
         let pressGesture = UITapGestureRecognizer(target: self, action: #selector(handlePress))
         cell.addGestureRecognizer(pressGesture)
         

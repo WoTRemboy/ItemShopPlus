@@ -6,33 +6,49 @@
 //
 
 import UIKit
+import OSLog
 import Kingfisher
 
+/// A log object to organize messages
+private let logger = Logger(subsystem: "MapModule", category: "PreviewController")
+
+/// A view controller responsible for displaying and managing the preview of a game map
 final class MapPreviewViewController: UIViewController {
     
     // MARK: - Properties
     
+    /// Array of all available maps fetched from the network
     private var maps = [Map]()
+    /// Holds the currently selected map
     private var actualMap = Map(patchVersion: "", realeseDate: .now, clearImage: "", poiImage: "")
     
+    /// URL of the current image being displayed
     private var image: String
+    /// Task to handle the image loading process
     private var imageLoadTask: DownloadTask?
+    /// Currently selected POI (Point of Interest) view option
     private var selectedPOI = Texts.MapPage.poi
     
+    /// Network service to handle map data fetching
     private let networkService = DefaultNetworkService()
     
     // MARK: - UI Elements and Views
     
+    /// Scroll view with zoom functionality for the map image
     private let scrollView = MapZoomView()
+    /// View displayed when there is no internet connection
     private let noInternetView = EmptyView(type: .internet)
+    /// Activity indicator to show loading status
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
+    /// Back button to navigate back to the main screen
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = Texts.Navigation.backToMain
         return button
     }()
     
+    /// Button to change between different POI (Point of Interest) views
     private let poiChangeButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .MapPage.poiMenu
@@ -40,6 +56,7 @@ final class MapPreviewViewController: UIViewController {
         return button
     }()
     
+    /// Button to open the archive and select from previous map versions
     private let archiveButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.image = .MapPage.archiveMenu
@@ -49,6 +66,8 @@ final class MapPreviewViewController: UIViewController {
     
     // MARK: - Initialization
     
+    /// Initializes the controller with the image URL
+    /// - Parameter image: The URL of the image to be displayed
     init(image: String) {
         self.image = image
         super.init(nibName: nil, bundle: nil)
@@ -66,6 +85,7 @@ final class MapPreviewViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        // Cancels image loading task if active
         ImageLoader.cancelImageLoad(task: imageLoadTask)
     }
     
@@ -81,14 +101,17 @@ final class MapPreviewViewController: UIViewController {
     
     // MARK: - Actions
     
+    /// Refreshes the current map image
     @objc private func refresh() {
         imageLoadTask = self.loadAndShowImage(from: image, to: scrollView.imageView)
     }
     
+    /// Shows the currently selected map image (POI version)
     private func showActualMap() {
         imageLoadTask = self.loadAndShowImage(from: actualMap.poiImage, to: scrollView.imageView)
     }
     
+    /// Opens the archive of maps, allowing the user to select a previous map version
     @objc private func archiveButtonTapped() {
         let vc = MapPickerViewController(maps: maps.reversed(), currentMap: actualMap)
         
@@ -109,6 +132,7 @@ final class MapPreviewViewController: UIViewController {
     
     // MARK: - Networking
     
+    /// Fetches map data from the network and displays the latest map
     private func getMaps() {
         activityIndicatorSetup()
         
@@ -127,15 +151,21 @@ final class MapPreviewViewController: UIViewController {
                     self?.archiveMenuSetup()
                     self?.showActualMap()
                 }
+                logger.info("Maps loaded successfully")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self?.loadSuccess(success: false)
                 }
-                print(error)
+                logger.error("Maps loading error: \(error.localizedDescription)")
             }
         }
     }
     
+    /// Loads and displays the image from the provided URL
+    /// - Parameters:
+    ///   - imageUrlString: URL string of the image to be displayed
+    ///   - imageView: The UIImageView where the image should be loaded
+    /// - Returns: A `DownloadTask` to handle image loading
     private func loadAndShowImage(from imageUrlString: String, to imageView: UIImageView) -> DownloadTask? {
         activityIndicatorSetup()
         
@@ -163,6 +193,11 @@ final class MapPreviewViewController: UIViewController {
     
     // MARK: - Map Change Logic
     
+    /// Changes the currently displayed map image and updates the menu state
+    /// - Parameters:
+    ///   - newImage: The URL of the new image to display
+    ///   - sectionTitle: The section title for menu selection
+    ///   - type: The type of button used for the map change (e.g., POI or without POI)
     private func changeImageInPreview(newImage: String, sectionTitle: String, type: NavigationMapButtonType) {
         guard sectionTitle != selectedPOI else { return }
         guard sectionTitle != actualMap.poiImage else { return }
@@ -195,6 +230,8 @@ final class MapPreviewViewController: UIViewController {
     
     // MARK: - UI Elements Behaviour during Loading
     
+    /// Updates the UI based on whether the map image loading was successful or not
+    /// - Parameter success: Boolean indicating if the image loading was successful
     private func loadSuccess(success: Bool) {
         if success {
             noInternetView.isHidden = true
@@ -210,27 +247,9 @@ final class MapPreviewViewController: UIViewController {
         }
     }
     
-    // MARK: - UI Setups
+    // MARK: - Menu Setup
     
-    private func navigationBarSetup() {
-        title = Texts.MapPage.title
-        
-        navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        
-        navigationItem.rightBarButtonItems = [
-            poiChangeButton,
-            archiveButton
-        ]
-    }
-    
-    private func activityIndicatorSetup() {
-        activityIndicator.center = self.view.center
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        noInternetView.isHidden = true
-    }
-    
+    /// Configures the Point of Interest (POI) menu for switching between map views
     private func poiMenuSetup() {
         let poiAction = UIAction(title: Texts.MapPage.poi, image: .MapPage.poiAction) { [weak self] action in
             self?.changeImageInPreview(newImage: self?.actualMap.poiImage ?? Texts.MapPage.poi, sectionTitle: Texts.MapPage.poi, type: .location)
@@ -243,11 +262,16 @@ final class MapPreviewViewController: UIViewController {
         poiChangeButton.menu = UIMenu(title: "", children: [poiAction, clearAction])
     }
     
+    /// Configures the archive button to open the archive of maps
     private func archiveMenuSetup() {
         archiveButton.target = self
         archiveButton.action = #selector(archiveButtonTapped)
     }
     
+    /// Updates the state of the POI menu and enables/disables items based on selection
+    /// - Parameters:
+    ///   - sectionTitle: The title of the selected section
+    ///   - reload: Whether to reload the previous state
     private func updateMenuState(for sectionTitle: String, reload: Bool) {
         if let currentAction = poiChangeButton.menu?.children.first(where: { $0.title == sectionTitle }) as? UIAction {
             currentAction.state = .on
@@ -258,6 +282,30 @@ final class MapPreviewViewController: UIViewController {
         }
     }
     
+    // MARK: - UI Setups
+    
+    /// Configures the navigation bar for the view
+    private func navigationBarSetup() {
+        title = Texts.MapPage.title
+        
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        navigationItem.rightBarButtonItems = [
+            poiChangeButton,
+            archiveButton
+        ]
+    }
+    
+    /// Configures the activity indicator for loading feedback
+    private func activityIndicatorSetup() {
+        activityIndicator.center = self.view.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        noInternetView.isHidden = true
+    }
+    
+    /// Configures the scroll view for zooming and displaying the map image
     private func scrollViewSetup() {
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -270,6 +318,7 @@ final class MapPreviewViewController: UIViewController {
         ])
     }
     
+    /// Configures the no-internet view and adds functionality to reload on tap
     private func noInternetSetup() {
         view.addSubview(noInternetView)
         noInternetView.isHidden = true

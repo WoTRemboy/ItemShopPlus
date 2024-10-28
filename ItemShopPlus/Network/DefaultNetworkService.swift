@@ -7,28 +7,41 @@
 
 import Foundation
 
+/// Protocol defining the required methods for network services
 protocol NetworkingService {
+    /// Fetches quest bundles
     func getQuestBundles(completion: @escaping (Result<[QuestBundle], Error>) -> Void)
+    /// Fetches shop items
     func getShopItems(completion: @escaping (Result<[ShopItem], Error>) -> Void)
+    /// Fetches battle pass items
     func getBattlePassItems(completion: @escaping (Result<BattlePass, Error>) -> Void)
+    /// Fetches crew pack items
     func getCrewItems(completion: @escaping (Result<CrewPack, Error>) -> Void)
+    /// Fetches bundle items
     func getBundles(completion: @escaping (Result<[BundleItem], Error>) -> Void)
+    /// Fetches loot details
     func getLootDetails(completion: @escaping (Result<[LootDetailsItem], Error>) -> Void)
+    /// Fetches account statistics for a given player
     func getAccountStats(nickname: String, platform: String?, completion: @escaping (Result<Stats, Error>) -> Void)
+    /// Fetches map items
     func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void)
+    /// Fetches video related to an item
     func getItemVideo(id: String, completion: @escaping (Result<ItemVideo, Error>) -> Void)
 }
 
+/// A class implementing `NetworkingService` to handle network requests to Fortnite's API
 final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Properties
     
+    /// URLSession used for making requests
     private let session: URLSession
+    /// Base URL for the API
     private let baseURL = URL(string: "https://fortniteapi.io")
-    private let token = "8b1729e0-29cc1b7d-71873902-21bf48f0"
     
     // MARK: - Initialization
     
+    /// Initializes the `DefaultNetworkService` with a default `URLSession`
     init() {
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.timeoutIntervalForResource = 15
@@ -37,6 +50,8 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Quests Module Request
     
+    /// Fetches quest bundles from the API
+    /// - Parameter completion: Completion handler with the result containing an array of `QuestBundle` or an error
     func getQuestBundles(completion: @escaping (Result<[QuestBundle], Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v3/challenges")
@@ -46,7 +61,9 @@ final class DefaultNetworkService: NetworkingService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in
@@ -69,6 +86,8 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Shop Module Request
     
+    /// Fetches shop items from the API
+    /// - Parameter completion: Completion handler with the result containing an array of `ShopItem` or an error
     func getShopItems(completion: @escaping (Result<[ShopItem], Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/shop")
@@ -78,7 +97,9 @@ final class DefaultNetworkService: NetworkingService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in
@@ -101,6 +122,8 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Battle Pass Module Request
     
+    /// Fetches battle pass items from the API
+    /// - Parameter completion: Completion handler with the result containing a `BattlePass` object or an error
     func getBattlePassItems(completion: @escaping (Result<BattlePass, Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/battlepass")
@@ -111,7 +134,9 @@ final class DefaultNetworkService: NetworkingService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in
@@ -133,6 +158,8 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Crew Module Request
     
+    /// Fetches crew pack items from the API
+    /// - Parameter completion: Completion handler with the result containing a `CrewPack` object or an error
     func getCrewItems(completion: @escaping (Result<CrewPack, Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/crew")
@@ -142,7 +169,9 @@ final class DefaultNetworkService: NetworkingService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in
@@ -164,6 +193,8 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Bundles Module Request
     
+    /// Fetches bundle items from the API
+    /// - Parameter completion: Completion handler with the result containing an array of `BundleItem` or an error
     func getBundles(completion: @escaping (Result<[BundleItem], any Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/bundles")
@@ -173,7 +204,9 @@ final class DefaultNetworkService: NetworkingService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in
@@ -196,6 +229,8 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Loot Details Module Request
     
+    /// Fetches loot details from the API
+    /// - Parameter completion: Completion handler with the result containing an array of `LootDetailsItem` or an error
     func getLootDetails(completion: @escaping (Result<[LootDetailsItem], any Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v1/loot/list")
@@ -205,7 +240,9 @@ final class DefaultNetworkService: NetworkingService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in
@@ -228,6 +265,11 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Stats Module Request
     
+    /// Fetches account stats for a specific player
+    /// - Parameters:
+    ///   - nickname: The player's in-game nickname
+    ///   - platform: Optional platform information (e.g., Epic, Xbox, Playstation)
+    ///   - completion: Completion handler with the result containing a `Stats` object or an error
     func getAccountStats(nickname: String, platform: String?, completion: @escaping (Result<Stats, any Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v1/stats")
@@ -240,7 +282,9 @@ final class DefaultNetworkService: NetworkingService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in
@@ -262,6 +306,8 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Maps Module Request
     
+    /// Fetches map items from the API
+    /// - Parameter completion: Completion handler with the result containing an array of `Map` or an error
     func getMapItems(completion: @escaping (Result<[Map], Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v1/maps/list")
@@ -271,7 +317,9 @@ final class DefaultNetworkService: NetworkingService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in
@@ -294,6 +342,10 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Item Video Module Request
     
+    /// Fetches item video from the API
+    /// - Parameters:
+    ///   - id: The item's ID for which the video is requested
+    ///   - completion: Completion handler with the result containing an `ItemVideo` object or an error
     func getItemVideo(id: String, completion: @escaping (Result<ItemVideo, Error>) -> Void) {
         guard var url = baseURL else { return }
         url = url.appendingPathComponent("v2/items/get")
@@ -303,7 +355,9 @@ final class DefaultNetworkService: NetworkingService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(token, forHTTPHeaderField: "Authorization")
+        if let token = Bundle.main.object(forInfoDictionaryKey: "API_TOKEN") as? String {
+            request.addValue(token, forHTTPHeaderField: "Authorization")
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.sendRequest(request: request) { result in
@@ -326,6 +380,10 @@ final class DefaultNetworkService: NetworkingService {
     
     // MARK: - Request Settings
     
+    /// Sends a network request and handles the response
+    /// - Parameters:
+    ///   - request: The `URLRequest` to be sent
+    ///   - completion: Completion handler with the result containing `Data` or an error
     private func sendRequest(request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
         
         let task = session.dataTask(with: request) { data, response, error in
@@ -355,9 +413,14 @@ final class DefaultNetworkService: NetworkingService {
 
 // MARK: - Networking Error Types
 
+/// An enum representing various types of networking errors
 enum NetworkingError: Error {
+    // Indicates an invalid response from the server
     case invalidResponse
+    // Indicates an HTTP error with a specific status code
     case httpError(statusCode: Int)
+    // Indicates an empty response from the server
     case emptyResponse
+    // Indicates invalid data was received
     case invalidData
 }

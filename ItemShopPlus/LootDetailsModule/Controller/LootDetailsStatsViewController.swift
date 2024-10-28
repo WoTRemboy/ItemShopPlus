@@ -7,28 +7,44 @@
 
 import UIKit
 
-class LootDetailsStatsViewController: UIViewController {
+/// A view controller that displays detailed stats for a specific loot item
+final class LootDetailsStatsViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    /// The loot item whose details are being displayed
     private var item = LootDetailsItem.emptyLootDetails
+    /// A flag indicating whether the user navigated from the rarity screen
     private let fromRarity: Bool
     
+    // MARK: - UI Elements
+    
+    /// A back button to navigate back to the previous screen
     private let backButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         return button
     }()
     
+    /// The collection view that displays the item's details
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsVerticalScrollIndicator = false
+        
         collectionView.register(LootDetailsRarityCollectionViewCell.self, forCellWithReuseIdentifier: LootDetailsRarityCollectionViewCell.identifier)
         collectionView.register(CollectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionHeaderReusableView.identifier)
         collectionView.register(LootDetailsReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: LootDetailsReusableView.identifier)
         return collectionView
     }()
     
+    // MARK: - Initialization
+    
+    /// Initializes the view controller with a loot item
+    /// - Parameters:
+    ///   - item: The loot item whose details will be displayed
+    ///   - fromRarity: A boolean indicating if the user came from the rarity view
     init(item: LootDetailsItem, fromRarity: Bool) {
         self.item = item
         self.fromRarity = fromRarity
@@ -38,6 +54,8 @@ class LootDetailsStatsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +65,10 @@ class LootDetailsStatsViewController: UIViewController {
         collectionViewSetup()
     }
     
+    // MARK: - Actions
+    
+    /// Handles tap gesture events and presents a preview of the selected item.
+    /// - Parameter gestureRecognizer: The gesture recognizer detecting the tap
     @objc private func handlePress(_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: location) {
@@ -54,6 +76,8 @@ class LootDetailsStatsViewController: UIViewController {
         }
     }
     
+    /// Animates the selection of a cell and presents a preview of the item
+    /// - Parameter indexPath: The index path of the selected cell
     private func animateCellSelection(at indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         
@@ -71,6 +95,9 @@ class LootDetailsStatsViewController: UIViewController {
         }
     }
     
+    // MARK: - Setup Methods
+    
+    /// Configures the navigation bar with the correct title and back button
     private func navigationBarSetup() {
         title = Texts.LootDetailsStats.title
         
@@ -86,6 +113,7 @@ class LootDetailsStatsViewController: UIViewController {
         backButton.title = buttonTitle
     }
     
+    /// Configures the collection view with its delegate and data source, and adds it to the view
     private func collectionViewSetup() {
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -156,6 +184,7 @@ extension LootDetailsStatsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
+            // Header View Init
             guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CollectionHeaderReusableView.identifier, for: indexPath) as? CollectionHeaderReusableView else {
                 fatalError("Failed to dequeue CollectionHeaderReusableView in LootDetailsStatsViewController")
             }
@@ -163,6 +192,7 @@ extension LootDetailsStatsViewController: UICollectionViewDelegateFlowLayout {
             return headerView
             
         } else if kind == UICollectionView.elementKindSectionFooter {
+            // Footer View Init
             guard let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LootDetailsReusableView.identifier, for: indexPath) as? LootDetailsReusableView else {
                 fatalError("Failed to dequeue LootDetailsReusableView in LootDetailsStatsViewController")
             }
@@ -182,6 +212,12 @@ extension LootDetailsStatsViewController: UICollectionViewDelegateFlowLayout {
         return size
     }
     
+    /// Calculates the height for the given text based on its width and font
+    /// - Parameters:
+    ///   - text: The text to calculate the height for
+    ///   - width: The width available for the text
+    ///   - font: The font used for the text
+    /// - Returns: The calculated height for the text
     private func heightForText(_ text: String, width: CGFloat, font: UIFont) -> CGFloat {
         let attributes: [NSAttributedString.Key: Any] = [.font: font]
         let boundingRect = NSString(string: text).boundingRect(

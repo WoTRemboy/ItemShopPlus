@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import OSLog
+
+/// A log object to organize messages
+private let logger = Logger(subsystem: "QuestsModule", category: "TestController")
 
 final class QuestTestViewController: UIViewController {
     
@@ -73,7 +77,7 @@ final class QuestTestViewController: UIViewController {
                 }
                 
             case .failure(let error):
-                print(error)
+                logger.error("\(error.localizedDescription)")
             }
         }
     }

@@ -45,17 +45,17 @@ extension OnboardingStep {
     /// Sets up the onboarding steps
     /// - Returns: Array of `OnboardingStep` instances
     static func stepsSetup() -> [OnboardingStep] {
-        let first = OnboardingStep(name: Texts.OnboardingScreen.widgetTitle,
+        let first = OnboardingStep(name: Texts.OnboardingScreen.fortTitle,
+                                   description: Texts.OnboardingScreen.fortContent,
+                                   image: .OnboardingScreen.fort)
+        
+        let second = OnboardingStep(name: Texts.OnboardingScreen.videoTitle,
+                                    description: Texts.OnboardingScreen.videoContent,
+                                    image: .OnboardingScreen.play)
+        
+        let third = OnboardingStep(name: Texts.OnboardingScreen.widgetTitle,
                                    description: Texts.OnboardingScreen.widgetContent,
                                    image: .OnboardingScreen.widget)
-        
-        let second = OnboardingStep(name: Texts.OnboardingScreen.placeholderTitle,
-                                    description: Texts.OnboardingScreen.placeholderContent,
-                                    image: .OnboardingScreen.placeholder)
-        
-        let third = OnboardingStep(name: Texts.OnboardingScreen.iconTitle,
-                                   description: Texts.OnboardingScreen.iconContent,
-                                   image: .OnboardingScreen.appIcon)
         
         return [first, second, third]
     }

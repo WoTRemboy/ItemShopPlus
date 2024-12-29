@@ -145,6 +145,10 @@ final class Texts {
     enum OnboardingScreen {
         static let userDefaultsKey = "FirstLaunch"
         
+        static let fortTitle = NSLocalizedString("OnboardingScreenFortTitle", comment: "Fort Satellite")
+        static let fortContent = NSLocalizedString("OnboardingScreenFortContent", comment: "An app for viewing the item shop, statistics and much more.")
+        static let videoTitle = NSLocalizedString("OnboardingScreenVideoTitle", comment: "Preview")
+        static let videoContent = NSLocalizedString("OnboardingScreenVideoContent", comment: "View some skins and emotes in video format.")
         static let widgetTitle = NSLocalizedString("OnboardingScreenWidgetTitle", comment: "New widget")
         static let widgetContent = NSLocalizedString("OnboardingScreenWidgetContent", comment: "The 'Day Offer' shows what’s interesting in the shop today.")
         static let placeholderTitle = NSLocalizedString("OnboardingScreenPlaceholderTitle", comment: "Placeholders")

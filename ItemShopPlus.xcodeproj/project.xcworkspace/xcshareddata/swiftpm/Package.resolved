@@ -24,17 +24,26 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/appmetrica/appmetrica-sdk-ios",
       "state" : {
-        "revision" : "5fbc01777265f5bffabb7d7fbc318db3b561a5a6",
-        "version" : "5.3.1"
+        "revision" : "a23678a2e783b126c247b53b3e3b44f09a3d39c1",
+        "version" : "5.9.0"
       }
     },
     {
       "identity" : "divkit-ios",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/divkit/divkit-ios",
+      "location" : "https://github.com/divkit/divkit-ios.git",
       "state" : {
-        "revision" : "8e44e1266f4325b382d18725c00d851d3143dafd",
-        "version" : "28.13.0"
+        "revision" : "5e7bef5c9214a3e48486838ce3f91c3444c3b49a",
+        "version" : "30.32.0"
+      }
+    },
+    {
+      "identity" : "divkit-ios-facade",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/divkit/divkit-ios-facade",
+      "state" : {
+        "revision" : "1c0f0503f609b45666e8845211f65f5cfc1af611",
+        "version" : "4.5.0"
       }
     },
     {
@@ -114,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kstenerud/KSCrash",
       "state" : {
-        "revision" : "a6504bb7d9b76731accc141aa9ed1c8dd5063b1b",
-        "version" : "1.17.5"
+        "revision" : "e62b01179f951ffa6670af186b21f00657a92557",
+        "version" : "2.0.0-rc.8"
       }
     },
     {
@@ -146,6 +155,24 @@
       }
     },
     {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-cmark.git",
+      "state" : {
+        "revision" : "3ccff77b2dc5b96b77db3da0d68d28068593fa53",
+        "version" : "0.5.0"
+      }
+    },
+    {
+      "identity" : "swift-markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-markdown.git",
+      "state" : {
+        "revision" : "8f79cb175981458a0a27e76cb42fee8e17b1a993",
+        "version" : "0.5.0"
+      }
+    },
+    {
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
@@ -159,8 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/yandex/vgsl.git",
       "state" : {
-        "revision" : "714e915e99764be5940b4da7e30ccf9aea931eb4",
-        "version" : "2.4.1"
+        "revision" : "72b44f7b013f00e3789052f93ced786efbfd8ecc",
+        "version" : "6.16.2"
       }
     },
     {
@@ -168,8 +195,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/yandexmobile/yandex-ads-sdk-ios",
       "state" : {
-        "revision" : "c4ad6437b775ab5367590abce2607202073e09de",
-        "version" : "7.0.1"
+        "revision" : "0c777058e77d6c425486b52210136d96ec092962",
+        "version" : "7.8.0"
       }
     }
   ],

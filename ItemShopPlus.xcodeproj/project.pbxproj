@@ -12,7 +12,6 @@
 		630B7FA32BEEB1EC007E3797 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898EA2B233E9900FABD69 /* Labels.swift */; };
 		630B7FA82BEEC34C007E3797 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631841DA2BE3F852008C3B4B /* Localizable.xcstrings */; };
 		63123FE22CA9C3D700ADF239 /* FavouriteShopItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63C38BDD2C2870F9001995B3 /* FavouriteShopItem.xcdatamodeld */; };
-		63178F6D2BE66FCF00090F81 /* YandexMobileAdsPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 63178F6C2BE66FCF00090F81 /* YandexMobileAdsPackage */; };
 		63178F6F2BE6710D00090F81 /* MobileAdsBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 63178F6E2BE6710D00090F81 /* MobileAdsBundle.bundle */; };
 		63178F722BE6758800090F81 /* InlineBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63178F712BE6758800090F81 /* InlineBannerViewController.swift */; };
 		631841DB2BE3F852008C3B4B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631841DA2BE3F852008C3B4B /* Localizable.xcstrings */; };
@@ -63,6 +62,8 @@
 		634C4B7F2C92F8F50007E100 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898E82B233DDA00FABD69 /* ImageExtensions.swift */; };
 		634C4B822C92FAD60007E100 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898EA2B233E9900FABD69 /* Labels.swift */; };
 		634F3F8B2B67CC8800C01426 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F3F8A2B67CC8800C01426 /* EmptyView.swift */; };
+		635FEF032D21EA4E007FFBBA /* YandexMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 635FEF022D21EA4E007FFBBA /* YandexMobileAds */; };
+		635FEF052D21EA4E007FFBBA /* YandexMobileAdsInstream in Frameworks */ = {isa = PBXBuildFile; productRef = 635FEF042D21EA4E007FFBBA /* YandexMobileAdsInstream */; };
 		636997E32C971931000A8807 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 631841DA2BE3F852008C3B4B /* Localizable.xcstrings */; };
 		636997E42C972065000A8807 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C898D82B2334BA00FABD69 /* ColorExtensions.swift */; };
 		63750CA62B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63750CA52B93306100ED7E0B /* BattlePassMainCollectionViewCell.swift */; };
@@ -384,10 +385,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635FEF052D21EA4E007FFBBA /* YandexMobileAdsInstream in Frameworks */,
+				635FEF032D21EA4E007FFBBA /* YandexMobileAds in Frameworks */,
 				63C9AB5B2BD7F4F30046951B /* Kingfisher in Frameworks */,
 				639418A92BD59B7F007F02FA /* FirebaseMessaging in Frameworks */,
 				639418A72BD59B7F007F02FA /* FirebaseAnalytics in Frameworks */,
-				63178F6D2BE66FCF00090F81 /* YandexMobileAdsPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1300,7 +1302,8 @@
 				639418A62BD59B7F007F02FA /* FirebaseAnalytics */,
 				639418A82BD59B7F007F02FA /* FirebaseMessaging */,
 				63C9AB5A2BD7F4F30046951B /* Kingfisher */,
-				63178F6C2BE66FCF00090F81 /* YandexMobileAdsPackage */,
+				635FEF022D21EA4E007FFBBA /* YandexMobileAds */,
+				635FEF042D21EA4E007FFBBA /* YandexMobileAdsInstream */,
 			);
 			productName = ItemShopPlus;
 			productReference = 63C898B82B232F4000FABD69 /* ItemShopPlus.app */;
@@ -1354,7 +1357,7 @@
 			packageReferences = (
 				639418A52BD59B7F007F02FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				63C9AB592BD7F4F30046951B /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				63178F6B2BE66FCE00090F81 /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */,
+				635FEF012D21EA4E007FFBBA /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */,
 			);
 			productRefGroup = 63C898B92B232F4000FABD69 /* Products */;
 			projectDirPath = "";
@@ -2092,12 +2095,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		63178F6B2BE66FCE00090F81 /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */ = {
+		635FEF012D21EA4E007FFBBA /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yandexmobile/yandex-ads-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.1;
+				minimumVersion = 7.8.0;
 			};
 		};
 		639418A52BD59B7F007F02FA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -2119,10 +2122,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		63178F6C2BE66FCF00090F81 /* YandexMobileAdsPackage */ = {
+		635FEF022D21EA4E007FFBBA /* YandexMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 63178F6B2BE66FCE00090F81 /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */;
-			productName = YandexMobileAdsPackage;
+			package = 635FEF012D21EA4E007FFBBA /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */;
+			productName = YandexMobileAds;
+		};
+		635FEF042D21EA4E007FFBBA /* YandexMobileAdsInstream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 635FEF012D21EA4E007FFBBA /* XCRemoteSwiftPackageReference "yandex-ads-sdk-ios" */;
+			productName = YandexMobileAdsInstream;
 		};
 		639418A62BD59B7F007F02FA /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

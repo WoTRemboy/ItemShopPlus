@@ -8163,6 +8163,112 @@
         }
       }
     },
+    "OnboardingScreenFortContent" : {
+      "comment" : "An app for viewing the item shop, statistics and much more.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine App zum Anzeigen des Shops, der Statistiken und vielem mehr."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An app for viewing the item shop, statistics and much more."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una aplicación para ver la tienda, las estadísticas y mucho más."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une application pour consulter la boutique et bien plus encore."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un’app per visualizzare il negozio, le statistiche e molto altro."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacja do przeglądania sklepu, statystyk i wielu innych rzeczy."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приложение для просмотра магазина, статистики и многого другого"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mağazayı, istatistikleri ve çok daha fazlasını görüntülemek için bir uygulama."
+          }
+        }
+      }
+    },
+    "OnboardingScreenFortTitle" : {
+      "comment" : "Fort Satellite",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fort Satellite"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fort Satellite"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fort Satellite"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fort Satellite"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fort Satellite"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fort Satellite"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fort Satellite"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fort Satellite"
+          }
+        }
+      }
+    },
     "OnboardingScreenIconContent" : {
       "comment" : "With iOS 18, a specific icon theme will now be displayed.",
       "localizations" : {
@@ -8534,6 +8640,112 @@
         }
       }
     },
+    "OnboardingScreenVideoContent" : {
+      "comment" : "View some skins and emotes in video format.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sehen Sie sich einige Skins und Emotes im Videoformat an."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View some skins and emotes in video format without limitations."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mira algunas skins y gestos en formato de video sin restricciones."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regardez certains skins et émotes au format vidéo."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guarda alcune skin ed emote in formato video senza limiti."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obejrzyj niektóre skórki i emotki w formacie wideo."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Просматривайте некоторые скины и эмоции в видео-формате."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bazı görünümleri ve ifadeleri video formatında izleyin."
+          }
+        }
+      }
+    },
+    "OnboardingScreenVideoTitle" : {
+      "comment" : "Preview",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorschau"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista previa"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aperçu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anteprima"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podgląd"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Превью"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önizleme"
+          }
+        }
+      }
+    },
     "OnboardingScreenWidgetContent" : {
       "comment" : "The 'Day Offer' shows what’s interesting in the shop today.",
       "localizations" : {
@@ -8593,49 +8805,49 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neues Widget"
+            "value" : "Widget"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "New widget"
+            "value" : "Widget"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nuevo widget"
+            "value" : "Widget"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nouveau widget"
+            "value" : "Widget"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nuovo widget"
+            "value" : "Widget"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nowy widżet"
+            "value" : "Widżet"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Новый виджет"
+            "value" : "Виджет"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yeni widget"
+            "value" : "Widget"
           }
         }
       }

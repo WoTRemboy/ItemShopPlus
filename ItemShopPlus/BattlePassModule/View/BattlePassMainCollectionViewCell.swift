@@ -147,10 +147,10 @@ final class BattlePassMainCollectionViewCell: UICollectionViewCell {
             itemTypeLabel.leadingAnchor.constraint(equalTo: starImageView.trailingAnchor, constant: 3),
             itemTypeLabel.trailingAnchor.constraint(equalTo: itemNameLabel.trailingAnchor),
             
-            starImageView.topAnchor.constraint(equalTo: itemNameLabel.bottomAnchor, constant: 2),
+            starImageView.topAnchor.constraint(equalTo: itemNameLabel.bottomAnchor, constant: 5),
             starImageView.leadingAnchor.constraint(equalTo: itemNameLabel.leadingAnchor),
             starImageView.heightAnchor.constraint(equalToConstant: 17),
-            starImageView.widthAnchor.constraint(equalTo: starImageView.heightAnchor, multiplier: 291/253)
+            starImageView.widthAnchor.constraint(equalTo: starImageView.heightAnchor, multiplier: 48/40)
         ])
     }
     

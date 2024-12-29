@@ -12,6 +12,8 @@ final class CollectionTotalPriceView: UIView {
     
     // MARK: - UI Elements
     
+    private var type: CurrencyImage = .vbucks
+    
     /// An image view that displays the currency image (e.g., vBucks, stars)
     private let priceImageView: UIImageView = {
         let view = UIImageView()
@@ -38,8 +40,6 @@ final class CollectionTotalPriceView: UIView {
     init(frame: CGRect, price: String) {
         priceLabel.text = price
         super.init(frame: frame)
-        
-        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -54,7 +54,10 @@ final class CollectionTotalPriceView: UIView {
     ///   - currency: The currency type (e.g., vBucks or stars) to update the currency image
     public func configurate(price: String, currency: CurrencyImage) {
         priceLabel.text = price
-        currency == .star ? priceImageView.image = .BattlePass.star : nil
+        type = currency
+        type == .star ? priceImageView.image = .BattlePass.star : nil
+        
+        setupUI()
     }
     
     /// Updates the price with an optional animation
@@ -80,8 +83,8 @@ final class CollectionTotalPriceView: UIView {
         NSLayoutConstraint.activate([
             priceImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             priceImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            priceImageView.widthAnchor.constraint(equalToConstant: 25),
-            priceImageView.heightAnchor.constraint(equalTo: priceImageView.widthAnchor),
+            priceImageView.heightAnchor.constraint(equalToConstant: 25),
+            priceImageView.widthAnchor.constraint(equalTo: priceImageView.heightAnchor, multiplier: type == .vbucks ? 1 : 48/40),
             
             priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             priceLabel.leadingAnchor.constraint(equalTo: priceImageView.trailingAnchor, constant: 10)

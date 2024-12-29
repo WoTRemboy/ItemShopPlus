@@ -111,7 +111,7 @@ extension BattlePassItem {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let releaseDate = dateFormatter.date(from: releaseDateString) ?? .now
         
-        return BattlePassItem(id: id, tier: tier, page: page, payType: payType, price: price, rewardWall: rewardWall, levelWall: levelWall, type: type, name: name, description: description, rarity: rarity, series: series, releaseDate: releaseDate, image: image, shareImage: shareImage, video: video, introduction: introduction, set: set)
+        return BattlePassItem(id: id, tier: tier, page: page, payType: payType, price: 1, rewardWall: rewardWall, levelWall: levelWall, type: type, name: name, description: description, rarity: rarity, series: series, releaseDate: releaseDate, image: image, shareImage: shareImage, video: video, introduction: introduction, set: set)
     }
 }
 

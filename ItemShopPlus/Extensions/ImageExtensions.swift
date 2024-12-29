@@ -205,6 +205,8 @@ extension Image {
         
     /// Images for the onboarding screens
     enum OnboardingScreen {
+        static let fort = Image("OnboardFortSatellite")
+        static let play = Image("OnboardPlay")
         static let widget = Image("OnboardWidget")
         static let placeholder = Image("OnboardPlaceholder")
         static let appIcon = Image("OnboardAppIcon")

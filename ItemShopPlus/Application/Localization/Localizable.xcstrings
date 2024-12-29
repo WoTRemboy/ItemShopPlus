@@ -8593,49 +8593,49 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neues Widget"
+            "value" : "Widget"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "New widget"
+            "value" : "Widget"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nuevo widget"
+            "value" : "Widget"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nouveau widget"
+            "value" : "Widget"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nuovo widget"
+            "value" : "Widget"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nowy widżet"
+            "value" : "Widżet"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Новый виджет"
+            "value" : "Виджет"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yeni widget"
+            "value" : "Widget"
           }
         }
       }

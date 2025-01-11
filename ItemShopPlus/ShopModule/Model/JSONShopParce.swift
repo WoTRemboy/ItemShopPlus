@@ -88,6 +88,7 @@ extension ShopItem {
         dateFormatterTime.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         dateFormatterTime.locale = Locale(identifier: "en_US_POSIX")
         
+        // Shop date info
         let firstDateString = data["firstReleaseDate"] as? String ?? String()
         let previousDateString = data["previousReleaseDate"] as? String ?? String()
         let expiryDateString = offerData["out"] as? String ?? String()

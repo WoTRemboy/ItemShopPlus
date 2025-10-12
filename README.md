@@ -5,8 +5,7 @@
 
 **ItemShopPlus** is a Swift-based iOS app designed to provide users with up-to-date information about in-game items from a popular gaming platform.
 The app includes features like a `shop` for viewing items, `battle pass`, `stats`, and `widget` integration.
-It provides a well-structured, user-friendly interface for navigating through various item collections and their details, as well as supporting network requests for real-time data updates.
-Find it in [App Store](https://apps.apple.com/ru/app/fort-satellite-fortnite-shop/id6478311226?l=en-GB). Full Demo available on my [Google Drive](https://drive.google.com/file/d/1JiDiRoT-Im5oC3zYM-SPa9539DR2_xIh/view).
+It provides a well-structured, user-friendly interface for navigating through various item collections and their details, as well as supporting network requests for real-time data updates. Full Demo available on my [Google Drive](https://drive.google.com/file/d/1JiDiRoT-Im5oC3zYM-SPa9539DR2_xIh/view).
 
 ## Table of Contents 📋
 
